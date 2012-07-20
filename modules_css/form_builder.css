@@ -1,0 +1,429 @@
+/**
+ * @file
+ * Styles required for the basic functionality of the Form Builder interface.
+ */
+
+#form-builder-wrapper {
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+#form-builder-wrapper h3.form-builder-title {
+  margin: 0 0 1.5em 10px;
+  text-transform: uppercase;
+}
+
+#form-builder-wrapper.with-palette #form-builder-fields {
+  float: right;
+  padding-left: 10px;
+  width: 38%;
+}
+
+#form-builder-wrapper.with-palette #form-builder {
+  float: none;
+  margin-right: 40%;
+  position: relative;
+  border: 1px solid #D8D5CD;
+  background: #EAE6DE;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: .5em 4em .5em 1em;
+}
+
+#center #form-builder form,
+#form-builder form {
+  margin: 0;
+}
+
+#form-builder form.confirmation {
+  padding: 10px;
+}
+
+div.form-builder-wrapper {
+  padding: 1px;
+  margin-top: 4px; /* Match this to the Sortable drag threshold option. */
+  position: relative;
+}
+
+div.form-builder-element {
+  margin: 4px 10px 4px 10px;
+}
+
+div.form-builder-hover {
+  border: 1px dashed #999;
+  padding: 0;
+  background-color: #D6D2CB;
+}
+
+div.form-builder-active {
+  padding: 0;
+  border: 2px solid #D8D5CD;
+  background-color: #F7F4ED;
+}
+
+div.form-builder-wrapper form {
+  border-top: 1px dashed #999;
+}
+
+div.form-builder-element {
+  position: relative;
+}
+
+div.form-builder-draggable,
+div.form-builder-draggable input,
+div.form-builder-draggable textarea,
+div.form-builder-draggable label,
+div.form-builder-draggable .grippie {
+  cursor: move;
+}
+
+div.form-builder-clickable,
+div.form-builder-clickable input,
+div.form-builder-clickable textarea,
+div.form-builder-clickable label,
+div.form-builder-clickable .grippie {
+  cursor: pointer;
+}
+
+div.form-builder-element .form-builder-disable {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Empty fieldsets */
+#form-builder fieldset {
+  padding-bottom: 20px;
+}
+
+fieldset.form-builder-empty-fieldset,
+div.form-builder-empty-fieldset {
+  overflow: hidden;
+}
+
+div.form-builder-empty-placeholder {
+  text-align: center;
+  color: #32595b;
+  font-size:120%;
+  font-weight: bold;
+  overflow: hidden;
+  min-height: 300px;
+
+}
+
+div.form-builder-empty-placeholder span {
+  display: block;
+  margin: 40px auto 20px;
+  padding: 20px;
+  -moz-border-radius: .5em;
+  -webkit-border-radius: .5em;
+  border-radius: .5em;
+  background:none repeat scroll 0 0 #75C3CA;
+  width: 80%;
+}
+
+/* Placeholders for drop position */
+div.form-builder-placeholder {
+  height: 60px;
+  margin-top: -30px;
+  position: absolute;
+  width: 100%;
+}
+
+div.form-builder-placeholder-hover {
+  margin: 0;
+  position: relative;
+  border: 1px dashed #999;
+}
+
+/* This affects the fieldset placeholder text on hover */
+div.form-builder-placeholder-hover span {
+  visibility: hidden;
+}
+
+/* The item being dragged */
+#form-builder .ui-draggable-dragging {
+  width: 100%;
+}
+
+/* Title bar for form builder items */
+div.form-builder-title-bar {
+  position: relative;
+  z-index: 10;
+  padding-top: 4px;
+  height: 14px;
+  margin-bottom: -18px;
+  border-bottom: none;
+}
+
+div.ui-draggable div.form-builder-title-bar {
+  display: none;
+}
+
+div.ui-draggable div.form-builder-title-bar {
+  cursor: move;
+}
+
+span.form-builder-links {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  z-index: 40;
+}
+
+div.form-builder-hover div.form-builder-title-bar,
+div.form-builder-active div.form-builder-title-bar {
+  display: block;
+}
+
+div.form-builder-hover div.form-builder-wrapper div.form-builder-title-bar,
+div.form-builder-active div.form-builder-wrapper div.form-builder-title-bar {
+  display: none;
+}
+
+span.form-builder-links a.remove,
+span.form-builder-links a.configure {
+  float: right;
+  display: block;
+  height: 1.7em;
+  text-decoration: none;
+  height: 19px;
+  width: 16px;
+  padding: 2px 3px;
+  cursor: pointer;
+  background-color: #D9D76C;
+  -moz-border-radius: 0 0 3px 3px;
+  -webkit-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  margin-right: 7px;
+  border:1px solid #BFBC5F;
+}
+
+span.form-builder-links a.remove span,
+span.form-builder-links a.configure span {
+  display: none;
+}
+
+span.form-builder-links a.remove, span.form-builder-links a.remove:active {
+  background: url(../images/webform_icons.png) no-repeat center -691px #D9D76C;
+  margin-right: 11px;
+
+}
+
+span.form-builder-links a.configure, span.form-builder-links a.configure:active {
+  background: url(../images/webform_icons.png) no-repeat center -730px #D9D76C;
+}
+
+span.form-builder-links a.remove:hover,
+span.form-builder-links a.configure:hover {
+	background-color: #C6C363;
+}
+
+span.form-builder-links a.progress,
+span.form-builder-links a.progress:hover {
+  background: url(images/status-active.gif) no-repeat 0 1px;
+}
+
+/* Field form tabs */
+#form-builder ul.form-builder-tabs {
+  margin: 0;
+  padding: 0;
+  float: left; /* RTL */
+  position: relative;
+}
+
+#form-builder ul.form-builder-tabs li {
+  float: left; /* RTL */
+  display: block;
+  border-width: 0 1px 0 0;
+  border-color: #999;
+  border-style: solid;
+  padding: 6px 10px;
+  margin: -1px -1px -1px 0px;
+  list-style-type: none;
+  list-style-image: none;
+  background: none;
+  cursor: pointer;
+  z-index: 20;
+  position: relative;
+}
+
+#form-builder ul.form-builder-tabs li.active {
+  margin-left: -1px;
+  border-left: 1px solid #999;
+  border-top: 1px dashed #999;
+  border-bottom: 1px solid #ffffff;
+  background: #ffffff;
+}
+
+#form-builder fieldset.form-builder-group {
+  float: left; /* RTL */
+  width: 90%;
+  padding: 1.5em 1em;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-top: 1px solid #CCC;
+	-moz-box-shadow: 0 0 0 transparent;
+	-webkit-box-shadow: 0 0 0 transparent;
+	box-shadow: 0 0 0 transparent;
+}
+
+#form-builder fieldset.form-builder-group .fieldset-wrapper {
+	padding: 1.5em 4%;
+	width: 90%;
+	background: transparent none;
+	border: 0px solid transparent;
+	-moz-box-shadow: 0 0 0 transparent;
+	-webkit-box-shadow: 0 0 0 transparent;
+	box-shadow: 0 0 0 transparent;
+}
+
+#form-builder fieldset.form-builder-group .fieldset-wrapper {
+}
+
+#form-builder fieldset.form-builder-group .form-item {
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+#form-builder-field-configure .form-submit {
+  display: none;
+}
+
+#form-builder-field-configure a.close {
+  border: none;
+  margin: 0;
+  font-size: 80%;
+  float: right;
+  padding: 6px 10px;
+}
+
+/* Weight and parents form */
+form#form-builder-positions {
+  display: none;
+}
+
+/* New fields block */
+div.form-builder-new-field {
+  padding: 10px 20px;
+}
+
+div.form-builder-new-field span.progress {
+  padding-left: 16px;
+  background: url(images/status-active.gif) no-repeat center left;
+}
+
+#form-builder-field-palette .item-list {
+  margin: 0 0 10px 0;
+}
+
+#form-builder-field-palette h3 {
+  margin: 0;
+}
+
+#form-builder-field-palette ul.form-builder-fields {
+  padding: 0;
+}
+
+#form-builder-field-palette ul li {
+  list-style-type: none;
+  margin: 2px;
+  float: left;
+  padding: 0;
+  width: 32%;
+  min-width: 9em;
+  font-size: 100%;
+  cursor: move;
+  display: block;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#form-builder-field-palette ul li a {
+  text-decoration: none;
+  cursor: move;
+  color: #666460;
+  font-weight: bold;
+  padding: .5em .5em .5em 32px;
+  display: block;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #C4C1BA;
+  background: url(../images/webform_icons.png) no-repeat 5px 200px #D8D5CD;
+
+}
+
+#form-builder-field-palette ul li a:hover,
+#form-builder-field-palette ul li a:active {
+  background-color: #D9D76C;
+  border-color: #C4C162;
+  text-decoration: none;
+  cursor: move;
+  color: #666460;
+  font-weight: bold;
+}
+
+#form-builder-field-palette ul li.field-checkboxes a {
+  background-position: 5px -443px;
+}
+#form-builder-field-palette ul li.field-date a {
+  background-position: 5px -324px;
+}
+#form-builder-field-palette ul li.field-email a {
+  background-position: 5px -404px;
+}
+#form-builder-field-palette ul li.field-fieldset a {
+  background-position: 5px -523px;
+
+}
+#form-builder-field-palette ul li.field-file a {
+  background-position: 5px 200px;
+
+}
+#form-builder-field-palette ul li.field-grid a {
+  background-position: 5px -284px;
+}
+#form-builder-field-palette ul li.field-hidden a {
+  background-position: 5px 200px;
+}
+#form-builder-field-palette ul li.field-image a {
+  background-position: 5px 200px;
+
+}
+#form-builder-field-palette ul li.field-markup a {
+  background-position: 5px -363px;
+
+}
+#form-builder-field-palette ul li.field-number a {
+  background-position: 5px -243px;
+
+}
+#form-builder-field-palette ul li.field-pagebreak a {
+  background-position: 5px -484px;
+
+}
+#form-builder-field-palette ul li.field-radios a {
+  background-position: 5px 200px;
+
+}
+#form-builder-field-palette ul li.field-select a {
+  background-position: 5px 200px;
+
+}
+#form-builder-field-palette ul li.field-time a {
+  background-position: 5px -644px;
+
+}
+#form-builder-field-palette ul li.field-textarea a {
+  background-position: 5px -203px;
+
+}
+#form-builder-field-palette ul li.field-textfield a {
+  background-position: 5px 200px;
+
+}

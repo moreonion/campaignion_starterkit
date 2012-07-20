@@ -1,0 +1,209 @@
+
+body.sandbox_menu, {
+  padding-top: 70px!important;
+}
+
+/*body.sandbox_menu  .overlay-element  {
+  padding-top: 50px!important;
+}*/
+
+body.sandbox_menu div#admin-toolbar, body.sandbox_menu span.admin-toggle {
+	top: 5.2em;
+}
+
+#overlay-container, .overlay-modal-background, .overlay-element {
+	top: 0;
+	margin-top: 0;
+	margin-bottom: 50px;
+}
+#overlay-content {
+	margin-bottom: 50px!important;
+}
+
+#overlay-container, .overlay-modal-background, .overlay-element {
+	height: 96%;
+}
+
+body.sandbox_menu-drawer {
+  padding-top: 0;
+}
+
+
+/**
+ * Aggressive resets so we can achieve a consistent look in hostile CSS
+ * environments.
+ */
+#sandbox_menu,
+#sandbox_menu * {
+  border: 0;
+  font-size: 100%;
+  line-height: inherit;
+  list-style: none;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left; /* LTR */
+  vertical-align: baseline;
+  font-family: "Helvetica Neue",Helvetica,Verdana,"Lucida","Lucida Grande","Trebuchet MS",Tahoma,Verdana,sans-serif;
+}
+
+/**
+ * Base styles.
+ *
+ * We use a keyword for the sandbox_menu font size to make it display consistently
+ * across different themes, while still allowing browsers to resize the text.
+ */
+#sandbox_menu {
+  background: url('../images/sandbox_menu/ae_dark_bg.png') repeat #595757;
+  color: #F2F2F2;
+  font: normal small "Lucida","Lucida Grande","Trebuchet MS",Tahoma,Verdana,sans-serif;
+  left: 0;
+  margin: 0 -20px;
+  padding: 0 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  -moz-box-shadow: 0 1px 15px #000;
+  -webkit-box-shadow: 0 1px 15px #000;
+  box-shadow: 0 1px 15px #000;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='7');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='7')";
+  z-index: 600;
+}
+#sandbox_menu div.collapsed {
+  display: none;
+  visibility: hidden;
+}
+#sandbox_menu a {
+  color: #E4DEDE;
+  font-size: .846em;
+  text-decoration: none;
+}
+#sandbox_menu ul li,
+#sandbox_menu ul li a {
+  float: left; /* LTR */
+}
+
+/**
+ * Administration menu.
+ */
+#sandbox_menu div.sandbox_menu-menu {
+  background: none transparent;
+  border-bottom: 1px solid #000;
+  line-height: 20px;
+  padding: 0px 2% 0px 2%; /* LTR */
+  position: relative;
+}
+#sandbox_menu-home a span {
+  background: none;
+  display: block;
+}
+#sandbox_menu-user {
+  float: right; /* LTR */
+}
+#sandbox_menu-menu {
+  float: left; /* LTR */
+}
+#sandbox_menu div.sandbox_menu-menu a.toggle {
+  background: url('../images/sandbox_menu/sandbox_menu.png') 0 -20px no-repeat;
+  bottom: 0;
+  cursor: pointer;
+  height: 25px;
+  overflow: hidden;
+  position: absolute;
+  right: 10px; /* LTR */
+  text-indent: -9999px;
+  width: 25px;
+}
+#sandbox_menu div.sandbox_menu-menu a.toggle:focus,
+#sandbox_menu div.sandbox_menu-menu a.toggle:hover {
+  background-position:  -50px -20px;
+}
+#sandbox_menu div.sandbox_menu-menu a.toggle-active {
+  background-position:  -25px -20px;
+}
+#sandbox_menu div.sandbox_menu-menu a.toggle-active.toggle:focus,
+#sandbox_menu div.sandbox_menu-menu a.toggle-active.toggle:hover {
+  background-position:  -75px -20px;
+}
+#sandbox_menu #sandbox_menu-home li a {
+  padding: 1.5em 1.2em 1.3em 1.3em;
+  font-size: 100%;
+  font-weight: bold;
+  background: none transparent;
+  border-right: 1px solid #413F3F;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  text-shadow: 1px 1px 2px #413F3F;
+}
+#sandbox_menu #sandbox_menu-home li.first a {
+  border-left: 1px solid #413F3F;
+}
+#sandbox_menu #sandbox_menu-home li a:hover, #sandbox_menu #sandbox_menu-home li a:focus {
+background-color: #5E5C5C;
+}
+
+#sandbox_menu #sandbox_menu-home li a.active,
+#sandbox_menu #sandbox_menu-home li a.active:hover,
+#sandbox_menu #sandbox_menu-home li a.active:focus {
+	background: url("../images/sandbox_menu/ae_zacke.png") no-repeat scroll center bottom #4D4B4B;
+
+}
+
+#sandbox_menu #sandbox_menu-home li a span {
+	background: url('../images/sandbox_menu/icons.png') no-repeat left -115px;
+	padding-left: 27px;
+}
+
+#sandbox_menu #sandbox_menu-home li.add a span {
+	background: url('../images/sandbox_menu/icons.png') no-repeat left -59px;
+	padding-left: 26px;
+
+}
+
+#sandbox_menu div.sandbox_menu-menu ul li.active {
+	background: url("../images/sandbox_menu/ae_verydark_bg.png") repeat scroll 0 0 #4D4B4B;
+}
+
+#sandbox_menu div.sandbox_menu-menu ul li a:focus,
+#sandbox_menu div.sandbox_menu-menu ul li a:hover,
+#sandbox_menu div.sandbox_menu-menu ul li a:active,
+#sandbox_menu div.sandbox_menu-menu ul li a.active:focus {
+}
+#sandbox_menu div.sandbox_menu-menu ul li a.active:hover,
+#sandbox_menu div.sandbox_menu-menu ul li a.active:active,
+#sandbox_menu div.sandbox_menu-menu ul li a.active,
+#sandbox_menu div.sandbox_menu-menu ul li.active-trail a {
+}
+
+#sandbox_menu #sandbox_menu-user li a {
+  padding: 1.5em .8em 1.3em 1em; 
+}
+
+#sandbox_menu #sandbox_menu-user li a:hover,
+#sandbox_menu #sandbox_menu-user li a:focus {
+  text-decoration: underline;
+}
+
+/**
+ * Collapsed drawer of additional sandbox_menu content.
+ */
+#sandbox_menu div.sandbox_menu-drawer {
+  position: relative;
+  padding: 0 10px;
+}
+
+/**
+ * IE 6 Fix.
+ *
+ * IE 6 shows elements with position:fixed as position:static so we replace
+ * it with position:absolute; sandbox_menu needs its z-index to stay above overlay.
+ */
+* html #sandbox_menu {
+  left: -20px;
+  margin: 0;
+  padding-right: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
