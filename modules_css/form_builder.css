@@ -63,7 +63,7 @@ div.form-builder-active {
 }
 
 div.form-builder-wrapper form {
-  border-top: 1px dashed #999;
+/*  border-top: 1px dashed #999;*/
 }
 
 div.form-builder-element {
@@ -223,49 +223,65 @@ span.form-builder-links a.configure:hover {
 
 span.form-builder-links a.progress,
 span.form-builder-links a.progress:hover {
-  background: url(images/status-active.gif) no-repeat 0 1px;
+  background: url('../images/ajax-loader-green.gif') no-repeat center center #C6C363;
 }
 
 /* Field form tabs */
 #form-builder ul.form-builder-tabs {
   margin: 0;
-  padding: 0;
+  padding: .5em 0 0 4%;
   float: left; /* RTL */
   position: relative;
+  display: block;
+  width: 96%;
+  background-color: #e4e0d7;
+  border-top: 1px solid #dbd7cf;
 }
 
+#form-builder ul.form-builder-tabs .fieldset-title {
+	text-transform: none;
+	font-size: 100%;
+}
 #form-builder ul.form-builder-tabs li {
   float: left; /* RTL */
   display: block;
-  border-width: 0 1px 0 0;
+  border-width: 0 0 0 0;
   border-color: #999;
   border-style: solid;
-  padding: 6px 10px;
   margin: -1px -1px -1px 0px;
   list-style-type: none;
   list-style-image: none;
-  background: none;
+  background: #E4E0D7;
   cursor: pointer;
   z-index: 20;
   position: relative;
+  border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
 }
 
 #form-builder ul.form-builder-tabs li.active {
-  margin-left: -1px;
-  border-left: 1px solid #999;
-  border-top: 1px dashed #999;
+  margin-left: 1px;
+  border-left: 0px solid transparent;
   border-bottom: 1px solid #ffffff;
   background: #ffffff;
 }
 
+#form-builder ul.form-builder-tabs li span {
+  padding: 10px 24px 6px;
+  color: #464545;
+  font-size: 100%;
+}
+
 #form-builder fieldset.form-builder-group {
   float: left; /* RTL */
-  width: 90%;
+  width: 100%;
+  background-color: #fff;
   padding: 1.5em 1em;
   padding: 0;
   margin: 0;
   border: none;
-  border-top: 1px solid #CCC;
+  border-top: 0px solid #CCC;
 	-moz-box-shadow: 0 0 0 transparent;
 	-webkit-box-shadow: 0 0 0 transparent;
 	box-shadow: 0 0 0 transparent;
@@ -299,6 +315,10 @@ span.form-builder-links a.progress:hover {
   font-size: 80%;
   float: right;
   padding: 6px 10px;
+  position: absolute;
+  right: 1em;
+  z-index: 2;
+  margin-top: .3em;
 }
 
 /* Weight and parents form */
@@ -313,7 +333,7 @@ div.form-builder-new-field {
 
 div.form-builder-new-field span.progress {
   padding-left: 16px;
-  background: url(images/status-active.gif) no-repeat center left;
+  background: url('../images/ajax-loader.gif') no-repeat center left transparent;
 }
 
 #form-builder-field-palette .item-list {
@@ -369,7 +389,7 @@ div.form-builder-new-field span.progress {
 }
 
 #form-builder-field-palette ul li.field-checkboxes a {
-  background-position: 5px -443px;
+  background-position: 5px -923px;
 }
 #form-builder-field-palette ul li.field-date a {
   background-position: 5px -324px;
@@ -382,14 +402,14 @@ div.form-builder-new-field span.progress {
 
 }
 #form-builder-field-palette ul li.field-file a {
-  background-position: 5px 200px;
+  background-position: 5px -765px;
 
 }
 #form-builder-field-palette ul li.field-grid a {
   background-position: 5px -284px;
 }
 #form-builder-field-palette ul li.field-hidden a {
-  background-position: 5px 200px;
+  background-position: 5px -964px;
 }
 #form-builder-field-palette ul li.field-image a {
   background-position: 5px 200px;
@@ -408,12 +428,11 @@ div.form-builder-new-field span.progress {
 
 }
 #form-builder-field-palette ul li.field-radios a {
-  background-position: 5px 200px;
+  background-position: 5px -845px;
 
 }
 #form-builder-field-palette ul li.field-select a {
-  background-position: 5px 200px;
-
+  background-position: 5px -443px;
 }
 #form-builder-field-palette ul li.field-time a {
   background-position: 5px -644px;
@@ -424,6 +443,6 @@ div.form-builder-new-field span.progress {
 
 }
 #form-builder-field-palette ul li.field-textfield a {
-  background-position: 5px 200px;
+  background-position: 5px -884px;
 
 }
