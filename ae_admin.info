@@ -19,6 +19,11 @@ stylesheets[screen][] = modules_css/sandbox_menu.css
 stylesheets[screen][] = modules_css/form_builder.css
 
 
+stylesheets[screen][] = modules_css/jquery.ui.dialog.css
+stylesheets[screen][] = modules_css/jquery.ui.progressbar.css
+stylesheets[screen][] = modules_css/jquery.ui.tabs.css
+stylesheets[screen][] = modules_css/jquery.ui.theme.css
+
 ; Support shortcut module links
 settings[shortcut_module_link] = 1
 
