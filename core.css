@@ -332,12 +332,12 @@ table .item-list,
 .page-content .form-item .description {
   position:absolute;
   bottom:100%;
-  right:-15px;
+  left:30%;
   z-index:5;
   color:#304d50;
   background:url(images/popup.png) 50% 100% no-repeat;
   border-top:1px solid #d8e4e0;
-  width:240px;
+  width:250px;
   margin:0px 0px -15px;
   padding:9px 10px 20px;
   display:none;
