@@ -394,7 +394,8 @@ div.form-builder-new-field span.progress {
 #form-builder-field-palette ul li.field-date a {
   background-position: 5px -324px;
 }
-#form-builder-field-palette ul li.field-email a {
+#form-builder-field-palette ul li.field-email a,
+#form-builder-field-palette ul li.field-email_address a {
   background-position: 5px -404px;
 }
 #form-builder-field-palette ul li.field-fieldset a {
@@ -444,6 +445,52 @@ div.form-builder-new-field span.progress {
 }
 #form-builder-field-palette ul li.field-textfield a {
   background-position: 5px -884px;
-
 }
+
+#form-builder-field-palette ul li.field-first_name a {
+  background-position: 5px -603px;
+}
+
+#form-builder-field-palette ul li.field-last_name a {
+  background-position: 5px -563px;
+}
+
+#form-builder-field-palette ul li.field-state  a {
+  background-position: 5px -165px;
+}
+
+#form-builder-field-palette ul li.field-mobile_number  a {
+  background-position: 5px -124px;
+}
+
+#form-builder-field-palette ul li.field-phone_number  a {
+  background-position: 5px -5px;
+}
+
+#form-builder-field-palette ul li.field-country   a {
+  background-position: 5px -43px;
+}
+
+#form-builder-field-palette ul li.field-gender   a {
+  background-position: 5px -1004px;
+}
+#form-builder-field-palette ul li.field-street_address   a {
+  background-position: 5px -1044px;
+}
+#form-builder-field-palette ul li.field-zip_code   a {
+  background-position: 5px -1084px;
+}
+
+#form-builder-field-palette ul li.field-date_of_birth   a {
+  background-position: 5px -1123px;
+}
+#form-builder-field-palette ul li.field-title  a {
+  background-position: 5px -1163px;
+}
+
+
+
+
+
+
  
