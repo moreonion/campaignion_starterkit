@@ -1,5 +1,5 @@
-name = advocacy engine admin
-description = Advocacy engine admin theme.
+name = Rubik
+description = Clean admin theme.
 base theme = tao
 core = 7.x
 package = advocacy_engine
@@ -10,7 +10,7 @@ regions[help] = Help
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
-scripts[] = js/ae_admin.js
+scripts[] = js/rubik.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
@@ -19,11 +19,13 @@ stylesheets[print][] = print.css
 stylesheets[screen][] = modules_css/sandbox_menu.css
 stylesheets[screen][] = modules_css/form_builder.css
 
-
 stylesheets[screen][] = modules_css/jquery.ui.dialog.css
 stylesheets[screen][] = modules_css/jquery.ui.progressbar.css
 stylesheets[screen][] = modules_css/jquery.ui.tabs.css
 stylesheets[screen][] = modules_css/jquery.ui.theme.css
+stylesheets[screen][] = modules_css/media.css
+
+
 
 ; Support shortcut module links
 settings[shortcut_module_link] = 1
