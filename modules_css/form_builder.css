@@ -354,7 +354,7 @@ div.form-builder-new-field span.progress {
   float: left;
   padding: 0;
   width: 32%;
-  min-width: 9em;
+  min-width: 11em;
   font-size: 100%;
   cursor: move;
   display: block;
