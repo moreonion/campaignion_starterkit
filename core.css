@@ -462,6 +462,12 @@ a.button, input[type="submit"]{
 
   input.button-no:active, a.remove:active { background-position:-3601px 50%; }
 
+  
+
+.field-suffix {
+	display: block;
+}
+
 input.form-autocomplete,
 input.form-text,
 textarea.form-textarea,

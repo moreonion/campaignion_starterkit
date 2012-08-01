@@ -393,7 +393,7 @@ div.node .column-side .column-wrapper {
   
   
 /**
- * Make Media look nice in ae_admin ==================================
+ * Make Media look nice in rubik ==================================
  */
 
 .field-type-image {
@@ -425,7 +425,7 @@ div.node .column-side .column-wrapper {
  * The title is bigger and more prominent==================================
  */
 
-.form-item-title #edit-title {
+.page-node-add .form-item-title #edit-title {
   font-size: 150%;
 }
 
