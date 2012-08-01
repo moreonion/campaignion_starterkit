@@ -2,6 +2,7 @@ name = advocacy engine admin
 description = Advocacy engine admin theme.
 base theme = tao
 core = 7.x
+package = advocacy_engine
 engine = phptemplate
 
 regions[content] = Content
