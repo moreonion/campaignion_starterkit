@@ -11,6 +11,9 @@ regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
 scripts[] = js/rubik.js
+scripts[] = js/easing.js
+scripts[] = js/engage.itoggle.js
+scripts[] = js/ae_itoggle.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
@@ -25,6 +28,7 @@ stylesheets[screen][] = modules_css/jquery.ui.tabs.css
 stylesheets[screen][] = modules_css/jquery.ui.theme.css
 stylesheets[screen][] = modules_css/media.css
 
+stylesheets[screen][] = modules_css/ae_itoggle.css
 
 
 ; Support shortcut module links
