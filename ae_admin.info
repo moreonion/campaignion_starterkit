@@ -10,7 +10,7 @@ regions[help] = Help
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 
-scripts[] = js/rubik.js
+scripts[] = js/ae_admin.js
 scripts[] = js/easing.js
 scripts[] = js/engage.itoggle.js
 scripts[] = js/ae_itoggle.js
