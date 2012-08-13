@@ -29,9 +29,6 @@ Drupal.behaviors.ae_itoggle = {
       }
   });
  
-  // clearing float after iToggle
-  $('.form-type-checkbox', context).addClass('clearfix');
-
   // change itoggle if checkbox is changed
   function toggleTheIToggle() {
     if ($(this).is(':enabled')) {

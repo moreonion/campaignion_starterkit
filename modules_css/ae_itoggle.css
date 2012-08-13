@@ -3,13 +3,13 @@
 -------------------------------*/
 
 div.form-type-checkbox {
-        clear: both;
 }
 div.form-type-checkbox label.ilabel{
 	display:block;
 	font-size:12px;
 	/*padding-bottom:10px;*/
 	cursor:pointer;
+	min-height: 40px;
 	}
 
 div.form-type-checkbox label.itoggle,
