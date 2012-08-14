@@ -6,25 +6,34 @@ Drupal.behaviors.ae_itoggle = {
   attach: function(context) {
 
   // substitute all checkboxes found by .form-type-checkbox
-  $('.form-type-checkbox:not(.form-item-menu-enabled)', context).iToggle({
+  $('.form-type-checkbox', context).iToggle({
       easing: 'easeOutExpo',
       keepLabel: true,
       speed: 300,
       onClickOn: function() {
         var idToClick = $(this).attr('for');
+        // if there is an associated input tag
         if (idToClick && idToClick.length > 0) {
           $('#' + idToClick).attr('checked', 'checked');
           // trigger click event to fire attached actions, e.g. table select all
           // or #permission's .dummy-checkboxes
-          $('#' + idToClick).click();
+          // a little ugly: edit-menu needs change() event --> whitelisted
+          if ($(this).closest('fieldset').attr('id') === "edit-menu") {
+            $('#' + idToClick).change();
+          } else {
+            $('#' + idToClick).click();
+          }
         }
       },
       onClickOff: function() {
         var idToClick = $(this).attr('for');
         if (idToClick && idToClick.length > 0) {
           $('#' + idToClick).removeAttr('checked');
-          // trigger click event to fire attached actions, e.g. table select all
-          $('#' + idToClick).click();
+          if ($(this).closest('fieldset').attr('id') === "edit-menu") {
+            $('#' + idToClick).change();
+          } else {
+            $('#' + idToClick).click();
+          }
         }
       }
   });
