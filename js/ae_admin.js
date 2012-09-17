@@ -39,5 +39,21 @@ Drupal.behaviors.ae_admin.attach = function(context) {
     // Mark as processed.
     $(this).addClass('ae_admin-processed');
   });
+
+  // set/unset actice class on ae webform submit text element
+  // (on click or focus/blur)
+  $('.form-item-submit-button-text #edit-submit-button-text').focus(function() {
+      $(this).parent().addClass('form-active');
+  });
+  $('.form-item-submit-button-text #edit-submit-button-text').blur(function() {
+      $(this).parent().removeClass('form-active');
+  });
+  $('.form-item-submit-button-text #edit-submit-button-text').click(function(e) {
+      $(this).parent().addClass('form-active');
+      e.stopPropagation();
+  });
+  $('html').click(function() {
+      $('.form-item-submit-button-text').removeClass('form-active');
+  });
 };
 })(jQuery);

@@ -487,9 +487,50 @@ div.form-builder-new-field span.progress {
   background-position: 5px -1163px;
 }
 
+#form-builder-webform-save-form #edit-submit-button-text {
+  padding: 0.5em 1.2em;
+  border-radius: 5px 5px 5px 5px;
+  width:50%;
+  min-width: 20em;
+  background: url("images/sandbox_menu/ae_link_bg.png") repeat scroll 0 0 #787575;
+  border: 1px solid #716E6E;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  color: #F7F1F1;
+  font-weight: bold;
+  text-shadow: none;
+}
+#form-builder-webform-save-form #edit-submit-button-text:hover {
+  cursor: text;
+}
+#form-builder-webform-save-form #edit-submit-button-text:active,
+#form-builder-webform-save-form #edit-submit-button-text:focus {
+  cursor: text;
+  color: #666460;
+  background-color: #FFFFFF;
+}
+#form-builder-webform-save-form .form-item-submit-button-text {
+  width: auto;
+  margin: -1em 4em 1.5em 0em;
+  margin-right: 40%;
+  padding: 1em;
+  border: 1px solid #D8D5CD;
+  background-color: #EAE6DE;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 5px;
+}
 
+#form-builder-webform-save-form .form-item-submit-button-text.form-active {
+  border: 1px solid #D8D5CD;
+  background-color: #F7F4ED;
+}
+#form-builder-webform-save-form .form-item-submit-button-text:hover {
+  border: 1px solid #D8D5CD;
+  background-color: #D6D2CB;
+}
+#form-builder .form-builder-placeholder:last-child {
+  padding-bottom: 100px;
+}
 
-
-
-
- 
