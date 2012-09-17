@@ -95,7 +95,6 @@ div.form-builder-element .form-builder-disable {
 
 /* Empty fieldsets */
 #form-builder fieldset {
-  padding-bottom: 20px;
 }
 
 fieldset.form-builder-empty-fieldset,
