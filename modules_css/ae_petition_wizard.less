@@ -1,0 +1,195 @@
+@trail_bg: #e4dfd6;
+@trail_fg: #333;
+@trail_border: #c5c5c5;
+@trail_step_previous_bg: #b5d5d8;
+@trail_step_previous_fg: #32595c;
+@trail_step_current_bg: #76c5cc;
+@trail_step_current_fg: #5f5d5d;
+@trail_step_next_bg: #b2ada7;
+@trail_step_next_fg: #5f5d5d;
+@trail_button_next_bg: #d66540;
+@trail_button_next_fg: #4b2217;
+@trail_button_next_border: #b65737;
+@confirm_edit_bg: #d8d616;
+@confirm_edit_fg: #3c3b06;
+@confirm_edit_border: #bdbc13;
+@button_draft_bg: #16c5d5;
+@button_draft_fg: #305254;
+@button_draft_border: #19b9c7;
+@button_publish_bg: @trail_button_next_bg;
+@button_publish_fg: @trail_button_next_fg;
+@button_publish_border: @trail_button_next_border;
+
+
+
+#branding {
+    display: none;
+}
+
+#main-content,
+#ae-petition-wizard-step-form {
+    position: relative;
+    .wizard-trail-wrapper {
+        background: @trail_bg;
+        padding: 1em 30px; /* 30px from .limiter */
+        margin:  1em -30px;
+    }
+    .wizard-trail {
+        background: @trail_bg;
+        overflow: hidden;
+        border: 1px solid @trail_border;
+        display: inline-block;
+        > span {
+            float: left;
+            min-width: 5em;
+            &.wizard-trail-previous {
+                span.inner {
+                    color: @trail_step_previous_fg;
+                    background: @trail_step_previous_bg; 
+                }
+                span.inner:after {
+                    border-left: 30px solid @trail_step_previous_bg;
+                }
+            }
+            &.wizard-trail-current {
+                span.inner {
+                    color: @trail_step_current_fg;
+                    background: @trail_step_current_bg; 
+                }
+                span.inner:after {
+                    border-left: 30px solid @trail_step_current_bg;
+                }
+            }
+            &.wizard-trail-next {
+                span.inner {
+                    color: @trail_step_next_fg;
+                    background: @trail_step_next_bg; 
+                }
+                span.inner:after {
+                    border-left: 30px solid @trail_step_next_bg;
+                }
+            }
+            &.wizard-trail-next {}
+            span.inner {
+                padding: 10px 35px 10px 65px;
+                background: @trail_step_current_bg; 
+                position: relative; 
+                display: block;
+                float: left;
+            }
+            &:last-of-type { /* last in trail */
+                span.inner:after {
+                    content: '';
+                    display: none;
+                    border: none;
+                }
+                span.inner:before {
+                    border: none;
+                }
+            }
+            span.inner:after { /* default */
+                content: " "; 
+                display: block; 
+                width: 0; 
+                height: 0;
+                border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid @trail_step_current_bg;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px; 
+                left: 100%;
+                z-index: 2;
+            }
+            span.inner:before {
+                content: " ";
+                display: block; 
+                width: 0; 
+                height: 0;
+                border-top: 50px solid transparent;
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid @trail_border;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px; 
+                margin-left: 1px;
+                left: 100%;
+                z-index: 1;
+            }
+        }
+    }
+    fieldset {
+        border: none!important;
+        border-radius: 0px;
+        .description {
+            display: none;
+        }
+        &.fieldset.tiled .fieldset-content,
+        .fieldset-content {
+            background: transparent;
+            padding: 1em 0 0 0 !important;
+        }
+        legend {
+            float: none;
+            .fieldset-title {
+                font-size: 1.2em;
+                font-weight: normal;
+                padding: 0 0 0.5em 0;
+                border-bottom: 1px solid gray;
+            }
+        }
+    }
+    .form-item label:not(.itoggle) {
+                font-size: 1.2em;
+                font-weight: normal;
+                padding: 0 0 0.5em 0;
+    }
+    #edit-title {
+                font-size: 1.4em;
+    }
+    #edit-buttons {
+        position: absolute;
+        top: .5em;
+        right: 0em;
+        border: none;
+        padding: 10px;
+    }
+    span.cke_skin_kama { padding: 0!important; }
+    #edit-body,
+    #edit-field-petition-pgbar,
+    .form-item-title {
+        display: block;
+        width: 60%;
+        float: left;
+    }
+    #edit-field-main-image {
+        display: block;
+        width: 30%;
+        float: right;
+    }
+    .vertical-tabs {
+        clear: both;
+        display: none;
+    }
+    .form-wrapper {
+        display: block;
+        padding: 1em 1em 1em 0;
+        border-bottom: 1px dotted @trail_border;
+        position: relative;
+        h2 {
+            font-size: 1.2em;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        .confirm-edit-button {
+            background: @confirm_edit_bg;
+            color: @confirm_edit_fg;
+            border: 1px solid @confirm_edit_border;
+            float: right;
+            position: absolute;
+            width: 10em;
+            top: 1em;
+            right: 1em;
+        }
+    }
+}
