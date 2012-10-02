@@ -28,6 +28,7 @@ stylesheets[screen][] = modules_css/jquery.ui.tabs.css
 stylesheets[screen][] = modules_css/jquery.ui.theme.css
 stylesheets[screen][] = modules_css/media.css
 stylesheets[screen][] = modules_css/options_element.css
+stylesheets[screen][] = modules_css/ae_petition_wizard.less
 
 
 stylesheets[screen][] = modules_css/ae_itoggle.css
