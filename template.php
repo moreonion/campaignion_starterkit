@@ -562,3 +562,14 @@ function _ae_admin_local_tasks(&$vars) {
   }
 }
 
+function ae_admin_ctools_wizard_trail(&$vars) {
+  $trail = $vars['trail'];
+  foreach ($trail as &$t) {
+      $a = strpos($t, '>') + 1;
+      $b = strpos($t, '<', $a);
+      $t = substr($t, 0, $a) . '<span class="inner">' . substr($t, $a, $b - $a) . '</span>' . substr($t, $b);
+  }
+  if (!empty($trail)) {
+    return '<div class="wizard-trail-wrapper"><div class="wizard-trail">' . implode('', $trail) . '</div></div>';
+  }
+}
