@@ -206,6 +206,7 @@
         border: none;
         background: none;
         clear: right;
+        padding: 0;
     }
     .half-left {
         display: inline-block;
@@ -239,15 +240,16 @@
         text-align: center;
         position: relative;
         .thank-you-line-or {
-            border-top: 2px solid @border_color;
+            border-top: 1px solid @border_color;
+            box-shadow: 0 -1px 0 @border_color + #333;
             line-height: 1.2em;
-            top: 0.6em;
+            top: 0.85em;
             position: relative;
             display: inline-block;
             width: 100%;
         }
         .thank-you-text-or {
-            font-weight: bold;
+            font-style: italic;
             display: inline-block;
             top: -0.6em;
             position: relative;
@@ -263,6 +265,15 @@
             border: 2px solid @border_color;
             background: @box_bg_light;
             padding: 1em!important;
+        }
+        a.button {
+            float: left;
+            margin: 10px 5px;
+            display: block;
+            &:first-child { clear:left; }
+        }
+        .form-item {
+            clear: both;
         }
     }
     #edit-thank-you-email {
@@ -334,16 +345,23 @@
     }
 
     .preview {
+        float: left;
         min-width: 100px;
         min-height: 131px;
         padding: 6px 6px 2px;
         margin: 10px;
         border: 1px solid #ccc;
         background: #fff;
+        background-image: url(../images/blank_preview.png);
+        background-repeat: no-repeat;
+        background-position: 6px 6px;
         * {
             padding: 0px;
             margin: 0px;
             border: none;
+        }
+        label {
+            text-transform: none;
         }
     }
 }
