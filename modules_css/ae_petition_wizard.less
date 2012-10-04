@@ -29,6 +29,11 @@
 
 #main-content,
 #ae-petition-wizard-step-form {
+    #edit-wizard-advanced {
+        .vertical-tabs-panes {
+            min-height: 30em;
+        }
+    }
     #edit-wizard-head {
         background: @trail_bg;
         padding: 1em 30px 1em 30px; /* 30px from .limiter */
@@ -48,6 +53,7 @@
             padding: 0!important;
             float: right;
             clear: right;
+            text-align: right;
             #edit-next {
                 width: 8em;
                 padding-right: 3em;
@@ -57,6 +63,8 @@
                 background-position: right center;
                 color: @trail_button_next_fg;
                 border: 1px solid @trail_button_next_border;
+                text-shadow: none;
+                font-size: 1.2em;
             }
         }
         .wizard-trail-wrapper {
@@ -189,7 +197,7 @@
     // floating
     .twothirds-left {
         display: inline-block;
-        width: 60%;
+        width: 65%;
     }
     .onethirds-right {
         display: inline-block;
