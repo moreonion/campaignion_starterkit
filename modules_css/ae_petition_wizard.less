@@ -223,11 +223,15 @@
         #edit-node-form-field-flexible {
             display: none;
         }
-        #edit-node-form-field-share-light,
-        #edit-node-form-field-main-image {
-            #field-main-image-add-more-wrapper .fieldset-content {
-                background: @box_bg_light;
-            }
+    }
+    #edit-node-form-field-share-light {
+    }
+    #edit-field-main-image,
+    #edit-node-form-field-main-image {
+        #field-main-image-add-more-wrapper .fieldset-content {
+            border: 2px solid @border_color;
+            background: @box_bg_light;
+            padding: 1em!important;
         }
     }
     #edit-thank-you-email {
@@ -297,5 +301,18 @@
         padding: 0!important;
         border-width: 2px;
     }
-}
 
+    .preview {
+        min-width: 100px;
+        min-height: 131px;
+        padding: 6px 6px 2px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        * {
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+    }
+}
