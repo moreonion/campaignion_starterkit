@@ -407,6 +407,14 @@ div.node .column-side .column-wrapper {
     -moz-box-shadow: 0 0 3px #E0E0E0;
     -webkit-box-shadow: #E0E0E0;
     box-shadow: #E0E0E0;
+    
+}
+
+.field-type-image .fieldset, .field-type-image .fieldset-content {
+   border: 0px;
+   -moz-box-shadow: 0 0 0 transparent;
+   -webkit-box-shadow: 0 0 0 transparent;
+   box-shadow: 0 0 0 transparent;
 }
 
 .field-type-image .form-type-item label {
