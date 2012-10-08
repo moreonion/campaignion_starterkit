@@ -1,57 +1,57 @@
 /* -----------------------------
-	This is the important bit
--------------------------------*/
+ * This is the important bit
+ * -------------------------------*/
 
 div.form-type-checkbox {
 }
 div.form-type-checkbox label.ilabel{
-	display:block;
-	font-size:12px;
-	/*padding-bottom:10px;*/
-	cursor:pointer;
-	margin-bottom: 20px;
-	}
+    display:block;
+    font-size:12px;
+    /*padding-bottom:10px;*/
+    cursor:pointer;
+    margin-bottom: 20px;
+    }
 
 div.form-type-checkbox label.itoggle,
 div.form-type-checkbox label.itoggle span{
-	display: block;
-	width: 93px;
-	height: 27px;
-	margin-bottom: 20px;
-	background: url(itoggle-yesno.png) left bottom no-repeat;
-	cursor:pointer;
-	text-indent:-5000px;
-	}
+    display: block;
+    width: 93px;
+    height: 27px;
+    margin-bottom: 20px;
+    background: url(itoggle-yesno.png) left bottom no-repeat;
+    cursor:pointer;
+    text-indent:-5000px;
+    }
 div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox,
 div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox span{
-	background: url(itoggle-disabled-yesno.png) left bottom no-repeat;
-	}
+    background: url(itoggle-disabled-yesno.png) left bottom no-repeat;
+    }
 div.form-type-checkbox label.itoggle {
-        float:left;
-        margin-right: 10px;
-	}
+    float:left;
+    margin-right: 10px;
+    }
 div.form-type-checkbox label.itoggle.iToff{
-	background-position:right bottom;
-	}
+    background-position:right bottom;
+    }
 div.form-type-checkbox label.itoggle span,
 div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox span{
-	background-position: left top;
-	margin: 0;
-	}
+    background-position: left top;
+    margin: 0;
+    }
 div.form-type-checkbox input.iT_checkbox{
-	position:absolute;
-	top:-9999px;
-	left:-9999px;
-	}
+    position:absolute;
+    top:-9999px;
+    left:-9999px;
+    }
 
-/*	
-	If you want the corners to be
-	transparent, add these two lines
-	to the main block above. Only
-	works on webkit and mozilla browsers
-	For more reliable results, make your
-	own png using the supplied .psd
-	
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-*/
+/*  
+ * If you want the corners to be
+ * transparent, add these two lines
+ * to the main block above. Only
+ * works on webkit and mozilla browsers
+ * For more reliable results, make your
+ * own png using the supplied .psd
+ * 
+ * -moz-border-radius:6px;
+ * -webkit-border-radius:6px;
+ */
