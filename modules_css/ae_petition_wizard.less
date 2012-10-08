@@ -40,6 +40,49 @@
             min-height: 30em;
         }
     }
+    #edit-buttons {
+        &.form-actions {
+            border-top: none!important;
+        }
+        .button-finish, .button-finish-other {
+            font-size: 1.2em;
+            padding: 0.5em 1em;
+            width: 15em;
+            margin-right: 1em;
+        }
+        .button-finish-other {
+            background: url("../images/sandbox_menu/ae_blue_bg.png") repeat scroll 0 0 transparent;
+            border-color: #14B1BC;
+            border-radius: 5px 5px 5px 5px;
+            color: #305254;
+            text-shadow: 1px 1px 1px #32DCE5;
+            &:hover, &:focus {
+                background: none repeat scroll 0 0 #18CBDB;
+                border-color: #14ACB7;
+                box-shadow: 0 0 1px #FFB196;
+                color: #305254;
+            }
+            &:active {
+                background: none repeat scroll 0 0 #0A565B;
+                color: #063538;
+                text-shadow: 1px 1px 1px #0B6368;
+            }
+        }
+        #edit-next, .button-finish {
+            background-color: @trail_button_next_bg;
+            background-image: none;
+            color: @trail_button_next_fg;
+            border: 1px solid @trail_button_next_border;
+            text-shadow: 1px 1px 0 @trail_button_next_shadow_fg;
+            font-size: 1.2em;
+            &:hover, &:focus {
+                background-color: @trail_button_next_hover_bg;
+            }
+            &:active {
+                background-color: @trail_button_next_active_bg;
+            }
+        }
+    }
     #edit-wizard-head {
         background: @trail_bg;
         padding: 1em 30px 1em 30px; /* 30px from .limiter */
@@ -63,20 +106,9 @@
             #edit-next {
                 width: 8em;
                 padding-right: 3em;
-                background-color: @trail_button_next_bg;
                 background-image: url(../images/ae_pfeil.png);
                 background-repeat: no-repeat;
                 background-position: right center;
-                color: @trail_button_next_fg;
-                border: 1px solid @trail_button_next_border;
-                text-shadow: 1px 1px 0 @trail_button_next_shadow_fg;
-                font-size: 1.2em;
-                &:hover, &:focus {
-                    background-color: @trail_button_next_hover_bg;
-                }
-                &:active {
-                    background-color: @trail_button_next_active_bg;
-                }
             }
         }
         .wizard-trail-wrapper {
@@ -240,6 +272,9 @@
             padding: 1em!important;
             min-height: 20em;
         }
+        #edit-node-form-title {
+            font-size: 1.2em;
+        }
         #edit-node-form-field-intro,
         #edit-node-form-field-flexible {
             display: none;
@@ -304,6 +339,9 @@
         background: @box_bg_lighter;
         padding: 1em!important;
         min-height: 30em;
+        .form-wrapper {
+            margin: 1em 0;
+        }
         .confirm-edit-wrapper {
             width: 100%;
             display: block;
@@ -312,9 +350,7 @@
             position: relative;
             clear: both;
             h2, p {
-                width: 80%;
-                float: left;
-                clear: left;
+                padding-right: 12em;
             }
             h2 {
                 font-size: 1.2em;
@@ -328,6 +364,8 @@
                 border: 1px solid @confirm_edit_border;
                 width: 10em;
                 text-shadow: 1px 1px 0 @confirm_edit_shadow_fg;
+                float:right;
+                clear:right;
                 &:hover, &:focus {
                     background-color: @confirm_edit_hover_bg;
                 }
@@ -338,6 +376,9 @@
             &:last-child {
                 border-bottom: none;
             }
+        }
+        #edit-buttons {
+            padding: 2em 0 5em 0;
         }
     }
 }
@@ -384,5 +425,8 @@
         label {
             text-transform: none;
         }
+    }
+    .form-wrapper {
+        margin-bottom: 2em;
     }
 }
