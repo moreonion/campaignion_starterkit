@@ -14,9 +14,15 @@
 @trail_button_next_bg: #d66540;
 @trail_button_next_fg: #4b2217;
 @trail_button_next_border: #b65737;
+@trail_button_next_hover_bg: #ff764c;
+@trail_button_next_active_bg: #B55336;
+@trail_button_next_shadow_fg: @trail_button_next_border;
 @confirm_edit_bg: #d8d616;
 @confirm_edit_fg: #3c3b06;
 @confirm_edit_border: #bdbc13;
+@confirm_edit_hover_bg: #EDE91A;
+@confirm_edit_active_bg: #A3A011;
+@confirm_edit_shadow_fg: @confirm_edit_border;
 @button_draft_bg: #16c5d5;
 @button_draft_fg: #305254;
 @button_draft_border: #19b9c7;
@@ -63,8 +69,14 @@
                 background-position: right center;
                 color: @trail_button_next_fg;
                 border: 1px solid @trail_button_next_border;
-                text-shadow: none;
+                text-shadow: 1px 1px 0 @trail_button_next_shadow_fg;
                 font-size: 1.2em;
+                &:hover, &:focus {
+                    background-color: @trail_button_next_hover_bg;
+                }
+                &:active {
+                    background-color: @trail_button_next_active_bg;
+                }
             }
         }
         .wizard-trail-wrapper {
@@ -312,7 +324,13 @@
                 color: @confirm_edit_fg;
                 border: 1px solid @confirm_edit_border;
                 width: 10em;
-                text-shadow: none;
+                text-shadow: 1px 1px 0 @confirm_edit_shadow_fg;
+                &:hover, &:focus {
+                    background-color: @confirm_edit_hover_bg;
+                }
+                &:active {
+                    background-color: @confirm_edit_active_bg;
+                }
             }
             &:last-child {
                 border-bottom: none;
