@@ -43,12 +43,12 @@ Drupal.behaviors.ae_itoggle = {
     if ($(this).is(':enabled')) {
       if ($(this).is(':checked')) {
         $(this).siblings('label.itoggle')
-          .animate({backgroundPosition: '0% -20px'}, 300, 'easeOutExpo', function () {
+          .animate({backgroundPosition: '0% -27px'}, 300, 'easeOutExpo', function () {
             $(this).removeClass('iToff').addClass('iTon');
           });
       } else {
         $(this).siblings('label.itoggle')
-          .animate({backgroundPosition: '100% -20px'}, 300, 'easeOutExpo', function () {
+          .animate({backgroundPosition: '100% -27px'}, 300, 'easeOutExpo', function () {
             $(this).removeClass('iToff').addClass('iTon');
           });
       }
@@ -61,13 +61,13 @@ Drupal.behaviors.ae_itoggle = {
   $('thead .select-all input:checkbox', context).click(function() {
     if ($(this).is(':checked')) {
       $(this).closest('table').find('label.itoggle').each(function() {
-        $(this).animate({backgroundPosition: '0% -20px'}, 300, 'easeOutExpo', function () {
+        $(this).animate({backgroundPosition: '0% -27px'}, 300, 'easeOutExpo', function () {
           $(this).removeClass('iToff').addClass('iTon');
         });
       });
     } else {
       $(this).closest('table').find('label.itoggle').each(function() {
-        $(this).animate({backgroundPosition: '100% -20px'}, 300, 'easeOutExpo', function () {
+        $(this).animate({backgroundPosition: '100% -27px'}, 300, 'easeOutExpo', function () {
           $(this).removeClass('iToff').addClass('iTon');
         });
       });
