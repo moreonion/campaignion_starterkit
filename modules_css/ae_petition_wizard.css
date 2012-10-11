@@ -3,12 +3,72 @@
 #main-content #edit-wizard-advanced .vertical-tabs-panes, #ae-petition-wizard-step-form #edit-wizard-advanced .vertical-tabs-panes {
   min-height: 30em;
 }
+#main-content #edit-buttons.form-actions, #ae-petition-wizard-step-form #edit-buttons.form-actions {
+  border-top: none!important;
+}
+#main-content #edit-buttons .button-finish,
+#ae-petition-wizard-step-form #edit-buttons .button-finish,
+#main-content #edit-buttons .button-finish-other,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other {
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  width: 15em;
+  margin-right: 1em;
+}
+#main-content #edit-buttons .button-finish-other, #ae-petition-wizard-step-form #edit-buttons .button-finish-other {
+  background: url("../images/sandbox_menu/ae_blue_bg.png") repeat scroll 0 0 transparent;
+  border-color: #14B1BC;
+  border-radius: 5px 5px 5px 5px;
+  color: #305254;
+  text-shadow: 1px 1px 1px #32DCE5;
+}
+#main-content #edit-buttons .button-finish-other:hover,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other:hover,
+#main-content #edit-buttons .button-finish-other:focus,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other:focus {
+  background: none repeat scroll 0 0 #18CBDB;
+  border-color: #14ACB7;
+  box-shadow: 0 0 1px #FFB196;
+  color: #305254;
+}
+#main-content #edit-buttons .button-finish-other:active, #ae-petition-wizard-step-form #edit-buttons .button-finish-other:active {
+  background: none repeat scroll 0 0 #0A565B;
+  color: #063538;
+  text-shadow: 1px 1px 1px #0B6368;
+}
+#main-content #edit-buttons #edit-next,
+#ae-petition-wizard-step-form #edit-buttons #edit-next,
+#main-content #edit-buttons .button-finish,
+#ae-petition-wizard-step-form #edit-buttons .button-finish {
+  background-color: #d66540;
+  background-image: none;
+  color: #4b2217;
+  border: 1px solid #b65737;
+  text-shadow: 1px 1px 0 #b65737;
+  font-size: 1.2em;
+}
+#main-content #edit-buttons #edit-next:hover,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:hover,
+#main-content #edit-buttons .button-finish:hover,
+#ae-petition-wizard-step-form #edit-buttons .button-finish:hover,
+#main-content #edit-buttons #edit-next:focus,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:focus,
+#main-content #edit-buttons .button-finish:focus,
+#ae-petition-wizard-step-form #edit-buttons .button-finish:focus {
+  background-color: #ff764c;
+}
+#main-content #edit-buttons #edit-next:active,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:active,
+#main-content #edit-buttons .button-finish:active,
+#ae-petition-wizard-step-form #edit-buttons .button-finish:active {
+  background-color: #b55336;
+}
 #main-content #edit-wizard-head, #ae-petition-wizard-step-form #edit-wizard-head {
   background: #e4dfd6;
-  padding: 1em 30px 1em 30px;
-  /* 30px from .limiter */
+  padding: 1em 20px 1em 20px;
+  /* 30px from .limiter, 20px for overlay */
 
-  margin: 1em -30px 1em -30px;
+  margin: 1em -20px 1em -20px;
   height: auto;
 }
 #main-content #edit-wizard-head:after, #ae-petition-wizard-step-form #edit-wizard-head:after {
@@ -30,23 +90,9 @@
 #main-content #edit-wizard-head #edit-buttons #edit-next, #ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next {
   width: 8em;
   padding-right: 3em;
-  background-color: #d66540;
   background-image: url(../images/ae_pfeil.png);
   background-repeat: no-repeat;
   background-position: right center;
-  color: #4b2217;
-  border: 1px solid #b65737;
-  text-shadow: 1px 1px 0 #b65737;
-  font-size: 1.2em;
-}
-#main-content #edit-wizard-head #edit-buttons #edit-next:hover,
-#ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next:hover,
-#main-content #edit-wizard-head #edit-buttons #edit-next:focus,
-#ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next:focus {
-  background-color: #FF764C;
-}
-#main-content #edit-wizard-head #edit-buttons #edit-next:active, #ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next:active {
-  background-color: #B55336;
 }
 #main-content #edit-wizard-head .wizard-trail-wrapper, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail-wrapper {
   width: 80%;
@@ -157,12 +203,12 @@
   float: none;
 }
 #ae-petition-wizard-step-form fieldset legend .fieldset-title {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: normal;
   padding: 0 0 0.5em 0;
 }
 #ae-petition-wizard-step-form .form-item label:not(.itoggle) {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: normal;
   padding: 0 0 0.5em 0;
 }
@@ -201,8 +247,14 @@
   padding: 1em!important;
   min-height: 20em;
 }
+#ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-title {
+  font-size: 1.2em;
+}
 #ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-intro, #ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-flexible {
   display: none;
+}
+#ae-petition-wizard-step-form #edit-thank-you-node .form-item-type, #ae-petition-wizard-step-form #edit-thank-you-node .form-item-type2 {
+  margin: 0 0 1em 0;
 }
 #ae-petition-wizard-step-form #thank-you-outer-or {
   margin: 1em 0;
@@ -256,7 +308,10 @@
   padding: 1em!important;
   min-height: 30em;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper {
+#ae-petition-wizard-step-form #edit-confirm-container .form-wrapper {
+  margin: 1em 0;
+}
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper {
   width: 100%;
   display: block;
   padding: 1em 1em 1em 0;
@@ -264,32 +319,35 @@
   position: relative;
   clear: both;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper h2, #ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper p {
-  width: 80%;
-  float: left;
-  clear: left;
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper h2, #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper p {
+  padding-right: 12em;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper h2 {
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper h2 {
   font-size: 1.2em;
   text-transform: uppercase;
   font-weight: normal;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper .confirm_edit_button {
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button {
   position: relative;
   background: #d8d616;
   color: #3c3b06;
   border: 1px solid #bdbc13;
   width: 10em;
   text-shadow: 1px 1px 0 #bdbc13;
+  float: right;
+  clear: right;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper .confirm_edit_button:hover, #ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper .confirm_edit_button:focus {
-  background-color: #EDE91A;
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:hover, #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:focus {
+  background-color: #ede91a;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper .confirm_edit_button:active {
-  background-color: #A3A011;
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:active {
+  background-color: #a3a011;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm_edit_wrapper:last-child {
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper:last-child {
   border-bottom: none;
+}
+#ae-petition-wizard-step-form #edit-confirm-container #edit-buttons {
+  padding: 2em 0 5em 0;
 }
 /*** wysiwyg field ***/
 #ae-petition-wizard-step-form span.cke_skin_kama {
@@ -330,4 +388,7 @@
 }
 #ae-petition-wizard-step-form .preview label {
   text-transform: none;
+}
+#ae-petition-wizard-step-form .form-wrapper {
+  margin-bottom: 2em;
 }
