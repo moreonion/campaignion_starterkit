@@ -577,51 +577,81 @@ function ae_admin_ctools_wizard_trail(&$vars) {
 /** 
  * overrides theme_webform_edit_form
  */
-function NOT_YET_ae_admin_webform_email_edit_form($variables) {
+function ae_admin_webform_email_edit_form($variables) {
     $form = $variables['form'];
 
-//    dpm($form);
-//    if (not wizard) {
-//    return;
-//    }
+    $path = current_path();
+    // if we are on ae wizard (= path starts with "ae") we override
+    // otherwise we copy from webform.emails.inc :)
+    if (strpos($path, 'ae') === 0) {
+        if (in_array('Email address', $form['from_address_component']['#options'])) {
+            $form['from_address_component']['#options'] = array(1 => 'Email address');
+        } else {
+            $form['from_address_component']['#access'] = FALSE;
+            $form['from_address_option']['component']['#access'] = FALSE;
+        }
 
-    if (in_array('Email address', $form['from_address_component']['#options'])) {
-        $form['from_address_component']['#options'] = array(1 => 'Email address');
+        // Loop through fields, rendering them into radio button options.
+        foreach (array('email', 'from_address', 'from_name') as $field) {
+            foreach (array('custom', 'component') as $option) {
+                $form[$field . '_' . $option]['#attributes']['class'] = array('webform-set-active');
+                $form[$field . '_option'][$option]['#theme_wrappers'] = array('webform_inline_radio');
+                $form[$field . '_option'][$option]['#inline_element'] = drupal_render($form[$field . '_' . $option]);
+            }
+            if (isset($form[$field . '_option']['#options']['default'])) {
+                $form[$field . '_option']['default']['#theme_wrappers'] = array('webform_inline_radio');
+            }
+        }
+        $form['subject_option']['#access'] = FALSE;
+        $form['subject_custom']['#title'] = t('E-mail subject');
+        $form['subject_custom']['#access'] = TRUE;
+        $form['subject_component']['#access'] = FALSE;
+        $form['subject_option']['#default_type'] = 'custom';
+
+        $form['email_custom']['#access'] = FALSE;
+        $form['email_option']['#access'] = FALSE;
+        $form['email_component']['#access'] = FALSE;
+
+
+        unset($form['from_name_option']['#options']['component']);
+        $form['from_name_option']['component']['#access'] = FALSE;
+        $form['from_name_component']['#access'] = FALSE;
+        $form['from_name_custom']['#access'] = TRUE;
+
+        $form['template']['html']['#access'] = TRUE;
     } else {
-        $form['from_address_component']['#access'] = FALSE;
-        $form['from_address_option']['component']['#access'] = FALSE;
-    }
-
-    // Loop through fields, rendering them into radio button options.
-    foreach (array('email', 'from_address') as $field) {
-        foreach (array('custom', 'component') as $option) {
-            $form[$field . '_' . $option]['#attributes']['class'] = array('webform-set-active');
-            $form[$field . '_option'][$option]['#theme_wrappers'] = array('webform_inline_radio');
-            $form[$field . '_option'][$option]['#inline_element'] = drupal_render($form[$field . '_' . $option]);
+        // Loop through fields, rendering them into radio button options.
+        foreach (array('email', 'subject', 'from_address', 'from_name') as $field) {
+            foreach (array('custom', 'component') as $option) {
+                $form[$field . '_' . $option]['#attributes']['class'] = array('webform-set-active');
+                $form[$field . '_option'][$option]['#theme_wrappers'] = array('webform_inline_radio');
+                $form[$field . '_option'][$option]['#inline_element'] = drupal_render($form[$field . '_' . $option]);
+            }   
+            if (isset($form[$field . '_option']['#options']['default'])) {
+                $form[$field . '_option']['default']['#theme_wrappers'] = array('webform_inline_radio');
+            }   
         }
-        if (isset($form[$field . '_option']['#options']['default'])) {
-            $form[$field . '_option']['default']['#theme_wrappers'] = array('webform_inline_radio');
-        }
+
+        $details = ''; 
+        $details .= drupal_render($form['subject_option']);
+        $details .= drupal_render($form['from_address_option']);
+        $details .= drupal_render($form['from_name_option']);
+        $form['details'] = array(
+            '#type' => 'fieldset',
+            '#title' => t('E-mail header details'),
+            '#weight' => 10, 
+            '#children' => $details,
+            '#collapsible' => FALSE,
+            '#parents' => array('details'),
+            '#groups' => array('details' => array()),
+            '#attributes' => array(),
+        );  
+
     }
-    $form['subject_custom']['#title'] = t('E-mail subject');
-    $form['subject_option']['#access'] = FALSE;
-    $form['subject_component']['#access'] = FALSE;
-    $form['subject_option']['#default_type'] = 'custom';
-
-    $form['email_custom']['#access'] = FALSE;
-    $form['email_option']['#access'] = FALSE;
-    $form['email_component']['#access'] = FALSE;
-
-
-    unset($form['from_name_option']['#options']['component']);
-    unset($form['from_name_option']['component']);
-    $form['from_name_component']['#access'] = FALSE;
 
     // Ensure templates are completely hidden.
     $form['templates']['#prefix'] = '<div id="webform-email-templates" style="display: none">';
     $form['templates']['#suffix'] = '</div>';
-
-    $form['template']['html']['#access'] = TRUE;
 
     // Re-sort the elements since we added the details fieldset.
     $form['#sorted'] = FALSE;
