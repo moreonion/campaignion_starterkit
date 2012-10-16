@@ -487,7 +487,7 @@ div.form-builder-new-field span.progress {
   background-position: 5px -1163px;
 }
 
-#form-builder-webform-save-form #edit-submit-button-text {
+#edit-submit-button-text {
   padding: 0.5em 1.2em;
   border-radius: 5px 5px 5px 5px;
   width:50%;
@@ -501,16 +501,16 @@ div.form-builder-new-field span.progress {
   font-weight: bold;
   text-shadow: none;
 }
-#form-builder-webform-save-form #edit-submit-button-text:hover {
+#edit-submit-button-text:hover {
   cursor: text;
 }
-#form-builder-webform-save-form #edit-submit-button-text:active,
-#form-builder-webform-save-form #edit-submit-button-text:focus {
+#edit-submit-button-text:active,
+#edit-submit-button-text:focus {
   cursor: text;
   color: #666460;
   background-color: #FFFFFF;
 }
-#form-builder-webform-save-form .form-item-submit-button-text {
+.form-item-submit-button-text {
   width: auto;
   margin: -1em 4em 1.5em 0em;
   margin-right: 40%;
@@ -522,11 +522,11 @@ div.form-builder-new-field span.progress {
   border-radius: 0px 0px 5px 5px;
 }
 
-#form-builder-webform-save-form .form-item-submit-button-text.form-active {
+.form-item-submit-button-text.form-active {
   border: 1px solid #D8D5CD;
   background-color: #F7F4ED;
 }
-#form-builder-webform-save-form .form-item-submit-button-text:hover {
+.form-item-submit-button-text:hover {
   border: 1px solid #D8D5CD;
   background-color: #D6D2CB;
 }
