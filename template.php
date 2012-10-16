@@ -602,23 +602,6 @@ function ae_admin_webform_email_edit_form($variables) {
                 $form[$field . '_option']['default']['#theme_wrappers'] = array('webform_inline_radio');
             }
         }
-        $form['subject_option']['#access'] = FALSE;
-        $form['subject_custom']['#title'] = t('E-mail subject');
-        $form['subject_custom']['#access'] = TRUE;
-        $form['subject_component']['#access'] = FALSE;
-        $form['subject_option']['#default_type'] = 'custom';
-
-        $form['email_custom']['#access'] = FALSE;
-        $form['email_option']['#access'] = FALSE;
-        $form['email_component']['#access'] = FALSE;
-
-
-        unset($form['from_name_option']['#options']['component']);
-        $form['from_name_option']['component']['#access'] = FALSE;
-        $form['from_name_component']['#access'] = FALSE;
-        $form['from_name_custom']['#access'] = TRUE;
-
-        $form['template']['html']['#access'] = TRUE;
     } else {
         // Loop through fields, rendering them into radio button options.
         foreach (array('email', 'subject', 'from_address', 'from_name') as $field) {
@@ -658,3 +641,4 @@ function ae_admin_webform_email_edit_form($variables) {
     $children = element_children($form, TRUE);
     return drupal_render_children($form, $children);
 }
+
