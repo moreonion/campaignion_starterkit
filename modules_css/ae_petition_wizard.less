@@ -219,6 +219,25 @@
         .fieldset-content {
             background: transparent;
             padding: 1em 0 0 0 !important;
+            fieldset.collapsible {
+                background: #fff;
+                margin-right: 1em;
+                .fieldset-title {
+                    background: #fff;
+                    padding: 0!important;
+                }
+                legend, .fieldset-content {
+                    background: #fff;
+                    padding: 0.5em!important;
+                }
+                &.collapsed { legend { border: 2px solid @border_color!important;} }
+                &:not(.collapsed) {
+                    legend { border: 2px solid @border_color!important; border-bottom: none!important;}
+                    .fieldset-content { border: 2px solid @border_color!important; border-radius: 0px; border-top: none!important; width: 100%;}
+                }
+                li { border: none!important; }
+
+            }
         }
         legend {
             float: none;
@@ -327,11 +346,14 @@
         }
     }
     #edit-thank-you-email {
-        .fieldset-content {
+        > .fieldset-content {
             border: 2px solid @border_color;
             background: @box_bg_lighter;
             padding: 1em!important;
             min-height: 20em;
+        }
+        #edit-thank-you-email-subject-custom {
+            font-size: 1.4em;
         }
     }
     #edit-confirm-container {
