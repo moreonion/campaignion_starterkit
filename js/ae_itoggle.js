@@ -27,15 +27,16 @@ Drupal.behaviors.ae_itoggle = {
   });
 
   // change itoggle if checkbox is changed
-  function toggleTheIToggle() {
-    if ($(this).is(':enabled')) {
-      if ($(this).is(':checked')) {
-        $(this).siblings('label.itoggle')
+  function toggleTheIToggle(elem) {
+    var self = $(elem);
+    if (self.is(':enabled')) {
+      if (self.is(':checked')) {
+        self.siblings('label.itoggle')
           .animate({backgroundPosition: '0% -27px'}, 300, 'easeOutExpo', function () {
             $(this).removeClass('iToff').addClass('iTon');
           });
       } else {
-        $(this).siblings('label.itoggle')
+        self.siblings('label.itoggle')
           .animate({backgroundPosition: '100% -27px'}, 300, 'easeOutExpo', function () {
             $(this).removeClass('iToff').addClass('iTon');
           });
@@ -52,17 +53,20 @@ Drupal.behaviors.ae_itoggle = {
   });
 
   // tables with .select-all checkbox: toggle the tables itoggles
-  $('thead .select-all input:checkbox', context).click(function() {
-    if ($(this).is(':checked')) {
-      $(this).closest('table').find('label.itoggle').each(function() {
-        $(this).animate({backgroundPosition: '0% -27px'}, 300, 'easeOutExpo', function () {
-          $(this).removeClass('iToff').addClass('iTon');
+  $('thead .select-all input:checkbox', context).change(function() {
+    var toggle = $(this);
+    if (toggle.is(':checked')) {
+      toggle.closest('table').find('label.itoggle').each(function() {
+        subtoggle = $(this);
+        subtoggle.animate({backgroundPosition: '0% -27px'}, 300, 'easeOutExpo', function () {
+          subtoggle.removeClass('iToff').addClass('iTon');
         });
       });
     } else {
-      $(this).closest('table').find('label.itoggle').each(function() {
-        $(this).animate({backgroundPosition: '100% -27px'}, 300, 'easeOutExpo', function () {
-          $(this).removeClass('iToff').addClass('iTon');
+      toggle.closest('table').find('label.itoggle').each(function() {
+        subtoggle = $(this);
+        subtoggle.animate({backgroundPosition: '100% -27px'}, 300, 'easeOutExpo', function () {
+          subtoggle.removeClass('iToff').addClass('iTon');
         });
       });
     }
@@ -74,12 +78,13 @@ Drupal.behaviors.ae_itoggle = {
   // an itoggle
   $('#permissions .form-type-checkbox label.itoggle', context).each(function() {
     // classes setzen
-    if ($(this).next('input').is('.dummy-checkbox')) {
+    self = $(this);
+    if (self.next('input').is('.dummy-checkbox')) {
       // (assuming) every .dummy-checkbox was disabled from the
       // user.permissions.js script --> doing it for the itoggles
-      $(this).addClass('dummy-checkbox').addClass('disabled-itoggle');
-    } else if ($(this).next('input').is('.real-checkbox')) {
-      $(this).addClass('real-checkbox');
+      self.addClass('dummy-checkbox').addClass('disabled-itoggle');
+    } else if (self.next('input').is('.real-checkbox')) {
+      self.addClass('real-checkbox');
     }
   });
 
