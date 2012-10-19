@@ -14,12 +14,14 @@ Drupal.behaviors.ae_itoggle = {
           onClickOn: function() {
               var idToClick = $(this).attr('for');
               if(idToClick && idToClick.length > 0) {
+                  $('#' + idToClick).attr('checked', 'checked');
                   $('#' + idToClick).trigger('click', ['itoggle']).change();
               }
           },
           onClickOff: function() {
               var idToClick = $(this).attr('for');
               if(idToClick && idToClick.length > 0) {
+                  $('#' + idToClick).removeAttr('checked');
                   $('#' + idToClick).trigger('click', ['itoggle']).change();
               }
           }
