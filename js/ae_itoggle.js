@@ -49,7 +49,7 @@ Drupal.behaviors.ae_itoggle = {
   // and NOT on the related itoggle call toggleTheIToggle
   // if param is set to 'itoggle' we know, the event was fired by the itoggle
   $('.form-type-checkbox input:checkbox.iT_checkbox').bind('click', function(e, param) {
-      if (param && param !== 'itoggle') {
+      if (!param || param !== 'itoggle') {
           toggleTheIToggle(this);
       }
   });
