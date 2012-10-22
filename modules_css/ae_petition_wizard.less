@@ -88,6 +88,9 @@
         padding: 1em 20px 1em 20px; /* 30px from .limiter, 20px for overlay */
         margin:  1em -20px 1em -20px;
         height: auto;
+        clear: both;
+        overflow: auto;
+        display: block;
         &:after {
             content: ".";
             display: block;
@@ -115,6 +118,7 @@
             width: 77%;
             float: left;
             clear: left;
+            display: block;
             overflow: hidden;
         }
         .wizard-trail {
@@ -128,76 +132,68 @@
                 &.wizard-trail-previous {
                     span.inner {
                         color: @trail_step_previous_fg;
-                        background: @trail_step_previous_bg; 
+                        background: @trail_step_previous_bg;
                     }
                     span.inner:after {
-                        border-left: 30px solid @trail_step_previous_bg;
+                        background: transparent url(../images/ae_step.png) no-repeat top left;
+                        background-position: 100% -4px;
                     }
                 }
                 &.wizard-trail-current {
                     span.inner {
                         color: @trail_step_current_fg;
-                        background: @trail_step_current_bg; 
+                        background: @trail_step_current_bg;
                     }
                     span.inner:after {
-                        border-left: 30px solid @trail_step_current_bg;
+                        background: transparent url(../images/ae_step.png) no-repeat center right;
                     }
                 }
                 &.wizard-trail-next {
                     span.inner {
                         color: @trail_step_next_fg;
-                        background: @trail_step_next_bg; 
+                        background: @trail_step_next_bg;
                     }
                     span.inner:after {
-                        border-left: 30px solid @trail_step_next_bg;
+                        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                        background-position: 100% -116px;
                     }
                 }
-                &.wizard-trail-next {}
                 span.inner {
-                    padding: 10px 20px 10px 50px;
-                    background: @trail_step_current_bg; 
+                    padding: 10px 20px 10px 34px;
+                    background: @trail_step_current_bg;
                     position: relative; 
                     display: block;
                     float: left;
+                    background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                }
+                &:first-of-type { /* last in trail */
+                    span.inner {
+                        padding: 10px 10px 10px 20px;
+                    }
                 }
                 &:last-of-type { /* last in trail */
+                    span.inner {
+                        padding: 10px 20px 10px 34px;
+                    }
                     span.inner:after {
                         content: '';
                         display: none;
                         border: none;
+                        background: none;
                     }
                     span.inner:before {
                         border: none;
                     }
                 }
                 span.inner:after { /* default */
-                    content: " "; 
-                    display: block; 
-                    width: 0; 
-                    height: 0;
-                    border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
-                    border-bottom: 50px solid transparent;
-                    border-left: 30px solid @trail_step_current_bg;
-                    position: absolute;
-                    top: 50%;
-                    margin-top: -50px; 
-                    left: 100%;
-                    z-index: 2;
-                }
-                span.inner:before {
                     content: " ";
-                    display: block; 
-                    width: 0; 
-                    height: 0;
-                    border-top: 50px solid transparent;
-                    border-bottom: 50px solid transparent;
-                    border-left: 30px solid @trail_border;
+                    display: inline;
+                    width: 24px;
+                    height: 100%;
                     position: absolute;
-                    top: 50%;
-                    margin-top: -50px; 
-                    margin-left: 1px;
+                    top: 0;
                     left: 100%;
-                    z-index: 1;
+                    z-index: 1000;
                 }
             }
         }
