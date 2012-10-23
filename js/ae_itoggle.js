@@ -47,14 +47,14 @@ Drupal.behaviors.ae_itoggle = {
           var idToClick = $(this).attr('for');
           if(idToClick && idToClick.length > 0) {
             $('#' + idToClick).attr('checked', 'checked');
-            $('#' + idToClick).trigger('click', ['itoggle']).change();
+            $('#' + idToClick).change().trigger('click', ['itoggle']);
           }
         },
         onClickOff: function() {
           var idToClick = $(this).attr('for');
           if(idToClick && idToClick.length > 0) {
             $('#' + idToClick).removeAttr('checked');
-            $('#' + idToClick).trigger('click', ['itoggle']).change();
+            $('#' + idToClick).change().trigger('click', ['itoggle']);
           }
         }
       });
