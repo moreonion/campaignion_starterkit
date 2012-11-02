@@ -58,7 +58,7 @@ Drupal.behaviors.ae_admin.attach = function(context) {
 
   // call resizeIframe (again) to set the height of the media-browser iframe
   // after it is *fully* rendered
-  if(Drupal.media.browser) {
+  if(Drupal.media && Drupal.media.browser) {
     setTimeout(Drupal.media.browser.resizeIframe, 1);
   }
 };
