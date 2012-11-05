@@ -564,13 +564,25 @@ function _ae_admin_local_tasks(&$vars) {
 
 function ae_admin_ctools_wizard_trail(&$vars) {
   $trail = $vars['trail'];
+
+  $position = 'previous';
+  $html = array();
+  
   foreach ($trail as &$t) {
-      $a = strpos($t, '>') + 1;
-      $b = strpos($t, '<', $a);
-      $t = substr($t, 0, $a) . '<span class="inner">' . substr($t, $a, $b - $a) . '</span>' . substr($t, $b);
+    if ($position = 'current' && !$t['current'])
+      $class = 'next';
+    if ($t['current'] && $t['current'])
+      $class = 'current';
+
+    if ($t['accessible']) {
+      $link = l($t['title'], $t['url']);
+    } else {
+      $link = "<span class=\"inner\">{$t['title']}</span>";
+    }
+    $html[] = "<span class=\"wizard-trail-$class\">$link</span>";
   }
   if (!empty($trail)) {
-    return '<div class="wizard-trail-wrapper"><div class="wizard-trail">' . implode('', $trail) . '</div></div>';
+    return '<div class="wizard-trail-wrapper"><div class="wizard-trail">' . implode('', $html) . '</div></div>';
   }
 }
 

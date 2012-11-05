@@ -1,21 +1,22 @@
-/*** trail ***/
-/* see http://css-tricks.com/triangle-breadcrumbs/ */
-#main-content #edit-wizard-advanced .vertical-tabs-panes, #ae-petition-wizard-step-form #edit-wizard-advanced .vertical-tabs-panes {
+#main-content #edit-wizard-advanced .vertical-tabs-panes,
+#ae-petition-wizard-step-form #edit-wizard-advanced .vertical-tabs-panes {
   min-height: 30em;
 }
-#main-content #edit-buttons.form-actions, #ae-petition-wizard-step-form #edit-buttons.form-actions {
-  border-top: none!important;
+#main-content #edit-buttons.form-actions,
+#ae-petition-wizard-step-form #edit-buttons.form-actions {
+  border-top: none !important;
 }
 #main-content #edit-buttons .button-finish,
-#ae-petition-wizard-step-form #edit-buttons .button-finish,
 #main-content #edit-buttons .button-finish-other,
+#ae-petition-wizard-step-form #edit-buttons .button-finish,
 #ae-petition-wizard-step-form #edit-buttons .button-finish-other {
   font-size: 1.2em;
   padding: 0.5em 1em;
   width: 15em;
   margin-right: 1em;
 }
-#main-content #edit-buttons .button-finish-other, #ae-petition-wizard-step-form #edit-buttons .button-finish-other {
+#main-content #edit-buttons .button-finish-other,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other {
   background: url("../images/sandbox_menu/ae_blue_bg.png") repeat scroll 0 0 transparent;
   border-color: #14B1BC;
   border-radius: 5px 5px 5px 5px;
@@ -23,22 +24,23 @@
   text-shadow: 1px 1px 1px #32DCE5;
 }
 #main-content #edit-buttons .button-finish-other:hover,
-#ae-petition-wizard-step-form #edit-buttons .button-finish-other:hover,
 #main-content #edit-buttons .button-finish-other:focus,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other:hover,
 #ae-petition-wizard-step-form #edit-buttons .button-finish-other:focus {
   background: none repeat scroll 0 0 #18CBDB;
   border-color: #14ACB7;
   box-shadow: 0 0 1px #FFB196;
   color: #305254;
 }
-#main-content #edit-buttons .button-finish-other:active, #ae-petition-wizard-step-form #edit-buttons .button-finish-other:active {
+#main-content #edit-buttons .button-finish-other:active,
+#ae-petition-wizard-step-form #edit-buttons .button-finish-other:active {
   background: none repeat scroll 0 0 #0A565B;
   color: #063538;
   text-shadow: 1px 1px 1px #0B6368;
 }
 #main-content #edit-buttons #edit-next,
-#ae-petition-wizard-step-form #edit-buttons #edit-next,
 #main-content #edit-buttons .button-finish,
+#ae-petition-wizard-step-form #edit-buttons #edit-next,
 #ae-petition-wizard-step-form #edit-buttons .button-finish {
   background-color: #d66540;
   background-image: none;
@@ -48,30 +50,33 @@
   font-size: 1.2em;
 }
 #main-content #edit-buttons #edit-next:hover,
-#ae-petition-wizard-step-form #edit-buttons #edit-next:hover,
-#main-content #edit-buttons .button-finish:hover,
-#ae-petition-wizard-step-form #edit-buttons .button-finish:hover,
 #main-content #edit-buttons #edit-next:focus,
-#ae-petition-wizard-step-form #edit-buttons #edit-next:focus,
+#main-content #edit-buttons .button-finish:hover,
 #main-content #edit-buttons .button-finish:focus,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:hover,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:focus,
+#ae-petition-wizard-step-form #edit-buttons .button-finish:hover,
 #ae-petition-wizard-step-form #edit-buttons .button-finish:focus {
   background-color: #ff764c;
 }
 #main-content #edit-buttons #edit-next:active,
-#ae-petition-wizard-step-form #edit-buttons #edit-next:active,
 #main-content #edit-buttons .button-finish:active,
+#ae-petition-wizard-step-form #edit-buttons #edit-next:active,
 #ae-petition-wizard-step-form #edit-buttons .button-finish:active {
-  background-color: #b55336;
+  background-color: #B55336;
 }
-#main-content #edit-wizard-head, #ae-petition-wizard-step-form #edit-wizard-head {
+#main-content #edit-wizard-head,
+#ae-petition-wizard-step-form #edit-wizard-head {
   background: #e4dfd6;
   padding: 1em 20px 1em 20px;
-  /* 30px from .limiter, 20px for overlay */
-
   margin: 1em -20px 1em -20px;
   height: auto;
+  clear: both;
+  overflow: auto;
+  display: block;
 }
-#main-content #edit-wizard-head:after, #ae-petition-wizard-step-form #edit-wizard-head:after {
+#main-content #edit-wizard-head:after,
+#ae-petition-wizard-step-form #edit-wizard-head:after {
   content: ".";
   display: block;
   clear: both;
@@ -79,125 +84,187 @@
   height: 0;
   visibility: hidden;
 }
-#main-content #edit-wizard-head #edit-buttons, #ae-petition-wizard-step-form #edit-wizard-head #edit-buttons {
-  width: 20%;
-  margin: 0!important;
-  padding: 0!important;
+#main-content #edit-wizard-head #edit-buttons,
+#ae-petition-wizard-step-form #edit-wizard-head #edit-buttons {
+  width: 23%;
+  margin: 0 !important;
+  padding: 0 !important;
   float: right;
   clear: right;
   text-align: right;
 }
-#main-content #edit-wizard-head #edit-buttons #edit-next, #ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next {
+#main-content #edit-wizard-head #edit-buttons #edit-next,
+#ae-petition-wizard-step-form #edit-wizard-head #edit-buttons #edit-next {
   width: 8em;
   padding-right: 3em;
   background-image: url(../images/ae_pfeil.png);
   background-repeat: no-repeat;
   background-position: right center;
 }
-#main-content #edit-wizard-head .wizard-trail-wrapper, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail-wrapper {
-  width: 80%;
+#main-content #edit-wizard-head .wizard-trail-wrapper,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail-wrapper {
+  width: 77%;
   float: left;
   clear: left;
+  display: block;
   overflow: hidden;
 }
-#main-content #edit-wizard-head .wizard-trail, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail {
+#main-content #edit-wizard-head .wizard-trail,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail {
   background: #e4dfd6;
   overflow: hidden;
   border: 1px solid #c5c5c5;
   display: inline-block;
 }
-#main-content #edit-wizard-head .wizard-trail > span, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span {
+#main-content #edit-wizard-head .wizard-trail > span,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span {
   float: left;
   min-width: 5em;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous a,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner {
   color: #32595c;
   background: #b5d5d8;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after {
-  border-left: 30px solid #b5d5d8;
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous a:after,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous a:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat top left;
+  background-position: 100% -4px;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current a,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner {
   color: #5f5d5d;
   background: #76c5cc;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after {
-  border-left: 30px solid #76c5cc;
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current a:after,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current a:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat center right;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner {
   color: #5f5d5d;
   background: #b2ada7;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after {
-  border-left: 30px solid #b2ada7;
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a:after,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
+  background-position: 100% -116px;
 }
-#main-content #edit-wizard-head .wizard-trail > span span.inner, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner {
-  padding: 10px 20px 10px 50px;
+#main-content #edit-wizard-head .wizard-trail > span a,
+#main-content #edit-wizard-head .wizard-trail > span span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner {
+  padding: 10px 20px 10px 34px;
   background: #76c5cc;
   position: relative;
   display: block;
   float: left;
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type {
-  /* last in trail */
-
+#main-content #edit-wizard-head .wizard-trail > span:first-of-type a,
+#main-content #edit-wizard-head .wizard-trail > span:first-of-type span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:first-of-type a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:first-of-type span.inner {
+  padding: 10px 10px 10px 20px;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type a,
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner {
+  padding: 10px 20px 10px 34px;
+}
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type a:after,
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after {
   content: '';
   display: none;
   border: none;
+  background: none;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before {
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type a:before,
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a:before,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before {
   border: none;
 }
-#main-content #edit-wizard-head .wizard-trail > span span.inner:after, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner:after {
-  /* default */
-
+#main-content #edit-wizard-head .wizard-trail > span a:after,
+#main-content #edit-wizard-head .wizard-trail > span span.inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span a:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner:after {
   content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  /* Go big on the size, and let overflow hide */
-
-  border-bottom: 50px solid transparent;
-  border-left: 30px solid #76c5cc;
+  display: inline;
+  width: 24px;
+  height: 100%;
   position: absolute;
-  top: 50%;
-  margin-top: -50px;
+  top: 0;
   left: 100%;
-  z-index: 2;
+  z-index: 1000;
 }
-#main-content #edit-wizard-head .wizard-trail > span span.inner:before, #ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner:before {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  border-bottom: 50px solid transparent;
-  border-left: 30px solid #c5c5c5;
-  position: absolute;
-  top: 50%;
-  margin-top: -50px;
-  margin-left: 1px;
-  left: 100%;
-  z-index: 1;
-}
-/*** form ***/
 #ae-petition-wizard-step-form {
   position: relative;
   width: 100%;
 }
 #ae-petition-wizard-step-form fieldset {
-  border: none!important;
+  border: none !important;
   border-radius: 0px;
 }
 #ae-petition-wizard-step-form fieldset .description {
   display: none;
 }
-#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content, #ae-petition-wizard-step-form fieldset .fieldset-content {
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content,
+#ae-petition-wizard-step-form fieldset .fieldset-content {
   background: transparent;
   padding: 1em 0 0 0 !important;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible {
+  background: #fff;
+  margin-right: 1em;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible .fieldset-title,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible .fieldset-title {
+  background: #fff;
+  padding: 0 !important;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible legend,
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible .fieldset-content,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible legend,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible .fieldset-content {
+  background: #fff;
+  padding: 0.5em !important;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible.collapsed legend,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible.collapsed legend {
+  border: 2px solid #c5c5c5 !important;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible:not(.collapsed) legend,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible:not(.collapsed) legend {
+  border: 2px solid #c5c5c5 !important;
+  border-bottom: none !important;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible:not(.collapsed) .fieldset-content,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible:not(.collapsed) .fieldset-content {
+  border: 2px solid #c5c5c5 !important;
+  border-radius: 0px;
+  border-top: none !important;
+  width: 100%;
+}
+#ae-petition-wizard-step-form fieldset.fieldset.tiled .fieldset-content fieldset.collapsible li,
+#ae-petition-wizard-step-form fieldset .fieldset-content fieldset.collapsible li {
+  border: none !important;
 }
 #ae-petition-wizard-step-form fieldset legend {
   float: none;
@@ -244,16 +311,18 @@
 #ae-petition-wizard-step-form #edit-thank-you-node > .fieldset-content {
   border: 2px solid #c5c5c5;
   background: #efefef;
-  padding: 1em!important;
+  padding: 1em !important;
   min-height: 20em;
 }
 #ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-title {
   font-size: 1.2em;
 }
-#ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-intro, #ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-flexible {
+#ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-intro,
+#ae-petition-wizard-step-form #edit-thank-you-node #edit-node-form-field-flexible {
   display: none;
 }
-#ae-petition-wizard-step-form #edit-thank-you-node .form-item-type, #ae-petition-wizard-step-form #edit-thank-you-node .form-item-type2 {
+#ae-petition-wizard-step-form #edit-thank-you-node .form-item-type,
+#ae-petition-wizard-step-form #edit-thank-you-node .form-item-type2 {
   margin: 0 0 1em 0;
 }
 #ae-petition-wizard-step-form #thank-you-outer-or {
@@ -280,33 +349,42 @@
   background: #efefef;
   padding: 0 1em;
 }
-#ae-petition-wizard-step-form #edit-field-main-image #field-main-image-add-more-wrapper .fieldset-content, #ae-petition-wizard-step-form #edit-node-form-field-main-image #field-main-image-add-more-wrapper .fieldset-content {
+#ae-petition-wizard-step-form #edit-field-main-image #field-main-image-add-more-wrapper .fieldset-content,
+#ae-petition-wizard-step-form #edit-node-form-field-main-image #field-main-image-add-more-wrapper .fieldset-content {
   border: 2px solid #c5c5c5;
   background: #dedede;
-  padding: 1em!important;
+  padding: 1em !important;
 }
-#ae-petition-wizard-step-form #edit-field-main-image a.button, #ae-petition-wizard-step-form #edit-node-form-field-main-image a.button {
+#ae-petition-wizard-step-form #edit-field-main-image a.button,
+#ae-petition-wizard-step-form #edit-node-form-field-main-image a.button {
   float: left;
   margin: 10px 5px;
   display: block;
 }
-#ae-petition-wizard-step-form #edit-field-main-image a.button:first-child, #ae-petition-wizard-step-form #edit-node-form-field-main-image a.button:first-child {
+#ae-petition-wizard-step-form #edit-field-main-image a.button:first-child,
+#ae-petition-wizard-step-form #edit-node-form-field-main-image a.button:first-child {
   clear: left;
 }
-#ae-petition-wizard-step-form #edit-field-main-image .form-item, #ae-petition-wizard-step-form #edit-node-form-field-main-image .form-item {
+#ae-petition-wizard-step-form #edit-field-main-image .form-item,
+#ae-petition-wizard-step-form #edit-node-form-field-main-image .form-item {
   clear: both;
 }
-#ae-petition-wizard-step-form #edit-thank-you-email .fieldset-content {
+#ae-petition-wizard-step-form #edit-thank-you-email > .fieldset-content {
   border: 2px solid #c5c5c5;
   background: #efefef;
-  padding: 1em!important;
+  padding: 1em !important;
   min-height: 20em;
+}
+#ae-petition-wizard-step-form #edit-thank-you-email #edit-thank-you-email-subject-custom {
+  font-size: 1.4em;
 }
 #ae-petition-wizard-step-form #edit-confirm-container {
   border: 2px solid #c5c5c5;
   background: #efefef;
-  padding: 1em!important;
+  padding: 1em !important;
   min-height: 30em;
+  width: 100%;
+  min-width: 30em;
 }
 #ae-petition-wizard-step-form #edit-confirm-container .form-wrapper {
   margin: 1em 0;
@@ -319,7 +397,8 @@
   position: relative;
   clear: both;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper h2, #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper p {
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper h2,
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper p {
   padding-right: 12em;
 }
 #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper h2 {
@@ -337,11 +416,12 @@
   float: right;
   clear: right;
 }
-#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:hover, #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:focus {
-  background-color: #ede91a;
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:hover,
+#ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:focus {
+  background-color: #EDE91A;
 }
 #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:active {
-  background-color: #a3a011;
+  background-color: #A3A011;
 }
 #ae-petition-wizard-step-form #edit-confirm-container .confirm-edit-wrapper:last-child {
   border-bottom: none;
@@ -349,9 +429,8 @@
 #ae-petition-wizard-step-form #edit-confirm-container #edit-buttons {
   padding: 2em 0 5em 0;
 }
-/*** wysiwyg field ***/
 #ae-petition-wizard-step-form span.cke_skin_kama {
-  padding: 0!important;
+  padding: 0 !important;
   border-width: 2px;
 }
 #ae-petition-wizard-step-form span.cke_skin_kama .cke_wrapper {
@@ -359,7 +438,8 @@
   padding: 0;
   background: #fff;
 }
-#ae-petition-wizard-step-form span.cke_skin_kama .cke_top, #ae-petition-wizard-step-form span.cke_skin_kama .cke_bottom {
+#ae-petition-wizard-step-form span.cke_skin_kama .cke_top,
+#ae-petition-wizard-step-form span.cke_skin_kama .cke_bottom {
   background: #dedede;
   padding: 5px;
 }
@@ -367,7 +447,7 @@
   padding: 0.5em;
 }
 #ae-petition-wizard-step-form span.cke_skin_kama .cke_toolbox_collapser {
-  border: none!important;
+  border: none !important;
 }
 #ae-petition-wizard-step-form .preview {
   float: left;
