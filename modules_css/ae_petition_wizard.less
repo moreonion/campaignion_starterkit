@@ -130,35 +130,35 @@
                 float: left;
                 min-width: 5em;
                 &.wizard-trail-previous {
-                    a, span.inner {
+                    .inner {
                         color: @trail_step_previous_fg;
                         background: @trail_step_previous_bg;
                     }
-                    a:after, span.inner:after {
+                    .inner:after {
                         background: transparent url(../images/ae_step.png) no-repeat top left;
                         background-position: 100% -4px;
                     }
                 }
                 &.wizard-trail-current {
-                    a, span.inner {
+                    .inner {
                         color: @trail_step_current_fg;
                         background: @trail_step_current_bg;
                     }
-                    a:after, span.inner:after {
+                    .inner:after {
                         background: transparent url(../images/ae_step.png) no-repeat center right;
                     }
                 }
                 &.wizard-trail-next {
-                    a, span.inner {
+                    .inner {
                         color: @trail_step_next_fg;
                         background: @trail_step_next_bg;
                     }
-                    a:after, span.inner:after {
+                    .inner:after {
                         background: transparent url(../images/ae_step.png) no-repeat bottom right;
                         background-position: 100% -116px;
                     }
                 }
-                a, span.inner {
+                .inner {
                     padding: 10px 20px 10px 34px;
                     background: @trail_step_current_bg;
                     position: relative; 
@@ -166,26 +166,26 @@
                     float: left;
                     background: transparent url(../images/ae_step.png) no-repeat bottom right;
                 }
-                &:first-of-type { /* last in trail */
-                    a, span.inner {
+                &:first-of-type { /* first in trail */
+                    .inner {
                         padding: 10px 10px 10px 20px;
                     }
                 }
                 &:last-of-type { /* last in trail */
-                    a, span.inner {
+                    .inner {
                         padding: 10px 20px 10px 34px;
                     }
-                    a:after, span.inner:after {
+                    .inner:after {
                         content: '';
                         display: none;
                         border: none;
                         background: none;
                     }
-                    a:before, span.inner:before {
+                    .inner:before {
                         border: none;
                     }
                 }
-                a:after, span.inner:after { /* default */
+                .inner:after { /* default */
                     content: " ";
                     display: inline;
                     width: 24px;

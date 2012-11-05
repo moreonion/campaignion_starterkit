@@ -121,51 +121,37 @@
   float: left;
   min-width: 5em;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous a,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous .inner {
   color: #32595c;
   background: #b5d5d8;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous a:after,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous a:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-previous .inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-previous .inner:after {
   background: transparent url(../images/ae_step.png) no-repeat top left;
   background-position: 100% -4px;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current a,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current .inner {
   color: #5f5d5d;
   background: #76c5cc;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current a:after,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current a:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-current .inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-current .inner:after {
   background: transparent url(../images/ae_step.png) no-repeat center right;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next .inner {
   color: #5f5d5d;
   background: #b2ada7;
 }
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a:after,
-#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next .inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next .inner:after {
   background: transparent url(../images/ae_step.png) no-repeat bottom right;
   background-position: 100% -116px;
 }
-#main-content #edit-wizard-head .wizard-trail > span a,
-#main-content #edit-wizard-head .wizard-trail > span span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner {
+#main-content #edit-wizard-head .wizard-trail > span .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span .inner {
   padding: 10px 20px 10px 34px;
   background: #76c5cc;
   position: relative;
@@ -173,37 +159,27 @@
   float: left;
   background: transparent url(../images/ae_step.png) no-repeat bottom right;
 }
-#main-content #edit-wizard-head .wizard-trail > span:first-of-type a,
-#main-content #edit-wizard-head .wizard-trail > span:first-of-type span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:first-of-type a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:first-of-type span.inner {
+#main-content #edit-wizard-head .wizard-trail > span:first-of-type .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:first-of-type .inner {
   padding: 10px 10px 10px 20px;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type a,
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner {
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type .inner,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type .inner {
   padding: 10px 20px 10px 34px;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type a:after,
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type .inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type .inner:after {
   content: '';
   display: none;
   border: none;
   background: none;
 }
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type a:before,
-#main-content #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type a:before,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type span.inner:before {
+#main-content #edit-wizard-head .wizard-trail > span:last-of-type .inner:before,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span:last-of-type .inner:before {
   border: none;
 }
-#main-content #edit-wizard-head .wizard-trail > span a:after,
-#main-content #edit-wizard-head .wizard-trail > span span.inner:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span a:after,
-#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span span.inner:after {
+#main-content #edit-wizard-head .wizard-trail > span .inner:after,
+#ae-petition-wizard-step-form #edit-wizard-head .wizard-trail > span .inner:after {
   content: " ";
   display: inline;
   width: 24px;
