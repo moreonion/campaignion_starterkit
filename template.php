@@ -575,7 +575,7 @@ function ae_admin_ctools_wizard_trail(&$vars) {
       $class = 'current';
 
     if ($t['accessible']) {
-      $options['attributes']['class'][] = 'inner';
+      $options['attributes']['class'] = array('inner');
       $link = l($t['title'], $t['url'], $options);
     } else {
       $link = "<span class=\"inner\">{$t['title']}</span>";
