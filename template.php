@@ -562,31 +562,6 @@ function _ae_admin_local_tasks(&$vars) {
   }
 }
 
-function ae_admin_ctools_wizard_trail(&$vars) {
-  $trail = $vars['trail'];
-
-  $position = 'previous';
-  $html = array();
-  
-  foreach ($trail as &$t) {
-    if ($position = 'current' && !$t['current'])
-      $class = 'next';
-    if ($t['current'] && $t['current'])
-      $class = 'current';
-
-    if ($t['accessible']) {
-      $options['attributes']['class'] = array('inner');
-      $link = l($t['title'], $t['url'], $options);
-    } else {
-      $link = "<span class=\"inner\">{$t['title']}</span>";
-    }
-    $html[] = "<span class=\"wizard-trail-$class\">$link</span>";
-  }
-  if (!empty($trail)) {
-    return '<div class="wizard-trail-wrapper"><div class="wizard-trail">' . implode('', $html) . '</div></div>';
-  }
-}
-
 /** 
  * overrides theme_webform_edit_form
  */
