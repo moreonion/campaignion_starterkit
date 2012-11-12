@@ -1,4 +1,4 @@
-name = Rubik
+name = AE-Admin
 description = Clean admin theme.
 base theme = tao
 core = 7.x
