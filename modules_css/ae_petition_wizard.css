@@ -196,6 +196,9 @@
 #wizard-step-form fieldset {
   border: none !important;
   border-radius: 0px;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 #wizard-step-form fieldset .description {
   display: none;
@@ -324,6 +327,12 @@
   position: relative;
   background: #efefef;
   padding: 0 1em;
+}
+#wizard-step-form #edit-field-main-image,
+#wizard-step-form #edit-node-form-field-main-image {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
 #wizard-step-form #edit-field-main-image #field-main-image-add-more-wrapper .fieldset-content,
 #wizard-step-form #edit-node-form-field-main-image #field-main-image-add-more-wrapper .fieldset-content {
