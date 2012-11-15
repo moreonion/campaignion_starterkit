@@ -358,8 +358,9 @@ table .item-list,
 
 input.teaser-button,
 input.form-submit,
-a.button, input[type="submit"]{
+a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .button-yes {
   cursor:pointer;
+  font-size: 100%;
   padding:.5em 1.2em;
   color:#F7F1F1;
   text-align:center;
