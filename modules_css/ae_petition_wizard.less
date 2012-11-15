@@ -14,9 +14,9 @@
 @trail_button_next_bg: #d66540;
 @trail_button_next_fg: #4b2217;
 @trail_button_next_border: #b65737;
-@trail_button_next_hover_bg: #ff764c;
+@trail_button_next_hover_bg: #E45D44;
 @trail_button_next_active_bg: #B55336;
-@trail_button_next_shadow_fg: @trail_button_next_border;
+@trail_button_next_shadow_fg: #EA6852;
 @confirm_edit_bg: #d8d616;
 @confirm_edit_fg: #3c3b06;
 @confirm_edit_border: #bdbc13;
@@ -73,9 +73,10 @@
             background-image: none;
             color: @trail_button_next_fg;
             border: 1px solid @trail_button_next_border;
-            text-shadow: 1px 1px 0 @trail_button_next_shadow_fg;
+            text-shadow: 1px 1px 1px @trail_button_next_shadow_fg;
             font-size: 1.2em;
             &:hover, &:focus {
+              
                 background-color: @trail_button_next_hover_bg;
             }
             &:active {
@@ -159,7 +160,7 @@
                     }
                 }
                 .inner {
-                    padding: 10px 20px 10px 34px;
+                    padding: 10px 20px 10px 45px;
                     background: @trail_step_current_bg;
                     position: relative; 
                     display: block;
@@ -168,12 +169,12 @@
                 }
                 &:first-of-type { /* first in trail */
                     .inner {
-                        padding: 10px 10px 10px 20px;
+                        padding: 10px 20px 10px 20px;
                     }
                 }
                 &:last-of-type { /* last in trail */
                     .inner {
-                        padding: 10px 20px 10px 34px;
+                        padding: 10px 25px 10px 40px;
                     }
                     .inner:after {
                         content: '';
@@ -357,7 +358,6 @@
         background: @box_bg_lighter;
         padding: 1em!important;
         min-height: 30em;
-        width: 100%;
         min-width: 30em;
         .form-wrapper {
             margin: 1em 0;
