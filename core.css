@@ -377,7 +377,8 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
   }
 
   input.form-submit:hover, input.form-submit:focus,
-  a.button:hover, a.button:focus {
+  a.button:hover, a.button:focus, .vbo-views-form .form-submit:hover, .vbo-views-form .button-yes:hover,
+  .vbo-views-form .form-submit:focus, .vbo-views-form .button-yes:focus {
     background: none #827F7F;
     border-color:#686666;
     -webkit-box-shadow:#fff 0px 0px 5px;
