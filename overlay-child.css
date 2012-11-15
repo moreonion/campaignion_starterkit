@@ -44,7 +44,7 @@ html.js body {
   #overlay-close:active {   background:transparent url(images/ae_x.png); }
 
 #overlay-content {
-  background:  url('images/sandbox_menu/machine_top.png') no-repeat 98% 3em #f5f1e8;
+  background:  url('images/sandbox_menu/machine_top.png') no-repeat 90% 0 #f5f1e8;
   position:relative;
   padding:0px 0px 10px;
   min-height:400px;
