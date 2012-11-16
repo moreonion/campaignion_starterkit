@@ -235,6 +235,7 @@ span.form-builder-links a.progress:hover {
   width: 96%;
   background-color: #e4e0d7;
   border-top: 1px solid #dbd7cf;
+  z-index: 1;
 }
 
 #form-builder ul.form-builder-tabs .fieldset-title {
