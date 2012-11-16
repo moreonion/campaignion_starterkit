@@ -158,6 +158,17 @@
                         background: transparent url(../images/ae_step.png) no-repeat bottom right;
                         background-position: 100% -116px;
                     }
+                    a.inner {
+                      background: @trail_step_previous_bg;
+                    }
+                    a.inner:after {
+                      background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                      background-position: 100% -6px;
+                    }
+                    a.inner:hover, a.inner:focus {
+                      color: #494848;
+                      text-decoration: underline;
+                    }
                 }
                 .inner {
                     padding: 10px 20px 10px 45px;

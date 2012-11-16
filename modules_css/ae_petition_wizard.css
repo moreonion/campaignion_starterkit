@@ -150,6 +150,22 @@
   background: transparent url(../images/ae_step.png) no-repeat bottom right;
   background-position: 100% -116px;
 }
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner,
+#wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner {
+  background: #b5d5d8;
+}
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:after,
+#wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
+  background-position: 100% -6px;
+}
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:hover,
+#main-content #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:focus,
+#wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:hover,
+#wizard-step-form #edit-wizard-head .wizard-trail > span.wizard-trail-next a.inner:focus {
+  color: #494848;
+  text-decoration: underline;
+}
 #main-content #edit-wizard-head .wizard-trail > span .inner,
 #wizard-step-form #edit-wizard-head .wizard-trail > span .inner {
   padding: 10px 20px 10px 45px;
