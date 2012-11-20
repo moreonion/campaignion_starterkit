@@ -5,7 +5,9 @@
 Drupal.behaviors.ae_itoggle = {
   attach: function(context) {
 
-  var load = true;
+  // do not load for IE6, IE7, IE8
+  var htmlElem = $('html');
+  var load = !(htmlElem.hasClass('ie6') || htmlElem.hasClass('ie7') || htmlElem.hasClass('ie8'));
 
   // change itoggle if checkbox is changed
   function toggleTheIToggle(elem) {
@@ -24,18 +26,6 @@ Drupal.behaviors.ae_itoggle = {
       }
     }
   }
-  // do not load for IE6, IE7, IE8
-  var htmlElem = $('html');
-  if (htmlElem.hasClass('ie6')) {
-    load = false;
-  }
-  if (htmlElem.hasClass('ie7')) {
-    load = false;
-  }
-  if (htmlElem.hasClass('ie8')) {
-    load = false;
-  }
-
   if (load) {
     // substitute all checkboxes found by .form-type-checkbox
     $('.form-type-checkbox', context).once('ae_itoggle', function() {
