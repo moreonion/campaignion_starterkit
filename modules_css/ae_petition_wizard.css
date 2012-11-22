@@ -86,7 +86,7 @@
 }
 #main-content #edit-wizard-head #edit-buttons,
 #wizard-step-form #edit-wizard-head #edit-buttons {
-  width: 23%;
+  width: 25%;
   margin: 0 !important;
   padding: 0 !important;
   float: right;
@@ -96,14 +96,19 @@
 #main-content #edit-wizard-head #edit-buttons #edit-next,
 #wizard-step-form #edit-wizard-head #edit-buttons #edit-next {
   width: 8em;
+  float: right;
   padding-right: 3em;
   background-image: url(../images/ae_pfeil.png);
   background-repeat: no-repeat;
   background-position: right center;
 }
+#main-content #edit-wizard-head #edit-buttons #edit-return,
+#wizard-step-form #edit-wizard-head #edit-buttons #edit-return {
+  float: right;
+}
 #main-content #edit-wizard-head .wizard-trail-wrapper,
 #wizard-step-form #edit-wizard-head .wizard-trail-wrapper {
-  width: 77%;
+  width: 75%;
   float: left;
   clear: left;
   display: block;
