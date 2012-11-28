@@ -488,6 +488,8 @@ div.form-builder-new-field span.progress {
   background-position: 5px -1163px;
 }
 
+#edit-first-button-text,
+#edit-next-button-text,
 #edit-submit-button-text {
   padding: 0.5em 1.2em;
   border-radius: 5px 5px 5px 5px;
@@ -511,6 +513,8 @@ div.form-builder-new-field span.progress {
   color: #666460;
   background-color: #FFFFFF;
 }
+.form-item-first-button-text,
+.form-item-next-button-text,
 .form-item-submit-button-text {
   width: auto;
   margin: -1em 4em 1.5em 0em;
@@ -518,15 +522,27 @@ div.form-builder-new-field span.progress {
   padding: 1em;
   border: 1px solid #D8D5CD;
   background-color: #EAE6DE;
+}
+.form-item-first-button-text,
+.form-item-next-button-text {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.form-item-submit-button-text {
   -moz-border-radius: 0px 0px 5px 5px;
   -webkit-border-radius: 0px 0px 5px 5px;
   border-radius: 0px 0px 5px 5px;
 }
 
+.form-item-first-button-text.form-active,
+.form-item-next-button-tex.form-activet,
 .form-item-submit-button-text.form-active {
   border: 1px solid #D8D5CD;
   background-color: #F7F4ED;
 }
+.form-item-first-button-text:hover,
+.form-item-next-button-text:hover,
 .form-item-submit-button-text:hover {
   border: 1px solid #D8D5CD;
   background-color: #D6D2CB;

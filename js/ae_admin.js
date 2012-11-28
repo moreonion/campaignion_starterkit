@@ -42,7 +42,30 @@ Drupal.behaviors.ae_admin.attach = function(context) {
 
   // set/unset actice class on ae webform submit text element
   // (on click or focus/blur)
+  var firstButton = $('.form-item-first-button-text #edit-first-button-text');
+  var nextButton = $('.form-item-next-button-text #edit-next-button-text');
   var submitButton = $('.form-item-submit-button-text #edit-submit-button-text');
+
+  firstButton.focus(function() {
+      $(this).parent().addClass('form-active');
+  });
+  firstButton.blur(function() {
+      $(this).parent().removeClass('form-active');
+  });
+  firstButton.click(function(e) {
+      $(this).parent().addClass('form-active');
+      e.stopPropagation();
+  });
+  nextButton.focus(function() {
+      $(this).parent().addClass('form-active');
+  });
+  nextButton.blur(function() {
+      $(this).parent().removeClass('form-active');
+  });
+  nextButton.click(function(e) {
+      $(this).parent().addClass('form-active');
+      e.stopPropagation();
+  });
   submitButton.focus(function() {
       $(this).parent().addClass('form-active');
   });
@@ -54,6 +77,8 @@ Drupal.behaviors.ae_admin.attach = function(context) {
       e.stopPropagation();
   });
   $('html').click(function() {
+      $('.form-item-first-button-text').removeClass('form-active');
+      $('.form-item-next-button-text').removeClass('form-active');
       $('.form-item-submit-button-text').removeClass('form-active');
   });
 
