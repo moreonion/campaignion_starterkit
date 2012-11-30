@@ -405,7 +405,7 @@ div.node .column-side .column-wrapper {
 
 #edit-webform-template {
   width: 186px;
-  padding-top: 4px;
+  padding-top: 2px;
   float: left;
   border: 0px solid transparent;
   box-shadow: 0 0 0 transparent;
@@ -413,6 +413,16 @@ div.node .column-side .column-wrapper {
   -webkit-box-shadow: 0 0 0 transparent;     
 }
 
+#edit-webform-template label {
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+}
+
+#ae-wizard-webform-template-selector input#edit-submit {
+  font-size: 100%;
+}
  
 #edit-webform-template .fieldset-content {
   background: none transparent;
