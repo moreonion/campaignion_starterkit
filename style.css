@@ -394,6 +394,39 @@ div.node .column-side .column-wrapper {
   
   
 /**
+ * Webform template styling smaller and less confusing
+ */
+
+#ae-wizard-webform-template-selector {
+  clear: both;
+  width: 60%;
+}
+
+
+#edit-webform-template {
+  width: 200px;
+  float: left;
+  border: 0px solid transparent;
+  box-shadow: 0 0 0 transparent;
+  -moz-box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;     
+}
+
+ 
+#edit-webform-template .fieldset-content {
+  background: none transparent;
+  padding: 0;
+  box-shadow: 0 0 0 transparent;
+  -moz-box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;        
+}
+
+#form-builder-wrapper {
+  clear: both;
+}
+
+  
+/**
  * Make Media look nice in rubik ==================================
  */
 

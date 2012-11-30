@@ -364,6 +364,7 @@ div.form-builder-new-field span.progress {
 }
 
 #form-builder-field-palette ul li a {
+  font-size: 12px;
   text-decoration: none;
   cursor: move;
   color: #666460;
@@ -485,6 +486,10 @@ div.form-builder-new-field span.progress {
   background-position: 5px -1123px;
 }
 #form-builder-field-palette ul li.field-title  a {
+  background-position: 5px -1163px;
+}
+
+#form-builder-field-palette ul li.field-city a {
   background-position: 5px -1163px;
 }
 
