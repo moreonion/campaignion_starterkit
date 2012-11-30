@@ -490,7 +490,13 @@ div.form-builder-new-field span.progress {
 }
 
 #form-builder-field-palette ul li.field-city a {
-  background-position: 5px -1163px;
+  background-position: 5px -1362px;
+}
+#form-builder-field-palette ul li.field-direct_mail_newsletter a {
+  background-position: 5px -82px;
+}
+#form-builder-field-palette ul li.field-email_newsletter a {
+  background-position: 5px -923px;
 }
 
 #edit-submit-button-text {

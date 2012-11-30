@@ -404,7 +404,8 @@ div.node .column-side .column-wrapper {
 
 
 #edit-webform-template {
-  width: 200px;
+  width: 186px;
+  padding-top: 4px;
   float: left;
   border: 0px solid transparent;
   box-shadow: 0 0 0 transparent;
@@ -420,6 +421,8 @@ div.node .column-side .column-wrapper {
   -moz-box-shadow: 0 0 0 transparent;
   -webkit-box-shadow: 0 0 0 transparent;        
 }
+
+
 
 #form-builder-wrapper {
   clear: both;
