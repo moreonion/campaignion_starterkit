@@ -76,7 +76,7 @@
             text-shadow: 1px 1px 1px @trail_button_next_shadow_fg;
             font-size: 1.2em;
             &:hover, &:focus {
-              
+
                 background-color: @trail_button_next_hover_bg;
             }
             &:active {
@@ -180,7 +180,7 @@
                 .inner {
                     padding: 10px 20px 10px 45px;
                     background: @trail_step_current_bg;
-                    position: relative; 
+                    position: relative;
                     display: block;
                     float: left;
                     background: transparent url(../images/ae_step.png) no-repeat bottom right;
@@ -366,7 +366,20 @@
             clear: both;
         }
     }
+    #edit-double-opt-in-email {
+        float: left;
+        width: 48%;
+        margin-right: 1%;
+        > .fieldset-content {
+            border: 2px solid @border_color;
+            background: @box_bg_lighter;
+            padding: 1em!important;
+            min-height: 20em;
+        }
+    }
     #edit-thank-you-email {
+        float: left;
+        width: 48%;
         > .fieldset-content {
             border: 2px solid @border_color;
             background: @box_bg_lighter;
