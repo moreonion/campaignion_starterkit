@@ -2,18 +2,27 @@
  * This is the important bit
  * -------------------------------*/
 
-div.form-type-checkbox {
+.form-type-checkbox {
+  display:block;
+  width: 100%;
+  overflow:auto;
 }
-div.form-type-checkbox label.ilabel{
-    display:block;
+
+label.itoggle{
     font-size:1em;
     cursor:pointer;
     margin-bottom: 10px;
     min-height: 27px; /* the height of the itoggle */
+    float:left;
+    margin-right: 10px;
+    position:relative;
     }
 
-div.form-type-checkbox label.itoggle,
-div.form-type-checkbox label.itoggle span{
+label.itoggle span{
+    position:absolute;
+    }
+label.itoggle,
+label.itoggle span{
     display: block;
     width: 93px;
     height: 27px;
@@ -22,27 +31,23 @@ div.form-type-checkbox label.itoggle span{
     cursor:pointer;
     text-indent:-5000px;
     }
-div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox,
-div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox span{
+label.itoggle.disabled-itoggle,
+label.itoggle.disabled-itoggle span{
     background: url(itoggle-disabled-yesno.png) left bottom no-repeat;
     }
-div.form-type-checkbox label.itoggle {
-    float:left;
-    margin-right: 10px;
-    }
-div.form-type-checkbox label.itoggle.iToff{
+label.itoggle.iToff{
     background-position:right bottom;
     }
-div.form-type-checkbox label.itoggle span,
-div.form-type-checkbox label.itoggle.disabled-itoggle.dummy-checkbox span{
+label.itoggle span,
+label.itoggle.disabled-itoggle span{
     background-position: left top;
     margin: 0;
     }
-div.form-type-checkbox input.iT_checkbox{
-    position:absolute;
-    top:-9999px;
-    left:-9999px;
-    }
+
+input.ae_itoggle-processed {
+  display:none;
+}
+
 
 /*  
  * If you want the corners to be
