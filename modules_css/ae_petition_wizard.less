@@ -291,18 +291,19 @@
     }
     .half-left {
         display: inline-block;
-        width: 50%;
+        width: 49.5%;
+        margin-right: 0.5%;
     }
     .half-right {
         display: inline-block;
-        width: 50%;
+        width: 49.5%;
+        margin-left: 0.5%;
         float: right;
         clear: right;
     }
 
     // the forms
-    #edit-thank-you-node {
-        width: 100%;
+    .thank-you-node-wrapper {
         > .fieldset-content {
             border: 2px solid @border_color;
             background: @box_bg_lighter;
@@ -347,11 +348,12 @@
     #edit-node-form-field-share-light {
     }
     #edit-field-main-image,
-    #edit-node-form-field-main-image {
+    #edit-node-form-field-main-image,
+    .sidebar-narrow-right {
       box-shadow: none;
       -moz-box-shadow: none;
       -webkit-box-shadow: none;
-        #field-main-image-add-more-wrapper .fieldset-content {
+        fieldset .fieldset-content {
             border: 2px solid @border_color;
             background: @box_bg_light;
             padding: 1em!important;
