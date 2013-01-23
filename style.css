@@ -506,3 +506,16 @@ div.node .column-side .column-wrapper {
 .field-widget-text-textarea-with-summary .filter-wrapper {
 	display: none;
 }
+
+/** CKE editor **/
+.cke_show_borders ul {
+  margin-left: 2em;
+}
+.cke_show_borders ul ,
+.cke_show_borders ul li {
+  list-style-type: disc;
+}
+.cke_show_borders ol {
+  margin-left: 2em;
+  list-style-type: decimal;
+}
