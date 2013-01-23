@@ -1,0 +1,106 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (themes-ae_admin)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  themes/ae_admin/page.tpl.php: n/a
+#  themes/ae_admin/template.php: n/a
+#  themes/ae_admin/ae_admin.info: n/a
+#  themes/ae_base/ae_base.info: n/a
+#  themes/ae_base/ae_starterkit/ae_starterkit.info: n/a
+#  themes/tao/tao.info: n/a
+#
+# Florian Engel, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-12-13 15:20+0100\n"
+"PO-Revision-Date: 2013-01-14 16:56+0100\n"
+"Last-Translator: Florian Engel\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: themes/ae_admin/page.tpl.php:36
+msgid "Feeds"
+msgstr ""
+
+#: themes/ae_admin/template.php:114
+msgid ""
+"The advocacy engine admin theme requires the !tao base theme in order to work "
+"properly."
+msgstr ""
+
+#: themes/ae_admin/template.php:170
+msgid "Please confirm"
+msgstr ""
+
+#: themes/ae_admin/template.php:215
+msgid "Save"
+msgstr ""
+
+#: themes/ae_admin/template.php:216
+msgid "Submit"
+msgstr ""
+
+#: themes/ae_admin/template.php:217
+msgid "Add"
+msgstr ""
+
+#: themes/ae_admin/template.php:218
+msgid "Delete"
+msgstr ""
+
+#: themes/ae_admin/template.php:219
+msgid "Cancel"
+msgstr ""
+
+#: themes/ae_admin/template.php:250
+msgid "More help topics"
+msgstr ""
+
+#: themes/ae_admin/template.php:488
+msgid "(active tab)"
+msgstr ""
+
+#: themes/ae_admin/template.php:496
+msgid "!local-task-title!active"
+msgstr ""
+
+#: themes/ae_admin/template.php:530
+msgid "Posted by !username"
+msgstr ""
+
+#: themes/ae_admin/template.php:612
+msgid "E-mail header details"
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0
+msgid "AE-Admin"
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0
+msgid "Clean admin theme."
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0 themes/ae_base/ae_base.info:0
+msgid "advocacy_engine"
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0 themes/ae_base/ae_base.info:0 themes/ae_base/ae_starterkit/ae_starterkit.info:0 themes/tao/tao.info:0
+msgid "Help"
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0 themes/tao/tao.info:0
+msgid "Page top"
+msgstr ""
+
+#: themes/ae_admin/ae_admin.info:0 themes/tao/tao.info:0
+msgid "Page bottom"
+msgstr ""
+
+
