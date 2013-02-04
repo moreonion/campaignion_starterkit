@@ -475,6 +475,7 @@ input.form-text,
 textarea.form-textarea,
 select.form-select {
   padding: 0.4em 0.5em .3em;
+  margin-bottom: 0.4em;
   border-width:2px;
   border-style:solid;
   border-color:#c6c6c6;
