@@ -95,3 +95,7 @@ html.js body {
   text-shadow:#555 0px 1px 0px;
   }
 
+
+  #overlay .tabs {
+    margin: 0.5em -19px;
+  }
