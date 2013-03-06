@@ -443,7 +443,9 @@ div.node .column-side .column-wrapper {
     padding: 0;
     background: transparent none;
   }
-
+body .ui-dialog  {
+  padding: 0;
+}
   
 /**
  * The title is bigger and more prominent==================================
