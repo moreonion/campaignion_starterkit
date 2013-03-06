@@ -7,7 +7,7 @@ html { overflow-y:scroll; }
 
 body.tao {
   color:#514f4f;
-  background: url('images/pbearparty1.png') no-repeat 98% 58px #f5f1e8;
+  background: /*url('images/pbearparty1.png')*/ no-repeat 98% 58px #f5f1e8;
   }
   
   
@@ -499,7 +499,7 @@ html { overflow-y:scroll; }
 
 body.tao {
   color:#514f4f;
-  background: url('images/pbearparty1.png') no-repeat 98% 58px #f5f1e8;
+  background:/* url('images/pbearparty1.png') */no-repeat 98% 58px #f5f1e8;
   }
   
   
