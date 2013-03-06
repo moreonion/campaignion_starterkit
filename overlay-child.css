@@ -6,9 +6,14 @@ html.js {
 
 html.js body {
   background: transparent !important;
-  padding:20px 40px;
   }
 
+  
+  html.js body.overlay {
+    max-width: 1250px;
+    margin:44px auto;
+  }
+  
 #overlay {
   display:block;
   position:relative;
