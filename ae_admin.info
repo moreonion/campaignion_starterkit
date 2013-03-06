@@ -13,6 +13,7 @@ regions[page_bottom] = Page bottom
 scripts[] = js/ae_admin.js
 scripts[] = js/easing.js
 scripts[] = js/ae_itoggle.js
+scripts[] = js/close_messages.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
