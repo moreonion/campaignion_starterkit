@@ -22,7 +22,7 @@
 @confirm_edit_border: #bdbc13;
 @confirm_edit_hover_bg: #EDE91A;
 @confirm_edit_active_bg: #A3A011;
-@confirm_edit_shadow_fg: @confirm_edit_border;
+@confirm_edit_shadow_fg: #F4F06E;
 @button_draft_bg: #16c5d5;
 @button_draft_fg: #305254;
 @button_draft_border: #19b9c7;
@@ -350,6 +350,8 @@
     #edit-field-main-image,
     #edit-node-form-field-main-image,
     .sidebar-narrow-right {
+      position: relative;
+      z-index: 10;
       box-shadow: none;
       -moz-box-shadow: none;
       -webkit-box-shadow: none;

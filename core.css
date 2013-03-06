@@ -477,6 +477,9 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
   input.button-no:active, a.remove:active { background-position:-3601px 50%; }
 
   
+  input[typpe="radio"]:hover {
+    cursor: pointer;
+  }
 
 .field-suffix {
 	display: block;
