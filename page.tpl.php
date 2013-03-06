@@ -3,7 +3,7 @@
 </div></div>
 
 <div id='page-title'><div class='limiter clearfix'>
-  <div class='tabs clearfix'>
+  <div class='tabs clearfix <?php if ($secondary_local_tasks): ?>secondary_tabs_here<?php endif; ?>'>
     <?php if ($primary_local_tasks): ?>
       <ul class='primary-tabs links clearfix'><?php print render($primary_local_tasks) ?></ul>
     <?php endif; ?>

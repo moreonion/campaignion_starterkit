@@ -677,14 +677,18 @@ table th {
  * Tabs =============================================================== 
  */
 .tabs {
-  margin: .5em -30PX;
+  margin: 1.5em -30px .5em;
   background: #fff;
   }
   
   .primary-tabs {
     background: #F5F1E8;
+    margin-bottom: .2em;
+    padding-left: 32px;
+  }
+  
+  .secondary_tabs_here .primary-tabs {
     margin-bottom: 3.6em;
-    padding-left: 1em;
   }
 
 .primary-tabs li {
@@ -706,6 +710,11 @@ table th {
     z-index: 99;
   }
   
+  .primary-tabs li a:hover:before {
+    background-position: -40px bottom;
+  }
+  
+  
     .primary-tabs li a:after {
     content: ".";
     text-indent: 0px;
@@ -717,10 +726,13 @@ table th {
     right: -10px;
     background: url('images/rounded_tab.png') no-repeat  -30px  bottom;
      z-index: 99;
-
   }
   
-  .primary-tabs li.active a:after {
+  .primary-tabs li a:hover:after {
+    background-position: -50px bottom;
+  }
+  
+  .primary-tabs li.active a:after, .primary-tabs li.active a:hover:after {
     content: ".";
     text-indent: 0px;
     width: 10px;
@@ -735,7 +747,7 @@ table th {
     
   }
   
-    .primary-tabs li.active a:before {
+    .primary-tabs li.active a:before, .primary-tabs li.active a:hover:before {
     content: ".";
     text-indent: 0px;
     width: 10px;
@@ -766,32 +778,48 @@ table th {
     border: 1px solid #E0DCD4;
   }
   
-  .primary-tabs a:focus, .primary-tabs a:hover {
+  .primary-tabs li a:focus, .primary-tabs li a:hover {
+    background: none #d0ccc5;
+    border-color: #d0ccc5;
   }  
   
   .secondary-tabs {
     position: absolute;
-    bottom: -3.6em;
+    bottom: -3.3em;
     left: 0;
     width: 50%;
     min-width: 40em;
   }
   
   .secondary-tabs li {
-    margin-right: 0;
+    margin-right: 5px;
   }
   
-  .secondary-tabs li a:after, .secondary-tabs li a:before,  li.active .secondary-tabs li a:before,  li.active .secondary-tabs li a:after {
+  .secondary-tabs li a:after, .secondary-tabs li a:before,  li.active .secondary-tabs li a:before,
+  li.active .secondary-tabs li a:after, li.active .secondary-tabs li a:hover:after, li.active .secondary-tabs li a:hover:before {
     display: none;
   }
   
-  .secondary-tabs a, .secondary-tabs a:visited, .secondary-tabs a:link {
+  .secondary-tabs li a, .secondary-tabs li a:visited, .secondary-tabs li a:link {
     background-color: #fff;
-     border-radius: 0;
-    -moz-border-radius:0;
-    -webkit-border-radius:0;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
     border: 0px solid transparent;
-    padding: 1em 1em;
+    padding: .4em 1.2em;
+    margin-top: 0;
+    border: 1px solid transparent;
+  }
+  
+  .primary-tabs .secondary-tabs li.active a, .secondary-tabs li.active a:link, .secondary-tabs li.active a:visited,
+  .secondary-tabs li.active a:hover, .secondary-tabs li.active a:focus {
+    box-shadow: 2px 2px 1px #CECBC4 inset;
+    border: 1px solid #F7F3EA;
+  }
+  
+  
+  .primary-tabs .secondary-tabs li a:hover, .primary-tabs .secondary-tabs li a:focus {
+    background-color:  #F7F3EA;
     
   }
 

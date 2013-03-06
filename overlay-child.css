@@ -78,6 +78,7 @@ html.js body {
  */
 #overlay-tabs { display:none; }
 
+
 /**
  * Shortcut integration.
  */
@@ -97,5 +98,10 @@ html.js body {
 
 
   #overlay .tabs {
-    margin: 0.5em -19px;
+    margin: 1.5em -20px .5em -20px;
+  }
+  
+  
+  #overlay .primary-tabs {
+    padding-left: 11px;
   }
