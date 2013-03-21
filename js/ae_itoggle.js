@@ -11,7 +11,9 @@ Drupal.behaviors.ae_itoggle = {
   var itoggle_id = 1;
 
   if (load) {
-    $('input[type=checkbox]', context).once('ae_itoggle', function() {
+    $('input[type=checkbox]', context)
+     .not('.views-field-views-bulk-operations input[type=checkbox]')
+     .once('ae_itoggle', function() {
       $(this).each(function() {
         var checkbox = $(this);
         var id       = checkbox.attr('id');
