@@ -304,6 +304,29 @@
         clear: right;
     }
 
+    fieldset.email-wrapper {
+      position: relative;
+      display: block;
+      border: 2px solid @border_color!important;
+      background: @box_bg_lighter;
+      .fieldset-title {
+        padding: 0em 1em;
+      }
+      .fieldset-content {
+        padding: 1em!important;
+        .fieldset-content {
+          border: 1px solid @border_color;
+          background: white;
+        }
+      }
+    }
+
+    #edit-confirmation-request-toggle,
+    #edit-confirmation-or-thank-you-toggle,
+    #edit-notification-toggle {
+      margin-bottom: 0;
+    }
+
     // the forms
     .thank-you-node-wrapper {
         > .fieldset-content {
