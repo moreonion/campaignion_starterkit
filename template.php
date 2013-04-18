@@ -630,3 +630,95 @@ function ae_admin_webform_email_edit_form($variables) {
     return drupal_render_children($form, $children);
 }
 
+/**
+ * Theme the results table displaying all the submissions for a particular node.
+ *
+ * @param $node
+ *   The node whose results are being displayed.
+ * @param $components
+ *   An associative array of the components for this webform.
+ * @param $submissions
+ *   An array of all submissions for this webform.
+ * @param $total_count
+ *   The total number of submissions to this webform.
+ * @param $pager_count
+ *   The number of results to be shown per page.
+ */
+function ae_admin_webform_results_table($variables) {
+  drupal_add_library('webform', 'admin');
+
+  $node = $variables['node'];
+  $components = $variables['components'];
+  $submissions = $variables['submissions'];
+  $total_count = $variables['total_count'];
+  $pager_count = $variables['pager_count'];
+
+  $header = array();
+  $rows = array();
+  $cell = array();
+
+  // This header has to be generated seperately so we can add the SQL necessary.
+  // to sort the results.
+  $header = theme('webform_results_table_header', array('node' => $node));
+  //$header = '';
+
+  // load all submissions for this node
+  $result = db_query('SELECT sid,external_referrer,referer,ip_address,tag,form_url FROM {webform_tracking} WHERE nid = :nid', array(':nid' => $node->nid));
+  $webform_tracking_fields = array();
+  foreach ($result as $row) {
+    $webform_tracking_fields[$row->sid] = $row;
+  }
+
+  // Generate a row for each submission.
+  foreach ($submissions as $sid => $submission) {
+    $cell[] = l($sid, 'node/' . $node->nid . '/submission/' . $sid);
+    $cell[] = format_date($submission->submitted, 'short');
+    $cell[] = theme('username', array('account' => $submission));
+    $cell[] = $submission->remote_addr;
+    $component_headers = array();
+
+    // Generate a cell for each component.
+    foreach ($node->webform['components'] as $component) {
+      $data = isset($submission->data[$component['cid']]['value']) ? $submission->data[$component['cid']]['value'] : NULL;
+      $submission_output = webform_component_invoke($component['type'], 'table', $component, $data);
+      if ($submission_output !== NULL) {
+        $component_headers[] = check_plain($component['name']);
+        $cell[] = $submission_output;
+      }
+    }
+
+    // add tracking info to each row
+    $tracking_fields = array('external_referrer', 'referer', 'ip_address', 'tag', 'form_url');
+    foreach ($tracking_fields as $field) {
+      if (isset($webform_tracking_fields[$sid]) && isset($webform_tracking_fields[$sid]->$field)) {
+        $cell[] = $webform_tracking_fields[$sid]->$field;
+      } else {
+        $cell[] = '';
+      }
+    }
+
+    $rows[] = $cell;
+    unset($cell);
+
+  }
+  if (!empty($component_headers)) {
+    $header = array_merge($header, $component_headers);
+  }
+
+  // add tracking headers to table
+  $header[] = t('External referrer');
+  $header[] = t('HTTP-Referer');
+  $header[] = t('IP address');
+  $header[] = t('Tags');
+  $header[] = t('Form URL');
+
+  if (count($rows) == 0) {
+    $rows[] = array(array('data' => t('There are no submissions for this form. <a href="!url">View this form</a>.', array('!url' => url('node/' . $node->nid))), 'colspan' => 4));
+  }
+
+
+  $output = '';
+  $output .= theme('webform_results_per_page', array('total_count' => $total_count, 'pager_count' => $pager_count));
+  $output .= theme('table', array('header' => $header, 'rows' => $rows));
+  return $output;
+}
