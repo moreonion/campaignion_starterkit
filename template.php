@@ -555,7 +555,7 @@ function _ae_admin_local_tasks(&$vars) {
   if (!empty($vars['secondary_local_tasks']) && is_array($vars['primary_local_tasks'])) {
     foreach ($vars['primary_local_tasks'] as $key => $element) {
       if (!empty($element['#active'])) {
-        $vars['primary_local_tasks'][$key] = $vars['primary_local_tasks'][$key] + $vars['secondary_local_tasks'];
+        $vars['primary_local_tasks'][$key] = $vars['primary_local_tasks'][$key];
         break;
       }
     }

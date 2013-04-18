@@ -1,13 +1,19 @@
-<div id='branding'><div class='limiter clearfix'>
-  <div class='breadcrumb clearfix'><?php print $breadcrumb ?></div>
-</div></div>
+<div id='branding' <?php if ($primary_local_tasks): ?>class='darken'<?php endif; ?> > <div class='limiter clearfix'>
+  <div class='breadcrumb clearfix'><?php print $breadcrumb ?></div></div>
+</div>
 
-<div id='page-title'><div class='limiter clearfix'>
-  <div class='tabs clearfix <?php if ($secondary_local_tasks): ?>secondary_tabs_here<?php endif; ?>'>
-    <?php if ($primary_local_tasks): ?>
-      <ul class='primary-tabs links clearfix'><?php print render($primary_local_tasks) ?></ul>
-    <?php endif; ?>
+<?php if ($primary_local_tasks): ?>
+  <div id="tabbed" class="limiter clearfix">
+    <div class='tabs clearfix <?php if ($secondary_local_tasks): ?>secondary_tabs_here<?php endif; ?>'>
+      <?php if ($primary_local_tasks): ?>
+        <div class='primary-tabs links clearfix'><?php print render($primary_local_tasks) ?></div>
+        <?php if ($secondary_local_tasks): ?><div class='secondary-tabs links clearfix'><?php print render($secondary_local_tasks); ?></div><?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
+<?php endif; ?>
+
+ <div id='page-title'><div class='limiter clearfix'>
   <?php print render($title_prefix); ?>
   <h1 class='page-title <?php print $page_icon_class ?>'>
     <?php if (!empty($page_icon_class)): ?><span class='icon'></span><?php endif; ?>
