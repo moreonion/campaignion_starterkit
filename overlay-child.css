@@ -12,6 +12,7 @@ html.js body {
   html.js body.overlay {
     max-width: 1250px;
     margin:44px auto;
+    padding-bottom: 24px;
   }
   
 #overlay {
