@@ -101,6 +101,12 @@ function ae_admin_theme() {
       'ae_admin_preprocess_form_node',
     ),
   );
+  $items['export_download_links'] = array(
+    'variables' => array(
+      'node' => NULL,
+    ),
+    'function' => 'theme_export_download_links',
+  );
 
   return $items;
 }
@@ -718,7 +724,18 @@ function ae_admin_webform_results_table($variables) {
 
 
   $output = '';
+  $output .= theme('export_download_links', array('node' => $node));
   $output .= theme('webform_results_per_page', array('total_count' => $total_count, 'pager_count' => $pager_count));
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
+  return $output;
+}
+
+function theme_export_download_links($vars) {
+  $node = $vars['node'];
+  $output = '';
+  $output .= '<div class="export-download-links">';
+  $output .= l(t('Download as CSV'), 'node/' . $node->nid . '/webform-results/download-all/csv');
+  $output .= l(t('Download as Excel'), 'node/' . $node->nid . '/webform-results/download-all/xls');
+  $output .= '</div>';
   return $output;
 }
