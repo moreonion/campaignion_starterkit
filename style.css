@@ -80,10 +80,20 @@ table th {
  * Branding ===========================================================
  */
 #branding {
-  background:/*url(images/bleeds.png) 0px -30px repeat-x*/ none transparent;
   font-size:11px;
   height:30px;
   overflow:hidden;
+  margin: 0 0;
+  padding: 0 30px;
+  }
+  
+  .darken {
+      background-color: #d9d5cd;
+
+  }
+  
+  #branding .limiter {
+    margin: 0;
   }
 
 #branding ul.links { float:right; }
@@ -184,6 +194,14 @@ table th {
 /**
  * Tabs =============================================================== 
  */
+
+#tabbed {
+    background-color: #d9d5cd;
+    margin: 0 0;
+    padding: 11px 30px 0;
+    
+}
+
 .tabs {
 
   }
@@ -574,7 +592,6 @@ table th {
  * Branding ===========================================================
  */
 #branding {
-  background:/*url(images/bleeds.png) 0px -30px repeat-x*/ none transparent;
   font-size:11px;
   height:30px;
   overflow:hidden;
@@ -679,19 +696,14 @@ table th {
  * Tabs =============================================================== 
  */
 .tabs {
-  margin: 1.5em -30px .5em;
-  background: #fff;
+  margin: 1.5em -30px 0;
   }
   
   .primary-tabs {
-    background: #F5F1E8;
-    margin-bottom: .2em;
+/*    background: #F5F1E8;*/
     padding-left: 32px;
   }
   
-  .secondary_tabs_here .primary-tabs {
-    margin-bottom: 3.6em;
-  }
 
 .primary-tabs li {
     float: left;
@@ -701,7 +713,7 @@ table th {
   }
   .primary-tabs li a:before {
     content: ".";
-    text-indent: 0px;
+    text-indent: -50000px;
     width: 10px;
     height: 10px;
     display: block;
@@ -719,7 +731,7 @@ table th {
   
     .primary-tabs li a:after {
     content: ".";
-    text-indent: 0px;
+    text-indent: -50000px;
     width: 10px;
     height: 10px;
     display: block;
@@ -736,7 +748,7 @@ table th {
   
   .primary-tabs li.active a:after, .primary-tabs li.active a:hover:after {
     content: ".";
-    text-indent: 0px;
+    text-indent: -50000px;
     width: 10px;
     height: 10px;
     display: block;
@@ -751,7 +763,7 @@ table th {
   
     .primary-tabs li.active a:before, .primary-tabs li.active a:hover:before {
     content: ".";
-    text-indent: 0px;
+    text-indent: -50000px;
     width: 10px;
     height: 10px;
     display: block;
@@ -763,8 +775,8 @@ table th {
   }
   
  .primary-tabs li.active a, .primary-tabs li.active a:link, .primary-tabs li.active a:visited {
-    background-color: #fff;
-    border-color: #fff;
+    background-color: #F5F1E8;
+    border-color: #F5F1E8;
     border-bottom: 1px solid transparent;
     
   }
@@ -772,38 +784,36 @@ table th {
   .primary-tabs a, .primary-tabs a:link, .primary-tabs a:visited {
     display: block;
     padding: .7em 2em;
-    background: #e0dcd4;
+    background: #cbc8c0;
     color: #686662;
     border-radius: 8px 8px 0 0;
     -moz-border-radius:8px 8px 0 0;
     -webkit-border-radius:8px 8px 0 0;
-    border: 1px solid #E0DCD4;
+    border: 1px solid #cbc8c0;
+    text-shadow: 1px 1px 1px #f5f1e8;
   }
   
   .primary-tabs li a:focus, .primary-tabs li a:hover {
-    background: none #d0ccc5;
-    border-color: #d0ccc5;
+    background: none #c1beb7;
+    border-color: #c1beb7;
   }  
   
   .secondary-tabs {
-    position: absolute;
-    bottom: -3.3em;
-    left: 0;
-    width: 50%;
-    min-width: 40em;
+    padding: 15px 0;
+    background: #F5F1E8;
   }
   
   .secondary-tabs li {
-    margin-right: 5px;
+    float: left;
+    margin: 0 7px;
+    list-style: none;
   }
   
-  .secondary-tabs li a:after, .secondary-tabs li a:before,  li.active .secondary-tabs li a:before,
-  li.active .secondary-tabs li a:after, li.active .secondary-tabs li a:hover:after, li.active .secondary-tabs li a:hover:before {
-    display: none;
-  }
+
   
   .secondary-tabs li a, .secondary-tabs li a:visited, .secondary-tabs li a:link {
-    background-color: #fff;
+    background-color: #EAE6DE;
+    color: #686662;
     -moz-border-radius: 15px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -813,16 +823,15 @@ table th {
     border: 1px solid transparent;
   }
   
-  .primary-tabs .secondary-tabs li.active a, .secondary-tabs li.active a:link, .secondary-tabs li.active a:visited,
+  .secondary-tabs li.active a, .secondary-tabs li.active a:link, .secondary-tabs li.active a:visited,
   .secondary-tabs li.active a:hover, .secondary-tabs li.active a:focus {
     box-shadow: 2px 2px 1px #CECBC4 inset;
     border: 1px solid #F7F3EA;
+    background-color: #fff;
   }
   
-  
-  .primary-tabs .secondary-tabs li a:hover, .primary-tabs .secondary-tabs li a:focus {
-    background-color:  #F7F3EA;
-    
+   .secondary-tabs li a:hover, .secondary-tabs li a:focus {
+    background-color: #E0DCD5;    
   }
 
 div.pager {
@@ -875,44 +884,6 @@ div.pager {
   text-shadow:#38a 0px 1px 0px;  
   }
 
-/* Secondary tabs, nested */
-.secondary-tabs {
-
-  }
-
-.secondary-tabs:hover {
-
-  }
-
-ul.secondary-tabs li,
-ul.secondary-tabs li a {
-
-  }
-
-.secondary-tabs a {
-
-  }
-
-  .secondary-tabs:hover a,
-  .secondary-tabs .active a {
-    
-  }
-
-  .secondary-tabs li:hover,
-  .secondary-tabs li.active {
-    
-  }
-  .secondary-tabs a:hover {
-    
-  }
-
-  .secondary-tabs li:last-child a:hover {
-
-    }
-
-  .secondary-tabs li:first-child a:hover {
-
-    }
 
 /**
  * Content ============================================================

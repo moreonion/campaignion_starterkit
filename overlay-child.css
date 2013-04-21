@@ -12,6 +12,7 @@ html.js body {
   html.js body.overlay {
     max-width: 1250px;
     margin:44px auto;
+    padding-bottom: 24px;
   }
   
 #overlay {
@@ -63,6 +64,9 @@ html.js body {
 
 #overlay-content .limiter { margin:0px 20px; }
 
+#overlay-content #tabbed {margin: 0; padding-left: 0; padding-right: 0; }
+
+
 #branding {
   border-radius:5px 5px 0px 0px;
   -moz-border-radius:5px 5px 0px 0px;
@@ -103,10 +107,11 @@ html.js body {
 
 
   #overlay .tabs {
-    margin: 1.5em -20px .5em -20px;
+    padding: 1.5em -10px 0;
+    margin: 0;
   }
   
   
   #overlay .primary-tabs {
-    padding-left: 11px;
+    padding-left: 28px;
   }
