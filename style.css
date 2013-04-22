@@ -85,10 +85,13 @@ table th {
   overflow:hidden;
   margin: 0 0;
   padding: 0 30px;
+  background-color: #d9d5cd;
+  border-bottom: 1px solid #F9F5ED;
   }
   
   .darken {
       background-color: #d9d5cd;
+      border-bottom: 0px solid transparent;
 
   }
   
@@ -788,7 +791,7 @@ table th {
   }  
   
   .secondary-tabs {
-    padding: 15px 0;
+    padding: 15px 0 15px 16px;
     background: #F5F1E8;
   }
   
@@ -1331,3 +1334,10 @@ html.js .fieldset .collapsed .fieldset-legend span.icon {
 body.cke_show_borders {
   padding: 13px 3%;
 }
+
+/* table sticky header css fix */
+
+.table.sticky-header {
+  top: 0px!important;
+}
+
