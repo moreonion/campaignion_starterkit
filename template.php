@@ -739,3 +739,30 @@ function theme_export_download_links($vars) {
   $output .= '</div>';
   return $output;
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ae_admin_form_node_form_alter(&$form, &$form_state) {
+  // toggle visibility of advanced settings
+  $form['settings_advanced'] = array(
+    '#type' => 'container',
+    '#weight' => 2000,
+  );
+
+  $form['additional_settings']['#weight'] = 1000;
+  $form['settings_advanced']['additional_settings'] = $form['additional_settings'];
+  unset($form['additional_settings']);
+
+  // toggle display state for wizard_advanced vertical tabs
+  $form['toggle_settings_advanced'] = array(
+    '#type' => 'checkbox',
+    '#weight' => 1001,
+    '#title' => t('Show advanced settings'),
+  );
+  $form['settings_advanced']['#states'] = array(
+    'invisible' => array("#edit-toggle-settings-advanced" => array('checked' => FALSE)),
+  );
+
+  return $form;
+}
