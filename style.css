@@ -496,18 +496,7 @@ body .ui-dialog  {
 	display: none;
 }
 
-/** CKE editor **/
-.cke_show_borders ul {
-  margin-left: 2em;
-}
-.cke_show_borders ul ,
-.cke_show_borders ul li {
-  list-style-type: disc;
-}
-.cke_show_borders ol {
-  margin-left: 2em;
-  list-style-type: decimal;
-}
+
 
 
 body,
@@ -1120,4 +1109,68 @@ div.node .column-side .column-wrapper {
 .vbo-views-form #edit-select input {
  margin-bottom: 10px;
  float: left;
+}
+
+/* wysiwyg reset kill 
+   make things in wysiwyg editor visible
+ */
+
+
+.cke_show_borders div, .cke_show_borders span, .cke_show_borders object, .cke_show_borders iframe,.cke_show_borders  h1,.cke_show_borders  h2,.cke_show_borders  h3,.cke_show_borders  h4,
+.cke_show_borders h5,.cke_show_borders  h6,.cke_show_borders  p,
+.cke_show_borders blockquote,.cke_show_borders  pre,.cke_show_borders  address,.cke_show_borders img,.cke_show_borders  dl, .cke_show_borders dt, .cke_show_borders dd,
+.cke_show_borders ol, .cke_show_borders ul, .cke_show_borders fieldset, .cke_show_borders form, .cke_show_borders input, .cke_show_borders select, .cke_show_borders textarea, .cke_show_borders table {
+  margin-bottom: 20px;
+}
+
+.cke_show_borders ul {
+  list-style-type: normal;
+  list-style-position: inside;
+}
+
+/** CKE editor **/
+.cke_show_borders ul {
+  margin-left: 2em;
+}
+.cke_show_borders ul ,
+.cke_show_borders ul li {
+  list-style-type: disc;
+}
+.cke_show_borders ol {
+  margin-left: 2em;
+  list-style-type: decimal;
+}
+
+
+.cke_show_borders h2 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 30px;
+}
+
+
+
+.cke_show_borders h3 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.cke_show_borders h4 {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cke_show_borders h5 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.cke_show_borders h6 {
+  font-size: 15px;
+  font-style: italic;
+}
+
+body.cke_show_borders {
+  padding: 13px 3%;
 }
