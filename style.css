@@ -1085,7 +1085,6 @@ div.node .column-side .column-wrapper {
   margin-left: 2em;
   list-style-type: decimal;
 }
-
 /* views bulk operations */
 
 .vbo-views-form #edit-select {
@@ -1170,6 +1169,15 @@ div.node .column-side .column-wrapper {
   font-size: 15px;
   font-style: italic;
 }
+
+.cke_show_borders div {
+  padding: 0.5em;
+  border: 1px solid #d3d3d3;
+}
+.cke_show_borders div p:last-of-type {
+  margin-bottom: 0px;
+}
+
 
 body.cke_show_borders {
   padding: 13px 3%;
