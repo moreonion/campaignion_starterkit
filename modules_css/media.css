@@ -248,6 +248,8 @@ div#media-browser .throbber {
   padding: 0;
 }
 
+#media-browser-tabset #branding h1 { display: none; }
+
 #media-browser-tabset .media-browser-tab {
 }
 
