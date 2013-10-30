@@ -521,7 +521,7 @@ a {
           color: #C65E3B;
   }
 
-.limiter { margin:0px 30px; }
+.limiter { margin:0px 60px; }
 
 /**
  * Skip to content link ===============================================
@@ -1056,6 +1056,133 @@ div.node .column-side .column-wrapper {
 }
   
   
+/**
+ * Collapisbles =======================================================
+ */
+
+fieldset.collapsible {
+  border: 1px solid #b3afa8;
+  border-radius: 7px;
+}
+.collapsible .fieldset-legend a {
+  background:#CCC8BF;
+  color:#65635f;
+  display:block;
+  font-size:14px;
+  line-height:20px;
+  margin:0px;
+  padding: 10px 14px;
+  border-radius: 7px 7px 0 0;
+  text-transform: none;
+  border-bottom: 1px solid #b3afa8;
+}
+
+.collapsible .fieldset-legend a { padding-bottom: 10px; }
+
+/* Explicit height for IE */
+.collapsible .fieldset-legend a { height:20px; }
+
+.collapsible .fieldset-legend span.icon {
+  position:absolute;
+  left:-31px; // width + border-left
+  top:6px;
+  background:url(images/plus_minus.png) center -5px no-repeat;
+  width:30px;
+  height:30px;
+  display:block;
+  cursor:pointer;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #444;
+  border-right: 0;
+}
+
+html.js .collapsed .fieldset-legend span.icon {
+  background-position: center -45px;
+}
+
+.fieldset .collapsible .fieldset-legend span.icon { display:block; }
+
+fieldset.collapsed {
+  border-radius: 7px;
+}
+.collapsed .fieldset-legend a {
+  background:#CCC8BF;
+  color:#65635f;
+  border-radius: 7px;
+  border-bottom: none;
+}
+
+.collapsed .fieldset-legend a:hover { color:#666; }
+
+.collapsible .fieldset-legend {
+  padding:0px;
+  background:transparent;
+}
+
+.collapsed .fieldset-legend a { padding-bottom: 10px; }
+
+.container-inline .fieldset-content,
+.fieldset-content {
+  padding:10px 9px 9px;
+  background: #f8f7f4 none;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  -moz-box-shadow: 0 0 3px #E0E0E0;
+  -webkit-box-shadow: #E0E0E0;
+  box-shadow: #E0E0E0;
+}
+
+
+html.js .collapsed .fieldset-content { display:none; }
+
+.fieldset .fieldset .fieldset-content { background:none transparent; }
+
+.filter-wrapper .fieldset-content,
+.fieldset .fieldset.filter-wrapper .fieldset-content  {
+  background:#f8f7f4;
+  border-top:0px;
+  height:20px;
+  padding:5px 9px 4px;
+}
+fieldset.collapsible.titled .fieldset-content {
+  padding-top: 4em;
+}
+
+/* ---- zweite Ebene ---- */
+
+
+fieldset.collapsible .collapsible {
+  border-color: #c6c2ba;
+}
+.collapsible .collapsible .fieldset-legend a {
+  background:#e4dfd6;
+  padding-left: 30px;
+  border-color: #c6c2ba;
+}
+.collapsible .collapsible .fieldset-content {
+  background: #f5f1e8 none;
+}
+.collapsible .collapsible .fieldset-legend span.icon {
+  transform: rotate(90deg);
+  left:5px;
+  top:10px;
+  background:url(images/ae_pfeil_beige.png) center center no-repeat;
+  width:20px;
+  height:20px;
+  border-radius: 0;
+  border: none;
+}
+
+html.js .collapsible .collapsed .fieldset-legend span.icon {
+  background-position: center;
+}
+.collapsible .collapsed .fieldset-legend span.icon {
+  transform: rotate(0deg);
+}
+
+
+
 /**
  * SPAMICIDE HIDDEN ====================================================
  * The spamicide module adds fieldsets to all forms it can find. It's not desired on the admin interface and breaks some styles
