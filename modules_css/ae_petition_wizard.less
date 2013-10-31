@@ -224,48 +224,6 @@
 #wizard-step-form {
     position: relative;
     width: 100%;
-    fieldset {
-        border: none!important;
-        border-radius: 0px;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        .description {
-            display: none;
-        }
-        &.fieldset.tiled .fieldset-content,
-        .fieldset-content {
-            background: transparent;
-            padding: 1em 0 0 0 !important;
-            fieldset.collapsible {
-                background: #fff;
-                margin-right: 1em;
-                .fieldset-title {
-                    background: #fff;
-                    padding: 0!important;
-                }
-                legend, .fieldset-content {
-                    background: #fff;
-                    padding: 0.5em!important;
-                }
-                &.collapsed { legend { border: 2px solid @border_color!important;} }
-                &:not(.collapsed) {
-                    legend { border: 2px solid @border_color!important; border-bottom: none!important;}
-                    .fieldset-content { border: 2px solid @border_color!important; border-radius: 0px; border-top: none!important; width: 100%;}
-                }
-                li { border: none!important; }
-
-            }
-        }
-        legend {
-            float: none;
-            .fieldset-title {
-                font-size: 1em;
-                font-weight: normal;
-                padding: 0 0 0.5em 0;
-            }
-        }
-    }
     .form-item label:not(.itoggle) {
         font-size: 1em;
         font-weight: normal;
@@ -309,16 +267,6 @@
       display: block;
       border: 2px solid @border_color!important;
       background: @box_bg_lighter;
-      .fieldset-title {
-        padding: 0em 1em;
-      }
-      .fieldset-content {
-        padding: 1em!important;
-        .fieldset-content {
-          border: 1px solid @border_color;
-          background: white;
-        }
-      }
     }
 
     #edit-confirmation-request-toggle,
@@ -380,11 +328,6 @@
       box-shadow: none;
       -moz-box-shadow: none;
       -webkit-box-shadow: none;
-        fieldset .fieldset-content {
-            border: 2px solid @border_color;
-            background: @box_bg_light;
-            padding: 1em!important;
-        }
         a.button {
             float: left;
             margin: 10px 5px;
@@ -399,12 +342,6 @@
     #edit-thank-you-email {
         float: left;
         width: 48%;
-        > .fieldset-content {
-            border: 2px solid @border_color;
-            background: @box_bg_lighter;
-            padding: 1em!important;
-            min-height: 20em;
-        }
     }
     #edit-double-opt-in-email {
         margin-right: 1%;

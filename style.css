@@ -1057,14 +1057,23 @@ div.node .column-side .column-wrapper {
   
   
 /**
- * Collapisbles =======================================================
+ * Fieldsets + Collapsibles ==================================================
  */
 
+.fieldset-title {
+  text-transform: none;
+}
+fieldset.fieldset {
+  border: 0;
+  margin-bottom: 1em;
+  background: transparent;
+}
+fieldset.titled,
 fieldset.collapsible {
   border: 1px solid #b3afa8;
   border-radius: 7px;
 }
-.collapsible .fieldset-legend a {
+.fieldset span.fieldset-title {
   background:#CCC8BF;
   color:#65635f;
   display:block;
@@ -1077,15 +1086,19 @@ fieldset.collapsible {
   border-bottom: 1px solid #b3afa8;
 }
 
-.collapsible .fieldset-legend a { padding-bottom: 10px; }
+.collapsed span.fieldset-title {
+  border-radius: 7px;
+  border-bottom: 0;
+}
 
 /* Explicit height for IE */
+.fieldset span.fieldset-title,
 .collapsible .fieldset-legend a { height:20px; }
 
 .collapsible .fieldset-legend span.icon {
   position:absolute;
-  left:-31px; // width + border-left
-  top:6px;
+  top:4px;
+  left:-31px;
   background:url(images/plus_minus.png) center -5px no-repeat;
   width:30px;
   height:30px;
@@ -1102,6 +1115,7 @@ html.js .collapsed .fieldset-legend span.icon {
 
 .fieldset .collapsible .fieldset-legend span.icon { display:block; }
 
+fieldset.fieldset,
 fieldset.collapsed {
   border-radius: 7px;
 }
@@ -1112,17 +1126,22 @@ fieldset.collapsed {
   border-bottom: none;
 }
 
-.collapsed .fieldset-legend a:hover { color:#666; }
+.collapsible .fieldset-legend a:focus,
+.collapsible .fieldset-legend a:active,
+.collapsible .fieldset-legend a:hover { color:#666; }
 
+.fieldset legend,
 .collapsible .fieldset-legend {
   padding:0px;
   background:transparent;
 }
 
-.collapsed .fieldset-legend a { padding-bottom: 10px; }
-
+.fieldset .fieldset-content {
+  background: none transparent;
+  border: 0;
+}
 .container-inline .fieldset-content,
-.fieldset-content {
+.titled .fieldset-content {
   padding:10px 9px 9px;
   background: #f8f7f4 none;
   -moz-border-radius: 7px;
@@ -1140,32 +1159,44 @@ html.js .collapsed .fieldset-content { display:none; }
 
 .filter-wrapper .fieldset-content,
 .fieldset .fieldset.filter-wrapper .fieldset-content  {
-  background:#f8f7f4;
+  background:transparent;
   border-top:0px;
   height:20px;
   padding:5px 9px 4px;
 }
+.container-inline .fieldset-legend .fieldset-content,
+fieldset.titled .fieldset-content,
+fieldset.fieldset.titled .fieldset-content,
 fieldset.collapsible.titled .fieldset-content {
   padding-top: 4em;
+}
+fieldset.fieldset.titled .fieldset-content fieldset:not(.titled) .fieldset-content {
+  padding-top: 0em;
 }
 
 /* ---- zweite Ebene ---- */
 
-
+fieldset.fieldset .fieldset,
 fieldset.collapsible .collapsible {
   border-color: #c6c2ba;
 }
-.collapsible .collapsible .fieldset-legend a {
+.fieldset .fieldset .fieldset-legend,
+.fieldset .collapsible .fieldset-legend,
+.fieldset .collapsible .fieldset-legend a {
   background:#e4dfd6;
-  padding-left: 30px;
   border-color: #c6c2ba;
 }
+.fieldset .collapsible .fieldset-legend,
+.fieldset .collapsible .fieldset-legend a {
+  padding-left: 20px;
+}
+.fieldset .titled .fieldset-content,
 .collapsible .collapsible .fieldset-content {
   background: #f5f1e8 none;
 }
-.collapsible .collapsible .fieldset-legend span.icon {
+.fieldset .collapsible .fieldset-legend span.icon {
   transform: rotate(90deg);
-  left:5px;
+  left:10px;
   top:10px;
   background:url(images/ae_pfeil_beige.png) center center no-repeat;
   width:20px;
@@ -1174,13 +1205,12 @@ fieldset.collapsible .collapsible {
   border: none;
 }
 
-html.js .collapsible .collapsed .fieldset-legend span.icon {
+html.js .fieldset .collapsed .fieldset-legend span.icon {
   background-position: center;
 }
-.collapsible .collapsed .fieldset-legend span.icon {
+.fieldset .collapsed .fieldset-legend span.icon {
   transform: rotate(0deg);
 }
-
 
 
 /**
@@ -1309,3 +1339,4 @@ html.js .collapsible .collapsed .fieldset-legend span.icon {
 body.cke_show_borders {
   padding: 13px 3%;
 }
+
