@@ -220,10 +220,40 @@
 }
 
 /*** form ***/
+.wizard-secondary-container {
+  #wizard-main {
+    width: 65%;
+    float: left;
+  }
+  #edit-wizard-secondary {
+    width: 30%;
+    float: right;
+    border: none;
+    background: none;
+    clear: right;
+    padding: 0;
+  }
+}
+
+.two-halfs {
+  .half-left {
+    display: block;
+    width: 49%;
+    margin-right: 0%;
+    float: left;
+    clear: left;
+  }
+  .half-right {
+    display: block;
+    width: 49%;
+    margin-left: 0%;
+    float: right;
+    clear: right;
+  }
+}
 
 #wizard-step-form {
     position: relative;
-    width: 100%;
     .form-item label:not(.itoggle) {
         font-size: 1em;
         font-weight: normal;
@@ -231,35 +261,6 @@
     }
     #edit-title {
         font-size: 1.4em;
-    }
-
-    // floating
-    .twothirds-left {
-        display: inline-block;
-        width: 65%;
-    }
-    .onethirds-right {
-        display: inline-block;
-        width: 30%;
-        float: right;
-        border: none;
-        background: none;
-        clear: right;
-        padding: 0;
-    }
-    .half-left {
-        display: block;
-        width: 49.5%;
-        margin-right: 0.5%;
-        float: left;
-        clear: left;
-    }
-    .half-right {
-        display: block;
-        width: 49.5%;
-        margin-left: 0.5%;
-        float: right;
-        clear: right;
     }
 
     fieldset.email-wrapper {
@@ -277,12 +278,6 @@
 
     // the forms
     .thank-you-node-wrapper {
-        > .fieldset-content {
-            border: 2px solid @border_color;
-            background: @box_bg_lighter;
-            padding: 1em!important;
-            min-height: 20em;
-        }
         #edit-node-form-title {
             font-size: 1.2em;
         }
