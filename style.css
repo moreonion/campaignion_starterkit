@@ -1169,6 +1169,7 @@ fieldset.titled .fieldset-content,
 fieldset.fieldset.titled .fieldset-content,
 fieldset.collapsible.titled .fieldset-content {
   padding-top: 4em;
+  padding-bottom: 2em;
 }
 fieldset.fieldset.titled .fieldset-content fieldset:not(.titled) .fieldset-content {
   padding-top: 0em;
