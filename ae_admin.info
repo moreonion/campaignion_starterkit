@@ -14,6 +14,7 @@ scripts[] = js/ae_admin.js
 scripts[] = js/easing.js
 scripts[] = js/ae_itoggle.js
 scripts[] = js/close_messages.js
+scripts[] = js/jquery.fs.selecter.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
@@ -32,6 +33,7 @@ stylesheets[screen][] = modules_css/ae_petition_wizard.less
 
 
 stylesheets[screen][] = modules_css/ae_itoggle.css
+stylesheets[screen][] = modules_css/jquery.fs.selecter.css
 
 
 ; Support shortcut module links
