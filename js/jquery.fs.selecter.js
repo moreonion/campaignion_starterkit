@@ -125,7 +125,7 @@ if (jQuery) (function($) {
 			$.extend(opts, $selectEl.data("selecter-options"));
 			
 			// Build options array
-			var $allOptionEls = $selectEl.find("option, optgroup"),
+			var $allOptionEls = $selectEl.find("option, optgroup, li"),
 				$optionEls = $allOptionEls.filter("option"),
 				$originalOption = $optionEls.filter(":selected"),
 				originalIndex = (opts.defaultLabel) ? -1 : $optionEls.index($originalOption),
@@ -172,6 +172,29 @@ if (jQuery) (function($) {
 						html += ' disabled';
 					}
 					html += '">' + $op.attr("label") + '</span>';
+				} else if ($op[0].tagName == "LI") {
+					html += '<' + itemTag + ' class="selecter-item';
+					if ($op.is(':selected') && !opts.defaultLabel) {
+						html += ' selected';
+					}
+					// Disabled options
+					if ($op.is(":disabled")) {
+						html += ' disabled';
+					}
+					// CSS styling classes - might ditch for pseudo selectors
+					if (i == 0) {
+						html += ' first';
+					}
+					if (i == totalItems) {
+						html += ' last';
+					}
+					html += '" ';
+					if (opts.links) {
+						html += 'href="' + $('a', $op).attr('href') + '"';
+					} else {
+						html += 'data-value="' + $op.val() + '"';
+					}
+					html += '>' + $op.text() + '</' + itemTag + '>';
 				} else {
 					html += '<' + itemTag + ' class="selecter-item';
 					// Default selected value - now handles multi's thanks to @kuilkoff 
