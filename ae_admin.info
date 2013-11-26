@@ -16,6 +16,7 @@ scripts[] = js/ae_itoggle.js
 scripts[] = js/close_messages.js
 scripts[] = js/jquery.fs.selecter.js
 scripts[] = js/manage_bulk.js
+scripts[] = js/manage_filter.js
 scripts[] = js/bootstrap-tooltip-popover.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
