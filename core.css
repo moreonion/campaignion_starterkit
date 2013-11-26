@@ -580,9 +580,7 @@ body.page-admin div.vertical-tabs .vertical-tabs-panes .vertical-tabs-pane field
   }
 
 .item-list h3,
-.block .block-title,
-.fieldset-title,
-.collapsible .fieldset-legend a {
+.block .block-title {
   display:block;
   font-size:11px;
   margin:0px;
@@ -591,44 +589,9 @@ body.page-admin div.vertical-tabs .vertical-tabs-panes .vertical-tabs-pane field
   background:none transparent;
   }
 
-  .fieldset-legend,
-  .collapsible .fieldset-legend a { padding-bottom:4px; }
-
-  /* Explicit height for IE */
-  .collapsible .fieldset-legend a { height:20px; }
-
-  .collapsible .fieldset-legend span.icon {
-    position:absolute;
-    left:-20px;
-    top:4px;
-    background:url(images/bleeds.png) -20px -180px no-repeat;
-    width:20px;
-    height:20px;
-    display:block;
-    cursor:pointer;
-    }
-
-    html.js .collapsed .fieldset-legend span.icon { background-position:0px -180px; }
-
-    .fieldset .collapsible .fieldset-legend span.icon { display:none; }
-
-  .collapsed .fieldset-legend a {
-    background:#eee;
-    color:#484848;
-    }
-
-  .collapsed .fieldset-legend a:hover { color:#666; }
-
-  .collapsible .fieldset-legend {
-    padding:0px;
-    background:transparent;
-    }
-
-  .collapsed .fieldset-legend a { padding-bottom:4px; }
 
 .block .block-content,
-.container-inline .fieldset-content,
-.fieldset-content {
+.container-inline .fieldset-content {
   padding:10px 9px 9px;
   background: #f1f1f1 none;
       -moz-border-radius: 7px;
@@ -639,10 +602,6 @@ body.page-admin div.vertical-tabs .vertical-tabs-panes .vertical-tabs-pane field
     box-shadow: #E0E0E0;
   }
 
-
-  html.js .collapsed .fieldset-content { display:none; }
-
-  .fieldset .fieldset .fieldset-content { background:none transparent; }
 
 /* Filter form */
 .filter-wrapper {

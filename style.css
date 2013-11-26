@@ -17,12 +17,12 @@ a {
   }
   
   a:hover, a:focus {
-	  color: #C65E3B;
+    color: #C65E3B;
   }
 
 .limiter { margin:0px 30px; }
 
-/**
+/*
  * Skip to content link ===============================================
  */
 #skip-link {
@@ -188,7 +188,7 @@ table th {
     }
     
    .add-or-remove-shortcuts a:hover, .add-or-remove-shortcuts a:focus {
-	   color: #fff;
+     color: #fff;
    }
 
 /**
@@ -445,18 +445,18 @@ div.node .column-side .column-wrapper {
 }
 
 .field-type-image .fieldset, .field-type-image .fieldset-content, .fieldset .fieldset-content  {
-   border: 0px;
-   -moz-box-shadow: 0 0 0 transparent;
-   -webkit-box-shadow: 0 0 0 transparent;
-   box-shadow: 0 0 0 transparent;
+  border: 0px;
+  -moz-box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 
 .field-type-image .form-type-item label {
-	font-weight: bold;
-	font-size: 11px;
+  font-weight: bold;
+  font-size: 11px;
 }
 
-  .field-type-image .form-item {
+.field-type-image .form-item {
     border: 0px solid transparent;
     padding: 0;
     background: transparent none;
@@ -474,11 +474,11 @@ body .ui-dialog  {
 }
 
 .form-item-title {
-	padding: 0;
-	border: 0px solid transparent;
+  padding: 0;
+  border: 0px solid transparent;
 }
-  
-  
+
+
 /**
  * SPAMICIDE HIDDEN ====================================================
  * The spamicide module adds fieldsets to all forms it can find. It's not desired on the admin interface and breaks some styles
@@ -486,14 +486,14 @@ body .ui-dialog  {
  */
 
 #edit-spamicide, #edit-spamicide--2, #edit-spamicide--3, #edit-spamicide--4 {
-	display: none;
+  display: none;
 }
 
 /* other stuff non-techy people don't need */
 .wysiwyg-toggle-wrapper, .form-textarea-wrapper .filter-wrapper,
 .form-textarea-wrapper .filter-wrapper .fieldset-content, .field-widget-text-textarea-with-summary .filter-wrapper .fieldset-content,
 .field-widget-text-textarea-with-summary .filter-wrapper {
-	display: none;
+  display: none;
 }
 
 
@@ -521,7 +521,7 @@ a {
           color: #C65E3B;
   }
 
-.limiter { margin:0px 30px; }
+.limiter { margin:0px 60px; }
 
 /**
  * Skip to content link ===============================================
@@ -1057,6 +1057,164 @@ div.node .column-side .column-wrapper {
   
   
 /**
+ * Fieldsets + Collapsibles ==================================================
+ */
+
+.fieldset-title {
+  text-transform: none;
+}
+fieldset.fieldset {
+  border: 0;
+  margin-bottom: 1em;
+  background: transparent;
+}
+fieldset.titled,
+fieldset.collapsible {
+  border: 1px solid #b3afa8;
+  border-radius: 7px;
+}
+.fieldset span.fieldset-title {
+  background:#CCC8BF;
+  color:#65635f;
+  display:block;
+  font-size:14px;
+  line-height:20px;
+  margin:0px;
+  padding: 10px 14px;
+  border-radius: 7px 7px 0 0;
+  text-transform: none;
+  border-bottom: 1px solid #b3afa8;
+}
+
+.collapsed span.fieldset-title {
+  border-radius: 7px;
+  border-bottom: 0;
+}
+
+/* Explicit height for IE */
+.fieldset span.fieldset-title,
+.collapsible .fieldset-legend a { height:20px; }
+
+.collapsible .fieldset-legend span.icon {
+  position:absolute;
+  top:4px;
+  left:-31px;
+  background:url(images/plus_minus.png) center -5px no-repeat;
+  width:30px;
+  height:30px;
+  display:block;
+  cursor:pointer;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #444;
+  border-right: 0;
+}
+
+html.js .collapsed .fieldset-legend span.icon {
+  background-position: center -45px;
+}
+
+.fieldset .collapsible .fieldset-legend span.icon { display:block; }
+
+fieldset.fieldset,
+fieldset.collapsed {
+  border-radius: 7px;
+}
+.collapsed .fieldset-legend a {
+  background:#CCC8BF;
+  color:#65635f;
+  border-radius: 7px;
+  border-bottom: none;
+}
+
+.collapsible .fieldset-legend a:focus,
+.collapsible .fieldset-legend a:active,
+.collapsible .fieldset-legend a:hover { color:#666; }
+
+.fieldset legend,
+.collapsible .fieldset-legend {
+  padding:0px;
+  background:transparent;
+}
+
+.fieldset .fieldset-content {
+  background: none transparent;
+  border: 0;
+}
+.container-inline .fieldset-content,
+.titled .fieldset-content {
+  padding:10px 9px 9px;
+  background: #f8f7f4 none;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  -moz-box-shadow: 0 0 3px #E0E0E0;
+  -webkit-box-shadow: #E0E0E0;
+  box-shadow: #E0E0E0;
+}
+
+
+html.js .collapsed .fieldset-content { display:none; }
+
+.fieldset .fieldset .fieldset-content { background:none transparent; }
+
+.filter-wrapper .fieldset-content,
+.fieldset .fieldset.filter-wrapper .fieldset-content  {
+  background:transparent;
+  border-top:0px;
+  height:20px;
+  padding:5px 9px 4px;
+}
+.container-inline .fieldset-legend .fieldset-content,
+fieldset.titled .fieldset-content,
+fieldset.fieldset.titled .fieldset-content,
+fieldset.collapsible.titled .fieldset-content {
+  padding-top: 4em;
+  padding-bottom: 2em;
+}
+fieldset.fieldset.titled .fieldset-content fieldset:not(.titled) .fieldset-content {
+  padding-top: 0em;
+}
+
+/* ---- zweite Ebene ---- */
+
+fieldset.fieldset .fieldset,
+fieldset.collapsible .collapsible {
+  border-color: #c6c2ba;
+}
+.fieldset .fieldset .fieldset-legend,
+.fieldset .collapsible .fieldset-legend,
+.fieldset .collapsible .fieldset-legend a {
+  background:#e4dfd6;
+  border-color: #c6c2ba;
+}
+.fieldset .collapsible .fieldset-legend,
+.fieldset .collapsible .fieldset-legend a {
+  padding-left: 20px;
+}
+.fieldset .titled .fieldset-content,
+.collapsible .collapsible .fieldset-content {
+  background: #f5f1e8 none;
+}
+.fieldset .collapsible .fieldset-legend span.icon {
+  transform: rotate(90deg);
+  left:10px;
+  top:10px;
+  background:url(images/ae_pfeil_beige.png) center center no-repeat;
+  width:20px;
+  height:20px;
+  border-radius: 0;
+  border: none;
+}
+
+html.js .fieldset .collapsed .fieldset-legend span.icon {
+  background-position: center;
+}
+.fieldset .collapsed .fieldset-legend span.icon {
+  transform: rotate(0deg);
+}
+
+
+/**
  * SPAMICIDE HIDDEN ====================================================
  * The spamicide module adds fieldsets to all forms it can find. It's not desired on the admin interface and breaks some styles
  * Therefore we'll hide it.
@@ -1182,3 +1340,4 @@ div.node .column-side .column-wrapper {
 body.cke_show_borders {
   padding: 13px 3%;
 }
+
