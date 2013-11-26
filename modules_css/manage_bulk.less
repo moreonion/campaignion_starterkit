@@ -2,9 +2,9 @@
   &.bulk-dialog {
     position: fixed;
     top: 100px;
-    left: 25%;
+    left: 15%;
     padding: 0;
-    width: 50%;
+    width: 70%;
     z-index: 1001;
     #edit-bulk-wrapper-operations {
       input {
@@ -24,26 +24,53 @@
     background-image: url(../images/ae_x.png);
   }
   #edit-bulk-wrapper-op-wrapper {
-    display: none
+    width: 50%;
+    float: right;
+    fieldset {
+      display: none;
+    }
   }
   #edit-bulk-wrapper-operations {
-    width: 50%;
+    // width: 50%;
+    position: relative;
     label {
       border: 1px solid #dad5cd;
-      padding: 0.5em 5%;
-      width: 90%;
+      padding: 0.5em 2% 0.5em 2%;
+      width: 96%;
       display: block;
       background-color: #e3dfd7;
       color: #777470;
       font-weight: bold;
       font-size: 1em;
       border-radius: 5px;
-      .form-item-bulk-wrapper-operations {
-      }
       &.active {
         background-color: #c3bfb7;
       }
     }
+    .bulk-question-mark {
+      width: 32px;
+      height: 32px;
+      right: 0px;
+      top: 0px;
+      display: block;
+      position: absolute;
+      color: #dad5cd;
+      border: 1px solid #dad5cd;
+      background-color: #fff;
+      text-align: center;
+      border-radius: 20px;
+      line-height: 32px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .form-type-radio.form-item-bulk-wrapper-operations {
+      padding-right: 50px;
+    }
+  }
+  .form-type-radios.form-item-bulk-wrapper-operations {
+    width: 48%;
+    float: left;
   }
   .form-item-bulk-wrapper-operations {
     .popover {
