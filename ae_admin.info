@@ -16,6 +16,7 @@ scripts[] = js/ae_itoggle.js
 scripts[] = js/close_messages.js
 scripts[] = js/jquery.fs.selecter.js
 scripts[] = js/manage_bulk.js
+scripts[] = js/bootstrap-tooltip-popover.js
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
@@ -32,6 +33,7 @@ stylesheets[screen][] = modules_css/media.css
 stylesheets[screen][] = modules_css/options_element.css
 stylesheets[screen][] = modules_css/ae_petition_wizard.less
 stylesheets[screen][] = modules_css/manage_bulk.less
+stylesheets[screen][] = modules_css/bootstrap-tooltip-popover.css
 
 
 stylesheets[screen][] = modules_css/ae_itoggle.css
