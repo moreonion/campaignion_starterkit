@@ -1,0 +1,57 @@
+@border_color: #e3e3e3;
+@background_color: #ffffff;
+@background_color_hover: darken(@background_color, 3%);
+
+.listdropdown-trigger {
+  width: auto;
+  display: block;
+  text-decoration: none;
+  border: 1px solid @border_color;
+  background: @background_color;
+  margin: 0;
+  padding: 0.5em 1em;
+  line-height: 1.4em;
+  font-size: 1em;
+  color: #333333;
+  width: 100%;
+
+  &:active, &:hover, &:focus, &:visited {
+    text-decoration: none;
+  }
+
+}
+.listdropdown-menu {
+  position: absolute;
+  display: none;
+  width: 100%;
+  border: 1px solid @border_color;
+  font-size: 1em;
+  line-height: 1.4em;
+  background: @background_color;
+  padding: 0;
+  color: #333333;
+  z-index: 500;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  top: 2.7em;
+  left: 0;
+  right: 0;
+  min-height: 1em;
+  min-width: 15em;
+
+  li {
+    padding: 0.5em 1em;
+    border-bottom: 1px dotted @border_color;
+    cursor: pointer;
+
+    &:hover {
+      background: @background_color_hover;
+
+    }
+  }
+}
+.listdropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 500;
+  margin: 0.5em 0;
+}
