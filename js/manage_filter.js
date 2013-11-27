@@ -10,9 +10,10 @@ Drupal.behaviors.manage_filter.attach = function(context) {
 
   // generate filter list
   var html = '';
-  html += '<ul class="manage-filter-dropdown">';
+  html += '<ul class="manage-filter-dropdown listdropdown-menu">';
   $filterFieldsets.each(function () {
-    html += '<li class="filter-toggle filter-disabled" data-filter-for="' + $(this).attr('id') + '">' + $(this).attr('id') + '</li>';
+    var $label = $('label:not([for$=active])', $(this));
+    html += '<li class="filter-toggle filter-disabled" data-filter-for="' + $(this).attr('id') + '">' + $label.text() + '</li>';
   });
   html += '</ul>';
   $ul = $(html);
@@ -51,6 +52,10 @@ Drupal.behaviors.manage_filter.attach = function(context) {
     $self.hide();
     $('input.filter-active-toggle', $filterFieldset).attr('checked', true).trigger('change');
 
+  });
+
+  $('ul.manage-filter-dropdown').listdropdown({
+    defaultText: Drupal.t('Enable filters')
   });
 
 };
