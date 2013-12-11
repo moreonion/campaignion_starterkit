@@ -33,6 +33,7 @@
     .insertBefore($self)
     .click(function(e) {
       $self.toggle();
+      _checkIfEmpty($self);
       e.preventDefault();
       e.stopPropagation();
     });
@@ -51,6 +52,25 @@
       $self.hide();
     });
 
+    // creates and toggles the empty list info element
+    function _checkIfEmpty($ul) {
+      var $visible = $('li', $ul).not('.empty-list-text').filter(':visible');
+      var $emptyListText = $('.empty-list-text');
+      
+      // generate empty-list li if not already there
+      if ($emptyListText.length < 1) {
+        $emptyListText = $('<li class="empty-list-text">' + settings.emptyListText + '</li>')
+        $ul.prepend($emptyListText);
+      }
+      
+      if ($visible.length > 0) {
+        $emptyListText.hide();
+      } else {
+        $emptyListText.show();
+      }
+      
+    }
+    
     return this;
 
   };
