@@ -87,5 +87,11 @@ Drupal.behaviors.ae_admin.attach = function(context) {
   if(Drupal.media && Drupal.media.browser) {
     setTimeout(Drupal.media.browser.resizeIframe, 1);
   }
+
+  if ($.fn.selecter && $.fn.jquery >= "1.6.0") {
+    $('body').addClass('fs-selecter');
+    $('select').selecter();
+    $('.ctools-content ul').selecter({defaultLabel: Drupal.t('Edit'), links:true });
+  }
 };
 })(jQuery);

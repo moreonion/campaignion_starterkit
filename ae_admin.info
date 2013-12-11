@@ -14,6 +14,13 @@ scripts[] = js/ae_admin.js
 scripts[] = js/easing.js
 scripts[] = js/ae_itoggle.js
 scripts[] = js/close_messages.js
+scripts[] = js/jquery.fs.selecter.js
+scripts[] = js/manage_bulk.js
+scripts[] = js/manage_filter.js
+scripts[] = js/bootstrap-tooltip-popover.js
+;scripts[] = js/bootstrap-dropdown.js
+scripts[] = js/jquery.listdropdown.js
+
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css
 stylesheets[screen][] = style.css
@@ -29,9 +36,15 @@ stylesheets[screen][] = modules_css/jquery.ui.theme.css
 stylesheets[screen][] = modules_css/media.css
 stylesheets[screen][] = modules_css/options_element.css
 stylesheets[screen][] = modules_css/ae_petition_wizard.less
+stylesheets[screen][] = modules_css/manage_bulk.less
+stylesheets[screen][] = modules_css/bootstrap-tooltip-popover.css
+stylesheets[screen][] = modules_css/bootstrap-buttongroup-dropdown.css
+stylesheets[screen][] = modules_css/bootstrap-dropdown.css
+stylesheets[screen][] = modules_css/jquery.listdropdown.less
 
 
 stylesheets[screen][] = modules_css/ae_itoggle.css
+stylesheets[screen][] = modules_css/jquery.fs.selecter.css
 
 
 ; Support shortcut module links
