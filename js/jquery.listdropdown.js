@@ -12,6 +12,7 @@
     var defaults = {
       defaultText: 'Choose',
       createWrapper: true,
+      showArrow: true,
       emptyListText: 'nothing to choose'
     };
     var settings = $.extend({}, defaults, options );
@@ -38,6 +39,10 @@
       e.stopPropagation();
     });
 
+    if (settings.showArrow) {
+      var $arrow = $('<div class="arrow-up"></div>').insertBefore($self);
+    }
+
     var $allItems = $self.find('li');
     $allItems.click(function(event) {
        var $target = $(event.delegateTarget);
@@ -54,7 +59,8 @@
 
     // creates and toggles the empty list info element
     function _checkIfEmpty($ul) {
-      var $visible = $('li', $ul).not('.empty-list-text').filter(':visible');
+      var $li = $('li', $ul).not('.empty-list-text');
+      var $visible = $li.filter(':visible');
       var $emptyListText = $('.empty-list-text');
       
       // generate empty-list li if not already there
@@ -62,13 +68,19 @@
         $emptyListText = $('<li class="empty-list-text">' + settings.emptyListText + '</li>')
         $ul.prepend($emptyListText);
       }
-      
+
+      // use classes fist/last to determine the first/last *visible* li
+      // this cannot be done easily in css
+      $li.removeClass('first last');
+
       if ($visible.length > 0) {
         $emptyListText.hide();
+        $visible.first().addClass('first');
+        $visible.last().addClass('last');
       } else {
         $emptyListText.show();
       }
-      
+
     }
     
     return this;
