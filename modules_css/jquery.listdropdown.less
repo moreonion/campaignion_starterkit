@@ -1,6 +1,8 @@
-@border_color: #e3e3e3;
+@listdropdown_text_color: #8a8780;
+@border_dropdown_color: #d5d1c8;
 @background_color: #ffffff;
-@background_trigger_color: #dddddd;
+@background_trigger_color: #e3ded5;
+@border_trigger_color: darken(@background_trigger_color, 8%);
 @background_color_hover: darken(@background_color, 3%);
 
 .listdropdown-wrapper {
@@ -17,32 +19,50 @@
 
 .listdropdown-trigger {
   display: block;
+  position: relative;
   text-decoration: none;
-  border: 1px solid @border_color;
   background: @background_trigger_color;
+  border: 1px solid @border_trigger_color;
   margin: 0;
   padding: 0.5em 1em;
   line-height: 1.4em;
   font-size: 1em;
-  color: #333333;
+  color: @listdropdown_text_color;
   width: auto;
+  padding-right: 50px;
+  border-radius: 5px;
+  font-weight: bold;
 
   &:active, &:hover, &:focus, &:visited {
     text-decoration: none;
+    color: @listdropdown_text_color;
   }
 
+  .caret {
+    border-left: 1px solid @border_trigger_color;
+    background: url(caret-arrow.png) no-repeat center center lighten(@border_trigger_color, 2%);
+    position: absolute;
+    display: block;
+    width: 32px; // 8 + 8 + 8 + 8px (size of drop arrow)
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+  }
+  
 }
 
 .listdropdown-menu {
   position: absolute;
   display: none;
   width: auto;
-  border: 1px solid @border_color;
+  border: 1px solid @border_dropdown_color;
   font-size: 1em;
+  font-weight: bold;
   line-height: 1.4em;
   background: @background_color;
   padding: 5px 0;
-  color: #333333;
+  color: @listdropdown_text_color;
   z-index: 500;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   top: 2.7em;
@@ -51,24 +71,32 @@
   min-width: 10em;
   border-radius: 5px;
 
-  &:before {
+  // drop arrow
+  &:before, &:after {
     content: "";
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
 
-    border-bottom: 8px solid white;
+    border-bottom: 8px solid @border_dropdown_color;
 
     position: absolute;
-    right: 10px;
+    right: 8px;
     top: -8px;
     display: inline-block;
   }
 
+  // drop arrow background
+  &:after {
+    border-bottom: 8px solid white;
+    top: -7px; // 1px less than the :before
+  }
+
+
   li {
     padding: 0.5em 1em;
-    border-bottom: 1px dotted @border_color;
+    border-bottom: 1px solid @border_dropdown_color;
     cursor: pointer;
     white-space: nowrap;
 

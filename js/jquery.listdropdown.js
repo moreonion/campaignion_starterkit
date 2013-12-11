@@ -12,7 +12,6 @@
     var defaults = {
       defaultText: 'Choose',
       createWrapper: true,
-      showArrow: true,
       emptyListText: 'nothing to choose'
     };
     var settings = $.extend({}, defaults, options );
@@ -30,7 +29,7 @@
     //   default_text = $active.html();
     // }
 
-    var $trigger = $('<a href="#" class="listdropdown-trigger">' + settings.defaultText + '</a>')
+    var $trigger = $('<a href="#" class="listdropdown-trigger">' + settings.defaultText + '<span class="caret"></span></a>')
     .insertBefore($self)
     .click(function(e) {
       $self.toggle();
@@ -38,10 +37,6 @@
       e.preventDefault();
       e.stopPropagation();
     });
-
-    if (settings.showArrow) {
-      var $arrow = $('<div class="arrow-up"></div>').insertBefore($self);
-    }
 
     var $allItems = $self.find('li');
     $allItems.click(function(event) {
