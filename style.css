@@ -542,6 +542,15 @@ div.node .column-side .column-wrapper {
   margin-top: -3em;
 }
 
+.field-type-image a.remove {
+  background: url('images/message_x.png') 5px 3px no-repeat #F3EFE6;
+  color: #827F7F;
+  text-shadow: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  border: none;
+  padding-left: 2.2em;
+}
 
 /**
  * The title is bigger and more prominent==================================
