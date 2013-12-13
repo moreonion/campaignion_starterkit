@@ -197,7 +197,6 @@
 }
 
 .ui-widget.ui-widget-content.media-wrapper {
-  background: none;
   border: none;
 }
 
@@ -253,7 +252,7 @@ div#media-browser .throbber {
 }
 
 #media-browser-tabset .ui-tabs-nav {
-
+  background: none;
 }
 
 .fake-ok {
