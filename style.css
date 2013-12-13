@@ -530,36 +530,16 @@ div.node .column-side .column-wrapper {
  * Make Media look nice in rubik ==================================
  */
 
-.field-type-image {
-  background: none repeat scroll 0 0 #f1f1f1;
-  padding: 8px 12px;
-  margin-bottom: 10px;
-  border: 1px solid #D1D1D1;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  border-radius: 7px;
-  -moz-box-shadow: 0 0 3px #E0E0E0;
-  -webkit-box-shadow: #E0E0E0;
-  box-shadow: #E0E0E0;
-
+.field-type-image .form-wrapper {
+  background-color: #E4DFD6;
+  margin-top: 2.8em;
+  padding: 0.2em;
 }
 
-.field-type-image .fieldset, .field-type-image .fieldset-content, .fieldset .fieldset-content  {
-  border: 0px;
-  -moz-box-shadow: 0 0 0 transparent;
-  -webkit-box-shadow: 0 0 0 transparent;
-  box-shadow: 0 0 0 transparent;
-}
-
-.field-type-image .form-type-item label {
+.field-type-image label {
   font-weight: bold;
   font-size: 11px;
-}
-
-.field-type-image .form-item {
-  border: 0px solid transparent;
-  padding: 0;
-  background: transparent none;
+  margin-top: -3em;
 }
 
 
