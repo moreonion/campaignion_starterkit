@@ -55,7 +55,7 @@ Drupal.behaviors.manage_filter.attach = function(context) {
   });
 
   $('ul.manage-filter-dropdown').listdropdown({
-    defaultText: Drupal.t('Enable filters')
+    defaultText: Drupal.t('Add filter')
   });
 
 };
