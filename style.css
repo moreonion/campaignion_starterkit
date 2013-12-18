@@ -194,7 +194,7 @@ table th {
 }
 
 /**
- * Tabs =============================================================== 
+ * Tabs ===============================================================
  */
 
 #tabbed {
@@ -305,7 +305,7 @@ table th {
 .primary-tabs li a:focus, .primary-tabs li a:hover {
   background: none #c1beb7;
   border-color: #c1beb7;
-}  
+}
 
 /* Secondary tabs, nested */
 .secondary-tabs {
@@ -339,7 +339,7 @@ table th {
 }
 
 .secondary-tabs li a:hover, .secondary-tabs li a:focus {
-  background-color: #E0DCD5;    
+  background-color: #E0DCD5;
 }
 
 /* pager */
@@ -391,7 +391,7 @@ div.pager {
 
 .pager li.pager-current span {
   color:#fff;
-  text-shadow:#38a 0px 1px 0px;  
+  text-shadow:#38a 0px 1px 0px;
 }
 
 
@@ -497,7 +497,7 @@ div.node .column-side .column-wrapper {
   border: 0px solid transparent;
   box-shadow: 0 0 0 transparent;
   -moz-box-shadow: 0 0 0 transparent;
-  -webkit-box-shadow: 0 0 0 transparent;     
+  -webkit-box-shadow: 0 0 0 transparent;
 }
 
 #edit-webform-template label {
@@ -516,7 +516,7 @@ div.node .column-side .column-wrapper {
   padding: 0;
   box-shadow: 0 0 0 transparent;
   -moz-box-shadow: 0 0 0 transparent;
-  -webkit-box-shadow: 0 0 0 transparent;        
+  -webkit-box-shadow: 0 0 0 transparent;
 }
 
 
@@ -784,7 +784,7 @@ html.js .fieldset .collapsed .fieldset-legend span.icon {
   float: left;
 }
 
-/* wysiwyg reset kill 
+/* wysiwyg reset kill
 make things in wysiwyg editor visible
  */
 
@@ -854,3 +854,37 @@ body.cke_show_borders {
   top: 0px!important;
 }
 
+
+#modalContent .ctools-modal-content {
+
+    /*background:    repeat 0 0 #E5E1DA;*/
+  background:    repeat 0 0 #F5F1E8;
+  border-radius: 4px 4px 4px 4px;
+  border:        0 solid #AAAAAA;
+  box-shadow:    0 0 15px #545351;
+
+  color:     #222222;
+  font-size: 1.1em;
+  font-family: Verdana,Arial,sans-serif;
+  padding: 0.2em 0.2em 16px;
+}
+
+#modalContent .ctools-modal-content .modal-header {
+  background:    repeat 0 0 #D9D5CD;
+  border-radius: 4px 4px 0px 0px;
+  min-height:    2em;
+  padding:       0.6em 0 0.2em 1.3em;
+}
+
+#modalContent .ctools-modal-content .modal-title {
+  color: #555555;
+}
+
+#modalContent .ctools-modal-content fieldset {
+  clear: none;
+}
+
+#modalContent .ctools-modal-content fieldset .fieldset-content {
+  /*background-color: #F1F1F1;*/
+  background-color: transparent;
+}
