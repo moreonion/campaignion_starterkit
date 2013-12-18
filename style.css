@@ -542,6 +542,11 @@ div.node .column-side .column-wrapper {
   margin-top: -3em;
 }
 
+.field-type-image .preview,
+.field-type-image a.button {
+  float: left;
+}
+
 .field-type-image a.remove {
   background: url('images/remove-x.png') 6px 4px no-repeat #F3EFE6;
   color: #827F7F;
@@ -550,6 +555,7 @@ div.node .column-side .column-wrapper {
   line-height: 0.9em;
   border: none;
   padding-left: 2.2em;
+  margin-top: 18px;
 }
 
 /**
