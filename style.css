@@ -538,24 +538,18 @@ div.node .column-side .column-wrapper {
 
 .field-type-image label {
   font-weight: bold;
-  font-size: 1em;
+  font-size: 11px;
   margin-top: -3em;
 }
 
-.field-type-image .preview,
-.field-type-image a.button {
-  float: left;
-}
-
 .field-type-image a.remove {
-  background: url('images/remove-x.png') 6px 4px no-repeat #F3EFE6;
+  background: url('images/message_x.png') 5px 3px no-repeat #F3EFE6;
   color: #827F7F;
   text-shadow: none;
   font-size: 0.9em;
   line-height: 0.9em;
   border: none;
   padding-left: 2.2em;
-  margin-top: 18px;
 }
 
 /**
@@ -857,15 +851,15 @@ body.cke_show_borders {
 
 #modalContent .ctools-modal-content {
 
-    /*background:    repeat 0 0 #E5E1DA;*/
   background:    repeat 0 0 #F5F1E8;
   border-radius: 4px 4px 4px 4px;
   border:        0 solid #AAAAAA;
   box-shadow:    0 0 15px #545351;
 
-  color:     #222222;
-  font-size: 1.1em;
+  color:       #222222;
+  font-size:   1.1em;
   font-family: Verdana,Arial,sans-serif;
+
   padding: 0.2em 0.2em 16px;
 }
 
@@ -885,6 +879,5 @@ body.cke_show_borders {
 }
 
 #modalContent .ctools-modal-content fieldset .fieldset-content {
-  /*background-color: #F1F1F1;*/
   background-color: transparent;
 }
