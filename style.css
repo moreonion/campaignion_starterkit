@@ -543,7 +543,7 @@ div.node .column-side .column-wrapper {
 }
 
 .field-type-image a.remove {
-  background: url('images/message_x.png') 5px 3px no-repeat #F3EFE6;
+  background: url('images/remove-x.png') 6px 4px no-repeat #F3EFE6;
   color: #827F7F;
   text-shadow: none;
   font-size: 0.9em;
