@@ -552,6 +552,48 @@ div.node .column-side .column-wrapper {
   padding-left: 2.2em;
 }
 
+/* overwrite media.css preview styles */
+.field-type-image .preview .media-item,
+.field-type-image .preview .media-item img,
+.field-type-image .preview .media-item .label-wrapper,
+.field-type-image .preview .media-item .label-wrapper .media-filename,
+.field-type-image .preview .media-item .label-wrapper:hover,
+.field-type-image .preview .media-item .label-wrapper:hover .media-filename {
+  padding: 0;
+  margin: 0;
+  border: none;
+  line-height: inherit;
+  cursor: pointer;
+}
+.field-type-image .preview .media-item .label-wrapper,
+.field-type-image .preview .media-item .label-wrapper .media-filename,
+.field-type-image .preview .media-item .label-wrapper:hover,
+.field-type-image .preview .media-item .label-wrapper:hover .media-filename {
+  display: block;
+}
+
+.field-type-image .preview {
+  float: left;
+  min-width: 100px;
+  min-height: 131px;
+  padding: 6px 6px 2px;
+  margin: 10px;
+  border: 1px solid #d3cec6;
+  background: #fff;
+  background-image: url('images/dummy.png');
+  background-repeat: no-repeat;
+  background-position: 6px 6px;
+  cursor: pointer;
+}
+
+.field-type-image .preview label {
+  margin: 0;
+  border: none;
+  text-transform: none;
+  font-weight: normal;
+}
+
+
 /**
  * The title is bigger and more prominent==================================
  */
