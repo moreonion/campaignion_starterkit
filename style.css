@@ -507,6 +507,10 @@ div.node .column-side .column-wrapper {
   width: 0;
 }
 
+#ae-wizard-webform-template-selector .selecter {
+  margin: 0 10px 0 0;
+}
+
 #ae-wizard-webform-template-selector input#edit-submit {
   font-size: 100%;
 }
