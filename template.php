@@ -640,6 +640,9 @@ function ae_admin_webform_email_edit_form($variables) {
  * Implements hook_form_FORM_ID_alter().
  */
 function ae_admin_form_node_form_alter(&$form, &$form_state) {
+  if (isset($form['wizard_advanced'])) {
+    return;
+  }
   // toggle visibility of advanced settings
   $form['settings_advanced'] = array(
     '#type' => 'container',
