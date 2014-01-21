@@ -517,7 +517,7 @@ div.form-builder-new-field span.progress {
 #form-builder-field-palette ul li.field-direct_mail_newsletter a {
   background-position: 5px -84px;
 }
-#form-builder-field-palette ul li.field-email_newsletter a {
+#form-builder-field-palette ul li.field-email_newsletter a, #form-builder-field-palette ul li.field-newsletter a {
   background-position: 5px -923px;
 }
 
