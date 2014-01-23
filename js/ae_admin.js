@@ -90,8 +90,7 @@ Drupal.behaviors.ae_admin.attach = function(context) {
 
   if ($.fn.selecter && $.fn.jquery >= "1.6.0") {
     $('body').addClass('fs-selecter');
-    $('.campaignion-manage-content-listing select').selecter();
-    $('.ctools-content ul').selecter({defaultLabel: Drupal.t('Edit'), links:true });
+    $('.campaignion-manage-content-listing ul').selecter({defaultLabel: Drupal.t('Edit'), links:true });
   }
 };
 })(jQuery);
