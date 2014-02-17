@@ -424,10 +424,30 @@
     }
 }
 
-#form-builder-wrapper #edit-submit-buttons .form-item {
-  width: 30%;
-  float: left;
-  margin-right:1.5%;
+#form-builder-wrapper #edit-submit-buttons {
+  width: 60%; 
+	margin-top: 1.7em;
+
+	.form-item {
+		width: 30%;
+		float: left;
+		margin-right:1.5%;
+	}
+	
+	.input.teaser-button, input.form-submit {
+		box-shadow: 0 1px 1px #DDDDDD;
+		background: url('images/sandbox_menu/ae_link_bg.png') repeat scroll 0 0 #787575;
+		border: 1px solid #716E6E;
+		color: #F7F1F1;
+		text-shadow: 1px 1px 1px #413F3F;
+	}
+	
+	.input.teaser-button:focus, input.form-submit:focus {
+		background: none #FFFFFF;
+		color: #666666;
+		text-shadow: none;
+		cursor: text;
+	}
 }
 
 /*** page wide changes to admin theme on wizard pages ***/
@@ -437,7 +457,6 @@
 	#branding { /* hides breadcrumbs and top bar */
 	  display: none;
 	}
-	
 	
 }
 
