@@ -89,8 +89,8 @@
     }
     #edit-wizard-head {
         background: @trail_bg;
-        padding: 1em 20px 1em 20px; /* 30px from .limiter, 20px for overlay */
-        margin:  1em -20px 1em -20px;
+        padding: 1em 57px 0.5em; /* 30px from .limiter, 20px for overlay */
+        margin:  0em -59px 1em;
         height: auto;
         clear: both;
         overflow: auto;
@@ -429,3 +429,16 @@
   float: left;
   margin-right:1.5%;
 }
+
+/*** page wide changes to admin theme on wizard pages ***/
+
+.page-wizard {
+	
+	#branding { /* hides breadcrumbs and top bar */
+	  display: none;
+	}
+	
+	
+}
+
+
