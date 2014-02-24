@@ -104,7 +104,7 @@
             visibility: hidden;
         }
         #edit-buttons {
-            width: 30%;
+            width: 37%;
             margin: 0!important;
             padding: 0!important;
             float: right;
@@ -123,11 +123,12 @@
             }
         }
         .wizard-trail-wrapper {
-            width: 70%;
+            width: 63%;
             float: left;
             clear: left;
             display: block;
             overflow: hidden;
+						max-width: 645px;
         }
         .wizard-trail {
             background: @trail_bg;
@@ -465,5 +466,43 @@
 	}
 	
 }
+
+/*** wizard tablet styling ***/
+@media screen and (max-width: 1000px) {
+	
+	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons {
+	  width: 100%;
+		clear: both;
+	}
+	
+	#main-content #edit-wizard-head .wizard-trail-wrapper, #wizard-step-form #edit-wizard-head .wizard-trail-wrapper { /* hiding wizard trail */
+		width: 100%;
+		clear: both;
+		max-width: auto;
+		margin-top: 10px;
+	}
+	
+}
+
+/*** wizard mobile styling ***/
+
+@media screen and (max-width: 600px) {
+	
+	.wizard-trail-wrapper { /* hiding wizard trail */
+		.wizard-trail span {
+			display: none;			
+		}
+	}
+	
+	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons { /* increasing width of buttons */
+    width: 100%;
+		float: none;
+	}
+	
+	#main-content #edit-wizard-head #edit-previous {
+	  margin-bottom: 10px;
+	}
+	
+} /* end of mobile */
 
 
