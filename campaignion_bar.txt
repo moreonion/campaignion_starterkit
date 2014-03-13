@@ -1,0 +1,32 @@
+Home {"url":"<front>", "description":"Go to your front page!" }
+Monitor {"description":"Monitor your actions and activity","hidden":"true" }
+- Campaign Reports {"url":"admin/reports/campaign", "description":"","hidden":"true" }
+- Action Reports {"url":"admin/reports/action", "description":"","hidden":"true" }
+Manage {"description":"Manage your Campaignion" }
+- Content & Actions {"url":"admin/manage/content_and_actions","weight":"0", "description":"View your content and actions" }
+- Supporters {"url":"", "weight":"1", "description":"View and manage your supporters" }
+-- Supporter management {"url":"admin/supporters","weight":"0","description":"Filter and perform bulk actions on your supporter base" }
+-- User accounts {"url":"admin/people","weight":"1", "description":"Manage user accounts and permissions" }
+-- Tags {"url":"admin/structure/taxonomy/ae_contact_tags_taxonomy","weight":"2", "description":"Manage tags assigned to supporters" }
+-- Data management {"url":"admin/structure/redhen/contact_types/manage/contact/fields","weight":"3", "description":"Define which data is collected about supporters" }
+- Navigation & Structure {"url":"admin/manage/navigation_and_structure", "weight":"2", "description":"List the menus of your site" }
+- Media gallery {"url":"admin/manage/media", "weight":"2", "description":"View and edit the media content of your site." }
+- Design & Appearence {"url":"admin/appearance","weight":"3", "description":"Change the appearance of your site" }
+- Site settings {"url":"admin/config","weight":"", "description":"Manage your site settings" }
+New {"description":"Add new content or actions" }
+- New actions
+-- Petition {"url":"wizard/petition","weight":"0", "description":"Create a new petition for your campaign" }
+-- Donation page {"url":"wizard/donation","weight":"4", "description":"Create a new donation form" }
+-- Email protest {"url":"wizard/email-protest", "weight":"1", "description":"Launch a new email protest for your campaign" }
+-- Flexible form {"url":"wizard/webform","weight":"3", "description":"Create a flexible form" }
+-- Action template {"url":"wizard/webform-template-type","weight":"10", "description":"Create reusable action templates" }
+- New content
+-- Campaign {"url":"node/add/campaign","weight":"0", "description":"Choose this if you want to launch a campaing site" }
+-- Static page {"url":"node/add/static-page","weight":"1", "description":"This is your common static page, for sites that don't change often" }
+-- News item {"url":"", "description":"Post news!","weight":"2", "hidden":"true" }
+-- Thank you page {"url":"node/add/thank-you-page","weight":"3", "description":"Create a page your supporters will see after they participated in an action" }
+-- Box {"url":"admin/structure/block/add", "weight":"4", "description":"Create a new box" }
+-- Animal Fate {"url":"node/add/animal-fate","weight":"5", "description":"Create a page to write about a single animal fate" }
+-- Testemonial {"url":"node/add/testemonial","weight":"6", "description":"Create a new testemonial" }
+-- Personalized Landing Page {"url":"node/add/personalized-landing-page","weight":"7", "description":"" }
+
