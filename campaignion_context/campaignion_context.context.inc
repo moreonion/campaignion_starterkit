@@ -13,43 +13,6 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'current_webform_embedded';
-  $context->description = '';
-  $context->tag = '';
-  $context->conditions = array(
-    'context_get' => array(
-      'values' => array(
-        'embed=1' => 'embed=1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'cck_blocks-pgbar_default' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'pgbar_default',
-          'region' => 'widget',
-          'weight' => '-19',
-        ),
-        'webform_block-current' => array(
-          'module' => 'webform_block',
-          'delta' => 'current',
-          'region' => 'widget',
-          'weight' => '-18',
-        ),
-      ),
-    ),
-    'theme_html' => array(
-      'class' => 'embedded-webform no-aetoolbar',
-    ),
-  );
-  $context->condition_mode = 0;
-  $export['current_webform_embedded'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'donation_form';
   $context->description = '';
   $context->tag = 'theme';

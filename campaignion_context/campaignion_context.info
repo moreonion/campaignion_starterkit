@@ -10,7 +10,6 @@ dependencies[] = cck_blocks
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = webform_block
-features[context][] = current_webform_embedded
 features[context][] = donation_form
 features[context][] = landing_page
 features[context][] = region_content_bottom_default
