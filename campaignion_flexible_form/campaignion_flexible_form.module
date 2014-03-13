@@ -11,7 +11,7 @@ include_once 'campaignion_flexible_form.features.inc';
  */
 function campaignion_flexible_form_campaignion_action_info() {
   $types['webform'] = array(
-    'class' => 'Drupal\\campaignion\\Action\\FlexibleForm',
+    'class' => 'Drupal\\campaignion_flexible_form\\TypeBase',
     'parameters' => array(
       'thank_you_page' => array(
         'type' => 'thank_you_page',

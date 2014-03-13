@@ -15,6 +15,7 @@ dependencies[] = image
 dependencies[] = media
 dependencies[] = node_reference
 dependencies[] = pgbar
+dependencies[] = psr0
 dependencies[] = select_or_other
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1

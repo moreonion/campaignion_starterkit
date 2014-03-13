@@ -26,7 +26,7 @@ function campaignion_donation_block_view_alter(&$data, $block) {
  */
 function campaignion_donation_campaignion_action_info() {
   $type['donation'] = array(
-    'class' => 'Drupal\\campaignion\\Action\\Donation',
+    'class' => 'Drupal\\campaignion_donation\\ActionType',
     'parameters' => array(
       'thank_you_page' => array(
         'type' => 'thank_you_page',

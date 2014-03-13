@@ -17,6 +17,7 @@ dependencies[] = media
 dependencies[] = node
 dependencies[] = node_reference
 dependencies[] = pgbar
+dependencies[] = psr0
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = strongarm:strongarm:1

@@ -11,7 +11,7 @@ include_once 'campaignion_petition.features.inc';
  */
 function campaignion_petition_campaignion_action_info() {
   $types['petition'] = array(
-    'class' => 'Drupal\\campaignion\\Action\\Petition',
+    'class' => 'Drupal\\campaignion_petition\\ActionType',
     'parameters' => array(
       'thank_you_page' => array(
         'type' => 'thank_you_page',
