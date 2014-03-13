@@ -1,0 +1,99 @@
+This file lists modules that should make it into the campaignion_conf module sooner or later.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These are modules strongly suggested to make it into campaignion_conf
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Content authoring experience & UX
+---------------------------------
+
+Workbench is a suit of modules that provides a nice content management interface out of the box
+
+workbench
+workbench_access
+workbench_files
+workbench_media
+workbench_moderation
+
+edit_profile
+Edit profile separates User Account Settings from the actual User Profile display
+
+contextual-flyout-links
+Provides an alternate skin for the contextual eidit links (that don't break the design)
+downside: is not better from a usability point of view - it uses a hover effect which is quite bad
+
+simplified_menu_admin
+This module makes menu admin much nicer
+
+autosave
+auto save is a great module for auto-saving. needs testing but seems stable
+
+fasttoggle
+makes a few administrative tasks much faster such as publishing nodes & blocking users
+check it out first - may be flawed. currently no recommended release.
+
+
+seo_ui
+Changes vertical tab stuff around so that it's more user friendly (brings together path, meta tags, etc.)
+
+
+SEO
+---------------------------------
+
+sites_verify
+Provides domain & site ownerhsip verification to search engines
+
+
+
+Spam protection
+---------------------------------
+
+badbehavior
+Analyses the request and blocks on that basis
+
+
+Email
+-----------------------------------
+
+mail_edit
+A module that provides a common interface for ALL EMAILS going out via drupal. Modules can "plug" into the system
+Has to be testet with HTML email to check whether it runs well.
+Maybe party could hook into this system? Maybe split testing and similar features should be implemented in here as well??
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+These are modules currently not stable enough but they should be watched
+since they might lead to a great improvement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+http://drupal.org/project/plupload
+Makes plup-upload for media possible - only works with 2.x branch of media and therefore currently not compatible with our setup
+improvement gained would be multiple file uploads and much smoother ux for the uploading process
+
+
+editablefields
+this module allows fields to be edited from the node itself rather than the node edit form (NOTE: IT'S CURRENTLY NOT FULLY FUNCTIONAL IT SEEMS - version 1.0-alpha2)
+
+
+
+An interface for manual image cropping and selection of a cropped picture is a crucial media ux improvement
+these two projects have been tested by Florian and neither really worked (not sure why)
+http://drupal.org/project/manual-crop
+and
+http://drupal.org/project/imagecrop
+
+
+http://drupal.org/project/felix
+a block interface improvement for editors, currently not documented and not fully funcitonal but looks interesting
+
+
+

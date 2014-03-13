@@ -1,0 +1,57 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (modules-campaignion_thankyou_page)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/campaignion_thankyou_page/campaignion_thankyou_page.features.field.inc: n/a
+#  modules/campaignion_thankyou_page/campaignion_thankyou_page.features.inc: n/a
+#  modules/campaignion_thankyou_page/campaignion_thankyou_page.info: n/a
+#
+# Florian Engel, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-12-13 15:20+0100\n"
+"PO-Revision-Date: 2013-01-14 16:17+0100\n"
+"Last-Translator: Florian Engel\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.features.field.inc:426
+msgid "Add a large main image or a main video to your thank you page"
+msgstr "Platziere ein großes Bild, oder ein Video auf der Danke-Seite"
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.features.field.inc:428
+msgid "Display share buttons"
+msgstr "Social Media \"Teilen\" Buttons anzeigen"
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.features.field.inc:429
+msgid ""
+"Display share buttons on your page. Allows visitors to share your action."
+msgstr ""
+"Mit Hilfe von \"Teilen\" Buttons können Unterstützer/innen diese Aktion via "
+"Facebook, Twitter und Email teilen."
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.features.inc:29
+msgid ""
+"This is a site, users will see if they complete an action. A good place to "
+"thank them for doing that and encourage them to share your action with others."
+msgstr ""
+"Diese Seite werden Unterstützer/innen sehen, sobald sie bei dieser Aktion "
+"mitgemacht haben. Hier sollte man sich für die Untersützung bedanken und zur "
+"nächsten Aktion auffordern (zum Beispiel zum Teilen auffordern)."
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.info:0
+msgid "AE Thankyou Page Content Type"
+msgstr "Danke-Seite Inhaltstyp"
+
+#: modules/campaignion_thankyou_page/campaignion_thankyou_page.info:0
+msgid "provides Thank you page"
+msgstr "ermöglicht Danke-Seiten"
+
+

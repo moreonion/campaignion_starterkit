@@ -1,0 +1,38 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (modules-campaignion_supporter)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: modules/campaignion_supporter/campaignion_supporter.features.field.inc: n/a
+#
+# Florian Engel, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-12-13 15:20+0100\n"
+"PO-Revision-Date: 2013-01-14 15:54+0100\n"
+"Last-Translator: Florian Engel\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: modules/campaignion_supporter/campaignion_supporter.features.field.inc:959
+msgid "IP-Adress"
+msgstr ""
+
+#: modules/campaignion_supporter/campaignion_supporter.features.field.inc:961
+msgid "Preferred language"
+msgstr ""
+
+#: modules/campaignion_supporter/campaignion_supporter.features.field.inc:962
+msgid "Set this if the contact wants to receive direct mails"
+msgstr ""
+
+#: modules/campaignion_supporter/campaignion_supporter.features.field.inc:963
+msgid "Social Network Links"
+msgstr ""
+
+

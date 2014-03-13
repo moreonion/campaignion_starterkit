@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * campaignion_form_templates.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function campaignion_form_templates_enable() {
+
+  $webform_types = variable_get("webform_node_types");
+
+  if (isset($webform_types) == FALSE || in_array("webform_template_type", $webform_types) == FALSE ) {
+    $webform_types[] = "webform_template_type";
+    variable_set("webform_node_types", $webform_types);
+  }
+
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_context feature.
+ */
+
+include_once 'campaignion_context.features.inc';

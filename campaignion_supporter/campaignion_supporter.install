@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implement hook_modules_enabled
+ */
+function campaignion_supporter_install() {
+  if (!empty($GLOBALS['ae_contact_type_migration'])) {
+    return;
+  }
+
+  module_load_include('module', 'taxonomy');
+
+  if ($voc = taxonomy_vocabulary_machine_name_load('ae_contact_tags_taxonomy')) {
+    foreach(array('Activist', 'Donor', 'Supporter') as $term_name) {
+      taxonomy_term_save((object) array(
+        'name' => $term_name,
+        'vid'  => $voc->vid,
+      ));
+    }
+  }
+}

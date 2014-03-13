@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_petition feature.
+ */
+
+include_once 'campaignion_petition.features.inc';
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_petition_campaignion_action_info() {
+  $types['petition'] = array(
+    'class' => 'Drupal\\campaignion\\Action\\Petition',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+    ),
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_petition_node_form_alter().
+ */
+function campaignion_petition_form_petition_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Petition');
+  }
+}

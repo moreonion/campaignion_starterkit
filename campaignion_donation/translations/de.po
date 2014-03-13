@@ -1,0 +1,92 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (modules-campaignion_donation)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/campaignion_donation/campaignion_donation.features.field.inc: n/a
+#  modules/campaignion_donation/campaignion_donation.features.inc: n/a
+#  modules/campaignion_donation/campaignion_donation.module: n/a
+#  modules/campaignion_donation/campaignion_donation.info: n/a
+#  modules/ae_engagement_scores/ae_engagement_scores.info: n/a
+#
+# Florian Engel, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-12-13 15:20+0100\n"
+"PO-Revision-Date: 2013-01-14 15:57+0100\n"
+"Last-Translator: Florian Engel\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:905
+msgid "Add a large main image or a video to your donation."
+msgstr "Großes Bild oder Video zur Spendenseite hinzufügen"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:906
+msgid "Background info"
+msgstr "Hintergrund-Info"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:908
+msgid "Display a progress bar for your donation."
+msgstr "Fortschritts-Balken für die Spendenseite anzeigen"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:910
+msgid "Image or Video"
+msgstr "Bild oder Video"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:913
+msgid "Read more link text"
+msgstr "\"Mehr lesen\" Link Text"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:914
+msgid "Short Info"
+msgstr "Kurz-Information"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:917
+msgid "gets displayed in the sidebar."
+msgstr "wird in der Sidebar angezeigt"
+
+#: modules/campaignion_donation/campaignion_donation.features.field.inc:918
+msgid "reference_to_campaign"
+msgstr "gehört zur Kampagne"
+
+#: modules/campaignion_donation/campaignion_donation.features.inc:25
+msgid "A form to collect donations for your favorite project."
+msgstr "Ein Formular, das Spenden sammelt für dein Projekt"
+
+#: modules/campaignion_donation/campaignion_donation.module:53
+msgid "Read more link"
+msgstr "\"Mehr lesen\" Link"
+
+#: modules/campaignion_donation/campaignion_donation.module:64
+msgid ""
+"Use this formatter to make a .background_info field_collection visible ."
+msgstr ""
+
+#: modules/campaignion_donation/campaignion_donation.info:0
+msgid "Global 2000 Donation Content Type"
+msgstr "Global 2000 Spendenformular"
+
+#: modules/campaignion_donation/campaignion_donation.info:0
+msgid "Definitions for donation content type"
+msgstr "Definition der Spendenseiten"
+
+#: modules/campaignion_donation/campaignion_donation.info:0
+msgid "Global 2000"
+msgstr "Global 2000"
+
+#: modules/ae_engagement_scores/ae_engagement_scores.info:0
+msgid "AE Engagement Scores"
+msgstr ""
+
+#: modules/ae_engagement_scores/ae_engagement_scores.info:0
+msgid "Definitions for RedHen engagement score types for Advocacy Engine"
+msgstr ""
+
+

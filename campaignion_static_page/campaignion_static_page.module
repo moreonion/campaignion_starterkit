@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ae static page content type feature.
+ */
+
+include_once 'campaignion_static_page.features.inc';

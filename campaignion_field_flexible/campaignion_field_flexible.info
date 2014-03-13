@@ -1,0 +1,18 @@
+name = Flexible fieldcollection
+description = A flexible field collection used by many campaignion content-types.
+core = 7.x
+package = Campaignion
+project = campaignion
+
+dependencies[] = custom_add_another
+dependencies[] = features
+dependencies[] = field_collection
+dependencies[] = field_sql_storage
+dependencies[] = image
+dependencies[] = media
+dependencies[] = text
+features[features_api][] = api:1
+features[field_base][] = field_body
+features[field_base][] = field_flexible
+features[field_instance][] = field_collection_item-field_flexible-field_body
+features[field_instance][] = field_collection_item-field_flexible-field_image

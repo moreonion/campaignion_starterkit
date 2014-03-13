@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_form_templates feature.
+ */
+
+include_once 'campaignion_form_templates.features.inc';
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_form_templates_campaignion_action_info() {
+  $types['webform_template_type'] = array(
+    'class' => '\\Drupal\\campaignion\\Action\\Template',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+    ),
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_webform_template_type_node_form_alter().
+ */
+function campaignion_form_templates_form_webform_template_type_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['body']['#access'] = FALSE;
+  $form['wizard_advanced']['#access'] = FALSE;
+  $form['toggle_wizard_advanced']['#access'] = FALSE;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the AE Contact type feature.
+ */
+
+include_once 'campaignion_supporter.features.inc';

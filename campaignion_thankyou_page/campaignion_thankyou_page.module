@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_thankyou_page feature.
+ */
+
+include_once 'campaignion_thankyou_page.features.inc';

@@ -1,0 +1,91 @@
+<?php
+/**
+ * @file
+ * Code for the ae campaign content type feature.
+ */
+
+include_once 'campaignion_campaign.features.inc';
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_state['node']->type != 'campaign')
+    return;
+
+  $form['only_published'] = array(
+    '#type' => 'container',
+    '#states' => array('invisible' => array('#edit-field-public-page-und' => array('checked' => FALSE))),
+    '#weight' => $form['field_public_page']['#weight'] + 0.1,
+  );
+
+  $form['microsite'] = array(
+    '#type' => 'container',
+    '#weight' => $form['field_microsite']['#weight'] + 0.1,
+  );
+  $form['microsite']['#states']['visible'][':input[name="field_microsite[und]"]']['checked'] = TRUE;
+
+  $themes = array();
+  foreach (list_themes() as $theme) {
+    if ($theme->status) {
+      $themes[$theme->name] = $theme->info['name'];
+    }
+  }
+  $themes['none'] = 'None';
+  $custom_theme = &$form['field_microsite_theme'];
+  $language = $custom_theme['#language'];
+  $custom_theme[$language]['#options'] = $themes;
+}
+
+/**
+ * Implements hook_field_group_build_pre_render_alter().
+ */
+function campaignion_campaign_field_group_build_pre_render_alter(&$form) {
+  if ($form['#form_id'] != 'campaign_node_form')
+    return;
+
+  $elem = &$form['group_only_published'];
+  foreach (element_children($elem) as $key) {
+    $form['only_published'][$key] = &$elem[$key];
+    unset($form['only_published']['#sorted']);
+    unset($elem[$key]);
+  }
+  foreach (array('additional_settings', 'opengraph_meta') as $key) {
+    $form['only_published'][$key] = &$form[$key];
+    unset($form[$key]);
+  }
+  unset($form['group_only_published']);
+
+  $elem = &$form['group_microsite'];
+  foreach (element_children($elem) as $key) {
+    $form['microsite'][$key] = &$elem[$key];
+    unset($form['microsite']['#sorted']);
+    unset($elem[$key]);
+  }
+  unset($form['group_microsite']);
+}
+
+/**
+ * Implements hook_permission().
+ */
+function campaignion_campaign_permission() {
+  return array(
+    'access non-public campaign page' => array(
+      'title' => t('Access campaign pages'),
+      'description' => t('Access non-public campaign pages'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function campaignion_campaign_node_access($node, $op, $account) {
+  $type = is_string($node) ? $node : $node->type;
+  if ($type == 'campaign' && $op == 'view' && user_access('access content', $account)) {
+    if (is_object($node) && $node->status) {
+      return ($node->field_public_page[LANGUAGE_NONE][0]['value'] == '1' || user_access('access non-public campaign page', $account)) ? NODE_ACCESS_ALLOW : NODE_ACCESS_DENY;
+    }
+  }
+  return NODE_ACCESS_IGNORE;
+}

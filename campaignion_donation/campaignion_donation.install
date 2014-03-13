@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * campaignion_donation.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+
+function campaignion_donation_enable() {
+
+  $webform_settings = variable_get("webform_node_types");
+
+  if (is_array($webform_settings) === FALSE || in_array("donation", $webform_settings) === FALSE ) {
+    $webform_settings[] = "donation";
+    variable_set("webform_node_types", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_src");
+
+  if (isset($webform_settings) === FALSE || isset($webform_settings["webform_template_type"]) === FALSE || $webform_settings["webform_template_type"] === 0) {
+    $webform_settings["webform_template_type"] = "webform_template_type";
+    variable_set("webform_template_src", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_dest");
+
+  if (isset($webform_settings) === FALSE || isset($webform_settings["donation"]) === FALSE || $webform_settings["donnation"] === 0) {
+    $webform_settings["donation"] = "donation";
+    variable_set("webform_template_dest", $webform_settings);
+  }
+}
+
+/**
+ * Implements hook_install().
+ *
+ * features does not set global_block_settings, which activates a cck_block for a given field, correctly.
+ * that's why we do it here.
+ */
+function campaignion_donation_install() {
+  if (!empty($GLOBALS['ae_donation_content_type'])) {
+    return;
+  }
+  $cck_block_fields = array(
+    'field_main_image',
+    'body',
+    'pgbar_default',
+    'field_read_more_link_text',
+    'field_background_info',
+    'field_logo_area',
+  );
+
+  foreach($cck_block_fields as $field_name) {
+    variable_set('cck_blocks_' . $field_name . '_block_availability', 2); // 2 == cck_block enabled
+  }
+}
+

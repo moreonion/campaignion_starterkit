@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * campaignion_petition.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+
+function campaignion_petition_enable() {
+
+  $webform_settings = variable_get("webform_node_types");
+
+  if (is_array($webform_settings) == FALSE || in_array("petition", $webform_settings) == FALSE ) {
+    $webform_settings[] = "petition";
+    variable_set("webform_node_types", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_src");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["webform_template_type"]) == FALSE || $webform_settings["webform_template_type"] == 0) {
+    $webform_settings["webform_template_type"] = "webform_template_type";
+    variable_set("webform_template_src", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_dest");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["petition"]) == FALSE || $webform_settings["petition"] == 0) {
+    $webform_settings["petition"] = "petition";
+    variable_set("webform_template_dest", $webform_settings);
+  }
+}

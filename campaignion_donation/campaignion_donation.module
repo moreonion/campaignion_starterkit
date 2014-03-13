@@ -1,0 +1,81 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_donation feature.
+ */
+
+include_once 'campaignion_donation.features.inc';
+
+/**
+ * Implements hook_block_info_alter().
+ *
+ * Hide titles of specified blocks
+ */
+function campaignion_donation_block_view_alter(&$data, $block) {
+  $hide_title_fields = array('field_main_image', 'field_donation_pgbar');
+
+  foreach($hide_title_fields as $field_name) {
+    if(isset($block->delta) && $block->delta === $field_name) {
+      $data['subject'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_donation_campaignion_action_info() {
+  $type['donation'] = array(
+    'class' => 'Drupal\\campaignion\\Action\\Donation',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+    ),
+  );
+  return $type;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_donation_node_form_alter().
+ */
+function campaignion_donation_form_donation_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Donation');
+  }
+  $form['title']['#weight'] = 210;
+
+  $source = &$form['field_donation_pgbar']['und'][0]['options']['source'];
+  $source['form_key']['#default_value'] = 'donation_amount';
+  $source['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_webform_paymethod_select_method_list_alter().
+ *
+ * Alters the list of available payment methods based whether the
+ * payment interval is recurrent or not
+ */
+function campaignion_donation_webform_paymethod_select_method_list_alter(&$context, &$available_payment_methods, &$pmid_options) {
+  $interval = $context->value('donation_interval');
+  $recurrent = in_array($interval, array('m', 'y'));
+
+  if ($recurrent) {
+    foreach ($available_payment_methods as $pmid => $payment_method) {
+      if (!($payment_method->controller instanceof \Drupal\webform_paymethod_select\PaymentRecurrentController)) {
+        unset($pmid_options[$pmid]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_prepare().
+ */
+function campaignion_donation_node_prepare($node) {
+  if (empty($node->webform['submit_text'])) {
+    $node->webform['submit_text'] = t('Donate now!');
+  }
+}

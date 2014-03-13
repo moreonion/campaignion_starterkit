@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * campaignion_email_protest.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+
+function campaignion_email_protest_enable() {
+
+  $webform_settings = variable_get('webform_node_types');
+
+  if (   is_array($webform_settings) == FALSE 
+      || in_array('email_protest', $webform_settings) == FALSE) {
+    $webform_settings[] = 'email_protest';
+    variable_set('webform_node_types', $webform_settings);
+  }
+
+  $webform_settings = variable_get('webform_template_src');
+
+  if (   is_array($webform_settings) == FALSE
+      || in_array('webform_template_type', $webform_settings) == FALSE) {
+    $webform_settings['webform_template_type'] = 'webform_template_type';
+    variable_set('webform_template_src', $webform_settings);
+  }
+
+  $webform_settings = variable_get('webform_template_dest');
+
+  if (   is_array($webform_settings) == FALSE
+      || in_array('email_protest', $webform_settings) == FALSE) {
+    $webform_settings['email_protest'] = 'email_protest';
+    variable_set('webform_template_dest', $webform_settings);
+  }
+}

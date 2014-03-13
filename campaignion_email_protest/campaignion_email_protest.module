@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_email_protest feature.
+ */
+
+include_once 'campaignion_email_protest.features.inc';
+
+use \Drupal\campaignion\Wizard\EmailProtestEmailStep;
+
+/**
+ * Implements hook_form_(form_id)_alter().
+ *
+ * We're setting a form submit handler that is called before webform_client_form
+ */
+function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#node']->type == 'email_protest') {
+    array_unshift($form['#submit'], 'campaignion_email_protest_pre_webform_client_form');
+  }
+}
+
+/**
+ * Helper function that changes webform email data that we can't set anywhere else
+ *
+ * 1) webform doesn't support loading the target email address from a redhen contact
+ * 2) webform doesn't support putting together the email from name from 2 form fields
+ *    (first_name, last_name)
+ * 3) webform doesn't support loading the body from a form field
+ */
+function campaignion_email_protest_pre_webform_client_form(&$form, &$form_state) {
+  if (empty($form_state['save_draft']) && empty($form_state['webform_completed'])) {
+    return;
+  }
+
+  $node = $form['#node'];
+  $submission = \Drupal\little_helpers\Webform\Submission::fromFormState($node, $form_state);
+  $email = &$node->webform['emails'][EmailProtestEmailStep::WIZARD_PROTEST_EID];
+
+  $target_contact_id = $submission->valueByKey('email_protest_target');
+
+  if ($target_contact_id == FALSE) {
+    // no protest target is submitted that means we have to get the targets from the node
+    // field
+    $email['email']  = '';
+    $protest_targets = field_get_items('node', $form['#node'], 'field_protest_target');
+    $nr_of_targets   = count($protest_targets);
+    foreach($protest_targets as $index => $target) {
+      $contact         = redhen_contact_load($target['target_id']);
+      if ($contact != FALSE) {
+        $emails = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
+        $email['email'] .= $emails[0]['value'];
+        if ($index < ($nr_of_targets - 1)) {
+          $email['email'] .= ',';
+        }
+      }
+    }
+  }
+  else {
+    // the user selected a target that we can get from the form_state
+    $contact = redhen_contact_load($target_contact_id);
+    if ($contact != FALSE) {
+      $emails = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
+      $email['email'] = $emails[0]['value'];
+    }
+  }
+
+  $email['from_name'] = $submission->valueByKey('first_name') . ' ' . $submission->valueByKey('last_name');
+  $email['template']  = $submission->valueByKey('email_body');
+}
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_email_protest_campaignion_action_info() {
+  $type['email_protest'] = array(
+    'class' => 'Drupal\\campaignion\\Action\\EmailProtest',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+    ),
+  );
+  return $type;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_email_protest_node_form_alter().
+ */
+function campaignion_email_protest_form_email_protest_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Email Protest');
+  }
+  $form['title']['#weight'] = 210;
+
+  if (!empty($form_state['#wizard'])) {
+    $form['field_protest_target_options']['#access'] = FALSE;
+    $form['field_protest_target']['#access'] = FALSE;
+  }
+}

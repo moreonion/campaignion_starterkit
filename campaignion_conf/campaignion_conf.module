@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Code for the campaignion_conf feature.
+ */
+
+include_once 'campaignion_conf.features.inc';
+
+/**
+ * Implements hook_block_info_alter()
+ * 
+ * @todo maybe this is a bad idea and we really should use fe_block
+ */
+function campaignion_conf_block_info_alter(&$blocks) {
+  $blocks['system']['navigation']['status'] = 0;
+  $blocks['system']['management']['status'] = 0;
+  $blocks['user']['login']['status'] = 0;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * We use this to make sure that i18n_node_menu_alter runs after all
+ * other implementations of hook_menu_alter(), because we patched it to use
+ * the wizard while other implementations (entity_translation for example)
+ * do not.
+ */
+function campaignion_conf_module_implements_alter(&$implementations, $hook) {
+  if ($hook != 'menu_alter') { return; }
+  $last_implementation = array('i18n_node'=> $implementations['i18n_node']);
+  unset($implementations['i18n_node']);
+  $implementations += $last_implementation;
+}
+
+/**
+ * helper function: returns TRUE if context $cname is active
+ */
+function campaignion_conf_context_is_active($cname) {
+  if (!function_exists('context_active_contexts'))
+    return FALSE;
+  return in_array($cname, array_keys(context_active_contexts()));
+}
+
+/**
+ * helper function: returns TRUE if context $cname is active
+ */
+function campaignion_conf_is_action($node) {
+  $action_types = array(
+    'donation',
+    'email_protest',
+    'petition',
+    'webform',
+    'webform_template',
+  );
+  return in_array($node->type, $action_types);
+}
+
+/**
+ * implements hook_node_presave().
+ */
+function campaignion_conf_node_presave($node) {
+  $orig_summary = $orig_intro = NULL;
+
+  if (isset($node->nid) == TRUE) {
+    $orig_node    = node_load($node->nid);
+    $items        = field_get_items('node', $orig_node, 'body');
+    $orig_summary = isset($items[0]['summary']) ? $items[0]['summary'] : NULL;
+    $items        = field_get_items('node', $orig_node, 'field_intro');
+    $orig_intro   = count($items) ? $items[0]['value'] : NULL;
+  }
+  $items       = field_get_items('node', $node,      'body');
+  $new_summary = isset($items[0]['summary']) ? $items[0]['summary'] : NULL;
+  $items       = field_get_items('node', $node,      'field_intro');
+  $new_intro   = count($items) ? $items[0]['value'] : NULL;
+
+  if (!$new_intro) {
+    return;
+  }
+  $summary_empty        = empty($new_summary);
+  $summary_was_intro    = $orig_intro && $orig_summary && strip_tags($orig_intro) == $orig_summary;
+  $summary_is_unchanged = $orig_summary == $new_summary;
+  if (   $summary_empty
+      || ($summary_was_intro && $summary_is_unchanged)) {
+    $node->body['und'][0]['summary'] = strip_tags($new_intro);
+    drupal_set_message('Introduction copied to summary.', 'status');
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_webform_admin_settings_alter().
+ */
+ function campaignion_conf_form_webform_admin_settings_alter(&$form, &$form_state, $form_id) {
+  $form['email']['webform_default_from_address']['#value'] = variable_get('site_mail', ini_get('sendmail_from'));
+  $form['email']['webform_default_from_address']['#disabled'] = TRUE;
+}
