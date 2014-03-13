@@ -1,0 +1,35 @@
+name = Campaignion starterkit
+description = Starterkit profile for the campaignion online action platform
+core = 7.x
+
+dependencies[] = context
+dependencies[] = mimemail
+dependencies[] = opengraph_meta
+dependencies[] = campaignion_webform2redhen
+dependencies[] = views_ui
+
+; AE specific
+dependencies[] = campaignion_activity
+dependencies[] = campaignion_bar
+dependencies[] = campaignion_conf
+dependencies[] = campaignion_campaign
+dependencies[] = campaignion_supporter
+dependencies[] = campaignion_context
+dependencies[] = campaignion_email_protest
+dependencies[] = campaignion_protest_target
+dependencies[] = campaignion_protest_target
+dependencies[] = campaignion_field_flexible
+dependencies[] = campaignion_reports
+dependencies[] = campaignion_news
+dependencies[] = campaignion_petition
+dependencies[] = campaignion_static_page
+dependencies[] = campaignion_thankyou_page
+dependencies[] = campaignion_form_templates_default
+dependencies[] = campaignion_webform_results
+dependencies[] = campaignion_webform_widget
+dependencies[] = campaignion_wizard
+
+; Devel modules
+dependencies[] = field_ui
+
+; API modules
