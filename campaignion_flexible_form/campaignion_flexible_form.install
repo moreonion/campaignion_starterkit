@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function campaignion_flexible_form_enable() {
+
+  $webform_settings = variable_get("webform_node_types");
+
+  if (is_array($webform_settings) == FALSE || in_array("webform", $webform_settings) == FALSE ) {
+    $webform_settings[] = "webform";
+    variable_set("webform_node_types", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_src");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["webform_template_type"]) == FALSE || $webform_settings["webform_template_type"] == 0) {
+    $webform_settings["webform_template_type"] = "webform_template_type";
+    variable_set("webform_template_src", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_dest");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["webform"]) == FALSE || $webform_settings["webform"] == 0) {
+    $webform_settings["webform"] = "webform";
+    variable_set("webform_template_dest", $webform_settings);
+  }
+}
+
+/**
+ * Utility function that let's you conveniently add instances
+ * of the haupt_seite_toggle field to your content-type.
+ */
+function _campaignion_flexible_form_add_field_to_node_type($bundle) {
+  $instance = array (
+    'bundle' => $bundle,
+    'label' => 'Hauptseite und keine Landing-Page.',
+    'widget' => array (
+      'weight' => '7',
+      'type' => 'options_onoff',
+      'module' => 'options',
+      'active' => 1,
+      'settings' => array (
+        'display_label' => 1,
+      ),
+    ),
+    'display' => array (
+      'default' => array (
+        'label' => 'hidden',
+        'type' => 'hidden',
+      ),
+    ),
+    'required' => 0,
+    'description' => 'Einschalten, wenn diese Seite eine Hauptseite ist. ',
+    'exclude_cv' => 0,
+    'field_name' => 'haupt_seite_toggle',
+    'entity_type' => 'node',
+  );
+
+  field_create_instance($instance);
+}

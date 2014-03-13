@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_flexible_form feature.
+ */
+
+include_once 'campaignion_flexible_form.features.inc';
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_flexible_form_campaignion_action_info() {
+  $types['webform'] = array(
+    'class' => 'Drupal\\campaignion\\Action\\FlexibleForm',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+    ),
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_webform_node_form_alter().
+ */
+function campaignion_flexible_form_webform_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['field_thank_you_pages'] = FALSE;
+
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Flexible form');
+  }
+
+  $form['title']['#weight'] = 210;
+}
