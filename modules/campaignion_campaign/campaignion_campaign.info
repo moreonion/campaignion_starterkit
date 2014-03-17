@@ -5,6 +5,10 @@ package = Advocacy Engine
 php = 5.2.4
 version = 7.x-1.1
 project = campaignion_campaign
+
+; needs roles to be defined to set permissions
+dependencies[] = campaignion_conf
+
 dependencies[] = campaignion_static_page
 dependencies[] = ctools
 dependencies[] = features
