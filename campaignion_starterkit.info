@@ -2,10 +2,11 @@ name = Campaignion starterkit
 description = Starterkit profile for the campaignion online action platform
 core = 7.x
 
+; needed by our themes
+dependencies[] = less
+
 dependencies[] = context
 dependencies[] = mimemail
-dependencies[] = opengraph_meta
-dependencies[] = campaignion_webform2redhen
 dependencies[] = views_ui
 
 ; AE specific
@@ -27,6 +28,7 @@ dependencies[] = campaignion_thankyou_page
 dependencies[] = campaignion_form_templates_default
 dependencies[] = campaignion_webform_results
 dependencies[] = campaignion_webform_widget
+dependencies[] = campaignion_webform2redhen
 dependencies[] = campaignion_wizard
 
 ; Devel modules
