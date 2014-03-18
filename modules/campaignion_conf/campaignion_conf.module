@@ -19,21 +19,6 @@ function campaignion_conf_block_info_alter(&$blocks) {
 }
 
 /**
- * Implements hook_module_implements_alter().
- *
- * We use this to make sure that i18n_node_menu_alter runs after all
- * other implementations of hook_menu_alter(), because we patched it to use
- * the wizard while other implementations (entity_translation for example)
- * do not.
- */
-function campaignion_conf_module_implements_alter(&$implementations, $hook) {
-  if ($hook != 'menu_alter') { return; }
-  $last_implementation = array('i18n_node'=> $implementations['i18n_node']);
-  unset($implementations['i18n_node']);
-  $implementations += $last_implementation;
-}
-
-/**
  * helper function: returns TRUE if context $cname is active
  */
 function campaignion_conf_context_is_active($cname) {

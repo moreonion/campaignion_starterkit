@@ -3,8 +3,6 @@ description = Basic configuration of non-campaignion contrib.
 core = 7.x
 package = Campaignion
 
-; campaignion_conf_module_implements_alter() introduces a hard dependency.
-dependencies[] = i18n_node
 dependencies[] = wysiwyg
 
 dependencies[] = ctools
