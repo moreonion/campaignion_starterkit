@@ -21,6 +21,7 @@ dependencies[] = campaignion_protest_target
 dependencies[] = campaignion_protest_target
 dependencies[] = campaignion_field_flexible
 dependencies[] = campaignion_reports
+dependencies[] = campaignion_manage
 dependencies[] = campaignion_news
 dependencies[] = campaignion_petition
 dependencies[] = campaignion_static_page
