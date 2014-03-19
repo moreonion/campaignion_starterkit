@@ -231,7 +231,7 @@ function campaignion_protest_target_field_default_fields() {
       'entity_type' => 'redhen_contact',
       'exclude_cv' => 0,
       'field_name' => 'field_form_of_address',
-      'label' => 'Form of Address',
+      'label' => 'Salutation',
       'required' => 0,
       'settings' => array(
         'custom_add_another' => '',
@@ -815,7 +815,7 @@ function campaignion_protest_target_field_default_fields() {
   t('Adresse');
   t('Date of birth');
   t('E-Mail');
-  t('Form of Address');
+  t('Salutation');
   t('Gender');
   t('IP-Adress');
   t('Phone number');

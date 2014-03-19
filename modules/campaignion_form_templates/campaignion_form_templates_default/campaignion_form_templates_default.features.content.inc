@@ -497,7 +497,7 @@ o|other
         1 => array(
           'pid' => 0,
           'form_key' => 'form_of_address',
-          'name' => 'Form of Address',
+          'name' => 'Salutation',
           'type' => 'select',
           'value' => '%get[p1]',
           'extra' => array(

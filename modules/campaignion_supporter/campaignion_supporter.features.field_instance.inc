@@ -230,7 +230,7 @@ function campaignion_supporter_field_default_field_instances() {
     'entity_type' => 'redhen_contact',
     'exclude_cv' => 0,
     'field_name' => 'field_form_of_address',
-    'label' => 'Form of Address',
+    'label' => 'Salutation',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -587,7 +587,7 @@ function campaignion_supporter_field_default_field_instances() {
   t('Direct Mail Newsletter');
   t('Email');
   t('Engagement level');
-  t('Form of Address');
+  t('Salutation');
   t('Gender');
   t('IP-Adress');
   t('Phone number');
