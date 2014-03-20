@@ -10,6 +10,51 @@
 function campaignion_petition_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-petition-action_template'
+  $field_instances['node-petition-action_template'] = array(
+    'bundle' => 'petition',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is checked this action will be selectable as a template when creating new actions',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'action_template',
+    'label' => 'This is a template',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 231,
+    ),
+  );
+
   // Exported field_instance: 'node-petition-body'
   $field_instances['node-petition-body'] = array(
     'bundle' => 'petition',
@@ -340,9 +385,11 @@ function campaignion_petition_field_default_field_instances() {
   t('Add a large main image or a video to your petition.');
   t('Body');
   t('Display a recent supporters box.');
+  t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
   t('Related campaign');
   t('Thank you pages');
+  t('This is a template');
   t('display a progress bar for your petition.');
   t('progress bar');
 

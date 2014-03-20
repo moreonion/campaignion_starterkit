@@ -10,6 +10,51 @@
 function campaignion_email_protest_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-email_protest-action_template'
+  $field_instances['node-email_protest-action_template'] = array(
+    'bundle' => 'email_protest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is checked this action will be selectable as a template when creating new actions',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'action_template',
+    'label' => 'This is a template',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 231,
+    ),
+  );
+
   // Exported field_instance: 'node-email_protest-body'
   $field_instances['node-email_protest-body'] = array(
     'bundle' => 'email_protest',
@@ -455,10 +500,12 @@ function campaignion_email_protest_field_default_field_instances() {
   t('Body');
   t('Display a progress bar for your email protest.');
   t('Display a recent supporters box.');
+  t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
   t('Progress bar');
   t('Related campaign');
   t('Thank you pages');
+  t('This is a template');
   t('Who will be targeted by this protest');
   t('You can specify 1 or more protest targets (name and email address) that will be the target person(s) of this email protest (they will receive the emails)');
 

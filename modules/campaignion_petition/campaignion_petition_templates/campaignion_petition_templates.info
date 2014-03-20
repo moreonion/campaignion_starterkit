@@ -1,0 +1,11 @@
+name = Petition templates
+description = Provides form templates for petitions
+core = 7.x
+package = Campaignion
+dependencies[] = campaignion_petition
+dependencies[] = defaultcontent
+features[content][] = petition_basic_personal_data
+features[content][] = petition_basis_personendaten
+features[content][] = petition_mini_supporter
+features[features_api][] = api:2
+

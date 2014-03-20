@@ -10,6 +10,51 @@
 function campaignion_flexible_form_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-webform-action_template'
+  $field_instances['node-webform-action_template'] = array(
+    'bundle' => 'webform',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this is checked this action will be selectable as a template when creating new actions',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'action_template',
+    'label' => 'This is a template',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 231,
+    ),
+  );
+
   // Exported field_instance: 'node-webform-body'
   $field_instances['node-webform-body'] = array(
     'bundle' => 'webform',
@@ -387,12 +432,14 @@ function campaignion_flexible_form_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Display a progress bar for your webform.');
   t('Display a recent supporters box.');
+  t('If this is checked this action will be selectable as a template when creating new actions');
   t('Introduction');
   t('Large image or video');
   t('Main text');
   t('Progress bar');
   t('Related campaign');
   t('Thank you pages');
+  t('This is a template');
 
   return $field_instances;
 }

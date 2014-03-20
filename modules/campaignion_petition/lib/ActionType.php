@@ -6,15 +6,8 @@ use \Drupal\campaignion\Wizard\PetitionWizard;
 
 class ActionType extends \Drupal\campaignion\Action\TypeBase {
   public function defaultTemplateNid() {
-    $query = new \EntityFieldQuery();
-
-    $result = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'webform_template_type')
-    ->propertyCondition('title', 'Minimal supporter form')
-    ->execute();
-
-    $nids = isset($result['node']) ? array_keys($result['node']) : array(NULL);
-    return $nids[0];
+    $nid = defaultcontent_get_default('petition_mini_supporter');
+    return $nid;
   }
 
   public function wizard($node = NULL) {
