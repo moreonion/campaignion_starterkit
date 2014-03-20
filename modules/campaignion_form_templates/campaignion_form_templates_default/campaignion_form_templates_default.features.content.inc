@@ -11,7 +11,6 @@ function campaignion_form_templates_default_content_defaults() {
   $content = array();
 
   $content['webform_template_basic_personal_data'] = (object) array(
-    'exported_path' => 'basic-personal-data',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => NULL,
@@ -110,6 +109,7 @@ function campaignion_form_templates_default_content_defaults() {
         ),
       ),
     ),
+    'exported_path' => 'basic-personal-data',
     'title' => 'Basic personal data',
     'status' => 1,
     'promote' => 0,
@@ -124,7 +124,6 @@ function campaignion_form_templates_default_content_defaults() {
   );
 
   $content['webform_template_basis_personendaten'] = (object) array(
-    'exported_path' => 'basis-personendaten',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => NULL,
@@ -223,6 +222,7 @@ function campaignion_form_templates_default_content_defaults() {
         ),
       ),
     ),
+    'exported_path' => 'basis-personendaten',
     'title' => 'Basis Personendaten',
     'status' => 1,
     'promote' => 0,
@@ -237,7 +237,6 @@ function campaignion_form_templates_default_content_defaults() {
   );
 
   $content['webform_template_email_protest'] = (object) array(
-    'exported_path' => 'email-protest-form',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => NULL,
@@ -361,16 +360,16 @@ function campaignion_form_templates_default_content_defaults() {
           'type' => 'protest_target',
           'value' => '',
           'extra' => array(
-            'items'                 => '',
-            'multiple'              => FALSE,
-            'aslist'                => FALSE,
-            'description'           => 'Select an email protest target.',
-            'private'               => 0,
-            'required'              => FALSE,
-            'title_display'         => 'before',
+            'items' => '',
+            'multiple' => FALSE,
+            'aslist' => FALSE,
+            'description' => 'Select an email protest target.',
+            'private' => 0,
+            'required' => FALSE,
+            'title_display' => 'before',
             'conditional_component' => '',
-            'conditional_operator'  => '=',
-            'conditional_values'    => '',
+            'conditional_operator' => '=',
+            'conditional_values' => '',
           ),
           'mandatory' => 0,
           'weight' => 0,
@@ -426,6 +425,7 @@ function campaignion_form_templates_default_content_defaults() {
         ),
       ),
     ),
+    'exported_path' => 'email-protest-form',
     'title' => 'Email protest form',
     'status' => 1,
     'promote' => 0,
@@ -440,7 +440,6 @@ function campaignion_form_templates_default_content_defaults() {
   );
 
   $content['webform_template_full_supporter'] = (object) array(
-    'exported_path' => 'full-supporter-form',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => 'full_html_with_editor',
@@ -1124,6 +1123,7 @@ ZW|Zimbabwe
         ),
       ),
     ),
+    'exported_path' => 'full-supporter-form',
     'title' => 'Full supporter form',
     'status' => 1,
     'promote' => 0,
@@ -1138,7 +1138,6 @@ ZW|Zimbabwe
   );
 
   $content['webform_template_global_supporter'] = (object) array(
-    'exported_path' => 'global-supporter-form',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => NULL,
@@ -1582,6 +1581,7 @@ ZW|Zimbabwe
         ),
       ),
     ),
+    'exported_path' => 'global-supporter-form',
     'title' => 'Global supporter form',
     'status' => 1,
     'promote' => 0,
@@ -1596,7 +1596,6 @@ ZW|Zimbabwe
   );
 
   $content['webform_template_mini_supporter'] = (object) array(
-    'exported_path' => 'minimal-supporter-form',
     'webform' => array(
       'confirmation' => '',
       'confirmation_format' => NULL,
@@ -1695,6 +1694,7 @@ ZW|Zimbabwe
         ),
       ),
     ),
+    'exported_path' => 'minimal-supporter-form',
     'title' => 'Minimal supporter form',
     'status' => 1,
     'promote' => 0,

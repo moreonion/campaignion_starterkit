@@ -3,7 +3,6 @@ description = Provides a simple static page content type for content like discla
 core = 7.x
 package = Campaignion
 project = campaignion
-
 dependencies[] = campaignion_field_flexible
 dependencies[] = ctools
 dependencies[] = features
@@ -16,7 +15,8 @@ dependencies[] = node
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
+features[field_base][] = body
 features[field_base][] = field_intro
 features[field_base][] = field_main_image
 features[field_instance][] = node-static_page-body

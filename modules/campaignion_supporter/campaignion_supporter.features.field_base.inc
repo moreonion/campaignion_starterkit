@@ -22,7 +22,9 @@ function campaignion_supporter_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'addressfield',
-    'settings' => array(),
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'addressfield',
   );
@@ -50,6 +52,7 @@ function campaignion_supporter_field_default_field_bases() {
         'second' => 0,
         'year' => 'year',
       ),
+      'profile2_private' => FALSE,
       'timezone_db' => '',
       'todate' => '',
       'tz_handling' => 'none',
@@ -143,6 +146,7 @@ function campaignion_supporter_field_default_field_bases() {
         'mrs' => 'Mrs',
       ),
       'allowed_values_function' => '',
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -171,6 +175,7 @@ function campaignion_supporter_field_default_field_bases() {
         'o' => 'Other',
       ),
       'allowed_values_function' => '',
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -201,6 +206,7 @@ function campaignion_supporter_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text',
@@ -231,6 +237,7 @@ function campaignion_supporter_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text',
@@ -248,7 +255,9 @@ function campaignion_supporter_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'field_type_language',
-    'settings' => array(),
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'language',
   );
@@ -278,6 +287,7 @@ function campaignion_supporter_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text',
@@ -313,6 +323,7 @@ function campaignion_supporter_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -343,6 +354,7 @@ function campaignion_supporter_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text',
@@ -356,7 +368,11 @@ function campaignion_supporter_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'redhen_contact_email',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'redhen_email_address' => array(
+        0 => 'value',
+      ),
+    ),
     'locked' => 1,
     'module' => 'redhen_fields',
     'settings' => array(

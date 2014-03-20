@@ -46,6 +46,7 @@ function campaignion_petition_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => TRUE,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -101,6 +102,7 @@ function campaignion_petition_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -126,16 +128,109 @@ function campaignion_petition_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
-        'progress_indicator' => 'throbber',
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-petition-field_reference_to_campaign'
+  $field_instances['node-petition-field_reference_to_campaign'] = array(
+    'bundle' => 'petition',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'exclude_cv' => 0,
+    'field_name' => 'field_reference_to_campaign',
+    'label' => 'Related campaign',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-petition-field_thank_you_pages'
+  $field_instances['node-petition-field_thank_you_pages'] = array(
+    'bundle' => 'petition',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_reference_or_redirect',
+        'settings' => array(),
+        'type' => 'reference_or_redirect_formatter',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'exclude_cv' => 0,
+    'field_name' => 'field_thank_you_pages',
+    'label' => 'Thank you pages',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_reference_or_redirect',
+      'settings' => array(),
+      'type' => 'reference_or_redirect_widget',
+      'weight' => 12,
     ),
   );
 
@@ -178,8 +273,9 @@ function campaignion_petition_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
-      'exclude_cv' => false,
-      'user_register_form' => false,
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 0,
@@ -192,8 +288,8 @@ function campaignion_petition_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-petition-field_reference_to_campaign'
-  $field_instances['node-petition-field_reference_to_campaign'] = array(
+  // Exported field_instance: 'node-petition-recent_supporters'
+  $field_instances['node-petition-recent_supporters'] = array(
     'bundle' => 'petition',
     'default_value' => NULL,
     'deleted' => 0,
@@ -206,47 +302,16 @@ function campaignion_petition_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_reference_to_campaign',
-    'label' => 'Related campaign',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-petition-field_show_recent_supporters'
-  $field_instances['node-petition-field_show_recent_supporters'] = array(
-    'bundle' => 'petition',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -254,59 +319,19 @@ function campaignion_petition_field_default_field_instances() {
     'field_name' => 'recent_supporters',
     'label' => 'Display a recent supporters box.',
     'required' => 0,
-    'settings' => array(),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'campaignion_recent_supporters',
-      'settings' => array(),
-      'type' => 'recent_supporters',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-petition-field_thank_you_pages'
-  $field_instances['node-petition-field_thank_you_pages'] = array(
-    'bundle' => 'petition',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'field_reference_or_redirect',
-        'settings' => array(),
-        'type' => 'reference_or_redirect_formatter',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_thank_you_pages',
-    'label' => 'Thank you pages',
-    'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
-      'exclude_cv' => FALSE,
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'field_reference_or_redirect',
-      'settings' => array(),
-      'type' => 'reference_or_redirect_widget',
-      'weight' => 12,
+      'active' => 1,
+      'module' => 'campaignion_recent_supporters',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'recent_supporters',
+      'weight' => 9,
     ),
   );
 
@@ -314,12 +339,12 @@ function campaignion_petition_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a video to your petition.');
   t('Body');
-  t('Display a progress bar for your petition.');
-  t('Large image or video');
-  t('Progress bar');
-  t('Related campaign');
   t('Display a recent supporters box.');
+  t('Large image or video');
+  t('Related campaign');
   t('Thank you pages');
+  t('display a progress bar for your petition.');
+  t('progress bar');
 
   return $field_instances;
 }

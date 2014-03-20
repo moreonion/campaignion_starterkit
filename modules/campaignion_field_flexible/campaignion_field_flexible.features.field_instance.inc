@@ -32,6 +32,7 @@ function campaignion_field_flexible_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -72,6 +73,7 @@ function campaignion_field_flexible_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -98,10 +100,10 @@ function campaignion_field_flexible_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',
       ),

@@ -17,14 +17,7 @@ function campaignion_email_protest_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_protest_target',
-    'foreign keys' => array(
-      'redhen_contact' => array(
-        'columns' => array(
-          'target_id' => 'contact_id',
-        ),
-        'table' => 'redhen_contact',
-      ),
-    ),
+    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(
       'target_id' => array(

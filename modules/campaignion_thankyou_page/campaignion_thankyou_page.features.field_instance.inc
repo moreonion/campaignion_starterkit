@@ -44,6 +44,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -101,6 +102,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -148,6 +150,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -202,6 +205,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -227,67 +231,82 @@ function campaignion_thankyou_page_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
-        'progress_indicator' => 'throbber',
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => -15,
     ),
   );
 
-  // Exported field_instance: 'node-thank_you_page-field_share_light'
-  $field_instances['node-thank_you_page-field_share_light'] = array(
+  // Exported field_instance: 'node-thank_you_page-share_light'
+  $field_instances['node-thank_you_page-share_light'] = array(
     'bundle' => 'thank_you_page',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'toggle' => 1,
+        'options' => array(
+          'advanced' => array(
+            'channel_facebook_toggle' => 1,
+            'channel_forward_toggle' => 1,
+            'channel_pinterest_text' => '',
+            'channel_pinterest_toggle' => 1,
+            'channel_twitter_text' => '',
+            'channel_twitter_toggle' => 1,
+          ),
+          'counter_toggle' => 1,
+          'image' => array(
+            'fid' => 0,
+          ),
+          'share_url' => '',
+          'subject' => '',
+        ),
       ),
     ),
     'deleted' => 0,
-    'description' => 'Display share buttons on your page. Allows visitors to share your action.',
+    'description' => 'Set the share options for this page.',
     'display' => array(
       'cck_blocks' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'share_light_toggle',
-    'label' => 'Display share buttons',
-    'required' => 0,
+    'field_name' => 'share_light',
+    'label' => 'Share options',
+    'required' => FALSE,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'module' => 'share_light',
       'settings' => array(
-        'display_label' => 1,
+        'size' => 60,
       ),
-      'type' => 'options_onoff',
-      'weight' => -10,
+      'type' => 'share_light',
+      'weight' => 9,
     ),
   );
 
@@ -295,12 +314,11 @@ function campaignion_thankyou_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a main video to your thank you page');
   t('Body');
-  t('Display share buttons');
-  t('Display share buttons on your page. Allows visitors to share your action.');
   t('Flexible');
   t('Introduction');
   t('Large image or video');
-  t('This page is a template');
+  t('Set the share options for this page.');
+  t('Share options');
 
   return $field_instances;
 }

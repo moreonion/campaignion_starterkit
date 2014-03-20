@@ -44,6 +44,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -96,6 +97,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -150,6 +152,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -175,13 +178,13 @@ function campaignion_flexible_form_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
-        'progress_indicator' => 'throbber',
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => -10,
@@ -221,6 +224,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -230,33 +234,6 @@ function campaignion_flexible_form_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-webform-field_show_recent_supporters'
-  $field_instances['node-webform-field_show_recent_supporters'] = array(
-    'bundle' => 'webform',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'recent_supporters',
-    'label' => 'Display a recent supporters box.',
-    'required' => 0,
-    'settings' => array(),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'campaignion_recent_supporters',
-      'settings' => array(),
-      'type' => 'recent_supporters',
-      'weight' => 9,
     ),
   );
 
@@ -293,6 +270,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -305,8 +283,8 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_webform_pgbar'
-  $field_instances['node-webform-field_webform_pgbar'] = array(
+  // Exported field_instance: 'node-webform-pgbar_default'
+  $field_instances['node-webform-pgbar_default'] = array(
     'bundle' => 'webform',
     'default_value' => array(
       0 => array(
@@ -343,6 +321,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -357,15 +336,62 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-webform-recent_supporters'
+  $field_instances['node-webform-recent_supporters'] = array(
+    'bundle' => 'webform',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'exclude_cv' => 0,
+    'field_name' => 'recent_supporters',
+    'label' => 'Display a recent supporters box.',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'campaignion_recent_supporters',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'recent_supporters',
+      'weight' => 9,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Display a progress bar for your webform.');
+  t('Display a recent supporters box.');
   t('Introduction');
   t('Large image or video');
   t('Main text');
   t('Progress bar');
   t('Related campaign');
-  t('Display a recent supporters box.');
   t('Thank you pages');
 
   return $field_instances;

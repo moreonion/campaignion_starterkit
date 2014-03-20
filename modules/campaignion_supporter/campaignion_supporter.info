@@ -3,7 +3,6 @@ description = Feature that defines a RedHen contact type used as supporter recor
 core = 7.x
 package = Campaignion
 project = campaignion
-
 dependencies[] = addressfield
 dependencies[] = date
 dependencies[] = entity
@@ -14,7 +13,7 @@ dependencies[] = options
 dependencies[] = redhen_contact
 dependencies[] = redhen_fields
 dependencies[] = taxonomy
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[field_base][] = field_address
 features[field_base][] = field_date_of_birth
 features[field_base][] = field_direct_mail_newsletter
