@@ -6,6 +6,7 @@ core = 7.x
 dependencies[] = less
 
 dependencies[] = context
+dependencies[] = entitycache
 dependencies[] = jquery_update
 dependencies[] = mimemail
 dependencies[] = views_ui
