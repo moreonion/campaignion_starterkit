@@ -79,9 +79,9 @@ function campaignion_context_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
-        'cck_blocks-field_donation_pgbar' => array(
+        'cck_blocks-pgbar_default' => array(
           'module' => 'cck_blocks',
-          'delta' => 'field_donation_pgbar',
+          'delta' => 'pgbar_default',
           'region' => 'sidebar_second',
           'weight' => '-8',
         ),

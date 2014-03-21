@@ -56,12 +56,12 @@ function campaignion_starterkit_views_default_views() {
     'image_link' => 'content',
   );
   /* Field: Content: Progress bar */
-  $handler->display->display_options['fields']['field_petition_pgbar']['id'] = 'field_petition_pgbar';
-  $handler->display->display_options['fields']['field_petition_pgbar']['table'] = 'field_data_field_petition_pgbar';
-  $handler->display->display_options['fields']['field_petition_pgbar']['field'] = 'field_petition_pgbar';
-  $handler->display->display_options['fields']['field_petition_pgbar']['label'] = '';
-  $handler->display->display_options['fields']['field_petition_pgbar']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_petition_pgbar']['click_sort_column'] = 'options';
+  $handler->display->display_options['fields']['pgbar_default']['id'] = 'pgbar_default';
+  $handler->display->display_options['fields']['pgbar_default']['table'] = 'field_data_pgbar_default';
+  $handler->display->display_options['fields']['pgbar_default']['field'] = 'pgbar_default';
+  $handler->display->display_options['fields']['pgbar_default']['label'] = '';
+  $handler->display->display_options['fields']['pgbar_default']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pgbar_default']['click_sort_column'] = 'options';
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
