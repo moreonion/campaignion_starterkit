@@ -134,10 +134,11 @@ function campaignion_protest_target_form_builder_types() {
   unset($map['properties']['default_value']);
   $fields['protest_target'] = array(
     'title'         => t('Email Protest Target Selector'),
-    'palette_group' => 'advocacy_engine',
+    'palette_group' => 'default',
     'properties'    => array_keys($map['properties']),
     'default'       => array('#form_builder' => array('element_type' => 'protest_target')),
     'unique'        => TRUE,
+    'addable'       => FALSE,
   );
 
   $fields['protest_target']['default'] += _form_builder_webform_default('protest_target');

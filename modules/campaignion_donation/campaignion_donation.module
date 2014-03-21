@@ -72,6 +72,81 @@ function campaignion_donation_webform_paymethod_select_method_list_alter(&$conte
 }
 
 /**
+ * Implements hook_form_builder_palette_groups().
+ *
+ * Display a donation specific palette when editing a donation node.
+ */
+function campaignion_donation_form_builder_palette_groups() {
+  $palette = array();
+  if (($node = menu_get_object()) && $node->type == 'donation') {
+    $palette['donation'] = array(
+      'weight' => -19,
+      'title'  => t('Payment data'),
+    );
+  }
+  return $palette;
+}
+
+/**
+ * Implements hook_form_builder_types().
+ *
+ * Add donation / payment specific types to the donation palette.
+ */
+function campaignion_donation_form_builder_types() {
+  if (($node = menu_get_object()) && $node->type == 'donation') {
+    $types['webform']['donation_interval'] = array(
+      'properties' => array(
+        'default_value',
+        'options',
+        'multiple',
+      ),
+      'default'       => array(
+        '#options' => array('1' => t('only once'), 'm' => t('monthly'), 'y' => t('yearly')),
+        '#default_value' => 'm',
+        '#title' => t('Donation interval'),
+        '#required' => TRUE,
+      ) + _form_builder_webform_default('select', array('aslist' => TRUE, 'multiple' => FALSE)),
+      'palette_group' => 'donation',
+      'unique'        => TRUE,
+      'title'         => t('Donation interval'),
+      'weight'        => -98,
+    );
+
+    $types['webform']['donation_amount'] = array(
+      'title'  => t('Donation amount'),
+      'weight' => -99,
+      'palette_group' => 'donation',
+      'unique'        => TRUE,
+      'properties'    => array('default_value'),
+      'default'       => array(
+        '#title' => t('Donation amount'),
+        '#default_value' => '%get[p12]',
+        '#required' => TRUE,
+      ) + _form_builder_webform_default('textfield'),
+    );
+
+    return $types;
+  }
+}
+
+/**
+ * Implements hook_form_builder_types_alter().
+ *
+ * Add paymethod_select to our palette for donations and hide it for other
+ * content types.
+ */
+function campaignion_donation_form_builder_types_alter(&$types) {
+  if (($node = menu_get_object()) && $node->type == 'donation') {
+    $type = &$types['webform']['paymethod_select'];
+    $type['addable'] = TRUE;
+    $type['palette_group'] = 'donation';
+  } else {
+    $type = &$types['webform']['paymethod_select'];
+    $type['addable'] = FALSE;
+  }
+}
+
+/**
  * Implements hook_node_prepare().
  */
 function campaignion_donation_node_prepare($node) {

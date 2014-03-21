@@ -99,3 +99,59 @@ function campaignion_email_protest_form_email_protest_node_form_alter(&$form, &$
     $form['field_protest_target']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_form_builder_palette_groups().
+ */
+function campaignion_email_protest_form_builder_palette_groups() {
+  $palette = array();
+  if (($node = menu_get_object()) && $node->type == 'email_protest') {
+    $palette['email_protest'] = array(
+      'weight' => -18,
+      'title'  => t('Email Protest Data'),
+    );
+  }
+  return $palette;
+}
+
+/**
+ * Implements hook_form_builder_types().
+ */
+function campaignion_email_protest_form_builder_types() {
+  if (($node = menu_get_object()) && $node->type == 'email_protest') {
+    $fields['webform']['email_subject'] = array(
+      'title' => t('Email subject'),
+      'weight' => -70,
+      'palette_group' => 'email_protest',
+      'unique'        => TRUE,
+      'properties'    => array('default_value'),
+      'default'       => array(
+        '#title' => t('Email subject'),
+        '#default_value' => '',
+      ) + _form_builder_webform_default('textfield'),
+    );
+
+    $fields['webform']['email_body'] = array(
+      'title'  => t('Email body'),
+      'weight' => -60,
+      'palette_group' => 'email_protest',
+      'unique'        => TRUE,
+      'properties'    => array('default_value'),
+      'default'       => array(
+        '#title' => t('Email body'),
+        '#default_value' => '',
+      ) + _form_builder_webform_default('textarea'),
+    );
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_form_builder_types_alter().
+ */
+function campaignion_email_protest_form_builder_types_alter(&$types) {
+  if (($node = menu_get_object()) && $node->type == 'email_protest') {
+    $types['webform']['protest_target']['palette_group'] = 'email_protest';
+    $types['webform']['protest_target']['addable'] = TRUE;
+  }
+}

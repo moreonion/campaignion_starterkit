@@ -16,6 +16,7 @@ dependencies[] = pgbar
 dependencies[] = psr0
 dependencies[] = select_or_other
 dependencies[] = strongarm
+dependencies[] = webform_paymethod_select
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_logo_area
