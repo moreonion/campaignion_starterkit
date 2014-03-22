@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Email protest templates feature.
  */
+
+include_once 'campaignion_email_protest_templates.features.inc';
