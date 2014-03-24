@@ -2,7 +2,8 @@ name = Static pages
 description = Provides a simple static page content type for content like disclaimers, about pages, …
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_field_flexible
 dependencies[] = ctools
 dependencies[] = features

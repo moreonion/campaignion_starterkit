@@ -2,6 +2,8 @@ name = Petition templates
 description = Provides form templates for petitions.
 core = 7.x
 package = Campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_petition
 dependencies[] = ctools
 dependencies[] = features

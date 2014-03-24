@@ -2,7 +2,8 @@ name = Form Templates
 description = A set of default form templates
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_form_templates
 dependencies[] = comment
 dependencies[] = context

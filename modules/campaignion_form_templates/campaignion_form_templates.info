@@ -2,7 +2,7 @@ name = Form templates type
 description = Content-type for webform templates.
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
 
 dependencies[] = campaignion_static_page
 dependencies[] = features

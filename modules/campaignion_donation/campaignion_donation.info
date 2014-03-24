@@ -2,7 +2,8 @@ name = Donations
 description = Defines a donation content type
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_action
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_recent_supporters

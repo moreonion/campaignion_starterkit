@@ -2,6 +2,8 @@ name = Email protest templates
 description = Provides form templates for email protests.
 core = 7.x
 package = Campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_email_protest
 dependencies[] = campaignion_form_templates
 dependencies[] = ctools

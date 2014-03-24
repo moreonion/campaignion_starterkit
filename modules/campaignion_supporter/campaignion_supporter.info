@@ -2,7 +2,8 @@ name = Campaignion Contact Type
 description = Feature that defines a RedHen contact type used as supporter record.
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = addressfield
 dependencies[] = date
 dependencies[] = entity

@@ -2,7 +2,7 @@ name = Campaignion context
 description = Campaignion default context definitions.
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
 
 dependencies[] = campaignion_petition
 dependencies[] = campaignion_views_interface

@@ -2,7 +2,8 @@ name = Campaignion Email Protest
 description = Definitions for Advocacy Engine email protest content type
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_action
 dependencies[] = campaignion_campaign
 dependencies[] = campaignion_flexible_form

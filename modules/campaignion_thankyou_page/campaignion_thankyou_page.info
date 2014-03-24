@@ -2,7 +2,8 @@ name = Thank you pages
 description = Provides a thank you page content type and some contexts.
 core = 7.x
 package = Campaignion
-project = campaignion
+project = campaignion_starterkit
+
 dependencies[] = campaignion_static_page
 dependencies[] = context
 dependencies[] = ctools
