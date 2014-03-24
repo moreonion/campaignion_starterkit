@@ -123,13 +123,13 @@ function campaignion_supporter_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_form_of_address'
-  $field_bases['field_form_of_address'] = array(
+  // Exported field_base: 'field_salutation'
+  $field_bases['field_salutation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_form_of_address',
+    'field_name' => 'field_salutation',
     'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(

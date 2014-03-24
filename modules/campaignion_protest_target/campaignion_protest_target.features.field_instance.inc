@@ -131,8 +131,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_form_of_address'
-  $field_instances['redhen_contact-email_protest_target-field_form_of_address'] = array(
+  // Exported field_instance: 'redhen_contact-email_protest_target-field_salutation'
+  $field_instances['redhen_contact-email_protest_target-field_salutation'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
     'deleted' => 0,
@@ -154,7 +154,7 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
     'entity_type' => 'redhen_contact',
     'exclude_cv' => 0,
-    'field_name' => 'field_form_of_address',
+    'field_name' => 'field_salutation',
     'label' => 'Salutation',
     'required' => 0,
     'settings' => array(

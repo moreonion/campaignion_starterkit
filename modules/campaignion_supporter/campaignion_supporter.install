@@ -19,3 +19,22 @@ function campaignion_supporter_install() {
     }
   }
 }
+
+/**
+ * Rename: form_of_address -> salutation.
+ */
+function campaignion_supporter_update_1() {
+  $o = 'form_of_address';
+  $n = 'salutation';
+  db_query("UPDATE field_config SET field_name='$o' WHERE field_name='$n'");
+  db_query("UPDATE field_config_instance SET field_name='$o' WHERE field_name='$n'");
+  db_query("RENAME TABLE `field_data_field_$o` TO `field_data_field_$n`;");
+  db_query("RENAME TABLE `field_revision_field_$o` TO `field_revision_field_$n`;");
+  $specs = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+  );
+  db_change_field("field_data_field_$n", "field_{$o}_value", "field_{$n}_value", $specs);
+  db_change_field("field_revision_field_$n", "field_{$o}_value", "field_{$n}_value", $specs);
+}
