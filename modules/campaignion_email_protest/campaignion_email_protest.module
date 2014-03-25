@@ -94,7 +94,7 @@ function campaignion_email_protest_form_email_protest_node_form_alter(&$form, &$
   }
   $form['title']['#weight'] = 210;
 
-  if (!empty($form_state['#wizard'])) {
+  if (!empty($form_state['#wizard_type'])) {
     $form['field_protest_target_options']['#access'] = FALSE;
     $form['field_protest_target']['#access'] = FALSE;
   }

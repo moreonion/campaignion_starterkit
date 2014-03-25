@@ -4,4 +4,51 @@
  * Code for the campaignion_thankyou_page feature.
  */
 
+use \Drupal\campaignion\Action\TypeBase;
+
 include_once 'campaignion_thankyou_page.features.inc';
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function campaignion_thankyou_page_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $node = $form_state['node'];
+
+  if ($node->type == 'thank_you_page') {
+    $form['field_reference_to_campaign']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * Sync field_reference_to_campaign with action node.
+ */
+function campaignion_thankyou_page_node_update($node) {
+  if (
+    TypeBase::isAction($node->type) &&
+    isset($node->field_reference_to_campaign) &&
+    !empty($node->field_thank_you_pages) &&
+    !empty($node->field_thank_you_pages[LANGUAGE_NONE])
+  ) {
+    foreach ($node->field_thank_you_pages[LANGUAGE_NONE] as $value) {
+      if ($value['node_reference_nid'] && ($tyNode = node_load($value['node_reference_nid']))) {
+        if (
+          $tyNode->field_reference_to_campaign != $node->field_reference_to_campaign ||
+          !$tyNode->field_reference_to_campaign ||
+          array_diff($tyNode->field_reference_to_campaign, $node->field_reference_to_campaign)
+        ) {
+          $tyNode->field_reference_to_campaign = $node->field_reference_to_campaign;
+          node_save($tyNode);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function campaignion_thankyou_page_node_insert($node) {
+  campaignion_thankyou_page_node_update($node);
+}
