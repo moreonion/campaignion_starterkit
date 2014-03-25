@@ -93,7 +93,7 @@ function campaignion_email_protest_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'webform_template' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'metatags' => array(
           'weight' => '8',

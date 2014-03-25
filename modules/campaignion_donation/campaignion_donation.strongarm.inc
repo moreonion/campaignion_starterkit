@@ -93,13 +93,13 @@ function campaignion_donation_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'webform_template' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'metatags' => array(
           'weight' => '7',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '5',

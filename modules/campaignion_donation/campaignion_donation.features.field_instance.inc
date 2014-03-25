@@ -45,7 +45,7 @@ function campaignion_donation_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 231,
+      'weight' => 10,
     ),
   );
 
@@ -100,7 +100,7 @@ function campaignion_donation_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 220,
+      'weight' => 7,
     ),
   );
 
@@ -144,7 +144,7 @@ function campaignion_donation_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 6,
     ),
   );
 
@@ -222,7 +222,7 @@ function campaignion_donation_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => -10,
+      'weight' => 0,
     ),
   );
 
@@ -272,7 +272,47 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-donation-field_tags'
+  $field_instances['node-donation-field_tags'] = array(
+    'bundle' => 'donation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tags',
+    'label' => 'Tag supporters',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -319,7 +359,7 @@ function campaignion_donation_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -391,7 +431,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 230,
+      'weight' => 8,
     ),
   );
 
@@ -432,7 +472,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 9,
+      'weight' => 5,
     ),
   );
 
@@ -447,6 +487,8 @@ function campaignion_donation_field_default_field_instances() {
   t('Progress bar');
   t('Reference to campaign');
   t('Short Info');
+  t('Supporters submitting this form will be automatically tagged with these tags.');
+  t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
   t('gets displayed in the sidebar.');

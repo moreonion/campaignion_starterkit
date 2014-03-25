@@ -96,13 +96,16 @@ function campaignion_flexible_form_strongarm() {
           'weight' => '6',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'path' => array(
           'weight' => '5',
         ),
         'redirect' => array(
           'weight' => '4',
+        ),
+        'webform_template' => array(
+          'weight' => '1',
         ),
       ),
       'display' => array(
