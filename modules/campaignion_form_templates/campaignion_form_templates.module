@@ -31,3 +31,72 @@ function campaignion_form_templates_form_webform_template_type_node_form_alter(&
   $form['wizard_advanced']['#access'] = FALSE;
   $form['toggle_wizard_advanced']['#access'] = FALSE;
 }
+
+function campaignion_form_templates_selector($form, &$unused_form_state, $type, $nid) {
+
+  $tpl_src  = array_filter(variable_get('webform_template_src', array()));
+  $tpl_dest = array_filter(variable_get('webform_template_dest', array()));
+
+  if (    isset($tpl_dest[$type]) == TRUE
+       && empty($tpl_src) == FALSE) {
+    $show_lang = variable_get('webform_template_lang');
+    $result = db_query('SELECT nid,title,language FROM {node} WHERE type IN (:types) AND status = 1 ORDER BY tnid', array(':types' => $tpl_src));
+
+    $templates[] = '- ' . t('none') . ' -';
+
+    foreach ($result as $row) {
+      $templates[$row->nid] = $row->title;
+
+      if (empty($show_lang) == FALSE) {
+        $templates[$row->nid] .= ' [' . $row->language . ']';
+      }
+    }
+
+    $form['webform_template'] = array(
+      '#type'        => 'fieldset',
+      '#collapsible' => FALSE,
+      '#collapsed'   => FALSE,
+    );
+
+    $form['webform_template']['source'] = array(
+      '#type'          => 'select',
+      '#title'         => t('Available templates'),
+      '#options'       => $templates,
+      '#default_value' => 'none',
+      '#description'   => t('Pick an action template to use pre-defined forms and emails.'),
+    );
+
+    if (empty($nid) == FALSE) {
+      $form['webform_template']['source']['#description'] .= '<br /><strong>' . t('Applying an action template will overwrite the form and email settings for this action!') . '</strong>';
+    }
+
+    // add a submit function before the usual submit
+    $form['#submit'] = array('campaignion_form_templates_selector_submit');
+    // define the submit button
+    $form['submit'] = array(
+      '#type'  => 'submit',
+      '#value' => t('Apply action template'),
+    );
+  }
+  return $form;
+}
+
+function campaignion_form_templates_selector_submit($form, &$form_state) {
+
+  if (    isset($form_state['complete form']['webform_template']['source']['#value'])
+       && $form_state['complete form']['webform_template']['source']['#value'] !== '0') {
+    // the webform_template parameter has to be stored into the super global _SESSION array
+    // as the _webform_template_attach function will need it
+    $template_nid = $form_state['complete form']['webform_template']['source']['#value'];
+    $_SESSION['webform_template'] = $template_nid;
+
+    $new_petition_nid = $form_state['build_info']['args'][1];
+    $new_petition = node_load($new_petition_nid);
+    _webform_template_attach($new_petition, 'update');
+
+    // form_builder doesn't realize that the form has changed and would reload the old
+    // form from its own cache; hence we clean the cache for this form (and session)
+    module_load_include('inc', 'form_builder', 'form_builder.cache');
+    form_builder_cache_delete('webform', $form_state['build_info']['args'][1]);
+  }
+}
