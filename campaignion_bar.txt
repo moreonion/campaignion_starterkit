@@ -7,7 +7,7 @@ Manage {"description":"Manage your Campaignion" }
 - Supporters {"url":"", "weight":"1", "description":"View and manage your supporters" }
 -- Supporter management {"url":"admin/supporters","weight":"0","description":"Filter and perform bulk actions on your supporter base" }
 -- User accounts {"url":"admin/people","weight":"1", "description":"Manage user accounts and permissions" }
--- Tags {"url":"admin/structure/taxonomy/ae_contact_tags_taxonomy","weight":"2", "description":"Manage tags assigned to supporters" }
+-- Tags {"url":"admin/structure/taxonomy/supporter_tags","weight":"2", "description":"Manage tags assigned to supporters" }
 -- Data management {"url":"admin/structure/redhen/contact_types/manage/contact/fields","weight":"3", "description":"Define which data is collected about supporters" }
 - Navigation & Structure {"url":"admin/manage/navigation_and_structure", "weight":"2", "description":"List the menus of your site" }
 - Media gallery {"url":"admin/manage/media", "weight":"2", "description":"View and edit the media content of your site." }

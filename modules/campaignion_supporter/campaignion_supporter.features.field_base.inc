@@ -319,7 +319,7 @@ function campaignion_supporter_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'ae_contact_tags_taxonomy',
+          'vocabulary' => 'supporter_tags',
           'parent' => 0,
         ),
       ),
