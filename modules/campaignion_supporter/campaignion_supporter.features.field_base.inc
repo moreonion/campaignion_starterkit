@@ -293,13 +293,13 @@ function campaignion_supporter_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_tags'
-  $field_bases['field_tags'] = array(
+  // Exported field_base: 'supporter_tags'
+  $field_bases['supporter_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(

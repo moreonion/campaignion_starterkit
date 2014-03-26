@@ -390,8 +390,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_tags'
-  $field_instances['redhen_contact-email_protest_target-field_tags'] = array(
+  // Exported field_instance: 'redhen_contact-email_protest_target-supporter_tags'
+  $field_instances['redhen_contact-email_protest_target-supporter_tags'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
     'deleted' => 0,
@@ -413,7 +413,7 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
     'entity_type' => 'redhen_contact',
     'exclude_cv' => 0,
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
