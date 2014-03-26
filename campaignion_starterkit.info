@@ -11,7 +11,7 @@ dependencies[] = locale
 dependencies[] = mimemail
 dependencies[] = views_ui
 
-; AE specific
+; Campaignion features
 dependencies[] = campaignion_action_template
 dependencies[] = campaignion_activity
 dependencies[] = campaignion_bar
@@ -27,6 +27,7 @@ dependencies[] = campaignion_field_flexible
 dependencies[] = campaignion_reports
 dependencies[] = campaignion_manage
 dependencies[] = campaignion_news
+dependencies[] = campaignion_node_ux
 dependencies[] = campaignion_petition
 dependencies[] = campaignion_petition_templates
 dependencies[] = campaignion_static_page
@@ -35,8 +36,3 @@ dependencies[] = campaignion_webform_results
 dependencies[] = campaignion_webform_widget
 dependencies[] = campaignion_webform2redhen
 dependencies[] = campaignion_wizard
-
-; Devel modules
-dependencies[] = field_ui
-
-; API modules
