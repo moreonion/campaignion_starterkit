@@ -276,8 +276,8 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-field_tags'
-  $field_instances['node-donation-field_tags'] = array(
+  // Exported field_instance: 'node-donation-supporter_tags'
+  $field_instances['node-donation-supporter_tags'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
     'deleted' => 0,
@@ -297,7 +297,7 @@ function campaignion_donation_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tag supporters',
     'required' => FALSE,
     'settings' => array(

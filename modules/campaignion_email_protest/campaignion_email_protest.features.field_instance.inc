@@ -328,8 +328,8 @@ function campaignion_email_protest_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-email_protest-field_tags'
-  $field_instances['node-email_protest-field_tags'] = array(
+  // Exported field_instance: 'node-email_protest-supporter_tags'
+  $field_instances['node-email_protest-supporter_tags'] = array(
     'bundle' => 'email_protest',
     'default_value' => NULL,
     'deleted' => 0,
@@ -355,7 +355,7 @@ function campaignion_email_protest_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tag supporters',
     'required' => FALSE,
     'settings' => array(

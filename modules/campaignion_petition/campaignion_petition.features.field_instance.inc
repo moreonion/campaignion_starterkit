@@ -232,8 +232,8 @@ function campaignion_petition_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-petition-field_tags'
-  $field_instances['node-petition-field_tags'] = array(
+  // Exported field_instance: 'node-petition-supporter_tags'
+  $field_instances['node-petition-supporter_tags'] = array(
     'bundle' => 'petition',
     'default_value' => NULL,
     'deleted' => 0,
@@ -259,7 +259,7 @@ function campaignion_petition_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tag supporters',
     'required' => FALSE,
     'settings' => array(

@@ -282,8 +282,8 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_tags'
-  $field_instances['node-webform-field_tags'] = array(
+  // Exported field_instance: 'node-webform-supporter_tags'
+  $field_instances['node-webform-supporter_tags'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
     'deleted' => 0,
@@ -309,7 +309,7 @@ function campaignion_flexible_form_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tag supporters',
     'required' => FALSE,
     'settings' => array(

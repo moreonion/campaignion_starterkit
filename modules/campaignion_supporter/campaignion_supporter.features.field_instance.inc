@@ -470,8 +470,8 @@ function campaignion_supporter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-contact-field_tags'
-  $field_instances['redhen_contact-contact-field_tags'] = array(
+  // Exported field_instance: 'redhen_contact-contact-supporter_tags'
+  $field_instances['redhen_contact-contact-supporter_tags'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
     'deleted' => 0,
@@ -492,7 +492,7 @@ function campaignion_supporter_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'redhen_contact',
-    'field_name' => 'field_tags',
+    'field_name' => 'supporter_tags',
     'label' => 'Tags',
     'required' => FALSE,
     'settings' => array(

@@ -1,40 +1,28 @@
 <?php
 
 /**
- * Implement hook_modules_enabled
+ * Rename: field_tags -> supporter_tags.
  */
-function campaignion_supporter_install() {
-  if (!empty($GLOBALS['ae_contact_type_migration'])) {
-    return;
-  }
+function campaignion_supporter_update_2() {
+  $field = \Drupal\little_helpers\Field\Field::byName('field_tags');
+  $field->rename('supporter_tags');
 
-  module_load_include('module', 'taxonomy');
-
-  if ($voc = taxonomy_vocabulary_machine_name_load('ae_contact_tags_taxonomy')) {
-    foreach(array('Activist', 'Donor', 'Supporter') as $term_name) {
-      taxonomy_term_save((object) array(
-        'name' => $term_name,
-        'vid'  => $voc->vid,
-      ));
-    }
-  }
+  $fields = array(
+    'name' => 'Supporter Tags',
+    'machine_name' => 'supporter_tags',
+    'description' => 'Vocabulary for Campaignion supporter tags.',
+    'module' => 'campaignion_supportert_tags',
+  );
+  db_update('taxonomy_vocabulary')
+    ->fields($fields)
+    ->condition('machine_name', 'ae_contact_tags_taxonomy')
+    ->execute();
 }
 
 /**
  * Rename: form_of_address -> salutation.
  */
 function campaignion_supporter_update_1() {
-  $o = 'field_form_of_address';
-  $n = 'field_salutation';
-  db_query("UPDATE field_config SET field_name='$n' WHERE field_name='$o'");
-  db_query("UPDATE field_config_instance SET field_name='$n' WHERE field_name='$o'");
-  db_query("RENAME TABLE `field_data_$o` TO `field_data_$n`;");
-  db_query("RENAME TABLE `field_revision_$o` TO `field_revision_$n`;");
-  $specs = array(
-    'type' => 'varchar',
-    'length' => 255,
-    'not null' => FALSE,
-  );
-  db_change_field("field_data_$n", "{$o}_value", "{$n}_value", $specs);
-  db_change_field("field_revision_$n", "{$o}_value", "{$n}_value", $specs);
+  $field = \Drupal\little_helpers\Field\Field::byName('field_form_of_address');
+  $field->rename('field_salutation');
 }
