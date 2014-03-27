@@ -96,8 +96,13 @@ function campaignion_protest_target_validate($element, &$form_state, $form) {
 
     $importer = new \Drupal\campaignion\CRM\Import\MappedImport();
     $source   = new \Drupal\campaignion\CRM\Import\Source\ArraySource($form_state['values']['field_protest_target']['und'][$element['#delta']]['email_protest_target']);
-    $contact = $importer->import($source, 'email_protest_target');
-    $form_state['values']['field_protest_target']['und'][$element['#delta']]['target_id'] = $contact ? $contact->contact_id : NULL;
+    if ($contact = $importer->getContact($source, 'email_protest_target')) {
+      $changed = $importer->import($source, $contact);
+      if ($changed) {
+        $contact->save();
+      }
+    }
+    $form_state['values']['field_protest_target']['und'][$element['#delta']]['target_id'] = $contact ? $contact->value()->contact_id : NULL;
   }
 }
 
