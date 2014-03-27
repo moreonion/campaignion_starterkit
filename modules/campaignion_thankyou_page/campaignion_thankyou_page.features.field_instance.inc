@@ -58,7 +58,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -111,7 +111,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -162,7 +162,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -240,7 +240,53 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => -15,
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'node-thank_you_page-field_reference_to_campaign'
+  $field_instances['node-thank_you_page-field_reference_to_campaign'] = array(
+    'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_reference_to_campaign',
+    'label' => 'Related campaign',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 2,
     ),
   );
 
@@ -306,7 +352,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'share_light',
-      'weight' => 9,
+      'weight' => 6,
     ),
   );
 
@@ -317,6 +363,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
   t('Flexible');
   t('Introduction');
   t('Large image or video');
+  t('Related campaign');
   t('Set the share options for this page.');
   t('Share options');
 

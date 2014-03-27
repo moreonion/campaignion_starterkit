@@ -96,7 +96,7 @@ function campaignion_thankyou_page_strongarm() {
           'weight' => '7',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '6',
