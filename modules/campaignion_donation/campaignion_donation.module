@@ -78,7 +78,7 @@ function campaignion_donation_webform_paymethod_select_method_list_alter(&$conte
  */
 function campaignion_donation_form_builder_palette_groups() {
   $palette = array();
-  if (($node = menu_get_object()) && $node->type == 'donation') {
+  if (!($node = menu_get_object()) || $node->type == 'donation') {
     $palette['donation'] = array(
       'weight' => -19,
       'title'  => t('Payment data'),
@@ -93,7 +93,8 @@ function campaignion_donation_form_builder_palette_groups() {
  * Add donation / payment specific types to the donation palette.
  */
 function campaignion_donation_form_builder_types() {
-  if (($node = menu_get_object()) && $node->type == 'donation') {
+  module_load_include('inc', 'form_builder_webform', 'form_builder_webform.components');
+  if (!($node = menu_get_object()) || $node->type == 'donation') {
     $types['webform']['donation_interval'] = array(
       'properties' => array(
         'default_value',
@@ -136,7 +137,7 @@ function campaignion_donation_form_builder_types() {
  * content types.
  */
 function campaignion_donation_form_builder_types_alter(&$types) {
-  if (($node = menu_get_object()) && $node->type == 'donation') {
+  if (!($node = menu_get_object()) || $node->type == 'donation') {
     $type = &$types['webform']['paymethod_select'];
     $type['addable'] = TRUE;
     $type['palette_group'] = 'donation';
