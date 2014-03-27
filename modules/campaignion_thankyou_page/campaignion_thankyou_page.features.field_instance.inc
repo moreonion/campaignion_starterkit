@@ -293,6 +293,8 @@ function campaignion_thankyou_page_field_default_field_instances() {
   // Exported field_instance: 'node-thank_you_page-share_light'
   $field_instances['node-thank_you_page-share_light'] = array(
     'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => array(
       0 => array(
         'toggle' => 1,
@@ -310,7 +312,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
             'fid' => 0,
           ),
           'share_url' => '',
-          'subject' => '',
+          'subject' => 'Share this action!',
         ),
       ),
     ),
@@ -339,7 +341,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'share_light',
     'label' => 'Share options',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
@@ -347,6 +349,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'share_light',
       'settings' => array(
         'size' => 60,

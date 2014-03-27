@@ -49,6 +49,7 @@ function campaignion_thankyou_page_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'share_light',
     'foreign keys' => array(),
+    'global_block_settings' => 1,
     'indexes' => array(),
     'locked' => 0,
     'module' => 'share_light',
