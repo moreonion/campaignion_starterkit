@@ -1,0 +1,14 @@
+name = Donation templates
+description = Provides form templates for donations.
+core = 7.x
+package = Campaignion
+project = campaignion_starterkit
+dependencies[] = campaignion_donation
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = uuid_features
+__drupal_alter_by_ref[][node][donation] = donation
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[uuid_node][] = donation-template-default-en

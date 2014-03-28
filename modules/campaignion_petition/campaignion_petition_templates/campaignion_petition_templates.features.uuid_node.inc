@@ -25,7 +25,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'tnid' => 0,
   'translate' => 0,
   'uuid' => '2825470e-e582-414d-b01c-e6e71a028075',
-  'revision_uid' => 1,
+  'revision_uid' => 0,
   'action_template' => array(
     'und' => array(
       0 => array(
@@ -36,6 +36,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'body' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
+  'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -210,6 +211,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'body' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
+  'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -381,6 +383,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'body' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
+  'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
     'und' => array(

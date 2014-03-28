@@ -1,30 +1,30 @@
 <?php
 /**
  * @file
- * campaignion_email_protest_templates.features.uuid_node.inc
+ * campaignion_donation_templates.features.uuid_node.inc
  */
 
 /**
  * Implements hook_uuid_features_default_content().
  */
-function campaignion_email_protest_templates_uuid_features_default_content() {
+function campaignion_donation_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
   'uid' => 0,
-  'title' => 'Email protest form',
+  'title' => 'Default donation form',
   'log' => '',
   'status' => 0,
-  'comment' => 0,
+  'comment' => 1,
   'promote' => 0,
   'sticky' => 0,
-  'vuuid' => '4808153f-22f5-4679-9a2e-08fe80b824a6',
-  'type' => 'email_protest',
+  'vuuid' => 'donation-template-default-en-rev',
+  'type' => 'donation',
   'language' => 'en',
-  'created' => 1364408439,
+  'created' => 1343052630,
   'tnid' => 0,
   'translate' => 0,
-  'uuid' => '7f2e3be8-156e-4211-a35a-a654ff4ab99e',
+  'uuid' => 'donation-template-default-en',
   'revision_uid' => 0,
   'action_template' => array(
     'und' => array(
@@ -35,8 +35,6 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
   ),
   'body' => array(),
   'field_main_image' => array(),
-  'field_protest_target' => array(),
-  'field_protest_target_options' => array(),
   'field_reference_to_campaign' => array(),
   'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
@@ -52,8 +50,8 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target signatures.',
-            'status_message' => 'Already !current of !target signed the petition.',
+            'intro_message' => 'We need !target people to take action.',
+            'status_message' => 'Already !current of !target took action.',
             'full_intro_message' => 'Thanks for your support!',
             'full_status_message' => 'We\'ve reached our goal of !target supports.',
           ),
@@ -77,8 +75,8 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'webform' => array(
-    'nid' => 5,
+  'donation' => array(
+    'nid' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
     'redirect_url' => '<confirmation>',
@@ -96,11 +94,14 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
     'record_exists' => TRUE,
-    'roles' => array(),
+    'roles' => array(
+      0 => 1,
+      1 => 2,
+    ),
     'emails' => array(),
     'components' => array(
       1 => array(
-        'nid' => 5,
+        'nid' => 1,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -123,11 +124,11 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
           'conditional_values' => '',
         ),
         'mandatory' => 1,
-        'weight' => 3,
+        'weight' => 0,
         'page_num' => 1,
       ),
       2 => array(
-        'nid' => 5,
+        'nid' => 1,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -150,11 +151,11 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
           'conditional_values' => '',
         ),
         'mandatory' => 1,
-        'weight' => 4,
+        'weight' => 1,
         'page_num' => 1,
       ),
       3 => array(
-        'nid' => 5,
+        'nid' => 1,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -163,107 +164,9 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
         'value' => '%get[p5]',
         'extra' => array(
           'width' => '',
-          'unique' => FALSE,
+          'unique' => TRUE,
           'disabled' => 0,
           'title_display' => 'before',
-          'description' => '',
-          'attributes' => array(),
-          'private' => 0,
-          'conditional_component' => '',
-          'conditional_operator' => '=',
-          'conditional_values' => '',
-        ),
-        'mandatory' => 1,
-        'weight' => 5,
-        'page_num' => 1,
-      ),
-      4 => array(
-        'nid' => 5,
-        'cid' => 4,
-        'pid' => 0,
-        'form_key' => 'your_message',
-        'name' => 'Your message',
-        'type' => 'fieldset',
-        'value' => '',
-        'extra' => array(
-          'title_display' => 0,
-          'collapsible' => 0,
-          'collapsed' => 0,
-          'description' => '',
-          'private' => 0,
-          'conditional_component' => '',
-          'conditional_operator' => '=',
-          'conditional_values' => '',
-        ),
-        'mandatory' => 0,
-        'weight' => 6,
-        'page_num' => 1,
-      ),
-      5 => array(
-        'nid' => 5,
-        'cid' => 5,
-        'pid' => 4,
-        'form_key' => 'email_protest_target',
-        'name' => 'Send your protest to',
-        'type' => 'protest_target',
-        'value' => '',
-        'extra' => array(
-          'items' => '',
-          'multiple' => FALSE,
-          'aslist' => FALSE,
-          'description' => 'Select an email protest target.',
-          'private' => 0,
-          'required' => FALSE,
-          'title_display' => 'before',
-          'conditional_component' => '',
-          'conditional_operator' => '=',
-          'conditional_values' => '',
-        ),
-        'mandatory' => 0,
-        'weight' => 0,
-        'page_num' => 1,
-      ),
-      6 => array(
-        'nid' => 5,
-        'cid' => 6,
-        'pid' => 4,
-        'form_key' => 'email_subject',
-        'name' => 'Subject',
-        'type' => 'textfield',
-        'value' => '',
-        'extra' => array(
-          'width' => '',
-          'maxlength' => '',
-          'field_prefix' => '',
-          'field_suffix' => '',
-          'disabled' => 0,
-          'unique' => 0,
-          'title_display' => 'before',
-          'description' => '',
-          'attributes' => array(),
-          'private' => 0,
-          'conditional_component' => '',
-          'conditional_operator' => '=',
-          'conditional_values' => '',
-        ),
-        'mandatory' => 1,
-        'weight' => 1,
-        'page_num' => 1,
-      ),
-      7 => array(
-        'nid' => 5,
-        'cid' => 7,
-        'pid' => 4,
-        'form_key' => 'email_body',
-        'name' => 'Your Email',
-        'type' => 'textarea',
-        'value' => '',
-        'extra' => array(
-          'cols' => 60,
-          'rows' => 5,
-          'title_display' => 0,
-          'resizable' => 1,
-          'disabled' => 0,
           'description' => '',
           'attributes' => array(),
           'private' => 0,
@@ -280,7 +183,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
   'name' => '',
   'picture' => 0,
   'data' => NULL,
-  'date' => '2013-03-27 18:20:39 +0000',
+  'date' => '2012-07-23 14:10:30 +0000',
 );
   return $nodes;
 }
