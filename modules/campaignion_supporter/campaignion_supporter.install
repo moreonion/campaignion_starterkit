@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Revert this feature.
+ */
+function campaignion_supporter_update_3() {
+  features_revert_module('campaignion_supporter');
+}
+
+/**
  * Rename: field_tags -> supporter_tags.
  */
 function campaignion_supporter_update_2() {
