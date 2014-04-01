@@ -5,6 +5,7 @@ package = Campaignion
 project = campaignion_starterkit
 dependencies[] = campaignion_action
 dependencies[] = campaignion_campaign
+dependencies[] = campaignion_email_protest_templates
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_protest_target
 dependencies[] = campaignion_recent_supporters

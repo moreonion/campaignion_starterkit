@@ -14,7 +14,6 @@ function campaignion_email_protest_install() {
 /**
  * Implements hook_enable().
  */
-
 function campaignion_email_protest_enable() {
   $webform_settings = variable_get('webform_template_src', array());
   $webform_settings['webform_template_type'] = 'webform_template_type';

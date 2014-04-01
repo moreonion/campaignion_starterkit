@@ -5,6 +5,7 @@ package = Campaignion
 project = campaignion_starterkit
 dependencies[] = campaignion_action
 dependencies[] = campaignion_flexible_form
+dependencies[] = campaignion_petition_templates
 dependencies[] = campaignion_recent_supporters
 dependencies[] = campaignion_supporter
 dependencies[] = features
