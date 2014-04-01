@@ -4,7 +4,7 @@
  * Revert this feature.
  */
 function campaignion_supporter_update_3() {
-  features_revert_module('campaignion_supporter');
+  features_revert(array('campaignion_supporter' => array('field_base', 'field_instance', 'taxonomy')));
 }
 
 /**
