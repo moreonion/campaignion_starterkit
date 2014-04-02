@@ -36,7 +36,7 @@ function campaignion_thankyou_page_node_update($node) {
         if (
           $tyNode->field_reference_to_campaign != $node->field_reference_to_campaign ||
           !$tyNode->field_reference_to_campaign ||
-          array_diff($tyNode->field_reference_to_campaign, $node->field_reference_to_campaign)
+          !empty(drupal_array_diff_assoc_recursive($tyNode->field_reference_to_campaign, $node->field_reference_to_campaign))
         ) {
           $tyNode->field_reference_to_campaign = $node->field_reference_to_campaign;
           node_save($tyNode);
