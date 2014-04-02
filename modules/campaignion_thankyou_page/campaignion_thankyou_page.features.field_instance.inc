@@ -62,110 +62,6 @@ function campaignion_thankyou_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-thank_you_page-field_flexible'
-  $field_instances['node-thank_you_page-field_flexible'] = array(
-    'bundle' => 'thank_you_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_flexible',
-    'label' => 'Flexible',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-thank_you_page-field_intro'
-  $field_instances['node-thank_you_page-field_intro'] = array(
-    'bundle' => 'thank_you_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_intro',
-    'label' => 'Introduction',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-thank_you_page-field_main_image'
   $field_instances['node-thank_you_page-field_main_image'] = array(
     'bundle' => 'thank_you_page',
@@ -363,8 +259,6 @@ function campaignion_thankyou_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a main video to your thank you page');
   t('Body');
-  t('Flexible');
-  t('Introduction');
   t('Large image or video');
   t('Related campaign');
   t('Set the share options for this page.');
