@@ -13,7 +13,7 @@ dependencies[] = mimemail
 dependencies[] = views_ui
 
 ; enhancements for the theme (save to disable)
-dependencies[] = clientside_validations
+dependencies[] = clientside_validation
 dependencies[] = respondjs
 dependencies[] = modernizr
 
