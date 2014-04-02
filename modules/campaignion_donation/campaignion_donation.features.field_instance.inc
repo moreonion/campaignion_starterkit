@@ -45,7 +45,7 @@ function campaignion_donation_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -100,7 +100,7 @@ function campaignion_donation_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -151,7 +151,7 @@ function campaignion_donation_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -229,7 +229,7 @@ function campaignion_donation_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -279,7 +279,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -326,7 +326,7 @@ function campaignion_donation_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 
@@ -406,7 +406,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -487,7 +487,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -499,6 +499,7 @@ function campaignion_donation_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
+  t('Introduction');
   t('Large image or video');
   t('Reference to campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');

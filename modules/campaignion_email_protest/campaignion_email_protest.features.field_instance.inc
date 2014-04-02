@@ -51,7 +51,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -104,7 +104,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -155,7 +155,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -233,7 +233,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -279,7 +279,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'campaignion_protest_target',
       'settings' => array(),
       'type' => 'email_protest_target',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -329,7 +329,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 12,
     ),
   );
 
@@ -375,7 +375,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -421,7 +421,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 
@@ -500,7 +500,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 10,
+      'weight' => 6,
     ),
   );
 
@@ -547,7 +547,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -593,7 +593,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 
@@ -606,6 +606,7 @@ function campaignion_email_protest_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer showing how many people have signed this email protest.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
+  t('Introduction');
   t('Large image or video');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');

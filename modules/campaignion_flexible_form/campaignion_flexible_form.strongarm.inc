@@ -105,7 +105,7 @@ function campaignion_flexible_form_strongarm() {
           'weight' => '4',
         ),
         'webform_template' => array(
-          'weight' => '4',
+          'weight' => '10',
         ),
         'language' => array(
           'weight' => '0',
