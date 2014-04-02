@@ -31,3 +31,13 @@ function campaignion_starterkit_field_widget_form_alter(&$element, &$form_state,
       $field['#default_value'] = 'pgbar';
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_node_form_alter().
+ *
+ * Deactivate node revisions.
+ */
+function campaignion_starterkit_form_node_form_alter(&$form, &$form_state) {
+  $form['revision_information']['#access'] = FALSE;
+}
