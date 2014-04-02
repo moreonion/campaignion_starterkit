@@ -2,14 +2,20 @@ name = Campaignion starterkit
 description = Starterkit profile for the campaignion online action platform
 core = 7.x
 
-; needed by our themes
+; needed by our themes (does not work without)
 dependencies[] = less
-
-dependencies[] = context
 dependencies[] = jquery_update
+
+; needed by campaignion
+dependencies[] = context
 dependencies[] = locale
 dependencies[] = mimemail
 dependencies[] = views_ui
+
+; enhancements for the theme (save to disable)
+dependencies[] = clientside_validations
+dependencies[] = respondjs
+dependencies[] = modernizr
 
 ; Campaignion features
 dependencies[] = campaignion_action_template

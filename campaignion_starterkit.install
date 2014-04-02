@@ -30,6 +30,7 @@ function _campaignion_starterkit_add_european_languages() {
 
 function _campaignion_starterkit_set_variables() {
   variable_set('clientside_validation_path_list', 'admin/structure/views/*');
+  variable_set('clientside_validation_override_jquery_form', '1');
   variable_set('pathauto_node_pattern', '[node:title]');
   // user registration is admin only per default.
   variable_set('user_register', '0');
