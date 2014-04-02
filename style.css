@@ -777,6 +777,32 @@ html.js .fieldset .collapsed .fieldset-legend span.icon {
 }
 
 
+/* reversing fieldset collapsible for some fields like pgbar */
+
+.field-type-pgbar fieldset.form-wrapper {
+  background: none transparent;
+  border: 0px solid transparent;
+}
+
+.field-type-pgbar fieldset.form-wrapper legend span {
+  background: none transparent;
+  border: 0px solid transparent;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align: center;
+  border-bottom: 1px solid #C4C0BA;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.field-type-pgbar fieldset.form-wrapper .fieldset-content {
+  background: none transparent;
+}
+
+.field-type-pgbar .description {
+}
+
+
 /**
  * SPAMICIDE HIDDEN ====================================================
  * The spamicide module adds fieldsets to all forms it can find. It's not desired on the admin interface and breaks some styles
