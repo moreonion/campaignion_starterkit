@@ -7,12 +7,10 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_campaign_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function campaignion_campaign_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -26,7 +24,7 @@ function campaignion_campaign_node_info() {
     'campaign' => array(
       'name' => t('Campaign'),
       'base' => 'node_content',
-      'description' => t('Choose this if you want to launch a campaing site, it provides downloads and a share box.'),
+      'description' => t('Campaigns can be used as pages that present actions on a particular topic (e.g. everything that has to do with Land Grabbing) or as a means of organizing your actions for internal purposes.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

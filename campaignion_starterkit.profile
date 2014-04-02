@@ -10,13 +10,6 @@ function campaignion_starterkit_user_login(&$edit, $account) {
 }
 
 /**
- * Implements hook_views_api().
- */
-function campaignion_starterkit_views_api() {
-  return array("version" => "3.0");
-}
-
-/**
  * Implements hook_ctools_plugin_api().
  */
 function campaignion_starterkit_ctools_plugin_api() {

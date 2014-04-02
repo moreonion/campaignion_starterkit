@@ -21,7 +21,7 @@ function campaignion_static_page_node_info() {
     'static_page' => array(
       'name' => t('Static page'),
       'base' => 'node_content',
-      'description' => t('This is your common static page, for sites that don\'t change often. Mostly used for static content, like legal info or the about section of your project.'),
+      'description' => t('This is your common web page. It\'s for sites that don\'t change very often like the "About us" page.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

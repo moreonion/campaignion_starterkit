@@ -3,7 +3,6 @@ description = Provides a simple static page content type for content like discla
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
-
 dependencies[] = campaignion_field_flexible
 dependencies[] = ctools
 dependencies[] = features

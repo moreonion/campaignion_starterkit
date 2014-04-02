@@ -100,50 +100,6 @@ function campaignion_donation_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-donation-field_logo_area'
-  $field_instances['node-donation-field_logo_area'] = array(
-    'bundle' => 'donation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'gets displayed in the sidebar.',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_logo_area',
-    'label' => 'Short Info',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
       'weight' => 6,
     ),
   );
@@ -222,7 +178,7 @@ function campaignion_donation_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -272,47 +228,7 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-donation-supporter_tags'
-  $field_instances['node-donation-supporter_tags'] = array(
-    'bundle' => 'donation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'supporter_tags',
-    'label' => 'Tag supporters',
-    'required' => FALSE,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 3,
     ),
   );
 
@@ -359,37 +275,46 @@ function campaignion_donation_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
   // Exported field_instance: 'node-donation-pgbar_default'
   $field_instances['node-donation-pgbar_default'] = array(
     'bundle' => 'donation',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => array(
       0 => array(
         'state' => 1,
         'options' => array(
           'display' => array(
-            'template' => '',
+            'template' => 'thermometer',
           ),
-          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-target',
+          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-texts',
+          'source' => array(
+            'form_key' => 'donation_amount',
+          ),
           'target' => array(
             'offset' => 0,
-            'target' => '1000,10000',
+            'target' => array(
+              0 => 1000,
+              1 => 5000,
+              2 => 10000,
+            ),
             'threshold' => 90,
           ),
           'texts' => array(
-            'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
-            'intro_message' => 'We need !target signatures.',
-            'status_message' => 'Already !current of !target signed the petition.',
+            'full_intro_message' => 'Thank you for your support!',
+            'full_status_message' => 'We\'ve reached our goal of € !target',
+            'intro_message' => 'Our goal is to reach € !target.',
+            'status_message' => 'We\'ve already raised € !current! Will you help us raise another € !needed?',
           ),
         ),
       ),
     ),
     'deleted' => 0,
-    'description' => 'Display a progress bar for your donation.',
+    'description' => 'Display a counter, like a progress bar or thermometer for your donation.',
     'display' => array(
       'cck_blocks' => array(
         'label' => 'hidden',
@@ -415,13 +340,12 @@ function campaignion_donation_field_default_field_instances() {
     'entity_type' => 'node',
     'exclude_cv' => 0,
     'field_name' => 'pgbar_default',
-    'label' => 'Progress bar',
+    'label' => 'Counter',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'source' => 'webform_submissions.inc',
+      'source' => 'webform_field_sum.inc',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -472,7 +396,47 @@ function campaignion_donation_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 5,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-donation-supporter_tags'
+  $field_instances['node-donation-supporter_tags'] = array(
+    'bundle' => 'donation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'supporter_tags',
+    'label' => 'Tag supporters',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -480,18 +444,16 @@ function campaignion_donation_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a video to your donation.');
   t('Body');
-  t('Display a progress bar for your donation.');
+  t('Counter');
+  t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
-  t('Progress bar');
   t('Reference to campaign');
-  t('Short Info');
   t('Supporters submitting this form will be automatically tagged with these tags.');
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
-  t('gets displayed in the sidebar.');
 
   return $field_instances;
 }

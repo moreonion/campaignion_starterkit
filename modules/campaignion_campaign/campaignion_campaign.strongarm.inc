@@ -96,7 +96,7 @@ function campaignion_campaign_strongarm() {
           'weight' => '9',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '7',
@@ -105,7 +105,7 @@ function campaignion_campaign_strongarm() {
           'weight' => '8',
         ),
         'language' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
       ),
       'display' => array(
@@ -149,7 +149,7 @@ function campaignion_campaign_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_campaign';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['language_content_type_campaign'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -174,7 +174,6 @@ function campaignion_campaign_strongarm() {
   $strongarm->name = 'node_options_campaign';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_campaign'] = $strongarm;
 

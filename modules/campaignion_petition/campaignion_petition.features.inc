@@ -21,7 +21,7 @@ function campaignion_petition_node_info() {
     'petition' => array(
       'name' => t('Petition'),
       'base' => 'node_content',
-      'description' => t('Advocacy Engine Petitions-Inhaltstyp'),
+      'description' => t('Petitions can be used to collect signatures for a specifc cause through a form that you can customize.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

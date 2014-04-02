@@ -43,6 +43,7 @@ function campaignion_news_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => TRUE,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -96,6 +97,7 @@ function campaignion_news_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -150,6 +152,7 @@ function campaignion_news_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -175,13 +178,13 @@ function campaignion_news_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
-        'progress_indicator' => 'throbber',
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 3,
@@ -222,6 +225,7 @@ function campaignion_news_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -268,6 +272,7 @@ function campaignion_news_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),

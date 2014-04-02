@@ -43,6 +43,7 @@ function campaignion_campaign_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => TRUE,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -92,6 +93,7 @@ function campaignion_campaign_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -103,75 +105,7 @@ function campaignion_campaign_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-campaign-field_downloads'
-  $field_instances['node-campaign-field_downloads'] = array(
-    'bundle' => 'campaign',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'exclude_cv' => 0,
-    'field_name' => 'field_downloads',
-    'label' => 'Downloads',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'description_field' => 0,
-      'exclude_cv' => FALSE,
-      'file_directory' => '',
-      'file_extensions' => 'txt pdf jpg png jpeg gif doc docx odt mp3 ogg mp4 mpeg avi aac wma wmv flv',
-      'max_filesize' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'default' => 0,
-          'image' => 0,
-          'video' => 0,
-        ),
-        'progress_indicator' => 'throbber',
-        'browser_plugins' => array(
-          'upload' => 'upload',
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'media_internet' => 'media_internet',
-        ),
-      ),
-      'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -215,6 +149,7 @@ function campaignion_campaign_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => 'Add another section',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -267,6 +202,7 @@ function campaignion_campaign_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -324,6 +260,7 @@ function campaignion_campaign_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 1,
       'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => '',
@@ -349,13 +286,13 @@ function campaignion_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
-        'progress_indicator' => 'throbber',
         'browser_plugins' => array(
-          'upload' => 'upload',
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
+          'upload' => 'upload',
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 3,
@@ -399,6 +336,7 @@ function campaignion_campaign_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -409,7 +347,7 @@ function campaignion_campaign_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -419,7 +357,6 @@ function campaignion_campaign_field_default_field_instances() {
   t('Body');
   t('Create a public campaign page');
   t('Description');
-  t('Downloads');
   t('Flexible');
   t('Introduction');
   t('Large image or video');

@@ -51,7 +51,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -154,7 +154,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -232,7 +232,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 0,
+      'weight' => 3,
     ),
   );
 
@@ -278,53 +278,7 @@ function campaignion_flexible_form_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-webform-supporter_tags'
-  $field_instances['node-webform-supporter_tags'] = array(
-    'bundle' => 'webform',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'supporter_tags',
-    'label' => 'Tag supporters',
-    'required' => FALSE,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'weight' => 5,
     ),
   );
 
@@ -377,13 +331,36 @@ function campaignion_flexible_form_field_default_field_instances() {
   // Exported field_instance: 'node-webform-pgbar_default'
   $field_instances['node-webform-pgbar_default'] = array(
     'bundle' => 'webform',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => array(
       0 => array(
-        'target' => 100,
+        'state' => 1,
+        'options' => array(
+          'display' => array(
+            'template' => 'pgbar',
+          ),
+          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-display',
+          'target' => array(
+            'offset' => 0,
+            'target' => array(
+              0 => 200,
+              1 => 500,
+              2 => 1000,
+            ),
+            'threshold' => 90,
+          ),
+          'texts' => array(
+            'full_intro_message' => 'Thanks for your support!',
+            'full_status_message' => 'We\'ve reached our goal of !target people.',
+            'intro_message' => 'We need !target people.',
+            'status_message' => 'We have reached !current of !target',
+          ),
+        ),
       ),
     ),
     'deleted' => 0,
-    'description' => 'Display a progress bar for your webform.',
+    'description' => 'Display a counter, like a progress bar or thermometer counting how many people have signed up.',
     'display' => array(
       'cck_blocks' => array(
         'label' => 'above',
@@ -408,12 +385,12 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'pgbar_default',
-    'label' => 'Progress bar',
+    'label' => 'Counter',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'exclude_cv' => FALSE,
+      'source' => 'null.inc',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -423,7 +400,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -470,19 +447,65 @@ function campaignion_flexible_form_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 5,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-webform-supporter_tags'
+  $field_instances['node-webform-supporter_tags'] = array(
+    'bundle' => 'webform',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'supporter_tags',
+    'label' => 'Tag supporters',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 10,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Display a progress bar for your webform.');
+  t('Counter');
+  t('Display a counter, like a progress bar or thermometer counting how many people have signed up.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Introduction');
   t('Large image or video');
   t('Main text');
-  t('Progress bar');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');
   t('Tag supporters');

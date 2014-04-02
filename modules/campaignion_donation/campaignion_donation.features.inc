@@ -21,7 +21,7 @@ function campaignion_donation_node_info() {
     'donation' => array(
       'name' => t('Donation'),
       'base' => 'node_content',
-      'description' => t('A form to collect donations for your favorite project.'),
+      'description' => t('Donation pages can be used to collect donations online. It\'s like a landing page with a donation form that you can customize.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

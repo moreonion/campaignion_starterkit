@@ -49,17 +49,12 @@ function campaignion_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Public campaign page only',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
-      1 => 'field_downloads',
-      2 => 'field_intro',
-      3 => 'field_main_image',
-      4 => 'language',
-      5 => 'metatags',
-      6 => 'path',
-      7 => 'redirect',
-      8 => 'group_add',
+      1 => 'field_intro',
+      2 => 'field_main_image',
+      3 => 'group_add',
     ),
     'format_type' => 'div',
     'format_settings' => array(

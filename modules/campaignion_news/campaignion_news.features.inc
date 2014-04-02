@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_news_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function campaignion_news_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -17,7 +16,7 @@ function campaignion_news_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function campaignion_news_views_api() {
+function campaignion_news_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -29,7 +28,7 @@ function campaignion_news_node_info() {
     'news' => array(
       'name' => t('News'),
       'base' => 'node_content',
-      'description' => t('Post news!'),
+      'description' => t('You can post blog-like news articles that can be related to actions, campaigns or simply end up in a newsroom section.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

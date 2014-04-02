@@ -95,6 +95,15 @@ function campaignion_news_views_default_views() {
   $handler->display->display_options['arguments']['field_reference_to_campaign_nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_reference_to_campaign_nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_reference_to_campaign_nid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: News feed */
+  $handler = $view->new_display('feed', 'News feed', 'feed_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['path'] = 'news/rss';
   $translatables['news'] = array(
     t('Master'),
     t('News'),
@@ -115,6 +124,7 @@ function campaignion_news_views_default_views() {
     t('General News page'),
     t('News for specific Action'),
     t('News for specific campaign'),
+    t('News feed'),
   );
   $export['news'] = $view;
 

@@ -51,7 +51,7 @@ function campaignion_petition_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -104,7 +104,7 @@ function campaignion_petition_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -182,7 +182,7 @@ function campaignion_petition_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -228,53 +228,7 @@ function campaignion_petition_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-petition-supporter_tags'
-  $field_instances['node-petition-supporter_tags'] = array(
-    'bundle' => 'petition',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'supporter_tags',
-    'label' => 'Tag supporters',
-    'required' => FALSE,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -321,20 +275,43 @@ function campaignion_petition_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
   // Exported field_instance: 'node-petition-pgbar_default'
   $field_instances['node-petition-pgbar_default'] = array(
     'bundle' => 'petition',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => array(
       0 => array(
-        'target' => 100,
+        'state' => 1,
+        'options' => array(
+          'display' => array(
+            'template' => 'pgbar',
+          ),
+          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-display',
+          'target' => array(
+            'offset' => 0,
+            'target' => array(
+              0 => 200,
+              1 => 500,
+              2 => 1000,
+            ),
+            'threshold' => 90,
+          ),
+          'texts' => array(
+            'full_intro_message' => 'Thanks for your support!',
+            'full_status_message' => 'We\'ve reached our goal of !target signatures.',
+            'intro_message' => 'We need !target signatures.',
+            'status_message' => '!current of !target have signed the petition. Will you help us reach !needed?',
+          ),
+        ),
       ),
     ),
     'deleted' => 0,
-    'description' => 'display a progress bar for your petition.',
+    'description' => 'Display a counter, like a progress bar or thermometer for your donation.',
     'display' => array(
       'cck_blocks' => array(
         'label' => 'hidden',
@@ -360,12 +337,12 @@ function campaignion_petition_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'pgbar_default',
-    'label' => 'progress bar',
+    'label' => 'Counter',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'exclude_cv' => FALSE,
+      'source' => 'null.inc',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -422,7 +399,53 @@ function campaignion_petition_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 5,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-petition-supporter_tags'
+  $field_instances['node-petition-supporter_tags'] = array(
+    'bundle' => 'petition',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'supporter_tags',
+    'label' => 'Tag supporters',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -430,6 +453,8 @@ function campaignion_petition_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a video to your petition.');
   t('Body');
+  t('Counter');
+  t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
@@ -438,8 +463,6 @@ function campaignion_petition_field_default_field_instances() {
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
-  t('display a progress bar for your petition.');
-  t('progress bar');
 
   return $field_instances;
 }

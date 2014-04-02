@@ -44,7 +44,7 @@ function campaignion_flexible_form_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'pgbar_default',
     'foreign keys' => array(),
-    'global_block_settings' => 1,
+    'global_block_settings' => 2,
     'indexes' => array(),
     'locked' => 0,
     'module' => 'pgbar',

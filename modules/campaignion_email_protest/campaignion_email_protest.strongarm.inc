@@ -93,7 +93,7 @@ function campaignion_email_protest_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'webform_template' => array(
-          'weight' => '3',
+          'weight' => '2',
         ),
         'metatags' => array(
           'weight' => '8',
@@ -166,7 +166,7 @@ function campaignion_email_protest_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_email_protest';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['language_content_type_email_protest'] = $strongarm;
 
   $strongarm = new stdClass();

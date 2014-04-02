@@ -24,7 +24,7 @@ function campaignion_thankyou_page_node_info() {
     'thank_you_page' => array(
       'name' => t('Thank You page'),
       'base' => 'node_content',
-      'description' => t('Thank You pages are displayed to users that just have taken an action / have donated. This is the plate to thank your supporters and ask them to share or do some other action / donate.'),
+      'description' => t('Your supporters will land on thank you pages after taking action or making a donation.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

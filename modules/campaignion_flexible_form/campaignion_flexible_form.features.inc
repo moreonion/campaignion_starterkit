@@ -19,9 +19,9 @@ function campaignion_flexible_form_ctools_plugin_api($module = NULL, $api = NULL
 function campaignion_flexible_form_node_info() {
   $items = array(
     'webform' => array(
-      'name' => t('Webform'),
+      'name' => t('Flexible Form'),
       'base' => 'node_content',
-      'description' => t('Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.'),
+      'description' => t('Create a new form like a "volunteer now" signup form, an event signup or a questionnaire for your supporters.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

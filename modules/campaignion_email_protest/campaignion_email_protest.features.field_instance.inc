@@ -51,7 +51,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -182,7 +182,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 0,
+      'weight' => 4,
     ),
   );
 
@@ -324,53 +324,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-email_protest-supporter_tags'
-  $field_instances['node-email_protest-supporter_tags'] = array(
-    'bundle' => 'email_protest',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'supporter_tags',
-    'label' => 'Tag supporters',
-    'required' => FALSE,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 10,
+      'weight' => 3,
     ),
   );
 
@@ -423,6 +377,8 @@ function campaignion_email_protest_field_default_field_instances() {
   // Exported field_instance: 'node-email_protest-pgbar_default'
   $field_instances['node-email_protest-pgbar_default'] = array(
     'bundle' => 'email_protest',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => array(
       0 => array(
         'state' => 1,
@@ -430,23 +386,29 @@ function campaignion_email_protest_field_default_field_instances() {
           'display' => array(
             'template' => 'pgbar',
           ),
-          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-texts',
+          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-display',
           'target' => array(
             'offset' => 0,
-            'target' => '500,2000,5000,10000,20000',
+            'target' => array(
+              0 => 500,
+              1 => 2000,
+              2 => 5000,
+              3 => 10000,
+              4 => 20000,
+            ),
             'threshold' => 90,
           ),
           'texts' => array(
             'full_intro_message' => 'Thanks for your support!',
             'full_status_message' => 'We\'ve reached our goal of !target emails.',
-            'intro_message' => 'We have to send !target emails to succeed.',
-            'status_message' => 'Already !current of !target emails have been sent.',
+            'intro_message' => 'We have to send !target emails to win this campaign.',
+            'status_message' => 'You\'ve already sent !current of !target emails.',
           ),
         ),
       ),
     ),
     'deleted' => 0,
-    'description' => 'Display a progress bar for your email protest.',
+    'description' => 'Display a counter, like a progress bar or thermometer showing how many people have signed this email protest.',
     'display' => array(
       'cck_blocks' => array(
         'label' => 'above',
@@ -472,12 +434,11 @@ function campaignion_email_protest_field_default_field_instances() {
     'entity_type' => 'node',
     'exclude_cv' => 0,
     'field_name' => 'pgbar_default',
-    'label' => 'Progress bar',
+    'label' => 'Counter',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'exclude_cv' => FALSE,
       'source' => 'webform_submissions.inc',
       'user_register_form' => FALSE,
     ),
@@ -488,7 +449,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -535,7 +496,53 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'recent_supporters',
-      'weight' => 4,
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-email_protest-supporter_tags'
+  $field_instances['node-email_protest-supporter_tags'] = array(
+    'bundle' => 'email_protest',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'supporter_tags',
+    'label' => 'Tag supporters',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 11,
     ),
   );
 
@@ -544,11 +551,11 @@ function campaignion_email_protest_field_default_field_instances() {
   t('Add a large main image or a video to your email protest.');
   t('Add your protest target to the list');
   t('Body');
-  t('Display a progress bar for your email protest.');
+  t('Counter');
+  t('Display a counter, like a progress bar or thermometer showing how many people have signed this email protest.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
-  t('Progress bar');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');
   t('Tag supporters');

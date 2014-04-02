@@ -21,7 +21,7 @@ function campaignion_email_protest_node_info() {
     'email_protest' => array(
       'name' => t('Email Protest'),
       'base' => 'node_content',
-      'description' => t('Advocacy Engine Email Protest content type'),
+      'description' => t('Email protests are actions that allow your supporters to send emails to a campaign target (via a form on a page).'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',
