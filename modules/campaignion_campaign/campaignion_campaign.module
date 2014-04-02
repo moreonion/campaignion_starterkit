@@ -18,13 +18,13 @@ function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_i
     '#states' => array('invisible' => array('#edit-field-public-page-und' => array('checked' => FALSE))),
     '#weight' => $form['field_public_page']['#weight'] + 0.1,
   );
-
-  $form['microsite'] = array(
-    '#type' => 'container',
-    '#weight' => $form['field_microsite']['#weight'] + 0.1,
-  );
-  $form['microsite']['#states']['visible'][':input[name="field_microsite[und]"]']['checked'] = TRUE;
-
+  if (isset($form_state['node']->field_microsite)) {
+    $form['microsite'] = array(
+      '#type' => 'container',
+      '#weight' => $form['field_microsite']['#weight'] + 0.1,
+    );
+    $form['microsite']['#states']['visible'][':input[name="field_microsite[und]"]']['checked'] = TRUE;
+  }
   $themes = array();
   foreach (list_themes() as $theme) {
     if ($theme->status) {
@@ -56,13 +56,15 @@ function campaignion_campaign_field_group_build_pre_render_alter(&$form) {
   }
   unset($form['group_only_published']);
 
-  $elem = &$form['group_microsite'];
-  foreach (element_children($elem) as $key) {
-    $form['microsite'][$key] = &$elem[$key];
-    unset($form['microsite']['#sorted']);
-    unset($elem[$key]);
+  if (isset($form['group_microsite'])) {
+    $elem = &$form['group_microsite'];
+    foreach (element_children($elem) as $key) {
+      $form['microsite'][$key] = &$elem[$key];
+      unset($form['microsite']['#sorted']);
+      unset($elem[$key]);
+    }
+    unset($form['group_microsite']);
   }
-  unset($form['group_microsite']);
 }
 
 /**
