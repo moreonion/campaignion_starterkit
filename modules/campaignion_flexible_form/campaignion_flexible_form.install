@@ -2,16 +2,11 @@
 
 /**
  * Implements hook_install().
+ *
+ * Delete the custom node_type that was previously stored by webform.
  */
 function campaignion_flexible_form_install() {
-  _campaignion_flexible_form_set_weight();
-}
-
-/**
- * Set weight to be executed after webform.
- */
-function _campaignion_flexible_form_set_weight() {
-  db_query("UPDATE {system} a INNER JOIN {system} b ON b.name='webform' SET a.weight=b.weight+1 WHERE a.name='campaignion_flexible_form'");
+  node_type_delete('webform');
 }
 
 /**
@@ -25,11 +20,4 @@ function campaignion_flexible_form_enable() {
     $settings['webform'] = 'webform';
     variable_set($var, $settings);
   }
-}
-
-/** 
- * Set weight to be executed after webform.
- */
-function campaignion_flexible_form_update_1() {
-  _campaignion_flexible_form_set_weight();
 }
