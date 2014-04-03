@@ -75,7 +75,7 @@ function campaignion_donation_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'donation' => array(
+  'webform' => array(
     'nid' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
