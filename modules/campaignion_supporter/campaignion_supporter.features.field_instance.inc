@@ -13,7 +13,9 @@ function campaignion_supporter_field_default_field_instances() {
   // Exported field_instance: 'redhen_contact-contact-field_address'
   $field_instances['redhen_contact-contact-field_address'] = array(
     'bundle' => 'contact',
-    'default_value' => array(),
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -54,6 +56,7 @@ function campaignion_supporter_field_default_field_instances() {
         'available_countries' => array(),
         'format_handlers' => array(
           'address' => 'address',
+          'optional-country' => 'optional-country',
           'address-hide-country' => 0,
           'organisation' => 0,
           'name-full' => 0,
@@ -167,88 +170,6 @@ function campaignion_supporter_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'redhen_contact-contact-field_engagement_level'
-  $field_instances['redhen_contact-contact-field_engagement_level'] = array(
-    'bundle' => 'contact',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'redhen_contact',
-    'exclude_cv' => 0,
-    'field_name' => 'field_engagement_level',
-    'label' => 'Engagement level',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'redhen_contact-contact-field_salutation'
-  $field_instances['redhen_contact-contact-field_salutation'] = array(
-    'bundle' => 'contact',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'redhen_contact',
-    'exclude_cv' => 0,
-    'field_name' => 'field_salutation',
-    'label' => 'Salutation',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 2,
     ),
   );
 
@@ -426,6 +347,47 @@ function campaignion_supporter_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'redhen_contact-contact-field_salutation'
+  $field_instances['redhen_contact-contact-field_salutation'] = array(
+    'bundle' => 'contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'exclude_cv' => 0,
+    'field_name' => 'field_salutation',
+    'label' => 'Salutation',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'redhen_contact-contact-field_social_network_links'
   $field_instances['redhen_contact-contact-field_social_network_links'] = array(
     'bundle' => 'contact',
@@ -467,48 +429,6 @@ function campaignion_supporter_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'redhen_contact-contact-supporter_tags'
-  $field_instances['redhen_contact-contact-supporter_tags'] = array(
-    'bundle' => 'contact',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'redhen_contact',
-    'field_name' => 'supporter_tags',
-    'label' => 'Tags',
-    'required' => FALSE,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'options_buttons',
-      'weight' => 12,
     ),
   );
 
