@@ -34,11 +34,17 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
     ),
   ),
   'body' => array(),
+  'field_intro' => array(),
   'field_main_image' => array(),
   'field_protest_target' => array(),
-  'field_protest_target_options' => array(),
+  'field_protest_target_options' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'preselect',
+      ),
+    ),
+  ),
   'field_reference_to_campaign' => array(),
-  'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -77,6 +83,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'supporter_tags' => array(),
   'webform' => array(
     'nid' => 5,
     'confirmation' => '',
@@ -88,7 +95,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
-    'submit_text' => '',
+    'submit_text' => 'Take action now!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,
@@ -214,7 +221,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
           'description' => 'Select an email protest target.',
           'private' => 0,
           'required' => FALSE,
-          'title_display' => 'before',
+          'title_display' => NULL,
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
@@ -237,7 +244,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
           'field_prefix' => '',
           'field_suffix' => '',
           'disabled' => 0,
-          'unique' => 0,
+          'unique' => FALSE,
           'title_display' => 'before',
           'description' => '',
           'attributes' => array(),
@@ -261,7 +268,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
         'extra' => array(
           'cols' => 60,
           'rows' => 5,
-          'title_display' => 0,
+          'title_display' => 'before',
           'resizable' => 1,
           'disabled' => 0,
           'description' => '',

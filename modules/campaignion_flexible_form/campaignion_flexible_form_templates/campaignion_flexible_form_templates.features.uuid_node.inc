@@ -34,9 +34,9 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
   ),
   'body' => array(),
+  'field_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
-  'supporter_tags' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -75,6 +75,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'supporter_tags' => array(),
   'webform' => array(
     'nid' => 1,
     'confirmation' => '',
@@ -86,7 +87,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
-    'submit_text' => '',
+    'submit_text' => 'Sign up now!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,

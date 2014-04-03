@@ -507,7 +507,18 @@ function campaignion_email_protest_field_default_field_instances() {
   // Exported field_instance: 'node-email_protest-recent_supporters'
   $field_instances['node-email_protest-recent_supporters'] = array(
     'bundle' => 'email_protest',
-    'default_value' => NULL,
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'toggle' => 1,
+        'options' => array(
+          'country_toggle' => 0,
+          'cycle_toggle' => 1,
+          'visible_count' => 6,
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -542,7 +553,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'campaignion_recent_supporters',
       'settings' => array(
         'size' => 60,

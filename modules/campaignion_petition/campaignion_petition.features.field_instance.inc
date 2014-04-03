@@ -408,7 +408,18 @@ function campaignion_petition_field_default_field_instances() {
   // Exported field_instance: 'node-petition-recent_supporters'
   $field_instances['node-petition-recent_supporters'] = array(
     'bundle' => 'petition',
-    'default_value' => NULL,
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'toggle' => 1,
+        'options' => array(
+          'country_toggle' => 0,
+          'cycle_toggle' => 1,
+          'visible_count' => 6,
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

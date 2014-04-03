@@ -416,10 +416,10 @@ function campaignion_donation_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => array(
       0 => array(
-        'toggle' => 0,
+        'toggle' => 1,
         'options' => array(
-          'country_toggle' => 1,
-          'cycle_toggle' => 0,
+          'country_toggle' => 0,
+          'cycle_toggle' => 1,
           'visible_count' => 6,
         ),
       ),
