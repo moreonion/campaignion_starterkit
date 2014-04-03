@@ -114,15 +114,15 @@ function campaignion_petition_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '3',
-            'visible' => TRUE,
+            'weight' => '4',
+            'visible' => FALSE,
           ),
           'teaser' => array(
             'weight' => '4',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '10',
+            'weight' => '2',
             'visible' => TRUE,
           ),
         ),
@@ -132,11 +132,11 @@ function campaignion_petition_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '6',
+            'weight' => '8',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '0',
+            'weight' => '5',
             'visible' => FALSE,
           ),
         ),

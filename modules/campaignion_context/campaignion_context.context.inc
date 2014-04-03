@@ -13,103 +13,6 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'donation_form';
-  $context->description = '';
-  $context->tag = 'theme';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'donation' => 'donation',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array();
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('theme');
-  $export['donation_form'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'landing_page';
-  $context->description = '';
-  $context->tag = 'theme';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'donation' => 'donation',
-        'petition' => 'petition',
-        'thank_you_page' => 'thank_you_page',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'cck_blocks-field_background_info' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_background_info',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-        'cck_blocks-field_read_more_link_text' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_read_more_link_text',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-        'cck_blocks-body' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'body',
-          'region' => 'content_top',
-          'weight' => '-10',
-        ),
-        'cck_blocks-field_main_image' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_main_image',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'cck_blocks-pgbar_default' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'pgbar_default',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'cck_blocks-field_logo_area' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_logo_area',
-          'region' => 'sidebar_second',
-          'weight' => '9',
-        ),
-        'campaignion_views_interface-who_signed_module' => array(
-          'module' => 'campaignion_views_interface',
-          'delta' => 'who_signed_module',
-          'region' => 'sidebar_second',
-          'weight' => '10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('theme');
-  $export['landing_page'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'region_content_bottom_default';
   $context->description = 'Default context for region content_bottom';
   $context->tag = 'default';
@@ -164,7 +67,19 @@ function campaignion_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'cck_blocks-field_main_image' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'field_main_image',
+          'region' => 'content_top',
+          'weight' => '-10',
+          'title' => '<none>',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
@@ -238,27 +153,6 @@ function campaignion_context_context_default_contexts() {
   t('Default context for region header');
   t('default');
   $export['region_header_default'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'region_header_overwrite_landing';
-  $context->description = '';
-  $context->tag = 'Landing page';
-  $context->conditions = array(
-    'context' => array(
-      'values' => array(
-        'landing_page' => 'landing_page',
-      ),
-    ),
-  );
-  $context->reactions = array();
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Landing page');
-  $export['region_header_overwrite_landing'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -361,7 +255,33 @@ function campaignion_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'cck_blocks-pgbar_default' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'pgbar_default',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+          'title' => '<none>',
+        ),
+        'webform_block-current' => array(
+          'module' => 'webform_block',
+          'delta' => 'current',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+          'title' => '<none>',
+        ),
+        'cck_blocks-recent_supporters' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'recent_supporters',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+          'title' => '<none>',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables

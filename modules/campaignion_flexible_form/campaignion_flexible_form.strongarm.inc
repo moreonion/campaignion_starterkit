@@ -118,13 +118,21 @@ function campaignion_flexible_form_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '10',
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
+          'cck_blocks' => array(
+            'weight' => '2',
             'visible' => TRUE,
           ),
         ),
         'language' => array(
           'default' => array(
-            'weight' => '0',
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
+          'cck_blocks' => array(
+            'weight' => '4',
             'visible' => FALSE,
           ),
         ),

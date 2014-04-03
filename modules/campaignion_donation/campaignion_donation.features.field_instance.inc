@@ -21,13 +21,13 @@ function campaignion_donation_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
@@ -60,7 +60,7 @@ function campaignion_donation_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -115,14 +115,14 @@ function campaignion_donation_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -163,18 +163,18 @@ function campaignion_donation_field_default_field_instances() {
     'display' => array(
       'cck_blocks' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
           'file_view_mode' => 'default',
         ),
         'type' => 'file_rendered',
         'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -244,13 +244,13 @@ function campaignion_donation_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -294,13 +294,12 @@ function campaignion_donation_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'field_reference_or_redirect',
         'settings' => array(),
-        'type' => 'reference_or_redirect_formatter',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -372,13 +371,13 @@ function campaignion_donation_field_default_field_instances() {
         'module' => 'pgbar',
         'settings' => array(),
         'type' => 'pgbar',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -413,21 +412,33 @@ function campaignion_donation_field_default_field_instances() {
   // Exported field_instance: 'node-donation-recent_supporters'
   $field_instances['node-donation-recent_supporters'] = array(
     'bundle' => 'donation',
-    'default_value' => NULL,
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'toggle' => 0,
+        'options' => array(
+          'country_toggle' => 1,
+          'cycle_toggle' => 0,
+          'visible_count' => 6,
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'cck_blocks' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'campaignion_recent_supporters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'recent_supporters',
+        'weight' => 3,
       ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -441,7 +452,7 @@ function campaignion_donation_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'campaignion_recent_supporters',
       'settings' => array(
         'size' => 60,
@@ -459,16 +470,16 @@ function campaignion_donation_field_default_field_instances() {
     'description' => 'Supporters submitting this form will be automatically tagged with these tags.',
     'display' => array(
       'cck_blocks' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'node',
