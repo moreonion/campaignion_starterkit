@@ -10,7 +10,11 @@ dependencies[] = jquery_update
 dependencies[] = context
 dependencies[] = locale
 dependencies[] = mimemail
-dependencies[] = views_ui
+
+; UX enhancements
+dependencies[] = clientside_validation_webform
+dependencies[] = contextual
+dependencies[] = webform_steps
 
 ; enhancements for the theme (save to disable)
 dependencies[] = clientside_validation

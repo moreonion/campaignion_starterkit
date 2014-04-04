@@ -341,7 +341,7 @@ function campaignion_petition_field_default_field_instances() {
           'display' => array(
             'template' => 'pgbar',
           ),
-          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-display',
+          'pgbar_default__und__0__options__active_tab' => 'edit-pgbar-default-und-0-options-target',
           'target' => array(
             'offset' => 0,
             'target' => array(
@@ -391,7 +391,7 @@ function campaignion_petition_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'null.inc',
+      'source' => 'webform_submissions.inc',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
