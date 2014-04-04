@@ -87,11 +87,5 @@ Drupal.behaviors.ae_admin.attach = function(context) {
   if(Drupal.media && Drupal.media.browser) {
     setTimeout(Drupal.media.browser.resizeIframe, 1);
   }
-
-  // style differently if selecter is available
-  if ($.fn.selecter && $.fn.jquery >= "1.6.0") {
-    $('body').addClass('fs-selecter');
-    $('.campaignion-manage-content-listing ul').selecter({defaultLabel: Drupal.t('Edit'), links:true });
-  }
 };
 })(jQuery);
