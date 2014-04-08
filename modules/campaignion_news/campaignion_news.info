@@ -22,7 +22,6 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[field_base][] = field_related_action
 features[field_instance][] = node-news-body
-features[field_instance][] = node-news-field_intro
 features[field_instance][] = node-news-field_main_image
 features[field_instance][] = node-news-field_reference_to_campaign
 features[field_instance][] = node-news-field_related_action

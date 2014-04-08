@@ -23,7 +23,6 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-donation-action_template
 features[field_instance][] = node-donation-body
-features[field_instance][] = node-donation-field_intro
 features[field_instance][] = node-donation-field_main_image
 features[field_instance][] = node-donation-field_reference_to_campaign
 features[field_instance][] = node-donation-field_thank_you_pages

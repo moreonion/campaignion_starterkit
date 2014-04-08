@@ -29,7 +29,6 @@ features[field_base][] = field_protest_target
 features[field_base][] = field_protest_target_options
 features[field_instance][] = node-email_protest-action_template
 features[field_instance][] = node-email_protest-body
-features[field_instance][] = node-email_protest-field_intro
 features[field_instance][] = node-email_protest-field_main_image
 features[field_instance][] = node-email_protest-field_protest_target
 features[field_instance][] = node-email_protest-field_protest_target_options
