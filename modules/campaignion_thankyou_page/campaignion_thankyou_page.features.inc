@@ -26,7 +26,7 @@ function campaignion_thankyou_page_node_info() {
       'base' => 'node_content',
       'description' => t('Your supporters will land on thank you pages after taking action or making a donation.'),
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
