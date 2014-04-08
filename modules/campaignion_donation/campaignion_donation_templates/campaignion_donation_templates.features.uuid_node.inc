@@ -18,13 +18,13 @@ function campaignion_donation_templates_uuid_features_default_content() {
   'comment' => 1,
   'promote' => 0,
   'sticky' => 0,
-  'vuuid' => 'donation-template-default-en-rev',
+  'vuuid' => '5c5adac9-51da-42de-8957-fc9ed37315c8',
   'type' => 'donation',
   'language' => 'en',
   'created' => 1343052630,
   'tnid' => 0,
   'translate' => 0,
-  'uuid' => 'donation-template-default-en',
+  'uuid' => '6eb388a0-88e5-4272-bb6e-0bd8e8da595e',
   'revision_uid' => 0,
   'action_template' => array(
     'und' => array(

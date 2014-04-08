@@ -12,4 +12,4 @@ dependencies[] = webform
 __drupal_alter_by_ref[][node][webform] = webform
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[uuid_node][] = webform-template-minimal-en
+features[uuid_node][] = 93a8faff-aad2-401a-9817-f6f3b578b9bd

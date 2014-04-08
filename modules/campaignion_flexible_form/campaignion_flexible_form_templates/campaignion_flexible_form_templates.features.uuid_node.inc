@@ -18,13 +18,13 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   'comment' => 1,
   'promote' => 0,
   'sticky' => 0,
-  'vuuid' => 'webform-template-minimal-en-rev',
+  'vuuid' => '5002b5cb-7528-4ca4-b218-95b9b7087fc4',
   'type' => 'webform',
   'language' => 'en',
   'created' => 1343052630,
   'tnid' => 0,
   'translate' => 0,
-  'uuid' => 'webform-template-minimal-en',
+  'uuid' => '93a8faff-aad2-401a-9817-f6f3b578b9bd',
   'revision_uid' => 0,
   'action_template' => array(
     'und' => array(
