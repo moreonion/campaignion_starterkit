@@ -114,7 +114,7 @@ function campaignion_flexible_form_strongarm() {
       'display' => array(
         'webform' => array(
           'teaser' => array(
-            'weight' => '10',
+            'weight' => '9',
             'visible' => FALSE,
           ),
           'default' => array(
@@ -132,6 +132,10 @@ function campaignion_flexible_form_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
             'weight' => '4',
             'visible' => FALSE,
           ),

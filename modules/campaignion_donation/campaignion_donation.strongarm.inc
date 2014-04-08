@@ -66,7 +66,7 @@ function campaignion_donation_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'cck_blocks' => array(
         'custom_settings' => TRUE,
@@ -118,7 +118,7 @@ function campaignion_donation_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '4',
+            'weight' => '6',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
@@ -128,11 +128,11 @@ function campaignion_donation_strongarm() {
         ),
         'language' => array(
           'teaser' => array(
-            'weight' => '2',
+            'weight' => '4',
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '6',
+            'weight' => '5',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(

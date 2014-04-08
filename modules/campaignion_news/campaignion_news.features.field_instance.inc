@@ -32,8 +32,11 @@ function campaignion_news_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 400,
+        ),
+        'type' => 'text_summary_or_trimmed',
         'weight' => 2,
       ),
     ),

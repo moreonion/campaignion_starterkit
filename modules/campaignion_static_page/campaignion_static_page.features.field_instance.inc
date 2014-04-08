@@ -32,9 +32,12 @@ function campaignion_static_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 400,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -87,10 +90,10 @@ function campaignion_static_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'media_small',
+          'file_view_mode' => 'teaser',
         ),
         'type' => 'file_rendered',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
