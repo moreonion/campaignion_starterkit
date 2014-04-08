@@ -42,4 +42,5 @@ features[variable][] = menu_parent_news
 features[variable][] = node_options_news
 features[variable][] = node_preview_news
 features[variable][] = node_submitted_news
+features[variable][] = xmlsitemap_settings_node_news
 features[views_view][] = news

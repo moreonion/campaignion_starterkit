@@ -1,0 +1,12 @@
+name = campaignion_seo
+description = SEO related configuration and dependencies.
+core = 7.x
+package = Campaignion
+project = campaignion_starterkit
+dependencies[] = ctools
+dependencies[] = strongarm
+dependencies[] = xmlsitemap_i18n
+dependencies[] = xmlsitemap_node
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = xmlsitemap_minimum_lifetime

@@ -143,8 +143,6 @@ function campaignion_static_page_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a large main image or video to your page.');
-  t('Flexible');
-  t('Introduction');
   t('Large image or video');
   t('Main text');
 

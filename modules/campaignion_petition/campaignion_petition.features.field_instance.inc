@@ -467,7 +467,6 @@ function campaignion_petition_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
-  t('Introduction');
   t('Large image or video');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');

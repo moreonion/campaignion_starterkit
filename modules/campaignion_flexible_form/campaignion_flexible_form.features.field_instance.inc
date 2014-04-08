@@ -464,7 +464,6 @@ function campaignion_flexible_form_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer counting how many people have signed up.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
-  t('Introduction');
   t('Large image or video');
   t('Main text');
   t('Related campaign');

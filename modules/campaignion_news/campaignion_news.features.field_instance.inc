@@ -235,7 +235,6 @@ function campaignion_news_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Introduction');
   t('Large image or video');
   t('Related action');
   t('Related campaign');
