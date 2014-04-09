@@ -7,6 +7,13 @@
 
 include_once 'campaignion_conf.features.inc';
 
+function campaignion_conf_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'file_default_displays_alter') {
+    unset($implementations['image']);
+    unset($implementations['media_youtube']);
+  }
+}
+
 /**
  * Implements hook_block_info_alter()
  * 

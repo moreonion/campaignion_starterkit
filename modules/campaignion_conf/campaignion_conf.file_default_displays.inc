@@ -12,173 +12,69 @@ function campaignion_conf_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'audio__default__file_field_file_rendered';
-  $file_display->weight = 0;
+  $file_display->name = 'image__default__file_field_image';
+  $file_display->weight = 50;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
+    'image_style' => 'full',
+    'image_link' => '',
   );
-  $export['audio__default__file_field_file_rendered'] = $file_display;
+  $export['image__default__file_field_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'audio__media_large__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['audio__media_large__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'audio__media_link__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['audio__media_link__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'audio__media_original__file_field_file_rendered';
-  $file_display->weight = 0;
+  $file_display->name = 'image__teaser__file_field_image';
+  $file_display->weight = 50;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
+    'image_style' => 'teaser',
+    'image_link' => 'content',
   );
-  $export['audio__media_original__file_field_file_rendered'] = $file_display;
+  $export['image__teaser__file_field_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'audio__media_preview__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['audio__media_preview__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'audio__media_small__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['audio__media_small__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__default__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__default__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__media_large__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__media_large__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__media_link__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__media_link__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__media_original__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__media_original__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__media_preview__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__media_preview__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'default__media_small__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['default__media_small__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'image__default__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['image__default__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'image__media_link__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['image__media_link__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'image__media_original__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['image__media_original__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'image__media_small__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['image__media_small__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__default__file_field_file_rendered';
-  $file_display->weight = 0;
+  $file_display->name = 'video__default__file_field_file_video';
+  $file_display->weight = 50;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
+    'controls' => 1,
+    'autoplay' => 0,
+    'loop' => 0,
+    'width' => '550',
+    'height' => '340',
+    'multiple_file_behavior' => 'tags',
   );
-  $export['video__default__file_field_file_rendered'] = $file_display;
+  $export['video__default__file_field_file_video'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__default__media_vimeo_image';
+  $file_display->weight = 2;
+  $file_display->status = FALSE;
+  $file_display->settings = array(
+    'image_style' => 'full',
+  );
+  $export['video__default__media_vimeo_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__default__media_vimeo_video';
+  $file_display->weight = 1;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'width' => '550',
+    'height' => '340',
+    'color' => '',
+    'protocol' => 'https://',
+    'autoplay' => 0,
+    'loop' => 0,
+    'title' => 1,
+    'byline' => 1,
+    'portrait' => 0,
+    'api' => 0,
+  );
+  $export['video__default__media_vimeo_video'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
@@ -186,7 +82,7 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'full',
   );
   $export['video__default__media_youtube_image'] = $file_display;
 
@@ -196,209 +92,101 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'version' => '3',
-    'theme' => 'dark',
-    'width' => '100%',
-    'height' => 'auto',
-    'fullscreen' => 1,
+    'width' => '550',
+    'height' => '340',
+    'theme' => 'light',
+    'color' => 'red',
+    'autohide' => '2',
     'autoplay' => 0,
-    'related' => 0,
-    'hd' => 0,
-    'showsearch' => 0,
-    'modestbranding' => 0,
+    'loop' => 0,
     'showinfo' => 1,
-    'chromeless' => 0,
+    'modestbranding' => 1,
+    'rel' => 1,
+    'nocookie' => 0,
+    'protocol_specify' => 1,
+    'protocol' => 'https:',
+    'enablejsapi' => 0,
+    'origin' => '',
   );
   $export['video__default__media_youtube_video'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'video__media_large__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->name = 'video__teaser__file_field_file_video';
+  $file_display->weight = 50;
+  $file_display->status = TRUE;
   $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['video__media_large__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_link__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['video__media_link__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_link__media_vimeo_image';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'image_style' => '',
-  );
-  $export['video__media_link__media_vimeo_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_link__media_vimeo_video';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'width' => '560',
-    'height' => '340',
+    'controls' => 1,
     'autoplay' => 0,
+    'loop' => 0,
+    'width' => '350',
+    'height' => '220',
+    'multiple_file_behavior' => 'tags',
   );
-  $export['video__media_link__media_vimeo_video'] = $file_display;
+  $export['video__teaser__file_field_file_video'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'video__media_link__media_youtube_image';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
+  $file_display->name = 'video__teaser__media_vimeo_image';
+  $file_display->weight = 1;
+  $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
+    'image_style' => 'teaser',
   );
-  $export['video__media_link__media_youtube_image'] = $file_display;
+  $export['video__teaser__media_vimeo_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'video__media_link__media_youtube_video';
-  $file_display->weight = 0;
+  $file_display->name = 'video__teaser__media_vimeo_video';
+  $file_display->weight = 1;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'version' => '3',
-    'theme' => 'dark',
-    'width' => '560',
+    'width' => '550',
     'height' => '340',
-    'fullscreen' => 1,
+    'color' => '',
+    'protocol' => 'https://',
     'autoplay' => 0,
-    'related' => 1,
-    'hd' => 0,
-    'showsearch' => 1,
-    'modestbranding' => 0,
+    'loop' => 0,
+    'title' => 1,
+    'byline' => 1,
+    'portrait' => 0,
+    'api' => 0,
+  );
+  $export['video__teaser__media_vimeo_video'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__teaser__media_youtube_image';
+  $file_display->weight = 0;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'teaser',
+  );
+  $export['video__teaser__media_youtube_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__teaser__media_youtube_video';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = array(
+    'width' => '550',
+    'height' => '340',
+    'theme' => 'light',
+    'color' => 'red',
+    'autohide' => '2',
+    'autoplay' => 0,
+    'loop' => 0,
     'showinfo' => 1,
-    'chromeless' => 0,
+    'modestbranding' => 1,
+    'rel' => 1,
+    'nocookie' => 0,
+    'protocol_specify' => 0,
+    'protocol' => 'https:',
+    'enablejsapi' => 0,
+    'origin' => '',
   );
-  $export['video__media_link__media_youtube_video'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_original__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'file_view_mode' => 'media_original',
-  );
-  $export['video__media_original__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_preview__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['video__media_preview__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_preview__media_vimeo_video';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'width' => '560',
-    'height' => '340',
-    'autoplay' => 0,
-  );
-  $export['video__media_preview__media_vimeo_video'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_preview__media_youtube_video';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'version' => '3',
-    'theme' => 'dark',
-    'width' => '560',
-    'height' => '340',
-    'fullscreen' => 1,
-    'autoplay' => 0,
-    'related' => 1,
-    'hd' => 0,
-    'showsearch' => 1,
-    'modestbranding' => 0,
-    'showinfo' => 1,
-    'chromeless' => 0,
-  );
-  $export['video__media_preview__media_youtube_video'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_small__file_field_file_rendered';
-  $file_display->weight = 0;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'file_view_mode' => 'default',
-  );
-  $export['video__media_small__file_field_file_rendered'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_small__media_vimeo_image';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'image_style' => '',
-  );
-  $export['video__media_small__media_vimeo_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_small__media_vimeo_video';
-  $file_display->weight = 0;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'width' => '560',
-    'height' => '340',
-    'autoplay' => 0,
-  );
-  $export['video__media_small__media_vimeo_video'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_small__media_youtube_image';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'image_style' => '',
-  );
-  $export['video__media_small__media_youtube_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__media_small__media_youtube_video';
-  $file_display->weight = 0;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'version' => '3',
-    'theme' => 'dark',
-    'width' => '560',
-    'height' => '340',
-    'fullscreen' => 1,
-    'autoplay' => 0,
-    'related' => 0,
-    'hd' => 0,
-    'showsearch' => 0,
-    'modestbranding' => 0,
-    'showinfo' => 1,
-    'chromeless' => 0,
-  );
-  $export['video__media_small__media_youtube_video'] = $file_display;
+  $export['video__teaser__media_youtube_video'] = $file_display;
 
   return $export;
 }
