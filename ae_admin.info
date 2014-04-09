@@ -18,6 +18,7 @@ scripts[] = js/jquery.fs.selecter.js
 scripts[] = js/bootstrap-tooltip-popover.js
 ;scripts[] = js/bootstrap-dropdown.js
 scripts[] = js/jquery.listdropdown.js
+scripts[] = js/jquery.sticky.js
 
 stylesheets[screen][] = core.css
 stylesheets[screen][] = icons.css

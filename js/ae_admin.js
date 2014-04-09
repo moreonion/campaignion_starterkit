@@ -87,5 +87,9 @@ Drupal.behaviors.ae_admin.attach = function(context) {
   if(Drupal.media && Drupal.media.browser) {
     setTimeout(Drupal.media.browser.resizeIframe, 1);
   }
+
+  $('.wizard-form', context).each(function() {
+    $('#edit-wizard-head', this).sticky();
+  });
 };
 })(jQuery);
