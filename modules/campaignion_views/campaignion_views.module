@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_views feature.
+ */
+
+include_once 'campaignion_views.features.inc';

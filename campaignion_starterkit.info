@@ -50,6 +50,7 @@ dependencies[] = campaignion_seo
 dependencies[] = campaignion_static_page
 dependencies[] = campaignion_supporter
 dependencies[] = campaignion_thankyou_page
+dependencies[] = campaignion_views
 dependencies[] = campaignion_webform_results
 dependencies[] = campaignion_webform_widget
 dependencies[] = campaignion_webform2redhen
