@@ -4,7 +4,6 @@ core = 7.x
 package = Campaignion
 project = campaignion_starterkit
 dependencies[] = campaignion_recent_supporters
-dependencies[] = campaignion_views_interface
 dependencies[] = cck_blocks
 dependencies[] = context
 dependencies[] = ctools
