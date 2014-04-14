@@ -8,6 +8,14 @@ $matrix = array(
   'block' => array(
     'administer blocks'                          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
+  // Campaign Content Type
+  'campaignion_campaign' => array(
+    'access non-public campaign page'            => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+  ),
+  // Campaignion Toolbar
+  'campaignion_bar' => array(
+    'access ae bar'                              => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+  ),
   // Comment
   'comment' => array(
     'administer comments'                        => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
@@ -35,6 +43,55 @@ $matrix = array(
     'view error messages'                        => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
     'exclude from message filtering'             => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
   ),
+ // Features
+  'features' => array(
+    'administer features'                        => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'manage features'                            => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'generate features'                          => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+  ),
+  // Field collection
+  'field_collection' => array(
+    'administer field collections'               => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+  ),
+  // Fieldgroup
+  'field_group' => array(
+    'administer fieldgroups'                     => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+  ),
+  // File entity
+  'file_entity' => array(
+    'bypass file access'                         => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'administer file types'                      => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'administer files'                           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'create files'                               => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'view own private files'                     => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'view own files'                             => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'view private files'                         => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'view files'                                 => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'edit own image files'                       => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'edit any image files'                       => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'delete own image files'                     => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'delete any image files'                     => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'download own image files'                   => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'download any image files'                   => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'edit own video files'                       => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'edit any video files'                       => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'delete own video files'                     => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'delete any video files'                     => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'download own video files'                   => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'download any video files'                   => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'edit own audio files'                       => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'edit any audio files'                       => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'delete own audio files'                     => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'delete any audio files'                     => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'download own audio files'                   => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'download any audio files'                   => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'edit own document files'                    => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'edit any document files'                    => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'delete own document files'                  => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'delete any document files'                  => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'download own document files'                => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'download any document files'                => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+  ),
   // Filter
   'filter' => array(
     'use text format full_html_with_editor'      => array(NULL,             TRUE,                 TRUE,            TRUE,     TRUE,        ),
@@ -51,6 +108,7 @@ $matrix = array(
   // Locale
   'locale' => array(
     'administer languages'                       => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'translate interface'                        => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
   // Localization client
   'l10n_client' => array(
@@ -61,6 +119,7 @@ $matrix = array(
     'administer media'                           => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'view media'                                 => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
     'edit media'                                 => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'import media'                               => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
   // Media Internet Sources
   'media_internet' => array(
@@ -83,7 +142,7 @@ $matrix = array(
   'node' => array(
     'bypass node access'                         => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'administer nodes'                           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'access content overview'                    => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access content overview'                    => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'access content'                             => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
     'view own unpublished content'               => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'view revisions'                             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
@@ -99,6 +158,16 @@ $matrix = array(
     'edit any donation content'                  => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'delete own donation content'                => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'delete any donation content'                => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'create email_protest content'               => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'edit own email_protest content'             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'edit any email_protest content'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'delete own email_protest content'           => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'delete any email_protest content'           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'create news content'                        => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'edit own news content'                      => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'edit any news content'                      => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'delete own news content'                    => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'delete any news content'                    => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'create petition content'                    => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'edit own petition content'                  => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'edit any petition content'                  => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
@@ -132,7 +201,28 @@ $matrix = array(
   ),
   // Overlay
   'overlay' => array(
-    'access overlay'                             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access overlay'                             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+  ),
+  // Payment
+  'payment' => array(
+    'payment.global.administer'                  => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.rules.administer'                   => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'payment.payment.administer'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment.view.any'                   => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment.view.own'                   => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment.update.any'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment.update.own'                 => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment.delete.any'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment.delete.own'                 => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment_method.update.any'          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment_method.update.own'          => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment_method.delete.any'          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment_method.delete.own'          => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment_method.view.any'            => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment_method.view.own'            => array(NULL,             NULL,                 NULL,            TRUE,     NULL,        ),
+    'payment.payment_status.view'                => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'payment.payment_method.create.PaymentMethodBasicController'
+                                                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
   // Path
   'path' => array(
@@ -207,12 +297,22 @@ $matrix = array(
   'system' => array(
     'administer site configuration'              => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'access administration pages'                => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'view the administration theme'              => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'view the administration theme'              => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
   // Taxonomy
   'taxonomy' => array(
+    'administer taxonomy'                        => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'edit terms in 1'                            => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'delete terms in 1'                          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+  ),
+  // User
+  'user' => array(
+    'administer permissions'                     => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'administer users'                           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access user profiles'                       => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'change own username'                        => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'cancel account'                             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'select account cancellation method'         => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
   ),
   // Views
   'views' => array(
@@ -221,17 +321,21 @@ $matrix = array(
   ),
   // Webform
   'webform' => array(
-    'access all webform results'                 => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
-    'access own webform results'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access all webform results'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access own webform results'                 => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'edit all webform submissions'               => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
     'delete all webform submissions'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'access own webform submissions'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'edit own webform submissions'               => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'delete own webform submissions'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'access own webform submissions'             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'edit own webform submissions'               => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'delete own webform submissions'             => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
   // Weight
   'weight' => array(
     'assign node weight'                         => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+  ),
+  // Webform Widget
+  'campaignion_webform_widget' => array(
+    'access widget tab'                          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
   // XML sitemap
   'xmlsitemap' => array(
