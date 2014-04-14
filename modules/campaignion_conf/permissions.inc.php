@@ -14,7 +14,7 @@ $matrix = array(
   ),
   // Campaignion Toolbar
   'campaignion_bar' => array(
-    'access ae bar'                              => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'access campaignion bar'                     => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
   // Comment
   'comment' => array(
