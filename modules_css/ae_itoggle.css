@@ -2,10 +2,22 @@
  * This is the important bit
  * -------------------------------*/
 
+/* clearfixing .form-type-checkbox */
+.form-type-checkbox {
+  *zoom: 1;
+}
+.form-type-checkbox:before,
+.form-type-checkbox:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.form-type-checkbox:after {
+  clear: both;
+}
 .form-type-checkbox {
   display:block;
   width: 100%;
-  overflow:auto;
 }
 
 label.itoggle, label.ilabel {
