@@ -80,12 +80,10 @@ table th {
  */
 #branding {
   font-size:11px;
-  height:30px;
   overflow:hidden;
   margin: 0 0;
-  padding: 0 30px;
+  padding: 0;
   background-color: #d9d5cd;
-  border-bottom: 1px solid #F9F5ED;
 }
 
 .darken {
@@ -115,6 +113,7 @@ table th {
   text-transform:uppercase;
   font-weight:normal;
   border-left: 1px solid #ECE8DF;
+  display: none;
 }
 
 #branding .breadcrumb-link {
