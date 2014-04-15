@@ -8,7 +8,7 @@
  */
 function _webform_defaults_protest_target() {
   $element = array(
-    'name'      => t('Email Protest Target Selector'),
+    'name'      => t('Target Selector'),
     'form_key'  => NULL,
     'mandatory' => 0,
     'pid'       => 0,

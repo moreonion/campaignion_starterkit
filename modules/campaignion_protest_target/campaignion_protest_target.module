@@ -138,7 +138,7 @@ function campaignion_protest_target_form_builder_types() {
   $map = _form_builder_webform_property_map('protest_target');
   unset($map['properties']['default_value']);
   $fields['protest_target'] = array(
-    'title'         => t('Email Protest Target Selector'),
+    'title'         => t('Target Selector'),
     'palette_group' => 'default',
     'properties'    => array_keys($map['properties']),
     'default'       => array('#form_builder' => array('element_type' => 'protest_target')),
