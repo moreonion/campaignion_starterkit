@@ -1,6 +1,23 @@
 <?php
 
 /**
+ * implements hook_modules_enabled().
+ */
+function campaignion_supporter_modules_enabled() {
+  $vocab = taxonomy_vocabulary_machine_name_load('supporter_tags');
+
+  if (is_object($vocab) && property_exists($vocab, 'vid') && $vocab->vid > 0) {
+    foreach (array('Facebook', 'Twitter', 'Golden supporter') as $term_name) {
+      $term = taxonomy_get_term_by_name($term_name, 'supporter_tags');
+      if (empty($term)) {
+        $term = (object) array('name' => $term_name, 'vid' => $vocab->vid);
+        taxonomy_term_save($term);
+      }
+    }
+  }
+}
+
+/**
  * Revert this feature.
  */
 function campaignion_supporter_update_3() {
