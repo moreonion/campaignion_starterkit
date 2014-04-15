@@ -1,0 +1,517 @@
+@box_bg_lighter: #efefef;
+@box_bg_light: #dedede;
+@box_bg_dark: #5a5a5a;
+@border_color: #c5c5c5;
+@trail_bg: #e4dfd6;
+@trail_fg: #333;
+@trail_border: #c5c5c5;
+@trail_step_previous_bg: #b5d5d8;
+@trail_step_previous_fg: #32595c;
+@trail_step_current_bg: #76c5cc;
+@trail_step_current_fg: #5f5d5d;
+@trail_step_next_bg: #b2ada7;
+@trail_step_next_fg: #5f5d5d;
+@trail_button_next_bg: #d66540;
+@trail_button_next_fg: #4b2217;
+@trail_button_next_border: #b65737;
+@trail_button_next_hover_bg: #E45D44;
+@trail_button_next_active_bg: #B55336;
+@trail_button_next_shadow_fg: #EA6852;
+@confirm_edit_bg: #d8d616;
+@confirm_edit_fg: #3c3b06;
+@confirm_edit_border: #bdbc13;
+@confirm_edit_hover_bg: #EDE91A;
+@confirm_edit_active_bg: #A3A011;
+@confirm_edit_shadow_fg: #F4F06E;
+@button_draft_bg: #16c5d5;
+@button_draft_fg: #305254;
+@button_draft_border: #19b9c7;
+@button_publish_bg: @trail_button_next_bg;
+@button_publish_fg: @trail_button_next_fg;
+@button_publish_border: @trail_button_next_border;
+
+/*** trail ***/
+/* see http://css-tricks.com/triangle-breadcrumbs/ */
+
+#main-content,
+.wizard-form {
+    #edit-wizard-advanced {
+        .vertical-tabs-panes {
+            min-height: 30em;
+        }
+    }
+    #edit-buttons {
+        &.form-actions {
+            border-top: none!important;
+        }
+        .button-finish, .button-finish-other {
+            font-size: 1.2em;
+            padding: 0.5em 1em;
+            width: 15em;
+            margin-right: 1em;
+        }
+        .button-finish-other {
+            background: url("../images/sandbox_menu/ae_blue_bg.png") repeat scroll 0 0 transparent;
+            border-color: #14B1BC;
+            border-radius: 5px 5px 5px 5px;
+            color: #305254;
+            text-shadow: 1px 1px 1px #32DCE5;
+            &:hover, &:focus {
+                background: none repeat scroll 0 0 #18CBDB;
+                border-color: #14ACB7;
+                box-shadow: 0 0 1px #FFB196;
+                color: #305254;
+            }
+            &:active {
+                background: none repeat scroll 0 0 #0A565B;
+                color: #063538;
+                text-shadow: 1px 1px 1px #0B6368;
+            }
+        }
+        #edit-next, .button-finish {
+            background-color: @trail_button_next_bg;
+            background-image: none;
+            color: @trail_button_next_fg;
+            border: 1px solid @trail_button_next_border;
+            text-shadow: 1px 1px 1px @trail_button_next_shadow_fg;
+            font-size: 1.2em;
+            &:hover, &:focus {
+
+                background-color: @trail_button_next_hover_bg;
+            }
+            &:active {
+                background-color: @trail_button_next_active_bg;
+            }
+        }
+        #edit-previous {
+          margin-top: 4px;
+        }
+    }
+    .is-sticky #edit-wizard-head {
+      left: 60px;
+      right: 60px;
+      z-index: 1100;
+    }
+    #edit-wizard-head {
+        background: @trail_bg;
+        padding: 1em 57px 0.5em; /* 30px from .limiter, 20px for overlay */
+        margin:  0em -59px 1em;
+        height: auto;
+        clear: both;
+        overflow: auto;
+        display: block;
+        &:after {
+            content: ".";
+            display: block;
+            clear: both;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+        #edit-buttons {
+            width: 37%;
+            margin: 0!important;
+            padding: 0!important;
+            float: right;
+            clear: right;
+            text-align: right;
+            #edit-next {
+                width: 8em;
+                float:right;
+                padding-right: 3em;
+                background-image: url(../images/ae_pfeil.png);
+                background-repeat: no-repeat;
+                background-position: right center;
+            }
+            #edit-return {
+              float: right;
+            }
+        }
+        .wizard-trail-wrapper {
+            width: 63%;
+            float: left;
+            clear: left;
+            display: block;
+            overflow: hidden;
+						max-width: 690px;
+        }
+        .wizard-trail {
+            background: @trail_bg;
+            overflow: hidden;
+            border: 1px solid @trail_border;
+            display: inline-block;
+            > span {
+                float: left;
+                min-width: 5em;
+                &.wizard-trail-previous {
+                    .inner {
+                        color: @trail_step_previous_fg;
+                        background: @trail_step_previous_bg;
+                    }
+                    .inner:after {
+                        background: transparent url(../images/ae_step.png) no-repeat top left;
+                        background-position: 100% -4px;
+                    }
+                }
+                &.wizard-trail-current {
+                    .inner {
+                        color: @trail_step_current_fg;
+                        background: @trail_step_current_bg;
+                    }
+                    .inner:after {
+                        background: transparent url(../images/ae_step.png) no-repeat center right;
+                    }
+                }
+                &.wizard-trail-next {
+                    .inner {
+                        color: @trail_step_next_fg;
+                        background: @trail_step_next_bg;
+                    }
+                    .inner:after {
+                        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                        background-position: 100% -116px;
+                    }
+                    a.inner {
+                      background: @trail_step_previous_bg;
+                    }
+                    a.inner:after {
+                      background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                      background-position: 100% -6px;
+                    }
+                    a.inner:hover, a.inner:focus {
+                      color: #494848;
+                      text-decoration: underline;
+                    }
+                }
+                .inner {
+                    padding: 10px 20px 10px 45px;
+                    background: @trail_step_current_bg;
+                    position: relative;
+                    display: block;
+                    float: left;
+                    background: transparent url(../images/ae_step.png) no-repeat bottom right;
+                }
+                &:first-of-type { /* first in trail */
+                    .inner {
+                        padding: 10px 20px 10px 20px;
+                    }
+                }
+                &:last-of-type { /* last in trail */
+                    .inner {
+                        padding: 10px 25px 10px 40px;
+                    }
+                    .inner:after {
+                        content: '';
+                        display: none;
+                        border: none;
+                        background: none;
+                    }
+                    .inner:before {
+                        border: none;
+                    }
+                }
+                .inner:after { /* default */
+                    content: " ";
+                    display: inline;
+                    width: 24px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+
+}
+
+#overlay .wizard-form #edit-wizard-head, #overlay #main-content #edit-wizard-head  {
+  padding: 1em 20px 0.5em;
+  margin: 0 -20px 1em;
+}
+
+/*** form ***/
+#wizard-main {
+  padding-top: 1em;
+}
+
+.wizard-secondary-container {
+  #wizard-main {
+    width: 65%;
+    float: left;
+  }
+  #edit-wizard-secondary {
+    width: 30%;
+    float: right;
+    border: none;
+    background: none;
+    clear: right;
+    padding: 0;
+  }
+}
+
+.two-halfs {
+  .half-left {
+    display: block;
+    width: 49%;
+    margin-right: 0%;
+    float: left;
+    clear: left;
+  }
+  .half-right {
+    display: block;
+    width: 49%;
+    margin-left: 0%;
+    float: right;
+    clear: right;
+  }
+}
+
+.wizard-form {
+    position: relative;
+    .form-item label:not(.itoggle) {
+        font-size: 1em;
+        padding: 0 0 0.5em 0;
+    }
+    #edit-title {
+        font-size: 1.4em;
+    }
+
+    fieldset.email-wrapper {
+      position: relative;
+      display: block;
+      border: 2px solid @border_color!important;
+      background: @box_bg_lighter;
+    }
+
+    #edit-confirmation-request-toggle,
+    #edit-confirmation-or-thank-you-toggle,
+    #edit-notification-toggle {
+      margin-bottom: 0;
+    }
+
+    // the forms
+    .thank-you-node-wrapper {
+        #edit-node-form-title {
+            font-size: 1.2em;
+        }
+        #edit-node-form-field-intro,
+        #edit-node-form-field-flexible {
+            display: none;
+        }
+        .form-item-type, .form-item-type2 {
+            margin: 0 0 1em 0;
+        }
+    }
+    .thank-you-outer-or {
+        margin: 1em 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+        position: relative;
+        .thank-you-line-or {
+            border-top: 1px solid @border_color;
+            box-shadow: 0 -1px 0 @border_color + #333;
+            line-height: 1.2em;
+            top: 0.85em;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .thank-you-text-or {
+            font-style: italic;
+            display: inline-block;
+            top: -0.6em;
+            position: relative;
+            background: @box_bg_lighter;
+            background: #F8F7F4;
+            padding: 0 1em;
+        }
+    }
+    #edit-node-form-field-share-light {
+    }
+    #edit-field-main-image,
+    #edit-node-form-field-main-image,
+    .sidebar-narrow-right {
+      position: relative;
+      z-index: 10;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+        a.button {
+            float: left;
+            margin: 10px 5px;
+            display: block;
+            &:first-child { clear:left; }
+        }
+        .form-item {
+            clear: both;
+        }
+    }
+    #edit-double-opt-in-email,
+    #edit-thank-you-email {
+        float: left;
+        width: 48%;
+    }
+    #edit-double-opt-in-email {
+        margin-right: 1%;
+        #edit-double-opt-in-email-subject-custom {
+            font-size: 1.4em;
+        }
+    }
+    #edit-thank-you-email {
+        float: left;
+        #edit-thank-you-email-subject-custom {
+            font-size: 1.4em;
+        }
+    }
+    #edit-confirm-container {
+        border: 2px solid @border_color;
+        background: @box_bg_lighter;
+        padding: 1em!important;
+        min-height: 30em;
+        min-width: 30em;
+        .form-wrapper {
+            margin: 1em 0;
+        }
+        .confirm-edit-wrapper {
+            width: 100%;
+            display: block;
+            padding: 1em 1em 1em 0;
+            border-bottom: 1px dotted @trail_border;
+            position: relative;
+            clear: both;
+            h2, p {
+                padding-right: 12em;
+            }
+            h2 {
+                font-size: 1.2em;
+                text-transform: uppercase;
+                font-weight: normal;
+            }
+            .confirm-edit-button {
+                position: relative;
+                background: @confirm_edit_bg;
+                color: @confirm_edit_fg;
+                border: 1px solid @confirm_edit_border;
+                width: 10em;
+                text-shadow: 1px 1px 0 @confirm_edit_shadow_fg;
+                float:right;
+                clear:right;
+                &:hover, &:focus {
+                    background-color: @confirm_edit_hover_bg;
+                }
+                &:active {
+                    background-color: @confirm_edit_active_bg;
+                }
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        #edit-buttons {
+            padding: 2em 0 5em 0;
+        }
+    }
+}
+
+/*** wysiwyg field ***/
+
+.wizard-form {
+    span.cke_skin_kama {
+        .cke_wrapper {
+            background: none;
+            padding: 0;
+            background: #fff;
+        }
+        .cke_top, .cke_bottom {
+            background: @box_bg_light;
+            padding: 5px;
+        }
+        .cke_contents {
+            padding: 0.5em;
+        }
+        .cke_toolbox_collapser {
+            border: none!important;
+        }
+        padding: 0!important;
+        border-width: 2px;
+    }
+}
+
+#form-builder-wrapper #edit-submit-buttons {
+  width: 60%; 
+	margin-top: 1.7em;
+
+	.form-item {
+		width: 30%;
+		float: left;
+		margin-right:1.5%;
+	}
+	
+	.input.teaser-button, input.form-submit {
+		box-shadow: 0 1px 1px #DDDDDD;
+		background: url('images/sandbox_menu/ae_link_bg.png') repeat scroll 0 0 #787575;
+		border: 1px solid #716E6E;
+		color: #F7F1F1;
+		text-shadow: 1px 1px 1px #413F3F;
+	}
+	
+	.input.teaser-button:focus, input.form-submit:focus {
+		background: none #FFFFFF;
+		color: #666666;
+		text-shadow: none;
+		cursor: text;
+	}
+}
+
+/*** page wide changes to admin theme on wizard pages ***/
+
+.page-wizard, .page-node-wizard {
+	
+	#branding { /* hides breadcrumbs and top bar */
+	  display: none;
+	}
+	
+}
+
+/*** wizard tablet styling ***/
+@media screen and (max-width: 1000px) {
+	
+	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons {
+	  width: 100%;
+		clear: both;
+	}
+	
+	#main-content #edit-wizard-head .wizard-trail-wrapper, #wizard-step-form #edit-wizard-head .wizard-trail-wrapper { /* hiding wizard trail */
+		width: 100%;
+		clear: both;
+		max-width: auto;
+		margin-top: 10px;
+	}
+	
+}
+
+/*** wizard mobile styling ***/
+
+@media screen and (max-width: 600px) {
+	
+	.wizard-trail-wrapper { /* hiding wizard trail */
+		.wizard-trail span {
+			display: none;			
+		}
+	}
+	
+	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons { /* increasing width of buttons */
+    width: 100%;
+		float: none;
+	}
+	
+	#main-content #edit-wizard-head #edit-previous {
+	  margin-bottom: 10px;
+	}
+	
+} /* end of mobile */
+
+

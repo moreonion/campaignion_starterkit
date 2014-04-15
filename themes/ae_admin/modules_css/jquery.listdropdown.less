@@ -1,0 +1,119 @@
+@listdropdown_text_color: #8a8780;
+@border_dropdown_color: #f5f1e8;
+@background_color: #ffffff;
+@background_trigger_color: #e3ded5;
+@border_trigger_color: darken(@background_trigger_color, 8%);
+@background_color_hover: darken(@background_color, 3%);
+
+.listdropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 430;
+  margin: 0.5em 0;
+  width: 100%;
+  width: auto;
+  min-width: 10em;
+  max-width: 30em;
+  float: left;
+}
+
+.listdropdown-trigger {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  background: @background_trigger_color;
+  border: 1px solid @border_trigger_color;
+  margin: 0;
+  padding: 0.6em 83px .6em 1.3em;
+  line-height: 1.4em;
+  font-size: 1.2em;
+  color: @listdropdown_text_color;
+  width: auto;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:active, &:hover, &:focus, &:visited {
+    text-decoration: none;
+    color: @listdropdown_text_color;
+		border-color: darken(@border_trigger_color,5%);
+		box-shadow: 0px 0px 5px #fff;
+		-moz-box-shadow: 0px 0px 5px #fff;
+		-webkit-box-shadow: 0px 0px 5px #fff;
+  }
+
+  .caret {
+    border-left: 1px solid @border_trigger_color;
+    background: url(images/down.png) no-repeat -2px center lighten(@border_trigger_color, 2%);
+    position: absolute;
+    display: block;
+    width: 38px; // 8 + 8 + 8 + 8px (size of drop arrow)
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+  }
+  
+}
+
+.listdropdown-menu {
+  position: absolute;
+  display: none;
+  width: auto;
+  border: 1px solid @border_dropdown_color;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.4em;
+  background: @background_color;
+  padding:0;
+  color: @listdropdown_text_color;
+  z-index: 400;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  top: 3.5em;
+  right: 0;
+  min-height: 1em;
+	min-width: 180px;
+  border-radius: 5px;
+
+  // drop arrow
+  &:before, &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    position: absolute;
+    right: 8px;
+    top: -8px;
+    display: inline-block;
+  }
+
+  // drop arrow background
+  &:after {
+    border-bottom: 8px solid white;
+    top: -8px; // 1px less than the :before
+  }
+
+
+  li {
+    padding: 0.7em 1em;
+    border-bottom: 1px solid @border_dropdown_color;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &.empty-list-text {
+      font-style: italic;
+      font-weight: normal;
+      cursor: auto;
+      border: none;
+    }
+
+    &:hover {
+      background: @background_color_hover;
+    }
+
+    &.last {
+      border: none;
+    }
+  }
+}

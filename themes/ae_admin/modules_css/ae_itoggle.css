@@ -1,0 +1,77 @@
+/* -----------------------------
+ * This is the important bit
+ * -------------------------------*/
+
+/* clearfixing .form-type-checkbox */
+.form-type-checkbox {
+  *zoom: 1;
+}
+.form-type-checkbox:before,
+.form-type-checkbox:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.form-type-checkbox:after {
+  clear: both;
+}
+#form-builder-wrapper .form-type-checkbox:after {
+  clear: left;
+}
+.form-type-checkbox {
+  display:block;
+  width: 100%;
+}
+
+label.itoggle, label.ilabel {
+    font-size:1em;
+    cursor:pointer;
+    margin-bottom: 10px;
+    min-height: 27px; /* the height of the itoggle */
+    float:left;
+    margin-right: 10px;
+    position:relative;
+    }
+
+label.itoggle span{
+    position:absolute;
+    }
+label.itoggle,
+label.itoggle span{
+    display: block;
+    width: 93px;
+    height: 27px;
+    margin-bottom: 0;
+    background: url(itoggle-yesno.png) left bottom no-repeat;
+    cursor:pointer;
+    text-indent:-5000px;
+    }
+label.itoggle.disabled-itoggle,
+label.itoggle.disabled-itoggle span{
+    background: url(itoggle-disabled-yesno.png) left bottom no-repeat;
+    }
+label.itoggle.iToff{
+    background-position:right bottom;
+    }
+label.itoggle span,
+label.itoggle.disabled-itoggle span{
+    background-position: left top;
+    margin: 0;
+    }
+
+input.ae_itoggle-processed {
+  display:none;
+}
+
+
+/*  
+ * If you want the corners to be
+ * transparent, add these two lines
+ * to the main block above. Only
+ * works on webkit and mozilla browsers
+ * For more reliable results, make your
+ * own png using the supplied .psd
+ * 
+ * -moz-border-radius:6px;
+ * -webkit-border-radius:6px;
+ */
