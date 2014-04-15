@@ -118,6 +118,10 @@ function campaignion_news_strongarm() {
             'weight' => '3',
             'visible' => FALSE,
           ),
+          'cck_blocks' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),

@@ -116,7 +116,7 @@ function campaignion_static_page_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '0',
+            'weight' => '1',
             'visible' => FALSE,
           ),
         ),
