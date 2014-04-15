@@ -126,11 +126,8 @@ function campaignion_campaign_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'file_rendered',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -248,8 +245,6 @@ function campaignion_campaign_field_default_field_instances() {
   t('Body');
   t('Create a public campaign page');
   t('Description');
-  t('Flexible');
-  t('Introduction');
   t('Large image or video');
   t('This field is only used for administrative purposes.');
 
