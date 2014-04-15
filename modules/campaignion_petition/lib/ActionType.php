@@ -6,7 +6,7 @@ use \Drupal\campaignion\Wizard\PetitionWizard;
 
 class ActionType extends \Drupal\campaignion\Action\TypeBase {
   public function defaultTemplateNid() {
-    $ids = entity_get_id_by_uuid('node', array('2fce5d38-fcbc-48eb-b4a4-5dba5fbea1e2'));
+    $ids = entity_get_id_by_uuid('node', array('2825470e-e582-414d-b01c-e6e71a028075'));
     return array_shift($ids);
   }
 
