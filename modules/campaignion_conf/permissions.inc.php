@@ -141,7 +141,7 @@ $matrix = array(
   // Node
   'node' => array(
     'bypass node access'                         => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
-    'administer nodes'                           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'administer nodes'                           => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'access content overview'                    => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
     'access content'                             => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
     'view own unpublished content'               => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
