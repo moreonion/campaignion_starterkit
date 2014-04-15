@@ -15,6 +15,9 @@
 .form-type-checkbox:after {
   clear: both;
 }
+#form-builder-wrapper .form-type-checkbox:after {
+  clear: left;
+}
 .form-type-checkbox {
   display:block;
   width: 100%;
