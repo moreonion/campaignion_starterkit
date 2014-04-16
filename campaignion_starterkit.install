@@ -39,7 +39,6 @@ function _campaignion_starterkit_set_variables() {
 }
 
 function _campaignion_starterkit_themes() {
-  var_export(module_implements('menu_alter'));
   theme_enable(array('ae_admin', 'ae_base', 'simplicity'));
   variable_set('theme_default', 'simplicity');
   variable_set('admin_theme', 'ae_admin');
