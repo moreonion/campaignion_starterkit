@@ -2,6 +2,10 @@ name = Campaignion starterkit
 description = Starterkit profile for the campaignion online action platform
 core = 7.x
 
+; Generally a good idea - drupal standards.
+dependencies[] = path
+dependencies[] = pathauto
+
 ; needed by our themes (does not work without)
 dependencies[] = less
 dependencies[] = jquery_update
