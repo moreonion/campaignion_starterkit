@@ -603,7 +603,19 @@ div.node .column-side .column-wrapper {
   font-weight: normal;
 }
 
+.media-widget:before, .media-widget:after {
+  content: "";
+  display: table;
+  line-height: 0;
+}
 
+.media-widget:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
 /**
  * The title is bigger and more prominent==================================
  */
