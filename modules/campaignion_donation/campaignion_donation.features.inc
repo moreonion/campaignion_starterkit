@@ -36,3 +36,20 @@ function campaignion_donation_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implements hook_default_payment_method().
+ */
+function campaignion_donation_default_payment_method() {
+  $items = array();
+  $items['manual_direct_debit'] = entity_import('payment_method', '{
+    "controller_data" : [],
+    "enabled" : true,
+    "name" : "manual_direct_debit",
+    "title_specific" : "Manual direct debit",
+    "title_generic" : "Direct debit",
+    "uid" : 1,
+    "controller_class_name" : "\\\\Drupal\\\\manual_direct_debit\\\\AccountDataController"
+  }');
+  return $items;
+}
