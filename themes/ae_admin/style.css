@@ -790,11 +790,14 @@ html.js .fieldset .collapsed .fieldset-legend span.icon {
 
 /* reversing fieldset collapsible for some fields like pgbar */
 
+fieldset.field-group-heading,
 .field-type-pgbar fieldset.form-wrapper {
   background: none transparent;
   border: 0px solid transparent;
+  border-radius: 0px;
 }
 
+fieldset.field-group-heading legend span.fieldset-title,
 .field-type-pgbar fieldset.form-wrapper legend span {
   background: none transparent;
   border: 0px solid transparent;
@@ -805,14 +808,46 @@ html.js .fieldset .collapsed .fieldset-legend span.icon {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+fieldset.field-group-heading .fieldset-content legend span.fieldset-title,
+.field-type-pgbar fieldset.form-wrapper .fieldset-content legend span {
+  text-transform: none;
+  border: none;
+  text-align: left;
+  margin: 0;
+  font-weight: bold;
+}
+.fieldset .vertical-tabs-pane legend span.fieldset-title {
+  background: none transparent;
+  display: none;
+}
+.vertical-tabs .vertical-tabs-pane .fieldset-content {
+  background: none transparent;
+}
+.vertical-tabs fieldset.default-fallback.collapsible {
+  padding: 0;
+}
+.vertical-tabs-pane > .fieldset-content {
+  padding: 1em!important;
+}
 
+fieldset.field-group-heading .fieldset-content,
 .field-type-pgbar fieldset.form-wrapper .fieldset-content {
   background: none transparent;
 }
 
+fieldset.field-group-heading .description,
 .field-type-pgbar .description {
 }
 
+fieldset.field-group-fieldset.collapsible {
+  margin-bottom: 2em;
+}
+.field-group-heading fieldset.field-group-fieldset.collapsible {
+  margin-bottom: 1em;
+}
+.field-type-text-with-summary {
+  margin-bottom: 1em;
+}
 
 /**
  * SPAMICIDE HIDDEN ====================================================
