@@ -96,13 +96,16 @@ function campaignion_static_page_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '4',
         ),
         'redirect' => array(
           'weight' => '5',
         ),
         'language' => array(
           'weight' => '0',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(
@@ -146,7 +149,7 @@ function campaignion_static_page_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_static_page';
-  $strongarm->value = TRANSLATION_ENABLED;
+  $strongarm->value = 2;
   $export['language_content_type_static_page'] = $strongarm;
 
   $strongarm = new stdClass();

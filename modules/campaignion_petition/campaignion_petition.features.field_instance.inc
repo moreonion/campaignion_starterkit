@@ -182,7 +182,7 @@ function campaignion_petition_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -350,7 +350,7 @@ function campaignion_petition_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 

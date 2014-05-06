@@ -25,6 +25,7 @@ features[field_base][] = field_description
 features[field_base][] = field_public_page
 features[field_base][] = field_reference_to_campaign
 features[field_group][] = group_add|node|campaign|form
+features[field_group][] = group_campaign_page|node|campaign|form
 features[field_group][] = group_only_published|node|campaign|form
 features[field_instance][] = node-campaign-body
 features[field_instance][] = node-campaign-field_description

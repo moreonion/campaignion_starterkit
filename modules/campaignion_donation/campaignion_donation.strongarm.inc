@@ -102,13 +102,16 @@ function campaignion_donation_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'redirect' => array(
           'weight' => '4',
         ),
         'language' => array(
           'weight' => '0',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(

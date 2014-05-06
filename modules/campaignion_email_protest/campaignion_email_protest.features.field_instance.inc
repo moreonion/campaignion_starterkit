@@ -51,7 +51,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -182,7 +182,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -228,7 +228,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'campaignion_protest_target',
       'settings' => array(),
       'type' => 'email_protest_target',
-      'weight' => 13,
+      'weight' => 8,
     ),
   );
 
@@ -278,7 +278,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 7,
     ),
   );
 
@@ -370,7 +370,7 @@ function campaignion_email_protest_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -449,7 +449,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -554,7 +554,7 @@ function campaignion_email_protest_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 

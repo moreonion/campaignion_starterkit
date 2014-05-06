@@ -22,9 +22,7 @@ function campaignion_campaign_field_group_info() {
   $field_group->data = array(
     'label' => 'Add another section',
     'weight' => '5',
-    'children' => array(
-      0 => 'field_flexible',
-    ),
+    'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
       'label' => 'Add another section',
@@ -41,6 +39,34 @@ function campaignion_campaign_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_campaign_page|node|campaign|form';
+  $field_group->group_name = 'group_campaign_page';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Campaign page',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_public_page',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Campaign page',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-campaign-page field-group-fieldset field-group-heading',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_campaign_page|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_only_published|node|campaign|form';
   $field_group->group_name = 'group_only_published';
   $field_group->entity_type = 'node';
@@ -52,9 +78,8 @@ function campaignion_campaign_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'body',
-      1 => 'field_intro',
-      2 => 'field_main_image',
-      3 => 'group_add',
+      1 => 'field_main_image',
+      2 => 'group_add',
     ),
     'format_type' => 'div',
     'format_settings' => array(

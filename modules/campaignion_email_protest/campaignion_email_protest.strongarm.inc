@@ -93,7 +93,7 @@ function campaignion_email_protest_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'webform_template' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'metatags' => array(
           'weight' => '8',
@@ -102,13 +102,16 @@ function campaignion_email_protest_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '9',
         ),
         'redirect' => array(
           'weight' => '4',
         ),
         'language' => array(
           'weight' => '0',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '14',
         ),
       ),
       'display' => array(
@@ -166,7 +169,7 @@ function campaignion_email_protest_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_email_protest';
-  $strongarm->value = TRANSLATION_ENABLED;
+  $strongarm->value = 2;
   $export['language_content_type_email_protest'] = $strongarm;
 
   $strongarm = new stdClass();
