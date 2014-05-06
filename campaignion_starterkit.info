@@ -19,6 +19,7 @@ dependencies[] = mimemail
 dependencies[] = clientside_validation_webform
 dependencies[] = contextual
 dependencies[] = webform_steps
+dependencies[] = webform_ajax
 
 ; enhancements for the theme (save to disable)
 dependencies[] = clientside_validation
