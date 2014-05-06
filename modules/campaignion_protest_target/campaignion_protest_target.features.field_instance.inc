@@ -455,7 +455,7 @@ function campaignion_protest_target_field_default_field_instances() {
     'entity_type' => 'redhen_contact',
     'exclude_cv' => 0,
     'field_name' => 'field_title',
-    'label' => 'Titel',
+    'label' => 'Title',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -525,7 +525,7 @@ function campaignion_protest_target_field_default_field_instances() {
   t('Salutation');
   t('Social Network Links');
   t('Tags');
-  t('Titel');
+  t('Title');
 
   return $field_instances;
 }

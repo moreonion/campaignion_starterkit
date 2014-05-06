@@ -26,7 +26,7 @@ function campaignion_email_protest_node_info() {
       'base' => 'node_content',
       'description' => t('Email protests are actions that allow your supporters to send emails to a campaign target (via a form on a page).'),
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
