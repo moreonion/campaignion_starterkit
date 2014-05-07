@@ -35,7 +35,7 @@ function campaignion_flexible_form_field_group_info() {
       'label' => 'Advanced settings',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => 'group-advanced-settings field-group-fieldset field-group-heading',
+        'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
         'description' => '',
       ),
       'formatter' => 'open',

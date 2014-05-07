@@ -20,6 +20,7 @@ dependencies[] = share_light
 dependencies[] = strongarm
 features[context][] = thank_you_page
 features[ctools][] = context:context:3
+features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_thank_you_pages
