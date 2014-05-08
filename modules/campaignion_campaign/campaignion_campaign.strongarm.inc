@@ -99,7 +99,7 @@ function campaignion_campaign_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '5',
         ),
         'redirect' => array(
           'weight' => '8',
@@ -108,7 +108,7 @@ function campaignion_campaign_strongarm() {
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '7',
+          'weight' => '6',
         ),
       ),
       'display' => array(

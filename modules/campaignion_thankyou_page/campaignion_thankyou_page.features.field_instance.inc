@@ -251,7 +251,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'share_light',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 

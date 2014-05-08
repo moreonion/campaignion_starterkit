@@ -3,8 +3,6 @@ description = Definitions for a campaign content type
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
-
-; needs roles to be defined to set permissions
 dependencies[] = campaignion_conf
 dependencies[] = campaignion_static_page
 dependencies[] = ctools
@@ -17,7 +15,10 @@ dependencies[] = list
 dependencies[] = little_helpers
 dependencies[] = media
 dependencies[] = node_reference
+dependencies[] = options
 dependencies[] = strongarm
+dependencies[] = taxonomy
+dependencies[] = text
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
@@ -25,6 +26,7 @@ features[field_base][] = field_description
 features[field_base][] = field_public_page
 features[field_base][] = field_reference_to_campaign
 features[field_group][] = group_add|node|campaign|form
+features[field_group][] = group_advanced_settings|node|campaign|form
 features[field_group][] = group_campaign_page|node|campaign|form
 features[field_group][] = group_only_published|node|campaign|form
 features[field_instance][] = node-campaign-body
