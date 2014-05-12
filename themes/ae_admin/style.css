@@ -528,15 +528,36 @@ div.node .column-side .column-wrapper {
   clear: both;
 }
 
+/**
+ * Make tables look nicer in fieldsets
+ */
+
+.field-group-fieldset table,
+.field-group-fieldset th,
+.field-group-fieldset td {
+  background-color: transparent;
+  border: none;
+}
+
+.field-group-fieldset td {
+  border-top: 1px solid #C4C0BA;
+  padding-bottom: 1.5em;
+}
 
 /**
  * Make Media look nice in rubik ==================================
  */
 
+.field-type-image td {
+  border: none;
+  padding: 0;
+}
+
 .field-type-image .form-wrapper {
   background-color: #E4DFD6;
   margin-top: 2.8em;
   padding: 0.2em;
+  margin-bottom: 1em;
 }
 
 .field-type-image label {
