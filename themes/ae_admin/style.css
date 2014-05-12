@@ -545,6 +545,11 @@ div.node .column-side .column-wrapper {
   margin-top: -3em;
 }
 
+.field-type-image td .form-wrapper,
+.field-type-image th.field-label label {
+  margin-top: 0;
+}
+
 .field-type-image .preview,
 .field-type-image a.button {
   float: left;
