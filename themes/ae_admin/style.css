@@ -680,7 +680,6 @@ fieldset.collapsible {
   font-size:14px;
   line-height:20px;
   margin:0px;
-  padding: 10px 14px;
   border-radius: 7px 7px 0 0;
   text-transform: none;
   border-bottom: 1px solid #b3afa8;
@@ -691,8 +690,12 @@ fieldset.collapsible {
   border-bottom: 0;
 }
 
+.fieldset .fieldset-legend a {
+  padding: 10px 14px;
+}
+
 /* Explicit height for IE */
-.fieldset span.fieldset-title,
+.fieldset span.fieldset-title { height:40px; }
 .collapsible .fieldset-legend a { height:20px; }
 
 .collapsible .fieldset-legend span.icon {
