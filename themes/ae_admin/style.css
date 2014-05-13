@@ -680,6 +680,7 @@ fieldset.collapsible {
   font-size:14px;
   line-height:20px;
   margin:0px;
+  padding: 10px 14px;
   border-radius: 7px 7px 0 0;
   text-transform: none;
   border-bottom: 1px solid #b3afa8;
@@ -690,13 +691,18 @@ fieldset.collapsible {
   border-bottom: 0;
 }
 
-.fieldset .fieldset-legend a {
+.collapsible span.fieldset-title {
+  padding: 0;
+}
+
+.collapsible .fieldset-legend a {
   padding: 10px 14px;
 }
 
 /* Explicit height for IE */
-.fieldset span.fieldset-title { height:40px; }
+.fieldset span.fieldset-title,
 .collapsible .fieldset-legend a { height:20px; }
+.collapsible span.fieldset-title { height:40px; }
 
 .collapsible .fieldset-legend span.icon {
   position:absolute;
@@ -798,8 +804,12 @@ fieldset.collapsible .collapsible {
 .collapsible .collapsible .fieldset-legend a {
   padding-left: 20px;
 }
+
+.fieldset fieldset.titled .fieldset-content {
+  background-color: #F8F7F4;
+}
 .fieldset .titled .fieldset-content,
-.collapsible .collapsible .fieldset-content {
+.collapsible fieldset.collapsible .fieldset-content {
   background: #f5f1e8 none;
 }
 .collapsible .collapsible .fieldset-legend span.icon {
