@@ -60,6 +60,14 @@ function campaignion_views_views_default_views() {
     'email_protest' => 'email_protest',
     'petition' => 'petition',
   );
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+    'und' => 'und',
+  );
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -152,6 +160,14 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['value'] = '1';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+    'und' => 'und',
+  );
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
