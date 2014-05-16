@@ -38,7 +38,7 @@ projects[ctools][version] = 1.4
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
-projects[currency][version] = 2.2
+projects[currency][version] = 2.4
 
 projects[custom_add_another][version] = 1.0-rc3
 
@@ -48,7 +48,7 @@ projects[diff][version] = 3.2
 
 projects[elysia_cron][version] = 2.1
 
-projects[entity][version] = 1.3
+projects[entity][version] = 1.5
 
 projects[entityreference][version] = 1.1
 
@@ -56,13 +56,13 @@ projects[features][version] = 2.0
 ; Use better working core machine-name field. - https://drupal.org/node/1259362
 projects[features][patch][] = https://drupal.org/files/features.machine-name-core-element-1259362-6.patch
 
-projects[field_collection][version] = 1.0-beta5
+projects[field_collection][version] = 1.0-beta7
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
 projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18n_string-1471840-1.patch
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 ; Support for i18n_node - https://drupal.org/node/1316162
-projects[field_collection][patch][] = https://drupal.org/files/field_collection-1316162-113_0.patch
+projects[field_collection][patch][] = https://drupal.org/files/field_collection-1316162-192.patch
 ; No output if field_collection is empty. - https://drupal.org/node/1276258
 projects[field_collection][patch][] = https://drupal.org/files/field_collection-completely-hide-empty-1276258-64.patch
 
@@ -72,17 +72,11 @@ projects[field_type_language][version] = 1.0-alpha2
 
 projects[file_entity][version] = 2.0-alpha3
 
-projects[form_builder][version] = 1.4
+projects[form_builder][version] = 1.5
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; select or other integration - http://drupal.org/node/1575064
 projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or_other.patch
-projects[form_builder][patch][] = http://drupal.org/files/1405108-2-webform_unique_validation.patch
-projects[form_builder][patch][] = https://drupal.org/files/issues/2175281-dont-hardcode-form_builder-element_type-4.patch
-; Fix form_builder_field_configure() to allow other submit buttons. - https://drupal.org/node/2190231
-projects[form_builder][patch][] = https://drupal.org/files/issues/2190231-allow-other-submit-buttons-in-field_configure-1.patch
-; Bugfix for javascript error with selectors that include [] brakets. - https://drupal.org/node/2088093
-projects[form_builder][patch][] = https://drupal.org/files/form_builder-javascript_name_error-2088093-1.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta1
 
@@ -100,13 +94,11 @@ projects[jquery_update][patch][] = https://drupal.org/files/issues/jquery_update
 
 projects[l10n_client][version] = 1.3
 
-projects[l10n_update][version] = 1.0-beta3
-; l10n_update inserts one project multiple times - http://drupal.org/node/1373758
-projects[l10n_update][patch][] = http://drupal.org/files/pdoexception-1373758-11.patch
+projects[l10n_update][version] = 1.0
 ; fallback for language imports de-AT -> de. - https://drupal.org/node/580260
 projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-fallback.patch
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
-projects[l10n_update][patch][] = https://drupal.org/files/issues/2150545-rip-out-hook-requirements-4.patch
+projects[l10n_update][patch][] = https://drupal.org/files/issues/2150545-rip-out-hook-requirements-3.patch
 
 projects[less][version] = 3.0
 
@@ -131,13 +123,13 @@ projects[media][patch][] = https://drupal.org/files/issues/1802026-media-browser
 ; Fix for replacePlaceholderWithToken in media_wysiwyg.filter.js - https://drupal.org/node/2164823
 projects[media][patch][] = https://drupal.org/files/issues/media-browser-incompatibilities.patch
 
-projects[media_vimeo][version] = 2.0-rc1
+projects[media_vimeo][version] = 2.0
 
 projects[media_youtube][version] = 2.0-rc4
 projects[media_youtube][patch][] = https://drupal.org/files/issues/media_youtube-2.x-clearfix-for-form-widget-2429.patch
 projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previous-links-1551376-7.patch
 
-projects[menu_block][version] = 2.3
+projects[menu_block][version] = 2.4
 
 projects[metatag][version] = 1.0-beta9
 
@@ -159,7 +151,7 @@ projects[opengraph_meta][version] = 1.3
 ; Small thumbnail image preset causes images not to show - https://drupal.org/node/1720716
 projects[opengraph_meta][patch][] = https://drupal.org/files/opengraph_meta-allow_choice_of_image_style-1720716-2.patch
 
-projects[options_element][version] = 1.10
+projects[options_element][version] = 1.12
 
 projects[page_title][version] = 2.7
 
@@ -183,7 +175,7 @@ projects[pgbar][version] = 1.4
 
 projects[psr0][version] = 1.1
 
-projects[redhen][version] = 1.6
+projects[redhen][version] = 1.7
 
 projects[redirect][version] = 1.0-rc1
 ; avoid circular redirect in hook_path_update - http://drupal.org/node/1796596
@@ -195,11 +187,9 @@ projects[respondjs][version] = 1.3
 ; New URL to respond.min.js (GitHub) - https://drupal.org/node/2179017
 projects[respondjs][patch][] = https://drupal.org/files/issues/2179017-download-url-3.patch
 
-projects[rules][version] = 2.3
-
 projects[select_or_other][version] = 2.20
 
-projects[session_cache][version] = 1.2
+projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
@@ -223,7 +213,7 @@ projects[uuid_features][version] = 1.0-alpha4
 ; Make uuid_features work with i18n_node (tnids). - https://drupal.org/node/2117453
 projects[uuid_features][patch][] = https://drupal.org/files/issues/2117453-uuid_features-use-entity_uuid_save-4.patch
 
-projects[variable][version] = 2.4
+projects[variable][version] = 2.5
 
 projects[views][version] = 3.7
 ; php 5.4 and Notice: Array to string conversion - http://drupal.org/node/1511396
@@ -257,7 +247,7 @@ projects[webform_template][version] = 1.3
 
 projects[webform_tracking][version] = 1.0-beta1
 
-projects[webform_validation][version] = 1.4
+projects[webform_validation][version] = 1.5
 ; Add support for webform_template. - https://drupal.org/node/2243681
 projects[webform_validation][patch][] = https://drupal.org/files/issues/webform_validation-2243681-support-for-webform_template-7.patch
 
@@ -267,13 +257,13 @@ projects[weight][version] = 2.3
 
 projects[wysiwyg][version] = 2.2
 
-projects[xmlsitemap][version] = 2.0-rc2
+projects[xmlsitemap][version] = 2.0
 
-projects[xautoload][version] = 3.3
+projects[xautoload][version] = 4.5
 
 projects[simplicity][version] = 1.0-beta2
 
-projects[tao][version] = 3.0-beta4
+projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.tar.gz
