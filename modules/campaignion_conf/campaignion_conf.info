@@ -10,6 +10,7 @@ dependencies[] = image
 dependencies[] = little_helpers
 dependencies[] = media_vimeo
 dependencies[] = media_youtube
+dependencies[] = media_wysiwyg
 dependencies[] = strongarm
 dependencies[] = user
 dependencies[] = wysiwyg
