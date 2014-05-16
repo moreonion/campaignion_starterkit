@@ -19,5 +19,6 @@ projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_p
 ; Allow hook_boot() to skip page cache. (geoip_language_redirect) - http://drupal.org/node/322104
 projects[drupal][patch][] = http://drupal.org/files/hook_boot_may_defer_cache-7.x-322104-37.patch
 ; form elements can now set their custom CSS classes via #wrapper_attributes. - http://drupal.org/node/2190525
-projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
-
+projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patcp
+; Flush node-load cache when translating nodes - https://drupal.org/node/1936942
+projects[drupal][patch][] = https://drupal.org/files/drupal-translation_load_cache-1936942-1.patch
