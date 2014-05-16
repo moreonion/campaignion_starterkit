@@ -58,9 +58,3 @@ function _campaignion_starterkit_frontpage() {
   variable_set('site_frontpage', 'node/' . $node->nid);
 }
 
-/**
- * enable modules necessary for email_protest
- */
-function campaignion_starterkit_update_1() {
-  module_enable(array('ae_email_protest_target_field', 'ae_email_protest_content_type', 'campaignion_protest_target'), TRUE);
-}
