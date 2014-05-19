@@ -254,6 +254,11 @@ function campaignion_context_context_default_contexts() {
         '~region_sidebar_second_overwrite*' => '~region_sidebar_second_overwrite*',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        '~node/*/share' => '~node/*/share',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -265,13 +270,6 @@ function campaignion_context_context_default_contexts() {
           'weight' => '-10',
           'title' => '<none>',
         ),
-        'campaignion_recent_supporters-recent_supporters' => array(
-          'module' => 'campaignion_recent_supporters',
-          'delta' => 'recent_supporters',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-          'title' => '<none>',
-        ),
         'webform_block-current' => array(
           'module' => 'webform_block',
           'delta' => 'current',
@@ -279,11 +277,18 @@ function campaignion_context_context_default_contexts() {
           'weight' => '-9',
           'title' => '<none>',
         ),
+        'campaignion_recent_supporters-recent_supporters' => array(
+          'module' => 'campaignion_recent_supporters',
+          'delta' => 'recent_supporters',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+          'title' => '<none>',
+        ),
       ),
     ),
   );
-  $context->condition_mode = 0;
-
+  $context->condition_mode = 1;
+  
   // Translatables
   // Included for use with string extractors like potx.
   t('Default context for region sidebar_second');
