@@ -15,7 +15,15 @@ use \Drupal\campaignion\Wizard\EmailProtestEmailStep;
  */
 function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#node']->type == 'email_protest') {
-    array_unshift($form['#submit'], 'campaignion_email_protest_pre_webform_client_form');
+    // Add our own submit-handler right before webform_client_form_submit.
+    $submit = array();
+    foreach ($form['#submit'] as $handler) {
+      if ($handler == 'webform_client_form_submit') {
+        $submit[] = 'campaignion_email_protest_pre_webform_client_form';
+      }
+      $submit[] = $handler;
+    }
+    $form['#submit'] = $submit;
   }
 }
 
