@@ -572,3 +572,7 @@ div.form-builder-new-field span.progress {
 #form-builder-field-remove .form-layout-simple  {
   display: inline;
 }
+
+.form-builder-bottom-links {
+  display: none;
+}
