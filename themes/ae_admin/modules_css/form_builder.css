@@ -564,7 +564,7 @@ div.form-builder-new-field span.progress {
   border: 1px solid #D8D5CD;
   background-color: #D6D2CB;
 }
-#form-builder .form-builder-placeholder:last-child {
+#form-builder .form-builder-placeholder-last {
   padding-bottom: 100px;
 }
 
