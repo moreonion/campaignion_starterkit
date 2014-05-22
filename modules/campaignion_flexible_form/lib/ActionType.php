@@ -6,7 +6,7 @@ use \Drupal\campaignion\Wizard\WebformWizard;
 
 class ActionType extends \Drupal\campaignion\Action\TypeBase {
   public function defaultTemplateNid() {
-    $ids = entity_get_id_by_uuid('node', array('93a8faff-aad2-401a-9817-f6f3b578b9bd'));
+    $ids = \entity_get_id_by_uuid('node', array('93a8faff-aad2-401a-9817-f6f3b578b9bd'));
     return array_shift($ids);
   }
 

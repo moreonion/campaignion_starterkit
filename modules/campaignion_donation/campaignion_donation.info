@@ -22,6 +22,7 @@ dependencies[] = pgbar
 dependencies[] = psr0
 dependencies[] = select_or_other
 dependencies[] = strongarm
+dependencies[] = uuid
 dependencies[] = views
 dependencies[] = webform
 dependencies[] = webform_paymethod_select

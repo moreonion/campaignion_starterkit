@@ -23,6 +23,7 @@ dependencies[] = options
 dependencies[] = pgbar
 dependencies[] = psr0
 dependencies[] = strongarm
+dependencies[] = uuid
 dependencies[] = text
 dependencies[] = webform
 features[ctools][] = field_group:field_group:1
