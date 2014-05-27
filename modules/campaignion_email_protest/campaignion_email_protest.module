@@ -43,7 +43,7 @@ function campaignion_email_protest_pre_webform_client_form(&$form, &$form_state)
   }
 
   $node = $form['#node'];
-  $submission = \Drupal\little_helpers\Webform\Submission::fromFormState($node, $form_state);
+  $submission = new \Drupal\little_helpers\Webform\FormState($node, $form, $form_state);
   $email = &$node->webform['emails'][EmailProtestEmailStep::WIZARD_PROTEST_EID];
 
   $target_contact_id = $submission->valueByKey('email_protest_target');
