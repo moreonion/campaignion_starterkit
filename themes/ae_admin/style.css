@@ -800,6 +800,9 @@ fieldset.collapsible .collapsible {
   background:#e4dfd6;
   border-color: #c6c2ba;
 }
+.fieldset .field-group-heading .fieldset-legend {
+  background: transparent;
+}
 .collapsible .collapsible .fieldset-legend,
 .collapsible .collapsible .fieldset-legend a {
   padding-left: 20px;
