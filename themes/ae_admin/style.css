@@ -800,7 +800,7 @@ fieldset.collapsible .collapsible {
   background:#e4dfd6;
   border-color: #c6c2ba;
 }
-.fieldset .field-group-heading .fieldset-legend {
+.fieldset .field-group-heading > legend > .fieldset-legend {
   background: transparent;
 }
 .collapsible .collapsible .fieldset-legend,
