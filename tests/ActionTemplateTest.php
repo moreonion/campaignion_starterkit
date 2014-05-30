@@ -1,5 +1,4 @@
 <?php
-
 class ActionTemplateTest extends \DrupalUnitTestCase {
   public function testNewPetitionGetsTemplateApplied() {
     $node = (object) array(
