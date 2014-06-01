@@ -97,6 +97,7 @@ function campaignion_donation_templates_uuid_features_default_content() {
     'total_submit_interval' => -1,
     'first_button_text' => 'Make your donation!',
     'next_button_text' => 'Next',
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
       0 => 1,
@@ -320,8 +321,21 @@ y|yearly
         'value' => '',
         'extra' => array(
           'payment_description' => 'Default Payment',
-          'selected_payment_methods' => array(),
-          'line_items' => array(),
+          'selected_payment_methods' => array(
+            1 => 1,
+          ),
+          'line_items' => array(
+            0 => array(
+              'amount_source' => 'component',
+              'amount_component' => 9,
+              'amount' => NULL,
+              'description' => 'Donation',
+              'description_arguments' => array(),
+              'name' => 'donation',
+              'tax_rate' => 0,
+              'quantity' => 1,
+            ),
+          ),
           'currency_code' => 'EUR',
           'private' => 0,
           'title_display' => NULL,
