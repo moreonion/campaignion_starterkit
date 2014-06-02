@@ -325,7 +325,7 @@ y|yearly
             1 => 1,
           ),
           'line_items' => array(
-            0 => array(
+            0 => new \Drupal\webform_paymethod_select\PaymethodLineItem(array(
               'amount_source' => 'component',
               'amount_component' => 9,
               'amount' => NULL,
@@ -334,7 +334,7 @@ y|yearly
               'name' => 'donation',
               'tax_rate' => 0,
               'quantity' => 1,
-            ),
+            )),
           ),
           'currency_code' => 'EUR',
           'private' => 0,
