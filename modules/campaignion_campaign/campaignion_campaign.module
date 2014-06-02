@@ -41,7 +41,7 @@ function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_i
  * Implements hook_field_group_build_pre_render_alter().
  */
 function campaignion_campaign_field_group_build_pre_render_alter(&$form) {
-  if ($form['#form_id'] != 'campaign_node_form')
+  if (!isset($form['#form_id']) || $form['#form_id'] != 'campaign_node_form')
     return;
 
   $elem = &$form['group_only_published'];
