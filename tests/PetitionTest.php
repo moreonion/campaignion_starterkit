@@ -43,21 +43,24 @@ class PetitionTest extends DrupalSeleniumTestCase {
     public function testPetitionPage() {
       $this->url('/support-selenium');
       $this->assertContains('Support Selenium!', $this->title());
+
+      $this->byName('submitted[first_name]')->value('Fire');
+      $this->byName('submitted[last_name]')->value('Fox');
+      $this->byName('submitted[email]')->value('firefox@example.com');
+
+      $this->byCssSelector('input[value="Take action now!"]')->click();
+      $this->assertContains('Thanks', $this->title());
+
+      $this->url('/support-selenium');
+      $this->assertContains('Fire Fox', $this->byCssSelector('.recent-supporters')->text());
     }
 
-    public function login() {
-      $this->url('/user');
-      $this->assertContains('User account', $this->title());
-      $this->byName('name')->value('admin');
-      $this->byName('pass')->value($this->temporary_admin_pass);
-      $this->clickOnElement('edit-submit');
+    public function testManageSupporters() {
+      $this->login();
+      $this->url('/admin/supporters');
 
-      $this->assertContains('admin', $this->title());
-    }
-
-    public function takeScreenshot() {
-      $file = fopen('screenshot.png', 'wb');
-      fwrite($file, $this->currentScreenshot());
-      fclose($file);
+      $supporters = $this->byId('campaignion-manage-form')->text();
+      $this->assertContains('Fire Fox', $supporters);
+      $this->assertContains('firefox@example.com', $supporters);
     }
 }
