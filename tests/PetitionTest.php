@@ -1,6 +1,9 @@
 <?php
 
 class PetitionTest extends DrupalSeleniumTestCase {
+    public $temporary_admin_pass = 'DrushDlDrupal';
+
+
     public function testFrontpage()
     {
       $this->url('/');
@@ -46,7 +49,7 @@ class PetitionTest extends DrupalSeleniumTestCase {
       $this->url('/user');
       $this->assertContains('User account', $this->title());
       $this->byName('name')->value('admin');
-      $this->byName('pass')->value('DrushDlDrupal');
+      $this->byName('pass')->value($this->temporary_admin_pass);
       $this->clickOnElement('edit-submit');
 
       $this->assertContains('admin', $this->title());
