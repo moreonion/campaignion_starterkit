@@ -32,6 +32,9 @@ function campaignion_donation_campaignion_action_info() {
         'type' => 'thank_you_page',
         'reference' => 'field_thank_you_pages',
       ),
+      'recent_supporters' => array(
+        'default_text' => t('!supporter_name just donated at !action_title'),
+      ),
     ),
   );
   return $type;
