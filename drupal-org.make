@@ -7,11 +7,7 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][type] = "module"
-projects[campaignion][download][type] = "git"
-projects[campaignion][download][url] = "git://git.drupal.org/project/campaignion.git"
-projects[campaignion][download][branch] = "7.x-1.x"
-projects[campaignion][download][revision] = "f13d153121ad72f832bc1de0aad3e9b9757f0256"
+projects[campaignion][version] = 1.0-beta6
 
 projects[cck_blocks][version] = 1.1
 
@@ -104,7 +100,7 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-beta2
+projects[little_helpers][version] = 1.0-beta4
 
 projects[login_destination][version] = 1.1
 
@@ -143,7 +139,7 @@ projects[modernizr][version] = 3.2
 
 projects[morelesszen][version] = 1.0-beta2
 
-projects[mpay24_payment][version] = 1.0-beta1
+projects[mpay24_payment][version] = 1.0-beta2
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -241,7 +237,7 @@ projects[webform_steps][version] = 1.0-alpha4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc1
+projects[webform_paymethod_select][version] = 1.0-rc2
 
 projects[webform_template][version] = 1.3
 
