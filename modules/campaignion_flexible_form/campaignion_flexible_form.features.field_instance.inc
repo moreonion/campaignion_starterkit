@@ -342,7 +342,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'null.inc',
+      'source' => 'webform_submissions.inc',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
