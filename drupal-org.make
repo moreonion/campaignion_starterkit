@@ -62,7 +62,7 @@ projects[field_collection][patch][] = https://drupal.org/files/field_collection-
 ; No output if field_collection is empty. - https://drupal.org/node/1276258
 projects[field_collection][patch][] = https://drupal.org/files/field_collection-completely-hide-empty-1276258-64.patch
 
-projects[field_group][version] = 1.3
+projects[field_group][version] = 1.4
 
 projects[field_type_language][version] = 1.0-alpha2
 
@@ -76,7 +76,7 @@ projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or
 
 projects[geoip_language_redirect][version] = 1.0-beta1
 
-projects[honeypot][version] = 1.16
+projects[honeypot][version] = 1.17
 
 projects[ife][version] = 2.0-alpha2
 
@@ -211,9 +211,7 @@ projects[uuid_features][patch][] = https://drupal.org/files/issues/2117453-uuid_
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.7
-; php 5.4 and Notice: Array to string conversion - http://drupal.org/node/1511396
-projects[views][patch][] = https://drupal.org/files/views-1511396-110-array_diff_recursive.patch
+projects[views][version] = 3.8
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.20
