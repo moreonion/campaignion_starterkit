@@ -11,7 +11,7 @@ use \Drupal\campaignion\Wizard\EmailProtestEmailStep;
 /**
  * Implements hook_form_(form_id)_alter().
  *
- * We're setting a form submit handler that is called before webform_client_form
+ * We're setting a form submit handler that is called before webform_client_form.
  */
 function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#node']->type == 'email_protest') {
@@ -44,38 +44,42 @@ function campaignion_email_protest_pre_webform_client_form(&$form, &$form_state)
 
   $node = $form['#node'];
   $submission = new \Drupal\little_helpers\Webform\FormState($node, $form, $form_state);
-  $email = &$node->webform['emails'][EmailProtestEmailStep::WIZARD_PROTEST_EID];
+  if (isset($node->webform['emails'][EmailProtestEmailStep::WIZARD_PROTEST_EID])) {
+    $email = &$node->webform['emails'][EmailProtestEmailStep::WIZARD_PROTEST_EID];
+  }
+  else {
+    return;
+  }
 
   $target_contact_id = $submission->valueByKey('email_protest_target');
 
+  $targets = array();
   if ($target_contact_id == FALSE) {
     // no protest target is submitted that means we have to get the targets from the node
     // field
-    $email['email']  = '';
     $protest_targets = field_get_items('node', $form['#node'], 'field_protest_target');
-    $nr_of_targets   = count($protest_targets);
-    foreach($protest_targets as $index => $target) {
-      $contact         = redhen_contact_load($target['target_id']);
-      if ($contact != FALSE) {
-        $emails = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
-        $email['email'] .= $emails[0]['value'];
-        if ($index < ($nr_of_targets - 1)) {
-          $email['email'] .= ',';
+    if ($protest_targets) {
+      foreach($protest_targets as $target) {
+        if ($contact = redhen_contact_load($target['target_id'])) {
+          $items = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
+          $targets[] = $items[0]['value'];
         }
       }
     }
   }
   else {
     // the user selected a target that we can get from the form_state
-    $contact = redhen_contact_load($target_contact_id);
-    if ($contact != FALSE) {
-      $emails = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
-      $email['email'] = $emails[0]['value'];
+    if ($contact = redhen_contact_load($target_contact_id)) {
+      $items = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
+      $targets = $items[0]['value'];
     }
   }
 
-  $email['from_name'] = $submission->valueByKey('first_name') . ' ' . $submission->valueByKey('last_name');
-  $email['template']  = $submission->valueByKey('email_body');
+  if ($targets) {
+    $email['email'] = implode(',', $targets);
+    $email['from_name'] = $submission->valueByKey('first_name') . ' ' . $submission->valueByKey('last_name');
+    $email['template']  = $submission->valueByKey('email_body');
+  }
 }
 
 /**
