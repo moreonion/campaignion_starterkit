@@ -275,7 +275,7 @@ y|yearly
         'value' => '%get[p5]',
         'extra' => array(
           'width' => '',
-          'unique' => TRUE,
+          'unique' => FALSE,
           'disabled' => 0,
           'title_display' => 'before',
           'description' => '',
