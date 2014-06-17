@@ -7,7 +7,7 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][version] = 1.0-beta6
+projects[campaignion][version] = 1.0-beta7
 
 projects[cck_blocks][version] = 1.1
 
@@ -137,7 +137,7 @@ projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.2
 
-projects[morelesszen][version] = 1.0-beta2
+projects[morelesszen][version] = 1.0-beta3
 
 projects[mpay24_payment][version] = 1.0-beta2
 
@@ -235,11 +235,11 @@ projects[webform_steps][version] = 1.0-alpha4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc2
+projects[webform_paymethod_select][version] = 1.0-rc3
 
 projects[webform_template][version] = 1.3
 
-projects[webform_tracking][version] = 1.0-beta1
+projects[webform_tracking][version] = 1.0-beta2
 
 projects[webform_validation][version] = 1.5
 ; Add support for webform_template. - https://drupal.org/node/2243681
@@ -255,7 +255,7 @@ projects[xmlsitemap][version] = 2.0
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta2
+projects[simplicity][version] = 1.0-beta3
 
 projects[tao][version] = 3.1
 
@@ -274,6 +274,9 @@ libraries[mailchimp][download][branch] = 2.0.4
 
 libraries[paymill][download][type] = file
 libraries[paymill][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
+
+libraries[respondjs][download][type] = file
+libraries[respondjs][download][url] = https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js
 
 libraries[stripe][download][type] = git
 libraries[stripe][download][url] = https://github.com/stripe/stripe-php.git
