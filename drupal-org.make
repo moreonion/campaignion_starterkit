@@ -276,7 +276,7 @@ libraries[paymill][download][type] = file
 libraries[paymill][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
 
 libraries[respondjs][download][type] = file
-libraries[respondjs][download][url] = https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js
+libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
 
 libraries[stripe][download][type] = git
 libraries[stripe][download][url] = https://github.com/stripe/stripe-php.git
