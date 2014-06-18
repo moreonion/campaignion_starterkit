@@ -40,30 +40,30 @@ function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_i
 /**
  * Implements hook_field_group_build_pre_render_alter().
  */
-function campaignion_campaign_field_group_build_pre_render_alter(&$form) {
-  if (!isset($form['#form_id']) || $form['#form_id'] != 'campaign_node_form')
+function campaignion_campaign_field_group_build_pre_render_alter(&$element) {
+  if (!isset($element['#form_id']) || $element['#form_id'] != 'campaign_node_form')
     return;
 
-  $elem = &$form['group_only_published'];
+  $elem = &$element['group_only_published'];
   foreach (element_children($elem) as $key) {
-    $form['only_published'][$key] = &$elem[$key];
-    unset($form['only_published']['#sorted']);
+    $element['only_published'][$key] = &$elem[$key];
+    unset($element['only_published']['#sorted']);
     unset($elem[$key]);
   }
   foreach (array('additional_settings', 'opengraph_meta') as $key) {
-    $form['only_published'][$key] = &$form[$key];
-    unset($form[$key]);
+    $element['only_published'][$key] = &$element[$key];
+    unset($element[$key]);
   }
-  unset($form['group_only_published']);
+  unset($element['group_only_published']);
 
-  if (isset($form['group_microsite'])) {
-    $elem = &$form['group_microsite'];
+  if (isset($element['group_microsite'])) {
+    $elem = &$element['group_microsite'];
     foreach (element_children($elem) as $key) {
-      $form['microsite'][$key] = &$elem[$key];
-      unset($form['microsite']['#sorted']);
+      $element['microsite'][$key] = &$elem[$key];
+      unset($element['microsite']['#sorted']);
       unset($elem[$key]);
     }
-    unset($form['group_microsite']);
+    unset($element['group_microsite']);
   }
 }
 
