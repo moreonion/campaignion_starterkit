@@ -72,12 +72,23 @@ function campaignion_protest_target_field_widget_form(&$form, &$form_state, $fie
  * Field validation callback function referenced in campaignion_protest_target_field_widget_form
  */
 function campaignion_protest_target_validate($element, &$form_state, $form) {
-
   $target = &$element['email_protest_target'];
 
-  if (   empty($target['first_name']['#value'])    == FALSE
-      || empty($target['last_name']['#value'])     == FALSE
-      || empty($target['email']['#value']) == FALSE) {
+  if (!isset($form_state['step']) || $form_state['step'] === 'target') {
+    $has_target = FALSE;
+    foreach ($form_state['values']['field_protest_target']['und'] as $delta => $values) {
+      if (is_numeric($delta) && !empty($form_state['values']['field_protest_target']['und'][$delta]['email_protest_target']['email'])) {
+        $has_target = TRUE;
+        break;
+      }
+    }
+    if ($has_target == FALSE) {
+      form_error($target['email'], t('You have to specify at least 1 target.'));
+    }
+  }
+  if (   !empty($target['first_name']['#value'])
+      || !empty($target['last_name']['#value'])
+      || !empty($target['email']['#value'])) {
 
     if (empty($target['first_name']['#value']) == TRUE) {
       form_error($target['first_name'], t('First name has to be a non empty string.'));
