@@ -23,6 +23,7 @@ hr { display:none; }
 div.messages {
   color:#304d50;
   background-color:#82d2d9;
+  background-image: none;
   border:1px solid #ccc;
   margin:0px 0px 10px;
   padding: .5em .5em .5em .5em;
