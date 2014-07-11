@@ -45,14 +45,14 @@ class PetitionTest extends DrupalSeleniumTestCase {
       $this->assertContains('Support Selenium!', $this->title());
 
       $this->byName('submitted[first_name]')->value('Fire');
-      $this->byName('submitted[last_name]')->value('Fox');
+      $this->byName('submitted[last_name]')->value('Chrome');
       $this->byName('submitted[email]')->value('firefox@example.com');
 
       $this->byCssSelector('input[value="Take action now!"]')->click();
       $this->assertContains('Thanks', $this->title());
 
       $this->url('/support-selenium');
-      $this->assertContains('Fire Fox', $this->byCssSelector('.recent-supporters')->text());
+      $this->assertContains('Fire C', $this->byCssSelector('.recent-supporters')->text());
     }
 
     public function testManageSupporters() {
@@ -60,7 +60,7 @@ class PetitionTest extends DrupalSeleniumTestCase {
       $this->url('/admin/supporters');
 
       $supporters = $this->byId('campaignion-manage-form')->text();
-      $this->assertContains('Fire Fox', $supporters);
+      $this->assertContains('Fire Chrome', $supporters);
       $this->assertContains('firefox@example.com', $supporters);
     }
 }
