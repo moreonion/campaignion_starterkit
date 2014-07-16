@@ -105,6 +105,10 @@ $matrix = array(
   'honeypot' => array(
     'bypass honeypot protection'                 => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
+  // String translation
+  'i18n_string' => array(
+    'translate user-defined strings'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+  ),
   // Locale
   'locale' => array(
     'administer languages'                       => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
@@ -289,9 +293,12 @@ $matrix = array(
     'search content'                             => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
     'use advanced search'                        => array(NULL,             TRUE,                 NULL,            NULL,     NULL,        ),
   ),
-  // String translation
-  'i18n_string' => array(
-    'translate user-defined strings'             => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+  // Share Light
+  'share_light' => array(
+    'admin share_light global'                   => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'admin share_light own page'                 => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+    'admin share_light all pages'                => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+    'admin share_light share page'               => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
   ),
   // System
   'system' => array(
