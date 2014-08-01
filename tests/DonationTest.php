@@ -1,44 +1,24 @@
 <?php
+/**
+  * @file
+  * implementation for Donation tests
+  */
 
-class DonationTest extends DrupalSeleniumTestCase {
-    public $temporary_admin_pass = 'Selenium';
+require_once dirname(__FILE__) . '/ActionCommon.php';
 
-    public function testFrontpage() {
-      $this->url('/');
-      $this->assertContains('Let\'s change the world!', $this->title());
-      $this->assertContains('Let\'s change the world!',
-        $this->byCssSelector('body')->text());
+class DonationTest extends ActionCommon {
+    public function testActionCreation($path = '/node/add/donation', $title = 'Create Donation') {
+      parent::testActionCreation($path, $title);
     }
 
-    public function testDonationCreation() {
-      $this->url('/node/add/donation');
-      $this->assertContains('Access denied', $this->title());
-
-      $this->login();
-
-      $this->url('/node/add/donation');
-      $this->assertContains('Create Donation', $this->title());
- 
-      $title = $this->byName('title');
-      $title->clear();
-      $title->value('Support Selenium!');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
-
-      $this->byCssSelector('.form-item-thank-you-node-type input[value=node]')->click();
-      $this->byName('thank_you_node[node_form][title]')->value('Thanks!');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-return');
+    public function testAccessRights($path = '/node/add/donation') {
+      parent::testAccessRights($path);
     }
 
-    public function testDonationOnFrontpage() {
-      $this->url('/');
-      $this->assertContains('Support Selenium!',
-        $this->byCssSelector('body')->text());
-    }
-
-    public function testDonationPage() {
+    /**
+      * @depends testActionCreation
+      */
+    public function testDonationSubmit() {
       $this->timeouts()->implicitWait(5000);
 
       $this->url('/support-selenium');
@@ -65,6 +45,9 @@ class DonationTest extends DrupalSeleniumTestCase {
       $this->assertContains('Fire C', $this->byCssSelector('.recent-supporters')->text());
     }
 
+    /**
+      * @depends testDonationSubmit
+      */
     public function testManageSupporters() {
       $this->login();
       $this->url('/admin/supporters');

@@ -1,46 +1,24 @@
 <?php
+/**
+  * @file
+  * implementation for Petition tests
+  */
 
-class PetitionTest extends DrupalSeleniumTestCase {
-    public $temporary_admin_pass = 'DrushDlDrupal';
+require_once dirname(__FILE__) . '/ActionCommon.php';
 
-
-    public function testFrontpage()
-    {
-      $this->url('/');
-      $this->assertContains('Let\'s change the world!', $this->title());
-      $this->assertContains('Let\'s change the world!',
-        $this->byCssSelector('body')->text());
+class PetitionTest extends ActionCommon {
+    public function testActionCreation($path = '/node/add/petition', $title = 'Create Petition') {
+      parent::testActionCreation($path, $title);
     }
 
-    public function testPetitionCreation() {
-      $this->url('/node/add/petition');
-      $this->assertContains('Access denied', $this->title());
-
-      $this->login();
-
-      $this->url('/node/add/petition');
-      $this->assertContains('Create Petition', $this->title());
-
-      $title = $this->byName('title');
-      $title->clear();
-      $title->value('Support Selenium!');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
-
-      $this->byCssSelector('.form-item-thank-you-node-type input[value=node]')->click();
-      $this->byName('thank_you_node[node_form][title]')->value('Thanks!');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-return');
+    public function testAccessRights($path = '/node/add/petition') {
+      parent::testAccessRights($path);
     }
 
-    public function testPetitionOnFrontpage() {
-      $this->url('/');
-      $this->assertContains('Support Selenium!',
-        $this->byCssSelector('body')->text());
-    }
-
-    public function testPetitionPage() {
+    /**
+      * @depends testActionCreation
+      */
+    public function testPetitionSubmit() {
       $this->url('/support-selenium');
       $this->assertContains('Support Selenium!', $this->title());
 
@@ -50,11 +28,19 @@ class PetitionTest extends DrupalSeleniumTestCase {
 
       $this->byCssSelector('input[value="Take action now!"]')->click();
       $this->assertContains('Thanks', $this->title());
+    }
 
+    /**
+      * @depends testPetitionSubmit
+      */
+    public function testRecentSupporter() {
       $this->url('/support-selenium');
       $this->assertContains('Fire C', $this->byCssSelector('.recent-supporters')->text());
     }
 
+    /**
+      * @depends testPetitionSubmit
+      */
     public function testManageSupporters() {
       $this->login();
       $this->url('/admin/supporters');
