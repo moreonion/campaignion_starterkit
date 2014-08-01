@@ -13,4 +13,8 @@ class ActionType extends \Drupal\campaignion\Action\TypeBase {
   public function wizard($node = NULL) {
     return new DonationWizard($this->parameters, $node, $this->type);
   }
+
+  public function actionFromNode($node) {
+    return new \Drupal\campaignion_donation\Action($this, $node);
+  }
 }
