@@ -6,6 +6,8 @@
 
 include_once 'campaignion_donation.features.inc';
 
+use \Drupal\little_helpers\Webform\Webform;
+
 /**
  * Implements hook_block_info_alter().
  *
@@ -156,5 +158,32 @@ function campaignion_donation_form_builder_types_alter(&$types) {
 function campaignion_donation_node_prepare($node) {
   if (empty($node->webform['submit_text'])) {
     $node->webform['submit_text'] = t('Donate now!');
+  }
+}
+
+/**
+ * Implements hook_form_webform_client_form_alter().
+ */
+function campaignion_donation_form_webform_client_form_alter(&$form, &$form_state) {
+  $webform = new Webform($form['#node']);
+  if ($component = $webform->componentByKey('donation_amount')) {
+    $names = array('donation_amount');
+    while ($component['pid']) {
+      $component = $webform->component($component['pid']);
+      array_unshift($names, $component['form_key']);
+    }
+    if ($element = &drupal_array_get_nested_value($form['submitted'], $names)) {
+      $element['#element_validate'] = array('campaignion_donation_amount_validate');
+    }
+  }
+}
+
+/**
+ * Element validator for donation_amount.
+ */
+function campaignion_donation_amount_validate($element, &$form_state, $form) {
+  $num = (int) $element['#value'];
+  if ((string) $num != $element['#value'] || $num < 1) {
+    form_error($element, t('Please enter a whole-numbered amount of at least 1.'));
   }
 }
