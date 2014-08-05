@@ -26,8 +26,9 @@ class DonationTest extends ActionCommon {
 
       $this->byName('submitted[amount][donation_amount]')->value('50');
       $this->byCssSelector('.form-item-submitted-amount-donation-interval input[value="1"]')->click();
+      $this->keys(PHPUnit_Extensions_Selenium2TestCase_Keys::PAGEDOWN);
+      sleep(1);
       $this->byCssSelector('input[value="Make your donation!"]')->click();
-
       $this->byName('submitted[first_name]')->value('Fire');
       $this->byName('submitted[last_name]')->value('Chrome');
       $this->byName('submitted[email]')->value('firefox@example.com');
