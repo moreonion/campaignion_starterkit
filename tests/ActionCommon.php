@@ -22,7 +22,7 @@ class ActionCommon extends DrupalSeleniumTestCase {
       $this->url('/');
       $this->assertContains('Let\'s change the world!', $this->title());
       $this->assertContains('Let\'s change the world!',
-      $this->byCssSelector('body')->text());
+        $this->byCssSelector('body')->text());
     }
 
     public function testAccessRights($path = '/node/add/action') {
