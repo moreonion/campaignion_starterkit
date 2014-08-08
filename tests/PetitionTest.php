@@ -7,16 +7,22 @@
 require_once dirname(__FILE__) . '/ActionCommon.php';
 
 class PetitionTest extends ActionCommon {
-    public function testActionCreation($path = '/node/add/petition', $title = 'Create Petition') {
-      parent::testActionCreation($path, $title);
-    }
+    protected $addActionPath = '/node/add/petition';
+    protected $wizardTitle   = 'Create Petition';
 
-    public function testAccessRights($path = '/node/add/petition') {
-      parent::testAccessRights($path);
+    public function testCreatePetition() {
+      $this->createAction();
     }
 
     /**
-      * @depends testActionCreation
+      * @depends testCreatePetition
+      */
+    public function testPetitionOnFrontPage() {
+      $this->actionOnFrontpage();
+    }
+
+    /**
+      * @depends testCreatePetition
       */
     public function testPetitionSubmit() {
       $this->url('/support-selenium');

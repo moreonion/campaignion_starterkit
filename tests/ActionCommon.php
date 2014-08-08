@@ -4,58 +4,56 @@
   * base class implementation for all action tests
   */
 
-class ActionCommon extends DrupalSeleniumTestCase {
-    public function setUp() {
-      parent::setUp();
+require_once dirname(__FILE__) . '/DefaultContentStepConfig.php';
+require_once dirname(__FILE__) . '/WizardStepConfig.php';
+require_once dirname(__FILE__) . '/DefaultThankyouStepConfig.php';
 
-      $config_path = getenv('DRUPAL_SELENIUM_CONFIG');
-      if (empty($config_path)) {
-        print("\n\nNo test config file specified, aborting!\n\n");
-        $this->assertTrue(FALSE);
-      }
-      include $config_path;
-      $this->temporary_admin_pass = $admin_pwd;
-      $this->assertTrue(!empty($this->temporary_admin_pass));
+class ActionCommon extends DrupalSeleniumTestCase {
+    protected $addActionPath      = '/node/add/action';
+    protected $wizardTitle        = 'Create Action';
+    protected $wizardStepsConfigs = NULL;
+
+    public function __construct() {
+      parent::__construct();
+       $this->wizardStepsConfigs = array(
+        'Content'   => new DefaultContentStepConfig($this, 'Support Selenium!'),
+        'Form'      => new WizardStepConfig($this),
+        'Emails'    => new WizardStepConfig($this),
+        'Thank you' => new DefaultThankyouStepConfig($this),
+        'Confirm'   => new WizardStepConfig($this),
+      );
     }
 
     public function testFrontpage() {
       $this->url('/');
       $this->assertContains('Let\'s change the world!', $this->title());
-      $this->assertContains('Let\'s change the world!',
-        $this->byCssSelector('body')->text());
+      $this->assertContains('Let\'s change the world!', $this->byCssSelector('body')->text());
     }
 
-    public function testAccessRights($path = '/node/add/action') {
-      $this->url($path);
+    public function testAccessRights() {
+      $this->url($this->addActionPath);
       $this->assertContains('Access denied', $this->title());
     }
 
-    public function testActionCreation($path = '/node/add/action', $title = 'Create Action') {
+    protected function createAction() {
       $this->login();
 
-      $this->url($path);
-      $this->assertContains($title, $this->title());
- 
-      $title = $this->byName('title');
-      $title->clear();
-      $title->value('Support Selenium!');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
-      $this->clickOnElement('edit-next');
+      $this->url($this->addActionPath);
+      $this->assertContains($this->wizardTitle, $this->title());
 
-      $this->byCssSelector('.form-item-thank-you-node-type input[value=node]')->click();
-      $this->byName('thank_you_node[node_form][title]')->value('Thanks!');
-      $this->clickOnElement('edit-next');
+      do {
+        $step = $this->byCssSelector('.wizard-trail .wizard-trail-current a')->text();
+        $this->wizardStepsConfigs[$step]->configure();
+        if ($step !== 'Confirm') {
+          $this->clickOnElement('edit-next');
+        }
+      } while ($step !== 'Confirm');
+
       $this->clickOnElement('edit-return');
-      $this->assertTrue(TRUE);
     }
 
-    /**
-      * @depends testActionCreation
-      */
-    public function testActinOnFrontpage() {
+    protected function actionOnFrontpage($action_title = 'Support Selenium!') {
       $this->url('/');
-      $this->assertContains('Support Selenium!',
-      $this->byCssSelector('body')->text());
+      $this->assertContains($action_title, $this->byCssSelector('body')->text());
     }
 }

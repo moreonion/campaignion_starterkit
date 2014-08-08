@@ -5,20 +5,56 @@
   */
 
 require_once dirname(__FILE__) . '/ActionCommon.php';
+require_once dirname(__FILE__) . '/DefaultContentStepConfig.php';
+require_once dirname(__FILE__) . '/StripeFormStepConfig.php';
 
 class DonationTest extends ActionCommon {
-    public function testActionCreation($path = '/node/add/donation', $title = 'Create Donation') {
-      parent::testActionCreation($path, $title);
+    protected $addActionPath = '/node/add/donation';
+    protected $wizardTitle   = 'Create Donation';
+
+    public function testStripeMethodConfig() {
+      $this->login();
+      $this->url('/admin/config/services/payment/method/add/%5CDrupal%5Cstripe_payment%5CCreditCardController');
+      $this->assertContains('Add Stripe Credit Card payment method', $this->title());
+
+      $this->byLabel('Title (specific)')->value('Test Stripe');
+      $this->byLabel('Private key')->value($this->config['stripe_private_key']);
+      $this->byLabel('Public key')->value($this->config['stripe_public_key']);
+      $this->clickOnElement('edit-save');
     }
 
-    public function testAccessRights($path = '/node/add/donation') {
-      parent::testAccessRights($path);
+    public function testCreateDonation() {
+      $this->createAction();
     }
 
     /**
-      * @depends testActionCreation
+      * @depends testStripeMethodConfig
       */
-    public function testDonationSubmit() {
+    public function testCreateStripeDonation() {
+      $this->timeouts()->implicitWait(5000);
+      $this->wizardStepsConfigs['Content'] = new DefaultContentStepConfig($this, 'Test Stripe!');
+      $this->wizardStepsConfigs['Form']    = new StripeFormStepConfig($this);
+      $this->createAction();
+    }
+
+    /**
+      * @depends testCreateDonation
+      */
+    public function testDonationOnFrontPage() {
+      $this->actionOnFrontpage();
+    }
+
+    /**
+      * @depends testCreateStripeDonation
+      */
+    public function testStripeDonationOnFrontPage() {
+      $this->actionOnFrontpage('Test Stripe!');
+    }
+
+    /**
+      * @depends testCreateDonation
+      */
+    public function testDonationManualDirectDebit() {
       $this->timeouts()->implicitWait(5000);
 
       $this->url('/support-selenium');
@@ -26,6 +62,7 @@ class DonationTest extends ActionCommon {
 
       $this->byName('submitted[amount][donation_amount]')->value('50');
       $this->byCssSelector('.form-item-submitted-amount-donation-interval input[value="1"]')->click();
+      //TODO find out why we need to scroll down
       $this->keys(PHPUnit_Extensions_Selenium2TestCase_Keys::PAGEDOWN);
       sleep(1);
       $this->byCssSelector('input[value="Make your donation!"]')->click();
@@ -43,7 +80,13 @@ class DonationTest extends ActionCommon {
     }
 
     /**
-      * @depends testDonationSubmit
+      * @depends testCreateStripeDonation
+      * @depends testStripeMethodConfig
+      */
+    public function testDonationStripe() {
+    }
+    /**
+      * @depends testDonationManualDirectDebit
       */
     public function testRecentSupporter() {
       $this->url('/support-selenium');
@@ -51,7 +94,7 @@ class DonationTest extends ActionCommon {
     }
 
     /**
-      * @depends testDonationSubmit
+      * @depends testDonationManualDirectDebit
       */
     public function testManageSupporters() {
       $this->login();
