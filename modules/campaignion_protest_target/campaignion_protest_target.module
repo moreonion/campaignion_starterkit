@@ -47,7 +47,7 @@ function campaignion_protest_target_field_widget_form(&$form, &$form_state, $fie
   $element['email_protest_target'] = array(
     '#type'  => 'fieldset',
   );
-  
+
   // when a drupal user is also created, first & last name are concatenated
   // with a blank between; the drupal core users table has a maximum length
   // for the name of 60, so we can only allow 29 characters for first and last name
@@ -66,6 +66,7 @@ function campaignion_protest_target_field_widget_form(&$form, &$form_state, $fie
   $element['email_protest_target']['email'] = array(
     '#type'          => 'textfield',
     '#title'         => t('Email Address'),
+    '#maxlength'     => 128,
     '#default_value' => $default_values['email'],
   );
   $element['#element_validate'] = array('campaignion_protest_target_validate');
