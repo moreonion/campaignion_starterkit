@@ -5,3 +5,45 @@
  */
 
 include_once 'campaignion_supporter.features.inc';
+
+use \Drupal\little_helpers\Webform\Submission;
+
+/**
+ * Implements hook_campaignion_action_taken().
+ */
+function campaignion_supporter_campaignion_action_taken($node, Submission $submissionObj) {
+  $importer = new \Drupal\campaignion\CRM\Import\MappedImport();
+  if ($contact = $importer->getContact($submissionObj)) {
+    $changed = $importer->import($submissionObj, $contact);
+    // Allow other modules to change the contact.
+    foreach (module_implements('campaignion_supporter_contact_alter') as $module) {
+      $function = $module . '_campaignion_supporter_contact_alter';
+      $changed |= $function($contact, $submissionObj, $node);
+    }
+    if ($changed) {
+      $contact->save();
+    }
+  }
+  return $contact;
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function campaignion_supporter_entity_presave($entity, $type) {
+  if ($type != 'redhen_contact' || $entity->type != 'contact') {
+    return;
+  }
+
+  $wc = entity_metadata_wrapper('redhen_contact', $entity);
+  $gender = $wc->field_gender->value();
+  $salutation = $wc->field_salutation->value();
+  $gmapping = array('f' => 'mrs', 'm' => 'mr');
+  $smapping = array('mrs' => 'f', 'mr' => 'm');
+  if (!$gender && $salutation && isset($smapping[$salutation])) {
+    $wc->field_gender->set($smapping[$salutation]);
+  }
+  elseif (!$salutation && $gender && isset($gmapping[$gender])) {
+    $wc->field_salutation->set($gmapping[$gender]);
+  }
+}
