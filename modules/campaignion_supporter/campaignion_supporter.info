@@ -4,6 +4,7 @@ core = 7.x
 package = Campaignion
 project = campaignion_starterkit
 dependencies[] = addressfield
+dependencies[] = campaignion_action
 dependencies[] = campaignion_supporter_tags
 dependencies[] = date
 dependencies[] = entity
