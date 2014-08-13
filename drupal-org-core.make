@@ -1,10 +1,8 @@
 api = 2
 core = 7.x
-projects[drupal][version] = 7.27
+projects[drupal][version] = 7.30
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
-; Notice: Array to string conversion in DrupalDefaultEntityController->cacheGet() - http://drupal.org/node/1525176
-projects[drupal][patch][] = http://drupal.org/files/1525176-fix_entity_conditions-D7-do-not-test.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
 projects[drupal][patch][] = https://drupal.org/files/issues/core-checkbox-events.patch
 projects[drupal][patch][] = http://drupal.org/files/d7-mail-wordwrap.patch

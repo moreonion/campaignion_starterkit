@@ -7,14 +7,11 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][version] = 1.0-beta7
+projects[campaignion][version] = 1.0-beta9
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][download][type] = git
-projects[clientside_validation][download][url] = http://git.drupal.org/project/clientside_validation.git
-; additional methods for clientside_validation to accept file-type restrictions in upload fields - https://drupal.org/node/2149091
-projects[clientside_validation][patch][] = https://drupal.org/files/issues/2149091-add-additional_methods.js-9.patch
+projects[clientside_validation][version] = 1.41
 
 projects[context][version] = 3.2
 ; Make block title configurable in contexts - https://drupal.org/node/795058
@@ -38,7 +35,7 @@ projects[currency][version] = 2.4
 
 projects[custom_add_another][version] = 1.0-rc3
 
-projects[date][version] = 2.7
+projects[date][version] = 2.8
 
 projects[diff][version] = 3.2
 
@@ -48,9 +45,7 @@ projects[entity][version] = 1.5
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.0
-; Use better working core machine-name field. - https://drupal.org/node/1259362
-projects[features][patch][] = https://drupal.org/files/features.machine-name-core-element-1259362-6.patch
+projects[features][version] = 2.2
 
 projects[field_collection][version] = 1.0-beta7
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -64,15 +59,26 @@ projects[field_collection][patch][] = https://drupal.org/files/field_collection-
 
 projects[field_group][version] = 1.4
 
-projects[field_type_language][version] = 1.0-alpha2
+projects[field_type_language][version] = 1.0-beta1
 
 projects[file_entity][version] = 2.0-alpha3
 
 projects[form_builder][version] = 1.5
+projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=e02d0af"
+projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=7652d87"
+projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=d002536"
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; select or other integration - http://drupal.org/node/1575064
 projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or_other.patch
+; Fix: hover states stop working if drop is not accepted. - https://drupal.org/node/2270499
+projects[form_builder][patch][] = https://drupal.org/files/issues/2270499-form_builder-unset-activeDragUi-1.patch
+; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
+; Make click-adding work with unique fields. - https://drupal.org/node/2278247
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
+; Fix: remove fieldset placeholder if field is added by clicking - https://drupal.org/node/2278445
+projects[form_builder][patch][] = https://drupal.org/files/issues/2278445-form_builder-remove-placeholder-if-fieldset-is-filled-by-clicking.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta1
 
@@ -100,11 +106,11 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-beta4
+projects[little_helpers][version] = 1.0-beta5
 
 projects[login_destination][version] = 1.1
 
-projects[logintoboggan][version] = 1.3
+projects[logintoboggan][version] = 1.4
 
 projects[mailsystem][version] = 2.34
 
@@ -127,9 +133,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.4
 
-projects[metatag][version] = 1.0-beta9
-
-projects[metatags_quick][version] = 2.7
+projects[metatag][version] = 1.0-rc2
 
 projects[migrate][version] = 2.5
 
@@ -137,7 +141,7 @@ projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.2
 
-projects[morelesszen][version] = 1.0-beta3
+projects[morelesszen][version] = 1.0-beta4
 
 projects[mpay24_payment][version] = 1.0-beta2
 
@@ -163,9 +167,9 @@ projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-
 ; Make hook_default_payment_method() work. - https://drupal.org/node/2174395
 projects[payment][patch][] = https://drupal.org/files/issues/2174395-payment-21.patch
 
-projects[payment_forms][version] = 1.0-alpha3
+projects[payment_forms][version] = 1.0-alpha4
 
-projects[paymill_payment][version] = 1.0-beta1
+projects[paymill_payment][version] = 1.0-beta2
 
 projects[pgbar][version] = 1.4
 
@@ -189,13 +193,9 @@ projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][type] = "module"
-projects[share_light][download][type] = "git"
-projects[share_light][download][url] = "git://git.drupal.org/project/share_light.git"
-projects[share_light][download][branch] = "7.x-1.x"
-projects[share_light][download][revision] = "cbc7b5c2651886f02609a936ba2823364eb3c850"
+projects[share_light][version] = 1.0-beta6
 
-projects[stripe_payment][version] = 1.0-beta1
+projects[stripe_payment][version] = 1.0-beta2
 
 projects[strongarm][version] = 2.0
 
@@ -225,17 +225,15 @@ projects[webform][patch][] = https://drupal.org/files/issues/2213945-index-for-w
 
 projects[webform_ajax][version] = 1.1
 
-projects[webform_block][version] = 1.0-alpha1
+projects[webform_block][version] = 1.0
 
-projects[webform_confirm_email][version] = 1.2
-; Add support for webform_template. - https://drupal.org/node/2243559
-projects[webform_confirm_email][patch][] = https://drupal.org/files/issues/webform_confirm_email-support-for-webform_template.patch
+projects[webform_confirm_email][version] = 1.3
 
-projects[webform_steps][version] = 1.0-alpha4
+projects[webform_steps][version] = 1.0-alpha6
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc3
+projects[webform_paymethod_select][version] = 1.0-rc4
 
 projects[webform_template][version] = 1.3
 
