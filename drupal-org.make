@@ -64,9 +64,6 @@ projects[field_type_language][version] = 1.0-beta1
 projects[file_entity][version] = 2.0-alpha3
 
 projects[form_builder][version] = 1.5
-projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=e02d0af"
-projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=7652d87"
-projects[form_builder][patch][] = "http://cgit.drupalcode.org/form_builder/patch/?id=d002536"
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; select or other integration - http://drupal.org/node/1575064
@@ -74,9 +71,9 @@ projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or
 ; Fix: hover states stop working if drop is not accepted. - https://drupal.org/node/2270499
 projects[form_builder][patch][] = https://drupal.org/files/issues/2270499-form_builder-unset-activeDragUi-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
+projects[form_builder][patch][] = https://drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
 ; Make click-adding work with unique fields. - https://drupal.org/node/2278247
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
+projects[form_builder][patch][] = https://drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
 ; Fix: remove fieldset placeholder if field is added by clicking - https://drupal.org/node/2278445
 projects[form_builder][patch][] = https://drupal.org/files/issues/2278445-form_builder-remove-placeholder-if-fieldset-is-filled-by-clicking.patch
 
