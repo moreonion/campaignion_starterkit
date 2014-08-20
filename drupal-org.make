@@ -267,8 +267,8 @@ libraries[mailchimp][download][type] = git
 libraries[mailchimp][download][url] = https://bitbucket.org/mailchimp/mailchimp-api-php.git
 libraries[mailchimp][download][branch] = 2.0.4
 
-libraries[paymill][download][type] = file
-libraries[paymill][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
+libraries[paymill-php][download][type] = file
+libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
 
 libraries[respondjs][download][type] = file
 libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
