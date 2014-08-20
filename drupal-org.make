@@ -224,7 +224,7 @@ projects[webform_ajax][version] = 1.1
 
 projects[webform_block][version] = 1.0
 
-projects[webform_confirm_email][version] = 1.3
+projects[webform_confirm_email][version] = 1.4
 
 projects[webform_steps][version] = 1.0-alpha6
 
