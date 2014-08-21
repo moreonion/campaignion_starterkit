@@ -172,7 +172,7 @@ projects[pgbar][version] = 1.4
 
 projects[psr0][version] = 1.1
 
-projects[redhen][version] = 1.7
+projects[redhen][version] = 1.8
 
 projects[redirect][version] = 1.0-rc1
 ; avoid circular redirect in hook_path_update - http://drupal.org/node/1796596
