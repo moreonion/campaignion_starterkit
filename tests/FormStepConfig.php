@@ -5,6 +5,7 @@
   */
 
 require_once dirname(__FILE__) . '/WizardStepConfig.php';
+require_once dirname(__FILE__) . '/iToggle.php';
 
 class FormStepConfig extends WizardStepConfig {
   public function configure() {
@@ -57,12 +58,17 @@ class FormStepConfig extends WizardStepConfig {
     $this->testCase->byCssSelector('.payment-method-form legend span')->click();
     $this->testCase->assertTrue($this->testCase->byId('form-builder-field-configure')->displayed());
     $this->testCase->byXPath("//span[contains(., 'Options')]")->click();
-    $this->testCase->byXPath("//label[contains(., 'Test Stripe')]")->click();
+    // @TODO: loop over all payment methods, in case more are added.
+    $direct_debit = new iToggle($this->testCase, 'Manual direct debit');
+    $stripe = new iToggle($this->testCase, 'Test Stripe');
+
+    $direct_debit->ensureDisabled();
+    $stripe->ensureEnabled();
+
     $this->testCase->select($this->testCase->byLabel('Select a currency code'))->selectOptionByValue('USD');
     $this->testCase->byLabel('Select the component from which to read the amount')->click();
     $this->testCase->byLabel('Quantity')->value('1');
     $this->testCase->byLabel('Tax rate')->value('0');
     $this->testCase->byCssSelector('.webform-paymethod-select-line-item-description input')->value('Stripe Test');
-    $this->testCase->takeScreenshot();
   }
 }
