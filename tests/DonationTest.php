@@ -75,8 +75,10 @@ class DonationTest extends ActionCommon {
       $this->byName('submitted[paymethod_select][payment_method_all_forms][Drupalmanual-direct-debitAccountDataController][ibanbic][iban]')->value('AT611904300234573201');
       $this->byName('submitted[paymethod_select][payment_method_all_forms][Drupalmanual-direct-debitAccountDataController][ibanbic][bic]')->value('UNCRIT2B912');
       $this->byCssSelector('input[value="Donate now!"]')->click();
-      sleep(2); // wait for thank you page to load
-      $this->assertContains('Thanks', $this->title());
+      $this->waitUntil(function($this) {
+          return (bool) strpos($this->title(), 'Thanks');
+        });
+
     }
 
     /**
