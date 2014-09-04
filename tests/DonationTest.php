@@ -84,6 +84,33 @@ class DonationTest extends ActionCommon {
       * @depends testStripeMethodConfig
       */
     public function testDonationStripe() {
+      $this->timeouts()->implicitWait(5000);
+
+      $this->url('/test-stripe');
+      $this->assertContains('Test Stripe!', $this->title());
+      $this->byName('submitted[amount][donation_amount]')->value('50');
+      $this->byCssSelector('.form-item-submitted-amount-donation-interval input[value="1"]')->click();
+      //TODO find out why we need to scroll down
+      $this->keys(PHPUnit_Extensions_Selenium2TestCase_Keys::PAGEDOWN);
+      sleep(1);
+      $this->byCssSelector('input[value="Make your donation!"]')->click();
+      $this->byName('submitted[first_name]')->value('Fire');
+      $this->byName('submitted[last_name]')->value('Chrome');
+      $this->byName('submitted[email]')->value('firefox@example.com');
+      $this->byCssSelector('input[value="Next"]')->click();
+
+      $payment_form = 'submitted[paymethod_select][payment_method_all_forms][Drupalstripe-paymentCreditCardController]';
+      $this->select($this->byName($payment_form . '[issuer]'))->selectOptionByValue('visa');
+      $this->byName($payment_form . '[credit_card_number]')->value('4242424242424242');
+      $this->byName($payment_form . '[secure_code]')->value('123');
+      $this->byName($payment_form . '[expiry_date][month]')->value('01');
+      $this->byName($payment_form . '[expiry_date][year]')->value('2016');
+
+      $this->byCssSelector('input[value="Donate now!"]')->click();
+      $this->takeScreenshot('after-payment');
+      $this->waitUntil(function($this) {
+          return (bool) strpos($this->title(), 'Thanks');
+        });
     }
     /**
       * @depends testDonationManualDirectDebit
