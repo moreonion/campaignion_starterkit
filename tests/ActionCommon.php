@@ -24,12 +24,6 @@ class ActionCommon extends DrupalSeleniumTestCase {
       );
     }
 
-    public function testFrontpage() {
-      $this->url('/');
-      $this->assertContains('Let\'s change the world!', $this->title());
-      $this->assertContains('Let\'s change the world!', $this->byCssSelector('body')->text());
-    }
-
     public function testAccessRights() {
       $this->url($this->addActionPath);
       $this->assertContains('Access denied', $this->title());
