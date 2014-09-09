@@ -12,6 +12,9 @@ class DonationTest extends ActionCommon {
     protected $addActionPath = '/node/add/donation';
     protected $wizardTitle   = 'Create Donation';
 
+    /**
+     * @requires function stripe_payment_schema
+     */
     public function testStripeMethodConfig() {
       $this->login();
       $this->url('/admin/config/services/payment/method/add/%5CDrupal%5Cstripe_payment%5CCreditCardController');
