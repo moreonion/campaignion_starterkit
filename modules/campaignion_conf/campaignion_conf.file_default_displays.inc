@@ -28,35 +28,9 @@ function campaignion_conf_file_default_displays() {
   $file_display->status = TRUE;
   $file_display->settings = array(
     'image_style' => 'teaser',
-    'image_link' => 'content',
-  );
-  $export['image__teaser__file_field_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'image__preview__file_field_image';
-  $file_display->weight = 0;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'image_style' => 'media_thumbnail',
     'image_link' => '',
   );
-  $export['image__preview__file_field_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__default__file_field_file_video';
-  $file_display->weight = 50;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'controls' => 1,
-    'autoplay' => 0,
-    'loop' => 0,
-    'width' => '550',
-    'height' => '340',
-    'multiple_file_behavior' => 'tags',
-  );
-  $export['video__default__file_field_file_video'] = $file_display;
+  $export['image__teaser__file_field_image'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
@@ -67,25 +41,6 @@ function campaignion_conf_file_default_displays() {
     'image_style' => 'full',
   );
   $export['video__default__media_vimeo_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__default__media_vimeo_video';
-  $file_display->weight = 1;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'width' => '550',
-    'height' => '340',
-    'color' => '',
-    'protocol' => 'https://',
-    'autoplay' => 0,
-    'loop' => 0,
-    'title' => 1,
-    'byline' => 1,
-    'portrait' => 0,
-    'api' => 0,
-  );
-  $export['video__default__media_vimeo_video'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
@@ -123,21 +78,6 @@ function campaignion_conf_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'video__teaser__file_field_file_video';
-  $file_display->weight = 50;
-  $file_display->status = TRUE;
-  $file_display->settings = array(
-    'controls' => 1,
-    'autoplay' => 0,
-    'loop' => 0,
-    'width' => '350',
-    'height' => '220',
-    'multiple_file_behavior' => 'tags',
-  );
-  $export['video__teaser__file_field_file_video'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
   $file_display->name = 'video__teaser__media_vimeo_image';
   $file_display->weight = 1;
   $file_display->status = TRUE;
@@ -145,25 +85,6 @@ function campaignion_conf_file_default_displays() {
     'image_style' => 'teaser',
   );
   $export['video__teaser__media_vimeo_image'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
-  $file_display->name = 'video__teaser__media_vimeo_video';
-  $file_display->weight = 1;
-  $file_display->status = FALSE;
-  $file_display->settings = array(
-    'width' => '550',
-    'height' => '340',
-    'color' => '',
-    'protocol' => 'https://',
-    'autoplay' => 0,
-    'loop' => 0,
-    'title' => 1,
-    'byline' => 1,
-    'portrait' => 0,
-    'api' => 0,
-  );
-  $export['video__teaser__media_vimeo_video'] = $file_display;
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
