@@ -6,23 +6,23 @@
 
 include_once 'campaignion_supporter.features.inc';
 
+use \Drupal\campaignion\ContactTypeManager;
 use \Drupal\little_helpers\Webform\Submission;
 
 /**
  * Implements hook_campaignion_action_taken().
  */
 function campaignion_supporter_campaignion_action_taken($node, Submission $submissionObj) {
-  $importer = new \Drupal\campaignion\CRM\Import\MappedImport();
-  if ($contact = $importer->getContact($submissionObj)) {
-    $changed = $importer->import($submissionObj, $contact);
-    // Allow other modules to change the contact.
-    foreach (module_implements('campaignion_supporter_contact_alter') as $module) {
-      $function = $module . '_campaignion_supporter_contact_alter';
-      $changed |= $function($contact, $submissionObj, $node);
-    }
-    if ($changed) {
-      $contact->save();
-    }
+  $importer = ContactTypeManager::instance()->importer('campaignion_action_taken');
+  $contact = $importer->findOrCreateContact($source);
+  $changed = $importer->import($submissionObj, $contact);
+  // Allow other modules to change the contact.
+  foreach (module_implements('campaignion_supporter_contact_alter') as $module) {
+    $function = $module . '_campaignion_supporter_contact_alter';
+    $changed |= $function($contact, $submissionObj, $node);
+  }
+  if ($changed) {
+    $contact->save();
   }
   return $contact;
 }
@@ -46,4 +46,12 @@ function campaignion_supporter_entity_presave($entity, $type) {
   elseif (!$salutation && $gender && isset($gmapping[$gender])) {
     $wc->field_salutation->set($gmapping[$gender]);
   }
+}
+
+/**
+ * Implements hook_campaignion_contact_info().
+ */
+function campaignion_supporter_campaignion_contact_type_info() {
+  $types['contact'] = '\\Drupal\\campaignion_supporter\\Supporter';
+  return $types;
 }
