@@ -6,6 +6,16 @@
 
 include_once 'campaignion_protest_target.features.inc';
 
+use \Drupal\campaignion\ContactManager;
+
+/**
+ * Implements hook_campaignion_contact_info().
+ */
+function campaignion_protest_target_campaignion_contact_type_info() {
+  $types['email_protest_target'] = '\\Drupal\\campaignion_protest_target\\ProtestTarget';
+  return $types;
+}
+
 /**
  * Implements hook_field_widget_info().
  */
@@ -111,9 +121,9 @@ function campaignion_protest_target_validate($element, &$form_state, $form) {
       form_error($target['email'], t('The email address you entered is not a valid email address.'));
     }
 
-    $importer = new \Drupal\campaignion\CRM\Import\MappedImport();
+    $importer = ContactManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
     $source   = new \Drupal\campaignion\CRM\Import\Source\ArraySource($form_state['values']['field_protest_target']['und'][$element['#delta']]['email_protest_target']);
-    if ($contact = $importer->getContact($source, 'email_protest_target')) {
+    if ($contact = $importer->findOrCreateContact($source, 'email_protest_target')) {
       $changed = $importer->import($source, $contact);
       if ($changed) {
         $contact->save();
