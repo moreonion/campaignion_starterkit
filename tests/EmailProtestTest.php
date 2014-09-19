@@ -40,9 +40,11 @@ class EmailProtestTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     }
 
     public function testEmailProtestOnFrontpage() {
+      $this->logout();
       $this->url('/');
       $this->assertContains('Support Selenium!',
         $this->byCssSelector('body')->text());
+      $this->login();
     }
 
     public function testEmailProtestPage() {
@@ -63,7 +65,6 @@ class EmailProtestTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     }
 
     public function testManageSupporters() {
-      $this->login();
       $this->url('/admin/supporters');
 
       $supporters = $this->byId('campaignion-manage-form')->text();
