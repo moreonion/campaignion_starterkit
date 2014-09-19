@@ -3,7 +3,7 @@
 use \Drupal\campaignion\ContactTypeManager;
 use \Drupal\campaignion\Contact;
 
-class ExportTest extends \DrupalIntegratedWebTestCase {
+class ExportTest extends \Drupal\Tests\DrupalWebTestCase {
   function testManageExport_withBasicSupporter() {
     $exporter = ContactTypeManager::instance()->exporter('campaignion_manage');
     $contact = new Contact(array(
