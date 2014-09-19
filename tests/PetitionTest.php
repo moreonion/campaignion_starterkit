@@ -48,7 +48,6 @@ class PetitionTest extends ActionCommon {
       * @depends testPetitionSubmit
       */
     public function testManageSupporters() {
-      $this->login();
       $this->url('/admin/supporters');
 
       $supporters = $this->byId('campaignion-manage-form')->text();
