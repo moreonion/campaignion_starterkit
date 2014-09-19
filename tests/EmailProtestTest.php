@@ -1,6 +1,6 @@
 <?php
 
-class EmailProtestTest extends DrupalSeleniumTestCase {
+class EmailProtestTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     public $temporary_admin_pass = 'DrushDlDrupal';
 
 

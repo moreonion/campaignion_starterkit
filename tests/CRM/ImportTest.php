@@ -3,7 +3,7 @@
 use \Drupal\campaignion\CRM\Import\Source\ArraySource;
 use \Drupal\campaignion\ContactTypeManager;
 
-class ImportTest extends \DrupalIntegratedWebTestCase {
+class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
   public function testFullSupporterImport() {
     $source = new ArraySource(array(
       'email' => 'tester@example.com',
