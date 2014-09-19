@@ -10,7 +10,7 @@ class DefaultContentStepConfig extends WizardStepConfig {
   protected $actionTitle;
   protected $language;
 
-  public function __construct(DrupalSeleniumTestCase $test_case, $action_title, $language = NULL) {
+  public function __construct(\Drupal\Tests\DrupalSeleniumTestCase $test_case, $action_title, $language = NULL) {
     parent::__construct($test_case);
     $this->actionTitle = $action_title;
     $this->language    = $language;

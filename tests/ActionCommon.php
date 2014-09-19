@@ -8,7 +8,7 @@ require_once dirname(__FILE__) . '/DefaultContentStepConfig.php';
 require_once dirname(__FILE__) . '/WizardStepConfig.php';
 require_once dirname(__FILE__) . '/DefaultThankyouStepConfig.php';
 
-class ActionCommon extends DrupalSeleniumTestCase {
+class ActionCommon extends \Drupal\Tests\DrupalSeleniumTestCase {
     protected $addActionPath      = '/node/add/action';
     protected $wizardTitle        = 'Create Action';
     protected $wizardStepsConfigs = NULL;

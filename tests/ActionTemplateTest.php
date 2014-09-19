@@ -1,5 +1,5 @@
 <?php
-class ActionTemplateTest extends \DrupalUnitTestCase {
+class ActionTemplateTest extends \Drupal\Tests\DrupalWebTestCase {
   public function testNewPetitionGetsTemplateApplied() {
     $node = (object) array(
       'type' => 'petition',
