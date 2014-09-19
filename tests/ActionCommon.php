@@ -25,8 +25,10 @@ class ActionCommon extends \Drupal\Tests\DrupalSeleniumTestCase {
     }
 
     public function testAccessRights() {
+      $this->logout();
       $this->url($this->addActionPath);
       $this->assertContains('Access denied', $this->title());
+      $this->login();
     }
 
     protected function createAction() {
