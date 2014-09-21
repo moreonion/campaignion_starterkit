@@ -40,6 +40,7 @@ class Supporter implements ContactTypeInterface {
         new Field\Phone('field_phone_number', 'mobile_number'),
         new Field\EmailBulk('redhen_contact_email', 'email', 'email_newsletter'),
         new Field\Field('field_direct_mail_newsletter', 'direct_mail_newsletter'),
+        new Field\Field('field_preferred_language', 'language'),
       ));
     }
     return new ImporterBase($mappings);
