@@ -66,4 +66,15 @@ class ImportTest extends \DrupalIntegratedWebTestCase {
     $contact->save();
     $this->assertGreaterThan(0, $contact->contact_id);
   }
+
+  public function testLanguageFieldImport() {
+    $source = new ArraySource(array(
+      'email' => 'tester@example.com',
+      'language' => 'en',
+    ));
+    $importer = ContactTypeManager::instance()->importer('campaignion_action_taken');
+    $contact = $importer->findOrCreateContact($source);
+    $changed = $importer->import($source, $contact);
+    $this->assertEquals('en', $contact->wrap()->field_preferred_language->value());
+  }
 }
