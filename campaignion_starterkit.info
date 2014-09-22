@@ -57,5 +57,4 @@ dependencies[] = campaignion_thankyou_page
 dependencies[] = campaignion_views
 dependencies[] = campaignion_webform_results
 dependencies[] = campaignion_webform_widget
-dependencies[] = campaignion_webform2redhen
 dependencies[] = campaignion_wizard
