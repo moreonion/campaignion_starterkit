@@ -7,7 +7,7 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][version] = 1.0-beta12
+projects[campaignion][version] = 1.0-beta13
 
 projects[cck_blocks][version] = 1.1
 
@@ -59,7 +59,7 @@ projects[field_collection][patch][] = https://drupal.org/files/field_collection-
 
 projects[field_group][version] = 1.4
 
-projects[field_type_language][version] = 1.0-beta1
+projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-alpha3
 
@@ -166,9 +166,9 @@ projects[payment][patch][] = https://drupal.org/files/issues/2174395-payment-21.
 
 projects[payment_forms][version] = 1.0-alpha4
 
-projects[paymill_payment][version] = 1.0-beta2
+projects[paymill_payment][version] = 1.0-beta3
 
-projects[pgbar][version] = 1.4
+projects[pgbar][version] = 1.5
 
 projects[psr0][version] = 1.3
 
@@ -190,9 +190,9 @@ projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0-beta6
+projects[share_light][version] = 1.0-beta7
 
-projects[stripe_payment][version] = 1.0-beta2
+projects[stripe_payment][version] = 1.0-beta3
 
 projects[strongarm][version] = 2.0
 
@@ -230,7 +230,7 @@ projects[webform_steps][version] = 1.0-alpha6
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc5
+projects[webform_paymethod_select][version] = 1.0-rc6
 
 projects[webform_template][version] = 1.3
 
@@ -273,9 +273,9 @@ libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/a
 libraries[respondjs][download][type] = file
 libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
 
-libraries[stripe][download][type] = git
-libraries[stripe][download][url] = https://github.com/stripe/stripe-php.git
-libraries[stripe][download][revision] = v1.11.0
+libraries[stripe-php][download][type] = git
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php.git
+libraries[stripe-php][download][revision] = v1.11.0
 
 libraries[timeago][download][type] = git
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago.git
