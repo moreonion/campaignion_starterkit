@@ -130,7 +130,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.4
 
-projects[metatag][version] = 1.0-rc2
+projects[metatag][version] = 1.1
 
 projects[migrate][version] = 2.5
 
