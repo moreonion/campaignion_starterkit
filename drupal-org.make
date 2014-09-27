@@ -136,7 +136,7 @@ projects[migrate][version] = 2.5
 
 projects[mimemail][version] = 1.0-beta3
 
-projects[modernizr][version] = 3.2
+projects[modernizr][version] = 3.3
 
 projects[morelesszen][version] = 1.0-beta5
 
@@ -156,13 +156,11 @@ projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.2
 
-projects[payment][version] = 1.10
+projects[payment][version] = 1.11
 ; make paymentreferences work with MyISAM - https://drupal.org/node/2239931
 projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.patch
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
 projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-empty-line-items-1.patch
-; Make hook_default_payment_method() work. - https://drupal.org/node/2174395
-projects[payment][patch][] = https://drupal.org/files/issues/2174395-payment-21.patch
 
 projects[payment_forms][version] = 1.0-alpha4
 
@@ -180,9 +178,9 @@ projects[redirect][patch][] = https://drupal.org/files/issues/redirect.circular-
 
 projects[references][version] = 2.1
 
-projects[respondjs][version] = 1.3
+projects[respondjs][version] = 1.4
 ; New URL to respond.min.js (GitHub) - https://drupal.org/node/2179017
-projects[respondjs][patch][] = https://drupal.org/files/issues/2179017-download-url-3.patch
+projects[respondjs][patch][] = https://www.drupal.org/files/issues/2179017-10-download-url.patch
 
 projects[select_or_other][version] = 2.20
 
@@ -200,7 +198,7 @@ projects[token][version] = 1.5
 
 projects[token_filter][version] = 1.1
 
-projects[uuid][version] = 1.0-alpha5
+projects[uuid][version] = 1.0-alpha6
 
 projects[uuid_features][version] = 1.0-alpha4
 ; Make uuid_features work with i18n_node (tnids). - https://drupal.org/node/2117453
@@ -226,7 +224,7 @@ projects[webform_block][version] = 1.0
 
 projects[webform_confirm_email][version] = 1.4
 
-projects[webform_steps][version] = 1.0-alpha6
+projects[webform_steps][version] = 1.0-alpha7
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
@@ -236,7 +234,7 @@ projects[webform_template][version] = 1.3
 
 projects[webform_tracking][version] = 1.0-beta2
 
-projects[webform_validation][version] = 1.5
+projects[webform_validation][version] = 1.7
 ; Add support for webform_template. - https://drupal.org/node/2243681
 projects[webform_validation][patch][] = https://drupal.org/files/issues/webform_validation-2243681-support-for-webform_template-7.patch
 
