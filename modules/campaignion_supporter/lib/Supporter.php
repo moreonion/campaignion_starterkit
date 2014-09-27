@@ -46,7 +46,7 @@ class Supporter implements ContactTypeInterface {
     return new ImporterBase($mappings);
   }
 
-  public function exporter($type) {
+  public function exporter($type, $language) {
     $map = array();
     switch ($type) {
       case 'cleverreach':

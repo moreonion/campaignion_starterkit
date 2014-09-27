@@ -31,6 +31,6 @@ class ProtestTarget implements ContactTypeInterface {
     return new ImporterBase($mappings, 'email_protest_target');
   }
 
-  public function exporter($target) {
+  public function exporter($target, $language) {
   }
 }
