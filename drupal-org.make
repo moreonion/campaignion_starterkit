@@ -199,6 +199,8 @@ projects[token][version] = 1.5
 projects[token_filter][version] = 1.1
 
 projects[uuid][version] = 1.0-alpha6
+; Don't break entities without entity support - https://www.drupal.org/node/1927474
+projects[uuid][patch][] = https://www.drupal.org/files/issues/fix-non-uuid-entity-load-1927474-13.patch
 
 projects[uuid_features][version] = 1.0-alpha4
 ; Make uuid_features work with i18n_node (tnids). - https://drupal.org/node/2117453
