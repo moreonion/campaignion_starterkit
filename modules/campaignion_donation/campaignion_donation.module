@@ -173,7 +173,13 @@ function campaignion_donation_form_webform_client_form_alter(&$form, &$form_stat
       array_unshift($names, $component['form_key']);
     }
     if ($element = &drupal_array_get_nested_value($form['submitted'], $names)) {
-      $element['#element_validate'] = array('campaignion_donation_amount_validate');
+      // need to check for type select_or_other because if we set our
+      // validation, select_or_other will not set its own validation
+      // (does not set validation if #element_validate is set already)
+      if ($element['#type'] == 'select_or_other') {
+        $element['#element_validate'][] = 'select_or_other_element_validate';
+      }
+      $element['#element_validate'][] = 'campaignion_donation_amount_validate';
     }
   }
 }
@@ -182,8 +188,10 @@ function campaignion_donation_form_webform_client_form_alter(&$form, &$form_stat
  * Element validator for donation_amount.
  */
 function campaignion_donation_amount_validate($element, &$form_state, $form) {
-  $num = (int) $element['#value'];
-  if ((string) $num != $element['#value'] || $num < 1) {
+  $value = &drupal_array_get_nested_value($form_state['values'], $element['#parents']);
+
+  $num = (int) $value;
+  if ((string) $num != $value || $num < 1) {
     form_error($element, t('Please enter a whole-numbered amount of at least 1.'));
   }
 }
