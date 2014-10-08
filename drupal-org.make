@@ -13,11 +13,11 @@ projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.41
 
-projects[context][version] = 3.2
+projects[context][version] = 3.3
 ; Make block title configurable in contexts - https://drupal.org/node/795058
-projects[context][patch][] = https://drupal.org/files/issues/context-795058-override-block-titles-72.patch
+projects[context][patch][] = https://www.drupal.org/files/issues/795058-80-context-block-title_0.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
-projects[context][patch][] = https://drupal.org/files/issues/1421104-context_condition_context-fix-resolution-13.patch
+projects[context][patch][] = https://drupal.org/files/issues/1421104-context_condition_context-fix-resolution-20.patch
 
 projects[context_entity_field][version] = 1.1
 ; Allow filtering by view-mode. - https://drupal.org/node/2022197
@@ -61,7 +61,7 @@ projects[field_group][version] = 1.4
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.0-alpha3
+projects[file_entity][version] = 2.0-beta1
 
 projects[form_builder][version] = 1.5
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -71,9 +71,9 @@ projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or
 ; Fix: hover states stop working if drop is not accepted. - https://drupal.org/node/2270499
 projects[form_builder][patch][] = https://drupal.org/files/issues/2270499-form_builder-unset-activeDragUi-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
-projects[form_builder][patch][] = https://drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
 ; Make click-adding work with unique fields. - https://drupal.org/node/2278247
-projects[form_builder][patch][] = https://drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
 ; Fix: remove fieldset placeholder if field is added by clicking - https://drupal.org/node/2278445
 projects[form_builder][patch][] = https://drupal.org/files/issues/2278445-form_builder-remove-placeholder-if-fieldset-is-filled-by-clicking.patch
 
@@ -121,6 +121,8 @@ projects[media][download][revision] = 7f322d9579dc9d12d3812f7496794743a7fc52d9
 projects[media][patch][] = https://drupal.org/files/issues/1802026-media-browser-keep-tab-42.patch
 ; Fix for replacePlaceholderWithToken in media_wysiwyg.filter.js - https://drupal.org/node/2164823
 projects[media][patch][] = https://drupal.org/files/issues/media-browser-incompatibilities.patch
+; Fix for drush message: preg_replace_callback(): Requires argument 2, 'media_token_fid_to_uuid', to be a valid callback - https://drupal.org/node/2152061
+projects[media][patch][] = https://www.drupal.org/files/issues/media-media_wysiwyg_uuid_callback_namespace-2152061.patch
 
 projects[media_vimeo][version] = 2.0
 
@@ -130,7 +132,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.4
 
-projects[metatag][version] = 1.1
+projects[metatag][version] = 1.3
 
 projects[migrate][version] = 2.5
 
@@ -183,6 +185,8 @@ projects[respondjs][version] = 1.4
 projects[respondjs][patch][] = https://www.drupal.org/files/issues/2179017-10-download-url.patch
 
 projects[select_or_other][version] = 2.20
+; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
+projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 
 projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
@@ -211,10 +215,11 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.8
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 3.20
-projects[webform][patch][] = https://drupal.org/files/issues/2117285-webform-allow-extra-data-do-be-added-to-submissions-1.patch
-; Save value of private fields in submission. - https://drupal.org/node/2019393
-projects[webform][patch][] = https://drupal.org/files/issues/2019393-render-private-fields-with-access-false-13.patch
+projects[webform][version] = 3.21
+; Use batch API for results download. - https://drupal.org/node/1327186
+projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
+; Allow extra data to be added in results - https://drupal.org/node/2117285
+projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-get-submission-information-do-not-test.patch
 ; CSV exports have too less or too many data fields (with select component) - https://drupal.org/node/2200545
 projects[webform][patch][] = https://drupal.org/files/issues/2200545-csv-export-fix-fields_1.patch
 ; Add index to webform_submitted_data.data to make unique validation scaleable. - https://drupal.org/node/2213945
@@ -224,13 +229,15 @@ projects[webform_ajax][version] = 1.1
 
 projects[webform_block][version] = 1.0
 
-projects[webform_confirm_email][version] = 1.4
+projects[webform_conditional][version] = 1.0-beta2
 
-projects[webform_steps][version] = 1.0-alpha7
+projects[webform_confirm_email][version] = 1.4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.0-rc6
+
+projects[webform_steps][version] = 1.0-alpha7
 
 projects[webform_template][version] = 1.3
 
@@ -239,8 +246,6 @@ projects[webform_tracking][version] = 1.0-beta2
 projects[webform_validation][version] = 1.7
 ; Add support for webform_template. - https://drupal.org/node/2243681
 projects[webform_validation][patch][] = https://drupal.org/files/issues/webform_validation-2243681-support-for-webform_template-7.patch
-
-projects[webform_conditional][version] = 1.0-beta2
 
 projects[weight][version] = 2.3
 
