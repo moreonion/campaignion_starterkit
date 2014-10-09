@@ -528,6 +528,11 @@ div.node .column-side .column-wrapper {
   clear: both;
 }
 
+.form-builder-element input[type=checkbox] {
+  padding: 3px;
+  margin-right: 0.5em;
+}
+
 /**
  * Make tables look nicer in fieldsets
  */
