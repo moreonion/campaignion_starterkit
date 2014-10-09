@@ -691,6 +691,14 @@ fieldset.collapsible {
   border-bottom: 1px solid #b3afa8;
 }
 
+/* rescue form builder ui from our fieldset (in fieldset) styles */
+#form-builder-wrapper .form-builder-tabs span.fieldset-title {
+  background: transparent;
+  font-size: 100%;
+  border: none;
+  border-radius: 0;
+}
+
 .collapsed span.fieldset-title {
   border-radius: 7px;
   border-bottom: 0;
