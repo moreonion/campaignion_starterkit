@@ -1076,3 +1076,9 @@ body.cke_show_borders {
   padding: 0.5em;
   background-color: white;
 }
+
+/* media browser */
+
+.page-media-browser #media-browser-tabset {/* iframe html */
+    box-shadow: none;
+}
