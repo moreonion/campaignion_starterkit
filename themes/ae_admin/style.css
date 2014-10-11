@@ -528,6 +528,11 @@ div.node .column-side .column-wrapper {
   clear: both;
 }
 
+.form-builder-element input[type=checkbox] {
+  padding: 3px;
+  margin-right: 0.5em;
+}
+
 /**
  * Make tables look nicer in fieldsets
  */
@@ -684,6 +689,14 @@ fieldset.collapsible {
   border-radius: 7px 7px 0 0;
   text-transform: none;
   border-bottom: 1px solid #b3afa8;
+}
+
+/* rescue form builder ui from our fieldset (in fieldset) styles */
+#form-builder-wrapper .form-builder-tabs span.fieldset-title {
+  background: transparent;
+  font-size: 100%;
+  border: none;
+  border-radius: 0;
 }
 
 .collapsed span.fieldset-title {
