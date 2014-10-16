@@ -1095,3 +1095,6 @@ body.cke_show_borders {
 .page-media-browser #media-browser-tabset {/* iframe html */
     box-shadow: none;
 }
+.media-wrapper.ui-dialog {
+  max-width: 1000px;
+}

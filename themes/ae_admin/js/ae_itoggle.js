@@ -12,7 +12,7 @@ Drupal.behaviors.ae_itoggle = {
 
   if (load) {
     $('input[type=checkbox]', context)
-     .not('.views-field-views-bulk-operations input[type=checkbox], .bulkop-select-wrapper input[type=checkbox], form#user-admin-account input[type=checkbox], .form-builder-element input[type=checkbox]')
+     .not('.views-field-views-bulk-operations input[type=checkbox], .bulkop-select-wrapper input[type=checkbox], form#user-admin-account input[type=checkbox], .webform-component-checkboxes input[type=checkbox]')
      .once('ae_itoggle', function() {
       $(this).each(function() {
         var checkbox = $(this);
