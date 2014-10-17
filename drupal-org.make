@@ -223,7 +223,7 @@ projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-g
 ; CSV exports have too less or too many data fields (with select component) - https://drupal.org/node/2200545
 projects[webform][patch][] = https://drupal.org/files/issues/2200545-csv-export-fix-fields_1.patch
 ; Add index to webform_submitted_data.data to make unique validation scaleable. - https://drupal.org/node/2213945
-projects[webform][patch][] = https://drupal.org/files/issues/2213945-index-for-webform_submitted_data.data-1.patch
+projects[webform][patch][] = https://drupal.org/files/issues/2213945-index-for-webform_submitted_data.data-25.patch
 
 projects[webform_ajax][version] = 1.1
 
