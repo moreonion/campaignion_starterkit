@@ -1,4 +1,7 @@
 <?php
+
+namespace Drupal\campaignion_starterkit\Tests;
+
 class ActionTemplateTest extends \Drupal\Tests\DrupalWebTestCase {
   public function testNewPetitionGetsTemplateApplied() {
     $node = (object) array(

@@ -1,11 +1,10 @@
 <?php
 /**
-  * @file
-  * implementation for form wizard step configurations
-  */
+ * @file
+ * implementation for form wizard step configurations
+ */
 
-require_once dirname(__FILE__) . '/WizardStepConfig.php';
-require_once dirname(__FILE__) . '/iToggle.php';
+namespace Drupal\campaignion_starterkit\Tests;
 
 class FormStepConfig extends WizardStepConfig {
   public function configure() {
@@ -55,7 +54,7 @@ class FormStepConfig extends WizardStepConfig {
 
   public function configurePaymethodselectStripe() {
     //$this->testCase->byXPath("//label[contains(.,'Payment Method Selector')]/..")->click();
-    $this->testCase->byCssSelector('.payment-method-form legend span')->click();
+    $this->testCase->byCssSelector('.paymethod-select-wrapper')->click();
     $this->testCase->assertTrue($this->testCase->byId('form-builder-field-configure')->displayed());
     $this->testCase->byXPath("//span[contains(., 'Options')]")->click();
     // @TODO: loop over all payment methods, in case more are added.

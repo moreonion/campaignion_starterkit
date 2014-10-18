@@ -1,10 +1,10 @@
 <?php
 /**
-  * @file
-  * default implementation for Thank You wizard step configurations
-  */
+ * @file
+ * default implementation for Thank You wizard step configurations
+ */
 
-require_once dirname(__FILE__) . '/WizardStepConfig.php';
+namespace Drupal\campaignion_starterkit\Tests;
 
 class DefaultThankyouStepConfig extends WizardStepConfig {
   public function configure() {

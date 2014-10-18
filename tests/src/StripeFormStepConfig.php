@@ -1,10 +1,10 @@
 <?php
 /**
-  * @file
-  * implementation for form wizard step Stripe payment configurations
-  */
+ * @file
+ * implementation for form wizard step Stripe payment configurations
+ */
 
-require_once dirname(__FILE__) . '/FormStepConfig.php';
+namespace Drupal\campaignion_starterkit\Tests;
 
 class StripeFormStepConfig extends FormStepConfig {
   public function configure() {

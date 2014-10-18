@@ -1,8 +1,10 @@
 <?php
 /**
-  * @file
-  * interface for all wizard step configurations
-  */
+ * @file
+ * interface for all wizard step configurations
+ */
+
+namespace Drupal\campaignion_starterkit\Tests;
 
 class WizardStepConfig {
   protected $testCase = NULL;

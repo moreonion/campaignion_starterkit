@@ -1,8 +1,10 @@
 <?php
 /**
-  * @file
-  * A helper class to deal with non-accessible iToggles.
-  */
+ * @file
+ * A helper class to deal with non-accessible iToggles.
+ */
+
+namespace Drupal\campaignion_starterkit\Tests;
 
 class iToggle {
   public function __construct($testCase, $label) {
