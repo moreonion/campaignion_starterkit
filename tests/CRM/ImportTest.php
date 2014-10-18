@@ -6,7 +6,7 @@ use \Drupal\campaignion\ContactTypeManager;
 class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
   public function testFullSupporterImport() {
     $source = new ArraySource(array(
-      'email' => 'tester@example.com',
+      'email' => 'tester1@example.com',
       'first_name' => 'tester',
       'last_name' => 'example',
       'title' => 'The Tester',
@@ -27,7 +27,7 @@ class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
 
   public function testActivitySupporterImport() {
     $source = new ArraySource(array(
-      'email' => 'tester@example.com',
+      'email' => 'tester2@example.com',
       'first_name' => 'tester',
       'last_name' => 'example',
       'title' => 'The Tester',
@@ -48,7 +48,7 @@ class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
 
   public function testEmailProtestTargetImport() {
     $source = new ArraySource(array(
-      'email' => 'tester@example.com',
+      'email' => 'tester3@example.com',
       'first_name' => 'tester',
       'last_name' => 'example',
       'title' => 'The Tester',
@@ -69,7 +69,7 @@ class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
 
   public function testLanguageFieldImport() {
     $source = new ArraySource(array(
-      'email' => 'tester@example.com',
+      'email' => 'tester4@example.com',
       'language' => 'en',
     ));
     $importer = ContactTypeManager::instance()->importer('campaignion_action_taken');
