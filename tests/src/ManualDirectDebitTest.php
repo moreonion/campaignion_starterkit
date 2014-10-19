@@ -31,11 +31,8 @@ class ManualDirectDebitTest extends \Drupal\Tests\DrupalSeleniumTestCase {
 
     $this->byName('submitted[amount][donation_amount]')->value('50');
     $this->byCssSelector('.form-item-submitted-amount-donation-interval input[value="1"]')->click();
-    //TODO find out why we need to scroll down
-    $this->keys(\PHPUnit_Extensions_Selenium2TestCase_Keys::PAGEDOWN);
-    sleep(1);
     $this->byCssSelector('input[value="Make your donation!"]')->click();
-    sleep(1);
+
     $this->byName('submitted[first_name]')->value('Fire');
     $this->byName('submitted[last_name]')->value('Chrome');
     $this->byName('submitted[email]')->value('firefox@example.com');
@@ -46,9 +43,8 @@ class ManualDirectDebitTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     $this->byName('submitted[paymethod_select][payment_method_all_forms][Drupalmanual-direct-debitAccountDataController][ibanbic][bic]')->value('UNCRIT2B912');
     $this->byCssSelector('input[value="Donate now!"]')->click();
     $this->waitUntil(function($this) {
-        return (bool) strpos($this->title(), 'Thanks');
-      });
-
+      return (bool) strpos($this->title(), 'Thanks');
+    });
   }
 
   /**
@@ -69,5 +65,9 @@ class ManualDirectDebitTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     $supporters = $this->byId('campaignion-manage-form')->text();
     $this->assertContains('Fire Chrome', $supporters);
     $this->assertContains('firefox@example.com', $supporters);
+  }
+
+  protected function waitForUserInput() {
+    if(trim(fgets(fopen("php://stdin","r"))) != chr(13)) return;
   }
 }

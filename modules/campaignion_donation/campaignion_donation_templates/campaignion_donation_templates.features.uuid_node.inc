@@ -322,7 +322,7 @@ y|yearly
         'extra' => array(
           'payment_description' => 'Default Payment',
           'selected_payment_methods' => array(
-            1 => 1,
+            2 => 2,
           ),
           'line_items' => array(
             0 => new \Drupal\webform_paymethod_select\PaymethodLineItem(array(
