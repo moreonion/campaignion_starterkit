@@ -19,7 +19,27 @@ a:hover, a:focus {
   color: #C65E3B;
 }
 
-.limiter { margin:0px 60px; }
+/* page margins */
+.limiter {
+  margin: 0px 10px;
+}
+@media screen and (min-width: 500px) {
+  .limiter {
+    margin: 0px 20px;
+  }
+}
+@media screen and (min-width: 750px) {
+  .limiter {
+    margin: 0px 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .limiter {
+    margin: 0px 50px;
+  }
+}
+
+
 
 /**
  * Skip to content link ===============================================

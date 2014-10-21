@@ -84,14 +84,36 @@
             }
         }
         #edit-previous {
-          margin-top: 4px;
+          margin-top: 2px;
         }
     }
     .is-sticky #edit-wizard-head {
-      left: 60px;
-      right: 60px;
+      box-shadow: 0px 0px 5px #706D69;
       z-index: 1100;
+      left: 10px;
+      right: 10px;
+      margin: 0 -50px; // -50px = -59px + 9px --> account for .block padding
+                       // which is active on display static, but not on fixed...
     }
+    @media screen and (min-width: 500px) {
+      .is-sticky #edit-wizard-head {
+        left: 20px;
+        right: 20px;
+      }
+    }
+    @media screen and (min-width: 750px) {
+      .is-sticky #edit-wizard-head {
+        left: 30px;
+        right: 30px;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .is-sticky #edit-wizard-head {
+        left: 50px;
+        right: 50px;
+      }
+    }
+
     #edit-wizard-head {
         background: @trail_bg;
         padding: 1em 57px 0.5em; /* 30px from .limiter, 20px for overlay */
@@ -109,7 +131,7 @@
             visibility: hidden;
         }
         #edit-buttons {
-            width: 37%;
+            width: 63%;
             margin: 0!important;
             padding: 0!important;
             float: right;
@@ -127,13 +149,39 @@
               float: right;
             }
         }
+        @media screen and (min-width: 1100px) {
+          #edit-buttons {
+            width: 37%;
+          }
+        }
         .wizard-trail-wrapper {
-            width: 63%;
             float: left;
             clear: left;
             display: block;
+            width: 30%;
             overflow: hidden;
-						max-width: 690px;
+            max-width: 690px;
+        }
+        .wizard-trail-wrapper .wizard-trail-next {
+          display: none;
+        }
+        .wizard-trail-wrapper .wizard-trail-current {
+          .inner {
+            padding-left: 20px;
+          }
+        }
+        @media screen and (min-width: 1100px) {
+          .wizard-trail-wrapper {
+            width: 63%;
+          }
+          .wizard-trail-wrapper .wizard-trail-next {
+            display: block;
+          }
+          .wizard-trail-wrapper .wizard-trail-current {
+            .inner {
+              padding-left: 45px;
+            }
+          }
         }
         .wizard-trail {
             background: @trail_bg;
@@ -478,19 +526,7 @@
 }
 
 /*** wizard tablet styling ***/
-@media screen and (max-width: 1000px) {
-	
-	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons {
-	  width: 100%;
-		clear: both;
-	}
-	
-	#main-content #edit-wizard-head .wizard-trail-wrapper, #wizard-step-form #edit-wizard-head .wizard-trail-wrapper { /* hiding wizard trail */
-		width: 100%;
-		clear: both;
-		max-width: auto;
-		margin-top: 10px;
-	}
+@media screen and (max-width: 1100px) {
 	
 }
 
@@ -502,11 +538,6 @@
 		.wizard-trail span {
 			display: none;			
 		}
-	}
-	
-	#main-content #edit-wizard-head #edit-buttons, #wizard-step-form #edit-wizard-head #edit-buttons { /* increasing width of buttons */
-    width: 100%;
-		float: none;
 	}
 	
 	#main-content #edit-wizard-head #edit-previous {
