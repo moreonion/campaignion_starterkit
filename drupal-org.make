@@ -7,7 +7,7 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][version] = 1.0-beta13
+projects[campaignion][version] = 1.0-beta14
 
 projects[cck_blocks][version] = 1.1
 
@@ -164,13 +164,13 @@ projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.pat
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
 projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-empty-line-items-1.patch
 
-projects[payment_forms][version] = 1.0-alpha4
+projects[payment_forms][version] = 1.0-alpha5
 
-projects[paymill_payment][version] = 1.0-beta3
+projects[paymill_payment][version] = 1.0-beta4
 
 projects[pgbar][version] = 1.5
 
-projects[psr0][version] = 1.3
+projects[psr0][version] = 1.4
 
 projects[redhen][version] = 1.8
 
@@ -194,7 +194,7 @@ projects[session_cache][patch][] = https://drupal.org/files/session_cache-requir
 
 projects[share_light][version] = 1.0-beta7
 
-projects[stripe_payment][version] = 1.0-beta3
+projects[stripe_payment][version] = 1.0-beta4
 
 projects[strongarm][version] = 2.0
 
@@ -235,7 +235,7 @@ projects[webform_confirm_email][version] = 1.4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc6
+projects[webform_paymethod_select][version] = 1.0-rc7
 
 projects[webform_steps][version] = 1.0-alpha7
 
@@ -255,7 +255,7 @@ projects[xmlsitemap][version] = 2.0
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta4
+projects[simplicity][version] = 1.0-beta5
 
 projects[tao][version] = 3.1
 
