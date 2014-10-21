@@ -45,6 +45,8 @@ class ManualDirectDebitTest extends \Drupal\Tests\DrupalSeleniumTestCase {
     $this->waitUntil(function($this) {
       return (bool) strpos($this->title(), 'Thanks');
     });
+    // This is needed due to some race-condition with the AJAX request. WTF?
+    sleep(3);
   }
 
   /**
