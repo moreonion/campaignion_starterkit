@@ -140,7 +140,7 @@ projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.3
 
-projects[morelesszen][version] = 1.0-beta5
+projects[morelesszen][version] = 1.0-beta6
 
 projects[mpay24_payment][version] = 1.0-beta3
 
@@ -166,7 +166,7 @@ projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-
 
 projects[payment_forms][version] = 1.0-alpha5
 
-projects[paymill_payment][version] = 1.0-beta4
+projects[paymill_payment][version] = 1.0-beta5
 
 projects[pgbar][version] = 1.5
 
@@ -255,7 +255,7 @@ projects[xmlsitemap][version] = 2.0
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta5
+projects[simplicity][version] = 1.0-beta6
 
 projects[tao][version] = 3.1
 
