@@ -132,7 +132,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.4
 
-projects[metatag][version] = 1.3
+projects[metatag][version] = 1.4
 
 projects[migrate][version] = 2.5
 
@@ -158,7 +158,7 @@ projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.2
 
-projects[payment][version] = 1.11
+projects[payment][version] = 1.12
 ; make paymentreferences work with MyISAM - https://drupal.org/node/2239931
 projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.patch
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
