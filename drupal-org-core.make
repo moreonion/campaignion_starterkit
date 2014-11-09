@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.31
+projects[drupal][version] = 7.33
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
@@ -19,5 +19,3 @@ projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_p
 projects[drupal][patch][] = http://drupal.org/files/hook_boot_may_defer_cache-7.x-322104-37.patch
 ; form elements can now set their custom CSS classes via #wrapper_attributes. - http://drupal.org/node/2190525
 projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
-; Flush node-load cache when translating nodes. - https://drupal.org/node/1936942
-projects[drupal][patch][] = https://drupal.org/files/drupal-translation_load_cache-1936942-1.patch

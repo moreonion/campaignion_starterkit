@@ -7,7 +7,7 @@ projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta
 ; Make empty addresses possible - https://drupal.org/node/968112
 projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
-projects[campaignion][version] = 1.0-beta14
+projects[campaignion][version] = 1.0-beta15
 
 projects[cck_blocks][version] = 1.1
 
@@ -47,15 +47,11 @@ projects[entityreference][version] = 1.1
 
 projects[features][version] = 2.2
 
-projects[field_collection][version] = 1.0-beta7
+projects[field_collection][version] = 1.0-beta8
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
 projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18n_string-1471840-1.patch
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
-; Support for i18n_node - https://drupal.org/node/1316162
-projects[field_collection][patch][] = https://drupal.org/files/field_collection-1316162-192.patch
-; No output if field_collection is empty. - https://drupal.org/node/1276258
-projects[field_collection][patch][] = https://drupal.org/files/field_collection-completely-hide-empty-1276258-64.patch
 
 projects[field_group][version] = 1.4
 
@@ -103,7 +99,7 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-beta5
+projects[little_helpers][version] = 1.0-beta6
 
 projects[login_destination][version] = 1.1
 
