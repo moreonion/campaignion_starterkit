@@ -15,6 +15,8 @@ function _campaignion_conf_set_variables() {
   // deactivate webform submission access control as it is incompatible with
   // webform templates (#2047 activating templates denies submission for all roles)
   variable_set('webform_submission_access_control', 0);
+  variable_set('modernizr_scope', 'header');
+  variable_set('modernizr_type', 'sync');
 }
 
 function _campaignion_conf_install_roles() {
