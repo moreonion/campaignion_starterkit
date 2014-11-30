@@ -27,7 +27,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.4
+projects[ctools][version] = 1.5
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -59,17 +59,13 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.5
+projects[form_builder][version] = 1.6
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; select or other integration - http://drupal.org/node/1575064
 projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or_other.patch
-; Fix: hover states stop working if drop is not accepted. - https://drupal.org/node/2270499
-projects[form_builder][patch][] = https://drupal.org/files/issues/2270499-form_builder-unset-activeDragUi-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
-; Make click-adding work with unique fields. - https://drupal.org/node/2278247
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/form_builder-2278247-addField-fix-placeholder-handling-4.patch
 ; Fix: remove fieldset placeholder if field is added by clicking - https://drupal.org/node/2278445
 projects[form_builder][patch][] = https://drupal.org/files/issues/2278445-form_builder-remove-placeholder-if-fieldset-is-filled-by-clicking.patch
 
@@ -89,7 +85,7 @@ projects[jquery_update][patch][] = https://drupal.org/files/issues/jquery_update
 
 projects[l10n_client][version] = 1.3
 
-projects[l10n_update][version] = 1.0
+projects[l10n_update][version] = 1.1
 ; fallback for language imports de-AT -> de. - https://drupal.org/node/580260
 projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-fallback.patch
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
@@ -107,14 +103,14 @@ projects[logintoboggan][version] = 1.4
 
 projects[mailsystem][version] = 2.34
 
-projects[manual_direct_debit][version] = 1.0-alpha1
+projects[manual_direct_debit][version] = 1.0-alpha2
 
 projects[media][download][type] = git
 projects[media][download][url] = http://git.drupal.org/project/media.git
 projects[media][download][branch] = 7.x-2.x
 projects[media][download][revision] = 7f322d9579dc9d12d3812f7496794743a7fc52d9
 ; Ajax callbacks in the media overlay cause the active tab to switch tab unexpectedly - https://drupal.org/node/1802026
-projects[media][patch][] = https://drupal.org/files/issues/1802026-media-browser-keep-tab-42.patch
+projects[media][patch][] = https://drupal.org/files/issues/1802026-media-browser-keep-tab-47.patch
 ; Fix for replacePlaceholderWithToken in media_wysiwyg.filter.js - https://drupal.org/node/2164823
 projects[media][patch][] = https://drupal.org/files/issues/media-browser-incompatibilities.patch
 ; Fix for drush message: preg_replace_callback(): Requires argument 2, 'media_token_fid_to_uuid', to be a valid callback - https://drupal.org/node/2152061
@@ -153,6 +149,8 @@ projects[page_title][version] = 2.7
 projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.2
+; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
+projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
 projects[payment][version] = 1.12
 ; make paymentreferences work with MyISAM - https://drupal.org/node/2239931
@@ -163,6 +161,12 @@ projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-
 projects[payment_forms][version] = 1.0-alpha5
 
 projects[paymill_payment][version] = 1.0-beta5
+
+projects[paypal_payment][version] = 1.1
+; Fix 403 when returning from paypal - https://drupal.org/node/2052361
+projects[paypal_payment][patch][] = https://drupal.org/files/issues/paypal_payment-pps_HTTP_404_on_return_uri-2052361-40.patch
+; Don't leave payment status on pending. - https://drupal.org/node/2142091
+projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-status-failed-when-there-is-no-payerid-5.patch
 
 projects[pgbar][version] = 1.5
 
