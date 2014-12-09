@@ -239,19 +239,17 @@ projects[webform_paymethod_select][version] = 1.0-rc7
 
 projects[webform_steps][version] = 1.0-alpha7
 
-projects[webform_template][version] = 1.3
+projects[webform_template][version] = 1.4
 
 projects[webform_tracking][version] = 1.0-beta2
 
 projects[webform_validation][version] = 1.7
-; Add support for webform_template. - https://drupal.org/node/2243681
-projects[webform_validation][patch][] = https://drupal.org/files/issues/webform_validation-2243681-support-for-webform_template-7.patch
 
-projects[weight][version] = 2.3
+projects[weight][version] = 2.4
 
 projects[wysiwyg][version] = 2.2
 
-projects[xmlsitemap][version] = 2.0
+projects[xmlsitemap][version] = 2.1
 
 projects[xautoload][version] = 4.5
 
