@@ -89,7 +89,7 @@ projects[l10n_update][version] = 1.1
 ; fallback for language imports de-AT -> de. - https://drupal.org/node/580260
 projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-fallback.patch
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
-projects[l10n_update][patch][] = https://drupal.org/files/issues/2150545-rip-out-hook-requirements-3.patch
+projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip-out-hook-requirements-5.patch
 
 projects[less][version] = 3.0
 
