@@ -126,8 +126,6 @@ projects[menu_block][version] = 2.4
 
 projects[metatag][version] = 1.4
 
-projects[migrate][version] = 2.5
-
 projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.3
