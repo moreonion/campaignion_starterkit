@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.0-rc1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta15
+projects[campaignion][version] = 1.0-beta16
 
 projects[cck_blocks][version] = 1.1
 
@@ -128,7 +128,7 @@ projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.4
 
-projects[morelesszen][version] = 1.0-beta6
+projects[morelesszen][version] = 1.0-beta7
 
 projects[mpay24_payment][version] = 1.0-beta3
 
@@ -231,7 +231,7 @@ projects[webform_confirm_email][version] = 1.4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc7
+projects[webform_paymethod_select][version] = 1.0-rc8
 
 projects[webform_steps][version] = 1.0-alpha7
 
