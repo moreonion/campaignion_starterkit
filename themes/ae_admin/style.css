@@ -578,12 +578,20 @@ div.node .column-side .column-wrapper {
   padding: 0;
 }
 
+.field-type-image .form-item,
 .field-type-image .form-wrapper {
   background-color: #E4DFD6;
   margin-top: 2.8em;
   padding: 0.2em;
   margin-bottom: 1em;
 }
+.field-type-image .form-item .image-widget-data {
+  padding: 10px;
+}
+.field-type-image .form-item input[type=file] {
+  padding: 10px 0;
+}
+
 
 .field-type-image label {
   font-weight: bold;
@@ -633,6 +641,7 @@ div.node .column-side .column-wrapper {
   display: block;
 }
 
+.field-type-image .image-preview,
 .field-type-image .preview {
   float: left;
   min-width: 100px;
@@ -645,6 +654,12 @@ div.node .column-side .column-wrapper {
   background-repeat: no-repeat;
   background-position: 6px 6px;
   cursor: pointer;
+}
+.field-type-image .image-preview {
+  background-image: none;
+  min-width: 100px;
+  min-height: 0;
+  margin-top: 20px;
 }
 
 .field-type-image .preview label {
