@@ -1,11 +1,9 @@
 api = 2
 core = 7.x
 
-projects[addressfield][version] = 1.0-beta5
+projects[addressfield][version] = 1.0-rc1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
-; Make empty addresses possible - https://drupal.org/node/968112
-projects[addressfield][patch][] = https://drupal.org/files/issues/addressfield-nocountry_option-968112-134.patch
 
 projects[campaignion][version] = 1.0-beta15
 
@@ -13,7 +11,7 @@ projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.41
 
-projects[context][version] = 3.3
+projects[context][version] = 3.6
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-80-context-block-title_0.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -45,7 +43,7 @@ projects[entity][version] = 1.5
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.2
+projects[features][version] = 2.3
 
 projects[field_collection][version] = 1.0-beta8
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -128,7 +126,7 @@ projects[metatag][version] = 1.4
 
 projects[mimemail][version] = 1.0-beta3
 
-projects[modernizr][version] = 3.3
+projects[modernizr][version] = 3.4
 
 projects[morelesszen][version] = 1.0-beta6
 
