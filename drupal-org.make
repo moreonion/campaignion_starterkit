@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.0-rc1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta16
+projects[campaignion][version] = 1.0-beta17
 
 projects[cck_blocks][version] = 1.1
 
@@ -93,7 +93,7 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-beta6
+projects[little_helpers][version] = 1.0-rc1
 
 projects[login_destination][version] = 1.1
 
@@ -101,7 +101,7 @@ projects[logintoboggan][version] = 1.4
 
 projects[mailsystem][version] = 2.34
 
-projects[manual_direct_debit][version] = 1.0-alpha2
+projects[manual_direct_debit][version] = 1.0-beta1
 
 projects[media][download][type] = git
 projects[media][download][url] = http://git.drupal.org/project/media.git
@@ -128,7 +128,7 @@ projects[mimemail][version] = 1.0-beta3
 
 projects[modernizr][version] = 3.4
 
-projects[morelesszen][version] = 1.0-beta7
+projects[morelesszen][version] = 1.0-beta8
 
 projects[mpay24_payment][version] = 1.0-beta3
 
@@ -154,9 +154,11 @@ projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.pat
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
 projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-empty-line-items-1.patch
 
+projects[payment_context][version] = 1.0-rc1
+
 projects[payment_forms][version] = 1.0-alpha5
 
-projects[paymill_payment][version] = 1.0-beta5
+projects[paymill_payment][version] = 1.0-beta6
 
 projects[paypal_payment][version] = 1.1
 ; Fix 403 when returning from paypal - https://drupal.org/node/2052361
@@ -188,9 +190,9 @@ projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0-beta7
+projects[share_light][version] = 1.0-rc1
 
-projects[stripe_payment][version] = 1.0-beta4
+projects[stripe_payment][version] = 1.0-beta5
 
 projects[strongarm][version] = 2.0
 
@@ -231,7 +233,7 @@ projects[webform_confirm_email][version] = 1.4
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc8
+projects[webform_paymethod_select][version] = 1.0-rc9
 
 projects[webform_steps][version] = 1.0-alpha7
 
