@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[addressfield][version] = 1.0-rc1
+projects[addressfield][version] = 1.0
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
@@ -73,11 +73,11 @@ projects[honeypot][version] = 1.17
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.11
+projects[i18n][version] = 1.12
 
 projects[imagefield_crop][version] = 1.1
 
-projects[jquery_update][version] = 2.4
+projects[jquery_update][version] = 2.5
 ; Latest dev renames all jquery ui effects files so they no longer match core and are not replaced - https://drupal.org/node/2149395
 projects[jquery_update][patch][] = https://drupal.org/files/issues/jquery_update-local-ui-effects-not-found-2149395.patch
 
@@ -130,7 +130,7 @@ projects[modernizr][version] = 3.4
 
 projects[morelesszen][version] = 1.0-beta8
 
-projects[mpay24_payment][version] = 1.0-beta3
+projects[mpay24_payment][version] = 1.0-beta4
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -156,7 +156,7 @@ projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-
 
 projects[payment_context][version] = 1.0-rc1
 
-projects[payment_forms][version] = 1.0-alpha5
+projects[payment_forms][version] = 1.0-beta1
 
 projects[paymill_payment][version] = 1.0-beta6
 
@@ -190,7 +190,7 @@ projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0-rc1
+projects[share_light][version] = 1.0-rc2
 
 projects[stripe_payment][version] = 1.0-beta5
 
@@ -229,7 +229,7 @@ projects[webform_block][version] = 1.0
 
 projects[webform_conditional][version] = 1.0-beta2
 
-projects[webform_confirm_email][version] = 1.4
+projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
@@ -241,7 +241,7 @@ projects[webform_template][version] = 1.4
 
 projects[webform_tracking][version] = 1.0-beta2
 
-projects[webform_validation][version] = 1.7
+projects[webform_validation][version] = 1.8
 
 projects[weight][version] = 2.4
 
