@@ -78,8 +78,6 @@ projects[i18n][version] = 1.12
 projects[imagefield_crop][version] = 1.1
 
 projects[jquery_update][version] = 2.5
-; Latest dev renames all jquery ui effects files so they no longer match core and are not replaced - https://drupal.org/node/2149395
-projects[jquery_update][patch][] = https://drupal.org/files/issues/jquery_update-local-ui-effects-not-found-2149395.patch
 
 projects[l10n_client][version] = 1.3
 
