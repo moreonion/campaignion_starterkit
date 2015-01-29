@@ -7,6 +7,7 @@
 include_once 'campaignion_supporter.features.inc';
 
 use \Drupal\campaignion\ContactTypeManager;
+use \Drupal\campaignion\NoEmailException;
 use \Drupal\little_helpers\Webform\Submission;
 
 /**
@@ -14,7 +15,16 @@ use \Drupal\little_helpers\Webform\Submission;
  */
 function campaignion_supporter_campaignion_action_taken($node, Submission $submissionObj) {
   $importer = ContactTypeManager::instance()->importer('campaignion_action_taken');
-  $contact = $importer->findOrCreateContact($submissionObj);
+  try {
+    $contact = $importer->findOrCreateContact($submissionObj);
+  } catch (NoEmailException $e) {
+    // Log the missing email address.
+    $ids = $submissionObj->ids();
+    $args = array('@nid' => $ids['nid'], '@sid' => $ids['sid']);
+    $msg = "Can't import supporter without email-address for Submission(@nid, @sid).";
+    watchdog_exception('campaignion_supporter', $e, $msg, $args);
+    return;
+  }
   $changed = $importer->import($submissionObj, $contact);
   // Allow other modules to change the contact.
   foreach (module_implements('campaignion_supporter_contact_alter') as $module) {
