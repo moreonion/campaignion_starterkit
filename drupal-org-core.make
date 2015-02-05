@@ -19,3 +19,5 @@ projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_p
 projects[drupal][patch][] = http://drupal.org/files/hook_boot_may_defer_cache-7.x-322104-37.patch
 ; form elements can now set their custom CSS classes via #wrapper_attributes. - http://drupal.org/node/2190525
 projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
+; Avoid stale static cache during install.
+projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
