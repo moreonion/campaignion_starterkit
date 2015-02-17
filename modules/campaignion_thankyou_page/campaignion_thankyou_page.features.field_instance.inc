@@ -195,19 +195,29 @@ function campaignion_thankyou_page_field_default_field_instances() {
       0 => array(
         'toggle' => 1,
         'options' => array(
-          'advanced' => array(
-            'channel_facebook_toggle' => 1,
-            'channel_forward_toggle' => 1,
-            'channel_pinterest_text' => '',
-            'channel_pinterest_toggle' => 1,
-            'channel_twitter_text' => '',
-            'channel_twitter_toggle' => 1,
+          'channels' => array(
+            'email' => array(
+              'toggle' => 1,
+            ),
+            'facebook' => array(
+              'toggle' => 1,
+            ),
+            'pinterest' => array(
+              'text' => '',
+              'toggle' => 1,
+            ),
+            'twitter' => array(
+              'text' => '',
+              'toggle' => 1,
+            ),
           ),
           'counter_toggle' => 1,
           'image' => array(
             'fid' => 0,
           ),
-          'share_url' => '',
+          'link' => array(
+            'path' => '',
+          ),
           'subject' => 'Share this action!',
         ),
       ),
