@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.5
+projects[ctools][version] = 1.6
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -118,7 +118,7 @@ projects[media_youtube][version] = 2.0-rc4
 projects[media_youtube][patch][] = https://drupal.org/files/issues/media_youtube-2.x-clearfix-for-form-widget-2429.patch
 projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previous-links-1551376-7.patch
 
-projects[menu_block][version] = 2.4
+projects[menu_block][version] = 2.5
 
 projects[metatag][version] = 1.4
 
@@ -168,7 +168,7 @@ projects[pgbar][version] = 1.5
 
 projects[psr0][version] = 1.4
 
-projects[redhen][version] = 1.8
+projects[redhen][version] = 1.9
 
 projects[redirect][version] = 1.0-rc1
 ; avoid circular redirect in hook_path_update - http://drupal.org/node/1796596
@@ -208,7 +208,7 @@ projects[uuid_features][patch][] = https://drupal.org/files/issues/2117453-uuid_
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.8
+projects[views][version] = 3.10
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.21
@@ -239,13 +239,13 @@ projects[webform_template][version] = 1.4
 
 projects[webform_tracking][version] = 1.0-beta2
 
-projects[webform_validation][version] = 1.8
+projects[webform_validation][version] = 1.9
 
 projects[weight][version] = 2.4
 
 projects[wysiwyg][version] = 2.2
 
-projects[xmlsitemap][version] = 2.1
+projects[xmlsitemap][version] = 2.2
 
 projects[xautoload][version] = 4.5
 
