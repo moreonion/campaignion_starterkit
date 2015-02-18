@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.0
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta17
+projects[campaignion][version] = 1.0-beta18
 
 projects[cck_blocks][version] = 1.1
 
@@ -152,7 +152,7 @@ projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.pat
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
 projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-empty-line-items-1.patch
 
-projects[payment_context][version] = 1.0-rc1
+projects[payment_context][version] = 1.0-rc2
 
 projects[payment_forms][version] = 1.0-beta1
 
@@ -188,7 +188,7 @@ projects[session_cache][version] = 1.3
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0-rc2
+projects[share_light][version] = 1.0-rc3
 
 projects[stripe_payment][version] = 1.0-beta5
 
@@ -231,13 +231,13 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc9
+projects[webform_paymethod_select][version] = 1.0-rc10
 
-projects[webform_steps][version] = 1.0-alpha7
+projects[webform_steps][version] = 1.0-rc1
 
 projects[webform_template][version] = 1.4
 
-projects[webform_tracking][version] = 1.0-beta2
+projects[webform_tracking][version] = 1.0-rc1
 
 projects[webform_validation][version] = 1.9
 
