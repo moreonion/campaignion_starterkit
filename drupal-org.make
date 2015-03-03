@@ -231,7 +231,7 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.0-rc10
+projects[webform_paymethod_select][version] = 1.0
 
 projects[webform_steps][version] = 1.0
 
