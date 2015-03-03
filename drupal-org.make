@@ -39,7 +39,7 @@ projects[diff][version] = 3.2
 
 projects[elysia_cron][version] = 2.1
 
-projects[entity][version] = 1.5
+projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
 
@@ -146,7 +146,7 @@ projects[pathauto][version] = 1.2
 ; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
 projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
-projects[payment][version] = 1.12
+projects[payment][version] = 1.13
 ; make paymentreferences work with MyISAM - https://drupal.org/node/2239931
 projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.patch
 ; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
@@ -194,7 +194,7 @@ projects[stripe_payment][version] = 1.0-beta5
 
 projects[strongarm][version] = 2.0
 
-projects[token][version] = 1.5
+projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
@@ -233,7 +233,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.0-rc10
 
-projects[webform_steps][version] = 1.0-rc1
+projects[webform_steps][version] = 1.0
 
 projects[webform_template][version] = 1.4
 
