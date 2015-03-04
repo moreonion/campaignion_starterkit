@@ -147,10 +147,6 @@ projects[pathauto][version] = 1.2
 projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
 projects[payment][version] = 1.13
-; make paymentreferences work with MyISAM - https://drupal.org/node/2239931
-projects[payment][patch][] = https://drupal.org/files/issues/index_too_large.patch
-; Don't show confusing empty line item forms. - https://drupal.org/node/2221447
-projects[payment][patch][] = https://drupal.org/files/issues/2221447-payment-no-empty-line-items-1.patch
 
 projects[payment_context][version] = 1.0-rc2
 
