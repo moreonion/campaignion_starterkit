@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.0
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta18
+projects[campaignion][version] = 1.0-beta19
 
 projects[cck_blocks][version] = 1.1
 
@@ -211,7 +211,7 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.10
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 3.21
+projects[webform][version] = 3.22
 ; Use batch API for results download. - https://drupal.org/node/1327186
 projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
