@@ -57,15 +57,11 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.6
+projects[form_builder][version] = 1.7
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
-; select or other integration - http://drupal.org/node/1575064
-projects[form_builder][patch][] = http://drupal.org/files/form_builder_select_or_other.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
-; Fix: remove fieldset placeholder if field is added by clicking - https://drupal.org/node/2278445
-projects[form_builder][patch][] = https://drupal.org/files/issues/2278445-form_builder-remove-placeholder-if-fieldset-is-filled-by-clicking.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta1
 
