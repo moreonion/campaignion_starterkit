@@ -43,7 +43,7 @@ projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.3
+projects[features][version] = 2.4
 
 projects[field_collection][version] = 1.0-beta8
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -142,7 +142,7 @@ projects[pathauto][version] = 1.2
 ; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
 projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
-projects[payment][version] = 1.13
+projects[payment][version] = 1.14
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -168,9 +168,7 @@ projects[redirect][patch][] = https://drupal.org/files/issues/redirect.circular-
 
 projects[references][version] = 2.1
 
-projects[respondjs][version] = 1.4
-; New URL to respond.min.js (GitHub) - https://drupal.org/node/2179017
-projects[respondjs][patch][] = https://www.drupal.org/files/issues/2179017-10-download-url.patch
+projects[respondjs][version] = 1.5
 
 projects[select_or_other][version] = 2.20
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
