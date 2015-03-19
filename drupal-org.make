@@ -201,15 +201,11 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.10
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 3.22
+projects[webform][version] = 3.23
 ; Use batch API for results download. - https://drupal.org/node/1327186
 projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-get-submission-information-do-not-test.patch
-; CSV exports have too less or too many data fields (with select component) - https://drupal.org/node/2200545
-projects[webform][patch][] = https://drupal.org/files/issues/2200545-csv-export-fix-fields_1.patch
-; Add index to webform_submitted_data.data to make unique validation scaleable. - https://drupal.org/node/2213945
-projects[webform][patch][] = https://drupal.org/files/issues/2213945-index-for-webform_submitted_data.data-25.patch
 
 projects[webform_ajax][version] = 1.1
 
