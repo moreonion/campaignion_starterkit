@@ -17,4 +17,11 @@ class ActionType extends \Drupal\campaignion\Action\TypeBase {
   public function actionFromNode($node) {
     return new \Drupal\campaignion\Action($this, $node);
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isDonation() {
+    return TRUE;
+  }
 }
