@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.6
+projects[ctools][version] = 1.7
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -170,7 +170,7 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[select_or_other][version] = 2.20
+projects[select_or_other][version] = 2.21
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 
@@ -201,7 +201,7 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.10
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 3.23
+projects[webform][version] = 3.24
 ; Use batch API for results download. - https://drupal.org/node/1327186
 projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
@@ -209,7 +209,7 @@ projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-g
 
 projects[webform_ajax][version] = 1.1
 
-projects[webform_block][version] = 1.0
+projects[webform_block][version] = 1.1
 
 projects[webform_conditional][version] = 1.0-beta2
 
