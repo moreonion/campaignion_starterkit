@@ -180,7 +180,7 @@ projects[session_cache][patch][] = https://drupal.org/files/session_cache-requir
 
 projects[share_light][version] = 1.0-rc3
 
-projects[stripe_payment][version] = 1.0-beta5
+projects[stripe_payment][version] = 1.0-beta6
 
 projects[strongarm][version] = 2.0
 
