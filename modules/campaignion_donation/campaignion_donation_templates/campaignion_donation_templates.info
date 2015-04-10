@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = uuid_features
+dependencies[] = webform_ajax
 __drupal_alter_by_ref[][node][donation] = donation
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
