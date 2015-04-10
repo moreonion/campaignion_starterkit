@@ -57,3 +57,9 @@ function campaignion_donation_install() {
   }
 }
 
+/**
+ * Implements hook_uninstall().
+ */
+function campaignion_donation_uninstall() {
+  variable_del('campaignion_donation_currency_symbol');
+}
