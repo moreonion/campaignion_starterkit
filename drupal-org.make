@@ -192,9 +192,11 @@ projects[uuid][version] = 1.0-alpha6
 ; Don't break entities without entity support - https://www.drupal.org/node/1927474
 projects[uuid][patch][] = https://www.drupal.org/files/issues/fix-non-uuid-entity-load-1927474-13.patch
 
-projects[uuid_features][version] = 1.0-alpha4
-; Make uuid_features work with i18n_node (tnids). - https://drupal.org/node/2117453
-projects[uuid_features][patch][] = https://drupal.org/files/issues/2117453-uuid_features-use-entity_uuid_save-4.patch
+; uuid_features-1.0-alpha4+58
+projects[uuid_features][download][type] = git
+projects[uuid_features][download][url] = http://git.drupal.org/project/uuid_features.git
+projects[uuid_features][download][branch] = 7.x-1.x
+projects[uuid_features][download][revision] = 2360332099cdf36479915d4011a9bdb96ab7dfbf
 
 projects[variable][version] = 2.5
 
