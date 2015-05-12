@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[addressfield][version] = 1.0
+projects[addressfield][version] = 1.1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
@@ -43,7 +43,7 @@ projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.4
+projects[features][version] = 2.5
 
 projects[field_collection][version] = 1.0-beta8
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -69,7 +69,7 @@ projects[honeypot][version] = 1.17
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.12
+projects[i18n][version] = 1.13
 
 projects[imagefield_crop][version] = 1.1
 
@@ -91,7 +91,7 @@ projects[little_helpers][version] = 1.0-rc1
 
 projects[login_destination][version] = 1.1
 
-projects[logintoboggan][version] = 1.4
+projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.34
 
@@ -200,7 +200,7 @@ projects[uuid_features][download][revision] = 2360332099cdf36479915d4011a9bdb96a
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.10
+projects[views][version] = 3.11
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.24
@@ -229,7 +229,7 @@ projects[webform_tracking][version] = 1.0-rc1
 
 projects[webform_validation][version] = 1.9
 
-projects[weight][version] = 2.4
+projects[weight][version] = 2.5
 
 projects[wysiwyg][version] = 2.2
 
