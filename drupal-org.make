@@ -57,11 +57,11 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.7
+projects[form_builder][version] = 1.9
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-10.patch
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-18.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta1
 
@@ -221,7 +221,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.2
 
-projects[webform_steps][version] = 1.0
+projects[webform_steps][version] = 2.0-beta1
 
 projects[webform_template][version] = 1.4
 
