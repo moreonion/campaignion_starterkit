@@ -211,7 +211,7 @@ projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-g
 
 projects[webform_ajax][version] = 1.1
 
-projects[webform_block][version] = 1.1
+projects[webform_block][version] = 1.2
 
 projects[webform_conditional][version] = 1.0-beta2
 
@@ -237,7 +237,7 @@ projects[xmlsitemap][version] = 2.2
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta6
+projects[simplicity][version] = 1.0-beta7
 
 projects[tao][version] = 3.1
 
