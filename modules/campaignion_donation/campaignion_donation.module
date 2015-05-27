@@ -156,7 +156,7 @@ function campaignion_donation_form_builder_types_alter(&$types) {
  * Implements hook_node_prepare().
  */
 function campaignion_donation_node_prepare($node) {
-  if (empty($node->webform['submit_text'])) {
+  if ($node->type == 'donation' && empty($node->webform['submit_text'])) {
     $node->webform['submit_text'] = t('Donate now!');
   }
 }
