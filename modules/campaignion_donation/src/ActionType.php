@@ -2,9 +2,9 @@
 
 namespace Drupal\campaignion_donation;
 
-use \Drupal\campaignion\Wizard\DonationWizard;
+use \Drupal\campaignion_wizard\DonationWizard;
 
-class ActionType extends \Drupal\campaignion\Action\TypeBase {
+class ActionType extends \Drupal\campaignion_action\TypeBase {
   public function defaultTemplateNid() {
     $ids = \entity_get_id_by_uuid('node', array('6eb388a0-88e5-4272-bb6e-0bd8e8da595e'));
     return array_shift($ids);
@@ -15,7 +15,7 @@ class ActionType extends \Drupal\campaignion\Action\TypeBase {
   }
 
   public function actionFromNode($node) {
-    return new \Drupal\campaignion\Action($this, $node);
+    return new \Drupal\campaignion_action\ActionBase($this, $node);
   }
 
   /**

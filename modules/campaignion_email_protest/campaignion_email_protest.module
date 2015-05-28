@@ -6,7 +6,7 @@
 
 include_once 'campaignion_email_protest.features.inc';
 
-use \Drupal\campaignion\Wizard\EmailProtestEmailStep;
+use \Drupal\campaignion_wizard\EmailProtestEmailStep;
 
 /**
  * Implements hook_form_(form_id)_alter().

@@ -4,7 +4,7 @@
  * Code for the campaignion_thankyou_page feature.
  */
 
-use \Drupal\campaignion\Action\TypeBase;
+use \Drupal\campaignion_action\TypeBase;
 
 include_once 'campaignion_thankyou_page.features.inc';
 
