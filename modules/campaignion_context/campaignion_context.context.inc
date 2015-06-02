@@ -257,6 +257,7 @@ function campaignion_context_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~node/*/share' => '~node/*/share',
+        '~node/*/webform-continue/*' => '~node/*/webform-continue/*',
       ),
     ),
   );
