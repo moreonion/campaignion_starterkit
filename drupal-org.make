@@ -29,7 +29,7 @@ projects[ctools][version] = 1.7
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
-projects[currency][version] = 2.4
+projects[currency][version] = 2.5
 
 projects[custom_add_another][version] = 1.0-rc3
 
@@ -43,7 +43,7 @@ projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.5
+projects[features][version] = 2.6
 
 projects[field_collection][version] = 1.0-beta8
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -63,9 +63,9 @@ projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_b
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-18.patch
 
-projects[geoip_language_redirect][version] = 1.0-beta1
+projects[geoip_language_redirect][version] = 1.0-beta3
 
-projects[honeypot][version] = 1.17
+projects[honeypot][version] = 1.18
 
 projects[ife][version] = 2.0-alpha2
 
@@ -73,7 +73,7 @@ projects[i18n][version] = 1.13
 
 projects[imagefield_crop][version] = 1.1
 
-projects[jquery_update][version] = 2.5
+projects[jquery_update][version] = 2.6
 
 projects[l10n_client][version] = 1.3
 
@@ -114,9 +114,9 @@ projects[media_youtube][version] = 2.0-rc4
 projects[media_youtube][patch][] = https://drupal.org/files/issues/media_youtube-2.x-clearfix-for-form-widget-2429.patch
 projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previous-links-1551376-7.patch
 
-projects[menu_block][version] = 2.5
+projects[menu_block][version] = 2.6
 
-projects[metatag][version] = 1.4
+projects[metatag][version] = 1.5
 
 projects[mimemail][version] = 1.0-beta3
 
@@ -142,7 +142,7 @@ projects[pathauto][version] = 1.2
 ; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
 projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
-projects[payment][version] = 1.14
+projects[payment][version] = 1.15
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -170,7 +170,7 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[select_or_other][version] = 2.21
+projects[select_or_other][version] = 2.22
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 
@@ -219,7 +219,7 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.2
+projects[webform_paymethod_select][version] = 1.3
 
 projects[webform_steps][version] = 2.0-beta1
 
