@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta21
+projects[campaignion][version] = 1.0-beta22
 
 projects[cck_blocks][version] = 1.1
 
@@ -57,7 +57,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.9
+projects[form_builder][version] = 1.10
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
@@ -116,7 +116,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.6
 
-projects[metatag][version] = 1.5
+projects[metatag][version] = 1.6
 
 projects[mimemail][version] = 1.0-beta3
 
@@ -162,9 +162,7 @@ projects[psr0][version] = 1.4
 
 projects[redhen][version] = 1.9
 
-projects[redirect][version] = 1.0-rc1
-; avoid circular redirect in hook_path_update - http://drupal.org/node/1796596
-projects[redirect][patch][] = https://drupal.org/files/issues/redirect.circular-loops.1796596-146.patch
+projects[redirect][version] = 1.0-rc2
 
 projects[references][version] = 2.1
 
@@ -227,7 +225,7 @@ projects[webform_template][version] = 1.4
 
 projects[webform_tracking][version] = 1.0-rc1
 
-projects[webform_validation][version] = 1.9
+projects[webform_validation][version] = 1.10
 
 projects[weight][version] = 2.5
 
