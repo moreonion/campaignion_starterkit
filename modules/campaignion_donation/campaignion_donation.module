@@ -210,7 +210,7 @@ function campaignion_donation_element_info_alter(&$type) {
  */
 function _campaignion_donation_select_or_other_process($element, &$form_state) {
   if (empty($element['#webform_component'])) {
-   return;
+   return $element;
   }
   $is_donation_amount = $element['#webform_component']['form_key'] == 'donation_amount';
   $has_other_option = !empty($element['other']);
