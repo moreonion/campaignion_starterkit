@@ -114,7 +114,7 @@ projects[media_youtube][version] = 2.0-rc4
 projects[media_youtube][patch][] = https://drupal.org/files/issues/media_youtube-2.x-clearfix-for-form-widget-2429.patch
 projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previous-links-1551376-7.patch
 
-projects[menu_block][version] = 2.6
+projects[menu_block][version] = 2.7
 
 projects[metatag][version] = 1.6
 
