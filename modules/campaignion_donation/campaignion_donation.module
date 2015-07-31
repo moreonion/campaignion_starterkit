@@ -93,14 +93,18 @@ function campaignion_donation_form_builder_palette_groups() {
 }
 
 /**
- * Implements hook_form_builder_types().
+ * Implements hook_form_builder_element_types().
  *
  * Add donation / payment specific types to the donation palette.
  */
-function campaignion_donation_form_builder_types() {
-  module_load_include('inc', 'form_builder_webform', 'form_builder_webform.components');
-  if (!($node = menu_get_object()) || $node->type == 'donation') {
-    $types['webform']['donation_interval'] = array(
+function campaignion_donation_form_builder_element_types($form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
+  $node = node_load($form_id);
+  if ($node->type == 'donation') {
+    module_load_include('inc', 'form_builder_webform', 'form_builder_webform.components');
+    $types['donation_interval'] = array(
       'properties' => array(
         'default_value',
         'options',
@@ -118,7 +122,7 @@ function campaignion_donation_form_builder_types() {
       'weight'        => -98,
     );
 
-    $types['webform']['donation_amount'] = array(
+    $types['donation_amount'] = array(
       'title'  => t('Donation amount'),
       'weight' => -99,
       'palette_group' => 'donation',
@@ -136,18 +140,21 @@ function campaignion_donation_form_builder_types() {
 }
 
 /**
- * Implements hook_form_builder_types_alter().
+ * Implements hook_form_builder_element_types_alter().
  *
  * Add paymethod_select to our palette for donations and hide it for other
  * content types.
  */
-function campaignion_donation_form_builder_types_alter(&$types) {
-  if (!($node = menu_get_object()) || $node->type == 'donation') {
-    $type = &$types['webform']['paymethod_select'];
+function campaignion_donation_form_builder_element_types_alter(&$types, $form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
+  $node = node_load($form_id);
+  $type = &$types['paymethod_select'];
+  if ($node->type == 'donation') {
     $type['addable'] = TRUE;
     $type['palette_group'] = 'donation';
   } else {
-    $type = &$types['webform']['paymethod_select'];
     $type['addable'] = FALSE;
   }
 }
