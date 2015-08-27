@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.7
+projects[ctools][version] = 1.9
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -57,7 +57,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.10
+projects[form_builder][version] = 1.13
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
@@ -65,7 +65,7 @@ projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-fo
 
 projects[geoip_language_redirect][version] = 1.0-beta3
 
-projects[honeypot][version] = 1.18
+projects[honeypot][version] = 1.19
 
 projects[ife][version] = 2.0-alpha2
 
@@ -116,9 +116,9 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.6
+projects[metatag][version] = 1.7
 
-projects[mimemail][version] = 1.0-beta3
+projects[mimemail][version] = 1.0-beta4
 
 projects[modernizr][version] = 3.4
 
@@ -162,7 +162,7 @@ projects[psr0][version] = 1.4
 
 projects[redhen][version] = 1.9
 
-projects[redirect][version] = 1.0-rc2
+projects[redirect][version] = 1.0-rc3
 
 projects[references][version] = 2.1
 
@@ -217,7 +217,7 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.3
+projects[webform_paymethod_select][version] = 1.4
 
 projects[webform_steps][version] = 2.0-beta1
 
