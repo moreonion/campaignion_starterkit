@@ -81,9 +81,12 @@ function campaignion_donation_webform_paymethod_select_method_list_alter(&$conte
  *
  * Display a donation specific palette when editing a donation node.
  */
-function campaignion_donation_form_builder_palette_groups() {
+function campaignion_donation_form_builder_palette_groups($form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
   $palette = array();
-  if (!($node = menu_get_object()) || $node->type == 'donation') {
+  if (!($node = node_load($form_id)) || $node->type == 'donation') {
     $palette['donation'] = array(
       'weight' => -19,
       'title'  => t('Payment data'),
