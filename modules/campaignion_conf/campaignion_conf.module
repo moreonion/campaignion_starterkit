@@ -35,20 +35,6 @@ function campaignion_conf_context_is_active($cname) {
 }
 
 /**
- * helper function: returns TRUE if context $cname is active
- */
-function campaignion_conf_is_action($node) {
-  $action_types = array(
-    'donation',
-    'email_protest',
-    'petition',
-    'webform',
-    'webform_template',
-  );
-  return in_array($node->type, $action_types);
-}
-
-/**
  * implements hook_node_presave().
  */
 function campaignion_conf_node_presave($node) {
