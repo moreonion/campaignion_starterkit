@@ -159,9 +159,12 @@ function campaignion_protest_target_webform_component_info() {
 }
 
 /**
- * Implements hook_form_builder_types().
+ * Implements hook_form_builder_element_types().
  */
-function campaignion_protest_target_form_builder_types() {
+function campaignion_protest_target_form_builder_element_types($form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
 
   require_once dirname(__FILE__) . '/campaignion_protest_target.webform.inc';
   require_once drupal_get_path('module', 'form_builder') . '/modules/webform/form_builder_webform.components.inc';
@@ -179,5 +182,5 @@ function campaignion_protest_target_form_builder_types() {
 
   $fields['protest_target']['default'] += _form_builder_webform_default('protest_target');
 
-  return array('webform' => $fields);
+  return $fields;
 }

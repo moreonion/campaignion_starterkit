@@ -135,15 +135,15 @@ function campaignion_email_protest_form_builder_palette_groups($form_type, $form
 }
 
 /**
- * Implements hook_form_builder_types().
+ * Implements hook_form_builder_element_types().
  */
-function campaignion_email_protest_form_builder_types($form_type, $form_id) {
+function campaignion_email_protest_form_builder_element_types($form_type, $form_id) {
   if ($form_type != 'webform') {
     return;
   }
   module_load_include('inc', 'form_builder_webform', 'form_builder_webform.components');
   if (!($node = node_load($form_id)) || $node->type == 'email_protest') {
-    $fields['webform']['email_subject'] = array(
+    $fields['email_subject'] = array(
       'title' => t('Email subject'),
       'weight' => -70,
       'palette_group' => 'email_protest',
@@ -155,7 +155,7 @@ function campaignion_email_protest_form_builder_types($form_type, $form_id) {
       ) + _form_builder_webform_default('textfield'),
     );
 
-    $fields['webform']['email_body'] = array(
+    $fields['email_body'] = array(
       'title'  => t('Email body'),
       'weight' => -60,
       'palette_group' => 'email_protest',
@@ -178,7 +178,7 @@ function campaignion_email_protest_form_builder_types_alter(&$types, $form_type,
     return;
   }
   if (!($node = node_load($form_id)) || $node->type == 'email_protest') {
-    $types['webform']['protest_target']['palette_group'] = 'email_protest';
-    $types['webform']['protest_target']['addable'] = TRUE;
+    $types['protest_target']['palette_group'] = 'email_protest';
+    $types['protest_target']['addable'] = TRUE;
   }
 }
