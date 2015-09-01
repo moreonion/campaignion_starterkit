@@ -180,7 +180,8 @@ function campaignion_protest_target_form_builder_element_types($form_type, $form
     'addable'       => FALSE,
   );
 
-  $fields['protest_target']['default'] += _form_builder_webform_default('protest_target');
+  $component['nid'] = $form_id;
+  $fields['protest_target']['default'] += _form_builder_webform_default('protest_target', array(), $component);
 
   return $fields;
 }

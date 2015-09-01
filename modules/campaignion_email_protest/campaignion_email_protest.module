@@ -171,9 +171,9 @@ function campaignion_email_protest_form_builder_element_types($form_type, $form_
 }
 
 /**
- * Implements hook_form_builder_types_alter().
+ * Implements hook_form_builder_element_types_alter().
  */
-function campaignion_email_protest_form_builder_types_alter(&$types, $form_type, $form_id) {
+function campaignion_email_protest_form_builder_element_types_alter(&$types, $form_type, $form_id) {
   if ($form_type != 'webform') {
     return;
   }
