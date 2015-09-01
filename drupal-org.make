@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.1
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta22
+projects[campaignion][version] = 1.0-beta23
 
 projects[cck_blocks][version] = 1.1
 
@@ -59,9 +59,11 @@ projects[file_entity][version] = 2.0-beta1
 
 projects[form_builder][version] = 1.13
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
-projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-1.patch
+projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-19.patch
+; form_type & form_id in all hooks
+projects[form_builder][patch][] = https://www.drupal.org/files/issues/2561261-form_builder-form_id-for-hook_form_builder_palette_groups-2.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta3
 
@@ -128,9 +130,7 @@ projects[mpay24_payment][version] = 1.0-beta4
 
 projects[oowizard][version] = 1.0-alpha3
 
-projects[opengraph_meta][version] = 1.3
-; Small thumbnail image preset causes images not to show - https://drupal.org/node/1720716
-projects[opengraph_meta][patch][] = https://drupal.org/files/opengraph_meta-allow_choice_of_image_style-1720716-2.patch
+projects[opengraph_meta][version] = 2.0-alpha2
 
 projects[options_element][version] = 1.12
 
@@ -148,7 +148,7 @@ projects[payment_context][version] = 1.0-rc2
 
 projects[payment_forms][version] = 1.0-beta1
 
-projects[paymill_payment][version] = 1.0-beta6
+projects[paymill_payment][version] = 1.0-beta7
 
 projects[paypal_payment][version] = 1.1
 ; Fix 403 when returning from paypal - https://drupal.org/node/2052361
@@ -178,7 +178,7 @@ projects[session_cache][patch][] = https://drupal.org/files/session_cache-requir
 
 projects[share_light][version] = 1.0-rc3
 
-projects[stripe_payment][version] = 1.0-beta6
+projects[stripe_payment][version] = 1.0-beta7
 
 projects[strongarm][version] = 2.0
 
@@ -217,7 +217,7 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.4
+projects[webform_paymethod_select][version] = 1.5
 
 projects[webform_steps][version] = 2.0-beta1
 
