@@ -19,7 +19,7 @@ function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form
     $submit = array();
     foreach ($form['#submit'] as $handler) {
       if ($handler == 'webform_client_form_submit') {
-        $submit[] = 'campaignion_email_protest_pre_webform_client_form';
+        $submit[] = 'campaignion_email_protest_pre_webform_client_form_submit';
       }
       $submit[] = $handler;
     }
@@ -35,7 +35,7 @@ function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form
  *    (first_name, last_name)
  * 3) webform doesn't support loading the body from a form field
  */
-function campaignion_email_protest_pre_webform_client_form(&$form, &$form_state) {
+function campaignion_email_protest_pre_webform_client_form_submit(&$form, &$form_state) {
   if (   ($form_state['webform']['page_count'] != $form_state['webform']['page_num'])
       || empty($form_state['submitted'])
       || !empty($form_state['save_draft'])) {
@@ -76,10 +76,39 @@ function campaignion_email_protest_pre_webform_client_form(&$form, &$form_state)
   }
 
   if ($targets) {
-    $email['email'] = implode(',', $targets);
+    $email['email']     = is_array($targets) ? implode(',', $targets) : $targets;
     $email['from_name'] = $submission->valueByKey('first_name') . ' ' . $submission->valueByKey('last_name');
     $email['template']  = $submission->valueByKey('email_body');
+    $root_node = $node;
+    if ($node->tnid != 0 && $node->tnid != $node->nid) {
+      $root_node = node_load($node->tnid);
+    }
+    $email['headers'] = array(
+      'X-Mail-Domain' => variable_get('site_mail_domain', 'supporter.campaignion.org'),
+      'X-Action-UUID' => $root_node->uuid,
+    );
   }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function campaignion_email_protest_theme_registry_alter(&$theme_registry) {
+  $theme_registry['webform_mail_headers']['theme path'] = drupal_get_path('module', 'campaignion_email_protest');
+  $theme_registry['webform_mail_headers']['function']   = 'campaignion_email_protest_webform_mail_headers';
+}
+
+function campaignion_email_protest_webform_mail_headers($variables) {
+  $headers = array(
+    'X-Mailer' => 'Drupal Webform (PHP/' . phpversion() . ')',
+  );
+  if (!empty($variables['email']['headers']['X-Mail-Domain'])) {
+    $headers['X-Mail-Domain'] = $variables['email']['headers']['X-Mail-Domain'];
+  }
+  if (!empty($variables['email']['headers']['X-Action-UUID'])) {
+    $headers['X-Action-UUID'] = $variables['email']['headers']['X-Action-UUID'];
+  }
+  return $headers;
 }
 
 /**

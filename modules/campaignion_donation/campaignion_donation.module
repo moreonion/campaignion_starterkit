@@ -187,7 +187,7 @@ function campaignion_donation_form_webform_client_form_alter(&$form, &$form_stat
       // validation, select_or_other will not set its own validation
       // (does not set validation if #element_validate is set already)
       if ($element['#type'] == 'select_or_other') {
-        $element['#element_validate'][] = 'select_or_other_element_validate';
+        $element['#element_validate'][] = 'select_or_other_olement_validate';
       }
       $element['#element_validate'][] = 'campaignion_donation_amount_validate';
     }
@@ -220,7 +220,7 @@ function campaignion_donation_element_info_alter(&$type) {
  */
 function _campaignion_donation_select_or_other_process($element, &$form_state) {
   if (empty($element['#webform_component'])) {
-   return $element;
+    return $element;
   }
   $is_donation_amount = $element['#webform_component']['form_key'] == 'donation_amount';
   $has_other_option = !empty($element['other']);
