@@ -33,7 +33,7 @@ projects[currency][version] = 2.5
 
 projects[custom_add_another][version] = 1.0-rc3
 
-projects[date][version] = 2.8
+projects[date][version] = 2.9
 
 projects[diff][version] = 3.2
 
@@ -67,7 +67,7 @@ projects[form_builder][patch][] = https://www.drupal.org/files/issues/2561261-fo
 
 projects[geoip_language_redirect][version] = 1.0-beta3
 
-projects[honeypot][version] = 1.19
+projects[honeypot][version] = 1.21
 
 projects[ife][version] = 2.0-alpha2
 
@@ -122,7 +122,7 @@ projects[metatag][version] = 1.7
 
 projects[mimemail][version] = 1.0-beta4
 
-projects[modernizr][version] = 3.4
+projects[modernizr][version] = 3.5
 
 projects[morelesszen][version] = 1.0-beta8
 
@@ -221,7 +221,7 @@ projects[webform_paymethod_select][version] = 1.5
 
 projects[webform_steps][version] = 2.0-beta1
 
-projects[webform_template][version] = 1.4
+projects[webform_template][version] = 1.5
 
 projects[webform_tracking][version] = 1.0-rc1
 
