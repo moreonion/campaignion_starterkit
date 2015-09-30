@@ -5,6 +5,7 @@ core = 7.x
 ; Generally a good idea - drupal standards.
 dependencies[] = path
 dependencies[] = pathauto
+dependencies[] = opengraph_meta
 
 ; needed by our themes (does not work without)
 dependencies[] = less
