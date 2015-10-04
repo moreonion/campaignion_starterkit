@@ -89,7 +89,7 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-rc1
+projects[little_helpers][version] = 1.0-rc2
 
 projects[login_destination][version] = 1.1
 
