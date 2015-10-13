@@ -248,9 +248,9 @@ libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0
 libraries[lessphp][download][type] = file
 libraries[lessphp][download][url] = http://leafo.net/lessphp/src/lessphp-0.4.0.tar.gz
 
-libraries[mailchimp][download][type] = git
-libraries[mailchimp][download][url] = https://bitbucket.org/mailchimp/mailchimp-api-php.git
-libraries[mailchimp][download][branch] = 2.0.4
+libraries[mailchimp-api-php][download][type] = git
+libraries[mailchimp-api-php][download][url] = https://bitbucket.org/mailchimp/mailchimp-api-php.git
+libraries[mailchimp-api-php][download][branch] = 2.0.4
 
 libraries[paymill-php][download][type] = file
 libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
