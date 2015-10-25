@@ -202,6 +202,8 @@ projects[views][version] = 3.11
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.24
+; Make webform_get_submissions() extensible.
+projects[webform][patch][] = https://www.drupal.org/files/issues/2600316-webform_get_submission-backport-5.patch
 ; Use batch API for results download. - https://drupal.org/node/1327186
 projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
@@ -220,6 +222,8 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 projects[webform_paymethod_select][version] = 1.5
 
 projects[webform_steps][version] = 2.0-beta1
+
+projects[webform_submission_uuid][version] = 1.0-rc1
 
 projects[webform_template][version] = 1.5
 
