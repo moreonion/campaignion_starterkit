@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[addressfield][version] = 1.1
+projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
@@ -43,9 +43,9 @@ projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.6
+projects[features][version] = 2.7
 
-projects[field_collection][version] = 1.0-beta8
+projects[field_collection][version] = 1.0-beta10
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
 projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18n_string-1471840-1.patch
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
@@ -75,7 +75,7 @@ projects[i18n][version] = 1.13
 
 projects[imagefield_crop][version] = 1.1
 
-projects[jquery_update][version] = 2.6
+projects[jquery_update][version] = 2.7
 
 projects[l10n_client][version] = 1.3
 
@@ -122,7 +122,7 @@ projects[metatag][version] = 1.7
 
 projects[mimemail][version] = 1.0-beta4
 
-projects[modernizr][version] = 3.5
+projects[modernizr][version] = 3.7
 
 projects[morelesszen][version] = 1.0-beta8
 
@@ -138,7 +138,7 @@ projects[page_title][version] = 2.7
 
 projects[password_toggle][version] = 1.0
 
-projects[pathauto][version] = 1.2
+projects[pathauto][version] = 1.3
 ; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
 projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
@@ -186,9 +186,7 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[uuid][version] = 1.0-alpha6
-; Don't break entities without entity support - https://www.drupal.org/node/1927474
-projects[uuid][patch][] = https://www.drupal.org/files/issues/fix-non-uuid-entity-load-1927474-13.patch
+projects[uuid][version] = 1.0-beta1
 
 ; uuid_features-1.0-alpha4+58
 projects[uuid_features][download][type] = git
