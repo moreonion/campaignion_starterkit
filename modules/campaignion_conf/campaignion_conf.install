@@ -5,7 +5,6 @@ function campaignion_conf_install() {
     return;
   }
   _campaignion_conf_install_roles();
-  _campaignion_conf_install_text_formats();
   _campaignion_conf_install_enable_editors();
   _campaignion_conf_install_permissions();
   _campaignion_conf_set_variables();
@@ -101,53 +100,4 @@ function _campaignion_conf_install_enable_editors() {
       'settings' => serialize($ck_settings),
     ))
     ->execute();
-}
-
-function _campaignion_conf_install_text_formats() {
-  $formats = array();
-
-  // Exported format: Full HTML with editor
-  $formats['full_html_with_editor'] = array(
-    'format' => 'full_html_with_editor',
-    'name' => 'Full HTML with editor',
-    'cache' => '1',
-    'status' => '1',
-    'weight' => -42,
-    'filters' => array(
-      'filter_htmlcorrector' => array(
-        'weight' => '-48',
-        'status' => '1',
-        'settings' => array(),
-      ),
-      'filter_autop' => array(
-        'weight' => '-47',
-        'status' => '1',
-        'settings' => array(),
-      ),
-      'invisimail_encode_html_entities' => array(
-        'weight' => '-45',
-        'status' => '1',
-        'settings' => array(
-          'encoder' => 'html_entities',
-          'chunk' => 0,
-          'link' => 0,
-        ),
-      ),
-      'filter_url' => array(
-        'weight' => '-44',
-        'status' => '1',
-        'settings' => array(
-          'filter_url_length' => '72',
-        ),
-      ),
-      'media_filter' => array(
-        'weight' => '-43',
-        'status' => '1',
-        'settings' => array(),
-      ),
-    ),
-  );
-  foreach ($formats as $f) {
-    filter_format_save((object) $f);
-  }
 }
