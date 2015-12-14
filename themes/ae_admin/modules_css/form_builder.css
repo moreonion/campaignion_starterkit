@@ -520,6 +520,10 @@ div.form-builder-new-field span.progress {
 #form-builder-field-palette ul li.field-email_newsletter a, #form-builder-field-palette ul li.field-newsletter a {
   background-position: 5px -923px;
 }
+#form-builder-field-palette ul li.field-comment a {
+  background-position: 5px -1662px;
+}
+
 
 #edit-submit-button-text {
   padding: 0.5em 1.2em;
