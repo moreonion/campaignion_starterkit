@@ -66,7 +66,7 @@ function campaignion_flexible_form_field_default_field_bases() {
     'global_block_settings' => 2,
     'indexes' => array(),
     'locked' => 0,
-    'module' => 'campaignion_recent_supporters',
+    'module' => 'recent_supporters',
     'settings' => array(
       'style' => NULL,
     ),

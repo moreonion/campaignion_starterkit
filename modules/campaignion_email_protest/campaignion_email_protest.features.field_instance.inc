@@ -473,7 +473,7 @@ function campaignion_email_protest_field_default_field_instances() {
     'display' => array(
       'cck_blocks' => array(
         'label' => 'hidden',
-        'module' => 'campaignion_recent_supporters',
+        'module' => 'recent_supporters',
         'settings' => array(),
         'type' => 'recent_supporters',
         'weight' => 3,
@@ -503,7 +503,7 @@ function campaignion_email_protest_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'campaignion_recent_supporters',
+      'module' => 'recent_supporters',
       'settings' => array(
         'size' => 60,
       ),

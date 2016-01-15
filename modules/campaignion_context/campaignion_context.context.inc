@@ -278,8 +278,8 @@ function campaignion_context_context_default_contexts() {
           'weight' => '-9',
           'title' => '<none>',
         ),
-        'campaignion_recent_supporters-recent_supporters' => array(
-          'module' => 'campaignion_recent_supporters',
+        'recent_supporters-recent_supporters' => array(
+          'module' => 'recent_supporters',
           'delta' => 'recent_supporters',
           'region' => 'sidebar_second',
           'weight' => '-8',
