@@ -9,7 +9,7 @@ projects[campaignion][version] = 1.0-beta23
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][version] = 1.41
+projects[clientside_validation][version] = 1.42
 
 projects[context][version] = 3.6
 ; Make block title configurable in contexts - https://drupal.org/node/795058
@@ -29,7 +29,7 @@ projects[ctools][version] = 1.9
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
-projects[currency][version] = 2.5
+projects[currency][version] = 2.6
 
 projects[custom_add_another][version] = 1.0-rc3
 
@@ -51,7 +51,7 @@ projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
-projects[field_group][version] = 1.4
+projects[field_group][version] = 1.5
 
 projects[field_type_language][version] = 1.0
 
@@ -91,7 +91,7 @@ projects[libraries][version] = 2.2
 
 projects[little_helpers][version] = 1.0-rc2
 
-projects[login_destination][version] = 1.1
+projects[login_destination][version] = 1.3
 
 projects[logintoboggan][version] = 1.5
 
@@ -118,7 +118,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.7
+projects[metatag][version] = 1.8
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -160,7 +160,7 @@ projects[pgbar][version] = 1.5
 
 projects[psr0][version] = 1.4
 
-projects[redhen][version] = 1.9
+projects[redhen][version] = 1.11
 
 projects[redirect][version] = 1.0-rc3
 
@@ -172,7 +172,7 @@ projects[select_or_other][version] = 2.22
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 
-projects[session_cache][version] = 1.3
+projects[session_cache][version] = 1.4
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
@@ -196,7 +196,7 @@ projects[uuid_features][download][revision] = 2360332099cdf36479915d4011a9bdb96a
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.11
+projects[views][version] = 3.13
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.24
@@ -211,7 +211,7 @@ projects[webform_ajax][version] = 1.1
 
 projects[webform_block][version] = 1.2
 
-projects[webform_conditional][version] = 1.0-beta2
+projects[webform_conditional][version] = 1.0
 
 projects[webform_confirm_email][version] = 1.5
 
