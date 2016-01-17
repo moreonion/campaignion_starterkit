@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.39
+projects[drupal][version] = 7.41
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
