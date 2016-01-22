@@ -13,15 +13,9 @@ function campaignion_protest_target_field_default_field_instances() {
   // Exported field_instance: 'redhen_contact-email_protest_target-field_address'
   $field_instances['redhen_contact-email_protest_target-field_address'] = array(
     'bundle' => 'email_protest_target',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'redhen_contact|email_protest_target|field_address|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'locality' => '',
-        'country' => 'AF',
-      ),
-    ),
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -47,7 +41,7 @@ function campaignion_protest_target_field_default_field_instances() {
     'entity_type' => 'redhen_contact',
     'exclude_cv' => 0,
     'field_name' => 'field_address',
-    'label' => 'Adresse',
+    'label' => 'Address',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -62,10 +56,11 @@ function campaignion_protest_target_field_default_field_instances() {
         'available_countries' => array(),
         'format_handlers' => array(
           'address' => 'address',
+          'optional-country' => 'optional-country',
           'address-hide-country' => 0,
           'organisation' => 0,
-          'name-oneline' => 0,
           'name-full' => 0,
+          'name-oneline' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
