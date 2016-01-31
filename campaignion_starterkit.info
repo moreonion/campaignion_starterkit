@@ -5,7 +5,7 @@ core = 7.x
 ; Generally a good idea - drupal standards.
 dependencies[] = path
 dependencies[] = pathauto
-dependencies[] = opengraph_meta
+dependencies[] = redirect
 
 ; needed by our themes (does not work without)
 dependencies[] = less
@@ -19,6 +19,7 @@ dependencies[] = mimemail
 ; UX enhancements
 dependencies[] = clientside_validation_webform
 dependencies[] = contextual
+dependencies[] = opengraph_meta
 dependencies[] = webform_ajax
 dependencies[] = webform_prefill
 dependencies[] = webform_steps
