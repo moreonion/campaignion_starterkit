@@ -45,7 +45,7 @@ projects[entityreference][version] = 1.1
 
 projects[features][version] = 2.7
 
-projects[field_collection][version] = 1.0-beta10
+projects[field_collection][version] = 1.0-beta11
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
 projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18n_string-1471840-1.patch
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
@@ -65,7 +65,7 @@ projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-fo
 ; form_type & form_id in all hooks
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2561261-form_builder-form_id-for-hook_form_builder_palette_groups-2.patch
 
-projects[geoip_language_redirect][version] = 1.0-beta3
+projects[geoip_language_redirect][version] = 1.0-beta5
 
 projects[honeypot][version] = 1.21
 
@@ -118,7 +118,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.8
+projects[metatag][version] = 1.13
 
 projects[mimemail][version] = 1.0-beta4
 
