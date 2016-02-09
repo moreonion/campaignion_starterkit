@@ -1,12 +1,11 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.41
+projects[drupal][version] = 7.42
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
 projects[drupal][patch][] = https://drupal.org/files/issues/core-checkbox-events.patch
-projects[drupal][patch][] = http://drupal.org/files/d7-mail-wordwrap.patch
 ; Call hook_menu_links_alter() - used in campaignion_bar - https://www.drupal.org/node/2242307
 projects[drupal][patch][] = https://drupal.org/files/issues/drupal_menu_links_alter.patch
 ; Fix taxonomy field default values - http://drupal.org/node/1140188

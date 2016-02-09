@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta23
+projects[campaignion][version] = 1.0-beta24
 
 projects[cck_blocks][version] = 1.1
 
@@ -124,13 +124,13 @@ projects[mimemail][version] = 1.0-beta4
 
 projects[modernizr][version] = 3.7
 
-projects[morelesszen][version] = 1.0-beta8
+projects[morelesszen][version] = 1.0-beta9
 
 projects[mpay24_payment][version] = 1.0-beta4
 
 projects[oowizard][version] = 1.0-alpha3
 
-projects[opengraph_meta][version] = 2.0-alpha2
+projects[opengraph_meta][version] = 2.0-alpha3
 
 projects[options_element][version] = 1.12
 
@@ -139,14 +139,12 @@ projects[page_title][version] = 2.7
 projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.3
-; Make pathauto remember which entities have manual paths. - https://www.drupal.org/node/936222
-projects[pathauto][patch][] = https://www.drupal.org/files/issues/pathauto-persist-936222-213-pathauto-state.patch
 
 projects[payment][version] = 1.15
 
 projects[payment_context][version] = 1.0-rc2
 
-projects[payment_forms][version] = 1.0-beta1
+projects[payment_forms][version] = 1.0-beta2
 
 projects[paymill_payment][version] = 1.0-beta7
 
@@ -156,9 +154,13 @@ projects[paypal_payment][patch][] = https://drupal.org/files/issues/paypal_payme
 ; Don't leave payment status on pending. - https://drupal.org/node/2142091
 projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-status-failed-when-there-is-no-payerid-5.patch
 
-projects[pgbar][version] = 1.5
+projects[pgbar][version] = 2.0-alpha1
+
+projects[polling][version] = 1.0-beta1
 
 projects[psr0][version] = 1.4
+
+projects[recent_supporters][version] = 1.0-beta2
 
 projects[redhen][version] = 1.11
 
@@ -176,7 +178,7 @@ projects[session_cache][version] = 1.4
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0-rc3
+projects[share_light][version] = 1.0
 
 projects[stripe_payment][version] = 1.0-beta7
 
@@ -217,7 +219,7 @@ projects[webform_confirm_email][version] = 1.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.5
+projects[webform_paymethod_select][version] = 1.6
 
 projects[webform_steps][version] = 2.0-beta1
 
@@ -237,7 +239,7 @@ projects[xmlsitemap][version] = 2.2
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta7
+projects[simplicity][version] = 1.0-beta8
 
 projects[tao][version] = 3.1
 
