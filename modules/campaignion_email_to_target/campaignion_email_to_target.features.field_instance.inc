@@ -108,6 +108,59 @@ function campaignion_email_to_target_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-email_to_target-field_email_to_target_message'.
+  $field_instances['node-email_to_target-field_email_to_target_message'] = array(
+    'bundle' => 'email_to_target',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'subject' => '',
+        'message' => '',
+        'footer' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_email_to_target_message',
+    'label' => 'Message',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'campaignion_email_to_target_message',
+      'settings' => array(),
+      'type' => 'email_to_target_message',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-email_to_target-field_main_image'.
   $field_instances['node-email_to_target-field_main_image'] = array(
     'bundle' => 'email_to_target',
@@ -275,7 +328,7 @@ function campaignion_email_to_target_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -456,7 +509,7 @@ function campaignion_email_to_target_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 11,
     ),
   );
 
@@ -469,6 +522,7 @@ function campaignion_email_to_target_field_default_field_instances() {
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
+  t('Message');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');
   t('Tag supporters');

@@ -93,7 +93,7 @@ function campaignion_email_to_target_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'webform_template' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'metatags' => array(
           'weight' => '7',
@@ -102,7 +102,7 @@ function campaignion_email_to_target_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '13',
         ),
         'redirect' => array(
           'weight' => '4',
@@ -111,7 +111,7 @@ function campaignion_email_to_target_strongarm() {
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '14',
         ),
       ),
       'display' => array(

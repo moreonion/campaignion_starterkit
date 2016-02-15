@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * Implements hook_field_info().
+ */
+function campaignion_email_to_target_message_field_info() {
+  $info['email_to_target_message'] = [
+    'label' => t('Email to target message'),
+    'description' => t('Allows you to configure messages for Email-To-Target actions.'),
+    'settings' => [],
+    'default_widget' => 'email_to_target_message',
+    'default_formatter' => 'email_to_target_message',
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function campaignion_email_to_target_message_field_widget_info() {
+  $info['email_to_target_message'] = [
+    'label' => t('Email to target message'),
+    'field types' => ['email_to_target_message'],
+    'settings' => [],
+    'behaviors' => [
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+      'default values' => FIELD_BEHAVIOR_DEFAULT,
+    ],
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function campaignion_email_to_target_message_field_formatter_info() {
+  $info['email_to_target_message'] = array(
+    'label' => 'Email to target message',
+    'field types' => ['email_to_target_message'],
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function campaignion_email_to_target_message_field_is_empty($item, $field) {
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function campaignion_email_to_target_message_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $item = isset($items[$delta]) ? $items[$delta] : array();
+  if (isset($instance['default_value'][$delta]) && !isset($items[$delta])) {
+    $item = $instance['default_value'][$delta];
+  }
+
+  $defaults = [
+    'subject' => '',
+    'message' => '',
+    'footer' => '',
+  ];
+  $item = drupal_array_merge_deep($defaults, $item);
+
+  $element['subject'] = [
+    '#type' => 'textfield',
+    '#title' => t('Subject line'),
+    '#default_value' => $item['subject'],
+  ];
+
+  $element['message'] = [
+    '#type' => 'textarea',
+    '#title' => t('Message body'),
+    '#default_value' => $item['message'],
+  ];
+  $element['footer'] = [
+    '#type' => 'textarea',
+    '#title' => 'Fixed part of the message',
+    '#default_value' => $item['footer'],
+  ];
+  $element['token_help'] = [
+    '#theme' => 'token_tree',
+    '#token_types' => ['webform-tokens'],
+  ];
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function campaignion_email_to_target_message_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  return [];
+}

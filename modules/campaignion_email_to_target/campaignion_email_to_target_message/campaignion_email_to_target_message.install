@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_field_schema().
+ */
+function campaignion_email_to_target_message_field_schema($field) {
+  if ($field['type'] == 'email_to_target_message') {
+    $columns['subject'] = [
+      'type' => 'varchar',
+      'length' => 256,
+    ];
+    $columns['message'] = [
+      'type' => 'text',
+    ];
+    $columns['footer'] = [
+      'type' => 'text',
+    ];
+    return ['columns' => $columns];
+  }
+}

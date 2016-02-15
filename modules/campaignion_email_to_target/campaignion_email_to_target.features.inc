@@ -22,9 +22,9 @@ function campaignion_email_to_target_ctools_plugin_api($module = NULL, $api = NU
 function campaignion_email_to_target_node_info() {
   $items = array(
     'email_to_target' => array(
-      'name' => t('Petition'),
+      'name' => t('Email to Target action'),
       'base' => 'node_content',
-      'description' => t('Petitions can be used to collect signatures for a specifc cause through a form that you can customize.'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
