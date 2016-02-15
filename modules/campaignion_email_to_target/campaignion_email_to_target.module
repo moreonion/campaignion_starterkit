@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_email_to_target feature.
+ */
+
+include_once 'campaignion_email_to_target.features.inc';
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_email_to_target_campaignion_action_info() {
+  $types['email_to_target'] = array(
+    'class' => 'Drupal\\campaignion_email_to_target\\ActionType',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+      'recent_supporters' => array(
+        'default_text' => t('!supporter_name just signed !action_title'),
+      ),
+    ),
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_email_to_target_node_form_alter().
+ */
+function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Petition');
+  }
+}
