@@ -221,6 +221,8 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.6
 
+projects[webform_prefill][version] = 1.0-alpha1
+
 projects[webform_steps][version] = 2.0-beta1
 
 projects[webform_submission_uuid][version] = 1.0-rc1
