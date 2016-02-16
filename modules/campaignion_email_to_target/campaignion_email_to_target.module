@@ -20,6 +20,9 @@ function campaignion_email_to_target_campaignion_action_info() {
       'recent_supporters' => array(
         'default_text' => t('!supporter_name just signed !action_title'),
       ),
+      'email_to_target' => [
+        'message_field' => 'field_email_to_target_message',
+      ],
     ),
   );
   return $types;

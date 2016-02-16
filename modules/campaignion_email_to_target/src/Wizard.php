@@ -11,7 +11,7 @@ use \Drupal\campaignion_wizard\NodeWizard;
  */
 class Wizard extends NodeWizard {
   public $steps = array(
-    'content' => 'ContentStep',
+    'content' => '\\Drupal\\campaignion_email_to_target\\ContentWizardStep',
     'target'  => '\\Drupal\\campaignion_email_to_target\\TargetWizardStep',
     'message'  => '\\Drupal\\campaignion_email_to_target\\MessageWizardStep',
     'form'    => 'WebformStep',

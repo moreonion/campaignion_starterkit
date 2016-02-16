@@ -16,7 +16,8 @@ class MessageWizardStep extends \Drupal\campaignion_wizard\WizardStep {
       '#options' => ['user_may_edit' => t('Users may edit the message.')],
     ];
 
-    $this->fieldForm = new EntityFieldForm('node', $this->wizard->node, ['field_email_to_target_message']);
+    $field = $this->wizard->parameters['email_to_target']['message_field'];
+    $this->fieldForm = new EntityFieldForm('node', $this->wizard->node, [$field]);
     $form += $this->fieldForm->formArray($form_state);
     return $form;
   }
