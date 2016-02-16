@@ -37,3 +37,57 @@ function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form
     $form['title']['#default_value'] = t('Petition');
   }
 }
+
+/**
+ * Stub for listing all datasets.
+ */
+function _campaignion_email_to_target_datasets() {
+  $datasets = [];
+  $ds = new stdclass();
+  $ds->fields = [
+    'first_name' => ['name' => t('First name'), 'description' => ''],
+    'last_name' => ['name' => t('Last name'), 'description' => ''],
+    'title' => ['name' => t('Title'), 'description' => ''],
+    'email' => ['name' => t('Email address'), 'description' => ''],
+  ];
+  $ds->name = t('Members of Parliament');
+  $datasets['mp'] = $ds;
+  return $datasets;
+}
+
+function campaignion_email_to_target_tokens_dataset_hint($set_ds, $reset = FALSE) {
+  if ($reset) {
+    drupal_static_reset(__FUNCTION__);
+  }
+  $ds = &drupal_static(__FUNCTION__, NULL);
+  if ($set_ds) {
+    $ds = $set_ds;
+  }
+  if (!$ds && ($node = menu_get_object())) {
+    // @TODO: Get config field-name from action-type and set value based on node config.
+    return 'mp';
+  }
+  return $ds;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function campaignion_email_to_target_token_info() {
+  $info = [];
+  if ($ds_name = campaignion_email_to_target_tokens_dataset_hint()) {
+    $dataset = _campaignion_email_to_target_datasets()[$ds_name];
+    $type = 'email-to-target';
+    $info['types'][$type] = [
+      'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->name]),
+      'descriptions' => t('Replace values based on the selected target(s).'),
+    ];
+    foreach ($dataset->fields as $field_name => $field) {
+      $info['tokens'][$type][$field_name] = [
+        'name' => $field['name'],
+        'description' => $field['description'],
+      ];
+    }
+  }
+  return $info;
+}
