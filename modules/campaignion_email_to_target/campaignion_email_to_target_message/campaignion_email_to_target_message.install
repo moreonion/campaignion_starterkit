@@ -17,4 +17,15 @@ function campaignion_email_to_target_message_field_schema($field) {
     ];
     return ['columns' => $columns];
   }
+  elseif ($field['type'] == 'email_to_target_options') {
+    $columns['users_may_edit'] = [
+      'type' => 'int',
+      'size' => 'tiny',
+    ];
+    $columns['dataset_name'] = [
+      'type' => 'varchar',
+      'length' => 64,
+    ];
+    return ['columns' => $columns];
+  }
 }

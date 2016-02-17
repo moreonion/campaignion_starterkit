@@ -2,7 +2,6 @@
 
 namespace Drupal\campaignion_email_to_target;
 
-use \Drupal\campaignion\Forms\EmbeddedNodeForm;
 use \Drupal\campaignion_wizard\ContentStep;
 
 class ContentWizardStep extends ContentStep {
@@ -12,8 +11,9 @@ class ContentWizardStep extends ContentStep {
 
   public function stepForm($form, &$form_state) {
     $form = parent::stepForm($form, $form_state);
-    $field = $this->wizard->parameters['email_to_target']['message_field'];
-    $form[$field]['#access'] = FALSE;
+    $p = $this->wizard->parameters['email_to_target'];
+    $form[$p['message_field']]['#access'] = FALSE;
+    $form[$p['options_field']]['#access'] = FALSE;
     return $form;
   }
 

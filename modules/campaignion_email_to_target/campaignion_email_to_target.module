@@ -22,6 +22,7 @@ function campaignion_email_to_target_campaignion_action_info() {
       ),
       'email_to_target' => [
         'message_field' => 'field_email_to_target_message',
+        'options_field' => 'field_email_to_target_options',
       ],
     ),
   );
@@ -55,7 +56,7 @@ function _campaignion_email_to_target_datasets() {
   return $datasets;
 }
 
-function campaignion_email_to_target_tokens_dataset_hint($set_ds, $reset = FALSE) {
+function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset = FALSE) {
   if ($reset) {
     drupal_static_reset(__FUNCTION__);
   }
@@ -80,7 +81,7 @@ function campaignion_email_to_target_token_info() {
     $type = 'email-to-target';
     $info['types'][$type] = [
       'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->name]),
-      'descriptions' => t('Replace values based on the selected target(s).'),
+      'description' => t('Replace values based on the selected target(s).'),
     ];
     foreach ($dataset->fields as $field_name => $field) {
       $info['tokens'][$type][$field_name] = [

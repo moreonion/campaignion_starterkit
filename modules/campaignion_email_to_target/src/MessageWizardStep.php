@@ -10,12 +10,6 @@ class MessageWizardStep extends \Drupal\campaignion_wizard\WizardStep {
 
   public function stepForm($form, &$form_state) {
     $form = parent::stepForm($form, $form_state);
-
-    $form['options'] = [
-      '#type' => 'checkboxes',
-      '#options' => ['user_may_edit' => t('Users may edit the message.')],
-    ];
-
     $field = $this->wizard->parameters['email_to_target']['message_field'];
     $this->fieldForm = new EntityFieldForm('node', $this->wizard->node, [$field]);
     $form += $this->fieldForm->formArray($form_state);
