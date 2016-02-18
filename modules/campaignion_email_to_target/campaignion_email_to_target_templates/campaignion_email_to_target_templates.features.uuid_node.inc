@@ -11,21 +11,19 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'uid' => 0,
   'title' => 'Email to target action',
   'log' => '',
   'status' => 0,
   'comment' => 1,
   'promote' => 0,
   'sticky' => 0,
-  'vuuid' => 'f629c9b4-bccd-4806-ac57-b424275e81fa',
   'type' => 'email_to_target',
   'language' => 'en',
   'created' => 1343052466,
-  'tnid' => 'f5645542-33eb-445e-8e6b-8300cf385069',
+  'tnid' => 9,
   'translate' => 0,
   'uuid' => 'f5645542-33eb-445e-8e6b-8300cf385069',
-  'revision_uid' => 0,
+  'body' => array(),
   'action_template' => array(
     'und' => array(
       0 => array(
@@ -33,8 +31,23 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'body' => array(),
-  'field_intro' => array(),
+  'field_email_to_target_message' => array(
+    'und' => array(
+      0 => array(
+        'subject' => '',
+        'message' => '',
+        'footer' => '',
+      ),
+    ),
+  ),
+  'field_email_to_target_options' => array(
+    'und' => array(
+      0 => array(
+        'users_may_edit' => 1,
+        'dataset_name' => 'mp',
+      ),
+    ),
+  ),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
@@ -67,17 +80,34 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
     'und' => array(
       0 => array(
         'options' => array(
+          'name_display' => 0,
           'visible_count' => 6,
           'cycle_toggle' => 0,
           'country_toggle' => 1,
+          'comment_toggle' => 0,
         ),
         'toggle' => 0,
       ),
     ),
   ),
   'supporter_tags' => array(),
+  'metatags' => array(
+    'en' => array(
+      'article:published_time' => array(),
+      'article:modified_time' => array(),
+      'og:icle:published_time' => array(
+        'value' => '[node:created:custom:c]',
+      ),
+      'og:icle:modified_time' => array(
+        'value' => '[node:changed:custom:c]',
+      ),
+    ),
+  ),
+  'path' => array(
+    'pathauto' => 1,
+  ),
   'webform' => array(
-    'nid' => 2,
+    'nid' => 9,
     'confirmation' => '',
     'confirmation_format' => NULL,
     'redirect_url' => '<confirmation>',
@@ -87,19 +117,33 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
-    'submit_text' => 'Take action now!',
+    'submit_text' => 'Submit message!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
-    'emails' => array(),
+    'emails' => array(
+      4 => array(
+        'nid' => 9,
+        'eid' => 4,
+        'email' => 'default',
+        'subject' => 'default',
+        'from_name' => 'default',
+        'from_address' => 3,
+        'template' => 'default',
+        'excluded_components' => array(),
+        'html' => 0,
+        'attachments' => 0,
+      ),
+    ),
     'components' => array(
       1 => array(
-        'nid' => 2,
+        'nid' => 9,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -126,7 +170,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'page_num' => 1,
       ),
       2 => array(
-        'nid' => 2,
+        'nid' => 9,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -153,7 +197,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'page_num' => 1,
       ),
       3 => array(
-        'nid' => 2,
+        'nid' => 9,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -176,400 +220,114 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'weight' => 2,
         'page_num' => 1,
       ),
-      4 => array(
-        'nid' => 4,
-        'cid' => 4,
+      9 => array(
+        'nid' => 9,
+        'cid' => 9,
         'pid' => 0,
-        'form_key' => 'phone_number',
-        'name' => 'Phone number',
-        'type' => 'textfield',
-        'value' => '%get[p11]',
+        'form_key' => 'new_1455806000495',
+        'name' => 'Your postcode',
+        'type' => 'uk_postcode',
+        'value' => '',
         'extra' => array(
           'width' => '',
-          'maxlength' => '',
-          'field_prefix' => '',
-          'field_suffix' => '',
+          'unique' => 0,
           'disabled' => 0,
-          'unique' => FALSE,
-          'title_display' => 'before',
+          'title_display' => 0,
           'description' => '',
           'attributes' => array(),
-          'private' => 0,
-          'line_items' => NULL,
+          'private' => FALSE,
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
+          'field_prefix' => '',
+          'field_suffix' => '',
         ),
         'mandatory' => 0,
         'weight' => 3,
         'page_num' => 1,
       ),
-      5 => array(
-        'nid' => 4,
-        'cid' => 5,
+      10 => array(
+        'nid' => 9,
+        'cid' => 10,
         'pid' => 0,
-        'form_key' => 'street_address',
-        'name' => 'Street address',
-        'type' => 'textfield',
-        'value' => '%get[p7]',
+        'form_key' => 'new_1455806031728',
+        'name' => 'Page break',
+        'type' => 'pagebreak',
+        'value' => '',
         'extra' => array(
-          'width' => '',
-          'maxlength' => '',
-          'field_prefix' => '',
-          'field_suffix' => '',
-          'disabled' => 0,
-          'unique' => FALSE,
-          'title_display' => 'before',
-          'description' => '',
-          'attributes' => array(),
-          'private' => 0,
-          'line_items' => NULL,
+          'private' => FALSE,
+          'next_page_label' => '',
+          'prev_page_label' => '',
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
         ),
         'mandatory' => 0,
         'weight' => 4,
-        'page_num' => 1,
+        'page_num' => 2,
       ),
-      6 => array(
-        'nid' => 4,
-        'cid' => 6,
+      12 => array(
+        'nid' => 9,
+        'cid' => 12,
         'pid' => 0,
-        'form_key' => 'zip_code',
-        'name' => 'ZIP code',
+        'form_key' => 'subject',
+        'name' => 'Subject',
         'type' => 'textfield',
-        'value' => '%get[p8]',
+        'value' => '',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
           'field_prefix' => '',
           'field_suffix' => '',
           'disabled' => 0,
-          'unique' => FALSE,
+          'unique' => 0,
           'title_display' => 'before',
           'description' => '',
           'attributes' => array(),
           'private' => 0,
-          'line_items' => NULL,
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
         ),
         'mandatory' => 0,
         'weight' => 5,
-        'page_num' => 1,
+        'page_num' => 2,
       ),
-      8 => array(
-        'nid' => 4,
-        'cid' => 8,
+      11 => array(
+        'nid' => 9,
+        'cid' => 11,
         'pid' => 0,
-        'form_key' => 'city',
-        'name' => 'City',
-        'type' => 'textfield',
-        'value' => '%get[p10]',
+        'form_key' => 'message',
+        'name' => 'Message',
+        'type' => 'textarea',
+        'value' => '',
         'extra' => array(
-          'width' => '',
-          'maxlength' => '',
-          'field_prefix' => '',
-          'field_suffix' => '',
+          'cols' => 60,
+          'rows' => 5,
+          'title_display' => 0,
+          'resizable' => 1,
           'disabled' => 0,
-          'unique' => FALSE,
-          'title_display' => 'before',
           'description' => '',
           'attributes' => array(),
           'private' => 0,
-          'line_items' => NULL,
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
         ),
         'mandatory' => 0,
         'weight' => 6,
-        'page_num' => 1,
-      ),
-      7 => array(
-        'nid' => 4,
-        'cid' => 7,
-        'pid' => 0,
-        'form_key' => 'country',
-        'name' => 'Country',
-        'type' => 'select',
-        'value' => '%get[p9]',
-        'extra' => array(
-          'items' => 'AF|Afghanistan
-AX|Aland Islands
-AL|Albania
-DZ|Algeria
-AS|American Samoa
-AD|Andorra
-AO|Angola
-AI|Anguilla
-AQ|Antarctica
-AG|Antigua and Barbuda
-AR|Argentina
-AM|Armenia
-AW|Aruba
-AU|Australia
-AT|Austria
-AZ|Azerbaijan
-BS|Bahamas
-BH|Bahrain
-BD|Bangladesh
-BB|Barbados
-BY|Belarus
-BE|Belgium
-BZ|Belize
-BJ|Benin
-BM|Bermuda
-BT|Bhutan
-BO|Bolivia
-BA|Bosnia and Herzegovina
-BW|Botswana
-BV|Bouvet Island
-BR|Brazil
-IO|British Indian Ocean Territory
-VG|British Virgin Islands
-BN|Brunei
-BG|Bulgaria
-BF|Burkina Faso
-BI|Burundi
-KH|Cambodia
-CM|Cameroon
-CA|Canada
-CV|Cape Verde
-KY|Cayman Islands
-CF|Central African Republic
-TD|Chad
-CL|Chile
-CN|China
-CX|Christmas Island
-CC|Cocos (Keeling) Islands
-CO|Colombia
-KM|Comoros
-CG|Congo (Brazzaville)
-CD|Congo (Kinshasa)
-CK|Cook Islands
-CR|Costa Rica
-HR|Croatia
-CU|Cuba
-CW|Curaçao
-CY|Cyprus
-CZ|Czech Republic
-DK|Denmark
-DJ|Djibouti
-DM|Dominica
-DO|Dominican Republic
-EC|Ecuador
-EG|Egypt
-SV|El Salvador
-GQ|Equatorial Guinea
-ER|Eritrea
-EE|Estonia
-ET|Ethiopia
-FK|Falkland Islands
-FO|Faroe Islands
-FJ|Fiji
-FI|Finland
-FR|France
-GF|French Guiana
-PF|French Polynesia
-TF|French Southern Territories
-GA|Gabon
-GM|Gambia
-GE|Georgia
-DE|Germany
-GH|Ghana
-GI|Gibraltar
-GR|Greece
-GL|Greenland
-GD|Grenada
-GP|Guadeloupe
-GU|Guam
-GT|Guatemala
-GG|Guernsey
-GN|Guinea
-GW|Guinea-Bissau
-GY|Guyana
-HT|Haiti
-HM|Heard Island and McDonald Islands
-HN|Honduras
-HK|Hong Kong S.A.R., China
-HU|Hungary
-IS|Iceland
-IN|India
-ID|Indonesia
-IR|Iran
-IQ|Iraq
-IE|Ireland
-IM|Isle of Man
-IL|Israel
-IT|Italy
-CI|Ivory Coast
-JM|Jamaica
-JP|Japan
-JE|Jersey
-JO|Jordan
-KZ|Kazakhstan
-KE|Kenya
-KI|Kiribati
-KW|Kuwait
-KG|Kyrgyzstan
-LA|Laos
-LV|Latvia
-LB|Lebanon
-LS|Lesotho
-LR|Liberia
-LY|Libya
-LI|Liechtenstein
-LT|Lithuania
-LU|Luxembourg
-MO|Macao S.A.R., China
-MK|Macedonia
-MG|Madagascar
-MW|Malawi
-MY|Malaysia
-MV|Maldives
-ML|Mali
-MT|Malta
-MH|Marshall Islands
-MQ|Martinique
-MR|Mauritania
-MU|Mauritius
-YT|Mayotte
-MX|Mexico
-FM|Micronesia
-MD|Moldova
-MC|Monaco
-MN|Mongolia
-ME|Montenegro
-MS|Montserrat
-MA|Morocco
-MZ|Mozambique
-MM|Myanmar
-NA|Namibia
-NR|Nauru
-NP|Nepal
-NL|Netherlands
-AN|Netherlands Antilles
-NC|New Caledonia
-NZ|New Zealand
-NI|Nicaragua
-NE|Niger
-NG|Nigeria
-NU|Niue
-NF|Norfolk Island
-MP|Northern Mariana Islands
-KP|North Korea
-NO|Norway
-OM|Oman
-PK|Pakistan
-PW|Palau
-PS|Palestinian Territory
-PA|Panama
-PG|Papua New Guinea
-PY|Paraguay
-PE|Peru
-PH|Philippines
-PN|Pitcairn
-PL|Poland
-PT|Portugal
-PR|Puerto Rico
-QA|Qatar
-RE|Reunion
-RO|Romania
-RU|Russia
-RW|Rwanda
-BL|Saint Barthélemy
-SH|Saint Helena
-KN|Saint Kitts and Nevis
-LC|Saint Lucia
-MF|Saint Martin (French part)
-PM|Saint Pierre and Miquelon
-VC|Saint Vincent and the Grenadines
-WS|Samoa
-SM|San Marino
-ST|Sao Tome and Principe
-SA|Saudi Arabia
-SN|Senegal
-RS|Serbia
-SC|Seychelles
-SL|Sierra Leone
-SG|Singapore
-SK|Slovakia
-SI|Slovenia
-SB|Solomon Islands
-SO|Somalia
-ZA|South Africa
-GS|South Georgia and the South Sandwich Islands
-KR|South Korea
-ES|Spain
-LK|Sri Lanka
-SD|Sudan
-SR|Suriname
-SJ|Svalbard and Jan Mayen
-SZ|Swaziland
-SE|Sweden
-CH|Switzerland
-SY|Syria
-TW|Taiwan
-TJ|Tajikistan
-TZ|Tanzania
-TH|Thailand
-TL|Timor-Leste
-TG|Togo
-TK|Tokelau
-TO|Tonga
-TT|Trinidad and Tobago
-TN|Tunisia
-TR|Turkey
-TM|Turkmenistan
-TC|Turks and Caicos Islands
-TV|Tuvalu
-VI|U.S. Virgin Islands
-UG|Uganda
-UA|Ukraine
-AE|United Arab Emirates
-GB|United Kingdom
-US|United States
-UM|United States Minor Outlying Islands
-UY|Uruguay
-UZ|Uzbekistan
-VU|Vanuatu
-VA|Vatican
-VE|Venezuela
-VN|Vietnam
-WF|Wallis and Futuna
-EH|Western Sahara
-YE|Yemen
-ZM|Zambia
-ZW|Zimbabwe
-',
-          'multiple' => FALSE,
-          'aslist' => TRUE,
-          'optrand' => 0,
-          'other_option' => FALSE,
-          'other_text' => 'Other...',
-          'title_display' => 'before',
-          'description' => '',
-          'custom_keys' => FALSE,
-          'options_source' => '',
-          'private' => 0,
-          'line_items' => NULL,
-          'conditional_component' => '',
-          'conditional_operator' => '=',
-          'conditional_values' => '',
-        ),
-        'mandatory' => 0,
-        'weight' => 7,
-        'page_num' => 1,
+        'page_num' => 2,
       ),
     ),
+    'progressbar_page_number' => 0,
+    'progressbar_percent' => 0,
+    'progressbar_bar' => 0,
+    'progressbar_pagebreak_labels' => 0,
+    'progressbar_label_first' => NULL,
   ),
-  'name' => '',
-  'picture' => 0,
-  'data' => NULL,
+  'pathauto_perform_alias' => FALSE,
   'date' => '2012-07-23 14:07:46 +0000',
+  'user_uuid' => '73bc320b-0afa-4502-a7d6-7075ab379d1f',
 );
   return $nodes;
 }
