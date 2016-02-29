@@ -6,6 +6,13 @@
 
 include_once 'campaignion_email_to_target.features.inc';
 
+use \Drupal\little_helpers\Webform\Submission;
+use \Drupal\little_helpers\Webform\Webform;
+
+use \Drupal\campaignion_activity\ActivityInterface;
+use \Drupal\campaignion_activity\WebformSubmission;
+use \Drupal\campaignion_email_to_target\Component;
+
 /**
  * Implements hook_campaignion_action_info().
  */
@@ -52,7 +59,18 @@ function _campaignion_email_to_target_datasets() {
     'email' => ['name' => t('Email address'), 'description' => ''],
   ];
   $ds->name = t('Members of Parliament');
+  $ds->email_to = '[email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>';
   $datasets['mp'] = $ds;
+  $ds = new stdclass();
+  $ds->fields = [
+    'first_name' => ['name' => t('First name'), 'description' => ''],
+    'last_name' => ['name' => t('Last name'), 'description' => ''],
+    'title' => ['name' => t('Title'), 'description' => ''],
+    'email' => ['name' => t('Email address'), 'description' => ''],
+  ];
+  $ds->email_to = '[email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>';
+  $ds->name = t('Members of European Parliament');
+  $datasets['emp'] = $ds;
   return $datasets;
 }
 
@@ -94,6 +112,28 @@ function campaignion_email_to_target_token_info() {
 }
 
 /**
+ * Implements hook_tokens().
+ */
+function campaignion_email_to_target_tokens($type, array $tokens, array $data = array(), array $options = array()) {
+  if ($type != 'email-to-target' || empty($data['email-to-target'])) {
+    return;
+  }
+
+  $target = $data['email-to-target'];
+
+  $replacements = [];
+  foreach ($tokens as $name => $original) {
+    if (isset($target[$name])) {
+      $replacements[$original] = $target[$name];
+    }
+    else {
+      watchdog('campaignion_email_to_target', 'No data for token "%original" in dataset.', ['%original' => $original], WATCHDOG_ERROR);
+    }
+  }
+  return $replacements;
+}
+
+/**
  * Implements hook_libraries_info().
  */
 function campaignion_email_to_target_libraries_info() {
@@ -127,4 +167,150 @@ function campaignion_email_to_target_libraries_info() {
     },
   ];
   return $libraries;
+}
+
+/**
+ * Implements hook_webform_component_info().
+ */
+function campaignion_email_to_target_webform_component_info() {
+  // Component types may only have 16 chars. So we can't use our namespace.
+  $component_info['e2t_selector'] = [
+    'label' => t('Target selector & Message editor'),
+    'description' => t('Allows users to select the target of an email to target action and allows them to edit the messages.'),
+    'file' => 'webform.php',
+    'features' => [
+    ],
+  ];
+  return $component_info;
+}
+
+/**
+ * Implements hook_form_webform_client_form_alter().
+ */
+function campaignion_email_to_target_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
+  $webform = new Webform($form['#node']);
+  $components = $webform->componentsByType('e2t_selector');
+  if (!$components) {
+    return;
+  }
+
+  // Initialize all component objects in the $form_state if needed.
+  $pfx = 'campaignion_email_to_target';
+  if (!isset($form_state[$pfx])) {
+    for ($i = 1; $i <= $form_state['webform']['page_count']; $i++) {
+      $form_state[$pfx]['pages'][$i] = [];
+    }
+    foreach ($components as $cid => $component) {
+      $page_num = $component['page_num'];
+      $form_state[$pfx]['components'][$cid] = new Component($component);
+      $form_state[$pfx]['pages'][$page_num][] = $cid;
+    }
+  }
+
+  // Render all components for the current page.
+  $page_num = $form_state['webform']['page_num'];
+  foreach ($form_state[$pfx]['pages'][$page_num] as $cid) {
+    $componentObj = $form_state[$pfx]['components'][$cid];
+    $parents = $componentObj->parents($webform);
+    $element = &drupal_array_get_nested_value($form['submitted'], $parents);
+    $componentObj->render($element, $form, $form_state);
+  }
+}
+
+/**
+ * Implements hook_campaignion_activity_save().
+ *
+ * Send emails for newly confirmed webform submissions.
+ */
+function campaignion_email_to_target_campaignion_activity_save(ActivityInterface $activity, ActivityInterface $original = NULL) {
+  if (!($activity instanceof WebformSubmission)) {
+    return;
+  }
+
+  if (!empty($activity->confirmed) && (empty($original) || empty($original->confirmed))) {
+    $submission = $activity->submission();
+    $components = $submission->webform->componentsByType('e2t_selector');
+    foreach ($components as $cid => $component) {
+      $component_o = new Component($component);
+      $component_o->sendEmails($submission->valuesByCid($cid), $submission);
+    }
+  }
+}
+
+/**
+ * Element validate handler for campaignion_email_to_target_selector components.
+ */
+function campaignion_email_to_target_selector_validate(array $element, array &$form_state) {
+  $pfx = 'campaignion_email_to_target';
+  $component = $form_state[$pfx]['components'][$element['#cid']];
+  $component->validate($element, $form_state);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function campaignion_email_to_target_theme() {
+  $options = array(
+    'render element' => 'element',
+    'file' => 'theme.php',
+  );
+  $hooks['campaignion_email_to_target_selector_component'] = $options;
+  $hooks['campaignion_email_to_target_selector_placeholder'] = $options;
+  $hooks['campaignion_email_to_target_mail'] = [
+    'variables' => [
+      'message' => NULL,
+      'submission' => NULL,
+    ],
+    'template' => 'campaignion-email-to-target-mail',
+  ];
+  return $hooks;
+}
+
+/**
+ * Implements hook_form_builder_palette_groups().
+ */
+function campaignion_email_to_target_form_builder_palette_groups($form_type, $form_id) {
+  if ($form_type != 'webform' || !($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  $palette = array();
+  $palette['email_to_target'] = array(
+    'weight' => -18,
+    'title'  => t('Email To Target'),
+  );
+  return $palette;
+}
+
+
+/**
+ * Implements hook_form_builder_element_types().
+ */
+function campaignion_email_to_target_form_builder_element_types($form_type, $form_id) {
+  if ($form_type != 'webform' || !($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  module_load_include('components.inc', 'form_builder_webform');
+  $types['e2t_selector'] = [
+    'palette_group' => 'email_to_target',
+    'title' => t('Target selector & message editor'),
+    // Properties that may be edited on this field type.
+    'properties' => [
+      'title',
+      'description',
+      'field_prefix',
+      'field_suffix',
+      'required',
+    ],
+    'default' => _form_builder_webform_default('e2t_selector'),
+  ];
+  return $types;
+}
+
+/**
+ * Implements hook_mail().
+ */
+function campaignion_email_to_target_mail($key, &$message, $params) {
+  $message['headers'] = array_merge($message['headers'], $params['headers']);
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['message'];
 }
