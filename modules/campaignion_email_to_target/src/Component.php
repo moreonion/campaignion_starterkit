@@ -44,7 +44,7 @@ class Component {
     $submission_o = $webform->formStateToSubmission($form_state);
 
     $api = Client::fromConfig();
-    $postcode = 'E26AD'; // TODO: Read this from submission data.
+    $postcode = str_replace(' ', '', $submission_o->valueByKey('postcode'));
     $targets = $api->getTargets($options['dataset_name'], $postcode);
 
     unset($element['#theme']);
