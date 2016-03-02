@@ -40,11 +40,12 @@ class Component {
     $node = node_load($this->component['nid']);
     $webform = new Webform($node);
     $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
+    $options = $action->getOptions();
     $submission_o = $webform->formStateToSubmission($form_state);
 
     $api = Client::fromConfig();
     $postcode = 'E26AD'; // TODO: Read this from submission data.
-    $targets = $api->getTargets($action->getOptions()['dataset_name'], $postcode);
+    $targets = $api->getTargets($options['dataset_name'], $postcode);
 
     unset($element['#theme']);
     $element = [
@@ -82,12 +83,14 @@ class Component {
         '#title' => t('Subject'),
         '#default_value' => $message->subject,
         '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
+        '#disabled' => empty($options['users_may_edit']),
       ];
       $t['message'] = [
         '#type' => 'textarea',
         '#title' => t('Message'),
         '#default_value' => $message->message,
         '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
+        '#disabled' => empty($options['users_may_edit']),
       ];
       $element[$target['id']] = $t;
     }
