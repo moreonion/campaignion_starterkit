@@ -26,7 +26,7 @@ class Message {
     ]);
   }
 
-  public function replaceTokens($target, $submission) {
+  public function replaceTokens($target = NULL, $submission = NULL) {
     $data['email-to-target'] = $target;
     $data['webform-submission'] = $submission;
     foreach ($this->tokenEnabledFields as $f) {

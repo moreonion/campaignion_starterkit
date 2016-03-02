@@ -101,7 +101,7 @@ class Component {
     foreach ($original_values as $id => $edited_message) {
       if (!empty($edited_message['send'])) {
         $e = &$element[$id];
-        $values[] = serialize(['target' => $e['#target']] + $edited_message + $e['#message']);
+        $values[] = serialize($edited_message + $e['#message']);
       }
     }
     if (empty($values)) {
@@ -118,7 +118,7 @@ class Component {
     foreach ($data as $serialized) {
       $m = unserialize($serialized);
       $message = new Message($m);
-      $message->replaceTokens($m['target'], $submission->unwrap());
+      $message->replaceTokens(NULL, $submission->unwrap());
       unset($m);
 
       // Set the HTML property based on availablity of MIME Mail.
@@ -154,7 +154,7 @@ class Component {
       );
 
       // Mail the submission.
-      $m = drupal_mail('campaignion_email_to_target', 'target', $message->to, $language, $mail_params, $email['from']);
+      $m = drupal_mail('campaignion_email_to_target', 'email_to_target', $message->to, $language, $mail_params, $email['from']);
       if ($m['result']) {
         $send_count += 1;
       }
