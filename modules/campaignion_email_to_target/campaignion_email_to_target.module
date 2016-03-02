@@ -9,6 +9,7 @@ include_once 'campaignion_email_to_target.features.inc';
 use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
 
+use \Drupal\campaignion_action\TypeBase;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
@@ -55,9 +56,10 @@ function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset 
   if ($set_ds) {
     $ds = $set_ds;
   }
-  if (!$ds && ($node = menu_get_object())) {
-    // @TODO: Get config field-name from action-type and set value based on node config.
-    return 'mp';
+  if (!$ds && ($node = menu_get_object()) && ($node->type == 'email_to_target')) {
+    $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
+    $options = $action->getOptions() + ['dataset_name' => 'mp'];
+    $ds = $options['dataset_name'];
   }
   return $ds;
 }
