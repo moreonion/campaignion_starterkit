@@ -8,4 +8,10 @@ class Action extends \Drupal\campaignion_action\ActionBase {
     $items = field_get_items('node', $this->node, $field);
     return Message::fromFieldItem($items[0]);
   }
+
+  public function getOptions() {
+    $field = $this->type->parameters['email_to_target']['options_field'];
+    $items = field_get_items('node', $this->node, $field);
+    return $items[0];
+  }
 }

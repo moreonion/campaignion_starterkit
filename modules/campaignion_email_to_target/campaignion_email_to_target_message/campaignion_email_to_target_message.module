@@ -1,5 +1,7 @@
 <?php
 
+use \Drupal\campaignion_email_to_target\Api\Client;
+
 /**
  * Implements hook_field_info().
  */
@@ -88,9 +90,10 @@ function _campaignion_email_to_target_message_options_field_widget_form($item) {
   ];
   $item = drupal_array_merge_deep($defaults, $item);
 
+  $api = Client::fromConfig();
   $options = [];
-  foreach (_campaignion_email_to_target_datasets() as $key => $ds) {
-    $options[$key] = $ds->name;
+  foreach ($api->getDatasetList() as $ds) {
+    $options[$ds->key] = $ds->title;
   }
   $element['dataset_name'] = [
     '#type' => 'select',

@@ -7,6 +7,8 @@ use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
 use \Drupal\campaignion_action\TypeBase;
 
+use \Drupal\campaignion_email_to_target\Api\Client;
+
 class Component {
   protected $component;
   protected $payment = NULL;
@@ -35,20 +37,14 @@ class Component {
    */
   public function render(&$element, &$form, &$form_state) {
     // Get list of targets for this node.
-    $targets = [
-      [
-        'id' => 42,
-        'title' => 'MsMr',
-        'first_name' => 'Meetsi',
-        'last_name' => 'Foo',
-        'email' => 'email@example.com',
-      ],
-    ];
-
     $node = node_load($this->component['nid']);
     $webform = new Webform($node);
     $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
     $submission_o = $webform->formStateToSubmission($form_state);
+
+    $api = Client::fromConfig();
+    $postcode = 'E26AD'; // TODO: Read this from submission data.
+    $targets = $api->getTargets($action->getOptions()['dataset_name'], $postcode);
 
     unset($element['#theme']);
     $element = [

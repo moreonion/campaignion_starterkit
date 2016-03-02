@@ -12,6 +12,7 @@ use \Drupal\little_helpers\Webform\Webform;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
+use \Drupal\campaignion_email_to_target\Api\Client;
 
 /**
  * Implements hook_campaignion_action_info().
@@ -46,34 +47,6 @@ function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form
   }
 }
 
-/**
- * Stub for listing all datasets.
- */
-function _campaignion_email_to_target_datasets() {
-  $datasets = [];
-  $ds = new stdclass();
-  $ds->fields = [
-    'first_name' => ['name' => t('First name'), 'description' => ''],
-    'last_name' => ['name' => t('Last name'), 'description' => ''],
-    'title' => ['name' => t('Title'), 'description' => ''],
-    'email' => ['name' => t('Email address'), 'description' => ''],
-  ];
-  $ds->name = t('Members of Parliament');
-  $ds->email_to = '[email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>';
-  $datasets['mp'] = $ds;
-  $ds = new stdclass();
-  $ds->fields = [
-    'first_name' => ['name' => t('First name'), 'description' => ''],
-    'last_name' => ['name' => t('Last name'), 'description' => ''],
-    'title' => ['name' => t('Title'), 'description' => ''],
-    'email' => ['name' => t('Email address'), 'description' => ''],
-  ];
-  $ds->email_to = '[email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>';
-  $ds->name = t('Members of European Parliament');
-  $datasets['emp'] = $ds;
-  return $datasets;
-}
-
 function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset = FALSE) {
   if ($reset) {
     drupal_static_reset(__FUNCTION__);
@@ -95,16 +68,17 @@ function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset 
 function campaignion_email_to_target_token_info() {
   $info = [];
   if ($ds_name = campaignion_email_to_target_tokens_dataset_hint()) {
-    $dataset = _campaignion_email_to_target_datasets()[$ds_name];
+    $api = Client::fromConfig();
+    $dataset = $api->getDataset($ds_name);
     $type = 'email-to-target';
     $info['types'][$type] = [
-      'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->name]),
+      'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->title]),
       'description' => t('Replace values based on the selected target(s).'),
     ];
-    foreach ($dataset->fields as $field_name => $field) {
-      $info['tokens'][$type][$field_name] = [
-        'name' => $field['name'],
-        'description' => $field['description'],
+    foreach ($dataset->attributes as $attribute) {
+      $info['tokens'][$type][$attribute->key] = [
+        'name' => $attribute->title,
+        'description' => $attribute->description,
       ];
     }
   }
