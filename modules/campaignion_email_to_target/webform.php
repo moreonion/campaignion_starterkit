@@ -89,3 +89,12 @@ function _webform_csv_data_e2t_selector($component, $export_options, $value) {
   dpm('Not implemented yet');
   return empty($value[0]) ? '' : $value[0];
 }
+
+/**
+ * Implements _webform_form_builder_map_<webform-component>().
+ */
+function _webform_form_builder_map_e2t_selector() {
+  return [
+    'form_builder_type' => 'e2t_selector',
+  ];
+}

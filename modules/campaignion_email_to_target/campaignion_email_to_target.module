@@ -274,6 +274,7 @@ function campaignion_email_to_target_form_builder_element_types($form_type, $for
       'field_prefix',
       'field_suffix',
       'required',
+      'key',
     ],
     'default' => _form_builder_webform_default('e2t_selector'),
   ];
