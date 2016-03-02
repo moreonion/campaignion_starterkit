@@ -136,6 +136,7 @@ function _campaignion_email_to_target_message_message_field_widget_form($item) {
   $element['token_help'] = [
     '#theme' => 'token_tree',
     '#token_types' => ['webform-tokens', 'email-to-target'],
+    '#global_types' => FALSE,
   ];
   return $element;
 }

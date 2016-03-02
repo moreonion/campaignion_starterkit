@@ -55,10 +55,16 @@ class Client {
   }
 
   public function getDatasetList() {
+    if ($c = cache_get('campaignion_email_to_target_dataset_list')) {
+      return $c->data;
+    }
+    $datasets = [];
     $dataset_list = $this->get('');
     foreach ($dataset_list as $dataset) {
-      yield Dataset::fromArray($dataset);
+      $datasets[] = Dataset::fromArray($dataset);
     }
+    cache_set('campaignion_email_to_target_dataset_list', $datasets, 'cache');
+    return $datasets;
   }
 
   public function getDataset($key) {
@@ -71,6 +77,7 @@ class Client {
   }
 
   public function getTargets($dataset_key, $postcode) {
+    $postcode = urlencode($postcode);
     return $this->get("$dataset_key/postcode/$postcode");
   }
 }
