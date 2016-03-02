@@ -47,7 +47,7 @@ class Component {
     $postcode = str_replace(' ', '', $submission_o->valueByKey('postcode'));
     $targets = $api->getTargets($options['dataset_name'], $postcode);
 
-    unset($element['#theme']);
+
     $element = [
       '#type' => 'fieldset',
       '#theme' => 'campaignion_email_to_target_selector_component',
@@ -56,7 +56,6 @@ class Component {
       '#title' => $this->component['name'],
       '#description' => $this->component['extra']['description'],
       '#tree' => TRUE,
-      '#id' => drupal_html_id('email-to-target-selector-wrapper'),
       '#element_validate' => array('campaignion_email_to_target_selector_validate'),
       '#cid' => $this->component['cid'],
     ];
@@ -93,6 +92,17 @@ class Component {
         '#disabled' => empty($options['users_may_edit']),
       ];
       $element[$target['id']] = $t;
+    }
+
+    if (empty($targets)) {
+      watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
+        '@dataset' => $options['dataset_name'],
+        '@postcode' => $postcode,
+      ], WATCHDOG_WARNING);
+      $element['no_target'] = [
+        '#markup' => t("There don't seem to be any targets for your selection. Site administrators have been notified."),
+      ];
+      $element['#attributes']['class'][] = 'email-to-target-no-targets';
     }
   }
 

@@ -8,12 +8,12 @@
  *
  * @ingroup themeable
  */
-function theme_campaigion_email_to_target_selector_component(&$variables) {
+function theme_campaignion_email_to_target_selector_component(&$variables) {
   $element = &$variables['element'];
   $children = element_children($element, TRUE);
   $output = '';
   foreach ($children as $key) {
-    $output .= drupal_render($elements[$key]);
+    $output .= drupal_render($element[$key]);
   }
   return $output;
 }
