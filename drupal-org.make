@@ -37,8 +37,6 @@ projects[date][version] = 2.9
 
 projects[diff][version] = 3.2
 
-projects[elysia_cron][version] = 2.1
-
 projects[entity][version] = 1.6
 
 projects[entityreference][version] = 1.1
@@ -187,6 +185,8 @@ projects[strongarm][version] = 2.0
 projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
+
+projects[ultimate_cron][version] = 2.0-rc1
 
 projects[uuid][version] = 1.0-beta1
 
