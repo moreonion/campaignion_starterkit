@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\campaignion_email_to_target;
+namespace Drupal\campaignion_email_to_target\Wizard;
 
-use \Drupal\campaignion_wizard\ContentStep;
+use \Drupal\campaignion_wizard\ContentStep as _ContentStep;
 
-class ContentWizardStep extends ContentStep {
+class ContentStep extends _ContentStep {
   protected $step = 'content';
   protected $title = 'Content';
   protected $nodeForm;

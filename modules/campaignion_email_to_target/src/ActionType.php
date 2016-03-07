@@ -10,7 +10,7 @@ class ActionType extends \Drupal\campaignion_action\TypeBase {
   }
 
   public function wizard($node = NULL) {
-    return new Wizard($this->parameters, $node, $this->type);
+    return new Wizard\Wizard($this->parameters, $node, $this->type);
   }
 
   public function actionFromNode($node) {
