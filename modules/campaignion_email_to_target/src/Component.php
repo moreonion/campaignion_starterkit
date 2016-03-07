@@ -43,10 +43,7 @@ class Component {
     $options = $action->getOptions();
     $submission_o = $webform->formStateToSubmission($form_state);
 
-    $api = Client::fromConfig();
     $postcode = str_replace(' ', '', $submission_o->valueByKey('postcode'));
-    $targets = $api->getTargets($options['dataset_name'], $postcode);
-
 
     $element = [
       '#type' => 'fieldset',
@@ -61,48 +58,60 @@ class Component {
     ];
 
     $element['#attributes']['class'][] = 'email-to-target-selector-wrapper';
+    try {
+      $api = Client::fromConfig();
+      $targets = $api->getTargets($options['dataset_name'], $postcode);
 
-    foreach ($targets as $target) {
-      $message = $action->getMessage();
-      $message->replaceTokens($target, $submission_o->unwrap());
-      $id = drupal_html_id('email-to-target-target-' . $target['id']);
-      $t = [
-        '#type' => 'container',
-        '#attributes' => ['class' => ['email-to-target-target']],
-        '#target' => $target,
-        '#message' => $message->toArray(),
-      ];
-      $t['send'] = [
-        '#type' => 'checkbox',
-        '#title' => "{$target['first_name']} {$target['last_name']}",
-        '#id' => $id,
-      ];
-      $t['subject'] = [
-        '#type' => 'textfield',
-        '#title' => t('Subject'),
-        '#default_value' => $message->subject,
-        '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
-        '#disabled' => empty($options['users_may_edit']),
-      ];
-      $t['message'] = [
-        '#type' => 'textarea',
-        '#title' => t('Message'),
-        '#default_value' => $message->message,
-        '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
-        '#disabled' => empty($options['users_may_edit']),
-      ];
-      $element[$target['id']] = $t;
+      foreach ($targets as $target) {
+        $message = $action->getMessage();
+        $message->replaceTokens($target, $submission_o->unwrap());
+        $id = drupal_html_id('email-to-target-target-' . $target['id']);
+        $t = [
+          '#type' => 'container',
+          '#attributes' => ['class' => ['email-to-target-target']],
+          '#target' => $target,
+          '#message' => $message->toArray(),
+        ];
+        $t['send'] = [
+          '#type' => 'checkbox',
+          '#title' => "{$target['first_name']} {$target['last_name']}",
+          '#id' => $id,
+        ];
+        $t['subject'] = [
+          '#type' => 'textfield',
+          '#title' => t('Subject'),
+          '#default_value' => $message->subject,
+          '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
+          '#disabled' => empty($options['users_may_edit']),
+        ];
+        $t['message'] = [
+          '#type' => 'textarea',
+          '#title' => t('Message'),
+          '#default_value' => $message->message,
+          '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
+          '#disabled' => empty($options['users_may_edit']),
+        ];
+        $element[$target['id']] = $t;
+      }
+
+      if (empty($targets)) {
+        watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
+          '@dataset' => $options['dataset_name'],
+          '@postcode' => $postcode,
+        ], WATCHDOG_WARNING);
+        $element['no_target'] = [
+          '#markup' => t("There don't seem to be any targets for your selection."),
+        ];
+        $element['#attributes']['class'][] = 'email-to-target-no-targets';
+      }
     }
-
-    if (empty($targets)) {
-      watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
-        '@dataset' => $options['dataset_name'],
-        '@postcode' => $postcode,
-      ], WATCHDOG_WARNING);
-      $element['no_target'] = [
-        '#markup' => t("There don't seem to be any targets for your selection. Site administrators have been notified."),
+    catch (\Exception $e) {
+      watchdog_exception('campaignion_email_to_target', $e);
+      $element['#title'] = t('Service temporary unavailable');
+      $element['error'] = [
+        '#markup' => t('We are sorry! The service is temporary unavailable. The administrators have been informed. Please try again in a few minutes …'),
       ];
-      $element['#attributes']['class'][] = 'email-to-target-no-targets';
+      $element['#attributes']['class'][] = 'email-to-target-error';
     }
   }
 

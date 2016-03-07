@@ -90,10 +90,16 @@ function _campaignion_email_to_target_message_options_field_widget_form($item) {
   ];
   $item = drupal_array_merge_deep($defaults, $item);
 
-  $api = Client::fromConfig();
   $options = [];
-  foreach ($api->getDatasetList() as $ds) {
-    $options[$ds->key] = $ds->title;
+  try {
+    $api = Client::fromConfig();
+    foreach ($api->getDatasetList() as $ds) {
+      $options[$ds->key] = $ds->title;
+    }
+  }
+  catch (\Exception $e) {
+    watchdog_exception('campaignion_email_to_target', $e);
+    drupal_set_message(t('We are sorry! The service is temporary unavailable. The administrators have been informed. Please try again in a few minutes …'), 'error');
   }
   $element['dataset_name'] = [
     '#type' => 'select',
