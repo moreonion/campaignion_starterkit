@@ -4,6 +4,12 @@ $roles = array(
                                                           'anonymous user', 'authenticated user', 'administrator', 'editor', 'supporter',
 );
 $matrix = array(
+  // Access Unpublished
+  'access_unpublished' => array(
+    'access unpublished view unpublished node'   => array(TRUE,             NULL,                 NULL,            NULL,     NULL,        ),
+    'access unpublished view hashkey'            => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
+    'access unpublished configuration'           => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
+  ),
   // Block
   'block' => array(
     'administer blocks'                          => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),

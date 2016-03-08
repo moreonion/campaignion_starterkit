@@ -17,6 +17,6 @@ class Wizard extends NodeWizard {
     'form'    => 'WebformStep',
     'emails'  => 'EmailProtestEmailStep',
     'thank'   => 'ThankyouStep',
-    'confirm' => 'ConfirmStep',
+    'confirm' => '\\Drupal\\campaignion_email_to_target\\Wizard\\ConfirmationStep',
   );
 }

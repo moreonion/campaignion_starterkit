@@ -13,6 +13,7 @@ use \Drupal\campaignion_action\TypeBase;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
+use \Drupal\campaignion_email_to_target\TestMode;
 use \Drupal\campaignion_email_to_target\Api\Client;
 
 /**
@@ -170,6 +171,10 @@ function campaignion_email_to_target_form_webform_client_form_alter(&$form, &$fo
     return;
   }
 
+  if ($uid = TestMode::fromNode($form['#node'])->uidFromUrl()) {
+    $form_state['email_uid'] = $uid;
+  }
+
   // Initialize all component objects in the $form_state if needed.
   $pfx = 'campaignion_email_to_target';
   if (!isset($form_state[$pfx])) {
@@ -191,6 +196,7 @@ function campaignion_email_to_target_form_webform_client_form_alter(&$form, &$fo
     $element = &drupal_array_get_nested_value($form['submitted'], $parents);
     $componentObj->render($element, $form, $form_state);
   }
+
 }
 
 /**

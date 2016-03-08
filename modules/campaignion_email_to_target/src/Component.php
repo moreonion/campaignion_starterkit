@@ -44,6 +44,7 @@ class Component {
     $submission_o = $webform->formStateToSubmission($form_state);
 
     $postcode = str_replace(' ', '', $submission_o->valueByKey('postcode'));
+    $override = !empty($form_state['email_uid']) ? user_load($form_state['email_uid']) : FALSE;
 
     $element = [
       '#type' => 'fieldset',
@@ -63,6 +64,9 @@ class Component {
       $targets = $api->getTargets($options['dataset_name'], $postcode);
 
       foreach ($targets as $target) {
+        if ($override) {
+          $target['email'] = $override->mail;
+        }
         $message = $action->getMessage();
         $message->replaceTokens($target, $submission_o->unwrap());
         $id = drupal_html_id('email-to-target-target-' . $target['id']);
