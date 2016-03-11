@@ -71,18 +71,24 @@ function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset 
 function campaignion_email_to_target_token_info() {
   $info = [];
   if ($ds_name = campaignion_email_to_target_tokens_dataset_hint()) {
-    $api = Client::fromConfig();
-    $dataset = $api->getDataset($ds_name);
-    $type = 'email-to-target';
-    $info['types'][$type] = [
-      'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->title]),
-      'description' => t('Replace values based on the selected target(s).'),
-    ];
-    foreach ($dataset->attributes as $attribute) {
-      $info['tokens'][$type][$attribute->key] = [
-        'name' => $attribute->title,
-        'description' => $attribute->description,
+    try {
+      $api = Client::fromConfig();
+      $dataset = $api->getDataset($ds_name);
+      $type = 'email-to-target';
+      $info['types'][$type] = [
+        'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->title]),
+        'description' => t('Replace values based on the selected target(s).'),
       ];
+      foreach ($dataset->attributes as $attribute) {
+        $info['tokens'][$type][$attribute->key] = [
+          'name' => $attribute->title,
+          'description' => $attribute->description,
+        ];
+      }
+    }
+    catch (\Exception $e) {
+      watchdog_exception('campaignion_email_to_target', $e);
+      drupal_set_message(t('We are sorry! The service is temporary unavailable. The administrators have been informed. Please try again in a few minutes …'), 'error');
     }
   }
   return $info;
