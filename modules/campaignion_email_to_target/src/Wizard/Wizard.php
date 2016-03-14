@@ -13,8 +13,8 @@ class Wizard extends NodeWizard {
   public $steps = array(
     'content' => '\\Drupal\\campaignion_email_to_target\\Wizard\\ContentStep',
     'target'  => '\\Drupal\\campaignion_email_to_target\\Wizard\\TargetStep',
-    'message'  => '\\Drupal\\campaignion_email_to_target\\Wizard\\MessageStep',
-    'form'    => 'WebformStep',
+    'message' => '\\Drupal\\campaignion_email_to_target\\Wizard\\MessageStep',
+    'form'    => '\\Drupal\\campaignion_email_to_target\\Wizard\\FormStep',
     'emails'  => 'EmailProtestEmailStep',
     'thank'   => 'ThankyouStep',
     'confirm' => '\\Drupal\\campaignion_email_to_target\\Wizard\\ConfirmationStep',
