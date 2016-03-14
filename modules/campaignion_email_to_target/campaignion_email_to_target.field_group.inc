@@ -21,7 +21,7 @@ function campaignion_email_to_target_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '16',
+    'weight' => '7',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -32,17 +32,45 @@ function campaignion_email_to_target_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Advanced settings',
+      'formatter' => 'open',
       'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-advanced-settings field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
-        'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
-        'description' => '',
       ),
-      'formatter' => 'open',
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_advanced_settings|node|email_to_target|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_content|node|email_to_target|form';
+  $field_group->group_name = 'group_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'email_to_target';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '3',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_main_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'open',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-content field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_content|node|email_to_target|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -55,7 +83,7 @@ function campaignion_email_to_target_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'recent_supporters',
     ),
@@ -70,11 +98,12 @@ function campaignion_email_to_target_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_recent_supporters|node|email_to_target|form'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Advanced settings');
+  t('Content');
   t('Recent supporters');
 
   return $field_groups;

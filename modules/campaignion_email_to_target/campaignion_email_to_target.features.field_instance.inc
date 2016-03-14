@@ -51,7 +51,7 @@ function campaignion_email_to_target_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -104,7 +104,7 @@ function campaignion_email_to_target_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -157,7 +157,7 @@ function campaignion_email_to_target_field_default_field_instances() {
       'module' => 'campaignion_email_to_target_message',
       'settings' => array(),
       'type' => 'email_to_target_message',
-      'weight' => 13,
+      'weight' => 11,
     ),
   );
 
@@ -209,7 +209,7 @@ function campaignion_email_to_target_field_default_field_instances() {
       'module' => 'campaignion_email_to_target_message',
       'settings' => array(),
       'type' => 'email_to_target_options',
-      'weight' => 15,
+      'weight' => 13,
     ),
   );
 
@@ -287,7 +287,7 @@ function campaignion_email_to_target_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -380,7 +380,7 @@ function campaignion_email_to_target_field_default_field_instances() {
       'module' => 'field_reference_or_redirect',
       'settings' => array(),
       'type' => 'reference_or_redirect_widget',
-      'weight' => 10,
+      'weight' => 13,
     ),
   );
 
@@ -561,7 +561,7 @@ function campaignion_email_to_target_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 

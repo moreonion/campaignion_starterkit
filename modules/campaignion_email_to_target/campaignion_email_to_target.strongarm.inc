@@ -96,16 +96,16 @@ function campaignion_email_to_target_strongarm() {
           'weight' => '12',
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '13',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'language' => array(
           'weight' => '0',

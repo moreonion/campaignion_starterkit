@@ -15,7 +15,7 @@ class Client {
     foreach (['url', 'public_key', 'secret_key'] as $v) {
       if (!isset($c[$v])) {
         throw new ConfigError(
-          'No valid logcrm credentials found. The credentials must contain ' .
+          'No valid e2t_api credentials found. The credentials must contain ' .
           'at least values for "url", "public_key" and "private_key".'
         );
       }
