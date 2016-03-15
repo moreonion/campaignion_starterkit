@@ -172,7 +172,7 @@ table th {
 #page-title { background:transparent none; }
 #page-title .limiter { position:relative; }
 
-#page-title .page-title {
+.page-title {
   float:left;
   padding:15px 10px 15px 0px;
   line-height:30px;
