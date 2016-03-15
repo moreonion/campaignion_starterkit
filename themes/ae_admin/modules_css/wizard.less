@@ -154,122 +154,7 @@
             width: 37%;
           }
         }
-        .wizard-trail-wrapper {
-            float: left;
-            clear: left;
-            display: block;
-            width: 30%;
-            overflow: hidden;
-            max-width: 690px;
-        }
-        .wizard-trail-wrapper .wizard-trail-next {
-          display: none;
-        }
-        .wizard-trail-wrapper .wizard-trail-current {
-          .inner {
-            padding-left: 20px;
-          }
-        }
-        @media screen and (min-width: 1100px) {
-          .wizard-trail-wrapper {
-            width: 63%;
-          }
-          .wizard-trail-wrapper .wizard-trail-next {
-            display: block;
-          }
-          .wizard-trail-wrapper .wizard-trail-current {
-            .inner {
-              padding-left: 45px;
-            }
-          }
-        }
-        .wizard-trail {
-            background: @trail_bg;
-            overflow: hidden;
-            border: 1px solid @trail_border;
-            display: inline-block;
-            > span {
-                float: left;
-                min-width: 5em;
-                &.wizard-trail-previous {
-                    .inner {
-                        color: @trail_step_previous_fg;
-                        background: @trail_step_previous_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat top left;
-                        background-position: 100% -4px;
-                    }
-                }
-                &.wizard-trail-current {
-                    .inner {
-                        color: @trail_step_current_fg;
-                        background: @trail_step_current_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat center right;
-                    }
-                }
-                &.wizard-trail-next {
-                    .inner {
-                        color: @trail_step_next_fg;
-                        background: @trail_step_next_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                        background-position: 100% -116px;
-                    }
-                    a.inner {
-                      background: @trail_step_previous_bg;
-                    }
-                    a.inner:after {
-                      background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                      background-position: 100% -6px;
-                    }
-                    a.inner:hover, a.inner:focus {
-                      color: #494848;
-                      text-decoration: underline;
-                    }
-                }
-                .inner {
-                    padding: 10px 20px 10px 45px;
-                    background: @trail_step_current_bg;
-                    position: relative;
-                    display: block;
-                    float: left;
-                    background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                }
-                &:first-of-type { /* first in trail */
-                    .inner {
-                        padding: 10px 20px 10px 20px;
-                    }
-                }
-                &:last-of-type { /* last in trail */
-                    .inner {
-                        padding: 10px 25px 10px 40px;
-                    }
-                    .inner:after {
-                        content: '';
-                        display: none;
-                        border: none;
-                        background: none;
-                    }
-                    .inner:before {
-                        border: none;
-                    }
-                }
-                .inner:after { /* default */
-                    content: " ";
-                    display: inline;
-                    width: 24px;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 100%;
-                    z-index: 1;
-                }
-            }
-        }
+
     }
 
 }
@@ -463,6 +348,124 @@
             padding: 2em 0 5em 0;
         }
     }
+}
+
+.wizard-trail-wrapper {
+  float: left;
+  clear: left;
+  display: block;
+  width: 30%;
+  overflow: hidden;
+  max-width: 690px;
+}
+.wizard-trail-wrapper .wizard-trail-next {
+  display: none;
+}
+.wizard-trail-wrapper .wizard-trail-current {
+  .inner {
+    padding-left: 20px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .wizard-trail-wrapper {
+    width: 63%;
+  }
+  .wizard-trail-wrapper .wizard-trail-next {
+    display: block;
+  }
+  .wizard-trail-wrapper .wizard-trail-current {
+    .inner {
+      padding-left: 45px;
+    }
+  }
+}
+
+.wizard-trail {
+  background: @trail_bg;
+  overflow: hidden;
+  border: 1px solid @trail_border;
+  display: inline-block;
+  > span {
+    float: left;
+    min-width: 5em;
+    &.wizard-trail-previous {
+      .inner {
+        color: @trail_step_previous_fg;
+        background: @trail_step_previous_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat top left;
+        background-position: 100% -4px;
+      }
+    }
+    &.wizard-trail-current {
+      .inner {
+        color: @trail_step_current_fg;
+        background: @trail_step_current_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat center right;
+      }
+    }
+    &.wizard-trail-next {
+      .inner {
+        color: @trail_step_next_fg;
+        background: @trail_step_next_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+        background-position: 100% -116px;
+      }
+      a.inner {
+        background: @trail_step_previous_bg;
+      }
+      a.inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+        background-position: 100% -6px;
+      }
+      a.inner:hover, a.inner:focus {
+        color: #494848;
+        text-decoration: underline;
+      }
+    }
+    .inner {
+      padding: 10px 20px 10px 45px;
+      background: @trail_step_current_bg;
+      position: relative;
+      display: block;
+      float: left;
+      background: transparent url(../images/ae_step.png) no-repeat bottom right;
+    }
+    &:first-of-type { /* first in trail */
+      .inner {
+        padding: 10px 20px 10px 20px;
+      }
+    }
+    &:last-of-type { /* last in trail */
+      .inner {
+        padding: 10px 25px 10px 40px;
+      }
+      .inner:after {
+        content: '';
+        display: none;
+        border: none;
+        background: none;
+      }
+      .inner:before {
+        border: none;
+      }
+    }
+    .inner:after { /* default */
+      content: " ";
+      display: inline;
+      width: 24px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      z-index: 1;
+    }
+  }
 }
 
 /*** wysiwyg field ***/
