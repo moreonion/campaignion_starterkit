@@ -87,32 +87,7 @@
           margin-top: 2px;
         }
     }
-    .is-sticky .wizard-head {
-      box-shadow: 0px 0px 5px #706D69;
-      z-index: 1100;
-      left: 10px;
-      right: 10px;
-      margin: 0 -50px; // -50px = -59px + 9px --> account for .block padding
-                       // which is active on display static, but not on fixed...
-    }
-    @media screen and (min-width: 500px) {
-      .is-sticky .wizard-head {
-        left: 20px;
-        right: 20px;
-      }
-    }
-    @media screen and (min-width: 750px) {
-      .is-sticky .wizard-head {
-        left: 30px;
-        right: 30px;
-      }
-    }
-    @media screen and (min-width: 1200px) {
-      .is-sticky .wizard-head {
-        left: 50px;
-        right: 50px;
-      }
-    }
+
 
     .wizard-head {
         background: @trail_bg;
@@ -130,7 +105,7 @@
             height: 0;
             visibility: hidden;
         }
-        #edit-buttons {
+        .form-actions {
             width: 63%;
             margin: 0!important;
             padding: 0!important;
@@ -150,11 +125,38 @@
             }
         }
         @media screen and (min-width: 1100px) {
-          #edit-buttons {
+          .form-actions {
             width: 37%;
           }
         }
 
+        .is-sticky .form-actions {
+          box-shadow: 0px 0px 5px #706D69;
+          z-index: 1100;
+          left: 10px;
+          right: 10px;
+          margin: 0 -50px; // -50px = -59px + 9px --> account for .block padding
+                          // which is active on display static, but not on fixed...
+          width: auto;
+        }
+        @media screen and (min-width: 500px) {
+          .is-sticky .form-actions {
+            left: 20px;
+            right: 20px;
+          }
+        }
+        @media screen and (min-width: 750px) {
+          .is-sticky .form-actions {
+            left: 30px;
+            right: 30px;
+          }
+        }
+        @media screen and (min-width: 1200px) {
+          .is-sticky .form-actions {
+            left: 50px;
+            right: 50px;
+          }
+        }
     }
 
 }
