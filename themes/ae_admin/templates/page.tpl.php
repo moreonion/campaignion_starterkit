@@ -1,59 +1,46 @@
-<?php if ($page['help'] || ($show_messages && $messages)): ?>
-  <div id='console'><div class='limiter clearfix'>
-    <?php print render($page['help']); ?>
-    <?php if ($show_messages && $messages): print $messages; endif; ?>
-  </div></div>
-<?php endif; ?>
+<div id='branding' <?php if ($primary_local_tasks): ?>class='darken'<?php endif; ?> > <div class='limiter clearfix'>
+  <div class='breadcrumb clearfix'><?php print $breadcrumb ?></div></div>
+</div>
 
-<?php if ($page['header']): ?>
-  <div id='header'><div class='limiter clearfix'>
-    <?php print render($page['header']); ?>
-  </div></div>
-<?php endif; ?>
-
-<div id='branding'><div class='limiter clearfix'>
-  <?php if ($site_name): ?><h1 class='site-name'><?php print $site_name ?></h1><?php endif; ?>
-</div></div>
-
-<div id='navigation'><div class='limiter clearfix'>
-  <?php if (isset($main_menu)) : ?>
-    <?php print theme('links', array('links' => $main_menu, 'attributes' => array('class' => 'links main-menu'))) ?>
-  <?php endif; ?>
-  <?php if (isset($secondary_menu)) : ?>
-    <?php print theme('links', array('links' => $secondary_menu, 'attributes' => array('class' => 'links secondary-menu'))) ?>
-  <?php endif; ?>
-</div></div>
-
-<?php if ($page['highlighted']): ?>
-  <div id='highlighted'><div class='limiter clearfix'>
-    <?php print render($page['highlighted']); ?>
-  </div></div>
-<?php endif; ?>
-
-<div id='page'><div class='limiter clearfix'>
-
-  <?php if ($page['sidebar_first']): ?>
-    <div id='left' class='clearfix'><?php print render($page['sidebar_first']) ?></div>
-  <?php endif; ?>
-
-  <div id='main-content' class='clearfix'>
-    <?php if ($breadcrumb) print $breadcrumb; ?>
-    <?php print render($title_prefix); ?>
-    <?php if ($title): ?><h1 class='page-title'><?php print $title ?></h1><?php endif; ?>
-    <?php print render($title_suffix); ?>
-    <?php if ($primary_local_tasks): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>
-    <?php if ($secondary_local_tasks): ?><ul class='links clearfix'><?php print render($secondary_local_tasks) ?></ul><?php endif; ?>
-    <?php if ($action_links): ?><ul class='links clearfix'><?php print render($action_links); ?></ul><?php endif; ?>
-    <div id='content' class='clearfix'><?php print render($page['content']) ?></div>
+<?php if ($primary_local_tasks): ?>
+  <div id="tabbed" class="limiter clearfix">
+    <div class='tabs clearfix <?php if ($secondary_local_tasks): ?>secondary_tabs_here<?php endif; ?>'>
+      <?php if ($primary_local_tasks): ?>
+        <div class='primary-tabs links clearfix'><?php print render($primary_local_tasks) ?></div>
+        <?php if ($secondary_local_tasks): ?><div class='secondary-tabs links clearfix'><?php print render($secondary_local_tasks); ?></div><?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
+<?php endif; ?>
 
-  <?php if ($page['sidebar_second']): ?>
-    <div id='right' class='clearfix'><?php print render($page['sidebar_second']) ?></div>
+ <div id='page-title'><div class='limiter clearfix'>
+  <?php print render($title_prefix); ?>
+  <h1 class='page-title <?php print $page_icon_class ?>'>
+    <?php if (!empty($page_icon_class)): ?><span class='icon'></span><?php endif; ?>
+    <?php if ($title) print $title ?>
+  </h1>
+  <?php if ($action_links): ?>
+    <ul class='action-links links clearfix'><?php print render($action_links) ?></ul>
   <?php endif; ?>
-  
+  <?php print render($title_suffix); ?>
 </div></div>
 
-<div id="footer"><div class='limiter clearfix'>
-  <?php print $feed_icons ?>
-  <?php print render($page['footer']) ?>
+<?php if ($show_messages && $messages): ?>
+<div id='console'><div class='limiter clearfix'><?php print $messages; ?></div></div>
+<?php endif; ?>
+
+<div id='page'><div id='main-content' class='limiter clearfix'>
+  <?php if ($page['help']) print render($page['help']) ?>
+  <div id='content' class='page-content clearfix'>
+    <?php if (!empty($page['content'])) print render($page['content']) ?>
+  </div>
 </div></div>
+
+<div id='footer' class='clearfix'>
+  <?php if ($feed_icons): ?>
+    <div class='feed-icons clearfix'>
+      <label><?php print t('Feeds') ?></label>
+      <?php print $feed_icons ?>
+    </div>
+  <?php endif; ?>
+</div>
