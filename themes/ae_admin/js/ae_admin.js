@@ -89,7 +89,7 @@ Drupal.behaviors.ae_admin.attach = function(context) {
   }
 
   $('.wizard-form', context).each(function() {
-    $('.wizard-head .form-actions', this).sticky();
+    $('.wizard-title .form-actions', this).sticky();
   });
 };
 })(jQuery);
