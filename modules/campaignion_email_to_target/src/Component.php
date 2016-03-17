@@ -78,6 +78,7 @@ class Component {
         $t['send'] = [
           '#type' => 'checkbox',
           '#title' => "{$target['first_name']} {$target['last_name']}",
+          '#default_value' => TRUE,
         ];
         $t['subject'] = [
           '#type' => 'textfield',
