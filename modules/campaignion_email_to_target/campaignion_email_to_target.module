@@ -280,7 +280,7 @@ function campaignion_email_to_target_form_builder_element_types($form_type, $for
   module_load_include('components.inc', 'form_builder_webform');
   $types['e2t_selector'] = [
     'palette_group' => 'email_to_target',
-    'title' => t('Target selector & message editor'),
+    'title' => t('Target & Message'),
     // Properties that may be edited on this field type.
     'properties' => [
       'title',
