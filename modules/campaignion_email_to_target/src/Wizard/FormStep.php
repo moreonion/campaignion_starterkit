@@ -9,36 +9,6 @@ use \FormBuilderLoader;
 class FormStep extends WebformStep {
 
   /**
-   * Build a "standard" webform component list from our form_builder array.
-   *
-   * @param array $root
-   *   A form_builder_webform form-array.
-   *
-   * @result array
-   *   List of webform component arrays like in $node->webform['components'].
-   */
-  protected function components($root) {
-    $list = [];
-    function _preOrder(&$element, &$list) {
-      foreach (element_children($element, TRUE) as $key) {
-        $c = &$element[$key];
-        if (isset($c['#webform_component'])) {
-          $c['#webform_component']['weight'] = $c['#weight'];
-          $list[$c['#webform_component']['cid']] = $c['#webform_component'];
-        }
-        _preOrder($c, $list);
-      }
-    }
-    _preOrder($root, $list);
-
-    $tree = [];
-    $page_count = 1;
-    _webform_components_tree_build($list, $tree, 0, $page_count);
-    $list = _webform_components_tree_flatten($tree['children']);
-    return $list;
-  }
-
-  /**
    * Validate whether the resulting webform is something we can use.
    *
    * We need:
@@ -48,9 +18,9 @@ class FormStep extends WebformStep {
    *      field.
    */
   public function validateStep($form, &$form_state) {
-    $node = $this->wizard->node;
-    $form_obj = FormBuilderLoader::instance()->fromCache('webform', $node->nid);
-    $components = $this->components($form_obj->getFormArray());
+    parent::validateStep($form, $form_state);
+    // $form['#node'] has already been updated by form_builder_webform_save_form_validate().
+    $components = $form['#node']->webform['components'];
 
     $postcode = NULL;
     $target_selector = NULL;
