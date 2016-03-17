@@ -69,7 +69,6 @@ class Component {
         }
         $message = $action->getMessage();
         $message->replaceTokens($target, $submission_o->unwrap());
-        $id = drupal_html_id('email-to-target-target-' . $target['id']);
         $t = [
           '#type' => 'container',
           '#attributes' => ['class' => ['email-to-target-target']],
@@ -79,20 +78,17 @@ class Component {
         $t['send'] = [
           '#type' => 'checkbox',
           '#title' => "{$target['first_name']} {$target['last_name']}",
-          '#id' => $id,
         ];
         $t['subject'] = [
           '#type' => 'textfield',
           '#title' => t('Subject'),
           '#default_value' => $message->subject,
-          '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
           '#disabled' => empty($options['users_may_edit']),
         ];
         $t['message'] = [
           '#type' => 'textarea',
           '#title' => t('Message'),
           '#default_value' => $message->message,
-          '#states' => ['visible' => ["#$id" => ['checked' => TRUE]]],
           '#disabled' => empty($options['users_may_edit']),
         ];
         $element[$target['id']] = $t;
@@ -107,6 +103,9 @@ class Component {
           '#markup' => t("There don't seem to be any targets for your selection."),
         ];
         $element['#attributes']['class'][] = 'email-to-target-no-targets';
+      }
+      else {
+        $element['#attached']['js'] = [drupal_get_path('module', 'campaignion_email_to_target') . '/js/target_selector.js'];
       }
     }
     catch (\Exception $e) {
