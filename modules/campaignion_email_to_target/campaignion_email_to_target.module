@@ -290,9 +290,28 @@ function campaignion_email_to_target_form_builder_element_types($form_type, $for
       'required',
       'key',
     ],
+    'unique' => TRUE,
     'default' => _form_builder_webform_default('e2t_selector'),
   ];
   return $types;
+}
+
+/**
+ * Implements hook_form_builder_element_types_alter().
+ */
+function campaignion_email_to_target_form_builder_element_types_alter(&$types, $form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
+  // We don't want the zip_code and uk_postcode to co-exist. We hope for a more
+  // generalized webform component sometime in the future.
+  unset($types['zip_code']);
+  $types['uk_postcode']['palette_group'] = 'supporter_data';
+
+  if (!($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  $types['uk_postcode']['palette_group'] = 'email_to_target';
 }
 
 /**
