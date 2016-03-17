@@ -111,7 +111,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
-    'submit_text' => 'Submit message!',
+    'submit_text' => 'Send message now!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,
