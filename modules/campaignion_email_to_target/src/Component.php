@@ -63,39 +63,51 @@ class Component {
       $api = Client::fromConfig();
       $targets = $api->getTargets($options['dataset_name'], $postcode);
 
-      foreach ($targets as $target) {
-        if ($override) {
-          $target['email'] = $override->mail;
+      if (!empty($targets)) {
+        $last_id = NULL;
+        foreach ($targets as $target) {
+          if ($override) {
+            $target['email'] = $override->mail;
+          }
+          $message = $action->getMessage();
+          $message->replaceTokens($target, $submission_o->unwrap());
+          $t = [
+            '#type' => 'container',
+            '#attributes' => ['class' => ['email-to-target-target']],
+            '#target' => $target,
+            '#message' => $message->toArray(),
+          ];
+          $t['send'] = [
+            '#type' => 'checkbox',
+            '#title' => $target['salutation'],
+            '#default_value' => TRUE,
+          ];
+          $t['subject'] = [
+            '#type' => 'textfield',
+            '#title' => t('Subject'),
+            '#default_value' => $message->subject,
+            '#disabled' => empty($options['users_may_edit']),
+          ];
+          $t['message'] = [
+            '#type' => 'textarea',
+            '#title' => t('Message'),
+            '#default_value' => $message->message,
+            '#disabled' => empty($options['users_may_edit']),
+          ];
+          $element[$target['id']] = $t;
+          $last_id = $target['id'];
         }
-        $message = $action->getMessage();
-        $message->replaceTokens($target, $submission_o->unwrap());
-        $t = [
-          '#type' => 'container',
-          '#attributes' => ['class' => ['email-to-target-target']],
-          '#target' => $target,
-          '#message' => $message->toArray(),
-        ];
-        $t['send'] = [
-          '#type' => 'checkbox',
-          '#title' => $target['salutation'],
-          '#default_value' => TRUE,
-        ];
-        $t['subject'] = [
-          '#type' => 'textfield',
-          '#title' => t('Subject'),
-          '#default_value' => $message->subject,
-          '#disabled' => empty($options['users_may_edit']),
-        ];
-        $t['message'] = [
-          '#type' => 'textarea',
-          '#title' => t('Message'),
-          '#default_value' => $message->message,
-          '#disabled' => empty($options['users_may_edit']),
-        ];
-        $element[$target['id']] = $t;
+        if (count($targets) == 1) {
+          $c = &$element[$last_id];
+          $c['#attributes']['class'][] = 'email-to-target-single';
+          $c['send']['#type'] = 'markup';
+          $c['send']['#markup'] = "<p class=\"target\">{$c['send']['#title']}</p>";
+        }
+        else {
+          $element['#attached']['js'] = [drupal_get_path('module', 'campaignion_email_to_target') . '/js/target_selector.js'];
+        }
       }
-
-      if (empty($targets)) {
+      else {
         watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
           '@dataset' => $options['dataset_name'],
           '@postcode' => $postcode,
@@ -104,9 +116,6 @@ class Component {
           '#markup' => t("There don't seem to be any targets for your selection."),
         ];
         $element['#attributes']['class'][] = 'email-to-target-no-targets';
-      }
-      else {
-        $element['#attached']['js'] = [drupal_get_path('module', 'campaignion_email_to_target') . '/js/target_selector.js'];
       }
     }
     catch (\Exception $e) {
@@ -124,8 +133,9 @@ class Component {
 
     $original_values = $values;
     $values = [];
+    $only_one = count($original_values) == 1;
     foreach ($original_values as $id => $edited_message) {
-      if (!empty($edited_message['send'])) {
+      if (!empty($edited_message['send']) || $only_one) {
         $e = &$element[$id];
         $values[] = serialize($edited_message + $e['#message']);
       }
