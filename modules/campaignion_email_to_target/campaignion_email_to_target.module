@@ -58,7 +58,9 @@ function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset 
   if ($set_ds) {
     $ds = $set_ds;
   }
-  if (!$ds && ($node = menu_get_object()) && ($node->type == 'email_to_target')) {
+  // Try to tget a default from the menu system, but only if it has been
+  // initialized. Otherwise we might end up in a recursion loop.
+  if (!$ds && drupal_static('menu_get_item') && ($node = menu_get_object()) && ($node->type == 'email_to_target')) {
     $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
     $options = $action->getOptions() + ['dataset_name' => 'mp'];
     $ds = $options['dataset_name'];
