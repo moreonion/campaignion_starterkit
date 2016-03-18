@@ -14,6 +14,9 @@ function campaignion_email_to_target_field_schema($field) {
       'type' => 'varchar',
       'length' => 256,
     ];
+    $columns['header'] = [
+      'type' => 'text',
+    ];
     $columns['message'] = [
       'type' => 'text',
     ];

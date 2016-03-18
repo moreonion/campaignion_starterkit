@@ -46,7 +46,7 @@ function campaignion_email_to_target_campaignion_action_info() {
  */
 function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
   if (empty($form['title']['#default_value'])) {
-    $form['title']['#default_value'] = t('Petition');
+    $form['title']['#default_value'] = t('Email to target action');
   }
 }
 

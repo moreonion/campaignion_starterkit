@@ -118,6 +118,7 @@ function _campaignion_email_to_target_options_field_widget_form($item) {
 function _campaignion_email_to_target_message_field_widget_form($item) {
   $defaults = [
     'subject' => '',
+    'header' => '',
     'message' => '',
     'footer' => '',
   ];
@@ -128,7 +129,12 @@ function _campaignion_email_to_target_message_field_widget_form($item) {
     '#title' => t('Subject line'),
     '#default_value' => $item['subject'],
   ];
-
+  $element['header'] = [
+    '#type' => 'textarea',
+    '#title' => t('Message head'),
+    '#description' => t("Fixed part of the message displayed above the user's message. Hint: This is where the salutation goes."),
+    '#default_value' => $item['header'],
+  ];
   $element['message'] = [
     '#type' => 'textarea',
     '#title' => t('Message body'),
@@ -136,7 +142,8 @@ function _campaignion_email_to_target_message_field_widget_form($item) {
   ];
   $element['footer'] = [
     '#type' => 'textarea',
-    '#title' => 'Fixed part of the message',
+    '#title' => t('Message footer'),
+    '#description' => t("Fixed part of the message displayed below the user's message."),
     '#default_value' => $item['footer'],
   ];
   $element['token_help'] = [

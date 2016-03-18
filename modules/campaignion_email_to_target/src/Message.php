@@ -11,7 +11,7 @@ class Message {
   public $subject;
   public $message;
   public $footer;
-  protected $tokenEnabledFields = ['to', 'from', 'subject', 'message', 'footer'];
+  protected $tokenEnabledFields = ['to', 'from', 'subject', 'header', 'message', 'footer'];
 
   public function __construct($data) {
     foreach ($data as $k => $v) {
@@ -36,7 +36,7 @@ class Message {
 
   public function toArray() {
     $r = [];
-    foreach (['to', 'from', 'subject', 'message', 'footer'] as $f) {
+    foreach (['to', 'from', 'subject', 'header', 'message', 'footer'] as $f) {
       $r[$f] = $this->$f;
     }
     return $r;
