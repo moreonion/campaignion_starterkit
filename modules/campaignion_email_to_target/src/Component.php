@@ -59,6 +59,7 @@ class Component {
     ];
 
     $element['#attributes']['class'][] = 'email-to-target-selector-wrapper';
+    $element['#attributes']['class'][] = 'webform-prefill-exclude';
     try {
       $api = Client::fromConfig();
       $targets = $api->getTargets($options['dataset_name'], $postcode);
