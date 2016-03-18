@@ -55,7 +55,6 @@ function _webform_render_e2t_selector($component, $value = NULL, $filter = TRUE)
  * Implements _webform_display_[component]().
  */
 function _webform_display_e2t_selector($component, $value, $format = 'html') {
-  dpm('Not implemented yet');
   return [
     '#markup' => isset($value[0]) ? $value[0] : '',
   ];
@@ -65,7 +64,6 @@ function _webform_display_e2t_selector($component, $value, $format = 'html') {
  * Implements _webform_table_component().
  */
 function _webform_table_e2t_selector($component, $value) {
-  dpm('Not implemented yet');
   return check_plain(empty($value[0]) ? '' : $value[0]);
 }
 
@@ -74,7 +72,6 @@ function _webform_table_e2t_selector($component, $value) {
  * Implements _webform_csv_headers_component().
  */
 function _webform_csv_headers_e2t_selector($component, $export_options) {
-  dpm('Not implemented yet');
   $header = array();
   $header[0] = '';
   $header[1] = '';
@@ -86,7 +83,6 @@ function _webform_csv_headers_e2t_selector($component, $export_options) {
  * Implements _webform_csv_data_component().
  */
 function _webform_csv_data_e2t_selector($component, $export_options, $value) {
-  dpm('Not implemented yet');
   return empty($value[0]) ? '' : $value[0];
 }
 
