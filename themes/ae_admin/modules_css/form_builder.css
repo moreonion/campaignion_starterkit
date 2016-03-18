@@ -524,6 +524,9 @@ div.form-builder-new-field span.progress {
 #form-builder-field-palette ul li.field-comment a {
   background-position: 5px -1662px;
 }
+#form-builder-field-palette ul li.field-e2t_selector a {
+  background-position: 5px -1696px;
+}
 
 
 #edit-submit-button-text {
