@@ -88,11 +88,21 @@ class Component {
             '#default_value' => $message->subject,
             '#disabled' => empty($options['users_may_edit']),
           ];
+          $t['header'] = [
+            '#prefix' => '<pre class="email-to-target-header">',
+            '#markup' => $message->header,
+            '#suffix' => '</pre>',
+          ];
           $t['message'] = [
             '#type' => 'textarea',
             '#title' => t('Message'),
             '#default_value' => $message->message,
             '#disabled' => empty($options['users_may_edit']),
+          ];
+          $t['footer'] = [
+            '#prefix' => '<pre class="email-to-target-footer">',
+            '#markup' => $message->footer,
+            '#suffix' => '</pre>',
           ];
           $element[$target['id']] = $t;
           $last_id = $target['id'];
