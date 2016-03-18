@@ -5,6 +5,7 @@
  */
 
 include_once 'campaignion_email_to_target.features.inc';
+require_once 'campaignion_email_to_target.field.inc';
 
 use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;

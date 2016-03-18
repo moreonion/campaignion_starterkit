@@ -154,7 +154,7 @@ function campaignion_email_to_target_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'campaignion_email_to_target_message',
+      'module' => 'campaignion_email_to_target',
       'settings' => array(),
       'type' => 'email_to_target_message',
       'weight' => 11,
@@ -206,7 +206,7 @@ function campaignion_email_to_target_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'campaignion_email_to_target_message',
+      'module' => 'campaignion_email_to_target',
       'settings' => array(),
       'type' => 'email_to_target_options',
       'weight' => 13,

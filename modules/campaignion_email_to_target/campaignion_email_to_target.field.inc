@@ -5,7 +5,7 @@ use \Drupal\campaignion_email_to_target\Api\Client;
 /**
  * Implements hook_field_info().
  */
-function campaignion_email_to_target_message_field_info() {
+function campaignion_email_to_target_field_info() {
   $info['email_to_target_message'] = [
     'label' => t('Email to target message'),
     'description' => t('Allows you to configure messages for Email-To-Target actions.'),
@@ -26,7 +26,7 @@ function campaignion_email_to_target_message_field_info() {
 /**
  * Implements hook_field_widget_info().
  */
-function campaignion_email_to_target_message_field_widget_info() {
+function campaignion_email_to_target_field_widget_info() {
   $info['email_to_target_message'] = [
     'label' => t('Email to target message'),
     'field types' => ['email_to_target_message'],
@@ -51,7 +51,7 @@ function campaignion_email_to_target_message_field_widget_info() {
 /**
  * Implements hook_field_formatter_info().
  */
-function campaignion_email_to_target_message_field_formatter_info() {
+function campaignion_email_to_target_field_formatter_info() {
   $info['email_to_target'] = array(
     'label' => t('No output.'),
     'field types' => ['email_to_target_message', 'email_to_target_options'],
@@ -62,28 +62,28 @@ function campaignion_email_to_target_message_field_formatter_info() {
 /**
  * Implements hook_field_is_empty().
  */
-function campaignion_email_to_target_message_field_is_empty($item, $field) {
+function campaignion_email_to_target_field_is_empty($item, $field) {
   return FALSE;
 }
 
 /**
  * Implements hook_field_widget_form().
  */
-function campaignion_email_to_target_message_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+function campaignion_email_to_target_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
   $item = isset($items[$delta]) ? $items[$delta] : array();
   if (isset($instance['default_value'][$delta]) && !isset($items[$delta])) {
     $item = $instance['default_value'][$delta];
   }
 
   if ($field['type'] == 'email_to_target_options') {
-    return _campaignion_email_to_target_message_options_field_widget_form($item);
+    return _campaignion_email_to_target_options_field_widget_form($item);
   }
   else {
-    return _campaignion_email_to_target_message_message_field_widget_form($item);
+    return _campaignion_email_to_target_message_field_widget_form($item);
   }
 }
 
-function _campaignion_email_to_target_message_options_field_widget_form($item) {
+function _campaignion_email_to_target_options_field_widget_form($item) {
   $defaults = [
     'dataset_name' => '',
     'users_may_edit' => '',
@@ -115,7 +115,7 @@ function _campaignion_email_to_target_message_options_field_widget_form($item) {
   return $element;
 }
 
-function _campaignion_email_to_target_message_message_field_widget_form($item) {
+function _campaignion_email_to_target_message_field_widget_form($item) {
   $defaults = [
     'subject' => '',
     'message' => '',
@@ -150,6 +150,6 @@ function _campaignion_email_to_target_message_message_field_widget_form($item) {
 /**
  * Implements hook_field_formatter_view().
  */
-function campaignion_email_to_target_message_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function campaignion_email_to_target_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   return [];
 }

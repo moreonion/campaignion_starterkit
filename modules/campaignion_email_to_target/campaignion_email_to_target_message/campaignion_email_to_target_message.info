@@ -1,5 +1,0 @@
-name = Campaignion Email-to-Target Message
-description = Field type for the message configuration of email-to-target actions.
-core = 7.x
-
-dependencies[] = field
