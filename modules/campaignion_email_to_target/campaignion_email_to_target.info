@@ -30,6 +30,7 @@ dependencies[] = views
 dependencies[] = webform
 dependencies[] = webform_confirm_email
 dependencies[] = webform_custom_buttons
+dependencies[] = webform_tokens
 dependencies[] = xautoload
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
