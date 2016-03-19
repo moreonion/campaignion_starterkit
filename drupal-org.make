@@ -1,6 +1,8 @@
 api = 2
 core = 7.x
 
+projects[access_unpublished][version] = 1.02
+
 projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
@@ -174,7 +176,7 @@ projects[session_cache][version] = 1.4
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.0
+projects[share_light][version] = 1.1
 
 projects[stripe_payment][version] = 1.0-beta7
 
@@ -226,6 +228,10 @@ projects[webform_steps][version] = 2.0-beta1
 projects[webform_submission_uuid][version] = 1.0-rc1
 
 projects[webform_template][version] = 1.5
+
+projects[webform_tokens][version] = 1.8
+; Show only tokens of the current node in the help.
+projects[webform_tokens][patch][] = "https://www.drupal.org/files/issues/2686147-webform_tokens-only-tokens-of-current-node-3.patch"
 
 projects[webform_tracking][version] = 1.0-rc1
 
