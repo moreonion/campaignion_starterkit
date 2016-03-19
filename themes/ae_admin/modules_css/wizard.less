@@ -33,6 +33,10 @@
 /*** trail ***/
 /* see http://css-tricks.com/triangle-breadcrumbs/ */
 
+.wizard-messages {
+  margin-top: 1em;
+}
+
 #main-content,
 .wizard-form {
     #edit-wizard-advanced {
@@ -40,10 +44,8 @@
             min-height: 30em;
         }
     }
-    #edit-buttons {
-        &.form-actions {
-            border-top: none!important;
-        }
+    .form-actions {
+        border-top: none!important;
         .button-finish, .button-finish-other {
             font-size: 1.2em;
             padding: 0.5em 1em;
@@ -87,34 +89,9 @@
           margin-top: 2px;
         }
     }
-    .is-sticky #edit-wizard-head {
-      box-shadow: 0px 0px 5px #706D69;
-      z-index: 1100;
-      left: 10px;
-      right: 10px;
-      margin: 0 -50px; // -50px = -59px + 9px --> account for .block padding
-                       // which is active on display static, but not on fixed...
-    }
-    @media screen and (min-width: 500px) {
-      .is-sticky #edit-wizard-head {
-        left: 20px;
-        right: 20px;
-      }
-    }
-    @media screen and (min-width: 750px) {
-      .is-sticky #edit-wizard-head {
-        left: 30px;
-        right: 30px;
-      }
-    }
-    @media screen and (min-width: 1200px) {
-      .is-sticky #edit-wizard-head {
-        left: 50px;
-        right: 50px;
-      }
-    }
 
-    #edit-wizard-head {
+
+    .wizard-head {
         background: @trail_bg;
         padding: 1em 57px 0.5em; /* 30px from .limiter, 20px for overlay */
         margin:  0em -59px 1em;
@@ -130,10 +107,10 @@
             height: 0;
             visibility: hidden;
         }
-        #edit-buttons {
-            width: 63%;
+     }
+     .wizard-title {
+        .form-actions {
             margin: 0!important;
-            padding: 0!important;
             float: right;
             clear: right;
             text-align: right;
@@ -149,132 +126,20 @@
               float: right;
             }
         }
-        @media screen and (min-width: 1100px) {
-          #edit-buttons {
-            width: 37%;
-          }
-        }
-        .wizard-trail-wrapper {
-            float: left;
-            clear: left;
-            display: block;
-            width: 30%;
-            overflow: hidden;
-            max-width: 690px;
-        }
-        .wizard-trail-wrapper .wizard-trail-next {
-          display: none;
-        }
-        .wizard-trail-wrapper .wizard-trail-current {
-          .inner {
-            padding-left: 20px;
-          }
-        }
-        @media screen and (min-width: 1100px) {
-          .wizard-trail-wrapper {
-            width: 63%;
-          }
-          .wizard-trail-wrapper .wizard-trail-next {
-            display: block;
-          }
-          .wizard-trail-wrapper .wizard-trail-current {
-            .inner {
-              padding-left: 45px;
-            }
-          }
-        }
-        .wizard-trail {
-            background: @trail_bg;
-            overflow: hidden;
-            border: 1px solid @trail_border;
-            display: inline-block;
-            > span {
-                float: left;
-                min-width: 5em;
-                &.wizard-trail-previous {
-                    .inner {
-                        color: @trail_step_previous_fg;
-                        background: @trail_step_previous_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat top left;
-                        background-position: 100% -4px;
-                    }
-                }
-                &.wizard-trail-current {
-                    .inner {
-                        color: @trail_step_current_fg;
-                        background: @trail_step_current_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat center right;
-                    }
-                }
-                &.wizard-trail-next {
-                    .inner {
-                        color: @trail_step_next_fg;
-                        background: @trail_step_next_bg;
-                    }
-                    .inner:after {
-                        background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                        background-position: 100% -116px;
-                    }
-                    a.inner {
-                      background: @trail_step_previous_bg;
-                    }
-                    a.inner:after {
-                      background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                      background-position: 100% -6px;
-                    }
-                    a.inner:hover, a.inner:focus {
-                      color: #494848;
-                      text-decoration: underline;
-                    }
-                }
-                .inner {
-                    padding: 10px 20px 10px 45px;
-                    background: @trail_step_current_bg;
-                    position: relative;
-                    display: block;
-                    float: left;
-                    background: transparent url(../images/ae_step.png) no-repeat bottom right;
-                }
-                &:first-of-type { /* first in trail */
-                    .inner {
-                        padding: 10px 20px 10px 20px;
-                    }
-                }
-                &:last-of-type { /* last in trail */
-                    .inner {
-                        padding: 10px 25px 10px 40px;
-                    }
-                    .inner:after {
-                        content: '';
-                        display: none;
-                        border: none;
-                        background: none;
-                    }
-                    .inner:before {
-                        border: none;
-                    }
-                }
-                .inner:after { /* default */
-                    content: " ";
-                    display: inline;
-                    width: 24px;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 100%;
-                    z-index: 1;
-                }
-            }
+
+        .is-sticky .form-actions {
+          background: @trail_bg;
+          padding: 1em 2em 1em;
+          z-index: 1100;
+          box-shadow: 0px 0px 5px #706D69;
+          left: 0;
+          right: 0;
         }
     }
 
 }
 
-#overlay .wizard-form #edit-wizard-head, #overlay #main-content #edit-wizard-head  {
+#overlay .wizard-form .wizard-head, #overlay #main-content .wizard-head  {
   padding: 1em 20px 0.5em;
   margin: 0 -20px 1em;
 }
@@ -465,6 +330,117 @@
     }
 }
 
+.wizard-trail-wrapper {
+  display: block;
+  overflow: hidden;
+}
+.wizard-trail-wrapper .wizard-trail-next {
+  display: none;
+}
+.wizard-trail-wrapper .wizard-trail-current {
+  .inner {
+    padding-left: 20px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .wizard-trail-wrapper .wizard-trail-next {
+    display: block;
+  }
+  .wizard-trail-wrapper .wizard-trail-current {
+    .inner {
+      padding-left: 45px;
+    }
+  }
+}
+
+.wizard-trail {
+  background: @trail_bg;
+  overflow: hidden;
+  border: 1px solid @trail_border;
+  display: inline-block;
+  > span {
+    float: left;
+    min-width: 5em;
+    &.wizard-trail-previous {
+      .inner {
+        color: @trail_step_previous_fg;
+        background: @trail_step_previous_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat top left;
+        background-position: 100% -4px;
+      }
+    }
+    &.wizard-trail-current {
+      .inner {
+        color: @trail_step_current_fg;
+        background: @trail_step_current_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat center right;
+      }
+    }
+    &.wizard-trail-next {
+      .inner {
+        color: @trail_step_next_fg;
+        background: @trail_step_next_bg;
+      }
+      .inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+        background-position: 100% -116px;
+      }
+      a.inner {
+        background: @trail_step_previous_bg;
+      }
+      a.inner:after {
+        background: transparent url(../images/ae_step.png) no-repeat bottom right;
+        background-position: 100% -6px;
+      }
+      a.inner:hover, a.inner:focus {
+        color: #494848;
+        text-decoration: underline;
+      }
+    }
+    .inner {
+      padding: 10px 20px 10px 45px;
+      background: @trail_step_current_bg;
+      position: relative;
+      display: block;
+      float: left;
+      background: transparent url(../images/ae_step.png) no-repeat bottom right;
+    }
+    &:first-of-type { /* first in trail */
+      .inner {
+        padding: 10px 20px 10px 20px;
+      }
+    }
+    &:last-of-type { /* last in trail */
+      .inner {
+        padding: 10px 25px 10px 40px;
+      }
+      .inner:after {
+        content: '';
+        display: none;
+        border: none;
+        background: none;
+      }
+      .inner:before {
+        border: none;
+      }
+    }
+    .inner:after { /* default */
+      content: " ";
+      display: inline;
+      width: 24px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      z-index: 1;
+    }
+  }
+}
+
 /*** wysiwyg field ***/
 
 .wizard-form {
@@ -540,7 +516,7 @@
 		}
 	}
 	
-	#main-content #edit-wizard-head #edit-previous {
+	#main-content .wizard-head #edit-previous {
 	  margin-bottom: 10px;
 	}
 	

@@ -500,7 +500,8 @@ div.form-builder-new-field span.progress {
 #form-builder-field-palette ul li.field-street_address   a {
   background-position: 5px -1044px;
 }
-#form-builder-field-palette ul li.field-zip_code   a {
+#form-builder-field-palette ul li.field-zip_code a,
+#form-builder-field-palette ul li.field-uk_postcode a {
   background-position: 5px -1084px;
 }
 
@@ -522,6 +523,9 @@ div.form-builder-new-field span.progress {
 }
 #form-builder-field-palette ul li.field-comment a {
   background-position: 5px -1662px;
+}
+#form-builder-field-palette ul li.field-e2t_selector a {
+  background-position: 5px -1696px;
 }
 
 

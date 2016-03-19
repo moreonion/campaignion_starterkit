@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Petition templates feature.
+ */
+
+include_once 'campaignion_email_to_target_templates.features.inc';

@@ -31,7 +31,7 @@ class Supporter implements ContactTypeInterface {
         new Field\Date('field_date_of_birth',    'date_of_birth'),
         new Field\Address('field_address', array(
           'thoroughfare'        => 'street_address',
-          'postal_code'         => 'zip_code',
+          'postal_code'         => ['zip_code', 'postcode'],
           'locality'            => 'city',
           'administrative_area' => 'state',
           'country'             => 'country',

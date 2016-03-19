@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * campaignion_email_to_target.install
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function campaignion_email_to_target_field_schema($field) {
+  if ($field['type'] == 'email_to_target_message') {
+    $columns['subject'] = [
+      'type' => 'varchar',
+      'length' => 256,
+    ];
+    $columns['header'] = [
+      'type' => 'text',
+    ];
+    $columns['message'] = [
+      'type' => 'text',
+    ];
+    $columns['footer'] = [
+      'type' => 'text',
+    ];
+    return ['columns' => $columns];
+  }
+  elseif ($field['type'] == 'email_to_target_options') {
+    $columns['users_may_edit'] = [
+      'type' => 'int',
+      'size' => 'tiny',
+    ];
+    $columns['dataset_name'] = [
+      'type' => 'varchar',
+      'length' => 64,
+    ];
+    return ['columns' => $columns];
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function campaignion_email_to_target_enable() {
+
+  $webform_settings = variable_get("webform_node_types");
+
+  if (is_array($webform_settings) == FALSE || in_array("email_to_target", $webform_settings) == FALSE ) {
+    $webform_settings[] = "email_to_target";
+    variable_set("webform_node_types", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_src");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["webform_template_type"]) == FALSE || $webform_settings["webform_template_type"] == 0) {
+    $webform_settings["webform_template_type"] = "webform_template_type";
+    variable_set("webform_template_src", $webform_settings);
+  }
+
+  $webform_settings = variable_get("webform_template_dest");
+
+  if (isset($webform_settings) == FALSE || isset($webform_settings["email_to_target"]) == FALSE || $webform_settings["email_to_target"] == 0) {
+    $webform_settings["email_to_target"] = "email_to_target";
+    variable_set("webform_template_dest", $webform_settings);
+  }
+
+  variable_set('cache_class_cache_token', '\\Drupal\\campaignion_email_to_target\\NullCacheBin');
+}

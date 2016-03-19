@@ -15,18 +15,11 @@
 
  <div id='page-title'><div class='limiter clearfix'>
   <?php print render($title_prefix); ?>
-  <h1 class='page-title <?php print $page_icon_class ?>'>
-    <?php if (!empty($page_icon_class)): ?><span class='icon'></span><?php endif; ?>
-    <?php if ($title) print $title ?>
-  </h1>
-  <?php if ($action_links): ?>
-    <ul class='action-links links clearfix'><?php print render($action_links) ?></ul>
-  <?php endif; ?>
   <?php print render($title_suffix); ?>
 </div></div>
 
 <?php if ($show_messages && $messages): ?>
-<div id='console'><div class='limiter clearfix'><?php print $messages; ?></div></div>
+<div id='console' class="wizard-messages"><div class='limiter clearfix'><?php print $messages; ?></div></div>
 <?php endif; ?>
 
 <div id='page'><div id='main-content' class='limiter clearfix'>

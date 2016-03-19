@@ -1,0 +1,327 @@
+<?php
+/**
+ * @file
+ * Code for the campaignion_email_to_target feature.
+ */
+
+include_once 'campaignion_email_to_target.features.inc';
+require_once 'campaignion_email_to_target.field.inc';
+
+use \Drupal\little_helpers\Webform\Submission;
+use \Drupal\little_helpers\Webform\Webform;
+
+use \Drupal\campaignion_action\TypeBase;
+use \Drupal\campaignion_activity\ActivityInterface;
+use \Drupal\campaignion_activity\WebformSubmission;
+use \Drupal\campaignion_email_to_target\Component;
+use \Drupal\campaignion_email_to_target\TestMode;
+use \Drupal\campaignion_email_to_target\Api\Client;
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_email_to_target_campaignion_action_info() {
+  $types['email_to_target'] = array(
+    'class' => 'Drupal\\campaignion_email_to_target\\ActionType',
+    'parameters' => array(
+      'thank_you_page' => array(
+        'type' => 'thank_you_page',
+        'reference' => 'field_thank_you_pages',
+      ),
+      'recent_supporters' => array(
+        'default_text' => t('!supporter_name just signed !action_title'),
+      ),
+      'email_to_target' => [
+        'message_field' => 'field_email_to_target_message',
+        'options_field' => 'field_email_to_target_options',
+      ],
+    ),
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_email_to_target_node_form_alter().
+ */
+function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Email to target action');
+  }
+}
+
+function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset = FALSE) {
+  if ($reset) {
+    drupal_static_reset(__FUNCTION__);
+  }
+  $ds = &drupal_static(__FUNCTION__, NULL);
+  if ($set_ds) {
+    $ds = $set_ds;
+  }
+  // Try to tget a default from the menu system, but only if it has been
+  // initialized. Otherwise we might end up in a recursion loop.
+  if (!$ds && drupal_static('menu_get_item') && ($node = menu_get_object()) && ($node->type == 'email_to_target')) {
+    $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
+    $options = $action->getOptions() + ['dataset_name' => 'mp'];
+    $ds = $options['dataset_name'];
+  }
+  return $ds;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function campaignion_email_to_target_token_info() {
+  $info = [];
+  if ($ds_name = campaignion_email_to_target_tokens_dataset_hint()) {
+    try {
+      $api = Client::fromConfig();
+      $dataset = $api->getDataset($ds_name);
+      $type = 'email-to-target';
+      $info['types'][$type] = [
+        'name' => t('Email-to-Target dataset: %name', ['%name' => $dataset->title]),
+        'description' => t('Replace values based on the selected target(s).'),
+      ];
+      foreach ($dataset->attributes as $attribute) {
+        $info['tokens'][$type][$attribute->key] = [
+          'name' => $attribute->title,
+          'description' => $attribute->description,
+        ];
+      }
+    }
+    catch (\Exception $e) {
+      watchdog_exception('campaignion_email_to_target', $e);
+      drupal_set_message(t('We are sorry! The service is temporary unavailable. The administrators have been informed. Please try again in a few minutes …'), 'error');
+    }
+  }
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function campaignion_email_to_target_tokens($type, array $tokens, array $data = array(), array $options = array()) {
+  if ($type != 'email-to-target' || empty($data['email-to-target'])) {
+    return;
+  }
+
+  $target = $data['email-to-target'];
+
+  $replacements = [];
+  foreach ($tokens as $name => $original) {
+    if (isset($target[$name])) {
+      $replacements[$original] = $target[$name];
+    }
+    else {
+      watchdog('campaignion_email_to_target', 'No data for token "%original" in dataset.', ['%original' => $original], WATCHDOG_ERROR);
+    }
+  }
+  return $replacements;
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function campaignion_email_to_target_libraries_info() {
+  $libraries['dflydev-hawk'] = [
+    'name' => 'Hawk — A PHP Implementation',
+    'vendor url' => 'https://github.com/dflydev/dflydev-hawk',
+    'download url' => 'https://github.com/dflydev/dflydev-hawk',
+    'version' => '0.0.0',
+    'xautoload' => function($adapter) {
+       $adapter->composerJson('composer.json');
+    },
+    'dependencies' => ['RandomLib (>=1.0)'],
+  ];
+  $libraries['RandomLib'] = [
+    'name' => 'RandomLib — A library for generating random numbers and strings of various strengths.',
+    'vendor url' => 'https://github.com/ircmaxell/RandomLib',
+    'download url' => 'https://github.com/ircmaxell/RandomLib',
+    'version' => '1.1.0',
+    'xautoload' => function($adapter) {
+       $adapter->composerJson('composer.json');
+    },
+    'dependencies' => ['SecurityLib (>=1.1)'],
+  ];
+  $libraries['SecurityLib'] = [
+    'name' => 'SecurityLib',
+    'vendor url' => 'https://github.com/ircmaxell/SecurityLib',
+    'download url' => 'https://github.com/ircmaxell/SecurityLib',
+    'version' => '1.1.0',
+    'xautoload' => function($adapter) {
+       $adapter->composerJson('composer.json');
+    },
+  ];
+  return $libraries;
+}
+
+/**
+ * Implements hook_webform_component_info().
+ */
+function campaignion_email_to_target_webform_component_info() {
+  // Component types may only have 16 chars. So we can't use our namespace.
+  $component_info['e2t_selector'] = [
+    'label' => t('Target selector & Message editor'),
+    'description' => t('Allows users to select the target of an email to target action and allows them to edit the messages.'),
+    'file' => 'webform.php',
+    'features' => [
+    ],
+  ];
+  return $component_info;
+}
+
+/**
+ * Implements hook_form_webform_client_form_alter().
+ */
+function campaignion_email_to_target_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
+  $webform = new Webform($form['#node']);
+  $components = $webform->componentsByType('e2t_selector');
+  if (!$components) {
+    return;
+  }
+
+  if ($uid = TestMode::fromNode($form['#node'])->uidFromUrl()) {
+    $form_state['email_uid'] = $uid;
+  }
+
+  // Initialize all component objects in the $form_state if needed.
+  $pfx = 'campaignion_email_to_target';
+  if (!isset($form_state[$pfx])) {
+    for ($i = 1; $i <= $form_state['webform']['page_count']; $i++) {
+      $form_state[$pfx]['pages'][$i] = [];
+    }
+    foreach ($components as $cid => $component) {
+      $page_num = $component['page_num'];
+      $form_state[$pfx]['components'][$cid] = new Component($component);
+      $form_state[$pfx]['pages'][$page_num][] = $cid;
+    }
+  }
+
+  // Render all components for the current page.
+  $page_num = $form_state['webform']['page_num'];
+  foreach ($form_state[$pfx]['pages'][$page_num] as $cid) {
+    $componentObj = $form_state[$pfx]['components'][$cid];
+    $parents = $componentObj->parents($webform);
+    $element = &drupal_array_get_nested_value($form['submitted'], $parents);
+    $componentObj->render($element, $form, $form_state);
+  }
+
+}
+
+/**
+ * Implements hook_campaignion_activity_save().
+ *
+ * Send emails for newly confirmed webform submissions.
+ */
+function campaignion_email_to_target_campaignion_activity_save(ActivityInterface $activity, ActivityInterface $original = NULL) {
+  if (!($activity instanceof WebformSubmission)) {
+    return;
+  }
+
+  if (!empty($activity->confirmed) && (empty($original) || empty($original->confirmed))) {
+    $submission = $activity->submission();
+    $components = $submission->webform->componentsByType('e2t_selector');
+    foreach ($components as $cid => $component) {
+      $component_o = new Component($component);
+      $component_o->sendEmails($submission->valuesByCid($cid), $submission);
+    }
+  }
+}
+
+/**
+ * Element validate handler for campaignion_email_to_target_selector components.
+ */
+function campaignion_email_to_target_selector_validate(array $element, array &$form_state) {
+  $pfx = 'campaignion_email_to_target';
+  $component = $form_state[$pfx]['components'][$element['#cid']];
+  $component->validate($element, $form_state);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function campaignion_email_to_target_theme() {
+  $options = array(
+    'render element' => 'element',
+    'file' => 'theme.php',
+  );
+  $hooks['campaignion_email_to_target_selector_component'] = $options;
+  $hooks['campaignion_email_to_target_selector_placeholder'] = $options;
+  $hooks['campaignion_email_to_target_mail'] = [
+    'variables' => [
+      'message' => NULL,
+      'submission' => NULL,
+    ],
+    'template' => 'campaignion-email-to-target-mail',
+  ];
+  return $hooks;
+}
+
+/**
+ * Implements hook_form_builder_palette_groups().
+ */
+function campaignion_email_to_target_form_builder_palette_groups($form_type, $form_id) {
+  if ($form_type != 'webform' || !($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  $palette = array();
+  $palette['email_to_target'] = array(
+    'weight' => -18,
+    'title'  => t('Email To Target'),
+  );
+  return $palette;
+}
+
+
+/**
+ * Implements hook_form_builder_element_types().
+ */
+function campaignion_email_to_target_form_builder_element_types($form_type, $form_id) {
+  if ($form_type != 'webform' || !($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  module_load_include('components.inc', 'form_builder_webform');
+  $types['e2t_selector'] = [
+    'palette_group' => 'email_to_target',
+    'title' => t('Target & Message'),
+    // Properties that may be edited on this field type.
+    'properties' => [
+      'title',
+      'description',
+      'field_prefix',
+      'field_suffix',
+      'required',
+      'key',
+    ],
+    'unique' => TRUE,
+    'default' => _form_builder_webform_default('e2t_selector'),
+  ];
+  return $types;
+}
+
+/**
+ * Implements hook_form_builder_element_types_alter().
+ */
+function campaignion_email_to_target_form_builder_element_types_alter(&$types, $form_type, $form_id) {
+  if ($form_type != 'webform') {
+    return;
+  }
+  // We don't want the zip_code and uk_postcode to co-exist. We hope for a more
+  // generalized webform component sometime in the future.
+  unset($types['zip_code']);
+  $types['uk_postcode']['palette_group'] = 'supporter_data';
+
+  if (!($node = node_load($form_id)) || $node->type != 'email_to_target') {
+    return;
+  }
+  $types['uk_postcode']['palette_group'] = 'email_to_target';
+}
+
+/**
+ * Implements hook_mail().
+ */
+function campaignion_email_to_target_mail($key, &$message, $params) {
+  $message['headers'] = array_merge($message['headers'], $params['headers']);
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['message'];
+}
