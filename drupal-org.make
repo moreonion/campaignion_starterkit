@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-beta24
+projects[campaignion][version] = 1.0-rc2
 
 projects[cck_blocks][version] = 1.1
 
@@ -55,13 +55,11 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.13
+projects[form_builder][version] = 1.14
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
 projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-19.patch
-; form_type & form_id in all hooks
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/2561261-form_builder-form_id-for-hook_form_builder_palette_groups-2.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta5
 
@@ -87,7 +85,7 @@ projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
-projects[little_helpers][version] = 1.0-rc2
+projects[little_helpers][version] = 1.0
 
 projects[login_destination][version] = 1.3
 
@@ -152,13 +150,13 @@ projects[paypal_payment][patch][] = https://drupal.org/files/issues/paypal_payme
 ; Don't leave payment status on pending. - https://drupal.org/node/2142091
 projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-status-failed-when-there-is-no-payerid-5.patch
 
-projects[pgbar][version] = 2.0-alpha1
+projects[pgbar][version] = 2.0-alpha2
 
 projects[polling][version] = 1.0-beta1
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.0-beta2
+projects[recent_supporters][version] = 1.0-beta3
 
 projects[redhen][version] = 1.11
 
@@ -221,7 +219,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.6
 
-projects[webform_prefill][version] = 1.0-alpha1
+projects[webform_prefill][version] = 1.0-alpha2
 
 projects[webform_steps][version] = 2.0-beta1
 
