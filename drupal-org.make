@@ -39,11 +39,11 @@ projects[date][version] = 2.9
 
 projects[diff][version] = 3.2
 
-projects[entity][version] = 1.6
+projects[entity][version] = 1.7
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.7
+projects[features][version] = 2.8
 
 projects[field_collection][version] = 1.0-beta11
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -57,7 +57,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.14
+projects[form_builder][version] = 1.15
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
@@ -65,7 +65,7 @@ projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-fo
 
 projects[geoip_language_redirect][version] = 1.0-beta5
 
-projects[honeypot][version] = 1.21
+projects[honeypot][version] = 1.22
 
 projects[ife][version] = 2.0-alpha2
 
@@ -88,8 +88,6 @@ projects[less][version] = 3.0
 projects[libraries][version] = 2.2
 
 projects[little_helpers][version] = 1.0
-
-projects[login_destination][version] = 1.3
 
 projects[logintoboggan][version] = 1.5
 
@@ -116,11 +114,11 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.13
+projects[metatag][version] = 1.14
 
 projects[mimemail][version] = 1.0-beta4
 
-projects[modernizr][version] = 3.7
+projects[modernizr][version] = 3.9
 
 projects[morelesszen][version] = 1.0-beta9
 
@@ -213,7 +211,7 @@ projects[webform_ajax][version] = 1.1
 
 projects[webform_block][version] = 1.2
 
-projects[webform_conditional][version] = 1.0
+projects[webform_conditional][version] = 1.2
 
 projects[webform_confirm_email][version] = 1.5
 
@@ -235,7 +233,7 @@ projects[webform_tokens][patch][] = "https://www.drupal.org/files/issues/2686147
 
 projects[webform_tracking][version] = 1.0-rc1
 
-projects[webform_validation][version] = 1.10
+projects[webform_validation][version] = 1.11
 
 projects[weight][version] = 2.5
 
@@ -245,7 +243,7 @@ projects[xmlsitemap][version] = 2.2
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0-beta8
+projects[simplicity][version] = 1.0
 
 projects[tao][version] = 3.1
 
