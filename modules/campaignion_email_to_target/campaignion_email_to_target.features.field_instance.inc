@@ -117,8 +117,15 @@ function campaignion_email_to_target_field_default_field_instances() {
     'default_value' => array(
       0 => array(
         'subject' => '',
+        'header' => 'Dear [email-to-target:salutation],
+',
         'message' => '',
-        'footer' => '',
+        'footer' => '
+
+Yours sincerely,
+[webform-tokens:val-first_name] [webform-tokens:val-last_name]
+[webform-tokens:val-street_address]
+[webform-tokens:val-postcode]',
       ),
     ),
     'deleted' => 0,

@@ -103,13 +103,13 @@ function _campaignion_email_to_target_options_field_widget_form($item) {
   }
   $element['dataset_name'] = [
     '#type' => 'select',
-    '#title' => t('Dataset'),
+    '#title' => t('Choose which target dataset you would like to use for this action'),
     '#options' => $options,
     '#default_value' => $item['dataset_name'],
   ];
   $element['users_may_edit'] = [
     '#type' => 'checkbox',
-    '#title' => t('Users may edit the message'),
+    '#title' => t('Supporters may edit the message sent to the target(s).'),
     '#default_value' => $item['users_may_edit'],
   ];
   return $element;
@@ -124,26 +124,32 @@ function _campaignion_email_to_target_message_field_widget_form($item) {
   ];
   $item = drupal_array_merge_deep($defaults, $item);
 
+  $element = [
+    '#type' => 'fieldset',
+    '#title' => t('Message that will be sent to target(s)'),
+  ];
   $element['subject'] = [
     '#type' => 'textfield',
     '#title' => t('Subject line'),
+    '#description' => t('This is the subject line of the message that will be sent to the target.'),
     '#default_value' => $item['subject'],
   ];
   $element['header'] = [
     '#type' => 'textarea',
-    '#title' => t('Message head'),
-    '#description' => t("Fixed part of the message displayed above the user's message. Hint: This is where the salutation goes."),
+    '#title' => t('Message header (not editable by supporters)'),
+    '#description' => t('This part of the message will not be editable by your supporters.'),
     '#default_value' => $item['header'],
   ];
   $element['message'] = [
     '#type' => 'textarea',
-    '#title' => t('Message body'),
+    '#title' => t('Message content'),
+    '#description' => t('This is the main part of the message that will be sent to the target. If you have chosen to make the message editable by your supporters, they will be able to edit this part of the message.'),
     '#default_value' => $item['message'],
   ];
   $element['footer'] = [
     '#type' => 'textarea',
-    '#title' => t('Message footer'),
-    '#description' => t("Fixed part of the message displayed below the user's message."),
+    '#title' => t('Message footer (not editable by supporters)'),
+    '#description' => t('This part of the message will not be editable by your supporters.'),
     '#default_value' => $item['footer'],
   ];
   $element['token_help'] = [

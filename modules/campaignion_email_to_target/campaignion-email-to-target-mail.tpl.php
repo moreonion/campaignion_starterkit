@@ -6,8 +6,6 @@
  */
 
 ?>
+<?php echo $message->header; ?>
 <?php echo $message->message; ?>
-
----
-
 <?php echo $message->footer; ?>
