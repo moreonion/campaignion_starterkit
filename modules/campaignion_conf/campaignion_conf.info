@@ -36,4 +36,6 @@ features[variable][] = i18n_hide_translation_links
 features[variable][] = i18n_node_default_language_none
 features[variable][] = payment_debug
 features[variable][] = redhen_admin_path
+features[variable][] = share_light_email_message_message
+features[variable][] = share_light_email_message_message_format
 features[variable][] = user_admin_role
