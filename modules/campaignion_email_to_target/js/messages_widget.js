@@ -10342,7 +10342,6 @@ var __vueify_style__ = require("vueify-insert-css").insert("\n\n")
 'use strict';
 
 module.exports = {
-  replace: false,
   data: function data() {
     return {
       msg: 'hello '
@@ -10375,7 +10374,7 @@ var Vue = require('vue')
 var App = require('./app.vue')
 
 new Vue({
-  el: '#app',
+  el: '.email-to-target-messages-widget',
   components: {
     'app': App
   }

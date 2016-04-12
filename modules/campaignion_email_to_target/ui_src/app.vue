@@ -4,7 +4,6 @@
 
 <script>
 module.exports = {
-  replace: false,
   data: function() {
     return {
       msg: 'hello '

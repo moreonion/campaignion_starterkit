@@ -28,8 +28,8 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "watch": "watchify -v -t vueify -e ui_src/main.js -o js/e2t-ui.js",
-    "build": "NODE_ENV=production browserify -t vueify -e ui_src/main.js -p [minifyify --no-map] -o js/e2t-ui.js",
+    "watch": "watchify -v -t vueify -e ui_src/main.js -o js/messages_widget.js",
+    "build": "NODE_ENV=production browserify -t vueify -e ui_src/main.js -p [minifyify --no-map] -o js/messages_widget.js",
     "test": "./node_modules/karma/bin/karma start"
   },
   "license" : "GPL-3.0"

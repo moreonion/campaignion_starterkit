@@ -32,7 +32,7 @@ function campaignion_email_to_target_field_widget_info() {
     'field types' => ['email_to_target_message'],
     'settings' => [],
     'behaviors' => [
-      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+      'multiple values' => FIELD_BEHAVIOR_CUSTOM,
       'default values' => FIELD_BEHAVIOR_DEFAULT,
     ],
   ];
@@ -79,7 +79,7 @@ function campaignion_email_to_target_field_widget_form(&$form, &$form_state, $fi
     return _campaignion_email_to_target_options_field_widget_form($item);
   }
   else {
-    return _campaignion_email_to_target_message_field_widget_form($item);
+    return _campaignion_email_to_target_message_field_widget_form($items);
   }
 }
 
@@ -115,48 +115,24 @@ function _campaignion_email_to_target_options_field_widget_form($item) {
   return $element;
 }
 
-function _campaignion_email_to_target_message_field_widget_form($item) {
+function _campaignion_email_to_target_message_field_widget_form($items) {
   $defaults = [
     'subject' => '',
     'header' => '',
     'message' => '',
     'footer' => '',
   ];
-  $item = drupal_array_merge_deep($defaults, $item);
 
   $element = [
-    '#type' => 'fieldset',
+    '#type' => 'container',
     '#title' => t('Message that will be sent to target(s)'),
+    '#id' => drupal_html_id('email-to-target-messages-widget'),
+    '#attributes' => ['class' => ['email-to-target-messages-widget']],
+    'app-tag' => [
+      '#markup' => '<app></app>'
+    ]
   ];
-  $element['subject'] = [
-    '#type' => 'textfield',
-    '#title' => t('Subject line'),
-    '#description' => t('This is the subject line of the message that will be sent to the target.'),
-    '#default_value' => $item['subject'],
-  ];
-  $element['header'] = [
-    '#type' => 'textarea',
-    '#title' => t('Message header (not editable by supporters)'),
-    '#description' => t('This part of the message will not be editable by your supporters.'),
-    '#default_value' => $item['header'],
-  ];
-  $element['message'] = [
-    '#type' => 'textarea',
-    '#title' => t('Message content'),
-    '#description' => t('This is the main part of the message that will be sent to the target. If you have chosen to make the message editable by your supporters, they will be able to edit this part of the message.'),
-    '#default_value' => $item['message'],
-  ];
-  $element['footer'] = [
-    '#type' => 'textarea',
-    '#title' => t('Message footer (not editable by supporters)'),
-    '#description' => t('This part of the message will not be editable by your supporters.'),
-    '#default_value' => $item['footer'],
-  ];
-  $element['token_help'] = [
-    '#theme' => 'token_tree',
-    '#token_types' => ['webform-tokens', 'email-to-target'],
-    '#global_types' => FALSE,
-  ];
+  drupal_add_js(drupal_get_path('module', 'campaignion_email_to_target') . '/js/messages_widget.js', ['scope' => 'footer']);
   return $element;
 }
 
