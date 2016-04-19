@@ -170,7 +170,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
         'value' => '%get[p5]',
         'extra' => array(
           'width' => '',
-          'unique' => FALSE,
+          'unique' => TRUE,
           'disabled' => 0,
           'title_display' => 'before',
           'description' => '',
