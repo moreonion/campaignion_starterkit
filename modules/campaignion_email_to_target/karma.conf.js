@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'ui_test/**/*.js'
+      'ui_test/**/*.test.js'
     ],
 
 
@@ -26,7 +26,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'ui_test/**/*.js': ['browserify']
+      'ui_test/**/*.test.js': ['browserify']
     },
 
 
@@ -37,7 +37,6 @@ module.exports = function(config) {
       // needed to enable mocks
       // plugin: [require('proxyquireify').plugin]
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
