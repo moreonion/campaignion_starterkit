@@ -44,7 +44,8 @@ class Component {
     $submission_o = $webform->formStateToSubmission($form_state);
 
     $postcode = str_replace(' ', '', $submission_o->valueByKey('postcode'));
-    $override = !empty($form_state['email_uid']) ? user_load($form_state['email_uid']) : FALSE;
+    $test_mode = !empty($form_state['test_mode']);
+    $email = $submission_o->valueByKey('email');
 
     $element = [
       '#type' => 'fieldset',
@@ -58,6 +59,14 @@ class Component {
       '#cid' => $this->component['cid'],
     ];
 
+    if ($test_mode) {
+      $element['test_mode'] = [
+        '#prefix' => '<p class="test-mode-info">',
+        '#markup' => t('Test-mode is active: All emails will be sent to %email.', ['%email' => $email]),
+        '#suffix' => '</p>',
+      ];
+    }
+
     $element['#attributes']['class'][] = 'email-to-target-selector-wrapper';
     $element['#attributes']['class'][] = 'webform-prefill-exclude';
     try {
@@ -67,8 +76,8 @@ class Component {
       if (!empty($targets)) {
         $last_id = NULL;
         foreach ($targets as $target) {
-          if ($override) {
-            $target['email'] = $override->mail;
+          if (!empty($test_mode)) {
+            $target['email'] = $email;
           }
           $message = $action->getMessage();
           $message->replaceTokens($target, $submission_o->unwrap());

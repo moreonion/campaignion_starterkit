@@ -3,7 +3,6 @@ description = Defines the email_to_target action type.
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
-dependencies[] = access_unpublished
 dependencies[] = campaignion_action
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_supporter

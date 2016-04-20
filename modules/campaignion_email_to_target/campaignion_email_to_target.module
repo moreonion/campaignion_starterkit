@@ -10,11 +10,10 @@ require_once 'campaignion_email_to_target.field.inc';
 use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
 
-use \Drupal\campaignion_action\TypeBase;
+use \Drupal\campaignion_action\Loader;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
-use \Drupal\campaignion_email_to_target\TestMode;
 use \Drupal\campaignion_email_to_target\Api\Client;
 
 /**
@@ -178,10 +177,6 @@ function campaignion_email_to_target_form_webform_client_form_alter(&$form, &$fo
   $components = $webform->componentsByType('e2t_selector');
   if (!$components) {
     return;
-  }
-
-  if ($uid = TestMode::fromNode($form['#node'])->uidFromUrl()) {
-    $form_state['email_uid'] = $uid;
   }
 
   // Initialize all component objects in the $form_state if needed.
