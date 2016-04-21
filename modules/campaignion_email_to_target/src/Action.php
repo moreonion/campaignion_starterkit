@@ -14,4 +14,9 @@ class Action extends \Drupal\campaignion_action\ActionBase {
     $items = field_get_items('node', $this->node, $field);
     return $items ? $items[0] : [];
   }
+
+  public function testLink($title, $query = [], $options = []) {
+    return $this->_testLink($title, $query, $options);
+  }
+
 }
