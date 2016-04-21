@@ -5,7 +5,7 @@ namespace Drupal\campaignion_email_to_target;
 use \Drupal\little_helpers\Webform\FormState;
 use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
-use \Drupal\campaignion_action\TypeBase;
+use \Drupal\campaignion_action\Loader;
 
 use \Drupal\campaignion_email_to_target\Api\Client;
 
@@ -39,7 +39,7 @@ class Component {
     // Get list of targets for this node.
     $node = node_load($this->component['nid']);
     $webform = new Webform($node);
-    $action = TypeBase::fromContentType($node->type)->actionFromNode($node);
+    $action = Loader::instance()->actionFromNode($node);
     $options = $action->getOptions();
     $submission_o = $webform->formStateToSubmission($form_state);
 

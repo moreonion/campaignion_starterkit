@@ -4,7 +4,7 @@
  * Code for the campaignion_thankyou_page feature.
  */
 
-use \Drupal\campaignion_action\TypeBase;
+use \Drupal\campaignion_action\Loader;
 
 include_once 'campaignion_thankyou_page.features.inc';
 
@@ -26,7 +26,7 @@ function campaignion_thankyou_page_form_node_form_alter(&$form, &$form_state, $f
  */
 function campaignion_thankyou_page_node_update($node) {
   if (
-    TypeBase::isAction($node->type) &&
+    Loader::instance()->isActionType($node->type) &&
     isset($node->field_reference_to_campaign) &&
     !empty($node->field_thank_you_pages) &&
     !empty($node->field_thank_you_pages[LANGUAGE_NONE])
