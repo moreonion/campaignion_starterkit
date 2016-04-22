@@ -1,0 +1,479 @@
+/*** trail ***/
+/* see http://css-tricks.com/triangle-breadcrumbs/ */
+.wizard-messages {
+  margin-top: 1em;
+}
+#main-content #edit-wizard-advanced .vertical-tabs-panes,
+.wizard-form #edit-wizard-advanced .vertical-tabs-panes {
+  min-height: 30em;
+}
+#main-content .form-actions,
+.wizard-form .form-actions {
+  border-top: none!important;
+}
+#main-content .form-actions .button-finish,
+.wizard-form .form-actions .button-finish,
+#main-content .form-actions .button-finish-other,
+.wizard-form .form-actions .button-finish-other {
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  width: 15em;
+  margin-right: 1em;
+}
+#main-content .form-actions .button-finish-other,
+.wizard-form .form-actions .button-finish-other {
+  background: url("../images/sandbox_menu/ae_blue_bg.png") repeat scroll 0 0 transparent;
+  border-color: #14B1BC;
+  border-radius: 5px 5px 5px 5px;
+  color: #305254;
+  text-shadow: 1px 1px 1px #32DCE5;
+}
+#main-content .form-actions .button-finish-other:hover,
+.wizard-form .form-actions .button-finish-other:hover,
+#main-content .form-actions .button-finish-other:focus,
+.wizard-form .form-actions .button-finish-other:focus {
+  background: none repeat scroll 0 0 #18CBDB;
+  border-color: #14ACB7;
+  box-shadow: 0 0 1px #FFB196;
+  color: #305254;
+}
+#main-content .form-actions .button-finish-other:active,
+.wizard-form .form-actions .button-finish-other:active {
+  background: none repeat scroll 0 0 #0A565B;
+  color: #063538;
+  text-shadow: 1px 1px 1px #0B6368;
+}
+#main-content .form-actions #edit-next,
+.wizard-form .form-actions #edit-next,
+#main-content .form-actions .button-finish,
+.wizard-form .form-actions .button-finish {
+  background-color: #d66540;
+  background-image: none;
+  color: #4b2217;
+  border: 1px solid #b65737;
+  text-shadow: 1px 1px 1px #EA6852;
+  font-size: 1.2em;
+}
+#main-content .form-actions #edit-next:hover,
+.wizard-form .form-actions #edit-next:hover,
+#main-content .form-actions .button-finish:hover,
+.wizard-form .form-actions .button-finish:hover,
+#main-content .form-actions #edit-next:focus,
+.wizard-form .form-actions #edit-next:focus,
+#main-content .form-actions .button-finish:focus,
+.wizard-form .form-actions .button-finish:focus {
+  background-color: #E45D44;
+}
+#main-content .form-actions #edit-next:active,
+.wizard-form .form-actions #edit-next:active,
+#main-content .form-actions .button-finish:active,
+.wizard-form .form-actions .button-finish:active {
+  background-color: #B55336;
+}
+#main-content .form-actions #edit-previous,
+.wizard-form .form-actions #edit-previous {
+  margin-top: 2px;
+}
+#main-content .wizard-head,
+.wizard-form .wizard-head {
+  background: #e4dfd6;
+  padding: 1em 57px 0.5em;
+  /* 30px from .limiter, 20px for overlay */
+  margin: 0em -59px 1em;
+  height: auto;
+  clear: both;
+  overflow: auto;
+  display: block;
+}
+#main-content .wizard-head:after,
+.wizard-form .wizard-head:after {
+  content: ".";
+  display: block;
+  clear: both;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+#main-content .wizard-title .form-actions,
+.wizard-form .wizard-title .form-actions {
+  margin: 0!important;
+  float: right;
+  clear: right;
+  text-align: right;
+}
+#main-content .wizard-title .form-actions #edit-next,
+.wizard-form .wizard-title .form-actions #edit-next {
+  width: 8em;
+  float: right;
+  padding-right: 3em;
+  background-image: url(../images/ae_pfeil.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+#main-content .wizard-title .form-actions #edit-return,
+.wizard-form .wizard-title .form-actions #edit-return {
+  float: right;
+}
+#main-content .wizard-title .is-sticky .form-actions,
+.wizard-form .wizard-title .is-sticky .form-actions {
+  background: #e4dfd6;
+  padding: 1em 2em 1em;
+  z-index: 1100;
+  box-shadow: 0px 0px 5px #706D69;
+  left: 0;
+  right: 0;
+}
+#overlay .wizard-form .wizard-head,
+#overlay #main-content .wizard-head {
+  padding: 1em 20px 0.5em;
+  margin: 0 -20px 1em;
+}
+/*** form ***/
+#wizard-main {
+  padding-top: 1em;
+}
+.wizard-secondary-container #wizard-main {
+  width: 65%;
+  float: left;
+}
+.wizard-secondary-container #edit-wizard-secondary {
+  width: 30%;
+  float: right;
+  border: none;
+  background: none;
+  clear: right;
+  padding: 0;
+  padding-top: 1em;
+}
+.two-halfs .half-left {
+  display: block;
+  width: 49%;
+  margin-right: 0%;
+  float: left;
+  clear: left;
+}
+.two-halfs .half-right {
+  display: block;
+  width: 49%;
+  margin-left: 0%;
+  float: right;
+  clear: right;
+}
+.wizard-form {
+  position: relative;
+}
+.wizard-form .form-item label:not(.itoggle) {
+  font-size: 1em;
+  padding: 0 0 0.5em 0;
+}
+.wizard-form #edit-title {
+  font-size: 1.4em;
+}
+.wizard-form fieldset.email-wrapper {
+  position: relative;
+  display: block;
+  border: 2px solid #c5c5c5 !important;
+  background: #efefef;
+}
+.wizard-form #edit-confirmation-request-toggle,
+.wizard-form #edit-confirmation-or-thank-you-toggle,
+.wizard-form #edit-notification-toggle {
+  margin-bottom: 0;
+}
+.wizard-form .thank-you-node-wrapper #edit-node-form-title {
+  font-size: 1.2em;
+}
+.wizard-form .thank-you-node-wrapper #edit-node-form-field-intro,
+.wizard-form .thank-you-node-wrapper #edit-node-form-field-flexible {
+  display: none;
+}
+.wizard-form .thank-you-node-wrapper .form-item-type,
+.wizard-form .thank-you-node-wrapper .form-item-type2 {
+  margin: 0 0 1em 0;
+}
+.wizard-form .thank-you-outer-or {
+  margin: 1em 0;
+  width: 100%;
+  display: block;
+  text-align: center;
+  position: relative;
+}
+.wizard-form .thank-you-outer-or .thank-you-line-or {
+  border-top: 1px solid #c5c5c5;
+  box-shadow: 0 -1px 0 #f8f8f8;
+  line-height: 1.2em;
+  top: 0.85em;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.wizard-form .thank-you-outer-or .thank-you-text-or {
+  font-style: italic;
+  display: inline-block;
+  top: -0.6em;
+  position: relative;
+  background: #efefef;
+  background: #F8F7F4;
+  padding: 0 1em;
+}
+.wizard-form #edit-field-main-image,
+.wizard-form #edit-node-form-field-main-image,
+.wizard-form .sidebar-narrow-right {
+  position: relative;
+  z-index: 10;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.wizard-form #edit-field-main-image a.button,
+.wizard-form #edit-node-form-field-main-image a.button,
+.wizard-form .sidebar-narrow-right a.button {
+  float: left;
+  margin: 10px 5px;
+  display: block;
+}
+.wizard-form #edit-field-main-image a.button:first-child,
+.wizard-form #edit-node-form-field-main-image a.button:first-child,
+.wizard-form .sidebar-narrow-right a.button:first-child {
+  clear: left;
+}
+.wizard-form #edit-field-main-image .form-item,
+.wizard-form #edit-node-form-field-main-image .form-item,
+.wizard-form .sidebar-narrow-right .form-item {
+  clear: both;
+}
+.wizard-form #edit-double-opt-in-email,
+.wizard-form #edit-thank-you-email {
+  float: left;
+  width: 48%;
+}
+.wizard-form #edit-double-opt-in-email {
+  margin-right: 1%;
+}
+.wizard-form #edit-double-opt-in-email #edit-double-opt-in-email-subject-custom {
+  font-size: 1.4em;
+}
+.wizard-form #edit-thank-you-email {
+  float: left;
+}
+.wizard-form #edit-thank-you-email #edit-thank-you-email-subject-custom {
+  font-size: 1.4em;
+}
+.wizard-form #edit-confirm-container {
+  border: 2px solid #c5c5c5;
+  background: #efefef;
+  padding: 1em!important;
+  min-height: 30em;
+  min-width: 30em;
+}
+.wizard-form #edit-confirm-container .form-wrapper {
+  margin: 1em 0;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper {
+  width: 100%;
+  display: block;
+  padding: 1em 1em 1em 0;
+  border-bottom: 1px dotted #c5c5c5;
+  position: relative;
+  clear: both;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper h2,
+.wizard-form #edit-confirm-container .confirm-edit-wrapper p {
+  padding-right: 12em;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper h2 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button {
+  position: relative;
+  background: #d8d616;
+  color: #3c3b06;
+  border: 1px solid #bdbc13;
+  width: 10em;
+  text-shadow: 1px 1px 0 #F4F06E;
+  float: right;
+  clear: right;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:hover,
+.wizard-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:focus {
+  background-color: #EDE91A;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper .confirm-edit-button:active {
+  background-color: #A3A011;
+}
+.wizard-form #edit-confirm-container .confirm-edit-wrapper:last-child {
+  border-bottom: none;
+}
+.wizard-form #edit-confirm-container #edit-buttons {
+  padding: 2em 0 5em 0;
+}
+.wizard-trail-wrapper {
+  display: block;
+  overflow: hidden;
+}
+.wizard-trail-wrapper .wizard-trail-next {
+  display: none;
+}
+.wizard-trail-wrapper .wizard-trail-current .inner {
+  padding-left: 20px;
+}
+@media screen and (min-width: 1100px) {
+  .wizard-trail-wrapper .wizard-trail-next {
+    display: block;
+  }
+  .wizard-trail-wrapper .wizard-trail-current .inner {
+    padding-left: 45px;
+  }
+}
+.wizard-trail {
+  background: #e4dfd6;
+  overflow: hidden;
+  border: 1px solid #c5c5c5;
+  display: inline-block;
+}
+.wizard-trail > span {
+  float: left;
+  min-width: 5em;
+}
+.wizard-trail > span.wizard-trail-previous .inner {
+  color: #32595c;
+  background: #b5d5d8;
+}
+.wizard-trail > span.wizard-trail-previous .inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat top left;
+  background-position: 100% -4px;
+}
+.wizard-trail > span.wizard-trail-current .inner {
+  color: #5f5d5d;
+  background: #76c5cc;
+}
+.wizard-trail > span.wizard-trail-current .inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat center right;
+}
+.wizard-trail > span.wizard-trail-next .inner {
+  color: #5f5d5d;
+  background: #b2ada7;
+}
+.wizard-trail > span.wizard-trail-next .inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
+  background-position: 100% -116px;
+}
+.wizard-trail > span.wizard-trail-next a.inner {
+  background: #b5d5d8;
+}
+.wizard-trail > span.wizard-trail-next a.inner:after {
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
+  background-position: 100% -6px;
+}
+.wizard-trail > span.wizard-trail-next a.inner:hover,
+.wizard-trail > span.wizard-trail-next a.inner:focus {
+  color: #494848;
+  text-decoration: underline;
+}
+.wizard-trail > span .inner {
+  padding: 10px 20px 10px 45px;
+  background: #76c5cc;
+  position: relative;
+  display: block;
+  float: left;
+  background: transparent url(../images/ae_step.png) no-repeat bottom right;
+}
+.wizard-trail > span:first-of-type {
+  /* first in trail */
+}
+.wizard-trail > span:first-of-type .inner {
+  padding: 10px 20px 10px 20px;
+}
+.wizard-trail > span:last-of-type {
+  /* last in trail */
+}
+.wizard-trail > span:last-of-type .inner {
+  padding: 10px 25px 10px 40px;
+}
+.wizard-trail > span:last-of-type .inner:after {
+  content: '';
+  display: none;
+  border: none;
+  background: none;
+}
+.wizard-trail > span:last-of-type .inner:before {
+  border: none;
+}
+.wizard-trail > span .inner:after {
+  /* default */
+  content: " ";
+  display: inline;
+  width: 24px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1;
+}
+/*** wysiwyg field ***/
+.wizard-form span.cke_skin_kama {
+  padding: 0!important;
+  border-width: 2px;
+}
+.wizard-form span.cke_skin_kama .cke_wrapper {
+  background: none;
+  padding: 0;
+  background: #fff;
+}
+.wizard-form span.cke_skin_kama .cke_top,
+.wizard-form span.cke_skin_kama .cke_bottom {
+  background: #dedede;
+  padding: 5px;
+}
+.wizard-form span.cke_skin_kama .cke_contents {
+  padding: 0.5em;
+}
+.wizard-form span.cke_skin_kama .cke_toolbox_collapser {
+  border: none!important;
+}
+#form-builder-wrapper #edit-submit-buttons {
+  width: 60%;
+  margin-top: 1.7em;
+}
+#form-builder-wrapper #edit-submit-buttons .form-item {
+  width: 30%;
+  float: left;
+  margin-right: 1.5%;
+}
+#form-builder-wrapper #edit-submit-buttons .input.teaser-button,
+#form-builder-wrapper #edit-submit-buttons input.form-submit {
+  box-shadow: 0 1px 1px #DDDDDD;
+  background: url('../images/sandbox_menu/ae_link_bg.png') repeat scroll 0 0 #787575;
+  border: 1px solid #716E6E;
+  color: #F7F1F1;
+  text-shadow: 1px 1px 1px #413F3F;
+}
+#form-builder-wrapper #edit-submit-buttons .input.teaser-button:focus,
+#form-builder-wrapper #edit-submit-buttons input.form-submit:focus {
+  background: none #FFFFFF;
+  color: #666666;
+  text-shadow: none;
+  cursor: text;
+}
+/*** page wide changes to admin theme on wizard pages ***/
+.page-wizard #branding,
+.page-node-wizard #branding {
+  /* hides breadcrumbs and top bar */
+  display: none;
+}
+/*** wizard tablet styling ***/
+/*** wizard mobile styling ***/
+@media screen and (max-width: 600px) {
+  .wizard-trail-wrapper {
+    /* hiding wizard trail */
+  }
+  .wizard-trail-wrapper .wizard-trail span {
+    display: none;
+  }
+  #main-content .wizard-head #edit-previous {
+    margin-bottom: 10px;
+  }
+}
+/* end of mobile */

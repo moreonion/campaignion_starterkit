@@ -1,8 +1,6 @@
 api = 2
 core = 7.x
 
-projects[access_unpublished][version] = 1.02
-
 projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
@@ -57,7 +55,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.15
+projects[form_builder][version] = 1.16
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
@@ -82,8 +80,6 @@ projects[l10n_update][version] = 1.1
 projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-fallback.patch
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
 projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip-out-hook-requirements-5.patch
-
-projects[less][version] = 3.0
 
 projects[libraries][version] = 2.2
 
@@ -165,6 +161,8 @@ projects[redirect][version] = 1.0-rc3
 projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
+
+projects[sagepay_payment][version] = 1.0-beta4
 
 projects[select_or_other][version] = 2.22
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
@@ -252,9 +250,6 @@ libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEdi
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
-
-libraries[lessphp][download][type] = file
-libraries[lessphp][download][url] = http://leafo.net/lessphp/src/lessphp-0.4.0.tar.gz
 
 libraries[mailchimp-api-php][download][type] = git
 libraries[mailchimp-api-php][download][url] = https://bitbucket.org/mailchimp/mailchimp-api-php.git
