@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0-rc2
+projects[campaignion][version] = 1.0
 
 projects[cck_blocks][version] = 1.1
 
@@ -55,7 +55,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.16
+projects[form_builder][version] = 1.17
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 ; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
@@ -116,7 +116,7 @@ projects[mimemail][version] = 1.0-beta4
 
 projects[modernizr][version] = 3.9
 
-projects[morelesszen][version] = 1.0-beta9
+projects[morelesszen][version] = 1.0
 
 projects[mpay24_payment][version] = 1.0-beta4
 
@@ -162,7 +162,7 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[sagepay_payment][version] = 1.0-beta4
+projects[sagepay_payment][version] = 1.0
 
 projects[select_or_other][version] = 2.22
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
@@ -172,7 +172,7 @@ projects[session_cache][version] = 1.4
 ; Use session_cache during hook_boot() - https://drupal.org/node/2119579
 projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
 
-projects[share_light][version] = 1.1
+projects[share_light][version] = 1.2
 
 projects[stripe_payment][version] = 1.0-beta7
 
@@ -241,7 +241,7 @@ projects[xmlsitemap][version] = 2.2
 
 projects[xautoload][version] = 4.5
 
-projects[simplicity][version] = 1.0
+projects[simplicity][version] = 1.1
 
 projects[tao][version] = 3.1
 
