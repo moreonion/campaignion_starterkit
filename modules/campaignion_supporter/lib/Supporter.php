@@ -124,6 +124,22 @@ class Supporter implements ContactTypeInterface {
         $map['supporter_tags']               = new TagsField('supporter_tags');
         $map['field_preferred_language']     = new WrapperField('field_preferred_language');
         break;
+      case 'optivo':
+        $map['email'] = new WrapperField('email');
+        $map['anrede'] = new WrapperField('field_salutation');
+        $map['vorname'] = new SingleValueField('first_name');
+        $map['nachname'] = new SingleValueField('last_name');
+        $map['titel'] = new WrapperField('field_title');
+        $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['straße_und_hausnummer'] = new KeyedField('field_address', 'thoroughfare');
+        $map['land'] = new KeyedField('field_address', 'country');
+        $map['plz'] = new KeyedField('field_address', 'postal_code');
+        $map['ort'] = new KeyedField('field_address', 'locality');
+        $map['bundesland'] = new KeyedField('field_address', 'administrative_area');
+        $map['sprache'] = new WrapperField('field_preferred_language');
+        $map['created'] = new DateField('created', '%Y-%m-%d');
+        $map['updated'] = new DateField('updated', '%Y-%m-%d');
+        break;
     }
     if ($map) {
       return new ExporterBase($map);

@@ -8,7 +8,6 @@ dependencies[] = pathauto
 dependencies[] = redirect
 
 ; needed by our themes (does not work without)
-dependencies[] = less
 dependencies[] = jquery_update
 
 ; needed by campaignion

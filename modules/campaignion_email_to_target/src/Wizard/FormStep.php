@@ -2,11 +2,9 @@
 
 namespace Drupal\campaignion_email_to_target\Wizard;
 
-use \Drupal\campaignion_wizard\WebformStep;
+use \Drupal\campaignion_wizard\WebformStepUnique;
 
-use \FormBuilderLoader;
-
-class FormStep extends WebformStep {
+class FormStep extends WebformStepUnique {
 
   /**
    * Validate whether the resulting webform is something we can use.

@@ -1,0 +1,102 @@
+.listdropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 430;
+  margin: 0.5em 0;
+  width: 100%;
+  width: auto;
+  min-width: 10em;
+  max-width: 30em;
+  float: left;
+}
+.listdropdown-trigger {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  background: #e3ded5;
+  border: 1px solid #d3cbbd;
+  margin: 0;
+  padding: 0.6em 83px .6em 1.3em;
+  line-height: 1.4em;
+  font-size: 1.2em;
+  color: #8a8780;
+  width: auto;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.listdropdown-trigger:active,
+.listdropdown-trigger:hover,
+.listdropdown-trigger:focus,
+.listdropdown-trigger:visited {
+  text-decoration: none;
+  color: #8a8780;
+  border-color: #c8bfad;
+  box-shadow: 0px 0px 5px #fff;
+  -moz-box-shadow: 0px 0px 5px #fff;
+  -webkit-box-shadow: 0px 0px 5px #fff;
+}
+.listdropdown-trigger .caret {
+  border-left: 1px solid #d3cbbd;
+  background: url(images/down.png) no-repeat -2px center #d7d0c3;
+  position: absolute;
+  display: block;
+  width: 38px;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+}
+.listdropdown-menu {
+  position: absolute;
+  display: none;
+  width: auto;
+  border: 1px solid #f5f1e8;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.4em;
+  background: #ffffff;
+  padding: 0;
+  color: #8a8780;
+  z-index: 400;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  top: 3.5em;
+  right: 0;
+  min-height: 1em;
+  min-width: 180px;
+  border-radius: 5px;
+}
+.listdropdown-menu:before,
+.listdropdown-menu:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  position: absolute;
+  right: 8px;
+  top: -8px;
+  display: inline-block;
+}
+.listdropdown-menu:after {
+  border-bottom: 8px solid white;
+  top: -8px;
+}
+.listdropdown-menu li {
+  padding: 0.7em 1em;
+  border-bottom: 1px solid #f5f1e8;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.listdropdown-menu li.empty-list-text {
+  font-style: italic;
+  font-weight: normal;
+  cursor: auto;
+  border: none;
+}
+.listdropdown-menu li:hover {
+  background: #f7f7f7;
+}
+.listdropdown-menu li.last {
+  border: none;
+}
