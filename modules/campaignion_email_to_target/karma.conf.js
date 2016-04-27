@@ -14,6 +14,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      { pattern: 'node_modules/jquery/dist/jquery.js', watched: false },
+      { pattern: 'ui_test/lib/jasmine-jquery.js', watched: false },
       'ui_test/**/*.test.js'
     ],
 

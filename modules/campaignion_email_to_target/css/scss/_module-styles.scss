@@ -1,0 +1,41 @@
+h3 {
+  font-size: 1rem;
+}
+
+.specs {
+  margin-top: 2rem;
+
+  .card {
+    padding: 0.8rem 1.2rem;
+
+    .spec-info {
+      width: calc(100% - 7rem);
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .spec-label {
+        font-weight: bold;
+    }
+  }
+
+  .spec-error,
+  .value-missing,
+  .filter-missing {
+    color: red;
+  }
+
+}
+
+.filter-editor {
+
+  .filters {
+    margin-top: 1rem;
+
+    .filter {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}

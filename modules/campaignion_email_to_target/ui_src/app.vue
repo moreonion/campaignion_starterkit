@@ -306,7 +306,7 @@ module.exports = {
   },
 
   ready() {
-    window.$ && $(document).on("keypress.messages-widget", ":input:not(textarea):not([type=submit])", function(event) {
+    $(document).on("keypress.messages-widget", ":input:not(textarea):not([type=submit])", function(event) {
       if (event.keyCode == 13) {
           event.preventDefault();
       }
@@ -314,7 +314,7 @@ module.exports = {
   },
 
   beforeDestroy() {
-    window.$ && $(document).off("keypress.messages-widget")
+    $(document).off("keypress.messages-widget")
   }
 
 }
