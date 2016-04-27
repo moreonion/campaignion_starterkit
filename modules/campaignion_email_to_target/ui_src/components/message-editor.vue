@@ -1,5 +1,5 @@
 <template>
- <div>
+  <section class="message-editor">
     <div class="form-group">
       <label for="message-subject-{{ _uid }}">Subject</label>
       <input type="text" v-model="message.subject" class="form-control" id="message-subject-{{ _uid }}">
@@ -16,7 +16,7 @@
       <label for="message-footer-{{ _uid }}">Footer</label>
       <textarea rows="3" v-model="message.footer" class="form-control" id="message-footer-{{ _uid }}"></textarea>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

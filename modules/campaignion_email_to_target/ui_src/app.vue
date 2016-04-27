@@ -1,13 +1,11 @@
 <template>
   <div>
-    <button @click="newSpec('message-template')" class="add-message" type="button">Add specific message</button>
-    <button @click="newSpec('exclusion')" class="add-exclusion" type="button">Add exclusion</button>
-
-    <div class="help-text">Filters get matched from top to bottom</div>
+    <button @click="newSpec('message-template')" class="btn add-message" type="button">Add specific message</button>
+    <button @click="newSpec('exclusion')" class="btn add-exclusion" type="button">Add exclusion</button>
 
     <ul class="specs">
       <li v-for="spec in specs" :spec="spec" v-draggable:x="{index: $index, dragged: 'dragged'}" v-dropzone:x="sort(specs, $index, $droptag, $dropdata)" class="spec row">
-        <div class="col-sm-6">
+        <div class="col-sm-12 col-md-8 col-lg-6">
           <div class="card">
             <div class="spec-info">
               <div class="spec-label">
@@ -28,7 +26,7 @@
             </dropdown>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-12 col-md-4 col-lg-6">
           <ul class="spec-errors">
             <li v-for="error in spec.errors" class="spec-error">{{ error }}</li>
           </ul>
@@ -37,7 +35,9 @@
     </ul>
 
     <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>
-    <message-editor :message.sync="defaultMessage.message"></message-editor>
+    <div class="row">
+      <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6"></message-editor>
+    </div>
 
     <modal :show.sync="showSpecModal">
       <div slot="modal-header" class="modal-header">
@@ -63,8 +63,8 @@
       </div>
       <div slot="modal-footer" :class="{'modal-footer': true, 'alert': modalDirty}">
         {{ modalDirty ? 'You have unsaved changes!' : null }}
-        <button type="button" class="btn btn-secondary" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
-        <button type="button" class="btn btn-primary" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
+        <button type="button" class="btn btn-secondary modal-cancel" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
+        <button type="button" class="btn btn-primary modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
       </div>
     </modal>
   </div>

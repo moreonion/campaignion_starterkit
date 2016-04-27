@@ -13,25 +13,27 @@
       </dropdown>
     </header>
 
-    <div v-for="filter in filters" class="filter card form-inline">
+    <ul class="filters">
+      <li v-for="filter in filters" class="filter card form-inline">
 
-      <span v-if="$index === 0" class="logical-connective">If</span>
-      <span v-else class="logical-connective">and</span>
+        <span v-if="$index === 0" class="logical-connective">If</span>
+        <span v-else class="logical-connective">and</span>
 
-      <span class="attribute-label">{{ filter.attributeLabel }}</span>
+        <span class="attribute-label">{{ filter.attributeLabel }}</span>
 
-      <v-select :value.sync="filter.operator" :options="operatorOptions" :close-on-select="true"></v-select>
+        <v-select :value.sync="filter.operator" :options="operatorOptions" :close-on-select="true"></v-select>
 
-      <template v-if="filter.operator == 'regexp'">
-        /<input class="form-control" type="text" v-model="filter.value">/
-      </template>
-      <template v-else>
-        <input class="form-control" type="text" v-model="filter.value">
-      </template>
+        <template v-if="filter.operator == 'regexp'">
+          /<input class="form-control" type="text" v-model="filter.value">/
+        </template>
+        <template v-else>
+          <input class="form-control" type="text" v-model="filter.value">
+        </template>
 
-      <a href="#" @click="removeFilter(filter)">Delete</a>
+        <a href="#" @click="removeFilter(filter)">Delete</a>
 
-    </div>
+      </li>
+    </ul>
 
   </section>
 </template>
