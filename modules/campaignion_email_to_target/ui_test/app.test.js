@@ -24,7 +24,11 @@ describe('app', function() {
     var vm, testData = require('./data/example-data.js')
 
     beforeAll(function() {
-      vm = setup(app, testData)
+      vm = setup(app, testData, {
+        ready: function() {
+          $(window).off('beforeunload') // karma does't like this event handler...
+        }
+      })
     })
 
     afterAll(function() {
@@ -32,9 +36,12 @@ describe('app', function() {
     })
 
     it('parses bootstrapped data', function() {
+      var compareSpec = testData.messageSelection[0]
+      compareSpec.filters[0].attributeLabel = 'Party'
+
       expect(vm.defaultMessage.message).toEqual(testData.messageSelection[testData.messageSelection.length - 1].message)
       expect(vm.specs.length).toBe(testData.messageSelection.length - 1)
-      expect(vm.specs[0]).toEqual(jasmine.objectContaining(testData.messageSelection[0]))
+      expect(vm.specs[0]).toEqual(jasmine.objectContaining(compareSpec))
       expect(vm.hardValidation).toBe(testData.hardValidation)
     });
 
@@ -56,7 +63,11 @@ describe('app', function() {
     var vm, testData = require('./data/empty-data.js')
 
     beforeAll(function() {
-      vm = setup(app, testData)
+      vm = setup(app, testData, {
+        ready: function() {
+          $(window).off('beforeunload') // karma does't like this event handler...
+        }
+      })
     })
 
     afterAll(function() {

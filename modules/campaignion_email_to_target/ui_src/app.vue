@@ -77,7 +77,10 @@
 
 <script>
 var isEqual = require('lodash/isEqual'),
-  omit = require('lodash/omit')
+  omit = require('lodash/omit'),
+  find = require('lodash/find')
+
+var initialData = {} // this will hold a copy of the bootstrapped data parsed into the app's format, for easier comparison
 
 module.exports = {
 
@@ -280,6 +283,32 @@ module.exports = {
 
       if (data.targetAttributes) this.targetAttributes = data.targetAttributes
       if (typeof data.hardValidation !== 'undefined') this.hardValidation = data.hardValidation
+
+      // add attributeLabel property to filters
+      for (let i = 0, j = this.specs.length; i < j; i++) {
+        for (let ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+          this.specs[i].filters[ii].attributeLabel = find(this.targetAttributes, {name: this.specs[i].filters[ii].attributeName}).label
+        }
+      }
+
+      // preserve initial state
+      initialData.specs = this.clone(this.specs)
+      initialData.defaultMessage = this.clone(this.defaultMessage)
+    },
+
+    unsavedChanges() {
+      for (let i = 0, j = this.specs.length; i < j; i++) {
+        if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
+          // console.log('unsaved ' + i, omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))
+          return true
+        }
+      }
+      if (!isEqual(omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))) {
+        // console.log('unsaved default', omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))
+        return true
+      }
+      // console.log('everything saved')
+      return false
     }
 
   },
@@ -316,6 +345,20 @@ module.exports = {
   },
 
   ready() {
+    var submitted = false
+
+    $('form.wizard-form').on('submit', () => {
+      submitted = true
+    })
+
+    $(window).on('beforeunload', (e) => {
+      if (this.unsavedChanges() && !submitted) {
+        var confirmationMessage = 'Careful! You have unsaved changes!'
+        e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+        return confirmationMessage;              // Gecko, WebKit, Chrome <34
+      }
+    })
+
     // Don't submit the wizard step if user hits Enter
     $(document).on("keypress.messages-widget", ":input:not(textarea):not([type=submit])", function(event) {
       if (event.keyCode == 13) {
