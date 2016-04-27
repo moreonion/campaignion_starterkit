@@ -76,7 +76,8 @@
 </template>
 
 <script>
-var isEqual = require('lodash/isEqual')
+var isEqual = require('lodash/isEqual'),
+  omit = require('lodash/omit')
 
 module.exports = {
 
@@ -123,7 +124,7 @@ module.exports = {
     },
 
     currentSpecIsEmpty() {
-      return isEqual(this.currentSpec, this.emptySpec('message-template')) || isEqual(this.currentSpec, this.emptySpec('exclusion'))
+      return isEqual(omit(this.currentSpec, ['id', 'errors', 'filterStr']), omit(this.emptySpec(this.currentSpec.type), ['id', 'errors', 'filterStr']))
     }
 
   },
@@ -158,6 +159,7 @@ module.exports = {
     duplicateSpec(index) {
       if (!this.specs[index]) return
       var duplicate = this.clone(this.specs[index])
+      duplicate.id = this.emptySpec(duplicate.type).id
       duplicate.label += ' (Copy)'
       this.currentSpec = duplicate
       this.currentSpecIndex = -1

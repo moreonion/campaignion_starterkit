@@ -1,6 +1,7 @@
 module.exports = {
   messageSelection: [
     {
+      "id": 234598,
       "type": "message-template",
       "label": "foo",
       "filters": [
@@ -19,6 +20,7 @@ module.exports = {
       }
     },
     {
+      "id": "2345",
       "type": "exclusion",
       "label": "foo",
       "filters": [
@@ -31,6 +33,7 @@ module.exports = {
       ]
     },
     {
+      "id": 234,
       "type": "message-template",
       "label": "same filter as foo",
       "filters": [
@@ -49,6 +52,7 @@ module.exports = {
       }
     },
     {
+      "id": 123,
       "type": "message-template",
       "label": "",
       "filters": [],

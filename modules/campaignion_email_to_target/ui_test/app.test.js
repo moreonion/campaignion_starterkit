@@ -20,7 +20,7 @@ describe('app', function() {
     expect(data.showSpecModal).toBe(false);
   });
 
-  xdescribe('initialisation', function() {
+  describe('initialisation', function() {
     var vm, testData = require('./data/example-data.js')
 
     beforeAll(function() {
