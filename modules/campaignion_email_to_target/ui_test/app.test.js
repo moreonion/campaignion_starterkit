@@ -94,7 +94,7 @@ describe('app', function() {
     })
 
     it('disables save button for empty forms', function() {
-      expect(vm.$el.querySelector('.modal-save')).toBeDisabled()
+      expect(vm.$el.querySelector('.js-modal-save')).toBeDisabled()
     })
 
     describe('save button', function() {
@@ -104,7 +104,7 @@ describe('app', function() {
       })
 
       it('enabled for forms with a message subject', function(done) {
-        expect(vm.$el.querySelector('.modal-save')).not.toBeDisabled()
+        expect(vm.$el.querySelector('.js-modal-save')).not.toBeDisabled()
         done()
       })
     })
@@ -112,7 +112,7 @@ describe('app', function() {
 
     it('saves a new message', function() {
       vm.currentSpec.label = 'bar'
-      vm.$el.querySelector('.modal-save').click()
+      vm.$el.querySelector('.js-modal-save').click()
 
       expect(vm.specs.length).toBe(1)
       expect(vm.specs[0].label).toBe('bar')

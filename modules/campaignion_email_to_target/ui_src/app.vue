@@ -41,12 +41,12 @@
 
     <modal :show.sync="showSpecModal">
       <div slot="modal-header" class="modal-header">
-        <button type="button" class="close" @click="tryCloseModal"><span>&times;</span></button>
+        <button type="button" class="close" @click="tryCloseModal" :disabled="modalDirty"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
       </div>
       <div slot="modal-body" class="modal-body">
         <div class="form-group">
-          <label for="spec-label">Label <small>(seen only by you)</small></label>
+          <label for="spec-label">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>
           <input type="text" v-model="currentSpec.label" id="spec-label" class="form-control">
         </div>
         <filter-editor
@@ -60,11 +60,16 @@
           <a href="#" @click="prefillMessage()">Prefill from default message</a>
           <message-editor :message.sync="currentSpec.message"></message-editor>
         </section>
+        <section v-if="currentSpec.type == 'exclusion' && (currentSpecIndex > 0 || (currentSpecIndex == -1 && specs.length))">
+          Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s
+          filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list
+          if you want it to apply under any condition.
+        </section>
       </div>
       <div slot="modal-footer" :class="{'modal-footer': true, 'alert': modalDirty}">
         {{ modalDirty ? 'You have unsaved changes!' : null }}
-        <button type="button" class="btn btn-secondary modal-cancel" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
-        <button type="button" class="btn btn-primary modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
+        <button type="button" class="btn btn-secondary js-modal-cancel" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
+        <button type="button" class="btn btn-primary js-modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
       </div>
     </modal>
   </div>
@@ -166,6 +171,9 @@ module.exports = {
     showModal() {
       this.modalDirty = false
       this.showSpecModal = true
+      this.$nextTick(function() {
+        this.$el.querySelector('.modal-dialog input').focus()
+      })
     },
 
     tryCloseModal() {
@@ -306,11 +314,20 @@ module.exports = {
   },
 
   ready() {
+    // Don't submit the wizard step if user hits Enter
     $(document).on("keypress.messages-widget", ":input:not(textarea):not([type=submit])", function(event) {
       if (event.keyCode == 13) {
-          event.preventDefault();
+        event.preventDefault()
       }
-    });
+    })
+    // Catch Enter for the Modal
+    $(document).on("keyup.messages-widget", ".email-to-target-messages-widget .modal-dialog :input:not(textarea):not(.js-modal-cancel)", function(event) {
+      if (event.keyCode == 13) {
+        event.preventDefault()
+        $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click()
+        console.log('enter!')
+      }
+    })
   },
 
   beforeDestroy() {

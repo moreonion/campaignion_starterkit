@@ -24,7 +24,7 @@
         <v-select :value.sync="filter.operator" :options="operatorOptions" :close-on-select="true"></v-select>
 
         <template v-if="filter.operator == 'regexp'">
-          /<input class="form-control" type="text" v-model="filter.value">/
+          /<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">/
         </template>
         <template v-else>
           <input class="form-control" type="text" v-model="filter.value">
