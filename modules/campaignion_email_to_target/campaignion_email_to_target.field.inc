@@ -6,13 +6,6 @@ use \Drupal\campaignion_email_to_target\Api\Client;
  * Implements hook_field_info().
  */
 function campaignion_email_to_target_field_info() {
-  $info['email_to_target_message'] = [
-    'label' => t('Email to target message'),
-    'description' => t('Allows you to configure messages for Email-To-Target actions.'),
-    'settings' => [],
-    'default_widget' => 'email_to_target_message',
-    'default_formatter' => 'email_to_target_message',
-  ];
   $info['email_to_target_options'] = [
     'label' => t('Email to target options'),
     'description' => t('Stores options for Email-To-Target actions.'),
@@ -27,15 +20,6 @@ function campaignion_email_to_target_field_info() {
  * Implements hook_field_widget_info().
  */
 function campaignion_email_to_target_field_widget_info() {
-  $info['email_to_target_message'] = [
-    'label' => t('Email to target message'),
-    'field types' => ['email_to_target_message'],
-    'settings' => [],
-    'behaviors' => [
-      'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-      'default values' => FIELD_BEHAVIOR_DEFAULT,
-    ],
-  ];
   $info['email_to_target_options'] = [
     'label' => t('Email to target options'),
     'field types' => ['email_to_target_options'],
@@ -54,7 +38,7 @@ function campaignion_email_to_target_field_widget_info() {
 function campaignion_email_to_target_field_formatter_info() {
   $info['email_to_target'] = array(
     'label' => t('No output.'),
-    'field types' => ['email_to_target_message', 'email_to_target_options'],
+    'field types' => ['email_to_target_options'],
   );
   return $info;
 }
@@ -77,9 +61,6 @@ function campaignion_email_to_target_field_widget_form(&$form, &$form_state, $fi
 
   if ($field['type'] == 'email_to_target_options') {
     return _campaignion_email_to_target_options_field_widget_form($item);
-  }
-  else {
-    return _campaignion_email_to_target_message_field_widget_form($items);
   }
 }
 
@@ -112,27 +93,6 @@ function _campaignion_email_to_target_options_field_widget_form($item) {
     '#title' => t('Supporters may edit the message sent to the target(s).'),
     '#default_value' => $item['users_may_edit'],
   ];
-  return $element;
-}
-
-function _campaignion_email_to_target_message_field_widget_form($items) {
-  $defaults = [
-    'subject' => '',
-    'header' => '',
-    'message' => '',
-    'footer' => '',
-  ];
-
-  $element = [
-    '#type' => 'container',
-    '#title' => t('Message that will be sent to target(s)'),
-    '#id' => drupal_html_id('email-to-target-messages-widget'),
-    '#attributes' => ['class' => ['email-to-target-messages-widget']],
-    'app-tag' => [
-      '#markup' => '<app></app>'
-    ]
-  ];
-  drupal_add_js(drupal_get_path('module', 'campaignion_email_to_target') . '/js/messages_widget.js', ['scope' => 'footer']);
   return $element;
 }
 
