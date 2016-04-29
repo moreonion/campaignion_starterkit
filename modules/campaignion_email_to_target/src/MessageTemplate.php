@@ -11,7 +11,6 @@ class MessageTemplate extends Model {
   protected static $values = ['nid', 'weight', 'subject', 'header', 'message', 'footer'];
 
   public $id;
-  public $message_id;
   public $weight;
   public $subject;
   public $header;
