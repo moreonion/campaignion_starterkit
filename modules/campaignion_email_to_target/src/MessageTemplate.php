@@ -11,16 +11,31 @@ class MessageTemplate extends Model {
   protected static $values = ['nid', 'weight', 'subject', 'header', 'message', 'footer'];
 
   public $id;
-  public $weight;
-  public $subject;
-  public $header;
-  public $message;
-  public $footer;
+  public $nid;
+  public $weight = 0;
+  public $subject = '';
+  public $header = '';
+  public $message = '';
+  public $footer = '';
   public $filters = [];
 
   public function __construct($data = [], $new = TRUE) {
     parent::__construct($data, $new);
     $this->setFilters($this->filters);
+  }
+
+  /**
+   * Reset data based on an array.
+   */
+  public function setData($data = []) {
+    foreach (['weight', 'subject', 'header', 'message', 'footer'] as $k) {
+      if (isset($data[$k])) {
+        $this->{$k} = $data[$k];
+      }
+    }
+    if (isset($data['filters'])) {
+      $this->setFilters($data['filters']);
+    }
   }
 
   public function setFilters($new_filters) {
@@ -73,6 +88,7 @@ class MessageTemplate extends Model {
       $filters[] = $f->toArray();
     }
     $data['filters'] = $filters;
+    // Weights are only represented by order.
     unset($data['weight']);
     unset($data['nid']);
     return $data;
