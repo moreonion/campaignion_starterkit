@@ -15472,7 +15472,6 @@ module.exports = {
       if (event.keyCode == 13) {
         event.preventDefault();
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click();
-        console.log('enter!');
       }
     });
   },
@@ -15546,7 +15545,7 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"./utils/EventListener.vue":202,"vue":196,"vue-hot-reload-api":195}],200:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n")
+var __vueify_style__ = require("vueify-insert-css").insert("\nbody.modal-open {\n  position: fixed;\n  width: 100%;\n}\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n")
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15683,7 +15682,7 @@ if (module.hot) {(function () {  module.hot.accept()
   if (!hotAPI.compatible) return
   var id = "/home/jo/mo/drupal/campaignion_starterkit/modules/campaignion_email_to_target/ui_src/components/custom-vue-strap/Modal.vue"
   module.hot.dispose(function () {
-    require("vueify-insert-css").cache["\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n"] = false
+    require("vueify-insert-css").cache["\nbody.modal-open {\n  position: fixed;\n  width: 100%;\n}\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n"] = false
     document.head.removeChild(__vueify_style__)
   })
   if (!module.hot.data) {

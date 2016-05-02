@@ -138,6 +138,10 @@ import EventListener from './utils/EventListener.vue'
   }
 </script>
 <style>
+body.modal-open {
+  position: fixed;
+  width: 100%;
+}
 body.modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;

@@ -370,7 +370,6 @@ module.exports = {
       if (event.keyCode == 13) {
         event.preventDefault()
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click()
-        console.log('enter!')
       }
     })
   },
