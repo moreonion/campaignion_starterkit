@@ -14,10 +14,12 @@ class MessageEndpointTest extends \DrupalWebTestCase {
     $data[] = [
       'type' => 'message',
       'label' => 'My test message',
-      'subject' => 'Test Subject',
-      'header' => 'Test header',
-      'message' => 'Test message',
-      'footer' => 'Test footer',
+      'message' => [
+        'subject' => 'Test Subject',
+        'header' => 'Test header',
+        'message' => 'Test message',
+        'footer' => 'Test footer',
+      ],
       'filters' => [
         ['type' => 'test', 'something' => 'something else'],
       ],
@@ -55,8 +57,8 @@ class MessageEndpointTest extends \DrupalWebTestCase {
     $a_messages = [];
     $a_subjects = [];
     foreach ($answer as $m) {
-      $a_messages[] = ['id' => $m['id'], 'subject' => $m['subject']];
-      $a_subjects[] = $m['subject'];
+      $a_messages[] = ['id' => $m['id'], 'subject' => $m['message']['subject']];
+      $a_subjects[] = $m['message']['subject'];
     }
     $this->assertEqual([
       'New first',

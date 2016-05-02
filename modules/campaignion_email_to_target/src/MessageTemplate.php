@@ -30,7 +30,10 @@ class MessageTemplate extends Model {
    * Reset data based on an array.
    */
   public function setData($data = []) {
-    foreach (['weight', 'subject', 'header', 'message', 'footer'] as $k) {
+    foreach (static::$values as $k) {
+      if ($k == 'nid') {
+        continue;
+      }
       if (isset($data[$k])) {
         $this->{$k} = $data[$k];
       }

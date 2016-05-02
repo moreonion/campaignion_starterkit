@@ -10,6 +10,25 @@ class MessageEndpoint {
     $this->node = $node;
   }
 
+  protected function flatten($data) {
+    if (isset($data['message']) && is_array($data['message'])) {
+      $message = $data['message'];
+      unset($data['message']);
+      return $message + $data;
+    }
+    return $data;
+  }
+
+  protected function unflatten($data) {
+    $message = [];
+    foreach (['subject', 'header', 'message', 'footer'] as $k) {
+      $message[$k] = $data[$k];
+      unset($data[$k]);
+    }
+    $data['message'] = $message;
+    return $data;
+  }
+
   public function put($data) {
     $old_messages = MessageTemplate::byNid($this->node->nid);
     $w = 0;
@@ -17,6 +36,8 @@ class MessageEndpoint {
     foreach ($data as $m) {
       $m['nid'] = $this->node->nid;
       $m['weight'] = $w++;
+      $m = $this->flatten($m);
+
       if (isset($m['id']) && isset($old_messages[$m['id']])) {
         $message = $old_messages[$m['id']];
         $message->setData($m);
@@ -26,7 +47,7 @@ class MessageEndpoint {
         $message = new MessageTemplate($m);
       }
       $message->save();
-      $new_messages[] = $message->toArray();
+      $new_messages[] = $this->unflatten($message->toArray());
     }
     // Old messages that are still in there have been deleted.
     foreach ($old_messages as $message) {
@@ -38,7 +59,7 @@ class MessageEndpoint {
   public function get() {
     $messages = [];
     foreach (MessageTemplate::byNid($this->node->nid) as $m) {
-      $messages[] = $m->toArray();
+      $messages[] = $this->unflatten($m->toArray());
     }
     return $messages;
   }
