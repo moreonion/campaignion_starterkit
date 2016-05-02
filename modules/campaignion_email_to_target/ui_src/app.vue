@@ -38,6 +38,7 @@
     <div class="row">
       <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6"></message-editor>
     </div>
+    <tokens-list :token-categories="tokenCategories"></tokens-list>
 
     <modal :show.sync="showSpecModal">
       <div slot="modal-header" class="modal-header">
@@ -89,6 +90,7 @@ module.exports = {
   components: {
     filterEditor: require('./components/filter-editor.vue'),
     messageEditor: require('./components/message-editor.vue'),
+    tokensList: require('./components/tokens-list.vue'),
     dropdown: require('./components/custom-vue-strap/Dropdown.vue'),
     modal: require('./components/custom-vue-strap/Modal.vue')
   },
@@ -98,6 +100,7 @@ module.exports = {
       specs: [],
       defaultMessage: {},
       targetAttributes: [],
+      tokenCategories: [],
       hardValidation: false,
       showSpecModal: false,  // show the modal to edit a specification
       modalDirty: false,     // true if user edited a field in the modal and tried to cancel once
@@ -282,6 +285,7 @@ module.exports = {
       }
 
       if (data.targetAttributes) this.targetAttributes = data.targetAttributes
+      if (data.tokens) this.tokenCategories = data.tokens
       if (typeof data.hardValidation !== 'undefined') this.hardValidation = data.hardValidation
 
       // add attributeLabel property to filters
@@ -317,22 +321,7 @@ module.exports = {
     // stub until campaignion is ready
     if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
       Drupal.settings.campaignion_email_to_target = {
-        messages: {
-          messageSelection: [],
-          targetAttributes: [
-            {
-              name: 'party',
-              label: 'Party',
-              description: 'Filter by party'
-            },
-            {
-              name: 'constituency',
-              label: 'Constituency',
-              description: 'Filter by constituency'
-            }
-          ],
-          hardValidation: false
-        }
+        messages: require('../ui_test/data/example-data.js')
       }
     }
 

@@ -15212,6 +15212,7 @@ module.exports = {
   components: {
     filterEditor: require('./components/filter-editor.vue'),
     messageEditor: require('./components/message-editor.vue'),
+    tokensList: require('./components/tokens-list.vue'),
     dropdown: require('./components/custom-vue-strap/Dropdown.vue'),
     modal: require('./components/custom-vue-strap/Modal.vue')
   },
@@ -15221,6 +15222,7 @@ module.exports = {
       specs: [],
       defaultMessage: {},
       targetAttributes: [],
+      tokenCategories: [],
       hardValidation: false,
       showSpecModal: false, // show the modal to edit a specification
       modalDirty: false, // true if user edited a field in the modal and tried to cancel once
@@ -15388,6 +15390,7 @@ module.exports = {
       }
 
       if (data.targetAttributes) this.targetAttributes = data.targetAttributes;
+      if (data.tokens) this.tokenCategories = data.tokens;
       if (typeof data.hardValidation !== 'undefined') this.hardValidation = data.hardValidation;
 
       // add attributeLabel property to filters
@@ -15421,19 +15424,7 @@ module.exports = {
     // stub until campaignion is ready
     if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
       Drupal.settings.campaignion_email_to_target = {
-        messages: {
-          messageSelection: [],
-          targetAttributes: [{
-            name: 'party',
-            label: 'Party',
-            description: 'Filter by party'
-          }, {
-            name: 'constituency',
-            label: 'Constituency',
-            description: 'Filter by constituency'
-          }],
-          hardValidation: false
-        }
+        messages: require('../ui_test/data/example-data.js')
       };
     }
 
@@ -15480,7 +15471,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul class=\"specs\">\n    <li v-for=\"spec in specs\" :spec=\"spec\" v-draggable:x=\"{index: $index, dragged: 'dragged'}\" v-dropzone:x=\"sort(specs, $index, $droptag, $dropdata)\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n\n  <modal :show.sync=\"showSpecModal\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul class=\"specs\">\n    <li v-for=\"spec in specs\" :spec=\"spec\" v-draggable:x=\"{index: $index, dragged: 'dragged'}\" v-dropzone:x=\"sort(specs, $index, $droptag, $dropdata)\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -15496,7 +15487,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./components/custom-vue-strap/Dropdown.vue":199,"./components/custom-vue-strap/Modal.vue":200,"./components/filter-editor.vue":204,"./components/message-editor.vue":205,"./mixins/defaults.vue":208,"./mixins/utils.vue":209,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":167,"lodash/isEqual":175,"lodash/omit":187,"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],199:[function(require,module,exports){
+},{"../ui_test/data/example-data.js":211,"./components/custom-vue-strap/Dropdown.vue":199,"./components/custom-vue-strap/Modal.vue":200,"./components/filter-editor.vue":204,"./components/message-editor.vue":205,"./components/tokens-list.vue":207,"./mixins/defaults.vue":209,"./mixins/utils.vue":210,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":167,"lodash/isEqual":175,"lodash/omit":187,"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],199:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16130,6 +16121,43 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],207:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+var Vue = require('vue');
+
+exports.default = {
+  props: {
+    tokenCategories: Array
+  },
+  methods: {
+    toggle: function toggle(cat) {
+      if (typeof cat.expanded === 'undefined') {
+        Vue.set(cat, 'expanded', true);
+      } else {
+        cat.expanded = !cat.expanded;
+      }
+    }
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n  <ul class=\"token-categories\">\n    <li v-for=\"cat in tokenCategories\">\n      <a href=\"#\" @click.prevent=\"toggle(cat)\">\n        <span class=\"category-expand\">{{ cat.expanded ? '-' : '+' }}</span>\n        <strong class=\"category-title\">{{ cat.title }}</strong>\n      </a>\n      <span class=\"category-description\">{{ cat.description }}</span>\n      <ul v-if=\"cat.tokens.length &amp;&amp; cat.expanded\" class=\"tokens\">\n        <li v-for=\"token in cat.tokens\">\n          <span class=\"token-title\">{{ token.title }}</span>\n          <span class=\"token-token\">{{ token.token }}</span>\n          <span class=\"token-description\">{{ token.description }}</span>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</section>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/home/jo/mo/drupal/campaignion_starterkit/modules/campaignion_email_to_target/ui_src/components/tokens-list.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":196,"vue-hot-reload-api":195}],208:[function(require,module,exports){
 var Vue = require('vue')
 var App = require('./app.vue')
 
@@ -16142,7 +16170,7 @@ new Vue({
   }
 })
 
-},{"./app.vue":198,"vue":196,"vue-dnd":194}],208:[function(require,module,exports){
+},{"./app.vue":198,"vue":196,"vue-dnd":194}],209:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16190,7 +16218,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],209:[function(require,module,exports){
+},{"vue":196,"vue-hot-reload-api":195}],210:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16224,4 +16252,125 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/json/stringify":2,"vue":196,"vue-hot-reload-api":195}]},{},[207]);
+},{"babel-runtime/core-js/json/stringify":2,"vue":196,"vue-hot-reload-api":195}],211:[function(require,module,exports){
+module.exports = {
+  messageSelection: [
+    {
+      "id": 234598,
+      "type": "message-template",
+      "label": "foo",
+      "filters": [
+        {
+          "type": "target-attribute",
+          "attributeName": "party",
+          "operator": "==",
+          "value": "bar"
+        }
+      ],
+      "message": {
+        "subject": "Subject of first message",
+        "header": "Header of first message",
+        "body": "body of first msg",
+        "footer": "goodbye"
+      }
+    },
+    {
+      "id": "2345",
+      "type": "exclusion",
+      "label": "foo",
+      "filters": [
+        {
+          "type": "target-attribute",
+          "attributeName": "party",
+          "operator": "!=",
+          "value": "baz"
+        }
+      ]
+    },
+    {
+      "id": 234,
+      "type": "message-template",
+      "label": "same filter as foo",
+      "filters": [
+        {
+          "type": "target-attribute",
+          "attributeName": "party",
+          "operator": "==",
+          "value": "bar"
+        }
+      ],
+      "message": {
+        "subject": "Subject of 3rd message",
+        "header": "Header of 3rd message",
+        "body": "body of 3rd msg",
+        "footer": "goodbye"
+      }
+    },
+    {
+      "id": 123,
+      "type": "message-template",
+      "label": "",
+      "filters": [],
+      "message": {
+        "subject": "default message subject",
+        "header": "default message header",
+        "body": "default message body",
+        "footer": "default message footer"
+      }
+    }
+  ],
+  targetAttributes: [
+    {
+      name: 'party',
+      label: 'Party',
+      description: 'Filter by party'
+    },
+    {
+      name: 'constituency',
+      label: 'Constituency',
+      description: 'Filter by constituency'
+    }
+  ],
+  hardValidation: true,
+  tokens: [
+    {
+      title: 'First Category',
+      description: 'this is my description (1)',
+      tokens: [
+        {
+          title: 'One',
+          description: 'first token',
+          token: '[myfirsttoken]'
+        },
+        {
+          title: 'Two',
+          description: 'second token',
+          token: '[mysecondtoken]'
+        },
+        {
+          title: 'Three',
+          description: 'third token',
+          token: '[mythirdtoken]'
+        }
+      ]
+    },
+    {
+      title: 'Second Category',
+      description: 'this is my description (2)',
+      tokens: [
+        {
+          title: 'One (2)',
+          description: 'first token',
+          token: '[myfirsttoken]'
+        },
+        {
+          title: 'Two (2)',
+          description: 'second token',
+          token: '[mysecondtoken]'
+        }
+      ]
+    }
+  ]
+}
+
+},{}]},{},[208]);
