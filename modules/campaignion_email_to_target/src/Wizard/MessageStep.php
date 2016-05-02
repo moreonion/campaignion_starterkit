@@ -28,18 +28,19 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
         continue;
       }
       $type_info = $info['types'][$type];
-      $tokens[$type] = [
-        'name' => $type_info['name'],
+      $group = [
+        'title' => $type_info['name'],
         'description' => $type_info['description'],
         'tokens' => [],
       ];
       foreach ($info['tokens'][$type] as $key => $token) {
-        $tokens[$type]['tokens'][] = [
-          'token' => $key,
-          'name' => $token['name'],
+        $group['tokens'][] = [
+          'token' => "[$type:$key]",
+          'title' => $token['name'],
           'description' => $token['description'],
         ];
       }
+      $tokens[] = $group;
     }
     $settings['tokens'] = $tokens;
 
