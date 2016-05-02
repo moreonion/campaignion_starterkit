@@ -30,6 +30,18 @@ function campaignion_email_to_target_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
+      'type' => [
+        'description' => 'Message type',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'label' => [
+        'description' => 'Message label',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
       'subject' => [
         'description' => 'Message subject',
         'type' => 'varchar',
@@ -163,6 +175,18 @@ function campaignion_email_to_target_update_1() {
         'description' => 'Weight value used for sorting messages',
         'type' => 'int',
         'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Message type',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'label' => [
+        'description' => 'Message label',
+        'type' => 'varchar',
+        'length' => 256,
         'not null' => TRUE,
       ],
       'subject' => [

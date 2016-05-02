@@ -12,6 +12,8 @@ class MessageEndpointTest extends \DrupalWebTestCase {
 
   public function test_put_oneMessage_emptyNode() {
     $data[] = [
+      'type' => 'message',
+      'label' => 'My test message',
       'subject' => 'Test Subject',
       'header' => 'Test header',
       'message' => 'Test message',

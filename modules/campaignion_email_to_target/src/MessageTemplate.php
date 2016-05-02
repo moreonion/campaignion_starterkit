@@ -8,11 +8,13 @@ use \Drupal\little_helpers\DB\Model;
 class MessageTemplate extends Model {
   protected static $table  = 'campaignion_email_to_target_messages';
   protected static $key = ['id'];
-  protected static $values = ['nid', 'weight', 'subject', 'header', 'message', 'footer'];
+  protected static $values = ['nid', 'weight', 'type', 'label', 'subject', 'header', 'message', 'footer'];
 
   public $id;
   public $nid;
   public $weight = 0;
+  public $type = 'message';
+  public $label = '';
   public $subject = '';
   public $header = '';
   public $message = '';

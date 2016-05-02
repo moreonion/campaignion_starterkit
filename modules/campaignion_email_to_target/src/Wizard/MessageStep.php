@@ -47,8 +47,9 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
     foreach (MessageTemplate::byNid($this->wizard->node->nid) as $m) {
       $settings['messages'][] = $m->toArray();
     }
+    $settings['hardValidaion'] = !$this->wizard->node-status;
 
-    $settings = ['emailToTarget' => $settings];
+    $settings = ['campaignion_email_to_target' => $settings];
     $form['messages']['#attached']['js'][] = ['data' => $settings, 'type' => 'setting'];
     $form['messages']['#attached']['js'][] = ['data' => drupal_get_path('module', 'campaignion_email_to_target') . '/js/messages_widget.js', 'scope' => 'footer'];
     return $form;
