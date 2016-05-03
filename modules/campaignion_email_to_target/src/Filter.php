@@ -3,6 +3,7 @@
 namespace Drupal\campaignion_email_to_target;
 
 use \Drupal\little_helpers\DB\Model;
+use \Drupal\little_helpers\Webform\Submission;
 
 
 class Filter extends Model {
@@ -68,6 +69,18 @@ class Filter extends Model {
       $data += $config;
     }
     return $data;
+  }
+
+  public function match($target, Submission $submission) {
+    if ($this->type == 'target-attribute') {
+      switch ($this->config['operator']) {
+        case '==':
+          return $target[$this->config['attributeName']] == $this->config['value'];
+        case '!=':
+          return $target[$this->config['attributeName']] != $this->config['value'];
+      }
+    }
+    return TRUE;
   }
 
 }
