@@ -48,7 +48,16 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
     foreach (MessageTemplate::byNid($this->wizard->node->nid) as $m) {
       $settings['messages'][] = $m->toArray();
     }
-    $settings['hardValidaion'] = !$this->wizard->node-status;
+    $settings['targetAttributes'] = [];
+    $dataset = $this->wizard->node->action->dataset();
+    foreach ($dataset->attributes as $attribute) {
+      $settings['targetAttributes'][] = [
+        'name' => $attribute->key,
+        'label' => $attribute->title,
+        'description' => $attribute->description,
+      ];
+    }
+    $settings['hardValidaion'] = !$this->wizard->node->status;
 
     $settings = ['campaignion_email_to_target' => $settings];
     $form['messages']['#attached']['js'][] = ['data' => $settings, 'type' => 'setting'];
