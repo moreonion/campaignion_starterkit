@@ -19,7 +19,7 @@
     emptySpec(type) {
       if (this.validSpecificationTypes().indexOf(type) === -1) return
       var spec = {
-        id: 0,
+        id: null,
         type: type,
         label: '',
         filters: [],

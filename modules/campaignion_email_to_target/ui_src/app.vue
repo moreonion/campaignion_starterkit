@@ -300,6 +300,12 @@ module.exports = {
       initialData.defaultMessage = this.clone(this.defaultMessage)
     },
 
+    serializeData() {
+      var messages = this.clone(this.specs)
+      messages.push(this.clone(this.defaultMessage))
+      return JSON.stringify(messages)
+    },
+
     unsavedChanges() {
       for (let i = 0, j = this.specs.length; i < j; i++) {
         if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
@@ -313,6 +319,15 @@ module.exports = {
       }
       // console.log('everything saved')
       return false
+    },
+
+    saveData() {
+      console.log(this.serializeData())
+      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then(function(response) {
+        // success
+      }, function(response) {
+        // error
+      })
     }
 
   },
@@ -336,6 +351,10 @@ module.exports = {
 
     $('form.wizard-form').on('submit', () => {
       submitted = true
+
+      // TODO hard validation
+
+      this.saveData()
     })
 
     $(window).on('beforeunload', (e) => {

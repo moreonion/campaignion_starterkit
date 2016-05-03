@@ -5240,6 +5240,1534 @@ function format (id) {
 }
 
 },{}],196:[function(require,module,exports){
+/**
+ * Before Interceptor.
+ */
+
+var _ = require('../util');
+
+module.exports = {
+
+    request: function (request) {
+
+        if (_.isFunction(request.beforeSend)) {
+            request.beforeSend.call(this, request);
+        }
+
+        return request;
+    }
+
+};
+
+},{"../util":219}],197:[function(require,module,exports){
+/**
+ * Base client.
+ */
+
+var _ = require('../../util');
+var Promise = require('../../promise');
+var xhrClient = require('./xhr');
+
+module.exports = function (request) {
+
+    var response = (request.client || xhrClient)(request);
+
+    return Promise.resolve(response).then(function (response) {
+
+        if (response.headers) {
+
+            var headers = parseHeaders(response.headers);
+
+            response.headers = function (name) {
+
+                if (name) {
+                    return headers[_.toLower(name)];
+                }
+
+                return headers;
+            };
+
+        }
+
+        response.ok = response.status >= 200 && response.status < 300;
+
+        return response;
+    });
+
+};
+
+function parseHeaders(str) {
+
+    var headers = {}, value, name, i;
+
+    if (_.isString(str)) {
+        _.each(str.split('\n'), function (row) {
+
+            i = row.indexOf(':');
+            name = _.trim(_.toLower(row.slice(0, i)));
+            value = _.trim(row.slice(i + 1));
+
+            if (headers[name]) {
+
+                if (_.isArray(headers[name])) {
+                    headers[name].push(value);
+                } else {
+                    headers[name] = [headers[name], value];
+                }
+
+            } else {
+
+                headers[name] = value;
+            }
+
+        });
+    }
+
+    return headers;
+}
+
+},{"../../promise":212,"../../util":219,"./xhr":200}],198:[function(require,module,exports){
+/**
+ * JSONP client.
+ */
+
+var _ = require('../../util');
+var Promise = require('../../promise');
+
+module.exports = function (request) {
+    return new Promise(function (resolve) {
+
+        var callback = '_jsonp' + Math.random().toString(36).substr(2), response = {request: request, data: null}, handler, script;
+
+        request.params[request.jsonp] = callback;
+        request.cancel = function () {
+            handler({type: 'cancel'});
+        };
+
+        script = document.createElement('script');
+        script.src = _.url(request);
+        script.type = 'text/javascript';
+        script.async = true;
+
+        window[callback] = function (data) {
+            response.data = data;
+        };
+
+        handler = function (event) {
+
+            if (event.type === 'load' && response.data !== null) {
+                response.status = 200;
+            } else if (event.type === 'error') {
+                response.status = 404;
+            } else {
+                response.status = 0;
+            }
+
+            resolve(response);
+
+            delete window[callback];
+            document.body.removeChild(script);
+        };
+
+        script.onload = handler;
+        script.onerror = handler;
+
+        document.body.appendChild(script);
+    });
+};
+
+},{"../../promise":212,"../../util":219}],199:[function(require,module,exports){
+/**
+ * XDomain client (Internet Explorer).
+ */
+
+var _ = require('../../util');
+var Promise = require('../../promise');
+
+module.exports = function (request) {
+    return new Promise(function (resolve) {
+
+        var xdr = new XDomainRequest(), response = {request: request}, handler;
+
+        request.cancel = function () {
+            xdr.abort();
+        };
+
+        xdr.open(request.method, _.url(request), true);
+
+        handler = function (event) {
+
+            response.data = xdr.responseText;
+            response.status = xdr.status;
+            response.statusText = xdr.statusText;
+
+            resolve(response);
+        };
+
+        xdr.timeout = 0;
+        xdr.onload = handler;
+        xdr.onabort = handler;
+        xdr.onerror = handler;
+        xdr.ontimeout = function () {};
+        xdr.onprogress = function () {};
+
+        xdr.send(request.data);
+    });
+};
+
+},{"../../promise":212,"../../util":219}],200:[function(require,module,exports){
+/**
+ * XMLHttp client.
+ */
+
+var _ = require('../../util');
+var Promise = require('../../promise');
+
+module.exports = function (request) {
+    return new Promise(function (resolve) {
+
+        var xhr = new XMLHttpRequest(), response = {request: request}, handler;
+
+        request.cancel = function () {
+            xhr.abort();
+        };
+
+        xhr.open(request.method, _.url(request), true);
+
+        handler = function (event) {
+
+            response.data = xhr.responseText;
+            response.status = xhr.status;
+            response.statusText = xhr.statusText;
+            response.headers = xhr.getAllResponseHeaders();
+
+            resolve(response);
+        };
+
+        xhr.timeout = 0;
+        xhr.onload = handler;
+        xhr.onabort = handler;
+        xhr.onerror = handler;
+        xhr.ontimeout = function () {};
+        xhr.onprogress = function () {};
+
+        if (_.isPlainObject(request.xhr)) {
+            _.extend(xhr, request.xhr);
+        }
+
+        if (_.isPlainObject(request.upload)) {
+            _.extend(xhr.upload, request.upload);
+        }
+
+        _.each(request.headers || {}, function (value, header) {
+            xhr.setRequestHeader(header, value);
+        });
+
+        xhr.send(request.data);
+    });
+};
+
+},{"../../promise":212,"../../util":219}],201:[function(require,module,exports){
+/**
+ * CORS Interceptor.
+ */
+
+var _ = require('../util');
+var xdrClient = require('./client/xdr');
+var xhrCors = 'withCredentials' in new XMLHttpRequest();
+var originUrl = _.url.parse(location.href);
+
+module.exports = {
+
+    request: function (request) {
+
+        if (request.crossOrigin === null) {
+            request.crossOrigin = crossOrigin(request);
+        }
+
+        if (request.crossOrigin) {
+
+            if (!xhrCors) {
+                request.client = xdrClient;
+            }
+
+            request.emulateHTTP = false;
+        }
+
+        return request;
+    }
+
+};
+
+function crossOrigin(request) {
+
+    var requestUrl = _.url.parse(_.url(request));
+
+    return (requestUrl.protocol !== originUrl.protocol || requestUrl.host !== originUrl.host);
+}
+
+},{"../util":219,"./client/xdr":199}],202:[function(require,module,exports){
+/**
+ * Header Interceptor.
+ */
+
+var _ = require('../util');
+
+module.exports = {
+
+    request: function (request) {
+
+        request.method = request.method.toUpperCase();
+        request.headers = _.extend({}, _.http.headers.common,
+            !request.crossOrigin ? _.http.headers.custom : {},
+            _.http.headers[request.method.toLowerCase()],
+            request.headers
+        );
+
+        if (_.isPlainObject(request.data) && /^(GET|JSONP)$/i.test(request.method)) {
+            _.extend(request.params, request.data);
+            delete request.data;
+        }
+
+        return request;
+    }
+
+};
+
+},{"../util":219}],203:[function(require,module,exports){
+/**
+ * Service for sending network requests.
+ */
+
+var _ = require('../util');
+var Client = require('./client');
+var Promise = require('../promise');
+var interceptor = require('./interceptor');
+var jsonType = {'Content-Type': 'application/json'};
+
+function Http(url, options) {
+
+    var client = Client, request, promise;
+
+    Http.interceptors.forEach(function (handler) {
+        client = interceptor(handler, this.$vm)(client);
+    }, this);
+
+    options = _.isObject(url) ? url : _.extend({url: url}, options);
+    request = _.merge({}, Http.options, this.$options, options);
+    promise = client(request).bind(this.$vm).then(function (response) {
+
+        return response.ok ? response : Promise.reject(response);
+
+    }, function (response) {
+
+        if (response instanceof Error) {
+            _.error(response);
+        }
+
+        return Promise.reject(response);
+    });
+
+    if (request.success) {
+        promise.success(request.success);
+    }
+
+    if (request.error) {
+        promise.error(request.error);
+    }
+
+    return promise;
+}
+
+Http.options = {
+    method: 'get',
+    data: '',
+    params: {},
+    headers: {},
+    xhr: null,
+    upload: null,
+    jsonp: 'callback',
+    beforeSend: null,
+    crossOrigin: null,
+    emulateHTTP: false,
+    emulateJSON: false,
+    timeout: 0
+};
+
+Http.interceptors = [
+    require('./before'),
+    require('./timeout'),
+    require('./jsonp'),
+    require('./method'),
+    require('./mime'),
+    require('./header'),
+    require('./cors')
+];
+
+Http.headers = {
+    put: jsonType,
+    post: jsonType,
+    patch: jsonType,
+    delete: jsonType,
+    common: {'Accept': 'application/json, text/plain, */*'},
+    custom: {'X-Requested-With': 'XMLHttpRequest'}
+};
+
+['get', 'put', 'post', 'patch', 'delete', 'jsonp'].forEach(function (method) {
+
+    Http[method] = function (url, data, success, options) {
+
+        if (_.isFunction(data)) {
+            options = success;
+            success = data;
+            data = undefined;
+        }
+
+        if (_.isObject(success)) {
+            options = success;
+            success = undefined;
+        }
+
+        return this(url, _.extend({method: method, data: data, success: success}, options));
+    };
+});
+
+module.exports = _.http = Http;
+
+},{"../promise":212,"../util":219,"./before":196,"./client":197,"./cors":201,"./header":202,"./interceptor":204,"./jsonp":205,"./method":206,"./mime":207,"./timeout":208}],204:[function(require,module,exports){
+/**
+ * Interceptor factory.
+ */
+
+var _ = require('../util');
+var Promise = require('../promise');
+
+module.exports = function (handler, vm) {
+
+    return function (client) {
+
+        if (_.isFunction(handler)) {
+            handler = handler.call(vm, Promise);
+        }
+
+        return function (request) {
+
+            if (_.isFunction(handler.request)) {
+                request = handler.request.call(vm, request);
+            }
+
+            return when(request, function (request) {
+                return when(client(request), function (response) {
+
+                    if (_.isFunction(handler.response)) {
+                        response = handler.response.call(vm, response);
+                    }
+
+                    return response;
+                });
+            });
+        };
+    };
+};
+
+function when(value, fulfilled, rejected) {
+
+    var promise = Promise.resolve(value);
+
+    if (arguments.length < 2) {
+        return promise;
+    }
+
+    return promise.then(fulfilled, rejected);
+}
+
+},{"../promise":212,"../util":219}],205:[function(require,module,exports){
+/**
+ * JSONP Interceptor.
+ */
+
+var jsonpClient = require('./client/jsonp');
+
+module.exports = {
+
+    request: function (request) {
+
+        if (request.method == 'JSONP') {
+            request.client = jsonpClient;
+        }
+
+        return request;
+    }
+
+};
+
+},{"./client/jsonp":198}],206:[function(require,module,exports){
+/**
+ * HTTP method override Interceptor.
+ */
+
+module.exports = {
+
+    request: function (request) {
+
+        if (request.emulateHTTP && /^(PUT|PATCH|DELETE)$/i.test(request.method)) {
+            request.headers['X-HTTP-Method-Override'] = request.method;
+            request.method = 'POST';
+        }
+
+        return request;
+    }
+
+};
+
+},{}],207:[function(require,module,exports){
+/**
+ * Mime Interceptor.
+ */
+
+var _ = require('../util');
+
+module.exports = {
+
+    request: function (request) {
+
+        if (request.emulateJSON && _.isPlainObject(request.data)) {
+            request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            request.data = _.url.params(request.data);
+        }
+
+        if (_.isObject(request.data) && /FormData/i.test(request.data.toString())) {
+            delete request.headers['Content-Type'];
+        }
+
+        if (_.isPlainObject(request.data)) {
+            request.data = JSON.stringify(request.data);
+        }
+
+        return request;
+    },
+
+    response: function (response) {
+
+        try {
+            response.data = JSON.parse(response.data);
+        } catch (e) {}
+
+        return response;
+    }
+
+};
+
+},{"../util":219}],208:[function(require,module,exports){
+/**
+ * Timeout Interceptor.
+ */
+
+module.exports = function () {
+
+    var timeout;
+
+    return {
+
+        request: function (request) {
+
+            if (request.timeout) {
+                timeout = setTimeout(function () {
+                    request.cancel();
+                }, request.timeout);
+            }
+
+            return request;
+        },
+
+        response: function (response) {
+
+            clearTimeout(timeout);
+
+            return response;
+        }
+
+    };
+};
+
+},{}],209:[function(require,module,exports){
+/**
+ * Install plugin.
+ */
+
+function install(Vue) {
+
+    var _ = require('./util');
+
+    _.config = Vue.config;
+    _.warning = Vue.util.warn;
+    _.nextTick = Vue.util.nextTick;
+
+    Vue.url = require('./url');
+    Vue.http = require('./http');
+    Vue.resource = require('./resource');
+    Vue.Promise = require('./promise');
+
+    Object.defineProperties(Vue.prototype, {
+
+        $url: {
+            get: function () {
+                return _.options(Vue.url, this, this.$options.url);
+            }
+        },
+
+        $http: {
+            get: function () {
+                return _.options(Vue.http, this, this.$options.http);
+            }
+        },
+
+        $resource: {
+            get: function () {
+                return Vue.resource.bind(this);
+            }
+        },
+
+        $promise: {
+            get: function () {
+                return function (executor) {
+                    return new Vue.Promise(executor, this);
+                }.bind(this);
+            }
+        }
+
+    });
+}
+
+if (window.Vue) {
+    Vue.use(install);
+}
+
+module.exports = install;
+
+},{"./http":203,"./promise":212,"./resource":213,"./url":214,"./util":219}],210:[function(require,module,exports){
+/**
+ * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
+ */
+
+var _ = require('../util');
+
+var RESOLVED = 0;
+var REJECTED = 1;
+var PENDING  = 2;
+
+function Promise(executor) {
+
+    this.state = PENDING;
+    this.value = undefined;
+    this.deferred = [];
+
+    var promise = this;
+
+    try {
+        executor(function (x) {
+            promise.resolve(x);
+        }, function (r) {
+            promise.reject(r);
+        });
+    } catch (e) {
+        promise.reject(e);
+    }
+}
+
+Promise.reject = function (r) {
+    return new Promise(function (resolve, reject) {
+        reject(r);
+    });
+};
+
+Promise.resolve = function (x) {
+    return new Promise(function (resolve, reject) {
+        resolve(x);
+    });
+};
+
+Promise.all = function all(iterable) {
+    return new Promise(function (resolve, reject) {
+        var count = 0, result = [];
+
+        if (iterable.length === 0) {
+            resolve(result);
+        }
+
+        function resolver(i) {
+            return function (x) {
+                result[i] = x;
+                count += 1;
+
+                if (count === iterable.length) {
+                    resolve(result);
+                }
+            };
+        }
+
+        for (var i = 0; i < iterable.length; i += 1) {
+            Promise.resolve(iterable[i]).then(resolver(i), reject);
+        }
+    });
+};
+
+Promise.race = function race(iterable) {
+    return new Promise(function (resolve, reject) {
+        for (var i = 0; i < iterable.length; i += 1) {
+            Promise.resolve(iterable[i]).then(resolve, reject);
+        }
+    });
+};
+
+var p = Promise.prototype;
+
+p.resolve = function resolve(x) {
+    var promise = this;
+
+    if (promise.state === PENDING) {
+        if (x === promise) {
+            throw new TypeError('Promise settled with itself.');
+        }
+
+        var called = false;
+
+        try {
+            var then = x && x['then'];
+
+            if (x !== null && typeof x === 'object' && typeof then === 'function') {
+                then.call(x, function (x) {
+                    if (!called) {
+                        promise.resolve(x);
+                    }
+                    called = true;
+
+                }, function (r) {
+                    if (!called) {
+                        promise.reject(r);
+                    }
+                    called = true;
+                });
+                return;
+            }
+        } catch (e) {
+            if (!called) {
+                promise.reject(e);
+            }
+            return;
+        }
+
+        promise.state = RESOLVED;
+        promise.value = x;
+        promise.notify();
+    }
+};
+
+p.reject = function reject(reason) {
+    var promise = this;
+
+    if (promise.state === PENDING) {
+        if (reason === promise) {
+            throw new TypeError('Promise settled with itself.');
+        }
+
+        promise.state = REJECTED;
+        promise.value = reason;
+        promise.notify();
+    }
+};
+
+p.notify = function notify() {
+    var promise = this;
+
+    _.nextTick(function () {
+        if (promise.state !== PENDING) {
+            while (promise.deferred.length) {
+                var deferred = promise.deferred.shift(),
+                    onResolved = deferred[0],
+                    onRejected = deferred[1],
+                    resolve = deferred[2],
+                    reject = deferred[3];
+
+                try {
+                    if (promise.state === RESOLVED) {
+                        if (typeof onResolved === 'function') {
+                            resolve(onResolved.call(undefined, promise.value));
+                        } else {
+                            resolve(promise.value);
+                        }
+                    } else if (promise.state === REJECTED) {
+                        if (typeof onRejected === 'function') {
+                            resolve(onRejected.call(undefined, promise.value));
+                        } else {
+                            reject(promise.value);
+                        }
+                    }
+                } catch (e) {
+                    reject(e);
+                }
+            }
+        }
+    });
+};
+
+p.then = function then(onResolved, onRejected) {
+    var promise = this;
+
+    return new Promise(function (resolve, reject) {
+        promise.deferred.push([onResolved, onRejected, resolve, reject]);
+        promise.notify();
+    });
+};
+
+p.catch = function (onRejected) {
+    return this.then(undefined, onRejected);
+};
+
+module.exports = Promise;
+
+},{"../util":219}],211:[function(require,module,exports){
+/**
+ * URL Template v2.0.6 (https://github.com/bramstein/url-template)
+ */
+
+exports.expand = function (url, params, variables) {
+
+    var tmpl = this.parse(url), expanded = tmpl.expand(params);
+
+    if (variables) {
+        variables.push.apply(variables, tmpl.vars);
+    }
+
+    return expanded;
+};
+
+exports.parse = function (template) {
+
+    var operators = ['+', '#', '.', '/', ';', '?', '&'], variables = [];
+
+    return {
+        vars: variables,
+        expand: function (context) {
+            return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function (_, expression, literal) {
+                if (expression) {
+
+                    var operator = null, values = [];
+
+                    if (operators.indexOf(expression.charAt(0)) !== -1) {
+                        operator = expression.charAt(0);
+                        expression = expression.substr(1);
+                    }
+
+                    expression.split(/,/g).forEach(function (variable) {
+                        var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
+                        values.push.apply(values, exports.getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
+                        variables.push(tmp[1]);
+                    });
+
+                    if (operator && operator !== '+') {
+
+                        var separator = ',';
+
+                        if (operator === '?') {
+                            separator = '&';
+                        } else if (operator !== '#') {
+                            separator = operator;
+                        }
+
+                        return (values.length !== 0 ? operator : '') + values.join(separator);
+                    } else {
+                        return values.join(',');
+                    }
+
+                } else {
+                    return exports.encodeReserved(literal);
+                }
+            });
+        }
+    };
+};
+
+exports.getValues = function (context, operator, key, modifier) {
+
+    var value = context[key], result = [];
+
+    if (this.isDefined(value) && value !== '') {
+        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+            value = value.toString();
+
+            if (modifier && modifier !== '*') {
+                value = value.substring(0, parseInt(modifier, 10));
+            }
+
+            result.push(this.encodeValue(operator, value, this.isKeyOperator(operator) ? key : null));
+        } else {
+            if (modifier === '*') {
+                if (Array.isArray(value)) {
+                    value.filter(this.isDefined).forEach(function (value) {
+                        result.push(this.encodeValue(operator, value, this.isKeyOperator(operator) ? key : null));
+                    }, this);
+                } else {
+                    Object.keys(value).forEach(function (k) {
+                        if (this.isDefined(value[k])) {
+                            result.push(this.encodeValue(operator, value[k], k));
+                        }
+                    }, this);
+                }
+            } else {
+                var tmp = [];
+
+                if (Array.isArray(value)) {
+                    value.filter(this.isDefined).forEach(function (value) {
+                        tmp.push(this.encodeValue(operator, value));
+                    }, this);
+                } else {
+                    Object.keys(value).forEach(function (k) {
+                        if (this.isDefined(value[k])) {
+                            tmp.push(encodeURIComponent(k));
+                            tmp.push(this.encodeValue(operator, value[k].toString()));
+                        }
+                    }, this);
+                }
+
+                if (this.isKeyOperator(operator)) {
+                    result.push(encodeURIComponent(key) + '=' + tmp.join(','));
+                } else if (tmp.length !== 0) {
+                    result.push(tmp.join(','));
+                }
+            }
+        }
+    } else {
+        if (operator === ';') {
+            result.push(encodeURIComponent(key));
+        } else if (value === '' && (operator === '&' || operator === '?')) {
+            result.push(encodeURIComponent(key) + '=');
+        } else if (value === '') {
+            result.push('');
+        }
+    }
+
+    return result;
+};
+
+exports.isDefined = function (value) {
+    return value !== undefined && value !== null;
+};
+
+exports.isKeyOperator = function (operator) {
+    return operator === ';' || operator === '&' || operator === '?';
+};
+
+exports.encodeValue = function (operator, value, key) {
+
+    value = (operator === '+' || operator === '#') ? this.encodeReserved(value) : encodeURIComponent(value);
+
+    if (key) {
+        return encodeURIComponent(key) + '=' + value;
+    } else {
+        return value;
+    }
+};
+
+exports.encodeReserved = function (str) {
+    return str.split(/(%[0-9A-Fa-f]{2})/g).map(function (part) {
+        if (!/%[0-9A-Fa-f]/.test(part)) {
+            part = encodeURI(part);
+        }
+        return part;
+    }).join('');
+};
+
+},{}],212:[function(require,module,exports){
+/**
+ * Promise adapter.
+ */
+
+var _ = require('./util');
+var PromiseObj = window.Promise || require('./lib/promise');
+
+function Promise(executor, context) {
+
+    if (executor instanceof PromiseObj) {
+        this.promise = executor;
+    } else {
+        this.promise = new PromiseObj(executor.bind(context));
+    }
+
+    this.context = context;
+}
+
+Promise.all = function (iterable, context) {
+    return new Promise(PromiseObj.all(iterable), context);
+};
+
+Promise.resolve = function (value, context) {
+    return new Promise(PromiseObj.resolve(value), context);
+};
+
+Promise.reject = function (reason, context) {
+    return new Promise(PromiseObj.reject(reason), context);
+};
+
+Promise.race = function (iterable, context) {
+    return new Promise(PromiseObj.race(iterable), context);
+};
+
+var p = Promise.prototype;
+
+p.bind = function (context) {
+    this.context = context;
+    return this;
+};
+
+p.then = function (fulfilled, rejected) {
+
+    if (fulfilled && fulfilled.bind && this.context) {
+        fulfilled = fulfilled.bind(this.context);
+    }
+
+    if (rejected && rejected.bind && this.context) {
+        rejected = rejected.bind(this.context);
+    }
+
+    this.promise = this.promise.then(fulfilled, rejected);
+
+    return this;
+};
+
+p.catch = function (rejected) {
+
+    if (rejected && rejected.bind && this.context) {
+        rejected = rejected.bind(this.context);
+    }
+
+    this.promise = this.promise.catch(rejected);
+
+    return this;
+};
+
+p.finally = function (callback) {
+
+    return this.then(function (value) {
+            callback.call(this);
+            return value;
+        }, function (reason) {
+            callback.call(this);
+            return PromiseObj.reject(reason);
+        }
+    );
+};
+
+p.success = function (callback) {
+
+    _.warn('The `success` method has been deprecated. Use the `then` method instead.');
+
+    return this.then(function (response) {
+        return callback.call(this, response.data, response.status, response) || response;
+    });
+};
+
+p.error = function (callback) {
+
+    _.warn('The `error` method has been deprecated. Use the `catch` method instead.');
+
+    return this.catch(function (response) {
+        return callback.call(this, response.data, response.status, response) || response;
+    });
+};
+
+p.always = function (callback) {
+
+    _.warn('The `always` method has been deprecated. Use the `finally` method instead.');
+
+    var cb = function (response) {
+        return callback.call(this, response.data, response.status, response) || response;
+    };
+
+    return this.then(cb, cb);
+};
+
+module.exports = Promise;
+
+},{"./lib/promise":210,"./util":219}],213:[function(require,module,exports){
+/**
+ * Service for interacting with RESTful services.
+ */
+
+var _ = require('./util');
+
+function Resource(url, params, actions, options) {
+
+    var self = this, resource = {};
+
+    actions = _.extend({},
+        Resource.actions,
+        actions
+    );
+
+    _.each(actions, function (action, name) {
+
+        action = _.merge({url: url, params: params || {}}, options, action);
+
+        resource[name] = function () {
+            return (self.$http || _.http)(opts(action, arguments));
+        };
+    });
+
+    return resource;
+}
+
+function opts(action, args) {
+
+    var options = _.extend({}, action), params = {}, data, success, error;
+
+    switch (args.length) {
+
+        case 4:
+
+            error = args[3];
+            success = args[2];
+
+        case 3:
+        case 2:
+
+            if (_.isFunction(args[1])) {
+
+                if (_.isFunction(args[0])) {
+
+                    success = args[0];
+                    error = args[1];
+
+                    break;
+                }
+
+                success = args[1];
+                error = args[2];
+
+            } else {
+
+                params = args[0];
+                data = args[1];
+                success = args[2];
+
+                break;
+            }
+
+        case 1:
+
+            if (_.isFunction(args[0])) {
+                success = args[0];
+            } else if (/^(POST|PUT|PATCH)$/i.test(options.method)) {
+                data = args[0];
+            } else {
+                params = args[0];
+            }
+
+            break;
+
+        case 0:
+
+            break;
+
+        default:
+
+            throw 'Expected up to 4 arguments [params, data, success, error], got ' + args.length + ' arguments';
+    }
+
+    options.data = data;
+    options.params = _.extend({}, options.params, params);
+
+    if (success) {
+        options.success = success;
+    }
+
+    if (error) {
+        options.error = error;
+    }
+
+    return options;
+}
+
+Resource.actions = {
+
+    get: {method: 'GET'},
+    save: {method: 'POST'},
+    query: {method: 'GET'},
+    update: {method: 'PUT'},
+    remove: {method: 'DELETE'},
+    delete: {method: 'DELETE'}
+
+};
+
+module.exports = _.resource = Resource;
+
+},{"./util":219}],214:[function(require,module,exports){
+/**
+ * Service for URL templating.
+ */
+
+var _ = require('../util');
+var ie = document.documentMode;
+var el = document.createElement('a');
+
+function Url(url, params) {
+
+    var options = url, transform;
+
+    if (_.isString(url)) {
+        options = {url: url, params: params};
+    }
+
+    options = _.merge({}, Url.options, this.$options, options);
+
+    Url.transforms.forEach(function (handler) {
+        transform = factory(handler, transform, this.$vm);
+    }, this);
+
+    return transform(options);
+};
+
+/**
+ * Url options.
+ */
+
+Url.options = {
+    url: '',
+    root: null,
+    params: {}
+};
+
+/**
+ * Url transforms.
+ */
+
+Url.transforms = [
+    require('./template'),
+    require('./legacy'),
+    require('./query'),
+    require('./root')
+];
+
+/**
+ * Encodes a Url parameter string.
+ *
+ * @param {Object} obj
+ */
+
+Url.params = function (obj) {
+
+    var params = [], escape = encodeURIComponent;
+
+    params.add = function (key, value) {
+
+        if (_.isFunction(value)) {
+            value = value();
+        }
+
+        if (value === null) {
+            value = '';
+        }
+
+        this.push(escape(key) + '=' + escape(value));
+    };
+
+    serialize(params, obj);
+
+    return params.join('&').replace(/%20/g, '+');
+};
+
+/**
+ * Parse a URL and return its components.
+ *
+ * @param {String} url
+ */
+
+Url.parse = function (url) {
+
+    if (ie) {
+        el.href = url;
+        url = el.href;
+    }
+
+    el.href = url;
+
+    return {
+        href: el.href,
+        protocol: el.protocol ? el.protocol.replace(/:$/, '') : '',
+        port: el.port,
+        host: el.host,
+        hostname: el.hostname,
+        pathname: el.pathname.charAt(0) === '/' ? el.pathname : '/' + el.pathname,
+        search: el.search ? el.search.replace(/^\?/, '') : '',
+        hash: el.hash ? el.hash.replace(/^#/, '') : ''
+    };
+};
+
+function factory(handler, next, vm) {
+    return function (options) {
+        return handler.call(vm, options, next);
+    };
+}
+
+function serialize(params, obj, scope) {
+
+    var array = _.isArray(obj), plain = _.isPlainObject(obj), hash;
+
+    _.each(obj, function (value, key) {
+
+        hash = _.isObject(value) || _.isArray(value);
+
+        if (scope) {
+            key = scope + '[' + (plain || hash ? key : '') + ']';
+        }
+
+        if (!scope && array) {
+            params.add(value.name, value.value);
+        } else if (hash) {
+            serialize(params, value, key);
+        } else {
+            params.add(key, value);
+        }
+    });
+}
+
+module.exports = _.url = Url;
+
+},{"../util":219,"./legacy":215,"./query":216,"./root":217,"./template":218}],215:[function(require,module,exports){
+/**
+ * Legacy Transform.
+ */
+
+var _ = require('../util');
+
+module.exports = function (options, next) {
+
+    var variables = [], url = next(options);
+
+    url = url.replace(/(\/?):([a-z]\w*)/gi, function (match, slash, name) {
+
+        _.warn('The `:' + name + '` parameter syntax has been deprecated. Use the `{' + name + '}` syntax instead.');
+
+        if (options.params[name]) {
+            variables.push(name);
+            return slash + encodeUriSegment(options.params[name]);
+        }
+
+        return '';
+    });
+
+    variables.forEach(function (key) {
+        delete options.params[key];
+    });
+
+    return url;
+};
+
+function encodeUriSegment(value) {
+
+    return encodeUriQuery(value, true).
+        replace(/%26/gi, '&').
+        replace(/%3D/gi, '=').
+        replace(/%2B/gi, '+');
+}
+
+function encodeUriQuery(value, spaces) {
+
+    return encodeURIComponent(value).
+        replace(/%40/gi, '@').
+        replace(/%3A/gi, ':').
+        replace(/%24/g, '$').
+        replace(/%2C/gi, ',').
+        replace(/%20/g, (spaces ? '%20' : '+'));
+}
+
+},{"../util":219}],216:[function(require,module,exports){
+/**
+ * Query Parameter Transform.
+ */
+
+var _ = require('../util');
+
+module.exports = function (options, next) {
+
+    var urlParams = Object.keys(_.url.options.params), query = {}, url = next(options);
+
+   _.each(options.params, function (value, key) {
+        if (urlParams.indexOf(key) === -1) {
+            query[key] = value;
+        }
+    });
+
+    query = _.url.params(query);
+
+    if (query) {
+        url += (url.indexOf('?') == -1 ? '?' : '&') + query;
+    }
+
+    return url;
+};
+
+},{"../util":219}],217:[function(require,module,exports){
+/**
+ * Root Prefix Transform.
+ */
+
+var _ = require('../util');
+
+module.exports = function (options, next) {
+
+    var url = next(options);
+
+    if (_.isString(options.root) && !url.match(/^(https?:)?\//)) {
+        url = options.root + '/' + url;
+    }
+
+    return url;
+};
+
+},{"../util":219}],218:[function(require,module,exports){
+/**
+ * URL Template (RFC 6570) Transform.
+ */
+
+var UrlTemplate = require('../lib/url-template');
+
+module.exports = function (options) {
+
+    var variables = [], url = UrlTemplate.expand(options.url, options.params, variables);
+
+    variables.forEach(function (key) {
+        delete options.params[key];
+    });
+
+    return url;
+};
+
+},{"../lib/url-template":211}],219:[function(require,module,exports){
+/**
+ * Utility functions.
+ */
+
+var _ = exports, array = [], console = window.console;
+
+_.warn = function (msg) {
+    if (console && _.warning && (!_.config.silent || _.config.debug)) {
+        console.warn('[VueResource warn]: ' + msg);
+    }
+};
+
+_.error = function (msg) {
+    if (console) {
+        console.error(msg);
+    }
+};
+
+_.trim = function (str) {
+    return str.replace(/^\s*|\s*$/g, '');
+};
+
+_.toLower = function (str) {
+    return str ? str.toLowerCase() : '';
+};
+
+_.isArray = Array.isArray;
+
+_.isString = function (val) {
+    return typeof val === 'string';
+};
+
+_.isFunction = function (val) {
+    return typeof val === 'function';
+};
+
+_.isObject = function (obj) {
+    return obj !== null && typeof obj === 'object';
+};
+
+_.isPlainObject = function (obj) {
+    return _.isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+};
+
+_.options = function (fn, obj, options) {
+
+    options = options || {};
+
+    if (_.isFunction(options)) {
+        options = options.call(obj);
+    }
+
+    return _.merge(fn.bind({$vm: obj, $options: options}), fn, {$options: options});
+};
+
+_.each = function (obj, iterator) {
+
+    var i, key;
+
+    if (typeof obj.length == 'number') {
+        for (i = 0; i < obj.length; i++) {
+            iterator.call(obj[i], obj[i], i);
+        }
+    } else if (_.isObject(obj)) {
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                iterator.call(obj[key], obj[key], key);
+            }
+        }
+    }
+
+    return obj;
+};
+
+_.defaults = function (target, source) {
+
+    for (var key in source) {
+        if (target[key] === undefined) {
+            target[key] = source[key];
+        }
+    }
+
+    return target;
+};
+
+_.extend = function (target) {
+
+    var args = array.slice.call(arguments, 1);
+
+    args.forEach(function (arg) {
+        merge(target, arg);
+    });
+
+    return target;
+};
+
+_.merge = function (target) {
+
+    var args = array.slice.call(arguments, 1);
+
+    args.forEach(function (arg) {
+        merge(target, arg, true);
+    });
+
+    return target;
+};
+
+function merge(target, source, deep) {
+    for (var key in source) {
+        if (deep && (_.isPlainObject(source[key]) || _.isArray(source[key]))) {
+            if (_.isPlainObject(source[key]) && !_.isPlainObject(target[key])) {
+                target[key] = {};
+            }
+            if (_.isArray(source[key]) && !_.isArray(target[key])) {
+                target[key] = [];
+            }
+            merge(target[key], source[key], deep);
+        } else if (source[key] !== undefined) {
+            target[key] = source[key];
+        }
+    }
+}
+
+},{}],220:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v1.0.21
@@ -15165,7 +16693,7 @@ setTimeout(function () {
 
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":65}],197:[function(require,module,exports){
+},{"_process":65}],221:[function(require,module,exports){
 var inserted = exports.cache = {}
 
 exports.insert = function (css) {
@@ -15185,9 +16713,13 @@ exports.insert = function (css) {
   return elem
 }
 
-},{}],198:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n")
 'use strict';
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
 
 var _assign = require('babel-runtime/core-js/object/assign');
 
@@ -15404,6 +16936,11 @@ module.exports = {
       initialData.specs = this.clone(this.specs);
       initialData.defaultMessage = this.clone(this.defaultMessage);
     },
+    serializeData: function serializeData() {
+      var messages = this.clone(this.specs);
+      messages.push(this.clone(this.defaultMessage));
+      return (0, _stringify2.default)(messages);
+    },
     unsavedChanges: function unsavedChanges() {
       for (var i = 0, j = this.specs.length; i < j; i++) {
         if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
@@ -15417,6 +16954,14 @@ module.exports = {
       }
       // console.log('everything saved')
       return false;
+    },
+    saveData: function saveData() {
+      console.log(this.serializeData());
+      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then(function (response) {
+        // success
+      }, function (response) {
+        // error
+      });
     }
   },
 
@@ -15440,6 +16985,10 @@ module.exports = {
 
     $('form.wizard-form').on('submit', function () {
       submitted = true;
+
+      // TODO hard validation
+
+      _this2.saveData();
     });
 
     $(window).on('beforeunload', function (e) {
@@ -15485,7 +17034,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../ui_test/data/example-data.js":211,"./components/custom-vue-strap/Dropdown.vue":199,"./components/custom-vue-strap/Modal.vue":200,"./components/filter-editor.vue":204,"./components/message-editor.vue":205,"./components/tokens-list.vue":207,"./mixins/defaults.vue":209,"./mixins/utils.vue":210,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":167,"lodash/isEqual":175,"lodash/omit":187,"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],199:[function(require,module,exports){
+},{"../ui_test/data/example-data.js":235,"./components/custom-vue-strap/Dropdown.vue":223,"./components/custom-vue-strap/Modal.vue":224,"./components/filter-editor.vue":228,"./components/message-editor.vue":229,"./components/tokens-list.vue":231,"./mixins/defaults.vue":233,"./mixins/utils.vue":234,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":167,"lodash/isEqual":175,"lodash/omit":187,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],223:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15533,7 +17082,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./utils/EventListener.vue":202,"vue":196,"vue-hot-reload-api":195}],200:[function(require,module,exports){
+},{"./utils/EventListener.vue":226,"vue":220,"vue-hot-reload-api":195}],224:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\nbody.modal-open {\n  position: fixed;\n  width: 100%;\n}\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n")
 'use strict';
 
@@ -15680,7 +17229,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../shared/spinner.vue":206,"./utils/EventListener.vue":202,"./utils/getScrollBarWidth.vue":203,"babel-runtime/core-js/number/is-integer":4,"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],201:[function(require,module,exports){
+},{"../shared/spinner.vue":230,"./utils/EventListener.vue":226,"./utils/getScrollBarWidth.vue":227,"babel-runtime/core-js/number/is-integer":4,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],225:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n")
 'use strict';
 
@@ -15893,7 +17442,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/get-iterator":1,"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],202:[function(require,module,exports){
+},{"babel-runtime/core-js/get-iterator":1,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],226:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15942,7 +17491,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],203:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195}],227:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15989,7 +17538,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],204:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195}],228:[function(require,module,exports){
 'use strict';
 
 var _assign = require('babel-runtime/core-js/object/assign');
@@ -16066,7 +17615,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./custom-vue-strap/Dropdown.vue":199,"./custom-vue-strap/Select.vue":201,"babel-runtime/core-js/object/assign":5,"vue":196,"vue-hot-reload-api":195}],205:[function(require,module,exports){
+},{"./custom-vue-strap/Dropdown.vue":223,"./custom-vue-strap/Select.vue":225,"babel-runtime/core-js/object/assign":5,"vue":220,"vue-hot-reload-api":195}],229:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -16100,7 +17649,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],206:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195}],230:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.sk-fading-circle {\n  margin: 100px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n}\n\n.sk-fading-circle .sk-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.sk-fading-circle .sk-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 15%;\n  height: 15%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.sk-fading-circle .sk-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.sk-fading-circle .sk-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.sk-fading-circle .sk-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sk-fading-circle .sk-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.sk-fading-circle .sk-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.sk-fading-circle .sk-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.sk-fading-circle .sk-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.sk-fading-circle .sk-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.sk-fading-circle .sk-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.sk-fading-circle .sk-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg); \n}\n.sk-fading-circle .sk-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg); \n}\n.sk-fading-circle .sk-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s; \n}\n.sk-fading-circle .sk-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s; \n}\n.sk-fading-circle .sk-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s; \n}\n.sk-fading-circle .sk-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s; \n}\n.sk-fading-circle .sk-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s; \n}\n.sk-fading-circle .sk-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s; \n}\n.sk-fading-circle .sk-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s; \n}\n.sk-fading-circle .sk-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.sk-fading-circle .sk-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.sk-fading-circle .sk-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.sk-fading-circle .sk-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; } \n}\n")
 ;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"sk-fading-circle\">\n  <div class=\"sk-circle1 sk-circle\"></div>\n  <div class=\"sk-circle2 sk-circle\"></div>\n  <div class=\"sk-circle3 sk-circle\"></div>\n  <div class=\"sk-circle4 sk-circle\"></div>\n  <div class=\"sk-circle5 sk-circle\"></div>\n  <div class=\"sk-circle6 sk-circle\"></div>\n  <div class=\"sk-circle7 sk-circle\"></div>\n  <div class=\"sk-circle8 sk-circle\"></div>\n  <div class=\"sk-circle9 sk-circle\"></div>\n  <div class=\"sk-circle10 sk-circle\"></div>\n  <div class=\"sk-circle11 sk-circle\"></div>\n  <div class=\"sk-circle12 sk-circle\"></div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
@@ -16118,7 +17667,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195,"vueify-insert-css":197}],207:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],231:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16155,20 +17704,26 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],208:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195}],232:[function(require,module,exports){
 var Vue = require('vue')
 var App = require('./app.vue')
 
 Vue.use(require('vue-dnd'));
+Vue.use(require('vue-resource'));
 
 new Vue({
   el: '.email-to-target-messages-widget',
   components: {
     'app': App
+  },
+  http: {
+    headers: {
+//      Authorization: 'Basic YXBpOnBhc3N3b3Jk'
+    }
   }
 })
 
-},{"./app.vue":198,"vue":196,"vue-dnd":194}],209:[function(require,module,exports){
+},{"./app.vue":222,"vue":220,"vue-dnd":194,"vue-resource":209}],233:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16191,7 +17746,7 @@ exports.default = {
     emptySpec: function emptySpec(type) {
       if (this.validSpecificationTypes().indexOf(type) === -1) return;
       var spec = {
-        id: 0,
+        id: null,
         type: type,
         label: '',
         filters: [],
@@ -16216,7 +17771,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":196,"vue-hot-reload-api":195}],210:[function(require,module,exports){
+},{"vue":220,"vue-hot-reload-api":195}],234:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16250,7 +17805,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/json/stringify":2,"vue":196,"vue-hot-reload-api":195}],211:[function(require,module,exports){
+},{"babel-runtime/core-js/json/stringify":2,"vue":220,"vue-hot-reload-api":195}],235:[function(require,module,exports){
 module.exports = {
   messageSelection: [
     {
@@ -16371,4 +17926,4 @@ module.exports = {
   ]
 }
 
-},{}]},{},[208]);
+},{}]},{},[232]);
