@@ -15423,13 +15423,11 @@ module.exports = {
   created: function created() {
     // stub until campaignion is ready
     if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
-      Drupal.settings.campaignion_email_to_target = {
-        messages: require('../ui_test/data/example-data.js')
-      };
+      Drupal.settings.campaignion_email_to_target = require('../ui_test/data/example-data.js');
     }
 
     // Initialize data
-    this.parseData(Drupal.settings.campaignion_email_to_target.messages);
+    this.parseData(Drupal.settings.campaignion_email_to_target);
     this.validateSpecs();
     for (var i = 0, j = this.specs.length; i < j; i++) {
       this.specs[i].filterStr = this.filterStr(this.specs[i].filters);
@@ -16145,7 +16143,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n  <ul class=\"token-categories\">\n    <li v-for=\"cat in tokenCategories\">\n      <a href=\"#\" @click.prevent=\"toggle(cat)\">\n        <span class=\"category-expand\">{{ cat.expanded ? '-' : '+' }}</span>\n        <strong class=\"category-title\">{{ cat.title }}</strong>\n      </a>\n      <span class=\"category-description\">{{ cat.description }}</span>\n      <ul v-if=\"cat.tokens.length &amp;&amp; cat.expanded\" class=\"tokens\">\n        <li v-for=\"token in cat.tokens\">\n          <span class=\"token-title\">{{ token.title }}</span>\n          <span class=\"token-token\">{{ token.token }}</span>\n          <span class=\"token-description\">{{ token.description }}</span>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</section>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n  <ul class=\"token-categories\">\n    <li v-for=\"cat in tokenCategories\">\n      <a href=\"#\" @click.prevent=\"toggle(cat)\">\n        <span class=\"category-expand\">{{ cat.expanded ? '-' : '+' }}</span>\n        <strong class=\"category-title\">{{{ cat.title }}}</strong>\n      </a>\n      <span class=\"category-description\">{{{ cat.description }}}</span>\n      <ul v-if=\"cat.tokens.length &amp;&amp; cat.expanded\" class=\"tokens\">\n        <li v-for=\"token in cat.tokens\">\n          <span class=\"token-title\">{{{ token.title }}}</span>\n          <span class=\"token-token\">{{ token.token }}</span>\n          <span class=\"token-description\">{{{ token.description }}}</span>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</section>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

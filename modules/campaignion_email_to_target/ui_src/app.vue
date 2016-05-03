@@ -320,13 +320,11 @@ module.exports = {
   created() {
     // stub until campaignion is ready
     if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
-      Drupal.settings.campaignion_email_to_target = {
-        messages: require('../ui_test/data/example-data.js')
-      }
+      Drupal.settings.campaignion_email_to_target = require('../ui_test/data/example-data.js')
     }
 
     // Initialize data
-    this.parseData(Drupal.settings.campaignion_email_to_target.messages)
+    this.parseData(Drupal.settings.campaignion_email_to_target)
     this.validateSpecs()
     for (let i = 0, j = this.specs.length; i < j; i++) {
       this.specs[i].filterStr = this.filterStr(this.specs[i].filters)

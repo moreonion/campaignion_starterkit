@@ -4,9 +4,7 @@ module.exports = {
   setup: function(app, data, options) {
     Drupal = {
       settings: {
-        campaignion_email_to_target: {
-          messages: data
-        }
+        campaignion_email_to_target: data
       }
     }
 

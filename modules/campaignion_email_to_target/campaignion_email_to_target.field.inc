@@ -96,28 +96,6 @@ function _campaignion_email_to_target_options_field_widget_form($item) {
   return $element;
 }
 
-function _campaignion_email_to_target_message_field_widget_form($items) {
-  $defaults = [
-    'subject' => '',
-    'header' => '',
-    'message' => '',
-    'footer' => '',
-  ];
-
-  $element = [
-    '#type' => 'container',
-    '#title' => t('Message that will be sent to target(s)'),
-    '#id' => drupal_html_id('email-to-target-messages-widget'),
-    '#attributes' => ['class' => ['email-to-target-messages-widget', 'e2tmw']],
-    'app-tag' => [
-      '#markup' => '<app></app>'
-    ]
-  ];
-  drupal_add_js(drupal_get_path('module', 'campaignion_email_to_target') . '/js/messages_widget.js', ['scope' => 'footer']);
-  drupal_add_css(drupal_get_path('module', 'campaignion_email_to_target') . '/css/messages_widget.min.css', ['group' => 'CSS_DEFAULT', 'preprocess' => FALSE]);
-  return $element;
-}
-
 /**
  * Implements hook_field_formatter_view().
  */
