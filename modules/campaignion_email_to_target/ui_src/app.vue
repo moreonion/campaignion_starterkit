@@ -254,7 +254,7 @@ module.exports = {
           errors.push('Message is empty')
         }
         for (let ii = 0, jj = i; ii < jj; ii++) {
-          if (isEqual(this.specs[i].filters, this.specs[ii].filters)) {
+          if (this.equalFilters(this.specs[i].filters, this.specs[ii].filters)) {
             switch (this.specs[i].type) {
               case 'message-template':
                 errors.push('This message won’t be sent. The same filter has been applied above.')
@@ -266,8 +266,25 @@ module.exports = {
             break
           }
         }
-        this.specs[i].errors = errors
+        this.$set('specs[' + i + '].errors', errors)
       }
+    },
+
+    equalFilters(a, b) {
+      a = JSON.parse(JSON.stringify(a))
+      b = JSON.parse(JSON.stringify(b))
+      if (!a.length && !b.length) return null
+      if (a.length != b.length) return false
+      var found
+      for (var i = 0, j = a.length; i < j; i++) {
+        // look for a[i] (without the id) in b
+        if (found = find(b, omit(a[i], ['id']))) {
+          b.splice(b.indexOf(found), 1)
+        } else {
+          return false
+        }
+      }
+      return true
     },
 
     parseData(data) {

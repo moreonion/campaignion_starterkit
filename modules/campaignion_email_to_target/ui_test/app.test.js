@@ -146,3 +146,30 @@ describe('app', function() {
 
 
 });
+
+describe('compare filters function', function() {
+  var equalFilters = require('../ui_src/app.vue').methods.equalFilters
+
+  var a = {
+    id: 1,
+    type: "target-attribute",
+    attributeName: "party",
+    operator: "==",
+    value: "bar"
+  }
+  var b = $.extend({}, a, {id: 2})
+  var c = $.extend({}, a, {id: 2, value: 'foo'})
+
+  it('returns null for empty arrays', function() {
+    expect(equalFilters([], [])).toBe(null)
+  })
+  it('returns true for arrays with the same filters', function() {
+    expect(equalFilters([a, b], [$.extend({}, a), $.extend({}, b)])).toBe(true)
+  })
+  it('returns true regardless of the order', function() {
+    expect(equalFilters([a, b], [$.extend({}, b), $.extend({}, a)])).toBe(true)
+  })
+  it('returns false for arrays with different lengths', function() {
+    expect(equalFilters([a, b], [$.extend({}, a)])).toBe(false)
+  })
+})

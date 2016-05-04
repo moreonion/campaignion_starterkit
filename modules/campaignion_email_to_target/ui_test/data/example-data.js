@@ -6,6 +6,7 @@ module.exports = {
       "label": "foo",
       "filters": [
         {
+          "id": 123,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "==",
@@ -25,6 +26,7 @@ module.exports = {
       "label": "foo",
       "filters": [
         {
+          "id": 345,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "!=",
@@ -38,6 +40,7 @@ module.exports = {
       "label": "same filter as foo",
       "filters": [
         {
+          "id": 4576557,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "==",

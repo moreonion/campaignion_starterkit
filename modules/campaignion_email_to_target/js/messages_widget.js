@@ -16717,13 +16717,13 @@ exports.insert = function (css) {
 var __vueify_style__ = require("vueify-insert-css").insert("\n")
 'use strict';
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _assign = require('babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
 
 var _map = require('babel-runtime/core-js/map');
 
@@ -16892,7 +16892,7 @@ module.exports = {
           errors.push('Message is empty');
         }
         for (var _ii = 0, _jj = i; _ii < _jj; _ii++) {
-          if (isEqual(this.specs[i].filters, this.specs[_ii].filters)) {
+          if (this.equalFilters(this.specs[i].filters, this.specs[_ii].filters)) {
             switch (this.specs[i].type) {
               case 'message-template':
                 errors.push('This message won’t be sent. The same filter has been applied above.');
@@ -16904,8 +16904,24 @@ module.exports = {
             break;
           }
         }
-        this.specs[i].errors = errors;
+        this.$set('specs[' + i + '].errors', errors);
       }
+    },
+    equalFilters: function equalFilters(a, b) {
+      a = JSON.parse((0, _stringify2.default)(a));
+      b = JSON.parse((0, _stringify2.default)(b));
+      if (!a.length && !b.length) return null;
+      if (a.length != b.length) return false;
+      var found;
+      for (var i = 0, j = a.length; i < j; i++) {
+        // look for a[i] (without the id) in b
+        if (found = find(b, omit(a[i], ['id']))) {
+          b.splice(b.indexOf(found), 1);
+        } else {
+          return false;
+        }
+      }
+      return true;
     },
     parseData: function parseData(data) {
       if (data.messageSelection && data.messageSelection.length) {
@@ -17820,6 +17836,7 @@ module.exports = {
       "label": "foo",
       "filters": [
         {
+          "id": 123,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "==",
@@ -17839,6 +17856,7 @@ module.exports = {
       "label": "foo",
       "filters": [
         {
+          "id": 345,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "!=",
@@ -17852,6 +17870,7 @@ module.exports = {
       "label": "same filter as foo",
       "filters": [
         {
+          "id": 4576557,
           "type": "target-attribute",
           "attributeName": "party",
           "operator": "==",
