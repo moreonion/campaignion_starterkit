@@ -16717,13 +16717,13 @@ exports.insert = function (css) {
 var __vueify_style__ = require("vueify-insert-css").insert("\n")
 'use strict';
 
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
 var _stringify = require('babel-runtime/core-js/json/stringify');
 
 var _stringify2 = _interopRequireDefault(_stringify);
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
 
 var _map = require('babel-runtime/core-js/map');
 
@@ -16816,6 +16816,7 @@ module.exports = {
       this.showModal();
     },
     removeSpec: function removeSpec(spec) {
+      // TODO ask!
       this.specs.$remove(spec);
     },
     showModal: function showModal() {
@@ -16875,12 +16876,16 @@ module.exports = {
       }
     },
     validateSpecs: function validateSpecs() {
-      var errors;
+      var errors,
+          usedFilters = [];
+
       for (var i = 0, j = this.specs.length; i < j; i++) {
         errors = [];
+
         if (!this.specs[i].filters.length) {
           errors.push({ type: 'filter', message: 'No filter selected' });
         } else {
+          // Cycle through filters
           for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
             if (!this.specs[i].filters[ii].value) {
               errors.push({ type: 'filter', message: 'A filter value is missing' });
@@ -16888,12 +16893,16 @@ module.exports = {
             }
           }
         }
+
         if (this.specs[i].type == 'message-template' && !(this.specs[i].message.subject.trim() || this.specs[i].message.header.trim() || this.specs[i].message.body.trim() || this.specs[i].message.footer.trim())) {
           errors.push({ type: 'message', message: 'Message is empty' });
         }
+
+        // Warn if one of the spec’s filters has been used by a preceding spec
+        // Skip this step for specs with other filter errors
         if (!find(errors, { type: 'filter' })) {
-          for (var ii = 0, jj = i; ii < jj; ii++) {
-            if (this.equalFilters(this.specs[i].filters, this.specs[ii].filters)) {
+          for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+            if (find(usedFilters, omit(this.specs[i].filters[ii], ['id']))) {
               switch (this.specs[i].type) {
                 case 'message-template':
                   errors.push({ type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.' });
@@ -16906,24 +16915,14 @@ module.exports = {
             }
           }
         }
+
+        // Remember the filters used by this spec
+        for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+          usedFilters.push((0, _assign2.default)({}, omit(this.specs[i].filters[ii], ['id'])));
+        }
+
         this.$set('specs[' + i + '].errors', errors);
       }
-    },
-    equalFilters: function equalFilters(a, b) {
-      a = JSON.parse((0, _stringify2.default)(a));
-      b = JSON.parse((0, _stringify2.default)(b));
-      if (!a.length && !b.length) return null;
-      if (a.length != b.length) return false;
-      var found;
-      for (var i = 0, j = a.length; i < j; i++) {
-        // look for a[i] (without the id) in b
-        if (found = find(b, omit(a[i], ['id']))) {
-          b.splice(b.indexOf(found), 1);
-        } else {
-          return false;
-        }
-      }
-      return true;
     },
     parseData: function parseData(data) {
       if (data.messageSelection && data.messageSelection.length) {
@@ -16946,7 +16945,8 @@ module.exports = {
       // add attributeLabel property to filters
       for (var i = 0, j = this.specs.length; i < j; i++) {
         for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
-          this.specs[i].filters[ii].attributeLabel = find(this.targetAttributes, { name: this.specs[i].filters[ii].attributeName }).label;
+          var targetAttribute = find(data.targetAttributes, { name: this.specs[i].filters[ii].attributeName });
+          this.specs[i].filters[ii].attributeLabel = targetAttribute && targetAttribute.label || this.specs[i].filters[ii].attributeName;
         }
       }
 
@@ -16995,7 +16995,7 @@ module.exports = {
     this.parseData(Drupal.settings.campaignion_email_to_target);
     this.validateSpecs();
     for (var i = 0, j = this.specs.length; i < j; i++) {
-      this.specs[i].filterStr = this.filterStr(this.specs[i].filters);
+      this.$set('specs[' + i + '].filterStr', this.filterStr(this.specs[i].filters));
     }
   },
   ready: function ready() {
@@ -17877,12 +17877,39 @@ module.exports = {
           "attributeName": "party",
           "operator": "==",
           "value": "bar"
+        },
+        {
+          "id": 1239,
+          "type": "target-attribute",
+          "attributeName": "name",
+          "operator": "!=",
+          "value": "jane"
         }
       ],
       "message": {
         "subject": "Subject of 3rd message",
         "header": "Header of 3rd message",
         "body": "body of 3rd msg",
+        "footer": "goodbye"
+      }
+    },
+    {
+      "id": 5678,
+      "type": "message-template",
+      "label": "same filter as message above",
+      "filters": [
+        {
+          "id": 1239654,
+          "type": "target-attribute",
+          "attributeName": "name",
+          "operator": "!=",
+          "value": "jane"
+        }
+      ],
+      "message": {
+        "subject": "Subject of 4th message",
+        "header": "Header of 4th message",
+        "body": "body of 4th msg",
         "footer": "goodbye"
       }
     },

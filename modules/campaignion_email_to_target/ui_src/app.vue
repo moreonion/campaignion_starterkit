@@ -173,6 +173,7 @@ module.exports = {
     },
 
     removeSpec(spec) {
+      // TODO ask!
       this.specs.$remove(spec)
     },
 
@@ -237,12 +238,15 @@ module.exports = {
     },
 
     validateSpecs() {
-      var errors
+      var errors, usedFilters = []
+
       for (var i = 0, j = this.specs.length; i < j; i++) {
         errors = []
+
         if (!this.specs[i].filters.length) {
           errors.push({type: 'filter', message: 'No filter selected'})
         } else {
+          // Cycle through filters
           for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
             if (!this.specs[i].filters[ii].value) {
               errors.push({type: 'filter', message: 'A filter value is missing'})
@@ -250,12 +254,16 @@ module.exports = {
             }
           }
         }
+
         if ( this.specs[i].type == 'message-template' && !( this.specs[i].message.subject.trim() || this.specs[i].message.header.trim() || this.specs[i].message.body.trim() || this.specs[i].message.footer.trim() ) ) {
           errors.push({type: 'message', message: 'Message is empty'})
         }
+
+        // Warn if one of the spec’s filters has been used by a preceding spec
+        // Skip this step for specs with other filter errors
         if (!find(errors, {type: 'filter'})) {
-          for (var ii = 0, jj = i; ii < jj; ii++) {
-            if (this.equalFilters(this.specs[i].filters, this.specs[ii].filters)) {
+          for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+            if (find(usedFilters, (omit(this.specs[i].filters[ii], ['id'])))) {
               switch (this.specs[i].type) {
                 case 'message-template':
                 errors.push({type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'})
@@ -268,25 +276,14 @@ module.exports = {
             }
           }
         }
+
+        // Remember the filters used by this spec
+        for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+          usedFilters.push(Object.assign({}, omit(this.specs[i].filters[ii], ['id'])))
+        }
+
         this.$set('specs[' + i + '].errors', errors)
       }
-    },
-
-    equalFilters(a, b) {
-      a = JSON.parse(JSON.stringify(a))
-      b = JSON.parse(JSON.stringify(b))
-      if (!a.length && !b.length) return null
-      if (a.length != b.length) return false
-      var found
-      for (var i = 0, j = a.length; i < j; i++) {
-        // look for a[i] (without the id) in b
-        if (found = find(b, omit(a[i], ['id']))) {
-          b.splice(b.indexOf(found), 1)
-        } else {
-          return false
-        }
-      }
-      return true
     },
 
     parseData(data) {
@@ -308,9 +305,10 @@ module.exports = {
       if (typeof data.hardValidation !== 'undefined') this.hardValidation = data.hardValidation
 
       // add attributeLabel property to filters
-      for (let i = 0, j = this.specs.length; i < j; i++) {
-        for (let ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
-          this.specs[i].filters[ii].attributeLabel = find(this.targetAttributes, {name: this.specs[i].filters[ii].attributeName}).label
+      for (var i = 0, j = this.specs.length; i < j; i++) {
+        for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+          var targetAttribute = find(data.targetAttributes, {name: this.specs[i].filters[ii].attributeName})
+          this.specs[i].filters[ii].attributeLabel = targetAttribute && targetAttribute.label || this.specs[i].filters[ii].attributeName
         }
       }
 
@@ -328,7 +326,7 @@ module.exports = {
     },
 
     unsavedChanges() {
-      for (let i = 0, j = this.specs.length; i < j; i++) {
+      for (var i = 0, j = this.specs.length; i < j; i++) {
         if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
           // console.log('unsaved ' + i, omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))
           return true
@@ -362,8 +360,8 @@ module.exports = {
     // Initialize data
     this.parseData(Drupal.settings.campaignion_email_to_target)
     this.validateSpecs()
-    for (let i = 0, j = this.specs.length; i < j; i++) {
-      this.specs[i].filterStr = this.filterStr(this.specs[i].filters)
+    for (var i = 0, j = this.specs.length; i < j; i++) {
+      this.$set('specs[' + i + '].filterStr', this.filterStr(this.specs[i].filters))
     }
   },
 

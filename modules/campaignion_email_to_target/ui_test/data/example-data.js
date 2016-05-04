@@ -45,12 +45,39 @@ module.exports = {
           "attributeName": "party",
           "operator": "==",
           "value": "bar"
+        },
+        {
+          "id": 1239,
+          "type": "target-attribute",
+          "attributeName": "name",
+          "operator": "!=",
+          "value": "jane"
         }
       ],
       "message": {
         "subject": "Subject of 3rd message",
         "header": "Header of 3rd message",
         "body": "body of 3rd msg",
+        "footer": "goodbye"
+      }
+    },
+    {
+      "id": 5678,
+      "type": "message-template",
+      "label": "same filter as message above",
+      "filters": [
+        {
+          "id": 1239654,
+          "type": "target-attribute",
+          "attributeName": "name",
+          "operator": "!=",
+          "value": "jane"
+        }
+      ],
+      "message": {
+        "subject": "Subject of 4th message",
+        "header": "Header of 4th message",
+        "body": "body of 4th msg",
         "footer": "goodbye"
       }
     },
