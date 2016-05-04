@@ -68,7 +68,16 @@ class MessageEndpoint {
 
   public function get() {
     $messages = [];
-    foreach (MessageTemplate::byNid($this->node->nid) as $m) {
+    $templates = MessageTemplate::byNid($this->node->nid);
+    if (!$templates) {
+      $templates[] = new MessageTemplate([
+        'subject' => '',
+        'header' => t("Dear [email-to-target:salutation],\n"),
+        'message' => '',
+        'footer' => t("\n\nYours sincerely,\n[webform-tokens:val-first_name] [webform-tokens:val-last_name]\n[webform-tokens:val-street_address]\n[webform-tokens:val-postcode]"),
+      ]);
+    }
+    foreach ($templates as $m) {
       $messages[] = $this->unflatten($m->toArray());
     }
     return ['messageSelection' => $messages];
