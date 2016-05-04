@@ -3,7 +3,7 @@
 namespace Drupal\campaignion_email_to_target\Wizard;
 
 use \Drupal\campaignion\Forms\EntityFieldForm;
-use \Drupal\campaignion_email_to_target\MessageTemplate;
+use \Drupal\campaignion_email_to_target\MessageEndpoint;
 
 class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
   protected $step  = 'message';
@@ -46,10 +46,8 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
     }
     $settings['tokens'] = $tokens;
 
-    $settings['messages'] = [];
-    foreach (MessageTemplate::byNid($node->nid) as $m) {
-      $settings['messages'][] = $m->toArray();
-    }
+    $endpoint = new MessageEndpoint($node);
+    $settings['messageSelection'] = $endpoint->get();
     $settings['targetAttributes'] = [];
     $dataset = $node->action->dataset();
     foreach ($dataset->attributes as $attribute) {

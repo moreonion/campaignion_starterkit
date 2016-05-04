@@ -13,6 +13,11 @@ class MessageEndpoint {
   protected function flatten($data) {
     if (isset($data['message']) && is_array($data['message'])) {
       $message = $data['message'];
+      // 'message' is called 'body' in the API.
+      if (isset($message['body'])) {
+        $message['message'] = $message['body'];
+      }
+      unset($message['body']);
       unset($data['message']);
       return $message + $data;
     }
@@ -25,6 +30,9 @@ class MessageEndpoint {
       $message[$k] = $data[$k];
       unset($data[$k]);
     }
+    // 'message' is called 'body' in the API.
+    $message['body'] = $message['message'];
+    unset($message['message']);
     $data['message'] = $message;
     return $data;
   }
