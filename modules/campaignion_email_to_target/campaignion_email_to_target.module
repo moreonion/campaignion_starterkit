@@ -24,7 +24,7 @@ function campaignion_email_to_target_menu() {
   $menu['node/%node/email-to-target-messages'] = [
     'page callback' => 'campaignion_email_to_target_edit_messages',
     'page arguments' => [1],
-    'access callback' => TRUE, // 'node_access',
+    'access callback' => 'node_access',
     'access arguments' => array('update', 1),
     'delivery callback' => 'campaignion_email_to_target_deliver_json',
   ];
