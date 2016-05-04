@@ -38,6 +38,8 @@ class MessageEndpoint {
   }
 
   public function put($data) {
+    $data += ['messageSelection' => []];
+    $data = $data['messageSelection'];
     $old_messages = MessageTemplate::byNid($this->node->nid);
     $w = 0;
     $new_messages = [];
@@ -61,7 +63,7 @@ class MessageEndpoint {
     foreach ($old_messages as $message) {
       $message->delete();
     }
-    return $new_messages;
+    return ['messageSelection' => $new_messages];
   }
 
   public function get() {
@@ -69,7 +71,7 @@ class MessageEndpoint {
     foreach (MessageTemplate::byNid($this->node->nid) as $m) {
       $messages[] = $this->unflatten($m->toArray());
     }
-    return $messages;
+    return ['messageSelection' => $messages];
   }
 
 }
