@@ -69,14 +69,6 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
     return $form;
   }
 
-  public function validateStep($form, &$form_state) {
-    $this->fieldForm->validate($form, $form_state);
-  }
-
-  public function submitStep($form, &$form_state) {
-    $this->fieldForm->submit($form, $form_state);
-  }
-
   public function checkDependencies() {
     return isset($this->wizard->node->nid);
   }
