@@ -16892,6 +16892,8 @@ module.exports = {
           errors.push('Message is empty');
         }
         for (var _ii = 0, _jj = i; _ii < _jj; _ii++) {
+          // TODO if (equalFilters(this.specs[i].filters, this.specs[ii].filters))
+          // don't care about filter order, ignore filter id
           if (isEqual(this.specs[i].filters, this.specs[_ii].filters)) {
             switch (this.specs[i].type) {
               case 'message-template':
@@ -16906,6 +16908,12 @@ module.exports = {
         }
         this.specs[i].errors = errors;
       }
+    },
+    equalFilters: function equalFilters(a, bb) {
+      b = clone(bb);
+      if (!a.length && !b.length) return null;
+      if (a.length != b.length) return false;
+      for (var i = 0, j = a.length; i < j; i++) {}
     },
     parseData: function parseData(data) {
       if (data.messageSelection && data.messageSelection.length) {
@@ -17545,6 +17553,10 @@ var _assign = require('babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
+var _map = require('babel-runtime/core-js/map');
+
+var _map2 = _interopRequireDefault(_map);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = {
@@ -17562,7 +17574,7 @@ module.exports = {
     },
     filterDefault: Object,
     operators: {
-      type: Object,
+      type: _map2.default,
       required: true
     }
   },
@@ -17615,7 +17627,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./custom-vue-strap/Dropdown.vue":223,"./custom-vue-strap/Select.vue":225,"babel-runtime/core-js/object/assign":5,"vue":220,"vue-hot-reload-api":195}],229:[function(require,module,exports){
+},{"./custom-vue-strap/Dropdown.vue":223,"./custom-vue-strap/Select.vue":225,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"vue":220,"vue-hot-reload-api":195}],229:[function(require,module,exports){
 "use strict";
 
 module.exports = {

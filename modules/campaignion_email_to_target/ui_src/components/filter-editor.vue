@@ -54,7 +54,7 @@ module.exports = {
     },
     filterDefault: Object,
     operators: {
-      type: Object,
+      type: Map,
       required: true
     }
   },
