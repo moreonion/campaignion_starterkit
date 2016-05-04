@@ -14,6 +14,7 @@ use \Drupal\campaignion_action\Loader;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
+use \Drupal\campaignion_email_to_target\MessageEndpoint;
 use \Drupal\campaignion_email_to_target\Api\Client;
 
 /**
@@ -47,16 +48,13 @@ function campaignion_email_to_target_deliver_json($result) {
 }
 
 function campaignion_email_to_target_edit_messages($node) {
+  $endpoint = new MessageEndpoint($node);
   switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
-      // Return fields as list.
-      break;
+      return $endpoint->get();
     case 'PUT':
       $data = drupal_json_decode(file_get_contents('php://input'));
-      return field_get_items('node', $node, 'field_email_to_target_message');
-      // Store new values.
-      // Return fields as list.
-      break;
+      return $endpoint->put($data);
   }
   return MENU_ACCESS_DENIED;
 }
