@@ -47,7 +47,7 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
     $settings['tokens'] = $tokens;
 
     $endpoint = new MessageEndpoint($node);
-    $settings['messageSelection'] = $endpoint->get();
+    $settings += $endpoint->get();
     $settings['targetAttributes'] = [];
     $dataset = $node->action->dataset();
     foreach ($dataset->attributes as $attribute) {
