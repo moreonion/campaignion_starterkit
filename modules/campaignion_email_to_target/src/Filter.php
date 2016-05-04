@@ -78,6 +78,8 @@ class Filter extends Model {
           return $target[$this->config['attributeName']] == $this->config['value'];
         case '!=':
           return $target[$this->config['attributeName']] != $this->config['value'];
+        case 'regexp':
+          return (bool) preg_match("/{$this->config['value']}/", $target[$this->config['attributeName']]);
       }
     }
     return TRUE;
