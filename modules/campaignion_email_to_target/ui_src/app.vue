@@ -303,7 +303,9 @@ module.exports = {
     serializeData() {
       var messages = this.clone(this.specs)
       messages.push(this.clone(this.defaultMessage))
-      return JSON.stringify(messages)
+      return JSON.stringify({
+        messageSelection: messages
+      })
     },
 
     unsavedChanges() {

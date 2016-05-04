@@ -16892,8 +16892,6 @@ module.exports = {
           errors.push('Message is empty');
         }
         for (var _ii = 0, _jj = i; _ii < _jj; _ii++) {
-          // TODO if (equalFilters(this.specs[i].filters, this.specs[ii].filters))
-          // don't care about filter order, ignore filter id
           if (isEqual(this.specs[i].filters, this.specs[_ii].filters)) {
             switch (this.specs[i].type) {
               case 'message-template':
@@ -16908,12 +16906,6 @@ module.exports = {
         }
         this.specs[i].errors = errors;
       }
-    },
-    equalFilters: function equalFilters(a, bb) {
-      b = clone(bb);
-      if (!a.length && !b.length) return null;
-      if (a.length != b.length) return false;
-      for (var i = 0, j = a.length; i < j; i++) {}
     },
     parseData: function parseData(data) {
       if (data.messageSelection && data.messageSelection.length) {
@@ -16947,7 +16939,9 @@ module.exports = {
     serializeData: function serializeData() {
       var messages = this.clone(this.specs);
       messages.push(this.clone(this.defaultMessage));
-      return (0, _stringify2.default)(messages);
+      return (0, _stringify2.default)({
+        messageSelection: messages
+      });
     },
     unsavedChanges: function unsavedChanges() {
       for (var i = 0, j = this.specs.length; i < j; i++) {
