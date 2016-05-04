@@ -28,7 +28,7 @@
         </div>
         <div class="col-sm-12 col-md-4 col-lg-6">
           <ul class="spec-errors">
-            <li v-for="error in spec.errors" class="spec-error">{{ error }}</li>
+            <li v-for="error in spec.errors" class="spec-error">{{ error.message }}</li>
           </ul>
         </div>
       </li>
@@ -238,32 +238,34 @@ module.exports = {
 
     validateSpecs() {
       var errors
-      for (let i = 0, j = this.specs.length; i < j; i++) {
+      for (var i = 0, j = this.specs.length; i < j; i++) {
         errors = []
         if (!this.specs[i].filters.length) {
-          errors.push('No filter selected')
+          errors.push({type: 'filter', message: 'No filter selected'})
         } else {
-          for (let ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
+          for (var ii = 0, jj = this.specs[i].filters.length; ii < jj; ii++) {
             if (!this.specs[i].filters[ii].value) {
-              errors.push('A filter value is missing')
+              errors.push({type: 'filter', message: 'A filter value is missing'})
               break
             }
           }
         }
         if ( this.specs[i].type == 'message-template' && !( this.specs[i].message.subject.trim() || this.specs[i].message.header.trim() || this.specs[i].message.body.trim() || this.specs[i].message.footer.trim() ) ) {
-          errors.push('Message is empty')
+          errors.push({type: 'message', message: 'Message is empty'})
         }
-        for (let ii = 0, jj = i; ii < jj; ii++) {
-          if (this.equalFilters(this.specs[i].filters, this.specs[ii].filters)) {
-            switch (this.specs[i].type) {
-              case 'message-template':
-                errors.push('This message won’t be sent. The same filter has been applied above.')
+        if (!find(errors, {type: 'filter'})) {
+          for (var ii = 0, jj = i; ii < jj; ii++) {
+            if (this.equalFilters(this.specs[i].filters, this.specs[ii].filters)) {
+              switch (this.specs[i].type) {
+                case 'message-template':
+                errors.push({type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'})
                 break
-              case 'exclusion':
-                errors.push('This exclusion won’t be taken into account. The same filter has been applied above.')
+                case 'exclusion':
+                errors.push({type: 'filter', message: 'This exclusion won’t be taken into account. The same filter has been applied above.'})
                 break
+              }
+              break
             }
-            break
           }
         }
         this.$set('specs[' + i + '].errors', errors)

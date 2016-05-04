@@ -46,7 +46,7 @@ describe('app', function() {
     });
 
     it('validates bootstrapped data', function() {
-      expect(vm.specs[2].errors).toEqual(jasmine.arrayContaining(['This message won’t be sent. The same filter has been applied above.']))
+      expect(vm.specs[2].errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
     })
 
     it('creates filter strings for bootstrapped data', function() {
