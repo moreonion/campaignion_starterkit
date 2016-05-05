@@ -173,8 +173,9 @@ module.exports = {
     },
 
     removeSpec(spec) {
-      // TODO ask!
-      this.specs.$remove(spec)
+      if (confirm('Do you really want to remove ' + (spec.label ? ('"' + spec.label + '"?') : 'this item?'))) {
+        this.specs.$remove(spec)
+      }
     },
 
     showModal() {
