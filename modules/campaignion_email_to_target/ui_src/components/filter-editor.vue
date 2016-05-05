@@ -82,6 +82,7 @@ module.exports = {
     addFilter(field) {
       if (!field.name || !field.label) return
       var filter = Object.assign({}, this.filterDefault)
+      filter.id = null
       filter.attributeName = field.name
       filter.attributeLabel = field.label
       filter.operator = '==' // default

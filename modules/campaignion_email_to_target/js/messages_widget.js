@@ -17641,6 +17641,7 @@ module.exports = {
     addFilter: function addFilter(field) {
       if (!field.name || !field.label) return;
       var filter = (0, _assign2.default)({}, this.filterDefault);
+      filter.id = null;
       filter.attributeName = field.name;
       filter.attributeLabel = field.label;
       filter.operator = '=='; // default
