@@ -17619,7 +17619,14 @@ module.exports = {
   },
 
   data: function data() {
-    return {};
+    var partyOptions = [{ value: 'Alliance' }, { value: 'Conservative' }, { value: 'Crossbench (Lords)' }, { value: 'Democratic Unionist (DUP)' }, { value: 'Green Party' }, { value: 'Independent' }, { value: 'Labour' }, { value: 'Labour and Co-operative' }, { value: 'Liberal Democrat' }, { value: 'Lords\' Bishops' }, { value: 'Other' }, { value: 'Plaid Cymru' }, { value: 'Political Affiliation Not Specified' }, { value: 'Scottish Nationalist' }, { value: 'Sinn Fein' }, { value: 'Social Democrat & Labour (SDLP)' }, { value: 'UKIP' }, { value: 'Ulster Unionist (UUP)' }];
+    for (var i = 0, j = partyOptions.length; i < j; i++) {
+      partyOptions[i].label = partyOptions[i].value;
+    }
+
+    return {
+      partyOptions: partyOptions
+    };
   },
 
   computed: {
@@ -17655,7 +17662,7 @@ module.exports = {
 
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"filter-editor\">\n  <header>\n    <dropdown>\n      <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\">\n        Add filter <span class=\"caret\"></span>\n      </button>\n      <ul name=\"dropdown-menu\" class=\"dropdown-menu\">\n        <li v-for=\"field in fields\">\n          <a href=\"#\" class=\"dropdown-item\" @click=\"addFilter(field)\">{{ field.label }}</a>\n        </li>\n      </ul>\n    </dropdown>\n  </header>\n\n  <ul class=\"filters\">\n    <li v-for=\"filter in filters\" class=\"filter card form-inline\">\n\n      <span v-if=\"$index === 0\" class=\"logical-connective\">If</span>\n      <span v-else=\"\" class=\"logical-connective\">and</span>\n\n      <span class=\"attribute-label\">{{ filter.attributeLabel }}</span>\n\n      <v-select :value.sync=\"filter.operator\" :options=\"operatorOptions\" :close-on-select=\"true\"></v-select>\n\n      <template v-if=\"filter.operator == 'regexp'\">\n        /<input class=\"form-control\" type=\"text\" v-model=\"filter.value\" placeholder=\"regular expression\">/\n      </template>\n      <template v-else=\"\">\n        <input class=\"form-control\" type=\"text\" v-model=\"filter.value\">\n      </template>\n\n      <a href=\"#\" @click=\"removeFilter(filter)\">Delete</a>\n\n    </li>\n  </ul>\n\n</section>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"filter-editor\">\n  <header>\n    <dropdown>\n      <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\">\n        Add filter <span class=\"caret\"></span>\n      </button>\n      <ul name=\"dropdown-menu\" class=\"dropdown-menu\">\n        <li v-for=\"field in fields\">\n          <a href=\"#\" class=\"dropdown-item\" @click=\"addFilter(field)\">{{ field.label }}</a>\n        </li>\n      </ul>\n    </dropdown>\n  </header>\n\n  <ul class=\"filters\">\n    <li v-for=\"filter in filters\" class=\"filter card form-inline\">\n\n      <span v-if=\"$index === 0\" class=\"logical-connective\">If</span>\n      <span v-else=\"\" class=\"logical-connective\">and</span>\n\n      <span class=\"attribute-label\">{{ filter.attributeLabel }}</span>\n\n      <v-select :value.sync=\"filter.operator\" :options=\"operatorOptions\" :close-on-select=\"true\"></v-select>\n\n      <template v-if=\"filter.operator == 'regexp'\">\n        /<input class=\"form-control\" type=\"text\" v-model=\"filter.value\" placeholder=\"regular expression\">/\n      </template>\n      <template v-else=\"\">\n        <v-select v-if=\"filter.attributeName == 'party'\" :value.sync=\"filter.value\" :options=\"partyOptions\" :close-on-select=\"true\"></v-select>\n        <input v-else=\"\" class=\"form-control\" type=\"text\" v-model=\"filter.value\">\n      </template>\n\n      <a href=\"#\" @click=\"removeFilter(filter)\">Delete</a>\n\n    </li>\n  </ul>\n\n</section>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

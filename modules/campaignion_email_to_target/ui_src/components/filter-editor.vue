@@ -27,7 +27,8 @@
           /<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">/
         </template>
         <template v-else>
-          <input class="form-control" type="text" v-model="filter.value">
+          <v-select v-if="filter.attributeName == 'party'" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
+          <input v-else class="form-control" type="text" v-model="filter.value">
         </template>
 
         <a href="#" @click="removeFilter(filter)">Delete</a>
@@ -60,7 +61,33 @@ module.exports = {
   },
 
   data: function() {
-    return {}
+    var partyOptions = [
+      {value: 'Alliance'},
+      {value: 'Conservative'},
+      {value: 'Crossbench (Lords)'},
+      {value: 'Democratic Unionist (DUP)'},
+      {value: 'Green Party'},
+      {value: 'Independent'},
+      {value: 'Labour'},
+      {value: 'Labour and Co-operative'},
+      {value: 'Liberal Democrat'},
+      {value: 'Lords\' Bishops'},
+      {value: 'Other'},
+      {value: 'Plaid Cymru'},
+      {value: 'Political Affiliation Not Specified'},
+      {value: 'Scottish Nationalist'},
+      {value: 'Sinn Fein'},
+      {value: 'Social Democrat & Labour (SDLP)'},
+      {value: 'UKIP'},
+      {value: 'Ulster Unionist (UUP)'}
+    ]
+    for (var i = 0, j = partyOptions.length; i < j; i++) {
+      partyOptions[i].label = partyOptions[i].value
+    }
+
+    return {
+      partyOptions: partyOptions
+    }
   },
 
   computed: {
