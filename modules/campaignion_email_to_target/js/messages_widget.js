@@ -16974,14 +16974,6 @@ module.exports = {
       }
       // console.log('everything saved')
       return false;
-    },
-    saveData: function saveData() {
-      console.log(this.serializeData());
-      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then(function (response) {
-        // success
-      }, function (response) {
-        // error
-      });
     }
   },
 
@@ -17001,18 +16993,52 @@ module.exports = {
   ready: function ready() {
     var _this2 = this;
 
-    var submitted = false;
+    $("form input[type=submit]").click(function () {
+      // Attach a 'clicked' attribute to the specific button
+      $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
+      $(this).attr("clicked", "true");
+    });
 
-    $('form.wizard-form').on('submit', function () {
-      submitted = true;
+    $('form.wizard-form').on('submit', function (e) {
+      var $clickedButton = $("input[type=submit][clicked=true]", e.currentTarget);
+      var submitVal = $clickedButton.val();
+
+      // If Back button was hit
+      if (submitVal.toLowerCase() == 'back') {
+        if (_this2.unsavedChanges() && !confirm('You have unsaved changes!\nClick OK if you really want to go back and dismiss them.')) {
+          e.preventDefault();
+        } else {
+          // Don’t warn twice
+          $(window).off('beforeunload');
+        }
+        return;
+      }
 
       // TODO hard validation
+      var validationFailed = false;
+      if (validationFailed) {
+        e.preventDefault();
+        return;
+      }
 
-      _this2.saveData();
+      // Cancel submit event, make ajax request
+      e.preventDefault();
+      $('input[type=submit]', e.currentTarget).prop('disabled', true);
+      _this2.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this2.serializeData()).then(function (response) {
+        // success
+        // Don’t need those handlers any more... submit for real!
+        $(window).off('beforeunload');
+        $(e.currentTarget).off('submit');
+        $clickedButton.prop('disabled', false).off('click').click();
+      }, function (response) {
+        // error
+        $('input[type=submit]', e.currentTarget).prop('disabled', false);
+        alert('The service is temporarily unavailable.\nYour messages could not be saved.\nPlease try again or contact support if the issue persists.');
+      });
     });
 
     $(window).on('beforeunload', function (e) {
-      if (_this2.unsavedChanges() && !submitted) {
+      if (_this2.unsavedChanges()) {
         var confirmationMessage = 'Careful! You have unsaved changes!';
         e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
         return confirmationMessage; // Gecko, WebKit, Chrome <34

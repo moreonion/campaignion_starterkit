@@ -338,15 +338,6 @@ module.exports = {
       }
       // console.log('everything saved')
       return false
-    },
-
-    saveData() {
-      console.log(this.serializeData())
-      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then(function(response) {
-        // success
-      }, function(response) {
-        // error
-      })
     }
 
   },
@@ -366,18 +357,52 @@ module.exports = {
   },
 
   ready() {
-    var submitted = false
+    $("form input[type=submit]").click(function() {
+      // Attach a 'clicked' attribute to the specific button
+      $("input[type=submit]", $(this).parents("form")).removeAttr("clicked")
+      $(this).attr("clicked", "true")
+    })
 
-    $('form.wizard-form').on('submit', () => {
-      submitted = true
+    $('form.wizard-form').on('submit', (e) => {
+      var $clickedButton = $("input[type=submit][clicked=true]", e.currentTarget)
+      var submitVal = $clickedButton.val()
+
+      // If Back button was hit
+      if (submitVal.toLowerCase() == 'back') {
+        if (this.unsavedChanges() && !confirm('You have unsaved changes!\nClick OK if you really want to go back and dismiss them.')) {
+          e.preventDefault()
+        } else {
+          // Don’t warn twice
+          $(window).off('beforeunload')
+        }
+        return
+      }
 
       // TODO hard validation
+      var validationFailed = false
+      if (validationFailed) {
+        e.preventDefault()
+        return
+      }
 
-      this.saveData()
+      // Cancel submit event, make ajax request
+      e.preventDefault()
+      $('input[type=submit]', e.currentTarget).prop('disabled', true)
+      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
+        // success
+        // Don’t need those handlers any more... submit for real!
+        $(window).off('beforeunload')
+        $(e.currentTarget).off('submit')
+        $clickedButton.prop('disabled', false).off('click').click()
+      }, (response) => {
+        // error
+        $('input[type=submit]', e.currentTarget).prop('disabled', false)
+        alert('The service is temporarily unavailable.\nYour messages could not be saved.\nPlease try again or contact support if the issue persists.')
+      })
     })
 
     $(window).on('beforeunload', (e) => {
-      if (this.unsavedChanges() && !submitted) {
+      if (this.unsavedChanges()) {
         var confirmationMessage = 'Careful! You have unsaved changes!'
         e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
         return confirmationMessage;              // Gecko, WebKit, Chrome <34
