@@ -61,6 +61,7 @@
           <a href="#" @click="prefillMessage()">Prefill from default message</a>
           <message-editor :message.sync="currentSpec.message"></message-editor>
         </section>
+        <tokens-list v-if="currentSpec.type == 'message-template'" :token-categories="tokenCategories"></tokens-list>
         <section v-if="currentSpec.type == 'exclusion' && (currentSpecIndex > 0 || (currentSpecIndex == -1 && specs.length))">
           Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s
           filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list

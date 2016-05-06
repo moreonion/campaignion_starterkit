@@ -17065,7 +17065,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul class=\"specs\">\n    <li v-for=\"spec in specs\" :spec=\"spec\" v-draggable:x=\"{index: $index, dragged: 'dragged'}\" v-dropzone:x=\"sort(specs, $index, $droptag, $dropdata)\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul class=\"specs\">\n    <li v-for=\"spec in specs\" :spec=\"spec\" v-draggable:x=\"{index: $index, dragged: 'dragged'}\" v-dropzone:x=\"sort(specs, $index, $droptag, $dropdata)\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -17696,7 +17696,7 @@ module.exports = {
 
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"message-editor\">\n  <div class=\"form-group\">\n    <label for=\"message-subject-{{ _uid }}\">Subject</label>\n    <input type=\"text\" v-model=\"message.subject\" class=\"form-control\" id=\"message-subject-{{ _uid }}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-header-{{ _uid }}\">Header</label>\n    <textarea rows=\"3\" v-model=\"message.header\" class=\"form-control\" id=\"message-header-{{ _uid }}\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-body-{{ _uid }}\">Body</label>\n    <textarea rows=\"6\" v-model=\"message.body\" class=\"form-control\" id=\"message-body-{{ _uid }}\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-footer-{{ _uid }}\">Footer</label>\n    <textarea rows=\"3\" v-model=\"message.footer\" class=\"form-control\" id=\"message-footer-{{ _uid }}\"></textarea>\n  </div>\n</section>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"message-editor\">\n  <div class=\"form-group\">\n    <label for=\"message-subject-{{ _uid }}\">Subject</label>\n    <input type=\"text\" v-model=\"message.subject\" data-token-insertable=\"\" class=\"form-control\" id=\"message-subject-{{ _uid }}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-header-{{ _uid }}\">Header</label>\n    <textarea rows=\"3\" v-model=\"message.header\" data-token-insertable=\"\" class=\"form-control\" id=\"message-header-{{ _uid }}\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-body-{{ _uid }}\">Body</label>\n    <textarea rows=\"6\" v-model=\"message.body\" data-token-insertable=\"\" class=\"form-control\" id=\"message-body-{{ _uid }}\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"message-footer-{{ _uid }}\">Footer</label>\n    <textarea rows=\"3\" v-model=\"message.footer\" data-token-insertable=\"\" class=\"form-control\" id=\"message-footer-{{ _uid }}\"></textarea>\n  </div>\n</section>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -17740,18 +17740,54 @@ exports.default = {
   props: {
     tokenCategories: Array
   },
+  data: function data() {
+    return {
+      expanded: []
+    };
+  },
+
   methods: {
-    toggle: function toggle(cat) {
-      if (typeof cat.expanded === 'undefined') {
-        Vue.set(cat, 'expanded', true);
-      } else {
-        cat.expanded = !cat.expanded;
+    toggle: function toggle(idx) {
+      this.expanded.$set(idx, !this.expanded[idx]);
+    },
+    insert: function insert(token) {
+      if (document.activeElement.hasAttribute('data-token-insertable')) {
+        this.insertAtCaret(document.activeElement, token);
       }
+    },
+    insertAtCaret: function insertAtCaret(txtarea, text) {
+      var scrollPos = txtarea.scrollTop;
+      var strPos = 0;
+      var br = txtarea.selectionStart || txtarea.selectionStart == '0' ? "ff" : document.selection ? "ie" : false;
+      if (br == "ie") {
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart('character', -txtarea.value.length);
+        strPos = range.text.length;
+      } else if (br == "ff") strPos = txtarea.selectionStart;
+
+      var front = txtarea.value.substring(0, strPos);
+      var back = txtarea.value.substring(strPos, txtarea.value.length);
+      txtarea.value = front + text + back;
+      strPos = strPos + text.length;
+      if (br == "ie") {
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart('character', -txtarea.value.length);
+        range.moveStart('character', strPos);
+        range.moveEnd('character', 0);
+        range.select();
+      } else if (br == "ff") {
+        txtarea.selectionStart = strPos;
+        txtarea.selectionEnd = strPos;
+        txtarea.focus();
+      }
+      txtarea.scrollTop = scrollPos;
     }
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n  <ul class=\"token-categories\">\n    <li v-for=\"cat in tokenCategories\">\n      <a href=\"#\" @click.prevent=\"toggle(cat)\">\n        <span class=\"category-expand\">{{ cat.expanded ? '-' : '+' }}</span>\n        <strong class=\"category-title\">{{{ cat.title }}}</strong>\n      </a>\n      <span class=\"category-description\">{{{ cat.description }}}</span>\n      <ul v-if=\"cat.tokens.length &amp;&amp; cat.expanded\" class=\"tokens\">\n        <li v-for=\"token in cat.tokens\">\n          <span class=\"token-title\">{{{ token.title }}}</span>\n          <span class=\"token-token\">{{ token.token }}</span>\n          <span class=\"token-description\">{{{ token.description }}}</span>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</section>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n  <ul class=\"token-categories\">\n    <li v-for=\"cat in tokenCategories\">\n      <a href=\"#\" @mousedown.prevent=\"toggle($index)\" @click.prevent=\"\">\n        <span class=\"category-expand\">{{ expanded[$index] ? '-' : '+' }}</span>\n        <strong class=\"category-title\">{{{ cat.title }}}</strong>\n      </a>\n      <span class=\"category-description\">{{{ cat.description }}}</span>\n      <ul v-if=\"cat.tokens.length &amp;&amp; expanded[$index]\" class=\"tokens\">\n        <li v-for=\"token in cat.tokens\">\n          <span class=\"token-title\">{{{ token.title }}}</span>\n          <span class=\"token-token\">\n            <a href=\"#\" @mousedown.prevent=\"insert(token.token)\" @click.prevent=\"\" title=\"Insert token at cursor position\">{{ token.token }}</a>\n          </span>\n          <span class=\"token-description\">{{{ token.description }}}</span>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</section>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
