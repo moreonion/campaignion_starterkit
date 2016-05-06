@@ -912,6 +912,900 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],66:[function(require,module,exports){
+'use strict';
+
+var cache = {};
+var start = '(?:^|\\s)';
+var end = '(?:\\s|$)';
+
+function lookupClass (className) {
+  var cached = cache[className];
+  if (cached) {
+    cached.lastIndex = 0;
+  } else {
+    cache[className] = cached = new RegExp(start + className + end, 'g');
+  }
+  return cached;
+}
+
+function addClass (el, className) {
+  var current = el.className;
+  if (!current.length) {
+    el.className = className;
+  } else if (!lookupClass(className).test(current)) {
+    el.className += ' ' + className;
+  }
+}
+
+function rmClass (el, className) {
+  el.className = el.className.replace(lookupClass(className), ' ').trim();
+}
+
+module.exports = {
+  add: addClass,
+  rm: rmClass
+};
+
+},{}],67:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var emitter = require('contra/emitter');
+var crossvent = require('crossvent');
+var classes = require('./classes');
+var doc = document;
+var documentElement = doc.documentElement;
+
+function dragula (initialContainers, options) {
+  var len = arguments.length;
+  if (len === 1 && Array.isArray(initialContainers) === false) {
+    options = initialContainers;
+    initialContainers = [];
+  }
+  var _mirror; // mirror image
+  var _source; // source container
+  var _item; // item being dragged
+  var _offsetX; // reference x
+  var _offsetY; // reference y
+  var _moveX; // reference move x
+  var _moveY; // reference move y
+  var _initialSibling; // reference sibling when grabbed
+  var _currentSibling; // reference sibling now
+  var _copy; // item used for copying
+  var _renderTimer; // timer for setTimeout renderMirrorImage
+  var _lastDropTarget = null; // last container item was over
+  var _grabbed; // holds mousedown context until first mousemove
+
+  var o = options || {};
+  if (o.moves === void 0) { o.moves = always; }
+  if (o.accepts === void 0) { o.accepts = always; }
+  if (o.invalid === void 0) { o.invalid = invalidTarget; }
+  if (o.containers === void 0) { o.containers = initialContainers || []; }
+  if (o.isContainer === void 0) { o.isContainer = never; }
+  if (o.copy === void 0) { o.copy = false; }
+  if (o.copySortSource === void 0) { o.copySortSource = false; }
+  if (o.revertOnSpill === void 0) { o.revertOnSpill = false; }
+  if (o.removeOnSpill === void 0) { o.removeOnSpill = false; }
+  if (o.direction === void 0) { o.direction = 'vertical'; }
+  if (o.ignoreInputTextSelection === void 0) { o.ignoreInputTextSelection = true; }
+  if (o.mirrorContainer === void 0) { o.mirrorContainer = doc.body; }
+
+  var drake = emitter({
+    containers: o.containers,
+    start: manualStart,
+    end: end,
+    cancel: cancel,
+    remove: remove,
+    destroy: destroy,
+    dragging: false
+  });
+
+  if (o.removeOnSpill === true) {
+    drake.on('over', spillOver).on('out', spillOut);
+  }
+
+  events();
+
+  return drake;
+
+  function isContainer (el) {
+    return drake.containers.indexOf(el) !== -1 || o.isContainer(el);
+  }
+
+  function events (remove) {
+    var op = remove ? 'remove' : 'add';
+    touchy(documentElement, op, 'mousedown', grab);
+    touchy(documentElement, op, 'mouseup', release);
+  }
+
+  function eventualMovements (remove) {
+    var op = remove ? 'remove' : 'add';
+    touchy(documentElement, op, 'mousemove', startBecauseMouseMoved);
+  }
+
+  function movements (remove) {
+    var op = remove ? 'remove' : 'add';
+    crossvent[op](documentElement, 'selectstart', preventGrabbed); // IE8
+    crossvent[op](documentElement, 'click', preventGrabbed);
+  }
+
+  function destroy () {
+    events(true);
+    release({});
+  }
+
+  function preventGrabbed (e) {
+    if (_grabbed) {
+      e.preventDefault();
+    }
+  }
+
+  function grab (e) {
+    _moveX = e.clientX;
+    _moveY = e.clientY;
+
+    var ignore = whichMouseButton(e) !== 1 || e.metaKey || e.ctrlKey;
+    if (ignore) {
+      return; // we only care about honest-to-god left clicks and touch events
+    }
+    var item = e.target;
+    var context = canStart(item);
+    if (!context) {
+      return;
+    }
+    _grabbed = context;
+    eventualMovements();
+    if (e.type === 'mousedown') {
+      if (isInput(item)) { // see also: https://github.com/bevacqua/dragula/issues/208
+        item.focus(); // fixes https://github.com/bevacqua/dragula/issues/176
+      } else {
+        e.preventDefault(); // fixes https://github.com/bevacqua/dragula/issues/155
+      }
+    }
+  }
+
+  function startBecauseMouseMoved (e) {
+    if (!_grabbed) {
+      return;
+    }
+    if (whichMouseButton(e) === 0) {
+      release({});
+      return; // when text is selected on an input and then dragged, mouseup doesn't fire. this is our only hope
+    }
+    // truthy check fixes #239, equality fixes #207
+    if (e.clientX !== void 0 && e.clientX === _moveX && e.clientY !== void 0 && e.clientY === _moveY) {
+      return;
+    }
+    if (o.ignoreInputTextSelection) {
+      var clientX = getCoord('clientX', e);
+      var clientY = getCoord('clientY', e);
+      var elementBehindCursor = doc.elementFromPoint(clientX, clientY);
+      if (isInput(elementBehindCursor)) {
+        return;
+      }
+    }
+
+    var grabbed = _grabbed; // call to end() unsets _grabbed
+    eventualMovements(true);
+    movements();
+    end();
+    start(grabbed);
+
+    var offset = getOffset(_item);
+    _offsetX = getCoord('pageX', e) - offset.left;
+    _offsetY = getCoord('pageY', e) - offset.top;
+
+    classes.add(_copy || _item, 'gu-transit');
+    renderMirrorImage();
+    drag(e);
+  }
+
+  function canStart (item) {
+    if (drake.dragging && _mirror) {
+      return;
+    }
+    if (isContainer(item)) {
+      return; // don't drag container itself
+    }
+    var handle = item;
+    while (getParent(item) && isContainer(getParent(item)) === false) {
+      if (o.invalid(item, handle)) {
+        return;
+      }
+      item = getParent(item); // drag target should be a top element
+      if (!item) {
+        return;
+      }
+    }
+    var source = getParent(item);
+    if (!source) {
+      return;
+    }
+    if (o.invalid(item, handle)) {
+      return;
+    }
+
+    var movable = o.moves(item, source, handle, nextEl(item));
+    if (!movable) {
+      return;
+    }
+
+    return {
+      item: item,
+      source: source
+    };
+  }
+
+  function manualStart (item) {
+    var context = canStart(item);
+    if (context) {
+      start(context);
+    }
+  }
+
+  function start (context) {
+    if (isCopy(context.item, context.source)) {
+      _copy = context.item.cloneNode(true);
+      drake.emit('cloned', _copy, context.item, 'copy');
+    }
+
+    _source = context.source;
+    _item = context.item;
+    _initialSibling = _currentSibling = nextEl(context.item);
+
+    drake.dragging = true;
+    drake.emit('drag', _item, _source);
+  }
+
+  function invalidTarget () {
+    return false;
+  }
+
+  function end () {
+    if (!drake.dragging) {
+      return;
+    }
+    var item = _copy || _item;
+    drop(item, getParent(item));
+  }
+
+  function ungrab () {
+    _grabbed = false;
+    eventualMovements(true);
+    movements(true);
+  }
+
+  function release (e) {
+    ungrab();
+
+    if (!drake.dragging) {
+      return;
+    }
+    var item = _copy || _item;
+    var clientX = getCoord('clientX', e);
+    var clientY = getCoord('clientY', e);
+    var elementBehindCursor = getElementBehindPoint(_mirror, clientX, clientY);
+    var dropTarget = findDropTarget(elementBehindCursor, clientX, clientY);
+    if (dropTarget && ((_copy && o.copySortSource) || (!_copy || dropTarget !== _source))) {
+      drop(item, dropTarget);
+    } else if (o.removeOnSpill) {
+      remove();
+    } else {
+      cancel();
+    }
+  }
+
+  function drop (item, target) {
+    var parent = getParent(item);
+    if (_copy && o.copySortSource && target === _source) {
+      parent.removeChild(_item);
+    }
+    if (isInitialPlacement(target)) {
+      drake.emit('cancel', item, _source, _source);
+    } else {
+      drake.emit('drop', item, target, _source, _currentSibling);
+    }
+    cleanup();
+  }
+
+  function remove () {
+    if (!drake.dragging) {
+      return;
+    }
+    var item = _copy || _item;
+    var parent = getParent(item);
+    if (parent) {
+      parent.removeChild(item);
+    }
+    drake.emit(_copy ? 'cancel' : 'remove', item, parent, _source);
+    cleanup();
+  }
+
+  function cancel (revert) {
+    if (!drake.dragging) {
+      return;
+    }
+    var reverts = arguments.length > 0 ? revert : o.revertOnSpill;
+    var item = _copy || _item;
+    var parent = getParent(item);
+    var initial = isInitialPlacement(parent);
+    if (initial === false && reverts) {
+      if (_copy) {
+        parent.removeChild(_copy);
+      } else {
+        _source.insertBefore(item, _initialSibling);
+      }
+    }
+    if (initial || reverts) {
+      drake.emit('cancel', item, _source, _source);
+    } else {
+      drake.emit('drop', item, parent, _source, _currentSibling);
+    }
+    cleanup();
+  }
+
+  function cleanup () {
+    var item = _copy || _item;
+    ungrab();
+    removeMirrorImage();
+    if (item) {
+      classes.rm(item, 'gu-transit');
+    }
+    if (_renderTimer) {
+      clearTimeout(_renderTimer);
+    }
+    drake.dragging = false;
+    if (_lastDropTarget) {
+      drake.emit('out', item, _lastDropTarget, _source);
+    }
+    drake.emit('dragend', item);
+    _source = _item = _copy = _initialSibling = _currentSibling = _renderTimer = _lastDropTarget = null;
+  }
+
+  function isInitialPlacement (target, s) {
+    var sibling;
+    if (s !== void 0) {
+      sibling = s;
+    } else if (_mirror) {
+      sibling = _currentSibling;
+    } else {
+      sibling = nextEl(_copy || _item);
+    }
+    return target === _source && sibling === _initialSibling;
+  }
+
+  function findDropTarget (elementBehindCursor, clientX, clientY) {
+    var target = elementBehindCursor;
+    while (target && !accepted()) {
+      target = getParent(target);
+    }
+    return target;
+
+    function accepted () {
+      var droppable = isContainer(target);
+      if (droppable === false) {
+        return false;
+      }
+
+      var immediate = getImmediateChild(target, elementBehindCursor);
+      var reference = getReference(target, immediate, clientX, clientY);
+      var initial = isInitialPlacement(target, reference);
+      if (initial) {
+        return true; // should always be able to drop it right back where it was
+      }
+      return o.accepts(_item, target, _source, reference);
+    }
+  }
+
+  function drag (e) {
+    if (!_mirror) {
+      return;
+    }
+    e.preventDefault();
+
+    var clientX = getCoord('clientX', e);
+    var clientY = getCoord('clientY', e);
+    var x = clientX - _offsetX;
+    var y = clientY - _offsetY;
+
+    _mirror.style.left = x + 'px';
+    _mirror.style.top = y + 'px';
+
+    var item = _copy || _item;
+    var elementBehindCursor = getElementBehindPoint(_mirror, clientX, clientY);
+    var dropTarget = findDropTarget(elementBehindCursor, clientX, clientY);
+    var changed = dropTarget !== null && dropTarget !== _lastDropTarget;
+    if (changed || dropTarget === null) {
+      out();
+      _lastDropTarget = dropTarget;
+      over();
+    }
+    var parent = getParent(item);
+    if (dropTarget === _source && _copy && !o.copySortSource) {
+      if (parent) {
+        parent.removeChild(item);
+      }
+      return;
+    }
+    var reference;
+    var immediate = getImmediateChild(dropTarget, elementBehindCursor);
+    if (immediate !== null) {
+      reference = getReference(dropTarget, immediate, clientX, clientY);
+    } else if (o.revertOnSpill === true && !_copy) {
+      reference = _initialSibling;
+      dropTarget = _source;
+    } else {
+      if (_copy && parent) {
+        parent.removeChild(item);
+      }
+      return;
+    }
+    if (
+      (reference === null && changed) ||
+      reference !== item &&
+      reference !== nextEl(item)
+    ) {
+      _currentSibling = reference;
+      dropTarget.insertBefore(item, reference);
+      drake.emit('shadow', item, dropTarget, _source);
+    }
+    function moved (type) { drake.emit(type, item, _lastDropTarget, _source); }
+    function over () { if (changed) { moved('over'); } }
+    function out () { if (_lastDropTarget) { moved('out'); } }
+  }
+
+  function spillOver (el) {
+    classes.rm(el, 'gu-hide');
+  }
+
+  function spillOut (el) {
+    if (drake.dragging) { classes.add(el, 'gu-hide'); }
+  }
+
+  function renderMirrorImage () {
+    if (_mirror) {
+      return;
+    }
+    var rect = _item.getBoundingClientRect();
+    _mirror = _item.cloneNode(true);
+    _mirror.style.width = getRectWidth(rect) + 'px';
+    _mirror.style.height = getRectHeight(rect) + 'px';
+    classes.rm(_mirror, 'gu-transit');
+    classes.add(_mirror, 'gu-mirror');
+    o.mirrorContainer.appendChild(_mirror);
+    touchy(documentElement, 'add', 'mousemove', drag);
+    classes.add(o.mirrorContainer, 'gu-unselectable');
+    drake.emit('cloned', _mirror, _item, 'mirror');
+  }
+
+  function removeMirrorImage () {
+    if (_mirror) {
+      classes.rm(o.mirrorContainer, 'gu-unselectable');
+      touchy(documentElement, 'remove', 'mousemove', drag);
+      getParent(_mirror).removeChild(_mirror);
+      _mirror = null;
+    }
+  }
+
+  function getImmediateChild (dropTarget, target) {
+    var immediate = target;
+    while (immediate !== dropTarget && getParent(immediate) !== dropTarget) {
+      immediate = getParent(immediate);
+    }
+    if (immediate === documentElement) {
+      return null;
+    }
+    return immediate;
+  }
+
+  function getReference (dropTarget, target, x, y) {
+    var horizontal = o.direction === 'horizontal';
+    var reference = target !== dropTarget ? inside() : outside();
+    return reference;
+
+    function outside () { // slower, but able to figure out any position
+      var len = dropTarget.children.length;
+      var i;
+      var el;
+      var rect;
+      for (i = 0; i < len; i++) {
+        el = dropTarget.children[i];
+        rect = el.getBoundingClientRect();
+        if (horizontal && (rect.left + rect.width / 2) > x) { return el; }
+        if (!horizontal && (rect.top + rect.height / 2) > y) { return el; }
+      }
+      return null;
+    }
+
+    function inside () { // faster, but only available if dropped inside a child element
+      var rect = target.getBoundingClientRect();
+      if (horizontal) {
+        return resolve(x > rect.left + getRectWidth(rect) / 2);
+      }
+      return resolve(y > rect.top + getRectHeight(rect) / 2);
+    }
+
+    function resolve (after) {
+      return after ? nextEl(target) : target;
+    }
+  }
+
+  function isCopy (item, container) {
+    return typeof o.copy === 'boolean' ? o.copy : o.copy(item, container);
+  }
+}
+
+function touchy (el, op, type, fn) {
+  var touch = {
+    mouseup: 'touchend',
+    mousedown: 'touchstart',
+    mousemove: 'touchmove'
+  };
+  var pointers = {
+    mouseup: 'pointerup',
+    mousedown: 'pointerdown',
+    mousemove: 'pointermove'
+  };
+  var microsoft = {
+    mouseup: 'MSPointerUp',
+    mousedown: 'MSPointerDown',
+    mousemove: 'MSPointerMove'
+  };
+  if (global.navigator.pointerEnabled) {
+    crossvent[op](el, pointers[type], fn);
+  } else if (global.navigator.msPointerEnabled) {
+    crossvent[op](el, microsoft[type], fn);
+  } else {
+    crossvent[op](el, touch[type], fn);
+    crossvent[op](el, type, fn);
+  }
+}
+
+function whichMouseButton (e) {
+  if (e.touches !== void 0) { return e.touches.length; }
+  if (e.which !== void 0 && e.which !== 0) { return e.which; } // see https://github.com/bevacqua/dragula/issues/261
+  if (e.buttons !== void 0) { return e.buttons; }
+  var button = e.button;
+  if (button !== void 0) { // see https://github.com/jquery/jquery/blob/99e8ff1baa7ae341e94bb89c3e84570c7c3ad9ea/src/event.js#L573-L575
+    return button & 1 ? 1 : button & 2 ? 3 : (button & 4 ? 2 : 0);
+  }
+}
+
+function getOffset (el) {
+  var rect = el.getBoundingClientRect();
+  return {
+    left: rect.left + getScroll('scrollLeft', 'pageXOffset'),
+    top: rect.top + getScroll('scrollTop', 'pageYOffset')
+  };
+}
+
+function getScroll (scrollProp, offsetProp) {
+  if (typeof global[offsetProp] !== 'undefined') {
+    return global[offsetProp];
+  }
+  if (documentElement.clientHeight) {
+    return documentElement[scrollProp];
+  }
+  return doc.body[scrollProp];
+}
+
+function getElementBehindPoint (point, x, y) {
+  var p = point || {};
+  var state = p.className;
+  var el;
+  p.className += ' gu-hide';
+  el = doc.elementFromPoint(x, y);
+  p.className = state;
+  return el;
+}
+
+function never () { return false; }
+function always () { return true; }
+function getRectWidth (rect) { return rect.width || (rect.right - rect.left); }
+function getRectHeight (rect) { return rect.height || (rect.bottom - rect.top); }
+function getParent (el) { return el.parentNode === doc ? null : el.parentNode; }
+function isInput (el) { return el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || isEditable(el); }
+function isEditable (el) {
+  if (!el) { return false; } // no parents were editable
+  if (el.contentEditable === 'false') { return false; } // stop the lookup
+  if (el.contentEditable === 'true') { return true; } // found a contentEditable element in the chain
+  return isEditable(getParent(el)); // contentEditable is set to 'inherit'
+}
+
+function nextEl (el) {
+  return el.nextElementSibling || manually();
+  function manually () {
+    var sibling = el;
+    do {
+      sibling = sibling.nextSibling;
+    } while (sibling && sibling.nodeType !== 1);
+    return sibling;
+  }
+}
+
+function getEventHost (e) {
+  // on touchend event, we have to use `e.changedTouches`
+  // see http://stackoverflow.com/questions/7192563/touchend-event-properties
+  // see https://github.com/bevacqua/dragula/issues/34
+  if (e.targetTouches && e.targetTouches.length) {
+    return e.targetTouches[0];
+  }
+  if (e.changedTouches && e.changedTouches.length) {
+    return e.changedTouches[0];
+  }
+  return e;
+}
+
+function getCoord (coord, e) {
+  var host = getEventHost(e);
+  var missMap = {
+    pageX: 'clientX', // IE8
+    pageY: 'clientY' // IE8
+  };
+  if (coord in missMap && !(coord in host) && missMap[coord] in host) {
+    coord = missMap[coord];
+  }
+  return host[coord];
+}
+
+module.exports = dragula;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./classes":66,"contra/emitter":69,"crossvent":73}],68:[function(require,module,exports){
+'use strict';
+
+var ticky = require('ticky');
+
+module.exports = function debounce (fn, args, ctx) {
+  if (!fn) { return; }
+  ticky(function run () {
+    fn.apply(ctx || null, args || []);
+  });
+};
+
+},{"ticky":71}],69:[function(require,module,exports){
+'use strict';
+
+var atoa = require('atoa');
+var debounce = require('./debounce');
+
+module.exports = function emitter (thing, options) {
+  var opts = options || {};
+  var evt = {};
+  if (thing === undefined) { thing = {}; }
+  thing.on = function (type, fn) {
+    if (!evt[type]) {
+      evt[type] = [fn];
+    } else {
+      evt[type].push(fn);
+    }
+    return thing;
+  };
+  thing.once = function (type, fn) {
+    fn._once = true; // thing.off(fn) still works!
+    thing.on(type, fn);
+    return thing;
+  };
+  thing.off = function (type, fn) {
+    var c = arguments.length;
+    if (c === 1) {
+      delete evt[type];
+    } else if (c === 0) {
+      evt = {};
+    } else {
+      var et = evt[type];
+      if (!et) { return thing; }
+      et.splice(et.indexOf(fn), 1);
+    }
+    return thing;
+  };
+  thing.emit = function () {
+    var args = atoa(arguments);
+    return thing.emitterSnapshot(args.shift()).apply(this, args);
+  };
+  thing.emitterSnapshot = function (type) {
+    var et = (evt[type] || []).slice(0);
+    return function () {
+      var args = atoa(arguments);
+      var ctx = this || thing;
+      if (type === 'error' && opts.throws !== false && !et.length) { throw args.length === 1 ? args[0] : args; }
+      et.forEach(function emitter (listen) {
+        if (opts.async) { debounce(listen, args, ctx); } else { listen.apply(ctx, args); }
+        if (listen._once) { thing.off(type, listen); }
+      });
+      return thing;
+    };
+  };
+  return thing;
+};
+
+},{"./debounce":68,"atoa":70}],70:[function(require,module,exports){
+module.exports = function atoa (a, n) { return Array.prototype.slice.call(a, n); }
+
+},{}],71:[function(require,module,exports){
+var si = typeof setImmediate === 'function', tick;
+if (si) {
+  tick = function (fn) { setImmediate(fn); };
+} else {
+  tick = function (fn) { setTimeout(fn, 0); };
+}
+
+module.exports = tick;
+},{}],72:[function(require,module,exports){
+(function (global){
+
+var NativeCustomEvent = global.CustomEvent;
+
+function useNative () {
+  try {
+    var p = new NativeCustomEvent('cat', { detail: { foo: 'bar' } });
+    return  'cat' === p.type && 'bar' === p.detail.foo;
+  } catch (e) {
+  }
+  return false;
+}
+
+/**
+ * Cross-browser `CustomEvent` constructor.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent.CustomEvent
+ *
+ * @public
+ */
+
+module.exports = useNative() ? NativeCustomEvent :
+
+// IE >= 9
+'function' === typeof document.createEvent ? function CustomEvent (type, params) {
+  var e = document.createEvent('CustomEvent');
+  if (params) {
+    e.initCustomEvent(type, params.bubbles, params.cancelable, params.detail);
+  } else {
+    e.initCustomEvent(type, false, false, void 0);
+  }
+  return e;
+} :
+
+// IE <= 8
+function CustomEvent (type, params) {
+  var e = document.createEventObject();
+  e.type = type;
+  if (params) {
+    e.bubbles = Boolean(params.bubbles);
+    e.cancelable = Boolean(params.cancelable);
+    e.detail = params.detail;
+  } else {
+    e.bubbles = false;
+    e.cancelable = false;
+    e.detail = void 0;
+  }
+  return e;
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],73:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var customEvent = require('custom-event');
+var eventmap = require('./eventmap');
+var doc = global.document;
+var addEvent = addEventEasy;
+var removeEvent = removeEventEasy;
+var hardCache = [];
+
+if (!global.addEventListener) {
+  addEvent = addEventHard;
+  removeEvent = removeEventHard;
+}
+
+module.exports = {
+  add: addEvent,
+  remove: removeEvent,
+  fabricate: fabricateEvent
+};
+
+function addEventEasy (el, type, fn, capturing) {
+  return el.addEventListener(type, fn, capturing);
+}
+
+function addEventHard (el, type, fn) {
+  return el.attachEvent('on' + type, wrap(el, type, fn));
+}
+
+function removeEventEasy (el, type, fn, capturing) {
+  return el.removeEventListener(type, fn, capturing);
+}
+
+function removeEventHard (el, type, fn) {
+  var listener = unwrap(el, type, fn);
+  if (listener) {
+    return el.detachEvent('on' + type, listener);
+  }
+}
+
+function fabricateEvent (el, type, model) {
+  var e = eventmap.indexOf(type) === -1 ? makeCustomEvent() : makeClassicEvent();
+  if (el.dispatchEvent) {
+    el.dispatchEvent(e);
+  } else {
+    el.fireEvent('on' + type, e);
+  }
+  function makeClassicEvent () {
+    var e;
+    if (doc.createEvent) {
+      e = doc.createEvent('Event');
+      e.initEvent(type, true, true);
+    } else if (doc.createEventObject) {
+      e = doc.createEventObject();
+    }
+    return e;
+  }
+  function makeCustomEvent () {
+    return new customEvent(type, { detail: model });
+  }
+}
+
+function wrapperFactory (el, type, fn) {
+  return function wrapper (originalEvent) {
+    var e = originalEvent || global.event;
+    e.target = e.target || e.srcElement;
+    e.preventDefault = e.preventDefault || function preventDefault () { e.returnValue = false; };
+    e.stopPropagation = e.stopPropagation || function stopPropagation () { e.cancelBubble = true; };
+    e.which = e.which || e.keyCode;
+    fn.call(el, e);
+  };
+}
+
+function wrap (el, type, fn) {
+  var wrapper = unwrap(el, type, fn) || wrapperFactory(el, type, fn);
+  hardCache.push({
+    wrapper: wrapper,
+    element: el,
+    type: type,
+    fn: fn
+  });
+  return wrapper;
+}
+
+function unwrap (el, type, fn) {
+  var i = find(el, type, fn);
+  if (i) {
+    var wrapper = hardCache[i].wrapper;
+    hardCache.splice(i, 1); // free up a tad of memory
+    return wrapper;
+  }
+}
+
+function find (el, type, fn) {
+  var i, item;
+  for (i = 0; i < hardCache.length; i++) {
+    item = hardCache[i];
+    if (item.element === el && item.type === type && item.fn === fn) {
+      return i;
+    }
+  }
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./eventmap":74,"custom-event":72}],74:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var eventmap = [];
+var eventname = '';
+var ron = /^on/;
+
+for (eventname in global) {
+  if (ron.test(eventname)) {
+    eventmap.push(eventname.slice(2));
+  }
+}
+
+module.exports = eventmap;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],75:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -920,7 +1814,7 @@ var DataView = getNative(root, 'DataView');
 
 module.exports = DataView;
 
-},{"./_getNative":128,"./_root":156}],67:[function(require,module,exports){
+},{"./_getNative":137,"./_root":165}],76:[function(require,module,exports){
 var nativeCreate = require('./_nativeCreate');
 
 /** Used for built-in method references. */
@@ -940,7 +1834,7 @@ Hash.prototype = nativeCreate ? nativeCreate(null) : objectProto;
 
 module.exports = Hash;
 
-},{"./_nativeCreate":155}],68:[function(require,module,exports){
+},{"./_nativeCreate":164}],77:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -949,7 +1843,7 @@ var Map = getNative(root, 'Map');
 
 module.exports = Map;
 
-},{"./_getNative":128,"./_root":156}],69:[function(require,module,exports){
+},{"./_getNative":137,"./_root":165}],78:[function(require,module,exports){
 var mapClear = require('./_mapClear'),
     mapDelete = require('./_mapDelete'),
     mapGet = require('./_mapGet'),
@@ -983,7 +1877,7 @@ MapCache.prototype.set = mapSet;
 
 module.exports = MapCache;
 
-},{"./_mapClear":148,"./_mapDelete":149,"./_mapGet":150,"./_mapHas":151,"./_mapSet":152}],70:[function(require,module,exports){
+},{"./_mapClear":157,"./_mapDelete":158,"./_mapGet":159,"./_mapHas":160,"./_mapSet":161}],79:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -992,7 +1886,7 @@ var Promise = getNative(root, 'Promise');
 
 module.exports = Promise;
 
-},{"./_getNative":128,"./_root":156}],71:[function(require,module,exports){
+},{"./_getNative":137,"./_root":165}],80:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -1000,7 +1894,7 @@ var Reflect = root.Reflect;
 
 module.exports = Reflect;
 
-},{"./_root":156}],72:[function(require,module,exports){
+},{"./_root":165}],81:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -1009,7 +1903,7 @@ var Set = getNative(root, 'Set');
 
 module.exports = Set;
 
-},{"./_getNative":128,"./_root":156}],73:[function(require,module,exports){
+},{"./_getNative":137,"./_root":165}],82:[function(require,module,exports){
 var MapCache = require('./_MapCache'),
     cachePush = require('./_cachePush');
 
@@ -1036,7 +1930,7 @@ SetCache.prototype.push = cachePush;
 
 module.exports = SetCache;
 
-},{"./_MapCache":69,"./_cachePush":117}],74:[function(require,module,exports){
+},{"./_MapCache":78,"./_cachePush":126}],83:[function(require,module,exports){
 var stackClear = require('./_stackClear'),
     stackDelete = require('./_stackDelete'),
     stackGet = require('./_stackGet'),
@@ -1070,7 +1964,7 @@ Stack.prototype.set = stackSet;
 
 module.exports = Stack;
 
-},{"./_stackClear":158,"./_stackDelete":159,"./_stackGet":160,"./_stackHas":161,"./_stackSet":162}],75:[function(require,module,exports){
+},{"./_stackClear":167,"./_stackDelete":168,"./_stackGet":169,"./_stackHas":170,"./_stackSet":171}],84:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -1078,7 +1972,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":156}],76:[function(require,module,exports){
+},{"./_root":165}],85:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -1086,7 +1980,7 @@ var Uint8Array = root.Uint8Array;
 
 module.exports = Uint8Array;
 
-},{"./_root":156}],77:[function(require,module,exports){
+},{"./_root":165}],86:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -1095,7 +1989,7 @@ var WeakMap = getNative(root, 'WeakMap');
 
 module.exports = WeakMap;
 
-},{"./_getNative":128,"./_root":156}],78:[function(require,module,exports){
+},{"./_getNative":137,"./_root":165}],87:[function(require,module,exports){
 /**
  * A faster alternative to `Function#apply`, this function invokes `func`
  * with the `this` binding of `thisArg` and the arguments of `args`.
@@ -1119,7 +2013,7 @@ function apply(func, thisArg, args) {
 
 module.exports = apply;
 
-},{}],79:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 var baseIndexOf = require('./_baseIndexOf');
 
 /**
@@ -1137,7 +2031,7 @@ function arrayIncludes(array, value) {
 
 module.exports = arrayIncludes;
 
-},{"./_baseIndexOf":101}],80:[function(require,module,exports){
+},{"./_baseIndexOf":110}],89:[function(require,module,exports){
 /**
  * This function is like `arrayIncludes` except that it accepts a comparator.
  *
@@ -1161,7 +2055,7 @@ function arrayIncludesWith(array, value, comparator) {
 
 module.exports = arrayIncludesWith;
 
-},{}],81:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
  * shorthands.
@@ -1184,7 +2078,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],82:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 /**
  * Appends the elements of `values` to `array`.
  *
@@ -1206,7 +2100,7 @@ function arrayPush(array, values) {
 
 module.exports = arrayPush;
 
-},{}],83:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 /**
  * A specialized version of `_.reduce` for arrays without support for
  * iteratee shorthands.
@@ -1234,7 +2128,7 @@ function arrayReduce(array, iteratee, accumulator, initAccum) {
 
 module.exports = arrayReduce;
 
-},{}],84:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 /**
  * A specialized version of `_.some` for arrays without support for iteratee
  * shorthands.
@@ -1259,7 +2153,7 @@ function arraySome(array, predicate) {
 
 module.exports = arraySome;
 
-},{}],85:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 var assocIndexOf = require('./_assocIndexOf');
 
 /** Used for built-in method references. */
@@ -1292,7 +2186,7 @@ function assocDelete(array, key) {
 
 module.exports = assocDelete;
 
-},{"./_assocIndexOf":88}],86:[function(require,module,exports){
+},{"./_assocIndexOf":97}],95:[function(require,module,exports){
 var assocIndexOf = require('./_assocIndexOf');
 
 /**
@@ -1310,7 +2204,7 @@ function assocGet(array, key) {
 
 module.exports = assocGet;
 
-},{"./_assocIndexOf":88}],87:[function(require,module,exports){
+},{"./_assocIndexOf":97}],96:[function(require,module,exports){
 var assocIndexOf = require('./_assocIndexOf');
 
 /**
@@ -1327,7 +2221,7 @@ function assocHas(array, key) {
 
 module.exports = assocHas;
 
-},{"./_assocIndexOf":88}],88:[function(require,module,exports){
+},{"./_assocIndexOf":97}],97:[function(require,module,exports){
 var eq = require('./eq');
 
 /**
@@ -1350,7 +2244,7 @@ function assocIndexOf(array, key) {
 
 module.exports = assocIndexOf;
 
-},{"./eq":166}],89:[function(require,module,exports){
+},{"./eq":175}],98:[function(require,module,exports){
 var assocIndexOf = require('./_assocIndexOf');
 
 /**
@@ -1372,7 +2266,7 @@ function assocSet(array, key, value) {
 
 module.exports = assocSet;
 
-},{"./_assocIndexOf":88}],90:[function(require,module,exports){
+},{"./_assocIndexOf":97}],99:[function(require,module,exports){
 var SetCache = require('./_SetCache'),
     arrayIncludes = require('./_arrayIncludes'),
     arrayIncludesWith = require('./_arrayIncludesWith'),
@@ -1440,7 +2334,7 @@ function baseDifference(array, values, iteratee, comparator) {
 
 module.exports = baseDifference;
 
-},{"./_SetCache":73,"./_arrayIncludes":79,"./_arrayIncludesWith":80,"./_arrayMap":81,"./_baseUnary":115,"./_cacheHas":116}],91:[function(require,module,exports){
+},{"./_SetCache":82,"./_arrayIncludes":88,"./_arrayIncludesWith":89,"./_arrayMap":90,"./_baseUnary":124,"./_cacheHas":125}],100:[function(require,module,exports){
 var baseForOwn = require('./_baseForOwn'),
     createBaseEach = require('./_createBaseEach');
 
@@ -1456,7 +2350,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./_baseForOwn":96,"./_createBaseEach":120}],92:[function(require,module,exports){
+},{"./_baseForOwn":105,"./_createBaseEach":129}],101:[function(require,module,exports){
 /**
  * The base implementation of methods like `_.find` and `_.findKey`, without
  * support for iteratee shorthands, which iterates over `collection` using
@@ -1483,7 +2377,7 @@ function baseFind(collection, predicate, eachFunc, retKey) {
 
 module.exports = baseFind;
 
-},{}],93:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 /**
  * The base implementation of `_.findIndex` and `_.findLastIndex` without
  * support for iteratee shorthands.
@@ -1508,7 +2402,7 @@ function baseFindIndex(array, predicate, fromRight) {
 
 module.exports = baseFindIndex;
 
-},{}],94:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 var arrayPush = require('./_arrayPush'),
     isFlattenable = require('./_isFlattenable');
 
@@ -1548,7 +2442,7 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
 
 module.exports = baseFlatten;
 
-},{"./_arrayPush":82,"./_isFlattenable":140}],95:[function(require,module,exports){
+},{"./_arrayPush":91,"./_isFlattenable":149}],104:[function(require,module,exports){
 var createBaseFor = require('./_createBaseFor');
 
 /**
@@ -1566,7 +2460,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./_createBaseFor":121}],96:[function(require,module,exports){
+},{"./_createBaseFor":130}],105:[function(require,module,exports){
 var baseFor = require('./_baseFor'),
     keys = require('./keys');
 
@@ -1584,7 +2478,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"./_baseFor":95,"./keys":184}],97:[function(require,module,exports){
+},{"./_baseFor":104,"./keys":193}],106:[function(require,module,exports){
 var castPath = require('./_castPath'),
     isKey = require('./_isKey');
 
@@ -1610,7 +2504,7 @@ function baseGet(object, path) {
 
 module.exports = baseGet;
 
-},{"./_castPath":118,"./_isKey":143}],98:[function(require,module,exports){
+},{"./_castPath":127,"./_isKey":152}],107:[function(require,module,exports){
 var arrayPush = require('./_arrayPush'),
     isArray = require('./isArray');
 
@@ -1634,7 +2528,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 
 module.exports = baseGetAllKeys;
 
-},{"./_arrayPush":82,"./isArray":172}],99:[function(require,module,exports){
+},{"./_arrayPush":91,"./isArray":181}],108:[function(require,module,exports){
 var getPrototype = require('./_getPrototype');
 
 /** Used for built-in method references. */
@@ -1661,7 +2555,7 @@ function baseHas(object, key) {
 
 module.exports = baseHas;
 
-},{"./_getPrototype":129}],100:[function(require,module,exports){
+},{"./_getPrototype":138}],109:[function(require,module,exports){
 /**
  * The base implementation of `_.hasIn` without support for deep paths.
  *
@@ -1676,7 +2570,7 @@ function baseHasIn(object, key) {
 
 module.exports = baseHasIn;
 
-},{}],101:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 var indexOfNaN = require('./_indexOfNaN');
 
 /**
@@ -1705,7 +2599,7 @@ function baseIndexOf(array, value, fromIndex) {
 
 module.exports = baseIndexOf;
 
-},{"./_indexOfNaN":139}],102:[function(require,module,exports){
+},{"./_indexOfNaN":148}],111:[function(require,module,exports){
 var baseIsEqualDeep = require('./_baseIsEqualDeep'),
     isObject = require('./isObject'),
     isObjectLike = require('./isObjectLike');
@@ -1737,7 +2631,7 @@ function baseIsEqual(value, other, customizer, bitmask, stack) {
 
 module.exports = baseIsEqual;
 
-},{"./_baseIsEqualDeep":103,"./isObject":179,"./isObjectLike":180}],103:[function(require,module,exports){
+},{"./_baseIsEqualDeep":112,"./isObject":188,"./isObjectLike":189}],112:[function(require,module,exports){
 var Stack = require('./_Stack'),
     equalArrays = require('./_equalArrays'),
     equalByTag = require('./_equalByTag'),
@@ -1821,7 +2715,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, bitmask, stack) {
 
 module.exports = baseIsEqualDeep;
 
-},{"./_Stack":74,"./_equalArrays":122,"./_equalByTag":123,"./_equalObjects":124,"./_getTag":132,"./_isHostObject":141,"./isArray":172,"./isTypedArray":183}],104:[function(require,module,exports){
+},{"./_Stack":83,"./_equalArrays":131,"./_equalByTag":132,"./_equalObjects":133,"./_getTag":141,"./_isHostObject":150,"./isArray":181,"./isTypedArray":192}],113:[function(require,module,exports){
 var Stack = require('./_Stack'),
     baseIsEqual = require('./_baseIsEqual');
 
@@ -1885,7 +2779,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./_Stack":74,"./_baseIsEqual":102}],105:[function(require,module,exports){
+},{"./_Stack":83,"./_baseIsEqual":111}],114:[function(require,module,exports){
 var baseMatches = require('./_baseMatches'),
     baseMatchesProperty = require('./_baseMatchesProperty'),
     identity = require('./identity'),
@@ -1918,7 +2812,7 @@ function baseIteratee(value) {
 
 module.exports = baseIteratee;
 
-},{"./_baseMatches":108,"./_baseMatchesProperty":109,"./identity":170,"./isArray":172,"./property":188}],106:[function(require,module,exports){
+},{"./_baseMatches":117,"./_baseMatchesProperty":118,"./identity":179,"./isArray":181,"./property":197}],115:[function(require,module,exports){
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = Object.keys;
 
@@ -1936,7 +2830,7 @@ function baseKeys(object) {
 
 module.exports = baseKeys;
 
-},{}],107:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 var Reflect = require('./_Reflect'),
     iteratorToArray = require('./_iteratorToArray');
 
@@ -1974,7 +2868,7 @@ if (enumerate && !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf')) {
 
 module.exports = baseKeysIn;
 
-},{"./_Reflect":71,"./_iteratorToArray":147}],108:[function(require,module,exports){
+},{"./_Reflect":80,"./_iteratorToArray":156}],117:[function(require,module,exports){
 var baseIsMatch = require('./_baseIsMatch'),
     getMatchData = require('./_getMatchData'),
     matchesStrictComparable = require('./_matchesStrictComparable');
@@ -1998,7 +2892,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"./_baseIsMatch":104,"./_getMatchData":127,"./_matchesStrictComparable":154}],109:[function(require,module,exports){
+},{"./_baseIsMatch":113,"./_getMatchData":136,"./_matchesStrictComparable":163}],118:[function(require,module,exports){
 var baseIsEqual = require('./_baseIsEqual'),
     get = require('./get'),
     hasIn = require('./hasIn'),
@@ -2032,7 +2926,7 @@ function baseMatchesProperty(path, srcValue) {
 
 module.exports = baseMatchesProperty;
 
-},{"./_baseIsEqual":102,"./_isKey":143,"./_isStrictComparable":146,"./_matchesStrictComparable":154,"./get":168,"./hasIn":169}],110:[function(require,module,exports){
+},{"./_baseIsEqual":111,"./_isKey":152,"./_isStrictComparable":155,"./_matchesStrictComparable":163,"./get":177,"./hasIn":178}],119:[function(require,module,exports){
 var arrayReduce = require('./_arrayReduce');
 
 /**
@@ -2056,7 +2950,7 @@ function basePick(object, props) {
 
 module.exports = basePick;
 
-},{"./_arrayReduce":83}],111:[function(require,module,exports){
+},{"./_arrayReduce":92}],120:[function(require,module,exports){
 /**
  * The base implementation of `_.property` without support for deep paths.
  *
@@ -2072,7 +2966,7 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],112:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 var baseGet = require('./_baseGet');
 
 /**
@@ -2090,7 +2984,7 @@ function basePropertyDeep(path) {
 
 module.exports = basePropertyDeep;
 
-},{"./_baseGet":97}],113:[function(require,module,exports){
+},{"./_baseGet":106}],122:[function(require,module,exports){
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
  * or max array length checks.
@@ -2112,7 +3006,7 @@ function baseTimes(n, iteratee) {
 
 module.exports = baseTimes;
 
-},{}],114:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 var arrayMap = require('./_arrayMap');
 
 /**
@@ -2132,7 +3026,7 @@ function baseToPairs(object, props) {
 
 module.exports = baseToPairs;
 
-},{"./_arrayMap":81}],115:[function(require,module,exports){
+},{"./_arrayMap":90}],124:[function(require,module,exports){
 /**
  * The base implementation of `_.unary` without support for storing wrapper metadata.
  *
@@ -2148,7 +3042,7 @@ function baseUnary(func) {
 
 module.exports = baseUnary;
 
-},{}],116:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 var isKeyable = require('./_isKeyable');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -2175,7 +3069,7 @@ function cacheHas(cache, value) {
 
 module.exports = cacheHas;
 
-},{"./_isKeyable":144}],117:[function(require,module,exports){
+},{"./_isKeyable":153}],126:[function(require,module,exports){
 var isKeyable = require('./_isKeyable');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -2204,7 +3098,7 @@ function cachePush(value) {
 
 module.exports = cachePush;
 
-},{"./_isKeyable":144}],118:[function(require,module,exports){
+},{"./_isKeyable":153}],127:[function(require,module,exports){
 var isArray = require('./isArray'),
     stringToPath = require('./_stringToPath');
 
@@ -2221,7 +3115,7 @@ function castPath(value) {
 
 module.exports = castPath;
 
-},{"./_stringToPath":163,"./isArray":172}],119:[function(require,module,exports){
+},{"./_stringToPath":172,"./isArray":181}],128:[function(require,module,exports){
 /**
  * Checks if `value` is a global object.
  *
@@ -2235,7 +3129,7 @@ function checkGlobal(value) {
 
 module.exports = checkGlobal;
 
-},{}],120:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 var isArrayLike = require('./isArrayLike');
 
 /**
@@ -2269,7 +3163,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./isArrayLike":173}],121:[function(require,module,exports){
+},{"./isArrayLike":182}],130:[function(require,module,exports){
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
  *
@@ -2296,7 +3190,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{}],122:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 var arraySome = require('./_arraySome');
 
 /** Used to compose bitmasks for comparison styles. */
@@ -2375,7 +3269,7 @@ function equalArrays(array, other, equalFunc, customizer, bitmask, stack) {
 
 module.exports = equalArrays;
 
-},{"./_arraySome":84}],123:[function(require,module,exports){
+},{"./_arraySome":93}],132:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     Uint8Array = require('./_Uint8Array'),
     equalArrays = require('./_equalArrays'),
@@ -2491,7 +3385,7 @@ function equalByTag(object, other, tag, equalFunc, customizer, bitmask, stack) {
 
 module.exports = equalByTag;
 
-},{"./_Symbol":75,"./_Uint8Array":76,"./_equalArrays":122,"./_mapToArray":153,"./_setToArray":157}],124:[function(require,module,exports){
+},{"./_Symbol":84,"./_Uint8Array":85,"./_equalArrays":131,"./_mapToArray":162,"./_setToArray":166}],133:[function(require,module,exports){
 var baseHas = require('./_baseHas'),
     keys = require('./keys');
 
@@ -2576,7 +3470,7 @@ function equalObjects(object, other, equalFunc, customizer, bitmask, stack) {
 
 module.exports = equalObjects;
 
-},{"./_baseHas":99,"./keys":184}],125:[function(require,module,exports){
+},{"./_baseHas":108,"./keys":193}],134:[function(require,module,exports){
 var baseGetAllKeys = require('./_baseGetAllKeys'),
     getSymbolsIn = require('./_getSymbolsIn'),
     keysIn = require('./keysIn');
@@ -2595,7 +3489,7 @@ function getAllKeysIn(object) {
 
 module.exports = getAllKeysIn;
 
-},{"./_baseGetAllKeys":98,"./_getSymbolsIn":131,"./keysIn":185}],126:[function(require,module,exports){
+},{"./_baseGetAllKeys":107,"./_getSymbolsIn":140,"./keysIn":194}],135:[function(require,module,exports){
 var baseProperty = require('./_baseProperty');
 
 /**
@@ -2613,7 +3507,7 @@ var getLength = baseProperty('length');
 
 module.exports = getLength;
 
-},{"./_baseProperty":111}],127:[function(require,module,exports){
+},{"./_baseProperty":120}],136:[function(require,module,exports){
 var isStrictComparable = require('./_isStrictComparable'),
     toPairs = require('./toPairs');
 
@@ -2636,7 +3530,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"./_isStrictComparable":146,"./toPairs":192}],128:[function(require,module,exports){
+},{"./_isStrictComparable":155,"./toPairs":201}],137:[function(require,module,exports){
 var isNative = require('./isNative');
 
 /**
@@ -2654,7 +3548,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"./isNative":178}],129:[function(require,module,exports){
+},{"./isNative":187}],138:[function(require,module,exports){
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeGetPrototype = Object.getPrototypeOf;
 
@@ -2671,7 +3565,7 @@ function getPrototype(value) {
 
 module.exports = getPrototype;
 
-},{}],130:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 /** Built-in value references. */
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 
@@ -2697,7 +3591,7 @@ if (!getOwnPropertySymbols) {
 
 module.exports = getSymbols;
 
-},{}],131:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 var arrayPush = require('./_arrayPush'),
     getPrototype = require('./_getPrototype'),
     getSymbols = require('./_getSymbols');
@@ -2724,7 +3618,7 @@ var getSymbolsIn = !getOwnPropertySymbols ? getSymbols : function(object) {
 
 module.exports = getSymbolsIn;
 
-},{"./_arrayPush":82,"./_getPrototype":129,"./_getSymbols":130}],132:[function(require,module,exports){
+},{"./_arrayPush":91,"./_getPrototype":138,"./_getSymbols":139}],141:[function(require,module,exports){
 var DataView = require('./_DataView'),
     Map = require('./_Map'),
     Promise = require('./_Promise'),
@@ -2796,7 +3690,7 @@ if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
 
 module.exports = getTag;
 
-},{"./_DataView":66,"./_Map":68,"./_Promise":70,"./_Set":72,"./_WeakMap":77,"./_toSource":165}],133:[function(require,module,exports){
+},{"./_DataView":75,"./_Map":77,"./_Promise":79,"./_Set":81,"./_WeakMap":86,"./_toSource":174}],142:[function(require,module,exports){
 var castPath = require('./_castPath'),
     isArguments = require('./isArguments'),
     isArray = require('./isArray'),
@@ -2838,7 +3732,7 @@ function hasPath(object, path, hasFunc) {
 
 module.exports = hasPath;
 
-},{"./_castPath":118,"./_isIndex":142,"./_isKey":143,"./isArguments":171,"./isArray":172,"./isLength":177,"./isString":181}],134:[function(require,module,exports){
+},{"./_castPath":127,"./_isIndex":151,"./_isKey":152,"./isArguments":180,"./isArray":181,"./isLength":186,"./isString":190}],143:[function(require,module,exports){
 var hashHas = require('./_hashHas');
 
 /**
@@ -2855,7 +3749,7 @@ function hashDelete(hash, key) {
 
 module.exports = hashDelete;
 
-},{"./_hashHas":136}],135:[function(require,module,exports){
+},{"./_hashHas":145}],144:[function(require,module,exports){
 var nativeCreate = require('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -2885,7 +3779,7 @@ function hashGet(hash, key) {
 
 module.exports = hashGet;
 
-},{"./_nativeCreate":155}],136:[function(require,module,exports){
+},{"./_nativeCreate":164}],145:[function(require,module,exports){
 var nativeCreate = require('./_nativeCreate');
 
 /** Used for built-in method references. */
@@ -2908,7 +3802,7 @@ function hashHas(hash, key) {
 
 module.exports = hashHas;
 
-},{"./_nativeCreate":155}],137:[function(require,module,exports){
+},{"./_nativeCreate":164}],146:[function(require,module,exports){
 var nativeCreate = require('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -2928,7 +3822,7 @@ function hashSet(hash, key, value) {
 
 module.exports = hashSet;
 
-},{"./_nativeCreate":155}],138:[function(require,module,exports){
+},{"./_nativeCreate":164}],147:[function(require,module,exports){
 var baseTimes = require('./_baseTimes'),
     isArguments = require('./isArguments'),
     isArray = require('./isArray'),
@@ -2954,7 +3848,7 @@ function indexKeys(object) {
 
 module.exports = indexKeys;
 
-},{"./_baseTimes":113,"./isArguments":171,"./isArray":172,"./isLength":177,"./isString":181}],139:[function(require,module,exports){
+},{"./_baseTimes":122,"./isArguments":180,"./isArray":181,"./isLength":186,"./isString":190}],148:[function(require,module,exports){
 /**
  * Gets the index at which the first occurrence of `NaN` is found in `array`.
  *
@@ -2979,7 +3873,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = indexOfNaN;
 
-},{}],140:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 var isArguments = require('./isArguments'),
     isArray = require('./isArray'),
     isArrayLikeObject = require('./isArrayLikeObject');
@@ -2997,7 +3891,7 @@ function isFlattenable(value) {
 
 module.exports = isFlattenable;
 
-},{"./isArguments":171,"./isArray":172,"./isArrayLikeObject":174}],141:[function(require,module,exports){
+},{"./isArguments":180,"./isArray":181,"./isArrayLikeObject":183}],150:[function(require,module,exports){
 /**
  * Checks if `value` is a host object in IE < 9.
  *
@@ -3019,7 +3913,7 @@ function isHostObject(value) {
 
 module.exports = isHostObject;
 
-},{}],142:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -3042,7 +3936,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],143:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 var isArray = require('./isArray'),
     isSymbol = require('./isSymbol');
 
@@ -3070,7 +3964,7 @@ function isKey(value, object) {
 
 module.exports = isKey;
 
-},{"./isArray":172,"./isSymbol":182}],144:[function(require,module,exports){
+},{"./isArray":181,"./isSymbol":191}],153:[function(require,module,exports){
 /**
  * Checks if `value` is suitable for use as unique object key.
  *
@@ -3086,7 +3980,7 @@ function isKeyable(value) {
 
 module.exports = isKeyable;
 
-},{}],145:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -3106,7 +4000,7 @@ function isPrototype(value) {
 
 module.exports = isPrototype;
 
-},{}],146:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 var isObject = require('./isObject');
 
 /**
@@ -3123,7 +4017,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"./isObject":179}],147:[function(require,module,exports){
+},{"./isObject":188}],156:[function(require,module,exports){
 /**
  * Converts `iterator` to an array.
  *
@@ -3143,7 +4037,7 @@ function iteratorToArray(iterator) {
 
 module.exports = iteratorToArray;
 
-},{}],148:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 var Hash = require('./_Hash'),
     Map = require('./_Map');
 
@@ -3164,7 +4058,7 @@ function mapClear() {
 
 module.exports = mapClear;
 
-},{"./_Hash":67,"./_Map":68}],149:[function(require,module,exports){
+},{"./_Hash":76,"./_Map":77}],158:[function(require,module,exports){
 var Map = require('./_Map'),
     assocDelete = require('./_assocDelete'),
     hashDelete = require('./_hashDelete'),
@@ -3189,7 +4083,7 @@ function mapDelete(key) {
 
 module.exports = mapDelete;
 
-},{"./_Map":68,"./_assocDelete":85,"./_hashDelete":134,"./_isKeyable":144}],150:[function(require,module,exports){
+},{"./_Map":77,"./_assocDelete":94,"./_hashDelete":143,"./_isKeyable":153}],159:[function(require,module,exports){
 var Map = require('./_Map'),
     assocGet = require('./_assocGet'),
     hashGet = require('./_hashGet'),
@@ -3214,7 +4108,7 @@ function mapGet(key) {
 
 module.exports = mapGet;
 
-},{"./_Map":68,"./_assocGet":86,"./_hashGet":135,"./_isKeyable":144}],151:[function(require,module,exports){
+},{"./_Map":77,"./_assocGet":95,"./_hashGet":144,"./_isKeyable":153}],160:[function(require,module,exports){
 var Map = require('./_Map'),
     assocHas = require('./_assocHas'),
     hashHas = require('./_hashHas'),
@@ -3239,7 +4133,7 @@ function mapHas(key) {
 
 module.exports = mapHas;
 
-},{"./_Map":68,"./_assocHas":87,"./_hashHas":136,"./_isKeyable":144}],152:[function(require,module,exports){
+},{"./_Map":77,"./_assocHas":96,"./_hashHas":145,"./_isKeyable":153}],161:[function(require,module,exports){
 var Map = require('./_Map'),
     assocSet = require('./_assocSet'),
     hashSet = require('./_hashSet'),
@@ -3269,7 +4163,7 @@ function mapSet(key, value) {
 
 module.exports = mapSet;
 
-},{"./_Map":68,"./_assocSet":89,"./_hashSet":137,"./_isKeyable":144}],153:[function(require,module,exports){
+},{"./_Map":77,"./_assocSet":98,"./_hashSet":146,"./_isKeyable":153}],162:[function(require,module,exports){
 /**
  * Converts `map` to an array.
  *
@@ -3289,7 +4183,7 @@ function mapToArray(map) {
 
 module.exports = mapToArray;
 
-},{}],154:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 /**
  * A specialized version of `matchesProperty` for source values suitable
  * for strict equality comparisons, i.e. `===`.
@@ -3311,7 +4205,7 @@ function matchesStrictComparable(key, srcValue) {
 
 module.exports = matchesStrictComparable;
 
-},{}],155:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 var getNative = require('./_getNative');
 
 /* Built-in method references that are verified to be native. */
@@ -3319,7 +4213,7 @@ var nativeCreate = getNative(Object, 'create');
 
 module.exports = nativeCreate;
 
-},{"./_getNative":128}],156:[function(require,module,exports){
+},{"./_getNative":137}],165:[function(require,module,exports){
 (function (global){
 var checkGlobal = require('./_checkGlobal');
 
@@ -3364,7 +4258,7 @@ var root = freeGlobal ||
 module.exports = root;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_checkGlobal":119}],157:[function(require,module,exports){
+},{"./_checkGlobal":128}],166:[function(require,module,exports){
 /**
  * Converts `set` to an array.
  *
@@ -3384,7 +4278,7 @@ function setToArray(set) {
 
 module.exports = setToArray;
 
-},{}],158:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /**
  * Removes all key-value entries from the stack.
  *
@@ -3398,7 +4292,7 @@ function stackClear() {
 
 module.exports = stackClear;
 
-},{}],159:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 var assocDelete = require('./_assocDelete');
 
 /**
@@ -3419,7 +4313,7 @@ function stackDelete(key) {
 
 module.exports = stackDelete;
 
-},{"./_assocDelete":85}],160:[function(require,module,exports){
+},{"./_assocDelete":94}],169:[function(require,module,exports){
 var assocGet = require('./_assocGet');
 
 /**
@@ -3440,7 +4334,7 @@ function stackGet(key) {
 
 module.exports = stackGet;
 
-},{"./_assocGet":86}],161:[function(require,module,exports){
+},{"./_assocGet":95}],170:[function(require,module,exports){
 var assocHas = require('./_assocHas');
 
 /**
@@ -3461,7 +4355,7 @@ function stackHas(key) {
 
 module.exports = stackHas;
 
-},{"./_assocHas":87}],162:[function(require,module,exports){
+},{"./_assocHas":96}],171:[function(require,module,exports){
 var MapCache = require('./_MapCache'),
     assocSet = require('./_assocSet');
 
@@ -3499,7 +4393,7 @@ function stackSet(key, value) {
 
 module.exports = stackSet;
 
-},{"./_MapCache":69,"./_assocSet":89}],163:[function(require,module,exports){
+},{"./_MapCache":78,"./_assocSet":98}],172:[function(require,module,exports){
 var memoize = require('./memoize'),
     toString = require('./toString');
 
@@ -3526,7 +4420,7 @@ var stringToPath = memoize(function(string) {
 
 module.exports = stringToPath;
 
-},{"./memoize":186,"./toString":193}],164:[function(require,module,exports){
+},{"./memoize":195,"./toString":202}],173:[function(require,module,exports){
 var isSymbol = require('./isSymbol');
 
 /**
@@ -3542,7 +4436,7 @@ function toKey(key) {
 
 module.exports = toKey;
 
-},{"./isSymbol":182}],165:[function(require,module,exports){
+},{"./isSymbol":191}],174:[function(require,module,exports){
 /** Used to resolve the decompiled source of functions. */
 var funcToString = Function.prototype.toString;
 
@@ -3567,7 +4461,7 @@ function toSource(func) {
 
 module.exports = toSource;
 
-},{}],166:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -3606,7 +4500,7 @@ function eq(value, other) {
 
 module.exports = eq;
 
-},{}],167:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 var baseEach = require('./_baseEach'),
     baseFind = require('./_baseFind'),
     baseFindIndex = require('./_baseFindIndex'),
@@ -3660,7 +4554,7 @@ function find(collection, predicate) {
 
 module.exports = find;
 
-},{"./_baseEach":91,"./_baseFind":92,"./_baseFindIndex":93,"./_baseIteratee":105,"./isArray":172}],168:[function(require,module,exports){
+},{"./_baseEach":100,"./_baseFind":101,"./_baseFindIndex":102,"./_baseIteratee":114,"./isArray":181}],177:[function(require,module,exports){
 var baseGet = require('./_baseGet');
 
 /**
@@ -3695,7 +4589,7 @@ function get(object, path, defaultValue) {
 
 module.exports = get;
 
-},{"./_baseGet":97}],169:[function(require,module,exports){
+},{"./_baseGet":106}],178:[function(require,module,exports){
 var baseHasIn = require('./_baseHasIn'),
     hasPath = require('./_hasPath');
 
@@ -3731,7 +4625,7 @@ function hasIn(object, path) {
 
 module.exports = hasIn;
 
-},{"./_baseHasIn":100,"./_hasPath":133}],170:[function(require,module,exports){
+},{"./_baseHasIn":109,"./_hasPath":142}],179:[function(require,module,exports){
 /**
  * This method returns the first argument given to it.
  *
@@ -3754,7 +4648,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],171:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 var isArrayLikeObject = require('./isArrayLikeObject');
 
 /** `Object#toString` result references. */
@@ -3802,7 +4696,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{"./isArrayLikeObject":174}],172:[function(require,module,exports){
+},{"./isArrayLikeObject":183}],181:[function(require,module,exports){
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -3832,7 +4726,7 @@ var isArray = Array.isArray;
 
 module.exports = isArray;
 
-},{}],173:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 var getLength = require('./_getLength'),
     isFunction = require('./isFunction'),
     isLength = require('./isLength');
@@ -3868,7 +4762,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./_getLength":126,"./isFunction":176,"./isLength":177}],174:[function(require,module,exports){
+},{"./_getLength":135,"./isFunction":185,"./isLength":186}],183:[function(require,module,exports){
 var isArrayLike = require('./isArrayLike'),
     isObjectLike = require('./isObjectLike');
 
@@ -3903,7 +4797,7 @@ function isArrayLikeObject(value) {
 
 module.exports = isArrayLikeObject;
 
-},{"./isArrayLike":173,"./isObjectLike":180}],175:[function(require,module,exports){
+},{"./isArrayLike":182,"./isObjectLike":189}],184:[function(require,module,exports){
 var baseIsEqual = require('./_baseIsEqual');
 
 /**
@@ -3941,7 +4835,7 @@ function isEqual(value, other) {
 
 module.exports = isEqual;
 
-},{"./_baseIsEqual":102}],176:[function(require,module,exports){
+},{"./_baseIsEqual":111}],185:[function(require,module,exports){
 var isObject = require('./isObject');
 
 /** `Object#toString` result references. */
@@ -3986,7 +4880,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./isObject":179}],177:[function(require,module,exports){
+},{"./isObject":188}],186:[function(require,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -4024,7 +4918,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],178:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isHostObject = require('./_isHostObject'),
     isObject = require('./isObject'),
@@ -4082,7 +4976,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"./_isHostObject":141,"./_toSource":165,"./isFunction":176,"./isObject":179}],179:[function(require,module,exports){
+},{"./_isHostObject":150,"./_toSource":174,"./isFunction":185,"./isObject":188}],188:[function(require,module,exports){
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
@@ -4115,7 +5009,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],180:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -4146,7 +5040,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],181:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 var isArray = require('./isArray'),
     isObjectLike = require('./isObjectLike');
 
@@ -4188,7 +5082,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{"./isArray":172,"./isObjectLike":180}],182:[function(require,module,exports){
+},{"./isArray":181,"./isObjectLike":189}],191:[function(require,module,exports){
 var isObjectLike = require('./isObjectLike');
 
 /** `Object#toString` result references. */
@@ -4229,7 +5123,7 @@ function isSymbol(value) {
 
 module.exports = isSymbol;
 
-},{"./isObjectLike":180}],183:[function(require,module,exports){
+},{"./isObjectLike":189}],192:[function(require,module,exports){
 var isLength = require('./isLength'),
     isObjectLike = require('./isObjectLike');
 
@@ -4311,7 +5205,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"./isLength":177,"./isObjectLike":180}],184:[function(require,module,exports){
+},{"./isLength":186,"./isObjectLike":189}],193:[function(require,module,exports){
 var baseHas = require('./_baseHas'),
     baseKeys = require('./_baseKeys'),
     indexKeys = require('./_indexKeys'),
@@ -4369,7 +5263,7 @@ function keys(object) {
 
 module.exports = keys;
 
-},{"./_baseHas":99,"./_baseKeys":106,"./_indexKeys":138,"./_isIndex":142,"./_isPrototype":145,"./isArrayLike":173}],185:[function(require,module,exports){
+},{"./_baseHas":108,"./_baseKeys":115,"./_indexKeys":147,"./_isIndex":151,"./_isPrototype":154,"./isArrayLike":182}],194:[function(require,module,exports){
 var baseKeysIn = require('./_baseKeysIn'),
     indexKeys = require('./_indexKeys'),
     isIndex = require('./_isIndex'),
@@ -4426,7 +5320,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"./_baseKeysIn":107,"./_indexKeys":138,"./_isIndex":142,"./_isPrototype":145}],186:[function(require,module,exports){
+},{"./_baseKeysIn":116,"./_indexKeys":147,"./_isIndex":151,"./_isPrototype":154}],195:[function(require,module,exports){
 var MapCache = require('./_MapCache');
 
 /** Used as the `TypeError` message for "Functions" methods. */
@@ -4501,7 +5395,7 @@ memoize.Cache = MapCache;
 
 module.exports = memoize;
 
-},{"./_MapCache":69}],187:[function(require,module,exports){
+},{"./_MapCache":78}],196:[function(require,module,exports){
 var arrayMap = require('./_arrayMap'),
     baseDifference = require('./_baseDifference'),
     baseFlatten = require('./_baseFlatten'),
@@ -4539,7 +5433,7 @@ var omit = rest(function(object, props) {
 
 module.exports = omit;
 
-},{"./_arrayMap":81,"./_baseDifference":90,"./_baseFlatten":94,"./_basePick":110,"./_getAllKeysIn":125,"./_toKey":164,"./rest":189}],188:[function(require,module,exports){
+},{"./_arrayMap":90,"./_baseDifference":99,"./_baseFlatten":103,"./_basePick":119,"./_getAllKeysIn":134,"./_toKey":173,"./rest":198}],197:[function(require,module,exports){
 var baseProperty = require('./_baseProperty'),
     basePropertyDeep = require('./_basePropertyDeep'),
     isKey = require('./_isKey');
@@ -4572,7 +5466,7 @@ function property(path) {
 
 module.exports = property;
 
-},{"./_baseProperty":111,"./_basePropertyDeep":112,"./_isKey":143}],189:[function(require,module,exports){
+},{"./_baseProperty":120,"./_basePropertyDeep":121,"./_isKey":152}],198:[function(require,module,exports){
 var apply = require('./_apply'),
     toInteger = require('./toInteger');
 
@@ -4638,7 +5532,7 @@ function rest(func, start) {
 
 module.exports = rest;
 
-},{"./_apply":78,"./toInteger":190}],190:[function(require,module,exports){
+},{"./_apply":87,"./toInteger":199}],199:[function(require,module,exports){
 var toNumber = require('./toNumber');
 
 /** Used as references for various `Number` constants. */
@@ -4686,7 +5580,7 @@ function toInteger(value) {
 
 module.exports = toInteger;
 
-},{"./toNumber":191}],191:[function(require,module,exports){
+},{"./toNumber":200}],200:[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isObject = require('./isObject'),
     isSymbol = require('./isSymbol');
@@ -4755,7 +5649,7 @@ function toNumber(value) {
 
 module.exports = toNumber;
 
-},{"./isFunction":176,"./isObject":179,"./isSymbol":182}],192:[function(require,module,exports){
+},{"./isFunction":185,"./isObject":188,"./isSymbol":191}],201:[function(require,module,exports){
 var baseToPairs = require('./_baseToPairs'),
     keys = require('./keys');
 
@@ -4788,7 +5682,7 @@ function toPairs(object) {
 
 module.exports = toPairs;
 
-},{"./_baseToPairs":114,"./keys":184}],193:[function(require,module,exports){
+},{"./_baseToPairs":123,"./keys":193}],202:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     isSymbol = require('./isSymbol');
 
@@ -4837,109 +5731,7 @@ function toString(value) {
 
 module.exports = toString;
 
-},{"./_Symbol":75,"./isSymbol":182}],194:[function(require,module,exports){
-'use strict';
-
-exports.install = function(Vue, options) {
-	var dropTo = '';
-	var _ = Vue.util;
-	Vue.directive('draggable', {
-		bind: function() {
-			this.data = {};
-			var self = this;
-			this.dragstart = function(event) {
-				dropTo = self.arg;
-				event.target.classList.add(self.data.dragged);
-				event.dataTransfer.effectAllowed = 'all';
-				event.dataTransfer.setData('data', JSON.stringify(self.data));
-				event.dataTransfer.setData('tag', self.arg);
-				return false;
-			};
-			this.dragend = function(event) {
-				event.target.classList.remove(self.data.dragged);
-				return false;
-			};
-			this.el.setAttribute('draggable', true);
-			_.on(this.el, 'dragstart', this.dragstart);
-			_.on(this.el, 'dragend', this.dragend);
-		},
-		unbind: function() {
-			this.el.setAttribute('draggable', false);
-			_.off(this.el, 'dragstart', this.dragstart);
-			_.off(this.el, 'dragend', this.dragend);
-		},
-		update: function(value, old) {
-			this.data = value;
-		},
-	});
-	Vue.directive('dropzone', {
-		acceptStatement: true,
-		bind: function() {
-			var self = this;
-			this.dragenter = function(event) {
-				if (dropTo == self.arg) {
-					event.target.classList.add(self.arg);
-				}
-				return false;
-			};
-			this.dragover = function(event) {
-				if (event.preventDefault) {
-					event.preventDefault();
-				}
-				// XXX
-				if (dropTo == self.arg) {
-					event.dataTransfer.effectAllowed = 'all';
-					event.dataTransfer.dropEffect = 'copy';
-				} else {
-					event.dataTransfer.effectAllowed = 'none';
-					event.dataTransfer.dropEffect = 'none';
-				}
-				return false;
-			};
-			this.dragleave = function(event) {
-				if (dropTo == self.arg) {
-					event.target.classList.remove(self.arg);
-				}
-				return false;
-			};
-			this.drop = function(event) {
-				if (event.preventDefault) {
-					event.preventDefault();
-				}
-				var tag = event.dataTransfer.getData('tag');
-				var data = event.dataTransfer.getData('data');
-				if (dropTo == self.arg) {
-					self.handler(tag, JSON.parse(data));
-					event.target.classList.remove(self.arg);
-				}
-				return false;
-			};
-			_.on(this.el, 'dragenter', this.dragenter);
-			_.on(this.el, 'dragleave', this.dragleave);
-			_.on(this.el, 'dragover', this.dragover);
-			_.on(this.el, 'drop', this.drop);
-		},
-		unbind: function() {
-			_.off(this.el, 'dragenter', this.dragenter);
-			_.off(this.el, 'dragleave', this.dragleave);
-			_.off(this.el, 'dragover', this.dragover);
-			_.off(this.el, 'drop', this.drop);
-		},
-		update: function(value, old) {
-			var vm = this.vm;
-			this.handler = function(tag, data) {
-				vm.$droptag = tag;
-				vm.$dropdata = data;
-				var res = value(tag, data);
-				vm.$droptag = null;
-				vm.$dropdata = null;
-				return res;
-			};
-		},
-	});
-};
-
-},{}],195:[function(require,module,exports){
+},{"./_Symbol":84,"./isSymbol":191}],203:[function(require,module,exports){
 var Vue // late bind
 var map = Object.create(null)
 var shimmed = false
@@ -5239,7 +6031,7 @@ function format (id) {
   return id.match(/[^\/]+\.vue$/)[0]
 }
 
-},{}],196:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 /**
  * Before Interceptor.
  */
@@ -5259,7 +6051,7 @@ module.exports = {
 
 };
 
-},{"../util":219}],197:[function(require,module,exports){
+},{"../util":227}],205:[function(require,module,exports){
 /**
  * Base client.
  */
@@ -5326,7 +6118,7 @@ function parseHeaders(str) {
     return headers;
 }
 
-},{"../../promise":212,"../../util":219,"./xhr":200}],198:[function(require,module,exports){
+},{"../../promise":220,"../../util":227,"./xhr":208}],206:[function(require,module,exports){
 /**
  * JSONP client.
  */
@@ -5376,7 +6168,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":212,"../../util":219}],199:[function(require,module,exports){
+},{"../../promise":220,"../../util":227}],207:[function(require,module,exports){
 /**
  * XDomain client (Internet Explorer).
  */
@@ -5415,7 +6207,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":212,"../../util":219}],200:[function(require,module,exports){
+},{"../../promise":220,"../../util":227}],208:[function(require,module,exports){
 /**
  * XMLHttp client.
  */
@@ -5467,7 +6259,7 @@ module.exports = function (request) {
     });
 };
 
-},{"../../promise":212,"../../util":219}],201:[function(require,module,exports){
+},{"../../promise":220,"../../util":227}],209:[function(require,module,exports){
 /**
  * CORS Interceptor.
  */
@@ -5506,7 +6298,7 @@ function crossOrigin(request) {
     return (requestUrl.protocol !== originUrl.protocol || requestUrl.host !== originUrl.host);
 }
 
-},{"../util":219,"./client/xdr":199}],202:[function(require,module,exports){
+},{"../util":227,"./client/xdr":207}],210:[function(require,module,exports){
 /**
  * Header Interceptor.
  */
@@ -5534,7 +6326,7 @@ module.exports = {
 
 };
 
-},{"../util":219}],203:[function(require,module,exports){
+},{"../util":227}],211:[function(require,module,exports){
 /**
  * Service for sending network requests.
  */
@@ -5634,7 +6426,7 @@ Http.headers = {
 
 module.exports = _.http = Http;
 
-},{"../promise":212,"../util":219,"./before":196,"./client":197,"./cors":201,"./header":202,"./interceptor":204,"./jsonp":205,"./method":206,"./mime":207,"./timeout":208}],204:[function(require,module,exports){
+},{"../promise":220,"../util":227,"./before":204,"./client":205,"./cors":209,"./header":210,"./interceptor":212,"./jsonp":213,"./method":214,"./mime":215,"./timeout":216}],212:[function(require,module,exports){
 /**
  * Interceptor factory.
  */
@@ -5681,7 +6473,7 @@ function when(value, fulfilled, rejected) {
     return promise.then(fulfilled, rejected);
 }
 
-},{"../promise":212,"../util":219}],205:[function(require,module,exports){
+},{"../promise":220,"../util":227}],213:[function(require,module,exports){
 /**
  * JSONP Interceptor.
  */
@@ -5701,7 +6493,7 @@ module.exports = {
 
 };
 
-},{"./client/jsonp":198}],206:[function(require,module,exports){
+},{"./client/jsonp":206}],214:[function(require,module,exports){
 /**
  * HTTP method override Interceptor.
  */
@@ -5720,7 +6512,7 @@ module.exports = {
 
 };
 
-},{}],207:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 /**
  * Mime Interceptor.
  */
@@ -5758,7 +6550,7 @@ module.exports = {
 
 };
 
-},{"../util":219}],208:[function(require,module,exports){
+},{"../util":227}],216:[function(require,module,exports){
 /**
  * Timeout Interceptor.
  */
@@ -5790,7 +6582,7 @@ module.exports = function () {
     };
 };
 
-},{}],209:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 /**
  * Install plugin.
  */
@@ -5845,7 +6637,7 @@ if (window.Vue) {
 
 module.exports = install;
 
-},{"./http":203,"./promise":212,"./resource":213,"./url":214,"./util":219}],210:[function(require,module,exports){
+},{"./http":211,"./promise":220,"./resource":221,"./url":222,"./util":227}],218:[function(require,module,exports){
 /**
  * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
  */
@@ -6026,7 +6818,7 @@ p.catch = function (onRejected) {
 
 module.exports = Promise;
 
-},{"../util":219}],211:[function(require,module,exports){
+},{"../util":227}],219:[function(require,module,exports){
 /**
  * URL Template v2.0.6 (https://github.com/bramstein/url-template)
  */
@@ -6178,7 +6970,7 @@ exports.encodeReserved = function (str) {
     }).join('');
 };
 
-},{}],212:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 /**
  * Promise adapter.
  */
@@ -6289,7 +7081,7 @@ p.always = function (callback) {
 
 module.exports = Promise;
 
-},{"./lib/promise":210,"./util":219}],213:[function(require,module,exports){
+},{"./lib/promise":218,"./util":227}],221:[function(require,module,exports){
 /**
  * Service for interacting with RESTful services.
  */
@@ -6401,7 +7193,7 @@ Resource.actions = {
 
 module.exports = _.resource = Resource;
 
-},{"./util":219}],214:[function(require,module,exports){
+},{"./util":227}],222:[function(require,module,exports){
 /**
  * Service for URL templating.
  */
@@ -6533,7 +7325,7 @@ function serialize(params, obj, scope) {
 
 module.exports = _.url = Url;
 
-},{"../util":219,"./legacy":215,"./query":216,"./root":217,"./template":218}],215:[function(require,module,exports){
+},{"../util":227,"./legacy":223,"./query":224,"./root":225,"./template":226}],223:[function(require,module,exports){
 /**
  * Legacy Transform.
  */
@@ -6581,7 +7373,7 @@ function encodeUriQuery(value, spaces) {
         replace(/%20/g, (spaces ? '%20' : '+'));
 }
 
-},{"../util":219}],216:[function(require,module,exports){
+},{"../util":227}],224:[function(require,module,exports){
 /**
  * Query Parameter Transform.
  */
@@ -6607,7 +7399,7 @@ module.exports = function (options, next) {
     return url;
 };
 
-},{"../util":219}],217:[function(require,module,exports){
+},{"../util":227}],225:[function(require,module,exports){
 /**
  * Root Prefix Transform.
  */
@@ -6625,7 +7417,7 @@ module.exports = function (options, next) {
     return url;
 };
 
-},{"../util":219}],218:[function(require,module,exports){
+},{"../util":227}],226:[function(require,module,exports){
 /**
  * URL Template (RFC 6570) Transform.
  */
@@ -6643,7 +7435,7 @@ module.exports = function (options) {
     return url;
 };
 
-},{"../lib/url-template":211}],219:[function(require,module,exports){
+},{"../lib/url-template":219}],227:[function(require,module,exports){
 /**
  * Utility functions.
  */
@@ -6767,7 +7559,7 @@ function merge(target, source, deep) {
     }
 }
 
-},{}],220:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v1.0.21
@@ -6817,6 +7609,10 @@ function del(obj, key) {
   delete obj[key];
   var ob = obj.__ob__;
   if (!ob) {
+    if (obj._isVue) {
+      delete obj._data[key];
+      obj._digest();
+    }
     return;
   }
   ob.dep.notify();
@@ -7167,6 +7963,8 @@ var devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
 var UA = inBrowser && window.navigator.userAgent.toLowerCase();
 var isIE9 = UA && UA.indexOf('msie 9.0') > 0;
 var isAndroid = UA && UA.indexOf('android') > 0;
+var isIos = UA && /(iphone|ipad|ipod|ios)/i.test(UA);
+var isWechat = UA && UA.indexOf('micromessenger') > 0;
 
 var transitionProp = undefined;
 var transitionEndEvent = undefined;
@@ -7207,7 +8005,7 @@ var nextTick = (function () {
   }
 
   /* istanbul ignore if */
-  if (typeof MutationObserver !== 'undefined') {
+  if (typeof MutationObserver !== 'undefined' && !(isWechat && isIos)) {
     var counter = 1;
     var observer = new MutationObserver(nextTickHandler);
     var textNode = document.createTextNode(counter);
@@ -7235,6 +8033,27 @@ var nextTick = (function () {
     timerFunc(nextTickHandler, 0);
   };
 })();
+
+var _Set = undefined;
+/* istanbul ignore if */
+if (typeof Set !== 'undefined' && Set.toString().match(/native code/)) {
+  // use native Set when available.
+  _Set = Set;
+} else {
+  // a non-standard Set polyfill that only works with primitive keys.
+  _Set = function () {
+    this.set = Object.create(null);
+  };
+  _Set.prototype.has = function (key) {
+    return this.set[key] !== undefined;
+  };
+  _Set.prototype.add = function (key) {
+    this.set[key] = 1;
+  };
+  _Set.prototype.clear = function () {
+    this.set = Object.create(null);
+  };
+}
 
 function Cache(limit) {
   this.size = 0;
@@ -8316,7 +9135,7 @@ function checkComponentAttr(el, options) {
     if (resolveAsset(options, 'components', tag)) {
       return { id: tag };
     } else {
-      var is = hasAttrs && getIsBinding(el);
+      var is = hasAttrs && getIsBinding(el, options);
       if (is) {
         return is;
       } else if (process.env.NODE_ENV !== 'production') {
@@ -8329,7 +9148,7 @@ function checkComponentAttr(el, options) {
       }
     }
   } else if (hasAttrs) {
-    return getIsBinding(el);
+    return getIsBinding(el, options);
   }
 }
 
@@ -8337,14 +9156,18 @@ function checkComponentAttr(el, options) {
  * Get "is" binding from an element.
  *
  * @param {Element} el
+ * @param {Object} options
  * @return {Object|undefined}
  */
 
-function getIsBinding(el) {
+function getIsBinding(el, options) {
   // dynamic syntax
-  var exp = getAttr(el, 'is');
+  var exp = el.getAttribute('is');
   if (exp != null) {
-    return { id: exp };
+    if (resolveAsset(options, 'components', exp)) {
+      el.removeAttribute('is');
+      return { id: exp };
+    }
   } else {
     exp = getBindAttr(el, 'is');
     if (exp != null) {
@@ -8614,8 +9437,16 @@ function guardArrayAssets(assets) {
 function mergeOptions(parent, child, vm) {
   guardComponents(child);
   guardProps(child);
+  if (process.env.NODE_ENV !== 'production') {
+    if (child.propsData && !vm) {
+      warn('propsData can only be used as an instantiation option.');
+    }
+  }
   var options = {};
   var key;
+  if (child['extends']) {
+    parent = mergeOptions(parent, child['extends'], vm);
+  }
   if (child.mixins) {
     for (var i = 0, l = child.mixins.length; i < l; i++) {
       parent = mergeOptions(parent, child.mixins[i], vm);
@@ -9048,11 +9879,14 @@ var util = Object.freeze({
 	devtools: devtools,
 	isIE9: isIE9,
 	isAndroid: isAndroid,
+	isIos: isIos,
+	isWechat: isWechat,
 	get transitionProp () { return transitionProp; },
 	get transitionEndEvent () { return transitionEndEvent; },
 	get animationProp () { return animationProp; },
 	get animationEndEvent () { return animationEndEvent; },
 	nextTick: nextTick,
+	get _Set () { return _Set; },
 	query: query,
 	inDoc: inDoc,
 	getAttr: getAttr,
@@ -9165,13 +9999,8 @@ function initMixin (Vue) {
     this._updateRef();
 
     // initialize data as empty object.
-    // it will be filled up in _initScope().
+    // it will be filled up in _initData().
     this._data = {};
-
-    // save raw constructor data before merge
-    // so that we know which properties are provided at
-    // instantiation.
-    this._runtimeData = options.data;
 
     // call init hook
     this._callHook('init');
@@ -9722,24 +10551,22 @@ var expression = Object.freeze({
 // triggered, the DOM would have already been in updated
 // state.
 
-var queueIndex;
 var queue = [];
 var userQueue = [];
 var has = {};
 var circular = {};
 var waiting = false;
-var internalQueueDepleted = false;
 
 /**
  * Reset the batcher's state.
  */
 
 function resetBatcherState() {
-  queue = [];
-  userQueue = [];
+  queue.length = 0;
+  userQueue.length = 0;
   has = {};
   circular = {};
-  waiting = internalQueueDepleted = false;
+  waiting = false;
 }
 
 /**
@@ -9748,8 +10575,12 @@ function resetBatcherState() {
 
 function flushBatcherQueue() {
   runBatcherQueue(queue);
-  internalQueueDepleted = true;
+  queue.length = 0;
   runBatcherQueue(userQueue);
+  // user watchers triggered more internal watchers
+  if (queue.length) {
+    runBatcherQueue(queue);
+  }
   // dev tool hook
   /* istanbul ignore if */
   if (devtools && config.devtools) {
@@ -9767,8 +10598,8 @@ function flushBatcherQueue() {
 function runBatcherQueue(queue) {
   // do not cache length because more watchers might be pushed
   // as we run existing watchers
-  for (queueIndex = 0; queueIndex < queue.length; queueIndex++) {
-    var watcher = queue[queueIndex];
+  for (var i = 0; i < queue.length; i++) {
+    var watcher = queue[i];
     var id = watcher.id;
     has[id] = null;
     watcher.run();
@@ -9797,20 +10628,14 @@ function runBatcherQueue(queue) {
 function pushWatcher(watcher) {
   var id = watcher.id;
   if (has[id] == null) {
-    if (internalQueueDepleted && !watcher.user) {
-      // an internal watcher triggered by a user watcher...
-      // let's run it immediately after current user watcher is done.
-      userQueue.splice(queueIndex + 1, 0, watcher);
-    } else {
-      // push watcher into appropriate queue
-      var q = watcher.user ? userQueue : queue;
-      has[id] = q.length;
-      q.push(watcher);
-      // queue the flush
-      if (!waiting) {
-        waiting = true;
-        nextTick(flushBatcherQueue);
-      }
+    // push watcher into appropriate queue
+    var q = watcher.user ? userQueue : queue;
+    has[id] = q.length;
+    q.push(watcher);
+    // queue the flush
+    if (!waiting) {
+      waiting = true;
+      nextTick(flushBatcherQueue);
     }
   }
 }
@@ -9851,8 +10676,8 @@ function Watcher(vm, expOrFn, cb, options) {
   this.dirty = this.lazy; // for lazy watchers
   this.deps = [];
   this.newDeps = [];
-  this.depIds = Object.create(null);
-  this.newDepIds = null;
+  this.depIds = new _Set();
+  this.newDepIds = new _Set();
   this.prevError = null; // for async error stacks
   // parse expression for getter/setter
   if (isFn) {
@@ -9944,8 +10769,6 @@ Watcher.prototype.set = function (value) {
 
 Watcher.prototype.beforeGet = function () {
   Dep.target = this;
-  this.newDepIds = Object.create(null);
-  this.newDeps.length = 0;
 };
 
 /**
@@ -9956,10 +10779,10 @@ Watcher.prototype.beforeGet = function () {
 
 Watcher.prototype.addDep = function (dep) {
   var id = dep.id;
-  if (!this.newDepIds[id]) {
-    this.newDepIds[id] = true;
+  if (!this.newDepIds.has(id)) {
+    this.newDepIds.add(id);
     this.newDeps.push(dep);
-    if (!this.depIds[id]) {
+    if (!this.depIds.has(id)) {
       dep.addSub(this);
     }
   }
@@ -9974,14 +10797,18 @@ Watcher.prototype.afterGet = function () {
   var i = this.deps.length;
   while (i--) {
     var dep = this.deps[i];
-    if (!this.newDepIds[dep.id]) {
+    if (!this.newDepIds.has(dep.id)) {
       dep.removeSub(this);
     }
   }
+  var tmp = this.depIds;
   this.depIds = this.newDepIds;
-  var tmp = this.deps;
+  this.newDepIds = tmp;
+  this.newDepIds.clear();
+  tmp = this.deps;
   this.deps = this.newDeps;
   this.newDeps = tmp;
+  this.newDeps.length = 0;
 };
 
 /**
@@ -10105,15 +10932,35 @@ Watcher.prototype.teardown = function () {
  * @param {*} val
  */
 
-function traverse(val) {
-  var i, keys;
-  if (isArray(val)) {
-    i = val.length;
-    while (i--) traverse(val[i]);
-  } else if (isObject(val)) {
-    keys = Object.keys(val);
-    i = keys.length;
-    while (i--) traverse(val[keys[i]]);
+var seenObjects = new _Set();
+function traverse(val, seen) {
+  var i = undefined,
+      keys = undefined,
+      isA = undefined,
+      isO = undefined;
+  if (!seen) {
+    seen = seenObjects;
+    seen.clear();
+  }
+  isA = isArray(val);
+  isO = isObject(val);
+  if (isA || isO) {
+    if (val.__ob__) {
+      var depId = val.__ob__.dep.id;
+      if (seen.has(depId)) {
+        return;
+      } else {
+        seen.add(depId);
+      }
+    }
+    if (isA) {
+      i = val.length;
+      while (i--) traverse(val[i], seen);
+    } else if (isO) {
+      keys = Object.keys(val);
+      i = keys.length;
+      while (i--) traverse(val[keys[i]], seen);
+    }
   }
 }
 
@@ -10621,7 +11468,7 @@ function FragmentFactory(vm, el) {
   this.vm = vm;
   var template;
   var isString = typeof el === 'string';
-  if (isString || isTemplate(el)) {
+  if (isString || isTemplate(el) && !el.hasAttribute('v-if')) {
     template = parseTemplate(el, true);
   } else {
     template = document.createDocumentFragment();
@@ -10963,7 +11810,15 @@ var vFor = {
       });
       setTimeout(op, staggerAmount);
     } else {
-      frag.before(prevEl.nextSibling);
+      var target = prevEl.nextSibling;
+      /* istanbul ignore if */
+      if (!target) {
+        // reset end anchor position in case the position was messed up
+        // by an external drag-n-drop library.
+        after(this.end, prevEl);
+        target = this.end;
+      }
+      frag.before(target);
     }
   },
 
@@ -11034,7 +11889,7 @@ var vFor = {
     var primitive = !isObject(value);
     var id;
     if (key || trackByKey || primitive) {
-      id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
+      id = getTrackByKey(index, key, value, trackByKey);
       if (!cache[id]) {
         cache[id] = frag;
       } else if (trackByKey !== '$index') {
@@ -11048,8 +11903,10 @@ var vFor = {
         } else {
           process.env.NODE_ENV !== 'production' && this.warnDuplicate(value);
         }
-      } else {
+      } else if (Object.isExtensible(value)) {
         def(value, id, frag);
+      } else if (process.env.NODE_ENV !== 'production') {
+        warn('Frozen v-for objects cannot be automatically tracked, make sure to ' + 'provide a track-by key.');
       }
     }
     frag.raw = value;
@@ -11069,7 +11926,7 @@ var vFor = {
     var primitive = !isObject(value);
     var frag;
     if (key || trackByKey || primitive) {
-      var id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
+      var id = getTrackByKey(index, key, value, trackByKey);
       frag = this.cache[id];
     } else {
       frag = value[this.id];
@@ -11096,7 +11953,7 @@ var vFor = {
     var key = hasOwn(scope, '$key') && scope.$key;
     var primitive = !isObject(value);
     if (trackByKey || key || primitive) {
-      var id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
+      var id = getTrackByKey(index, key, value, trackByKey);
       this.cache[id] = null;
     } else {
       value[this.id] = null;
@@ -11244,6 +12101,19 @@ function range(n) {
     ret[i] = i;
   }
   return ret;
+}
+
+/**
+ * Get the track by key for an item.
+ *
+ * @param {Number} index
+ * @param {String} key
+ * @param {*} value
+ * @param {String} [trackByKey]
+ */
+
+function getTrackByKey(index, key, value, trackByKey) {
+  return trackByKey ? trackByKey === '$index' ? index : trackByKey.charAt(0).match(/\w/) ? getPath(value, trackByKey) : value[trackByKey] : key || value;
 }
 
 if (process.env.NODE_ENV !== 'production') {
@@ -11847,7 +12717,7 @@ var on$1 = {
     }
     // key filter
     var keys = Object.keys(this.modifiers).filter(function (key) {
-      return key !== 'stop' && key !== 'prevent' && key !== 'self';
+      return key !== 'stop' && key !== 'prevent' && key !== 'self' && key !== 'capture';
     });
     if (keys.length) {
       handler = keyFilter(handler, keys);
@@ -11976,6 +12846,12 @@ function prefix(prop) {
   }
   var i = prefixes.length;
   var prefixed;
+  if (camel !== 'filter' && camel in testEl.style) {
+    return {
+      kebab: prop,
+      camel: camel
+    };
+  }
   while (i--) {
     prefixed = camelPrefixes[i] + upper;
     if (prefixed in testEl.style) {
@@ -11984,12 +12860,6 @@ function prefix(prop) {
         camel: prefixed
       };
     }
-  }
-  if (camel in testEl.style) {
-    return {
-      kebab: prop,
-      camel: camel
-    };
   }
 }
 
@@ -12079,8 +12949,12 @@ var bind$1 = {
       attr = camelize(attr);
     }
     if (!interp && attrWithPropsRE.test(attr) && attr in el) {
-      el[attr] = attr === 'value' ? value == null // IE9 will set input.value to "null" for null...
+      var attrValue = attr === 'value' ? value == null // IE9 will set input.value to "null" for null...
       ? '' : value : value;
+
+      if (el[attr] !== attrValue) {
+        el[attr] = attrValue;
+      }
     }
     // set model props
     var modelProp = modelProps[attr];
@@ -12180,66 +13054,66 @@ var vClass = {
   deep: true,
 
   update: function update(value) {
-    if (value && typeof value === 'string') {
-      this.handleObject(stringToObject(value));
-    } else if (isPlainObject(value)) {
-      this.handleObject(value);
-    } else if (isArray(value)) {
-      this.handleArray(value);
-    } else {
+    if (!value) {
       this.cleanup();
+    } else if (typeof value === 'string') {
+      this.setClass(value.trim().split(/\s+/));
+    } else {
+      this.setClass(normalize$1(value));
     }
   },
 
-  handleObject: function handleObject(value) {
-    this.cleanup(value);
-    this.prevKeys = Object.keys(value);
-    setObjectClasses(this.el, value);
-  },
-
-  handleArray: function handleArray(value) {
+  setClass: function setClass(value) {
     this.cleanup(value);
     for (var i = 0, l = value.length; i < l; i++) {
       var val = value[i];
-      if (val && isPlainObject(val)) {
-        setObjectClasses(this.el, val);
-      } else if (val && typeof val === 'string') {
-        addClass(this.el, val);
+      if (val) {
+        apply(this.el, val, addClass);
       }
     }
-    this.prevKeys = value.slice();
+    this.prevKeys = value;
   },
 
   cleanup: function cleanup(value) {
-    if (!this.prevKeys) return;
-
-    var i = this.prevKeys.length;
+    var prevKeys = this.prevKeys;
+    if (!prevKeys) return;
+    var i = prevKeys.length;
     while (i--) {
-      var key = this.prevKeys[i];
-      if (!key) continue;
-
-      var keys = isPlainObject(key) ? Object.keys(key) : [key];
-      for (var j = 0, l = keys.length; j < l; j++) {
-        toggleClasses(this.el, keys[j], removeClass);
+      var key = prevKeys[i];
+      if (!value || value.indexOf(key) < 0) {
+        apply(this.el, key, removeClass);
       }
     }
   }
 };
 
-function setObjectClasses(el, obj) {
-  var keys = Object.keys(obj);
-  for (var i = 0, l = keys.length; i < l; i++) {
-    var key = keys[i];
-    if (!obj[key]) continue;
-    toggleClasses(el, key, addClass);
-  }
-}
+/**
+ * Normalize objects and arrays (potentially containing objects)
+ * into array of strings.
+ *
+ * @param {Object|Array<String|Object>} value
+ * @return {Array<String>}
+ */
 
-function stringToObject(value) {
-  var res = {};
-  var keys = value.trim().split(/\s+/);
-  for (var i = 0, l = keys.length; i < l; i++) {
-    res[keys[i]] = true;
+function normalize$1(value) {
+  var res = [];
+  if (isArray(value)) {
+    for (var i = 0, l = value.length; i < l; i++) {
+      var _key = value[i];
+      if (_key) {
+        if (typeof _key === 'string') {
+          res.push(_key);
+        } else {
+          for (var k in _key) {
+            if (_key[k]) res.push(k);
+          }
+        }
+      }
+    }
+  } else if (isObject(value)) {
+    for (var key in value) {
+      if (value[key]) res.push(key);
+    }
   }
   return res;
 }
@@ -12255,14 +13129,12 @@ function stringToObject(value) {
  * @param {Function} fn
  */
 
-function toggleClasses(el, key, fn) {
+function apply(el, key, fn) {
   key = key.trim();
-
   if (key.indexOf(' ') === -1) {
     fn(el, key);
     return;
   }
-
   // The key contains one or more space characters.
   // Since a class name doesn't accept such characters, we
   // treat it as multiple classes.
@@ -12313,6 +13185,7 @@ var component = {
       // cached, when the component is used elsewhere this attribute
       // will remain at link time.
       this.el.removeAttribute('is');
+      this.el.removeAttribute(':is');
       // remove ref, same as above
       if (this.descriptor.ref) {
         this.el.removeAttribute('v-ref:' + hyphenate(this.descriptor.ref));
@@ -12747,6 +13620,7 @@ function makePropsLinkFn(props) {
   return function propsLinkFn(vm, scope) {
     // store resolved props info
     vm._props = {};
+    var inlineProps = vm.$options.propsData;
     var i = props.length;
     var prop, path, options, value, raw;
     while (i--) {
@@ -12755,7 +13629,9 @@ function makePropsLinkFn(props) {
       path = prop.path;
       options = prop.options;
       vm._props[path] = prop;
-      if (raw === null) {
+      if (inlineProps && hasOwn(inlineProps, path)) {
+        initProp(vm, prop, inlineProps[path]);
+      }if (raw === null) {
         // initialize absent prop
         initProp(vm, prop, undefined);
       } else if (prop.dynamic) {
@@ -13516,7 +14392,7 @@ function compile(el, options, partial) {
   // link function for the node itself.
   var nodeLinkFn = partial || !options._asComponent ? compileNode(el, options) : null;
   // link function for the childNodes
-  var childLinkFn = !(nodeLinkFn && nodeLinkFn.terminal) && el.tagName !== 'SCRIPT' && el.hasChildNodes() ? compileNodeList(el.childNodes, options) : null;
+  var childLinkFn = !(nodeLinkFn && nodeLinkFn.terminal) && !isScript(el) && el.hasChildNodes() ? compileNodeList(el.childNodes, options) : null;
 
   /**
    * A composite linker function to be called on a already
@@ -13699,7 +14575,7 @@ function compileRoot(el, options, contextOptions) {
     });
     if (names.length) {
       var plural = names.length > 1;
-      warn('Attribute' + (plural ? 's ' : ' ') + names.join(', ') + (plural ? ' are' : ' is') + ' ignored on component ' + '<' + options.el.tagName.toLowerCase() + '> because ' + 'the component is a fragment instance: ' + 'http://vuejs.org/guide/components.html#Fragment_Instance');
+      warn('Attribute' + (plural ? 's ' : ' ') + names.join(', ') + (plural ? ' are' : ' is') + ' ignored on component ' + '<' + options.el.tagName.toLowerCase() + '> because ' + 'the component is a fragment instance: ' + 'http://vuejs.org/guide/components.html#Fragment-Instance');
     }
   }
 
@@ -13736,7 +14612,7 @@ function compileRoot(el, options, contextOptions) {
 
 function compileNode(node, options) {
   var type = node.nodeType;
-  if (type === 1 && node.tagName !== 'SCRIPT') {
+  if (type === 1 && !isScript(node)) {
     return compileElement(node, options);
   } else if (type === 3 && node.data.trim()) {
     return compileTextNode(node, options);
@@ -14031,7 +14907,6 @@ function checkTerminalDirectives(el, attrs, options) {
   var attr, name, value, modifiers, matched, dirName, rawName, arg, def, termDef;
   for (var i = 0, j = attrs.length; i < j; i++) {
     attr = attrs[i];
-    modifiers = parseModifiers(attr.name);
     name = attr.name.replace(modifierRE, '');
     if (matched = name.match(dirAttrRE)) {
       def = resolveAsset(options, 'directives', matched[1]);
@@ -14039,6 +14914,7 @@ function checkTerminalDirectives(el, attrs, options) {
         if (!termDef || (def.priority || DEFAULT_TERMINAL_PRIORITY) > termDef.priority) {
           termDef = def;
           rawName = attr.name;
+          modifiers = parseModifiers(attr.name);
           value = attr.value;
           dirName = matched[1];
           arg = matched[2];
@@ -14259,6 +15135,10 @@ function hasOneTime(tokens) {
   }
 }
 
+function isScript(el) {
+  return el.tagName === 'SCRIPT' && (!el.hasAttribute('type') || el.getAttribute('type') === 'text/javascript');
+}
+
 var specialCharRE = /[^\w\-:\.]/;
 
 /**
@@ -14388,8 +15268,8 @@ function mergeAttrs(from, to) {
     value = attrs[i].value;
     if (!to.hasAttribute(name) && !specialCharRE.test(name)) {
       to.setAttribute(name, value);
-    } else if (name === 'class' && !parseText(value)) {
-      value.trim().split(/\s+/).forEach(function (cls) {
+    } else if (name === 'class' && !parseText(value) && (value = value.trim())) {
+      value.split(/\s+/).forEach(function (cls) {
         addClass(to, cls);
       });
     }
@@ -14428,6 +15308,10 @@ function resolveSlots(vm, content) {
     contents[name] = extractFragment(contents[name], content);
   }
   if (content.hasChildNodes()) {
+    var nodes = content.childNodes;
+    if (nodes.length === 1 && nodes[0].nodeType === 3 && !nodes[0].data.trim()) {
+      return;
+    }
     contents['default'] = extractFragment(content.childNodes, content);
   }
 }
@@ -14527,7 +15411,6 @@ function stateMixin (Vue) {
       process.env.NODE_ENV !== 'production' && warn('data functions should return an object.', this);
     }
     var props = this._props;
-    var runtimeData = this._runtimeData ? typeof this._runtimeData === 'function' ? this._runtimeData() : this._runtimeData : null;
     // proxy data on instance
     var keys = Object.keys(data);
     var i, key;
@@ -14538,10 +15421,10 @@ function stateMixin (Vue) {
       // 1. it's not already defined as a prop
       // 2. it's provided via a instantiation option AND there are no
       //    template prop present
-      if (!props || !hasOwn(props, key) || runtimeData && hasOwn(runtimeData, key) && props[key].raw === null) {
+      if (!props || !hasOwn(props, key)) {
         this._proxy(key);
       } else if (process.env.NODE_ENV !== 'production') {
-        warn('Data field "' + key + '" is already defined ' + 'as a prop. Use prop default value instead.', this);
+        warn('Data field "' + key + '" is already defined ' + 'as a prop. To provide default value for a prop, use the "default" ' + 'prop option; if you want to pass prop values to an instantiation ' + 'call, use the "propsData" option.', this);
       }
     }
     // observe data
@@ -14731,18 +15614,21 @@ function eventsMixin (Vue) {
 
   function registerComponentEvents(vm, el) {
     var attrs = el.attributes;
-    var name, handler;
+    var name, value, handler;
     for (var i = 0, l = attrs.length; i < l; i++) {
       name = attrs[i].name;
       if (eventRE.test(name)) {
         name = name.replace(eventRE, '');
-        handler = (vm._scope || vm._context).$eval(attrs[i].value, true);
-        if (typeof handler === 'function') {
-          handler._fromParent = true;
-          vm.$on(name.replace(eventRE), handler);
-        } else if (process.env.NODE_ENV !== 'production') {
-          warn('v-on:' + name + '="' + attrs[i].value + '" ' + 'expects a function value, got ' + handler, vm);
+        // force the expression into a statement so that
+        // it always dynamically resolves the method to call (#2670)
+        // kinda ugly hack, but does the job.
+        value = attrs[i].value;
+        if (isSimplePath(value)) {
+          value += '.apply(this, $arguments)';
         }
+        handler = (vm._scope || vm._context).$eval(value, true);
+        handler._fromParent = true;
+        vm.$on(name.replace(eventRE), handler);
       }
     }
   }
@@ -15393,7 +16279,7 @@ function lifecycleMixin (Vue) {
     }
     // remove reference from data ob
     // frozen object may not have observer.
-    if (this._data.__ob__) {
+    if (this._data && this._data.__ob__) {
       this._data.__ob__.removeVm(this);
     }
     // Clean up references to private properties and other
@@ -15466,6 +16352,7 @@ function miscMixin (Vue) {
     } else {
       factory = resolveAsset(this.$options, 'components', value, true);
     }
+    /* istanbul ignore if */
     if (!factory) {
       return;
     }
@@ -15515,7 +16402,7 @@ function dataAPI (Vue) {
   Vue.prototype.$get = function (exp, asStatement) {
     var res = parseExpression(exp);
     if (res) {
-      if (asStatement && !isSimplePath(exp)) {
+      if (asStatement) {
         var self = this;
         return function statementHandler() {
           self.$arguments = toArray(arguments);
@@ -16447,17 +17334,19 @@ var filters = {
    * 12345 => $12,345.00
    *
    * @param {String} sign
+   * @param {Number} decimals Decimal places
    */
 
-  currency: function currency(value, _currency) {
+  currency: function currency(value, _currency, decimals) {
     value = parseFloat(value);
     if (!isFinite(value) || !value && value !== 0) return '';
     _currency = _currency != null ? _currency : '$';
-    var stringified = Math.abs(value).toFixed(2);
-    var _int = stringified.slice(0, -3);
+    decimals = decimals != null ? decimals : 2;
+    var stringified = Math.abs(value).toFixed(decimals);
+    var _int = decimals ? stringified.slice(0, -1 - decimals) : stringified;
     var i = _int.length % 3;
     var head = i > 0 ? _int.slice(0, i) + (_int.length > 3 ? ',' : '') : '';
-    var _float = stringified.slice(-3);
+    var _float = decimals ? stringified.slice(-1 - decimals) : '';
     var sign = value < 0 ? '-' : '';
     return sign + _currency + head + _int.slice(i).replace(digitsRE, '$1,') + _float;
   },
@@ -16693,7 +17582,7 @@ setTimeout(function () {
 
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":65}],221:[function(require,module,exports){
+},{"_process":65}],229:[function(require,module,exports){
 var inserted = exports.cache = {}
 
 exports.insert = function (css) {
@@ -16713,7 +17602,7 @@ exports.insert = function (css) {
   return elem
 }
 
-},{}],222:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n")
 'use strict';
 
@@ -17066,7 +17955,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul class=\"specs\">\n    <li v-for=\"spec in specs\" :spec=\"spec\" v-draggable:x=\"{index: $index, dragged: 'dragged'}\" v-dropzone:x=\"sort(specs, $index, $droptag, $dropdata)\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul v-dragula=\"specs\" :dragula-options=\"{revertOnSpill: true, mirrorContainer: $el}\" class=\"specs\">\n    <li v-for=\"spec in specs\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <span dragula-handle=\"\"></span>\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -17082,7 +17971,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../ui_test/data/example-data.js":235,"./components/custom-vue-strap/Dropdown.vue":223,"./components/custom-vue-strap/Modal.vue":224,"./components/filter-editor.vue":228,"./components/message-editor.vue":229,"./components/tokens-list.vue":231,"./mixins/defaults.vue":233,"./mixins/utils.vue":234,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":167,"lodash/isEqual":175,"lodash/omit":187,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],223:[function(require,module,exports){
+},{"../ui_test/data/example-data.js":244,"./components/custom-vue-strap/Dropdown.vue":231,"./components/custom-vue-strap/Modal.vue":232,"./components/filter-editor.vue":236,"./components/message-editor.vue":237,"./components/tokens-list.vue":239,"./mixins/defaults.vue":241,"./mixins/utils.vue":242,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":176,"lodash/isEqual":184,"lodash/omit":196,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],231:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17130,7 +18019,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./utils/EventListener.vue":226,"vue":220,"vue-hot-reload-api":195}],224:[function(require,module,exports){
+},{"./utils/EventListener.vue":234,"vue":228,"vue-hot-reload-api":203}],232:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\nbody.modal-open {\n  position: fixed;\n  width: 100%;\n}\nbody.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal {\n  -webkit-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.modal.in {\n  background-color: rgba(0,0,0,0.5);\n}\n.modal.zoom .modal-dialog {\n    -webkit-transform: scale(0.1);\n    -moz-transform: scale(0.1);\n    -ms-transform: scale(0.1);\n    transform: scale(0.1);\n    top: 300px;\n    opacity: 0;\n    -webkit-transition: all 0.3s;\n    -moz-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.modal.zoom.in .modal-dialog {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    transform: scale(1);\n    -webkit-transform: translate3d(0, -300px, 0);\n    transform: translate3d(0, -300px, 0);\n    opacity: 1;\n}\n.btn .sk-fading-circle {\n    width: 25px;\n    height: 25px;\n    margin: 0 20px 0 0;\n    display: inline-block;\n    vertical-align: middle;\n}\n.btn-primary .sk-circle:before {\n    background-color: #fff;\n}\n")
 'use strict';
 
@@ -17277,7 +18166,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../shared/spinner.vue":230,"./utils/EventListener.vue":226,"./utils/getScrollBarWidth.vue":227,"babel-runtime/core-js/number/is-integer":4,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],225:[function(require,module,exports){
+},{"../shared/spinner.vue":238,"./utils/EventListener.vue":234,"./utils/getScrollBarWidth.vue":235,"babel-runtime/core-js/number/is-integer":4,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],233:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n")
 'use strict';
 
@@ -17490,7 +18379,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/get-iterator":1,"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],226:[function(require,module,exports){
+},{"babel-runtime/core-js/get-iterator":1,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],234:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17539,7 +18428,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195}],227:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],235:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17586,7 +18475,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195}],228:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],236:[function(require,module,exports){
 'use strict';
 
 var _assign = require('babel-runtime/core-js/object/assign');
@@ -17675,7 +18564,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./custom-vue-strap/Dropdown.vue":223,"./custom-vue-strap/Select.vue":225,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"vue":220,"vue-hot-reload-api":195}],229:[function(require,module,exports){
+},{"./custom-vue-strap/Dropdown.vue":231,"./custom-vue-strap/Select.vue":233,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"vue":228,"vue-hot-reload-api":203}],237:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -17736,7 +18625,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195}],230:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],238:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.sk-fading-circle {\n  margin: 100px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n}\n\n.sk-fading-circle .sk-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.sk-fading-circle .sk-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 15%;\n  height: 15%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.sk-fading-circle .sk-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.sk-fading-circle .sk-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.sk-fading-circle .sk-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sk-fading-circle .sk-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.sk-fading-circle .sk-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.sk-fading-circle .sk-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.sk-fading-circle .sk-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.sk-fading-circle .sk-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.sk-fading-circle .sk-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.sk-fading-circle .sk-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg); \n}\n.sk-fading-circle .sk-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg); \n}\n.sk-fading-circle .sk-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s; \n}\n.sk-fading-circle .sk-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s; \n}\n.sk-fading-circle .sk-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s; \n}\n.sk-fading-circle .sk-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s; \n}\n.sk-fading-circle .sk-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s; \n}\n.sk-fading-circle .sk-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s; \n}\n.sk-fading-circle .sk-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s; \n}\n.sk-fading-circle .sk-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.sk-fading-circle .sk-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.sk-fading-circle .sk-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.sk-fading-circle .sk-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; } \n}\n")
 ;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"sk-fading-circle\">\n  <div class=\"sk-circle1 sk-circle\"></div>\n  <div class=\"sk-circle2 sk-circle\"></div>\n  <div class=\"sk-circle3 sk-circle\"></div>\n  <div class=\"sk-circle4 sk-circle\"></div>\n  <div class=\"sk-circle5 sk-circle\"></div>\n  <div class=\"sk-circle6 sk-circle\"></div>\n  <div class=\"sk-circle7 sk-circle\"></div>\n  <div class=\"sk-circle8 sk-circle\"></div>\n  <div class=\"sk-circle9 sk-circle\"></div>\n  <div class=\"sk-circle10 sk-circle\"></div>\n  <div class=\"sk-circle11 sk-circle\"></div>\n  <div class=\"sk-circle12 sk-circle\"></div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
@@ -17754,7 +18643,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195,"vueify-insert-css":221}],231:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],239:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17827,11 +18716,11 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195}],232:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],240:[function(require,module,exports){
 var Vue = require('vue')
 var App = require('./app.vue')
 
-Vue.use(require('vue-dnd'));
+Vue.use(require('./plugins/vue-dragula.js'));
 Vue.use(require('vue-resource'));
 
 new Vue({
@@ -17846,7 +18735,7 @@ new Vue({
   }
 })
 
-},{"./app.vue":222,"vue":220,"vue-dnd":194,"vue-resource":209}],233:[function(require,module,exports){
+},{"./app.vue":230,"./plugins/vue-dragula.js":243,"vue":228,"vue-resource":217}],241:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17894,7 +18783,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":220,"vue-hot-reload-api":195}],234:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],242:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17928,7 +18817,73 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/json/stringify":2,"vue":220,"vue-hot-reload-api":195}],235:[function(require,module,exports){
+},{"babel-runtime/core-js/json/stringify":2,"vue":228,"vue-hot-reload-api":203}],243:[function(require,module,exports){
+/*
+ * Basic implementation of dragula.js in Vue - single container only
+ * Heavily inspired by https://github.com/valor-software/ng2-dragula
+ *
+ * Needs Vue commit 2486a3b as a fix for https://github.com/vuejs/vue/issues/2745
+ *
+ * use like:
+ *  <ul v-dragula="list" :dragula-options="{ ... }">
+ *    <li v-for="item in list">{{ item }}</li>
+ *  </ul>
+ *
+ */
+
+var dragula = require('dragula')
+
+module.exports = {
+
+  install: function (Vue) {
+
+    Vue.directive('dragula', {
+
+      params: ['dragula-options'],
+
+      bind: function() {
+        var self = this;
+        var dragIndex;
+        var dragElm;
+        var options = this.params.dragulaOptions || {};
+
+        if (this.el.querySelector('[dragula-handle]')) {
+          options.moves = function (el, container, handle) {
+            return handle.hasAttribute('dragula-handle');
+          }
+        }
+
+        this.drake = dragula([this.el], options);
+
+        this.drake.on('drag', function(el, source) {
+          dragElm = el;
+          dragIndex = domIndexOf(el, source);
+        });
+
+        this.drake.on('drop', function(dropElm, target, source) {
+          if (!target) return;
+          var dropIndex = domIndexOf(dropElm, target);
+          if (target === source) {
+            self.vm[self.expression].splice(dropIndex, 0, self.vm[self.expression].splice(dragIndex, 1)[0]);
+          }
+        })
+
+        function domIndexOf(child, parent) {
+          return Array.prototype.indexOf.call(parent.children, child);
+        }
+      },
+
+      unbind: function() {
+        this.drake.destroy()
+      }
+
+    })
+
+  }
+
+}
+
+},{"dragula":67}],244:[function(require,module,exports){
 module.exports = {
   messageSelection: [
     {
@@ -18079,4 +19034,4 @@ module.exports = {
   ]
 }
 
-},{}]},{},[232]);
+},{}]},{},[240]);

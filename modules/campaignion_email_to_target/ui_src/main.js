@@ -1,7 +1,7 @@
 var Vue = require('vue')
 var App = require('./app.vue')
 
-Vue.use(require('vue-dnd'));
+Vue.use(require('./plugins/vue-dragula.js'));
 Vue.use(require('vue-resource'));
 
 new Vue({

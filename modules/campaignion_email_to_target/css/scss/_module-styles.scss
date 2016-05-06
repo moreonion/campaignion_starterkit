@@ -4,18 +4,22 @@ h3 {
 
 .specs {
   margin-top: 2rem;
+}
+
+.spec {
+  list-style: none;
 
   .card {
     padding: 0.8rem 1.2rem;
 
     .spec-info {
-      width: calc(100% - 7rem);
+      width: calc(100% - 8rem);
       vertical-align: middle;
       display: inline-block;
     }
 
     .spec-label {
-        font-weight: bold;
+      font-weight: bold;
     }
   }
 
@@ -24,7 +28,6 @@ h3 {
   .filter-missing {
     color: red;
   }
-
 }
 
 .filter-editor {
@@ -38,4 +41,18 @@ h3 {
       font-size: 1rem;
     }
   }
+}
+
+[dragula-handle] {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.5rem;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+  border-left: 0.2rem solid #aaa;
+  border-right: 0.2rem solid #aaa;
+}
+
+.gu-mirror .spec-notice, .gu-transit .spec-notice {
+  display: none;
 }

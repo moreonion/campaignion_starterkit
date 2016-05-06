@@ -1,3 +1,4 @@
+@import url(../node_modules/dragula/dist/dragula.css);
 .e2tmw {
   /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 }
@@ -4539,23 +4540,27 @@
   margin-top: 2rem;
 }
 
-.e2tmw .specs .card {
+.e2tmw .spec {
+  list-style: none;
+}
+
+.e2tmw .spec .card {
   padding: 0.8rem 1.2rem;
 }
 
-.e2tmw .specs .card .spec-info {
-  width: calc(100% - 7rem);
+.e2tmw .spec .card .spec-info {
+  width: calc(100% - 8rem);
   vertical-align: middle;
   display: inline-block;
 }
 
-.e2tmw .specs .card .spec-label {
+.e2tmw .spec .card .spec-label {
   font-weight: bold;
 }
 
-.e2tmw .specs .spec-error,
-.e2tmw .specs .value-missing,
-.e2tmw .specs .filter-missing {
+.e2tmw .spec .spec-error,
+.e2tmw .spec .value-missing,
+.e2tmw .spec .filter-missing {
   color: red;
 }
 
@@ -4567,4 +4572,18 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 1rem;
+}
+
+.e2tmw [dragula-handle] {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.5rem;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+  border-left: 0.2rem solid #aaa;
+  border-right: 0.2rem solid #aaa;
+}
+
+.e2tmw .gu-mirror .spec-notice, .e2tmw .gu-transit .spec-notice {
+  display: none;
 }

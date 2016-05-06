@@ -3,10 +3,11 @@
     <button @click="newSpec('message-template')" class="btn add-message" type="button">Add specific message</button>
     <button @click="newSpec('exclusion')" class="btn add-exclusion" type="button">Add exclusion</button>
 
-    <ul class="specs">
-      <li v-for="spec in specs" :spec="spec" v-draggable:x="{index: $index, dragged: 'dragged'}" v-dropzone:x="sort(specs, $index, $droptag, $dropdata)" class="spec row">
+    <ul v-dragula="specs" :dragula-options="{revertOnSpill: true, mirrorContainer: $el}" class="specs">
+      <li v-for="spec in specs" class="spec row">
         <div class="col-sm-12 col-md-8 col-lg-6">
           <div class="card">
+            <span dragula-handle></span>
             <div class="spec-info">
               <div class="spec-label">
                 <template v-if="spec.label">{{ spec.label }}</template>
@@ -26,7 +27,7 @@
             </dropdown>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-6">
+        <div class="spec-notice col-sm-12 col-md-4 col-lg-6">
           <ul class="spec-errors">
             <li v-for="error in spec.errors" class="spec-error">{{ error.message }}</li>
           </ul>

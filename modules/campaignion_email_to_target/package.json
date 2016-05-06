@@ -4,8 +4,7 @@
   "private": true,
   "main": "js/e2t-ui.js",
   "dependencies": {
-    "vue": "^1.0.21",
-    "vue-dnd": "^0.1.1",
+    "vue": "vuejs/vue#dev",
     "vue-resource": "^0.7.0",
     "vue-strap": "^1.0.7"
   },
@@ -17,6 +16,7 @@
     "babel-runtime": "^5.8.38",
     "bootstrap": "^4.0.0-alpha.2",
     "browserify": "^13.0.0",
+    "dragula": "^3.6.8",
     "jasmine-core": "^2.4.1",
     "jquery": "^2.2.3",
     "karma": "^0.13.22",
