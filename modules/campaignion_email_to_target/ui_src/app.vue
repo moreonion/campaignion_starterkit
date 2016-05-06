@@ -40,7 +40,7 @@
     </div>
     <tokens-list :token-categories="tokenCategories"></tokens-list>
 
-    <modal :show.sync="showSpecModal">
+    <modal :show.sync="showSpecModal" v-ref:spec-modal>
       <div slot="modal-header" class="modal-header">
         <button type="button" class="close" @click="tryCloseModal" :disabled="modalDirty"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
@@ -182,6 +182,7 @@ module.exports = {
     showModal() {
       this.modalDirty = false
       this.showSpecModal = true
+      this.$refs.specModal.$broadcast('collapseHelpText')
       this.$nextTick(function() {
         this.$el.querySelector('.modal-dialog input').focus()
       })
