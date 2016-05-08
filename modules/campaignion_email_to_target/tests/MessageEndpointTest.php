@@ -17,7 +17,7 @@ class MessageEndpointTest extends \DrupalWebTestCase {
       'message' => [
         'subject' => 'Test Subject',
         'header' => 'Test header',
-        'message' => 'Test message',
+        'body' => 'Test message',
         'footer' => 'Test footer',
       ],
       'filters' => [
@@ -26,7 +26,7 @@ class MessageEndpointTest extends \DrupalWebTestCase {
     ];
     $fakenode = (object) ['nid' => 30551];
     $endpoint = new MessageEndpoint($fakenode);
-    $answer = $endpoint->put($data);
+    $answer = $endpoint->put(['messageSelection' => $data])['messageSelection'];
     $tpls = MessageTemplate::byNid($fakenode->nid);
     $this->assertEquals(1, count($tpls));
     $m = $answer[array_keys($answer)[0]];
@@ -48,11 +48,11 @@ class MessageEndpointTest extends \DrupalWebTestCase {
     $fakenode = (object) ['nid' => 1];
     $endpoint = new MessageEndpoint($fakenode);
 
-    $answer = $endpoint->put([
+    $answer = $endpoint->put(['messageSelection' => [
       ['subject' => 'New first'],
       ['id' => $tpl1->id, 'subject' => 'Was first is now second'],
       ['id' => $tpl2->id, 'subject' => 'Was second is now third'],
-    ]);
+    ]])['messageSelection'];
 
     $a_messages = [];
     $a_subjects = [];
@@ -66,6 +66,27 @@ class MessageEndpointTest extends \DrupalWebTestCase {
       'Was second is now third',
     ], $a_subjects);
     $this->assertEqual($tpl2->id, $answer[2]['id']);
+  }
+
+  public function test_put_exchangeFilter() {
+    $filter = Filter::fromArray(['type' => 'test', 'test' => 1]);
+    $tpl1 = new Messagetemplate(['nid' => 1, 'subject' => 'First', 'filters' => [$filter]]);
+    $tpl1->save();
+
+    $fakenode = (object) ['nid' => 1];
+    $endpoint = new MessageEndpoint($fakenode);
+    $new_filter = ['type' => 'test', 'test' => 2];
+    $answer = $endpoint->put(['messageSelection' => [
+      ['id' => $tpl1->id, 'subject' => 'Still first', 'filters' => [$new_filter]],
+    ]])['messageSelection'];
+
+    $this->assertEqual(1, count($answer));
+    $this->assertEqual(1, count($answer[0]['filters']));
+
+    $answer = $endpoint->get()['messageSelection'];
+    $this->assertEqual(1, count($answer));
+    $this->assertEqual(1, count($answer[0]['filters']));
+    $this->assertEqual(2, $answer[0]['filters'][0]['test']);
   }
 
 }

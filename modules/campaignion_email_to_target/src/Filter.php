@@ -19,16 +19,16 @@ class Filter extends Model {
   public $config = [];
 
   public static function fromArray($data) {
-    $config = $data;
-    $d = [];
-    foreach (['id', 'message_id', 'type', 'weight'] as $k) {
-      if (isset($data[$k])) {
-        $d[$k] = $data[$k];
-      }
-      unset($config[$k]);
-    }
-    $d['config'] = $config;
-    return new static($d);
+    return new static($data);
+  }
+
+  /**
+   * Update filter data from array.
+   */
+  public function setData($data) {
+    unset($data['id']);
+    unset($data['message_id']);
+    $this->__construct($data);
   }
 
   /**
@@ -64,10 +64,6 @@ class Filter extends Model {
     }
     unset($data['weight']);
     unset($data['message_id']);
-    if($config = $data['config']) {
-      unset($data['config']);
-      $data += $config;
-    }
     return $data;
   }
 

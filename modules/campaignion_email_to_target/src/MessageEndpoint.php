@@ -10,7 +10,64 @@ class MessageEndpoint {
     $this->node = $node;
   }
 
-  protected function flatten($data) {
+  /**
+   * Convert message data from API to model format.
+   *
+   * @return array
+   *   - Move message content (subject, header, message, footer) into the main array.
+   *   - Move filter configuration into the config sub-array.
+   */
+  protected function api2model($data) {
+    $data = $this->flattenMessage($data);
+    $data += ['filters' => []];
+    $filters = [];
+    foreach ($data['filters'] as $f) {
+      $filters[] = $this->unflattenFilter($f);
+    }
+    $data['filters'] = $filters;
+    return $data;
+  }
+
+  /**
+   * Convert message data from model to API format.
+   *
+   * @return array
+   *   - Build the message content sub-array (subject, header, body, footer).
+   *   - Extract the filter configuration into the main filter array.
+   */
+  protected function model2api($data) {
+    $data = $this->unflattenMessage($data);
+    $data += ['filters' => []];
+    $filters = [];
+    foreach ($data['filters'] as &$f) {
+      $filters[] = $this->flattenFilter($f);
+    }
+    $data['filters'] = $filters;
+    return $data;
+  }
+
+  protected function flattenFilter($data) {
+    if (isset($data['config']) && is_array($data['config'])) {
+      $config = $data['config'];
+      unset($data['config']);
+      $data += $config;
+    }
+    return $data;
+  }
+
+  protected function unflattenFilter($data) {
+    $config = $data + ['id' => NULL, 'weight' => 0, 'type' => ''];
+    unset($config['message_id']);
+    $data = [];
+    foreach (['id', 'weight', 'type'] as $k) {
+      $data[$k] = $config[$k];
+      unset($config[$k]);
+    }
+    $data['config'] = $config;
+    return $data;
+  }
+
+  protected function flattenMessage($data) {
     if (isset($data['message']) && is_array($data['message'])) {
       $message = $data['message'];
       // 'message' is called 'body' in the API.
@@ -24,7 +81,7 @@ class MessageEndpoint {
     return $data;
   }
 
-  protected function unflatten($data) {
+  protected function unflattenMessage($data) {
     $message = [];
     foreach (['subject', 'header', 'message', 'footer'] as $k) {
       $message[$k] = $data[$k];
@@ -44,10 +101,7 @@ class MessageEndpoint {
     $w = 0;
     $new_messages = [];
     foreach ($data as $m) {
-      $m['nid'] = $this->node->nid;
-      $m['weight'] = $w++;
-      $m = $this->flatten($m);
-
+      $m = $this->api2model($m);
       if (isset($m['id']) && isset($old_messages[$m['id']])) {
         $message = $old_messages[$m['id']];
         $message->setData($m);
@@ -56,8 +110,10 @@ class MessageEndpoint {
       else {
         $message = new MessageTemplate($m);
       }
+      $message->nid = $this->node->nid;
+      $message->weight = $w++;
       $message->save();
-      $new_messages[] = $this->unflatten($message->toArray());
+      $new_messages[] = $this->model2api($message->toArray());
     }
     // Old messages that are still in there have been deleted.
     foreach ($old_messages as $message) {
@@ -78,7 +134,7 @@ class MessageEndpoint {
       ]);
     }
     foreach ($templates as $m) {
-      $messages[] = $this->unflatten($m->toArray());
+      $messages[] = $this->model2api($m->toArray());
     }
     return ['messageSelection' => $messages];
   }

@@ -23,7 +23,9 @@ class MessageTemplate extends Model {
 
   public function __construct($data = [], $new = TRUE) {
     parent::__construct($data, $new);
-    $this->setFilters($this->filters);
+    $filters = $this->filters;
+    $this->filters = [];
+    $this->setFilters($filters);
   }
 
   /**
@@ -44,17 +46,34 @@ class MessageTemplate extends Model {
   }
 
   public function setFilters($new_filters) {
+    $old_filters = [];
+    foreach ($this->filters as $f) {
+      $old_filters[$f->id] = $f;
+    }
     $w = 0;
     $filters = [];
     foreach ($new_filters as $f) {
       if (!($f instanceof Filter)) {
-        $f = Filter::fromArray($f);
+        // Reuse filter objects if 'id' is passed and found.
+        if (isset($f['id']) && isset($old_filters[$f['id']])) {
+          $f = $old_filters[$f['id']];
+          $f->setData($f);
+          unset($old_filters[$f->id]);
+        }
+        // Create a new filter object.
+        else {
+          $f = Filter::fromArray($f);
+        }
       }
       $f->message_id = $this->id;
       $f->weight = $w++;
       $filters[] = $f;
     }
     $this->filters = $filters;
+    // Remove all filters that are not reused.
+    foreach ($old_filters as $f) {
+      $f->delete();
+    }
   }
 
   /**

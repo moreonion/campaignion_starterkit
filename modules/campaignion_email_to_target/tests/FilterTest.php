@@ -12,7 +12,7 @@ class FilterTest extends \DrupalWebTestCase {
   }
 
   public function test_put_oneMessage_emptyNode() {
-    $f = Filter::fromArray(['type' => 'test', 'config' => 'something']);
+    $f = Filter::fromArray(['type' => 'test', 'config' => ['config' => 'something']]);
     $this->assertEquals(['config' => 'something'], $f->config);
     $f->message_id = 1;
     $f->weight = 0;
@@ -27,7 +27,7 @@ class FilterTest extends \DrupalWebTestCase {
 
 class FilterUnitTest extends \DrupalUnitTestCase {
   public function test_match_byName() {
-    $f = Filter::fromArray(['type' => 'target-attribute', 'attributeName' => 'first_name', 'operator' => '==', 'value' => 'test']);
+    $f = Filter::fromArray(['type' => 'target-attribute', config => ['attributeName' => 'first_name', 'operator' => '==', 'value' => 'test']]);
     $submission = $this->getMockBuilder('\\Drupal\\little_helpers\\Webform\\Submission')
       ->disableOriginalConstructor()->getMock();
     $this->assertTrue($f->match(['first_name' => 'test'], $submission));
