@@ -41,7 +41,7 @@
     </div>
     <tokens-list :token-categories="tokenCategories"></tokens-list>
 
-    <modal :show.sync="showSpecModal" v-ref:spec-modal>
+    <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom">
       <div slot="modal-header" class="modal-header">
         <button type="button" class="close" @click="tryCloseModal" :disabled="modalDirty"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
@@ -75,6 +75,8 @@
         <button type="button" class="btn btn-primary js-modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
       </div>
     </modal>
+
+    <nice-alert></nice-alert>
   </div>
 </template>
 
@@ -94,7 +96,8 @@ module.exports = {
     messageEditor: require('./components/message-editor.vue'),
     tokensList: require('./components/tokens-list.vue'),
     dropdown: require('./components/custom-vue-strap/Dropdown.vue'),
-    modal: require('./components/custom-vue-strap/Modal.vue')
+    modal: require('./components/custom-vue-strap/Modal.vue'),
+    niceAlert: require('./components/shared/alert.vue')
   },
 
   data() {
@@ -175,9 +178,14 @@ module.exports = {
     },
 
     removeSpec(spec) {
-      if (confirm('Do you really want to remove ' + (spec.label ? ('"' + spec.label + '"?') : 'this item?'))) {
-        this.specs.$remove(spec)
-      }
+      this.$broadcast('confirm', {
+        title: 'Remove ' + (spec.type == 'message-template' ? 'message' : spec.type),
+        message: 'Do you really want to remove ' + (spec.label ? ('"' + spec.label + '"?') : 'this item?'),
+        confirmBtn: 'Remove',
+        confirm: () => {
+          this.specs.$remove(spec)
+        }
+      })
     },
 
     showModal() {
@@ -373,10 +381,20 @@ module.exports = {
 
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
-        if (this.unsavedChanges() && !confirm('You have unsaved changes!\nClick OK if you really want to go back and dismiss them.')) {
+        if (this.unsavedChanges()) {
           e.preventDefault()
+          this.$broadcast('confirm', {
+            title: 'Unsaved changes',
+            message: 'You have unsaved changes!<br>You will lose your changes if you go back.',
+            confirmBtn: 'Go back anyway',
+            confirm: () => {
+              // submit the form
+              $(window).off('beforeunload')
+              $(e.currentTarget).off('submit')
+              $clickedButton.off('click').click()
+            }
+          })
         } else {
-          // Don’t warn twice
           $(window).off('beforeunload')
         }
         return
@@ -401,7 +419,10 @@ module.exports = {
       }, (response) => {
         // error
         $('input[type=submit]', e.currentTarget).prop('disabled', false)
-        alert('The service is temporarily unavailable.\nYour messages could not be saved.\nPlease try again or contact support if the issue persists.')
+        this.$broadcast('alert', {
+          title: 'Service unavailable',
+          message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
+        })
       })
     })
 

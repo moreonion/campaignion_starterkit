@@ -17635,7 +17635,8 @@ module.exports = {
     messageEditor: require('./components/message-editor.vue'),
     tokensList: require('./components/tokens-list.vue'),
     dropdown: require('./components/custom-vue-strap/Dropdown.vue'),
-    modal: require('./components/custom-vue-strap/Modal.vue')
+    modal: require('./components/custom-vue-strap/Modal.vue'),
+    niceAlert: require('./components/shared/alert.vue')
   },
 
   data: function data() {
@@ -17705,9 +17706,16 @@ module.exports = {
       this.showModal();
     },
     removeSpec: function removeSpec(spec) {
-      if (confirm('Do you really want to remove ' + (spec.label ? '"' + spec.label + '"?' : 'this item?'))) {
-        this.specs.$remove(spec);
-      }
+      var _this = this;
+
+      this.$broadcast('confirm', {
+        title: 'Remove ' + (spec.type == 'message-template' ? 'message' : spec.type),
+        message: 'Do you really want to remove ' + (spec.label ? '"' + spec.label + '"?' : 'this item?'),
+        confirmBtn: 'Remove',
+        confirm: function confirm() {
+          _this.specs.$remove(spec);
+        }
+      });
     },
     showModal: function showModal() {
       this.modalDirty = false;
@@ -17748,13 +17756,13 @@ module.exports = {
       }
     },
     filterStr: function filterStr(filters) {
-      var _this = this;
+      var _this2 = this;
 
       // compose filter string from filters
       var filterStr = '';
       filters.forEach(function (el, index) {
         if (index) filterStr += ' and ';
-        filterStr += '<span class="filter-condition">' + el.attributeLabel + ' ' + _this.operators.get(el.operator) + ' ' + (el.value || '<span class="value-missing">[ please specify a value ]</span>') + '</span>';
+        filterStr += '<span class="filter-condition">' + el.attributeLabel + ' ' + _this2.operators.get(el.operator) + ' ' + (el.value || '<span class="value-missing">[ please specify a value ]</span>') + '</span>';
       });
       return filterStr || '<span class="filter-missing">[ please add a filter ]</span>';
     },
@@ -17882,7 +17890,7 @@ module.exports = {
     }
   },
   ready: function ready() {
-    var _this2 = this;
+    var _this3 = this;
 
     $("form input[type=submit]").click(function () {
       // Attach a 'clicked' attribute to the specific button
@@ -17896,10 +17904,20 @@ module.exports = {
 
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
-        if (_this2.unsavedChanges() && !confirm('You have unsaved changes!\nClick OK if you really want to go back and dismiss them.')) {
+        if (_this3.unsavedChanges()) {
           e.preventDefault();
+          _this3.$broadcast('confirm', {
+            title: 'Unsaved changes',
+            message: 'You have unsaved changes!<br>You will lose your changes if you go back.',
+            confirmBtn: 'Go back anyway',
+            confirm: function confirm() {
+              // submit the form
+              $(window).off('beforeunload');
+              $(e.currentTarget).off('submit');
+              $clickedButton.off('click').click();
+            }
+          });
         } else {
-          // Don’t warn twice
           $(window).off('beforeunload');
         }
         return;
@@ -17915,7 +17933,7 @@ module.exports = {
       // Cancel submit event, make ajax request
       e.preventDefault();
       $('input[type=submit]', e.currentTarget).prop('disabled', true);
-      _this2.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this2.serializeData()).then(function (response) {
+      _this3.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this3.serializeData()).then(function (response) {
         // success
         // Don’t need those handlers any more... submit for real!
         $(window).off('beforeunload');
@@ -17924,12 +17942,15 @@ module.exports = {
       }, function (response) {
         // error
         $('input[type=submit]', e.currentTarget).prop('disabled', false);
-        alert('The service is temporarily unavailable.\nYour messages could not be saved.\nPlease try again or contact support if the issue persists.');
+        _this3.$broadcast('alert', {
+          title: 'Service unavailable',
+          message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
+        });
       });
     });
 
     $(window).on('beforeunload', function (e) {
-      if (_this2.unsavedChanges()) {
+      if (_this3.unsavedChanges()) {
         var confirmationMessage = 'Careful! You have unsaved changes!';
         e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
         return confirmationMessage; // Gecko, WebKit, Chrome <34
@@ -17955,7 +17976,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul v-dragula=\"specs\" :dragula-options=\"{revertOnSpill: true, mirrorContainer: $el}\" class=\"specs\">\n    <li v-for=\"spec in specs\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <span dragula-handle=\"\"></span>\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul v-dragula=\"specs\" :dragula-options=\"{revertOnSpill: true, mirrorContainer: $el}\" class=\"specs\">\n    <li v-for=\"spec in specs\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <span dragula-handle=\"\"></span>\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\" effect=\"zoom\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n\n  <nice-alert></nice-alert>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -17971,7 +17992,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../ui_test/data/example-data.js":244,"./components/custom-vue-strap/Dropdown.vue":231,"./components/custom-vue-strap/Modal.vue":232,"./components/filter-editor.vue":236,"./components/message-editor.vue":237,"./components/tokens-list.vue":239,"./mixins/defaults.vue":241,"./mixins/utils.vue":242,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":176,"lodash/isEqual":184,"lodash/omit":196,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],231:[function(require,module,exports){
+},{"../ui_test/data/example-data.js":245,"./components/custom-vue-strap/Dropdown.vue":231,"./components/custom-vue-strap/Modal.vue":232,"./components/filter-editor.vue":236,"./components/message-editor.vue":237,"./components/shared/alert.vue":238,"./components/tokens-list.vue":240,"./mixins/defaults.vue":242,"./mixins/utils.vue":243,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":176,"lodash/isEqual":184,"lodash/omit":196,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],231:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18166,7 +18187,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../shared/spinner.vue":238,"./utils/EventListener.vue":234,"./utils/getScrollBarWidth.vue":235,"babel-runtime/core-js/number/is-integer":4,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],233:[function(require,module,exports){
+},{"../shared/spinner.vue":239,"./utils/EventListener.vue":234,"./utils/getScrollBarWidth.vue":235,"babel-runtime/core-js/number/is-integer":4,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],233:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n")
 'use strict';
 
@@ -18626,6 +18647,74 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"vue":228,"vue-hot-reload-api":203}],238:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  replace: false,
+  components: {
+    vModal: require('../custom-vue-strap/Modal.vue')
+  },
+  data: function data() {
+    return {
+      show: false,
+      isConfirm: false,
+      options: {
+        title: '',
+        message: '',
+        confirmBtn: '',
+        cancelBtn: '',
+        confirm: function confirm() {},
+        cancel: function cancel() {}
+      }
+    };
+  },
+
+  methods: {
+    ok: function ok() {
+      console.log(this);
+      if (typeof this.options.confirm == 'function') {
+        this.options.confirm();
+      }
+      this.show = false;
+    },
+    cancel: function cancel() {
+      this.show = false;
+      if (typeof this.options.cancel == 'function') {
+        this.options.cancel();
+      }
+    }
+  },
+  events: {
+    'alert': function alert(options) {
+      console.log('alert caught');
+      this.options = options;
+      this.isConfirm = false;
+      this.show = true;
+    },
+    'confirm': function confirm(options) {
+      this.options = options;
+      this.isConfirm = true;
+      this.show = true;
+    }
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<v-modal :show.sync=\"show\" effect=\"zoom\" :small=\"true\">\n  <div slot=\"modal-header\" class=\"modal-header\" :style=\"{'display': options.title ? 'block' : 'none'}\">\n    <h4 class=\"modal-title\">{{ options.title }}</h4>\n  </div>\n  <div slot=\"modal-body\" class=\"modal-body\">\n    {{{ options.message }}}\n  </div>\n  <div slot=\"modal-footer\" class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-secondary\" v-if=\"isConfirm\" @click=\"cancel\">{{ options.cancelBtn || 'Cancel' }}</button>\n    <button type=\"button\" class=\"btn btn-primary\" @click=\"ok\">{{ options.confirmBtn || 'OK' }}</button>\n  </div>\n</v-modal>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/home/jo/mo/drupal/campaignion_starterkit/modules/campaignion_email_to_target/ui_src/components/shared/alert.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"../custom-vue-strap/Modal.vue":232,"vue":228,"vue-hot-reload-api":203}],239:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("\n.sk-fading-circle {\n  margin: 100px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n}\n\n.sk-fading-circle .sk-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.sk-fading-circle .sk-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 15%;\n  height: 15%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.sk-fading-circle .sk-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.sk-fading-circle .sk-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.sk-fading-circle .sk-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sk-fading-circle .sk-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.sk-fading-circle .sk-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.sk-fading-circle .sk-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.sk-fading-circle .sk-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.sk-fading-circle .sk-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.sk-fading-circle .sk-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.sk-fading-circle .sk-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg); \n}\n.sk-fading-circle .sk-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg); \n}\n.sk-fading-circle .sk-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s; \n}\n.sk-fading-circle .sk-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s; \n}\n.sk-fading-circle .sk-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s; \n}\n.sk-fading-circle .sk-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s; \n}\n.sk-fading-circle .sk-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s; \n}\n.sk-fading-circle .sk-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s; \n}\n.sk-fading-circle .sk-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s; \n}\n.sk-fading-circle .sk-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.sk-fading-circle .sk-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.sk-fading-circle .sk-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.sk-fading-circle .sk-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes sk-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; } \n}\n")
 ;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"sk-fading-circle\">\n  <div class=\"sk-circle1 sk-circle\"></div>\n  <div class=\"sk-circle2 sk-circle\"></div>\n  <div class=\"sk-circle3 sk-circle\"></div>\n  <div class=\"sk-circle4 sk-circle\"></div>\n  <div class=\"sk-circle5 sk-circle\"></div>\n  <div class=\"sk-circle6 sk-circle\"></div>\n  <div class=\"sk-circle7 sk-circle\"></div>\n  <div class=\"sk-circle8 sk-circle\"></div>\n  <div class=\"sk-circle9 sk-circle\"></div>\n  <div class=\"sk-circle10 sk-circle\"></div>\n  <div class=\"sk-circle11 sk-circle\"></div>\n  <div class=\"sk-circle12 sk-circle\"></div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
@@ -18643,7 +18732,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],239:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18716,7 +18805,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":228,"vue-hot-reload-api":203}],240:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],241:[function(require,module,exports){
 var Vue = require('vue')
 var App = require('./app.vue')
 
@@ -18735,7 +18824,7 @@ new Vue({
   }
 })
 
-},{"./app.vue":230,"./plugins/vue-dragula.js":243,"vue":228,"vue-resource":217}],241:[function(require,module,exports){
+},{"./app.vue":230,"./plugins/vue-dragula.js":244,"vue":228,"vue-resource":217}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18783,7 +18872,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":228,"vue-hot-reload-api":203}],242:[function(require,module,exports){
+},{"vue":228,"vue-hot-reload-api":203}],243:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18817,7 +18906,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"babel-runtime/core-js/json/stringify":2,"vue":228,"vue-hot-reload-api":203}],243:[function(require,module,exports){
+},{"babel-runtime/core-js/json/stringify":2,"vue":228,"vue-hot-reload-api":203}],244:[function(require,module,exports){
 /*
  * Basic implementation of dragula.js in Vue - single container only
  * Heavily inspired by https://github.com/valor-software/ng2-dragula
@@ -18883,7 +18972,7 @@ module.exports = {
 
 }
 
-},{"dragula":67}],244:[function(require,module,exports){
+},{"dragula":67}],245:[function(require,module,exports){
 module.exports = {
   messageSelection: [
     {
@@ -19034,4 +19123,4 @@ module.exports = {
   ]
 }
 
-},{}]},{},[240]);
+},{}]},{},[241]);
