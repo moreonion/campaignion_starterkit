@@ -18694,7 +18694,6 @@ exports.default = {
 
   methods: {
     ok: function ok() {
-      console.log(this);
       if (typeof this.options.confirm == 'function') {
         this.options.confirm();
       }
@@ -18709,7 +18708,6 @@ exports.default = {
   },
   events: {
     'alert': function alert(options) {
-      console.log('alert caught');
       this.options = options;
       this.isConfirm = false;
       this.show = true;

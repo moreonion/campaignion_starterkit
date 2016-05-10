@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     ok() {
-      console.log(this)
       if (typeof this.options.confirm == 'function') {
         this.options.confirm()
       }
@@ -50,7 +49,6 @@ export default {
   },
   events: {
     'alert': function(options) {
-      console.log('alert caught')
       this.options = options
       this.isConfirm = false
       this.show = true
