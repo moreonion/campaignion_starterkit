@@ -225,13 +225,6 @@ module.exports = {
       this.showSpecModal = false
     },
 
-    sort(list, id, tag, data) {
-      const tmp = list[data.index]
-      list.splice(data.index, 1)
-      list.splice(id, 0, tmp)
-      this.validateSpecs()
-    },
-
     prefillMessage() {
       if (!this.currentSpec.message) return
       for (var field in this.currentSpec.message) {
@@ -367,6 +360,10 @@ module.exports = {
       return false
     }
 
+  },
+
+  watch: {
+    'specs': 'validateSpecs'
   },
 
   created() {

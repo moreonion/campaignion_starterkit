@@ -17744,12 +17744,6 @@ module.exports = {
     hideModal: function hideModal() {
       this.showSpecModal = false;
     },
-    sort: function sort(list, id, tag, data) {
-      var tmp = list[data.index];
-      list.splice(data.index, 1);
-      list.splice(id, 0, tmp);
-      this.validateSpecs();
-    },
     prefillMessage: function prefillMessage() {
       if (!this.currentSpec.message) return;
       for (var field in this.currentSpec.message) {
@@ -17882,6 +17876,10 @@ module.exports = {
       // console.log('everything saved')
       return false;
     }
+  },
+
+  watch: {
+    'specs': 'validateSpecs'
   },
 
   created: function created() {
