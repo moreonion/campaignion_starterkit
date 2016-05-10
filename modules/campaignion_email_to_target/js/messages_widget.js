@@ -17670,6 +17670,11 @@ module.exports = {
     },
     currentSpecIsEmpty: function currentSpecIsEmpty() {
       return isEqual(omit(this.currentSpec, ['id', 'errors', 'filterStr']), omit(this.emptySpec(this.currentSpec.type), ['id', 'errors', 'filterStr']));
+    },
+    defaultMessageErrors: function defaultMessageErrors() {
+      if (this.isEmptyMessage(this.defaultMessage.message)) {
+        return [{ type: 'message', message: 'Message is empty' }];
+      }
     }
   },
 
@@ -17793,7 +17798,7 @@ module.exports = {
           }
         }
 
-        if (this.specs[i].type == 'message-template' && !(this.specs[i].message.subject.trim() || this.specs[i].message.header.trim() || this.specs[i].message.body.trim() || this.specs[i].message.footer.trim())) {
+        if (this.specs[i].type == 'message-template' && this.isEmptyMessage(this.specs[i].message)) {
           errors.push({ type: 'message', message: 'Message is empty' });
         }
 
@@ -17822,6 +17827,9 @@ module.exports = {
 
         this.$set('specs[' + i + '].errors', errors);
       }
+    },
+    isEmptyMessage: function isEmptyMessage(message) {
+      return !(message.subject && message.subject.trim() || message.header && message.header.trim() || message.body && message.body.trim() || message.footer && message.footer.trim());
     },
     parseData: function parseData(data) {
       if (data.messageSelection && data.messageSelection.length) {
@@ -17902,6 +17910,12 @@ module.exports = {
       var $clickedButton = $("input[type=submit][clicked=true]", e.currentTarget);
       var submitVal = $clickedButton.val();
 
+      function forceSubmit() {
+        $(window).off('beforeunload');
+        $(e.currentTarget).off('submit');
+        $clickedButton.prop('disabled', false).off('click').click();
+      }
+
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
         if (_this3.unsavedChanges()) {
@@ -17910,12 +17924,7 @@ module.exports = {
             title: 'Unsaved changes',
             message: 'You have unsaved changes!<br>You will lose your changes if you go back.',
             confirmBtn: 'Go back anyway',
-            confirm: function confirm() {
-              // submit the form
-              $(window).off('beforeunload');
-              $(e.currentTarget).off('submit');
-              $clickedButton.off('click').click();
-            }
+            confirm: forceSubmit
           });
         } else {
           $(window).off('beforeunload');
@@ -17923,11 +17932,27 @@ module.exports = {
         return;
       }
 
-      // TODO hard validation
-      var validationFailed = false;
-      if (validationFailed) {
-        e.preventDefault();
-        return;
+      if (_this3.hardValidation) {
+        var validationFailed = false;
+        for (var i = 0, j = _this3.specs.length; i < j; i++) {
+          if (_this3.specs[i].errors && _this3.specs[i].errors.length) {
+            validationFailed = true;
+            break;
+          }
+        }
+        if (_this3.defaultMessageErrors && _this3.defaultMessageErrors.length) {
+          validationFailed = true;
+        }
+        if (validationFailed) {
+          e.preventDefault();
+          _this3.$broadcast('confirm', {
+            title: 'Invalid data',
+            message: 'There are validation errors (see error notices).<br>Your campaign might not work as you intended.',
+            confirmBtn: 'Save anyway',
+            confirm: forceSubmit
+          });
+          return;
+        }
       }
 
       // Cancel submit event, make ajax request
@@ -17935,10 +17960,7 @@ module.exports = {
       $('input[type=submit]', e.currentTarget).prop('disabled', true);
       _this3.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this3.serializeData()).then(function (response) {
         // success
-        // Don’t need those handlers any more... submit for real!
-        $(window).off('beforeunload');
-        $(e.currentTarget).off('submit');
-        $clickedButton.prop('disabled', false).off('click').click();
+        forceSubmit();
       }, function (response) {
         // error
         $('input[type=submit]', e.currentTarget).prop('disabled', false);
@@ -17976,7 +17998,7 @@ module.exports = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul v-dragula=\"specs\" :dragula-options=\"{revertOnSpill: true, mirrorContainer: $el}\" class=\"specs\">\n    <li v-for=\"spec in specs\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <span dragula-handle=\"\"></span>\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\" effect=\"zoom\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n\n  <nice-alert></nice-alert>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <button @click=\"newSpec('message-template')\" class=\"btn add-message\" type=\"button\">Add specific message</button>\n  <button @click=\"newSpec('exclusion')\" class=\"btn add-exclusion\" type=\"button\">Add exclusion</button>\n\n  <ul v-dragula=\"specs\" :dragula-options=\"{revertOnSpill: true, mirrorContainer: $el}\" class=\"specs\">\n    <li v-for=\"spec in specs\" class=\"spec row\">\n      <div class=\"col-sm-12 col-md-8 col-lg-6\">\n        <div class=\"card\">\n          <span dragula-handle=\"\"></span>\n          <div class=\"spec-info\">\n            <div class=\"spec-label\">\n              <template v-if=\"spec.label\">{{ spec.label }}</template>\n              <template v-else=\"\">[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>\n            </div>\n            <div v-if=\"spec.label\" class=\"spec-description\">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>\n          </div>\n          <dropdown class=\"spec-actions\">\n            <button type=\"button\" class=\"btn\" @click=\"editSpec($index)\">Edit</button>\n            <button type=\"button\" class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              <span class=\"sr-only\">Toggle Dropdown</span>\n            </button>\n            <div name=\"dropdown-menu\" class=\"dropdown-menu\">\n              <a class=\"dropdown-item\" href=\"#\" @click=\"duplicateSpec($index)\">Duplicate</a>\n              <a class=\"dropdown-item\" href=\"#\" @click=\"removeSpec(spec)\">Delete</a>\n            </div>\n          </dropdown>\n        </div>\n      </div>\n      <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n        <ul class=\"spec-errors\">\n          <li v-for=\"error in spec.errors\" class=\"spec-error\">{{ error.message }}</li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n\n  <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>\n  <div class=\"row\">\n    <message-editor :message.sync=\"defaultMessage.message\" class=\"col-sm-12 col-md-8 col-lg-6\"></message-editor>\n    <div class=\"spec-notice col-sm-12 col-md-4 col-lg-6\">\n      <ul class=\"spec-errors\">\n        <li v-for=\"error in defaultMessageErrors\" class=\"spec-error\">{{ error.message }}</li>\n      </ul>\n    </div>\n  </div>\n  <tokens-list :token-categories=\"tokenCategories\"></tokens-list>\n\n  <modal :show.sync=\"showSpecModal\" v-ref:spec-modal=\"\" effect=\"zoom\">\n    <div slot=\"modal-header\" class=\"modal-header\">\n      <button type=\"button\" class=\"close\" @click=\"tryCloseModal\" :disabled=\"modalDirty\"><span>×</span></button>\n      <h4 class=\"modal-title\">{{modalTitle}}</h4>\n    </div>\n    <div slot=\"modal-body\" class=\"modal-body\">\n      <div class=\"form-group\">\n        <label for=\"spec-label\">Internal name for this {{ currentSpec.type === 'message-template' ? 'message' : 'exclusion' }} <small>(seen only by you)</small></label>\n        <input type=\"text\" v-model=\"currentSpec.label\" id=\"spec-label\" class=\"form-control\">\n      </div>\n      <filter-editor :fields=\"targetAttributes\" :filters.sync=\"currentSpec.filters\" :filter-default=\"{type: 'target-attribute'}\" :operators=\"operators\">\n      </filter-editor>\n      <section v-if=\"currentSpec.type == 'message-template'\">\n        <a href=\"#\" @click=\"prefillMessage()\">Prefill from default message</a>\n        <message-editor :message.sync=\"currentSpec.message\"></message-editor>\n      </section>\n      <tokens-list v-if=\"currentSpec.type == 'message-template'\" :token-categories=\"tokenCategories\"></tokens-list>\n      <section v-if=\"currentSpec.type == 'exclusion' &amp;&amp; (currentSpecIndex > 0 || (currentSpecIndex == -1 &amp;&amp; specs.length))\">\n        Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s\n        filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list\n        if you want it to apply under any condition.\n      </section>\n    </div>\n    <div slot=\"modal-footer\" :class=\"{'modal-footer': true, 'alert': modalDirty}\">\n      {{ modalDirty ? 'You have unsaved changes!' : null }}\n      <button type=\"button\" class=\"btn btn-secondary js-modal-cancel\" @click=\"tryCloseModal\">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>\n      <button type=\"button\" class=\"btn btn-primary js-modal-save\" :disabled=\"currentSpecIsEmpty\" @click=\"updateSpec\">Done</button>\n    </div>\n  </modal>\n\n  <nice-alert></nice-alert>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

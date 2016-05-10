@@ -38,6 +38,11 @@
     <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>
     <div class="row">
       <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6"></message-editor>
+      <div class="spec-notice col-sm-12 col-md-4 col-lg-6">
+        <ul class="spec-errors">
+          <li v-for="error in defaultMessageErrors" class="spec-error">{{ error.message }}</li>
+        </ul>
+      </div>
     </div>
     <tokens-list :token-categories="tokenCategories"></tokens-list>
 
@@ -136,6 +141,12 @@ module.exports = {
 
     currentSpecIsEmpty() {
       return isEqual(omit(this.currentSpec, ['id', 'errors', 'filterStr']), omit(this.emptySpec(this.currentSpec.type), ['id', 'errors', 'filterStr']))
+    },
+
+    defaultMessageErrors() {
+      if (this.isEmptyMessage(this.defaultMessage.message)) {
+        return [{type: 'message', message: 'Message is empty'}]
+      }
     }
 
   },
@@ -267,7 +278,7 @@ module.exports = {
           }
         }
 
-        if ( this.specs[i].type == 'message-template' && !( this.specs[i].message.subject.trim() || this.specs[i].message.header.trim() || this.specs[i].message.body.trim() || this.specs[i].message.footer.trim() ) ) {
+        if ( this.specs[i].type == 'message-template' && this.isEmptyMessage(this.specs[i].message)) {
           errors.push({type: 'message', message: 'Message is empty'})
         }
 
@@ -296,6 +307,10 @@ module.exports = {
 
         this.$set('specs[' + i + '].errors', errors)
       }
+    },
+
+    isEmptyMessage(message) {
+      return !((message.subject && message.subject.trim()) || (message.header && message.header.trim()) || (message.body && message.body.trim()) || (message.footer && message.footer.trim()))
     },
 
     parseData(data) {
@@ -379,6 +394,12 @@ module.exports = {
       var $clickedButton = $("input[type=submit][clicked=true]", e.currentTarget)
       var submitVal = $clickedButton.val()
 
+      function forceSubmit() {
+        $(window).off('beforeunload')
+        $(e.currentTarget).off('submit')
+        $clickedButton.prop('disabled', false).off('click').click()
+      }
+
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
         if (this.unsavedChanges()) {
@@ -387,12 +408,7 @@ module.exports = {
             title: 'Unsaved changes',
             message: 'You have unsaved changes!<br>You will lose your changes if you go back.',
             confirmBtn: 'Go back anyway',
-            confirm: () => {
-              // submit the form
-              $(window).off('beforeunload')
-              $(e.currentTarget).off('submit')
-              $clickedButton.off('click').click()
-            }
+            confirm: forceSubmit
           })
         } else {
           $(window).off('beforeunload')
@@ -400,11 +416,27 @@ module.exports = {
         return
       }
 
-      // TODO hard validation
-      var validationFailed = false
-      if (validationFailed) {
-        e.preventDefault()
-        return
+      if (this.hardValidation) {
+        var validationFailed = false
+        for (var i = 0, j = this.specs.length; i < j; i++) {
+          if (this.specs[i].errors && this.specs[i].errors.length) {
+            validationFailed = true
+            break
+          }
+        }
+        if (this.defaultMessageErrors && this.defaultMessageErrors.length) {
+          validationFailed = true
+        }
+        if (validationFailed) {
+          e.preventDefault()
+          this.$broadcast('confirm', {
+            title: 'Invalid data',
+            message: 'There are validation errors (see error notices).<br>Your campaign might not work as you intended.',
+            confirmBtn: 'Save anyway',
+            confirm: forceSubmit
+          })
+          return
+        }
       }
 
       // Cancel submit event, make ajax request
@@ -412,10 +444,7 @@ module.exports = {
       $('input[type=submit]', e.currentTarget).prop('disabled', true)
       this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
         // success
-        // Don’t need those handlers any more... submit for real!
-        $(window).off('beforeunload')
-        $(e.currentTarget).off('submit')
-        $clickedButton.prop('disabled', false).off('click').click()
+        forceSubmit()
       }, (response) => {
         // error
         $('input[type=submit]', e.currentTarget).prop('disabled', false)
