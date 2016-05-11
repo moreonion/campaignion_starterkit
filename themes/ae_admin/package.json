@@ -1,0 +1,16 @@
+{
+  "name": "ae_admin",
+  "version": "0.1.0",
+  "scripts": {
+    "compile-css": "node-sass -x -q --output-style expanded bootstrap_css/main.scss bootstrap_css/main.css",
+    "post-css": "postcss -c postcss.options.json",
+    "build": "npm run compile-css && npm run post-css",
+    "watch": "node-sass -w -x -q --output-style expanded bootstrap_css/main.scss bootstrap_css/main.css"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "node-sass": "^3.7.0",
+    "postcss-cli": "^2.5.2"
+  }
+}

@@ -1,0 +1,61 @@
+.e2tmw {
+
+  .spec {
+
+    .card {
+      border: 1px solid #D8D5CD;
+      background-color: #EAE6DE;
+      border-radius: 0;
+
+      [dragula-handle] {
+        @include icon($icon-move, $font-size: 1.1rem, $margin: 0.3rem);
+        border: 0 none;
+        width: 1.8rem;
+        height: 1.7rem;
+        line-height: 2rem;
+        cursor: move;
+      }
+
+      .spec-info {
+        width: calc(100% - 9rem);
+      }
+    }
+  }
+
+  .spec.gu-mirror .card {
+    border: 1px dashed #999;
+    background-color: #D8D5CD;
+  }
+
+  .spec.gu-transit {
+    opacity: 1;
+
+    .card {
+      border: 1px dashed #999;
+      background-color: transparent;
+
+      & * {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .show-help-text {
+    @include icon($icon-info-circled, $font-size: 0.9rem);
+    & > span {
+      display: none;
+    }
+    &:focus, &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .modal-content .modal-footer.modal-alert {
+    background-color: #f29779;
+
+    .modal-alert-message {
+      margin-right: 1rem;
+    }
+  }
+
+}

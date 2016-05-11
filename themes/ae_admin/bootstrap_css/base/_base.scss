@@ -1,0 +1,75 @@
+legend {
+  text-transform: uppercase;
+  font-weight: normal;
+  border-bottom: 1px solid #C4C0BA;
+  margin: 1em 0;
+  padding-bottom: 0.625rem;
+  color: #65635f;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  //padding: 10px 14px;
+  //border-radius: 7px 7px 0 0;
+}
+
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-control {
+  padding: 0.4rem 0.5rem .3rem;
+  margin-bottom: 0.35rem;
+  border: 2px solid #c6c6c6;
+  background: #fff;
+  color: #666;
+  font-size: $font-size-base;
+  max-width: 100%;
+  box-shadow: 0 0 3px #efefef;
+  border-radius: 0.3125rem;
+}
+
+.form-control:hover, .form-control:focus {
+  color: #575555;
+  border-color: #18CBDB;
+  box-shadow: 0 0 3px #1AE3F2;
+}
+
+label {
+  margin-bottom: 0.4rem;
+}
+
+.btn {
+  font-size: $font-size-base;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  color: $btn-color;
+  background-color: $btn-bg;
+  border-radius: $btn-border-radius;
+  text-shadow: $btn-text-shadow;
+
+  &:focus, &:hover {
+    background-color: $btn-hover-bg;
+  }
+}
+
+.dropdown-menu {
+  min-width: 100%;
+  margin-top: 2px;
+  border: 0 none;
+  border-radius: $btn-border-radius;
+  background-color: $dropdown-bg;
+}
+
+.dropdown-item {
+  font-size: $font-size-base;
+  color: $dropdown-color;
+
+  &:focus, &:hover {
+    color: $dropdown-hover-color;
+    background-color: $dropdown-hover-bg;
+  }
+}
+
+
+small, .small {
+  font-size: 90%;
+}
