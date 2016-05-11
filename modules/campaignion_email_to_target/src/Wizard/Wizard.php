@@ -15,7 +15,7 @@ class Wizard extends NodeWizard {
     'target'  => '\\Drupal\\campaignion_email_to_target\\Wizard\\TargetStep',
     'message' => '\\Drupal\\campaignion_email_to_target\\Wizard\\MessageStep',
     'form'    => '\\Drupal\\campaignion_email_to_target\\Wizard\\FormStep',
-    'emails'  => 'EmailProtestEmailStep',
+    'emails'  => 'EmailStep',
     'thank'   => 'ThankyouStep',
     'confirm' => '\\Drupal\\campaignion_email_to_target\\Wizard\\ConfirmationStep',
   );
