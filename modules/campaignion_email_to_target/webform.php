@@ -5,6 +5,8 @@
  * Webform module email_to_target_selector component.
  */
 
+use \Drupal\campaignion_action\Loader;
+use \Drupal\campaignion_email_to_target\Message;
 use \Drupal\little_helpers\Webform\Webform;
 
 /**
@@ -67,15 +69,44 @@ function _webform_table_e2t_selector($component, $value) {
   return check_plain(empty($value[0]) ? '' : $value[0]);
 }
 
+function _webform_show_single_target_e2t_selector($nid) {
+  // Static cache as workaround for not having a proper plugin-system.
+  static $static_cache;
+  if (!isset($static_cache)) {
+    $static_cache = &drupal_static(__FUNCTION__, []);
+  }
+  if (isset($static_cache[$nid])) {
+    return $static_cache[$nid];
+  }
+  if (empty($nid)) {
+    return FALSE;
+  }
+  $return = FALSE;
+  if (($node = node_load($nid)) && $node->type == 'email_to_target') {
+    $action = Loader::instance()->actionFromNode($node);
+    $return = user_access('view email_to_target messages') && $action->dataset()->key == 'mp';
+  }
+  $static_cache[$nid] = $return;
+  return $return;
+}
 
 /**
  * Implements _webform_csv_headers_component().
  */
 function _webform_csv_headers_e2t_selector($component, $export_options) {
-  $header = array();
-  $header[0] = '';
-  $header[1] = '';
-  $header[2] = $component['name'];
+  if (_webform_show_single_target_e2t_selector($component['nid'])) {
+    $header = [
+      ['', '', ''],
+      [$component['name'], '', ''],
+      [t('To'), t('Subject'), t('Message')],
+    ];
+  }
+  else {
+    $header = [];
+    $header[0] = '';
+    $header[1] = '';
+    $header[2] = $component['name'];
+  }
   return $header;
 }
 
@@ -83,7 +114,21 @@ function _webform_csv_headers_e2t_selector($component, $export_options) {
  * Implements _webform_csv_data_component().
  */
 function _webform_csv_data_e2t_selector($component, $export_options, $value) {
-  return empty($value[0]) ? '' : $value[0];
+  if (_webform_show_single_target_e2t_selector($component['nid'])) {
+    // Three columns: To, Subject, Message
+    if (!empty($value[0])) {
+      $message  = new Message((array) unserialize($value[0]));
+      $t = 'campaignion_email_to_target_mail';
+      $m = theme([$t, $t . '_' . $component['nid']], ['message' => $message]);
+      return [$message->to, $message->subject, $m];
+    }
+    else {
+      return ['', '', ''];
+    }
+  }
+  else {
+    return empty($value[0]) ? '' : $value[0];
+  }
 }
 
 /**
