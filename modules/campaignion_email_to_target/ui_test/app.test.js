@@ -55,7 +55,7 @@ describe('app', function() {
     })
 
     it('renders the form header', function() {
-      expect(vm.$el.querySelector('h3').textContent).toBe('Message to all remaining targets')
+      expect(vm.$el.querySelector('.message-editor legend').textContent).toBe('Message to all remaining targets')
     })
 
   })

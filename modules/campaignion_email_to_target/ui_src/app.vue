@@ -35,9 +35,10 @@
       </li>
     </ul>
 
-    <h3>{{ specs.length ? 'Message to all remaining targets' : 'Default message' }}</h3>
     <div class="row">
-      <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6"></message-editor>
+      <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6">
+        <legend slot="legend">{{ specs.length ? 'Message to all remaining targets' : 'Default message that will be sent to target(s)' }}</legend>
+      </message-editor>
       <div class="spec-notice col-sm-12 col-md-4 col-lg-6">
         <ul class="spec-errors">
           <li v-for="error in defaultMessageErrors" class="spec-error">{{ error.message }}</li>
@@ -74,8 +75,8 @@
           if you want it to apply under any condition.
         </section>
       </div>
-      <div slot="modal-footer" :class="{'modal-footer': true, 'alert': modalDirty}">
-        {{ modalDirty ? 'You have unsaved changes!' : null }}
+      <div slot="modal-footer" :class="{'modal-footer': true, 'modal-alert': modalDirty}">
+        <span v-if="modalDirty" class="modal-alert-message">You have unsaved changes!</span>
         <button type="button" class="btn btn-secondary js-modal-cancel" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
         <button type="button" class="btn btn-primary js-modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
       </div>
