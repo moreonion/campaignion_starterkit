@@ -41,7 +41,7 @@ projects[entity][version] = 1.7
 
 projects[entityreference][version] = 1.1
 
-projects[features][version] = 2.8
+projects[features][version] = 2.10
 
 projects[field_collection][version] = 1.0-beta11
 ; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
@@ -182,7 +182,7 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.0-rc1
+projects[ultimate_cron][version] = 2.0-rc2
 
 projects[uuid][version] = 1.0-beta1
 
