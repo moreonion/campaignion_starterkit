@@ -54,10 +54,8 @@ class MessageEndpointTest extends \DrupalWebTestCase {
       ['id' => $tpl2->id, 'subject' => 'Was second is now third'],
     ]])['messageSelection'];
 
-    $a_messages = [];
     $a_subjects = [];
     foreach ($answer as $m) {
-      $a_messages[] = ['id' => $m['id'], 'subject' => $m['message']['subject']];
       $a_subjects[] = $m['message']['subject'];
     }
     $this->assertEqual([
@@ -66,6 +64,18 @@ class MessageEndpointTest extends \DrupalWebTestCase {
       'Was second is now third',
     ], $a_subjects);
     $this->assertEqual($tpl2->id, $answer[2]['id']);
+
+    $new_tpls = array_values(MessageTemplate::byNid($fakenode->nid));
+    $s_subjects = [];
+    foreach ($new_tpls as $m) {
+      $s_subjects[] = $m->subject;
+    }
+    $this->assertEqual([
+      'New first',
+      'Was first is now second',
+      'Was second is now third',
+    ], $s_subjects);
+    $this->assertEqual($tpl2->id, $new_tpls[2]->id);
   }
 
   public function test_put_exchangeFilter() {
