@@ -52,17 +52,21 @@ class MessageTemplate extends Model {
     }
     $w = 0;
     $filters = [];
-    foreach ($new_filters as $f) {
-      if (!($f instanceof Filter)) {
+
+    foreach ($new_filters as $nf) {
+      if ($nf instanceof Filter) {
+        $f = $nf;
+      }
+      else {
         // Reuse filter objects if 'id' is passed and found.
-        if (isset($f['id']) && isset($old_filters[$f['id']])) {
-          $f = $old_filters[$f['id']];
-          $f->setData($f);
+        if (isset($nf['id']) && isset($old_filters[$nf['id']])) {
+          $f = $old_filters[$nf['id']];
+          $f->setData($nf);
           unset($old_filters[$f->id]);
         }
         // Create a new filter object.
         else {
-          $f = Filter::fromArray($f);
+          $f = Filter::fromArray($nf);
         }
       }
       $f->message_id = $this->id;

@@ -38,7 +38,7 @@ class MessageEndpointTest extends \DrupalWebTestCase {
   }
 
   public function test_put_withExistingData() {
-    $tpl1 = new Messagetemplate(['nid' => 1, 'subject' => 'First']);
+    $tpl1 = new Messagetemplate(['nid' => 1, 'subject' => 'First', 'filters' => [['type' => 'test', 'test' => 1]]]);
     $tpl2 = new Messagetemplate(['nid' => 1, 'subject' => 'Second', 'weight' => 1]);
     $tpl3 = new Messagetemplate(['nid' => 1, 'subject' => 'Third', 'weight' => 2]);
     $tpl1->save(); $tpl2->save(); $tpl3->save();
@@ -50,7 +50,7 @@ class MessageEndpointTest extends \DrupalWebTestCase {
 
     $answer = $endpoint->put(['messageSelection' => [
       ['subject' => 'New first'],
-      ['id' => $tpl1->id, 'subject' => 'Was first is now second'],
+      ['id' => $tpl1->id, 'subject' => 'Was first is now second', 'filters' => [['id' => $tpl1->filters[0]->id, 'type' => 'test', 'test' => 1]]],
       ['id' => $tpl2->id, 'subject' => 'Was second is now third'],
     ]])['messageSelection'];
 
