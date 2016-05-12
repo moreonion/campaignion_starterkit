@@ -37,12 +37,12 @@
   },
   "scripts": {
     "build-scripts": "NODE_ENV=production browserify -t vueify -e ui_src/main.js -p [minifyify --no-map] -o js/messages_widget.js",
-    "compile-css-min": "node-sass -x -q --output-style compressed --include-path node_modules/bootstrap/scss css/scss/messages_widget.scss css/messages_widget.min.css",
+    "compile-css-min": "node-sass -x -q --output-style compressed --include-path node_modules/bootstrap/scss --include-path node_modules/dragula/dist css/scss/messages_widget.scss css/messages_widget.min.css",
     "post-css": "postcss -c postcss.options.json",
     "build": "npm run build-scripts && npm run compile-css-min && npm run post-css",
     "watch-scripts": "watchify -v -t vueify -e ui_src/main.js -o js/messages_widget.js",
-    "watch-css": "node-sass -w -x -q --output-style expanded --include-path node_modules/bootstrap/scss css/scss/messages_widget.scss css/messages_widget.css",
-    "watch-css-min": "node-sass -w -x -q --output-style compressed --include-path node_modules/bootstrap/scss css/scss/messages_widget.scss css/messages_widget.min.css",
+    "watch-css": "node-sass -w -x -q --output-style expanded --include-path node_modules/bootstrap/scss --include-path node_modules/dragula/dist css/scss/messages_widget.scss css/messages_widget.css",
+    "watch-css-min": "node-sass -w -x -q --output-style compressed --include-path node_modules/bootstrap/scss --include-path node_modules/dragula/dist css/scss/messages_widget.scss css/messages_widget.min.css",
     "watch": "npm run watch-scripts & npm run watch-css & npm run watch-css-min",
     "test": "./node_modules/karma/bin/karma start"
   },
