@@ -48,18 +48,44 @@
   margin-bottom: 0.4rem;
 }
 
-.e2tmw .btn {
+.e2tmw .btn, .e2tmw .btn:focus, .e2tmw .btn:hover, .e2tmw .btn-secondary:focus, .e2tmw .btn-secondary:hover, .e2tmw .btn:active, .e2tmw .btn:active:focus, .e2tmw .btn-secondary:active, .e2tmw .btn-secondary:active:focus, .e2tmw .btn[disabled]:hover, .e2tmw .btn-secondary[disabled]:hover, .e2tmw .btn-secondary {
   font-size: 0.8125rem;
   font-weight: bold;
   padding: 0.5rem 1.2rem;
   color: #F7F1F1;
   background-color: #787575;
+  border: 0 none;
   border-radius: 0.45rem;
   text-shadow: 1px 1px 1px #413F3F;
+  outline: none;
 }
 
-.e2tmw .btn:focus, .e2tmw .btn:hover {
+.e2tmw .btn:focus, .e2tmw .btn-secondary:focus, .e2tmw .btn[disabled]:focus:hover, .e2tmw .btn-secondary[disabled]:focus:hover, .e2tmw .btn:hover, .e2tmw .btn-secondary:hover, .e2tmw .btn:hover:active:focus, .e2tmw .btn-secondary:hover:active:focus, .e2tmw .btn[disabled]:hover, .e2tmw .btn-secondary[disabled]:hover, .e2tmw .btn-secondary:focus, .e2tmw .btn-secondary:hover {
   background-color: #827F7F;
+}
+
+.e2tmw .btn:active, .e2tmw .btn-secondary:active, .e2tmw .btn[disabled]:active:hover, .e2tmw .btn-secondary[disabled]:active:hover, .e2tmw .btn:active:focus, .e2tmw .btn-secondary:active:focus, .e2tmw .btn-secondary:active, .e2tmw .btn-secondary:active:focus {
+  color: #222;
+  background-color: #666;
+  text-shadow: #999 0 1px 0;
+}
+
+.e2tmw .btn-primary, .e2tmw .btn-primary:focus, .e2tmw .btn-primary:hover, .e2tmw .btn-primary:active, .e2tmw .btn-primary:active:focus, .e2tmw .btn-primary:focus:active:hover, .e2tmw .btn-primary[disabled]:hover {
+  font-size: 1rem;
+  padding: 0.5rem 1.3rem 0.4rem;
+  color: #4b2217;
+  background-color: #D66540;
+  border: 1px solid #b65737;
+  text-shadow: 1px 1px 1px #EA6852;
+}
+
+.e2tmw .btn-primary:focus, .e2tmw .btn-primary:focus:active:hover, .e2tmw .btn-primary[disabled]:focus:hover, .e2tmw .btn-primary:hover, .e2tmw .btn-primary:hover:focus:active, .e2tmw .btn-primary[disabled]:hover {
+  background-color: #E07552;
+}
+
+.e2tmw .btn-primary:active, .e2tmw .btn-primary:active:focus:hover, .e2tmw .btn-primary[disabled]:active:hover, .e2tmw .btn-primary:active:focus, .e2tmw .btn-primary:focus:active:hover {
+  background-color: #B34A28;
+  text-shadow: 0 1px 0 #DC7260;
 }
 
 .e2tmw .dropdown-menu {
@@ -148,6 +174,10 @@
   width: calc(100% - 9rem);
 }
 
+.e2tmw .spec .spec-error, .e2tmw .spec .value-missing, .e2tmw .spec .filter-missing {
+  color: #d66540;
+}
+
 .e2tmw .spec.gu-mirror .card {
   border: 1px dashed #999;
   background-color: #D8D5CD;
@@ -200,4 +230,103 @@
 
 .e2tmw .modal-content .modal-footer.modal-alert .modal-alert-message {
   margin-right: 1rem;
+}
+
+.e2tmw .filter-editor .filters .filter {
+  margin-bottom: 0.8rem;
+  padding-left: 1rem;
+  background-color: #EAE6DE;
+}
+
+.e2tmw .filter-editor .filters .filter * {
+  font-size: 0.8125rem;
+}
+
+.e2tmw .filter-editor .filters .filter .btn, .e2tmw .filter-editor .filters .filter .btn-secondary:focus, .e2tmw .filter-editor .filters .filter .btn-secondary:hover, .e2tmw .filter-editor .filters .filter .btn-secondary:active {
+  padding: 0.4rem 0.3rem 0.35rem 0.6rem;
+  color: #514f4f;
+  background: #F5F1E8;
+  font-weight: normal;
+  text-shadow: none;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.e2tmw .filter-editor .filters .filter .btn:focus, .e2tmw .filter-editor .filters .filter .btn-secondary:focus, .e2tmw .filter-editor .filters .filter .btn:hover, .e2tmw .filter-editor .filters .filter .btn-secondary:hover {
+  background-color: #D6D2CC;
+}
+
+.e2tmw .filter-editor .filters .filter .dropdown-item:focus, .e2tmw .filter-editor .filters .filter .dropdown-item:hover {
+  color: #514f4f;
+  background-color: #D6D2CC;
+}
+
+.e2tmw .filter-editor .filters .filter.form-inline .form-control {
+  display: inline-block;
+  width: 40%;
+  vertical-align: baseline;
+  margin-bottom: 0;
+}
+
+.e2tmw .filter-editor .filters .filter .remove-filter {
+  position: absolute;
+  right: 0.8rem;
+  top: 1rem;
+  color: #d66540;
+}
+
+.e2tmw .filter-editor .filters .filter .remove-filter:before {
+  content: "";
+  font-family: "icons";
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  margin-left: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.e2tmw .filter-editor .filters .filter .remove-filter:focus, .e2tmw .filter-editor .filters .filter .remove-filter:hover {
+  text-decoration: none;
+}
+
+.e2tmw .filter-editor .filters .filter .remove-filter > span {
+  display: none;
+}
+
+.e2tmw .prefill-message {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.e2tmw .tokens-list .table {
+  border: 0 none;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+}
+
+.e2tmw .tokens-list .table thead th {
+  background-color: transparent;
+  font-size: 0.7rem;
+}
+
+.e2tmw .tokens-list .table thead .category-title {
+  font-weight: bold;
+}
+
+.e2tmw .tokens-list .table thead .category-description {
+  font-weight: normal;
+}
+
+.e2tmw .tokens-list .table:last-of-type {
+  margin-bottom: 1rem;
 }
