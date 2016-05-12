@@ -24,14 +24,14 @@
         <v-select :value.sync="filter.operator" :options="operatorOptions" :close-on-select="true"></v-select>
 
         <template v-if="filter.operator == 'regexp'">
-          /<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">/
+          /&nbsp;<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">&nbsp;/
         </template>
         <template v-else>
-          <v-select v-if="filter.attributeName == 'party'" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
+          <v-select v-if="filter.attributeName == 'political_affiliation'" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
           <input v-else class="form-control" type="text" v-model="filter.value">
         </template>
 
-        <a href="#" @click="removeFilter(filter)">Delete</a>
+        <a href="#" @click="removeFilter(filter)" class="remove-filter" title="Remove filter"><span>Delete</span></a>
 
       </li>
     </ul>

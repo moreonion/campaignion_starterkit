@@ -1,12 +1,18 @@
 <template>
   <section class="tokens-list">
-    <ul class="token-categories">
-      <li v-for="cat in tokenCategories">
-        <a href="#" @mousedown.prevent="toggle($index)" @click.prevent>
-          <span class="category-expand">{{ expanded[$index] ? '-' : '+' }}</span>
-          <strong class="category-title">{{{ cat.title }}}</strong>
-        </a>
-        <span class="category-description">{{{ cat.description }}}</span>
+      <table v-for="cat in tokenCategories" class="table table-sm table-hover">
+        <thead>
+          <tr class="token-category">
+            <th colspan="2">
+              <a href="#" @mousedown.prevent="toggle($index)" @click.prevent>
+                <span class="category-expand">{{ expanded[$index] ? '-' : '+' }}</span>
+                <strong class="category-title">{{{ cat.title }}}</strong>
+              </a>
+            </th>
+            <th class="category-description">{{{ cat.description }}}</th>
+          </tr>
+        </thead>
+        <!--
         <ul v-if="cat.tokens.length && expanded[$index]" class="tokens">
           <li v-for="token in cat.tokens">
             <span class="token-title">{{{ token.title }}}</span>
@@ -16,8 +22,19 @@
             <span class="token-description">{{{ token.description }}}</span>
           </li>
         </ul>
-      </li>
-    </ul>
+-->
+
+        <tbody v-if="cat.tokens.length && expanded[$index]">
+          <tr v-for="token in cat.tokens">
+            <td class="token-title">{{{ token.title }}}</td>
+            <td class="token-token">
+              <a href="#" @mousedown.prevent="insert(token.token)" @click.prevent title="Insert token at cursor position">{{ token.token }}</a>
+            </td>
+            <td class="token-description">{{{ token.description }}}</td>
+          </tr>
+        </tbody>
+
+      </table>
   </section>
 </template>
 

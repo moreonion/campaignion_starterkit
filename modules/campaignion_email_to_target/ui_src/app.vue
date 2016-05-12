@@ -11,7 +11,7 @@
             <div class="spec-info">
               <div class="spec-label">
                 <template v-if="spec.label">{{ spec.label }}</template>
-                <template v-else>[ {{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}} ]</template>
+                <template v-else>{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</template>
               </div>
               <div v-if="spec.label" class="spec-description">{{ filterStrPrefix(spec.type) }} all {{ $index !== 0 ? 'remaining ' : null}}targets where {{{ spec.filterStr }}}</div>
             </div>
@@ -65,7 +65,7 @@
           >
         </filter-editor>
         <section v-if="currentSpec.type == 'message-template'">
-          <a href="#" @click="prefillMessage()">Prefill from default message</a>
+          <a href="#" @click="prefillMessage()" class="prefill-message">Prefill from default message</a>
           <message-editor :message.sync="currentSpec.message"></message-editor>
         </section>
         <tokens-list v-if="currentSpec.type == 'message-template'" :token-categories="tokenCategories"></tokens-list>
@@ -242,9 +242,9 @@ module.exports = {
       var filterStr = ''
       filters.forEach((el, index) => {
         if (index) filterStr += ' and '
-        filterStr += '<span class="filter-condition">' + el.attributeLabel + ' ' + this.operators.get(el.operator) + ' ' + (el.value || '<span class="value-missing">[ please specify a value ]</span>') + '</span>'
+        filterStr += '<span class="filter-condition">' + el.attributeLabel + ' ' + this.operators.get(el.operator) + ' ' + (el.value || '<span class="value-missing">[&nbsp;please specify a value&nbsp;]</span>') + '</span>'
       })
-      return filterStr || '<span class="filter-missing">[ please add a filter ]</span>'
+      return filterStr || '<span class="filter-missing">[&nbsp;please add a filter&nbsp;]</span>'
     },
 
     filterStrPrefix(type) {
