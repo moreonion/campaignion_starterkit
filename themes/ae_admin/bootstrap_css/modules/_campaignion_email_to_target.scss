@@ -21,11 +21,6 @@
 
       }
     }
-
-    .spec-error, .value-missing, .filter-missing {
-      color: $red;
-    }
-
   }
 
   .spec.gu-mirror .card {
@@ -44,6 +39,14 @@
         visibility: hidden;
       }
     }
+  }
+
+  .default-message-notice .spec-errors {
+    margin-top: 1rem;
+  }
+
+  .spec-error, .value-missing, .filter-missing {
+    color: $red;
   }
 
   .show-help-text {
@@ -128,14 +131,22 @@
   .tokens-list {
     $tokens-font-size: 0.7rem;
 
-    .table {
+    .table-sm {
       border: 0 none;
       font-size: $tokens-font-size;
+      margin-bottom: 0;
+
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
 
       thead {
         th {
-          background-color: transparent;
           font-size: $tokens-font-size;
+          background-color: #EDEAE3;
+          border-bottom: inherit;
+          vertical-align: top;
+          text-shadow: none;
         }
 
         .category-title {
@@ -144,13 +155,27 @@
 
         .category-description {
           font-weight: normal;
+          width: 40%;
         }
       }
 
-      margin-bottom: 0;
+      tbody {
+        tr:hover {
+          background-color: #EDEAE3;
+        }
 
-      &:last-of-type {
-        margin-bottom: 1rem;
+        tr:last-of-type td {
+          border-bottom: 0 none;
+        }
+
+        .token-title {
+          padding-left: 0.85rem;
+          width: 30%;
+        }
+
+        .token-description {
+          width: 40%;
+        }
       }
     }
   }

@@ -41,23 +41,24 @@ label {
   font-size: $font-size-base;
   font-weight: bold;
   padding: 0.5rem 1.2rem;
-  color: $btn-color;
-  background-color: $btn-bg;
+  color: $btn-secondary-color;
+  background-color: $btn-secondary-bg;
   border: 0 none;
-  border-radius: $btn-border-radius;
-  text-shadow: $btn-text-shadow;
+  border-radius: $btn-secondary-border-radius;
+  text-shadow: $btn-secondary-text-shadow;
   outline: none;
 
   &:focus, &:hover {
-    @extend .btn;
-    background-color: $btn-hover-bg;
+    color: $btn-secondary-color;
+    background-color: $btn-secondary-hover-bg;
+    outline: none;
   }
 
   &:active, &:active:focus {
-    @extend .btn;
     color: #222;
     background-color: #666;
-    text-shadow: #999 0 1px 0;
+    text-shadow: 0 1px 0 #999;
+    outline: none;
   }
 
   &[disabled]:hover {
@@ -68,20 +69,23 @@ label {
 .btn-primary {
   font-size: 1rem;
   padding: 0.5rem 1.3rem 0.4rem;
-  color: #4b2217;
-  background-color: #D66540;
-  border: 1px solid #b65737;
-  text-shadow: 1px 1px 1px #EA6852;
+  color: $btn-primary-color;
+  background-color: $btn-primary-bg;
+  border: $btn-primary-border;
+  text-shadow: $btn-primary-text-shadow;
 
   &:focus, &:hover {
-    @extend .btn-primary;
-    background-color: #E07552;
+    color: $btn-primary-color;
+    background-color: $btn-primary-hover-bg;
+    border: $btn-primary-border;
+    outline: none;
   }
 
   &:active, &:active:focus, &:focus:active:hover {
-    @extend .btn-primary;
     background-color: #B34A28;
+    border: $btn-primary-border;
     text-shadow: 0 1px 0 #DC7260;
+    outline: none;
   }
 
   &[disabled]:hover {
@@ -93,7 +97,7 @@ label {
   min-width: 100%;
   margin-top: 2px;
   border: 0 none;
-  border-radius: $btn-border-radius;
+  border-radius: $btn-secondary-border-radius;
   background-color: $dropdown-bg;
 }
 
