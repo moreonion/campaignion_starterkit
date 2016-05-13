@@ -17911,7 +17911,11 @@ module.exports = {
       function forceSubmit() {
         $(window).off('beforeunload');
         $(e.currentTarget).off('submit');
-        $clickedButton.prop('disabled', false).off('click').click();
+        $clickedButton.prop('disabled', false).off('click');
+        // let firefox catch up with rendering the button
+        setTimeout(function () {
+          $clickedButton.click();
+        }, 0);
       }
 
       // If Back button was hit
