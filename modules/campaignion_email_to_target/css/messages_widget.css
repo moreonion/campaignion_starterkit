@@ -4583,9 +4583,16 @@
   font-weight: bold;
 }
 
-.e2tmw .spec .spec-error,
-.e2tmw .spec .value-missing,
-.e2tmw .spec .filter-missing {
+@media screen and (max-width: 768px) {
+  .e2tmw .spec-notice {
+    margin-top: -0.7rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.e2tmw .spec-error,
+.e2tmw .value-missing,
+.e2tmw .filter-missing {
   color: red;
 }
 

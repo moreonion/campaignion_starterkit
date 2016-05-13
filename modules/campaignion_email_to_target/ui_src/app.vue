@@ -5,7 +5,7 @@
 
     <ul v-dragula="specs" :dragula-options="{revertOnSpill: true, mirrorContainer: $el}" class="specs">
       <li v-for="spec in specs" class="spec row">
-        <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="col-md-9 col-lg-8 col-xl-6">
           <div class="card">
             <span dragula-handle></span>
             <div class="spec-info">
@@ -27,7 +27,7 @@
             </dropdown>
           </div>
         </div>
-        <div class="spec-notice col-sm-12 col-md-4 col-lg-6">
+        <div class="spec-notice col-md-3 col-lg-4 col-xl-6">
           <ul class="spec-errors">
             <li v-for="error in spec.errors" class="spec-error">{{ error.message }}</li>
           </ul>
@@ -36,16 +36,21 @@
     </ul>
 
     <div class="row">
-      <message-editor :message.sync="defaultMessage.message" class="col-sm-12 col-md-8 col-lg-6">
+      <message-editor :message.sync="defaultMessage.message" class="col-md-9 col-lg-8 col-xl-6">
         <legend slot="legend">{{ specs.length ? 'Message to all remaining targets' : 'Default message that will be sent to target(s)' }}</legend>
       </message-editor>
-      <div class="spec-notice col-sm-12 col-md-4 col-lg-6">
+      <div class="default-message-notice col-md-3 col-lg-4 col-xl-6">
         <ul class="spec-errors">
           <li v-for="error in defaultMessageErrors" class="spec-error">{{ error.message }}</li>
         </ul>
       </div>
     </div>
-    <tokens-list :token-categories="tokenCategories"></tokens-list>
+
+    <div class="row">
+      <div class="col-md-9 col-lg-8 col-xl-6">
+        <tokens-list :token-categories="tokenCategories"></tokens-list>
+      </div>
+    </div>
 
     <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom">
       <div slot="modal-header" class="modal-header">

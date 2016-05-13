@@ -22,12 +22,19 @@ h3 {
       font-weight: bold;
     }
   }
+}
 
-  .spec-error,
-  .value-missing,
-  .filter-missing {
-    color: red;
+@media screen and (max-width: #{map-get($grid-breakpoints, 'md')}) {
+  .spec-notice {
+    margin-top: -0.7rem;
+    margin-bottom: 0.5rem;
   }
+}
+
+.spec-error,
+.value-missing,
+.filter-missing {
+  color: red;
 }
 
 .filter-editor {

@@ -1,11 +1,11 @@
 <template>
   <section class="tokens-list">
-      <table v-for="cat in tokenCategories" class="table table-sm table-hover">
+      <table v-for="cat in tokenCategories" class="table table-sm">
         <thead>
           <tr class="token-category">
             <th colspan="2">
               <a href="#" @mousedown.prevent="toggle($index)" @click.prevent>
-                <span class="category-expand">{{ expanded[$index] ? '-' : '+' }}</span>
+                <span class="category-expand">{{ expanded[$index] ? '–' : '+' }}</span>
                 <strong class="category-title">{{{ cat.title }}}</strong>
               </a>
             </th>
