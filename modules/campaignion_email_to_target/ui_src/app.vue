@@ -54,7 +54,7 @@
 
     <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom">
       <div slot="modal-header" class="modal-header">
-        <button type="button" class="close" @click="tryCloseModal" :disabled="modalDirty"><span>&times;</span></button>
+        <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
       </div>
       <div slot="modal-body" class="modal-body">
@@ -82,7 +82,7 @@
       </div>
       <div slot="modal-footer" :class="{'modal-footer': true, 'modal-alert': modalDirty}">
         <span v-if="modalDirty" class="modal-alert-message">You have unsaved changes!</span>
-        <button type="button" class="btn btn-secondary js-modal-cancel" @click="tryCloseModal">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
+        <button type="button" class="btn btn-secondary js-modal-cancel" @click="tryCloseModal({button: 'cancel'})">{{ modalDirty ? 'Discard my changes' : 'Cancel' }}</button>
         <button type="button" class="btn btn-primary js-modal-save" :disabled="currentSpecIsEmpty" @click="updateSpec">Done</button>
       </div>
     </modal>
@@ -211,24 +211,37 @@ module.exports = {
       this.$refs.specModal.$broadcast('collapseHelpText')
       this.$nextTick(function() {
         this.$el.querySelector('.modal-dialog input').focus()
+        this.$refs.specModal.$el.scrollTop = 0
       })
     },
 
-    tryCloseModal() {
+    tryCloseModal(options) {
       if (!this.showSpecModal) return
       // any changes?
       if ( this.currentSpecIndex !== -1 && isEqual(this.currentSpec, this.specs[this.currentSpecIndex])
-        || this.currentSpecIndex === -1 && this.currentSpecIsEmpty || this.modalDirty ) {
+        || this.currentSpecIndex === -1 && this.currentSpecIsEmpty
+        || (this.modalDirty && options && options.button == 'cancel') ) {
         // no changes, allow to close modal
         this.hideModal()
       } else {
         // there are unsaved changes, alert!
         this.modalDirty = true
+        this.scrollTo('.js-modal-cancel', '.modal.in')
       }
     },
 
     hideModal() {
       this.showSpecModal = false
+    },
+
+    scrollTo(el, container) {
+      var $target = $(el)
+      var $container = container ? $(container) : $('html, body')
+      if ($target.length) {
+        $container.animate({
+          scrollTop: $target.offset().top
+        }, 400)
+      }
     },
 
     prefillMessage() {
