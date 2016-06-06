@@ -140,9 +140,9 @@ class Component {
     }
     catch (\Exception $e) {
       watchdog_exception('campaignion_email_to_target', $e);
-      $element['#title'] = t('Service temporary unavailable');
+      $element['#title'] = t('Service temporarily unavailable');
       $element['error'] = [
-        '#markup' => t('We are sorry! The service is temporary unavailable. The administrators have been informed. Please try again in a few minutes …'),
+        '#markup' => t('We are sorry! The service is temporarily unavailable. The administrators have been informed. Please try again in a few minutes …'),
       ];
       $element['#attributes']['class'][] = 'email-to-target-error';
     }
