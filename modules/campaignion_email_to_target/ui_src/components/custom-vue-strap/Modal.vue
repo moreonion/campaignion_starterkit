@@ -99,7 +99,7 @@ import EventListener from './utils/EventListener.vue'
           setTimeout(()=> el.classList.add('in'), 0)
           body.classList.add('modal-open')
           if (scrollBarWidth !== 0) {
-            body.style.paddingRight = scrollBarWidth + 'px'
+            body.style.right = scrollBarWidth + 'px'
           }
           /*
           if (this.backdrop) {
@@ -114,7 +114,7 @@ import EventListener from './utils/EventListener.vue'
           setTimeout(()=> {
             el.style.display = 'none'
             body.classList.remove('modal-open')
-            body.style.paddingRight = '0'
+            body.style.right = '0'
           }, 300)
         }
       }, { immediate: true })
@@ -140,7 +140,8 @@ import EventListener from './utils/EventListener.vue'
 <style>
 body.modal-open {
   position: fixed;
-  width: 100%;
+  left: 0;
+  right: 0;
 }
 body.modal-open .modal {
   overflow-x: hidden;
