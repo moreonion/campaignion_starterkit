@@ -17613,7 +17613,6 @@ exports.insert = function (css) {
 }
 
 },{}],230:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("\n")
 'use strict';
 
 var _stringify = require('babel-runtime/core-js/json/stringify');
@@ -17658,7 +17657,7 @@ module.exports = {
       hardValidation: false,
       showSpecModal: false, // show the modal to edit a specification
       modalDirty: false, // true if user edited a field in the modal and tried to cancel once
-      currentSpecIndex: -1, // the item in the specs array that is currently edited
+      currentSpecIndex: -1, // the item in the specs array that is currently edited or -1 for a new item
       currentSpec: {}, // the specification that is currently edited
       operators: new _map2.default([['==', 'is'], ['!=', 'is not'], ['regexp', 'matches']])
     };
@@ -17886,15 +17885,12 @@ module.exports = {
     unsavedChanges: function unsavedChanges() {
       for (var i = 0, j = this.specs.length; i < j; i++) {
         if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
-          // console.log('unsaved ' + i, omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))
           return true;
         }
       }
       if (!isEqual(omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))) {
-        // console.log('unsaved default', omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))
         return true;
       }
-      // console.log('everything saved')
       return false;
     }
   },
@@ -17904,11 +17900,6 @@ module.exports = {
   },
 
   created: function created() {
-    // stub until campaignion is ready
-    if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
-      Drupal.settings.campaignion_email_to_target = require('../ui_test/data/example-data.js');
-    }
-
     // Initialize data
     this.parseData(Drupal.settings.campaignion_email_to_target);
     this.validateSpecs();
@@ -18015,9 +18006,6 @@ module.exports = {
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click();
       }
     });
-  },
-  beforeDestroy: function beforeDestroy() {
-    $(document).off("keypress.messages-widget");
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -18027,17 +18015,13 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   var id = "/home/jo/mo/drupal/campaignion_starterkit/modules/campaignion_email_to_target/ui_src/app.vue"
-  module.hot.dispose(function () {
-    require("vueify-insert-css").cache["\n"] = false
-    document.head.removeChild(__vueify_style__)
-  })
   if (!module.hot.data) {
     hotAPI.createRecord(id, module.exports)
   } else {
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"../ui_test/data/example-data.js":245,"./components/custom-vue-strap/Dropdown.vue":231,"./components/custom-vue-strap/Modal.vue":232,"./components/filter-editor.vue":236,"./components/message-editor.vue":237,"./components/shared/alert.vue":238,"./components/tokens-list.vue":240,"./mixins/defaults.vue":242,"./mixins/utils.vue":243,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":176,"lodash/isEqual":184,"lodash/omit":196,"vue":228,"vue-hot-reload-api":203,"vueify-insert-css":229}],231:[function(require,module,exports){
+},{"./components/custom-vue-strap/Dropdown.vue":231,"./components/custom-vue-strap/Modal.vue":232,"./components/filter-editor.vue":236,"./components/message-editor.vue":237,"./components/shared/alert.vue":238,"./components/tokens-list.vue":240,"./mixins/defaults.vue":242,"./mixins/utils.vue":243,"babel-runtime/core-js/json/stringify":2,"babel-runtime/core-js/map":3,"babel-runtime/core-js/object/assign":5,"lodash/find":176,"lodash/isEqual":184,"lodash/omit":196,"vue":228,"vue-hot-reload-api":203}],231:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18836,7 +18820,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <section class=\"tokens-list\">\n      <table v-for=\"cat in tokenCategories\" class=\"table table-sm\">\n        <thead>\n          <tr class=\"token-category\">\n            <th colspan=\"2\">\n              <a href=\"#\" @mousedown.prevent=\"toggle($index)\" @click.prevent=\"\">\n                <span class=\"category-expand\">{{ expanded[$index] ? '–' : '+' }}</span>\n                <strong class=\"category-title\">{{{ cat.title }}}</strong>\n              </a>\n            </th>\n            <th class=\"category-description\">{{{ cat.description }}}</th>\n          </tr>\n        </thead>\n        <!--\n        <ul v-if=\"cat.tokens.length && expanded[$index]\" class=\"tokens\">\n          <li v-for=\"token in cat.tokens\">\n            <span class=\"token-title\">{{{ token.title }}}</span>\n            <span class=\"token-token\">\n              <a href=\"#\" @mousedown.prevent=\"insert(token.token)\" @click.prevent title=\"Insert token at cursor position\">{{ token.token }}</a>\n            </span>\n            <span class=\"token-description\">{{{ token.description }}}</span>\n          </li>\n        </ul>\n-->\n\n        <tbody v-if=\"cat.tokens.length &amp;&amp; expanded[$index]\">\n          <tr v-for=\"token in cat.tokens\">\n            <td class=\"token-title\">{{{ token.title }}}</td>\n            <td class=\"token-token\">\n              <a href=\"#\" @mousedown.prevent=\"insert(token.token)\" @click.prevent=\"\" title=\"Insert token at cursor position\">{{ token.token }}</a>\n            </td>\n            <td class=\"token-description\">{{{ token.description }}}</td>\n          </tr>\n        </tbody>\n\n      </table>\n  </section>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<section class=\"tokens-list\">\n    <table v-for=\"cat in tokenCategories\" class=\"table table-sm\">\n      <thead>\n        <tr class=\"token-category\">\n          <th colspan=\"2\">\n            <a href=\"#\" @mousedown.prevent=\"toggle($index)\" @click.prevent=\"\">\n              <span class=\"category-expand\">{{ expanded[$index] ? '–' : '+' }}</span>\n              <strong class=\"category-title\">{{{ cat.title }}}</strong>\n            </a>\n          </th>\n          <th class=\"category-description\">{{{ cat.description }}}</th>\n        </tr>\n      </thead>\n      <tbody v-if=\"cat.tokens.length &amp;&amp; expanded[$index]\">\n        <tr v-for=\"token in cat.tokens\">\n          <td class=\"token-title\">{{{ token.title }}}</td>\n          <td class=\"token-token\">\n            <a href=\"#\" @mousedown.prevent=\"insert(token.token)\" @click.prevent=\"\" title=\"Insert token at cursor position\">{{ token.token }}</a>\n          </td>\n          <td class=\"token-description\">{{{ token.description }}}</td>\n        </tr>\n      </tbody>\n    </table>\n</section>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18859,11 +18843,6 @@ new Vue({
   el: '.email-to-target-messages-widget',
   components: {
     'app': App
-  },
-  http: {
-    headers: {
-//      Authorization: 'Basic YXBpOnBhc3N3b3Jk'
-    }
   }
 })
 
@@ -19015,155 +18994,4 @@ module.exports = {
 
 }
 
-},{"dragula":67}],245:[function(require,module,exports){
-module.exports = {
-  messageSelection: [
-    {
-      "id": 234598,
-      "type": "message-template",
-      "label": "foo",
-      "filters": [
-        {
-          "id": 123,
-          "type": "target-attribute",
-          "attributeName": "party",
-          "operator": "==",
-          "value": "bar"
-        }
-      ],
-      "message": {
-        "subject": "Subject of first message",
-        "header": "Header of first message",
-        "body": "body of first msg",
-        "footer": "goodbye"
-      }
-    },
-    {
-      "id": "2345",
-      "type": "exclusion",
-      "label": "foo",
-      "filters": [
-        {
-          "id": 345,
-          "type": "target-attribute",
-          "attributeName": "party",
-          "operator": "!=",
-          "value": "baz"
-        }
-      ]
-    },
-    {
-      "id": 234,
-      "type": "message-template",
-      "label": "same filter as foo",
-      "filters": [
-        {
-          "id": 4576557,
-          "type": "target-attribute",
-          "attributeName": "party",
-          "operator": "==",
-          "value": "bar"
-        },
-        {
-          "id": 1239,
-          "type": "target-attribute",
-          "attributeName": "name",
-          "operator": "!=",
-          "value": "jane"
-        }
-      ],
-      "message": {
-        "subject": "Subject of 3rd message",
-        "header": "Header of 3rd message",
-        "body": "body of 3rd msg",
-        "footer": "goodbye"
-      }
-    },
-    {
-      "id": 5678,
-      "type": "message-template",
-      "label": "same filter as message above",
-      "filters": [
-        {
-          "id": 1239654,
-          "type": "target-attribute",
-          "attributeName": "name",
-          "operator": "!=",
-          "value": "jane"
-        }
-      ],
-      "message": {
-        "subject": "Subject of 4th message",
-        "header": "Header of 4th message",
-        "body": "body of 4th msg",
-        "footer": "goodbye"
-      }
-    },
-    {
-      "id": 123,
-      "type": "message-template",
-      "label": "",
-      "filters": [],
-      "message": {
-        "subject": "default message subject",
-        "header": "default message header",
-        "body": "default message body",
-        "footer": "default message footer"
-      }
-    }
-  ],
-  targetAttributes: [
-    {
-      name: 'party',
-      label: 'Party',
-      description: 'Filter by party'
-    },
-    {
-      name: 'constituency',
-      label: 'Constituency',
-      description: 'Filter by constituency'
-    }
-  ],
-  hardValidation: true,
-  tokens: [
-    {
-      title: 'First Category',
-      description: 'this is my description (1)',
-      tokens: [
-        {
-          title: 'One',
-          description: 'first token',
-          token: '[myfirsttoken]'
-        },
-        {
-          title: 'Two',
-          description: 'second token',
-          token: '[mysecondtoken]'
-        },
-        {
-          title: 'Three',
-          description: 'third token',
-          token: '[mythirdtoken]'
-        }
-      ]
-    },
-    {
-      title: 'Second Category',
-      description: 'this is my description (2)',
-      tokens: [
-        {
-          title: 'One (2)',
-          description: 'first token',
-          token: '[myfirsttoken]'
-        },
-        {
-          title: 'Two (2)',
-          description: 'second token',
-          token: '[mysecondtoken]'
-        }
-      ]
-    }
-  ]
-}
-
-},{}]},{},[241]);
+},{"dragula":67}]},{},[241]);

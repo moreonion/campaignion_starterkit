@@ -8,10 +8,5 @@ new Vue({
   el: '.email-to-target-messages-widget',
   components: {
     'app': App
-  },
-  http: {
-    headers: {
-//      Authorization: 'Basic YXBpOnBhc3N3b3Jk'
-    }
   }
 })

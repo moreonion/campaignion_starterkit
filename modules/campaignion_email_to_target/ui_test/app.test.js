@@ -5,8 +5,7 @@ describe('app', function() {
   var Vue = require('vue');
   var app = require('../ui_src/app.vue');
 
-  Vue.use(require('vue-dnd'));
-
+  Vue.use(require('../ui_src/plugins/vue-dragula.js'));
 
   it('has initial data', function() {
     expect(typeof app.data).toBe('function');

@@ -120,7 +120,7 @@ module.exports = {
       hardValidation: false,
       showSpecModal: false,  // show the modal to edit a specification
       modalDirty: false,     // true if user edited a field in the modal and tried to cancel once
-      currentSpecIndex: -1,  // the item in the specs array that is currently edited
+      currentSpecIndex: -1,  // the item in the specs array that is currently edited or -1 for a new item
       currentSpec: {},       // the specification that is currently edited
       operators: new Map([
         ['==', 'is'],
@@ -367,15 +367,12 @@ module.exports = {
     unsavedChanges() {
       for (var i = 0, j = this.specs.length; i < j; i++) {
         if (!isEqual(omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))) {
-          // console.log('unsaved ' + i, omit(this.specs[i], ['errors', 'filterStr']), omit(initialData.specs[i], ['errors', 'filterStr']))
           return true
         }
       }
       if (!isEqual(omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))) {
-        // console.log('unsaved default', omit(this.defaultMessage, ['errors', 'filterStr']), omit(initialData.defaultMessage, ['errors', 'filterStr']))
         return true
       }
-      // console.log('everything saved')
       return false
     }
 
@@ -386,11 +383,6 @@ module.exports = {
   },
 
   created() {
-    // stub until campaignion is ready
-    if (typeof Drupal.settings.campaignion_email_to_target === 'undefined') {
-      Drupal.settings.campaignion_email_to_target = require('../ui_test/data/example-data.js')
-    }
-
     // Initialize data
     this.parseData(Drupal.settings.campaignion_email_to_target)
     this.validateSpecs()
@@ -496,14 +488,6 @@ module.exports = {
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click()
       }
     })
-  },
-
-  beforeDestroy() {
-    $(document).off("keypress.messages-widget")
   }
-
 }
 </script>
-
-<style>
-</style>

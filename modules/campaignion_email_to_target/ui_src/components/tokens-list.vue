@@ -12,18 +12,6 @@
             <th class="category-description">{{{ cat.description }}}</th>
           </tr>
         </thead>
-        <!--
-        <ul v-if="cat.tokens.length && expanded[$index]" class="tokens">
-          <li v-for="token in cat.tokens">
-            <span class="token-title">{{{ token.title }}}</span>
-            <span class="token-token">
-              <a href="#" @mousedown.prevent="insert(token.token)" @click.prevent title="Insert token at cursor position">{{ token.token }}</a>
-            </span>
-            <span class="token-description">{{{ token.description }}}</span>
-          </li>
-        </ul>
--->
-
         <tbody v-if="cat.tokens.length && expanded[$index]">
           <tr v-for="token in cat.tokens">
             <td class="token-title">{{{ token.title }}}</td>
@@ -33,7 +21,6 @@
             <td class="token-description">{{{ token.description }}}</td>
           </tr>
         </tbody>
-
       </table>
   </section>
 </template>
