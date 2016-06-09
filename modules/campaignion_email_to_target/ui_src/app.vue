@@ -339,8 +339,8 @@ module.exports = {
         this.defaultMessage = this.emptySpec('message-template')
       }
 
-      if (data.targetAttributes) this.targetAttributes = data.targetAttributes
-      if (data.tokens) this.tokenCategories = data.tokens
+      if (data.targetAttributes) this.targetAttributes = this.clone(data.targetAttributes)
+      if (data.tokens) this.tokenCategories = this.clone(data.tokens)
       if (typeof data.hardValidation !== 'undefined') this.hardValidation = data.hardValidation
 
       // add attributeLabel property to filters
