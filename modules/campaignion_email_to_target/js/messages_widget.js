@@ -7562,7 +7562,7 @@ function merge(target, source, deep) {
 },{}],228:[function(require,module,exports){
 (function (process,global){
 /*!
- * Vue.js v1.0.21
+ * Vue.js v1.0.24
  * (c) 2016 Evan You
  * Released under the MIT License.
  */
@@ -8699,8 +8699,9 @@ function query(el) {
  */
 
 function inDoc(node) {
-  var doc = document.documentElement;
-  var parent = node && node.parentNode;
+  if (!node) return false;
+  var doc = node.ownerDocument.documentElement;
+  var parent = node.parentNode;
   return doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
 }
 
@@ -9278,7 +9279,7 @@ strats.init = strats.created = strats.ready = strats.attached = strats.detached 
  */
 
 function mergeAssets(parentVal, childVal) {
-  var res = Object.create(parentVal);
+  var res = Object.create(parentVal || null);
   return childVal ? extend(res, guardArrayAssets(childVal)) : res;
 }
 
@@ -9445,7 +9446,7 @@ function mergeOptions(parent, child, vm) {
   var options = {};
   var key;
   if (child['extends']) {
-    parent = mergeOptions(parent, child['extends'], vm);
+    parent = typeof child['extends'] === 'function' ? mergeOptions(parent, child['extends'].options, vm) : mergeOptions(parent, child['extends'], vm);
   }
   if (child.mixins) {
     for (var i = 0, l = child.mixins.length; i < l; i++) {
@@ -10574,19 +10575,26 @@ function resetBatcherState() {
  */
 
 function flushBatcherQueue() {
-  runBatcherQueue(queue);
-  queue.length = 0;
-  runBatcherQueue(userQueue);
-  // user watchers triggered more internal watchers
-  if (queue.length) {
+  var _again = true;
+
+  _function: while (_again) {
+    _again = false;
+
     runBatcherQueue(queue);
+    runBatcherQueue(userQueue);
+    // user watchers triggered more watchers,
+    // keep flushing until it depletes
+    if (queue.length) {
+      _again = true;
+      continue _function;
+    }
+    // dev tool hook
+    /* istanbul ignore if */
+    if (devtools && config.devtools) {
+      devtools.emit('flush');
+    }
+    resetBatcherState();
   }
-  // dev tool hook
-  /* istanbul ignore if */
-  if (devtools && config.devtools) {
-    devtools.emit('flush');
-  }
-  resetBatcherState();
 }
 
 /**
@@ -10612,6 +10620,7 @@ function runBatcherQueue(queue) {
       }
     }
   }
+  queue.length = 0;
 }
 
 /**
@@ -10935,15 +10944,13 @@ Watcher.prototype.teardown = function () {
 var seenObjects = new _Set();
 function traverse(val, seen) {
   var i = undefined,
-      keys = undefined,
-      isA = undefined,
-      isO = undefined;
+      keys = undefined;
   if (!seen) {
     seen = seenObjects;
     seen.clear();
   }
-  isA = isArray(val);
-  isO = isObject(val);
+  var isA = isArray(val);
+  var isO = isObject(val);
   if (isA || isO) {
     if (val.__ob__) {
       var depId = val.__ob__.dep.id;
@@ -11069,10 +11076,13 @@ function stringToFragment(templateString, raw) {
 
 function nodeToFragment(node) {
   // if its a template tag and the browser supports it,
-  // its content is already a document fragment.
+  // its content is already a document fragment. However, iOS Safari has
+  // bug when using directly cloned template content with touch
+  // events and can cause crashes when the nodes are removed from DOM, so we
+  // have to treat template elements as string templates. (#2805)
+  /* istanbul ignore if */
   if (isRealTemplate(node)) {
-    trimNode(node.content);
-    return node.content;
+    return stringToFragment(node.innerHTML);
   }
   // script template
   if (node.tagName === 'SCRIPT') {
@@ -15330,7 +15340,7 @@ function extractFragment(nodes, parent) {
     var node = nodes[i];
     if (isTemplate(node) && !node.hasAttribute('v-if') && !node.hasAttribute('v-for')) {
       parent.removeChild(node);
-      node = parseTemplate(node);
+      node = parseTemplate(node, true);
     }
     frag.appendChild(node);
   }
@@ -17566,7 +17576,7 @@ function installGlobalAPI (Vue) {
 
 installGlobalAPI(Vue);
 
-Vue.version = '1.0.21';
+Vue.version = '1.0.24';
 
 // devtools global hook
 /* istanbul ignore next */

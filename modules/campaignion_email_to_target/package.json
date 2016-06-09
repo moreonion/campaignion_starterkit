@@ -3,11 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "main": "js/e2t-ui.js",
-  "dependencies": {
-    "vue": "vuejs/vue#dev",
-    "vue-resource": "^0.7.0",
-    "vue-strap": "^1.0.7"
-  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.7.6",
@@ -30,7 +25,10 @@
     "node-sass": "^3.4.2",
     "phantomjs-prebuilt": "^2.1.7",
     "postcss-cli": "^2.5.1",
+    "vue": "^1.0.24",
     "vue-hot-reload-api": "^1.3.2",
+    "vue-resource": "^0.7.0",
+    "vue-strap": "^1.0.7",
     "vueify": "^8.3.9",
     "vueify-insert-css": "^1.0.0",
     "watchify": "^3.7.0"
