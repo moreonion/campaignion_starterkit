@@ -44,5 +44,9 @@
     "watch": "npm run watch-scripts & npm run watch-css & npm run watch-css-min",
     "test": "./node_modules/karma/bin/karma start"
   },
+  "author": {
+    "name" : "Maya Kokits",
+    "email" : "maya@more-onion.com"
+  },
   "license": "GPL-3.0"
 }
