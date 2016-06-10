@@ -1,4 +1,5 @@
-module.exports = {
+var data = {
+
   messageSelection: [
     {
       "id": 234598,
@@ -8,9 +9,9 @@ module.exports = {
         {
           "id": 123,
           "type": "target-attribute",
-          "attributeName": "party",
+          "attributeName": "political_affiliation",
           "operator": "==",
-          "value": "bar"
+          "value": "Green Party"
         }
       ],
       "message": {
@@ -28,9 +29,9 @@ module.exports = {
         {
           "id": 345,
           "type": "target-attribute",
-          "attributeName": "party",
+          "attributeName": "political_affiliation",
           "operator": "!=",
-          "value": "baz"
+          "value": "Labour"
         }
       ]
     },
@@ -42,9 +43,9 @@ module.exports = {
         {
           "id": 4576557,
           "type": "target-attribute",
-          "attributeName": "party",
+          "attributeName": "political_affiliation",
           "operator": "==",
-          "value": "bar"
+          "value": "Green Party"
         },
         {
           "id": 1239,
@@ -82,7 +83,7 @@ module.exports = {
       }
     },
     {
-      "id": 123,
+      "id": 1,
       "type": "message-template",
       "label": "",
       "filters": [],
@@ -94,56 +95,9 @@ module.exports = {
       }
     }
   ],
-  targetAttributes: [
-    {
-      name: 'party',
-      label: 'Party',
-      description: 'Filter by party'
-    },
-    {
-      name: 'constituency',
-      label: 'Constituency',
-      description: 'Filter by constituency'
-    }
-  ],
-  hardValidation: true,
-  tokens: [
-    {
-      title: 'First Category',
-      description: 'this is my description (1)',
-      tokens: [
-        {
-          title: 'One',
-          description: 'first token',
-          token: '[myfirsttoken]'
-        },
-        {
-          title: 'Two',
-          description: 'second token',
-          token: '[mysecondtoken]'
-        },
-        {
-          title: 'Three',
-          description: 'third token',
-          token: '[mythirdtoken]'
-        }
-      ]
-    },
-    {
-      title: 'Second Category',
-      description: 'this is my description (2)',
-      tokens: [
-        {
-          title: 'One (2)',
-          description: 'first token',
-          token: '[myfirsttoken]'
-        },
-        {
-          title: 'Two (2)',
-          description: 'second token',
-          token: '[mysecondtoken]'
-        }
-      ]
-    }
-  ]
-}
+
+  hardValidation: true
+
+};
+
+module.exports = $.extend({}, require('./empty-data.js'), data);

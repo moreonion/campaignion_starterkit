@@ -17,10 +17,13 @@ module.exports = {
       template: '<div class="email-to-target-messages-widget e2tmw"><test></test></div>',
       components: {
         'test': app
+      },
+      ready: function() {
+        $(window).off('beforeunload') // karma does't like this event handler...
       }
     })
 
-    rootInstance = new Vue(options)
+    var rootInstance = new Vue(options)
 
     return rootInstance.$children[0]
   },

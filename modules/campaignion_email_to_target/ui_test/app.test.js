@@ -1,4 +1,4 @@
-describe('app', function() {
+describe('messages widget', function() {
   var setup = require('./test-helper.js').setup;
   var teardown = require('./test-helper.js').teardown;
 
@@ -8,26 +8,27 @@ describe('app', function() {
   Vue.use(require('../ui_src/plugins/vue-dragula.js'));
 
   it('has initial data', function() {
-    expect(typeof app.data).toBe('function');
     var data = app.data();
+
+    expect(data.specs.length).toBe(0);
+    expect(Object.getOwnPropertyNames(data.defaultMessage).length).toBe(0); // should not have properties of its own
+    expect(data.targetAttributes.length).toBe(0);
+    expect(data.tokenCategories.length).toBe(0);
+    expect(data.hardValidation).toBe(false);
+    expect(data.showSpecModal).toBe(false);
+    expect(data.modalDirty).toBe(false);
+    expect(data.currentSpecIndex).toBe(-1);
+    expect(Object.getOwnPropertyNames(data.currentSpec).length).toBe(0); // should not have properties of its own
     expect(data.operators.has('==')).toBe(true);
     expect(data.operators.has('!=')).toBe(true);
     expect(data.operators.has('regexp')).toBe(true);
-    expect(data.currentSpecIndex).toBe(-1);
-    expect(Object.getOwnPropertyNames(data.currentSpec).length).toBe(0); // should not have properties of its own
-    expect(data.modalDirty).toBe(false);
-    expect(data.showSpecModal).toBe(false);
   });
 
   describe('initialisation', function() {
     var vm, testData = require('./data/example-data.js')
 
     beforeAll(function() {
-      vm = setup(app, testData, {
-        ready: function() {
-          $(window).off('beforeunload') // karma does't like this event handler...
-        }
-      })
+      vm = setup(app, testData)
     })
 
     afterAll(function() {
@@ -36,12 +37,15 @@ describe('app', function() {
 
     it('parses bootstrapped data', function() {
       var compareSpec = testData.messageSelection[0]
-      compareSpec.filters[0].attributeLabel = 'Party'
+      compareSpec.filters[0].attributeLabel = 'Political Affiliation';
 
       expect(vm.defaultMessage.message).toEqual(testData.messageSelection[testData.messageSelection.length - 1].message)
       expect(vm.specs.length).toBe(testData.messageSelection.length - 1)
       expect(vm.specs[0]).toEqual(jasmine.objectContaining(compareSpec))
+      expect(vm.targetAttributes).toEqual(testData.targetAttributes)
+      expect(vm.tokenCategories).toEqual(testData.tokens)
       expect(vm.hardValidation).toBe(testData.hardValidation)
+      expect(vm.specs[0].filters[0].attributeLabel).toBe(compareSpec.filters[0].attributeLabel)
     });
 
     it('validates bootstrapped data', function() {
@@ -50,7 +54,8 @@ describe('app', function() {
     })
 
     it('creates filter strings for bootstrapped data', function() {
-      expect(vm.specs[0].filterStr).toBeTruthy()
+      expect(vm.specs[0].filterStr).toContain('Political Affiliation')
+      expect(vm.specs[0].filterStr).toContain('Green Party')
     })
 
     it('renders the form header', function() {
@@ -63,11 +68,7 @@ describe('app', function() {
     var vm, testData = require('./data/empty-data.js')
 
     beforeAll(function() {
-      vm = setup(app, testData, {
-        ready: function() {
-          $(window).off('beforeunload') // karma does't like this event handler...
-        }
-      })
+      vm = setup(app, testData)
     })
 
     afterAll(function() {
