@@ -23,7 +23,7 @@ class FormStep extends WebformStepUnique {
     $postcode = NULL;
     $target_selector = NULL;
     foreach ($components as $c) {
-      if ($c['type'] == 'uk_postcode' && !$postcode) {
+      if ($c['type'] == 'postcode' && !$postcode) {
         $postcode = $c;
       }
       if ($c['type'] == 'e2t_selector' && !$target_selector) {

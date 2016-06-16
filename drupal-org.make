@@ -150,6 +150,10 @@ projects[pgbar][version] = 2.0-alpha2
 
 projects[polling][version] = 1.0-beta1
 
+projects[postal_code_validation][version] = 1.4
+
+projects[postcode][version] = 1.0-rc1
+
 projects[psr0][version] = 1.4
 
 projects[recent_supporters][version] = 1.0-beta3

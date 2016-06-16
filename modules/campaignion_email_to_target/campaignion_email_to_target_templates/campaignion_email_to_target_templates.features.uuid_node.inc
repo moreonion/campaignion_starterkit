@@ -248,7 +248,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'pid' => 0,
         'form_key' => 'postcode',
         'name' => 'Postcode',
-        'type' => 'uk_postcode',
+        'type' => 'postcode',
         'value' => '',
         'extra' => array(
           'width' => '',
@@ -263,6 +263,9 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
           'conditional_values' => '',
           'field_prefix' => '',
           'field_suffix' => '',
+          'postcode_country_mode' => 'fixed',
+          'postcode_country' => 'GB',
+          'postcode_country_component' => NULL,
         ),
         'mandatory' => 1,
         'weight' => 4,

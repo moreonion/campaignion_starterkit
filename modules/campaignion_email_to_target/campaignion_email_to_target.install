@@ -66,3 +66,10 @@ function campaignion_email_to_target_enable() {
 
   variable_set('cache_class_cache_token', '\\Drupal\\campaignion_email_to_target\\NullCacheBin');
 }
+
+/**
+ * Switch from uk_postcode to postcode.
+ */
+function campaignion_email_to_target_update_1() {
+  module_enable(['postcode']);
+}
