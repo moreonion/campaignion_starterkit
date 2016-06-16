@@ -131,6 +131,7 @@ class Supporter implements ContactTypeInterface {
         $map['nachname'] = new SingleValueField('last_name');
         $map['titel'] = new WrapperField('field_title');
         $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['straße'] = new KeyedField('field_address', 'thoroughfare');
         $map['straße_und_hausnummer'] = new KeyedField('field_address', 'thoroughfare');
         $map['land'] = new KeyedField('field_address', 'country');
         $map['plz'] = new KeyedField('field_address', 'postal_code');
