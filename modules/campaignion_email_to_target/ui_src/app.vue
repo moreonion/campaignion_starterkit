@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom">
+    <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom" id="spec-modal">
       <div slot="modal-header" class="modal-header">
         <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
@@ -74,7 +74,7 @@
           <message-editor :message.sync="currentSpec.message"></message-editor>
         </section>
         <tokens-list v-if="currentSpec.type == 'message-template'" :token-categories="tokenCategories"></tokens-list>
-        <section v-if="currentSpec.type == 'exclusion' && (currentSpecIndex > 0 || (currentSpecIndex == -1 && specs.length))">
+        <section class="exclusion-warning" v-if="currentSpec.type == 'exclusion' && (currentSpecIndex > 0 || (currentSpecIndex == -1 && specs.length))">
           Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s
           filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list
           if you want it to apply under any condition.

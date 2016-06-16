@@ -1,5 +1,5 @@
 <template>
-  <v-modal :show.sync="show" effect="zoom" :small="true">
+  <v-modal :show.sync="show" effect="zoom" :small="true" id="alert-modal">
     <div slot="modal-header" class="modal-header" :style="{'display': options.title ? 'block' : 'none'}">
       <h4 class="modal-title" >{{ options.title }}</h4>
     </div>
