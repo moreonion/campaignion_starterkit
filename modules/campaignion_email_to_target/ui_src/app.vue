@@ -210,8 +210,11 @@ module.exports = {
       this.showSpecModal = true
       this.$refs.specModal.$broadcast('collapseHelpText')
       this.$nextTick(function() {
-        this.$el.querySelector('.modal-dialog input').focus()
-        this.$refs.specModal.$el.scrollTop = 0
+        var modalEl = this.$refs.specModal.$el;
+        if (modalEl) {
+          modalEl.querySelector('input').focus()
+          modalEl.scrollTop = 0
+        }
       })
     },
 
