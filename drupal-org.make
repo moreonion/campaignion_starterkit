@@ -11,7 +11,7 @@ projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.42
 
-projects[context][version] = 3.6
+projects[context][version] = 3.7
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-80-context-block-title_0.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -55,11 +55,9 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.17
+projects[form_builder][version] = 1.18
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
-; Fix: form_builder keeps stale cache. - https://drupal.org/node/2034543
-projects[form_builder][patch][] = https://www.drupal.org/files/issues/2034543-form_builder-delete-cache-when-rendering-form_builder_interface-19.patch
 
 projects[geoip_language_redirect][version] = 1.0-beta5
 
@@ -81,7 +79,7 @@ projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-f
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
 projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip-out-hook-requirements-5.patch
 
-projects[libraries][version] = 2.2
+projects[libraries][version] = 2.3
 
 projects[little_helpers][version] = 1.0
 
@@ -110,7 +108,7 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.14
+projects[metatag][version] = 1.16
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -198,7 +196,7 @@ projects[uuid_features][download][revision] = 2360332099cdf36479915d4011a9bdb96a
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.13
+projects[views][version] = 3.14
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 3.24
@@ -241,7 +239,7 @@ projects[weight][version] = 2.5
 
 projects[wysiwyg][version] = 2.2
 
-projects[xmlsitemap][version] = 2.2
+projects[xmlsitemap][version] = 2.3
 
 projects[xautoload][version] = 4.5
 
