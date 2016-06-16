@@ -81,7 +81,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.0
+projects[little_helpers][version] = 1.1
 
 projects[logintoboggan][version] = 1.5
 
@@ -154,7 +154,7 @@ projects[postcode][version] = 1.0-rc1
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.0-beta3
+projects[recent_supporters][version] = 1.0-rc1
 
 projects[redhen][version] = 1.11
 
