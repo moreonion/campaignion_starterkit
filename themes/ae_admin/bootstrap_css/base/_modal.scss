@@ -1,0 +1,27 @@
+.modal-content {
+
+  border-radius: $border-radius;
+
+  .modal-header {
+    background-color: #F5F1E8;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+
+    h4 {
+      font-size: $font-size-lg;
+      font-weight: bold;
+      color: #65635f;
+    }
+  }
+
+  .modal-body {
+    background-color: #F8F7F4;
+  }
+
+  .modal-footer {
+    background-color: #F8F7F4;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+}

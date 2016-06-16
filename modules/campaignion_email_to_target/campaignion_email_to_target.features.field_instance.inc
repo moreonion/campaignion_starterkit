@@ -109,66 +109,6 @@ function campaignion_email_to_target_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-email_to_target-field_email_to_target_message'.
-  $field_instances['node-email_to_target-field_email_to_target_message'] = array(
-    'bundle' => 'email_to_target',
-    'custom_add_another' => '',
-    'custom_remove' => '',
-    'default_value' => array(
-      0 => array(
-        'subject' => '',
-        'header' => 'Dear [email-to-target:salutation],
-',
-        'message' => '',
-        'footer' => '
-
-Yours sincerely,
-[webform-tokens:val-first_name] [webform-tokens:val-last_name]
-[webform-tokens:val-street_address]
-[webform-tokens:val-postcode]',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'cck_blocks' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_email_to_target_message',
-    'label' => 'Message',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'campaignion_email_to_target',
-      'settings' => array(),
-      'type' => 'email_to_target_message',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance:
   // 'node-email_to_target-field_email_to_target_options'.
   $field_instances['node-email_to_target-field_email_to_target_options'] = array(
     'bundle' => 'email_to_target',

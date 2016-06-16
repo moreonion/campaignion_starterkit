@@ -44,6 +44,8 @@ stylesheets[screen][] = modules_css/jquery.listdropdown.css
 stylesheets[screen][] = modules_css/ae_itoggle.css
 stylesheets[screen][] = modules_css/jquery.fs.selecter.css
 
+; Bootstrap 4 overrides, currently for email_to_target messages step
+stylesheets[screen][] = bootstrap_css/main.css
 
 ; Support shortcut module links
 settings[shortcut_module_link] = 1

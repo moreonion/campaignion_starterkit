@@ -14,7 +14,61 @@ use \Drupal\campaignion_action\Loader;
 use \Drupal\campaignion_activity\ActivityInterface;
 use \Drupal\campaignion_activity\WebformSubmission;
 use \Drupal\campaignion_email_to_target\Component;
+use \Drupal\campaignion_email_to_target\MessageEndpoint;
 use \Drupal\campaignion_email_to_target\Api\Client;
+
+/**
+ * hook_permission().
+ */
+function campaignion_email_to_target_permission() {
+  $p['view email_to_target messages'] = [
+    'title' => t('View Email-to-target messages'),
+    'description' => t('View and export the contents of messages sent to targets.'),
+  ];
+  return $p;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function campaignion_email_to_target_menu() {
+  $menu['node/%node/email-to-target-messages'] = [
+    'page callback' => 'campaignion_email_to_target_edit_messages',
+    'page arguments' => [1],
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'delivery callback' => 'campaignion_email_to_target_deliver_json',
+  ];
+  return $menu;
+}
+
+function campaignion_email_to_target_deliver_json($result) {
+  switch ($result) {
+    case MENU_NOT_FOUND:
+      drupal_add_http_header('Status', '404 Not found');
+      return;
+    case MENU_ACCESS_DENIED:
+      drupal_add_http_header('Status', '403 Forbidden');
+      return;
+    case MENU_SITE_OFFLINE:
+      drupal_add_http_header('Status', '503 Service unavailable');
+      return;
+  }
+  echo drupal_json_output($result);
+  drupal_page_footer();
+}
+
+function campaignion_email_to_target_edit_messages($node) {
+  $endpoint = new MessageEndpoint($node);
+  switch ($_SERVER['REQUEST_METHOD']){
+    case 'GET':
+      return $endpoint->get();
+    case 'PUT':
+      $data = drupal_json_decode(file_get_contents('php://input'));
+      return $endpoint->put($data);
+  }
+  return MENU_ACCESS_DENIED;
+}
 
 /**
  * Implements hook_campaignion_action_info().

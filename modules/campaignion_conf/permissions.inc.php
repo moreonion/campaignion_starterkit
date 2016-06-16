@@ -37,18 +37,11 @@ $matrix = array(
   'contextual' => array(
     'access contextual links'                    => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
-  // Dashboard
-  'dashboard' => array(
-    'access dashboard'                           => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
+  // Email-to-Target actions
+  'campaignion_email_to_target' => array(
+    'view email_to_target messages'              => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
-  // Disable messages
-  'disable_messages' => array(
-    'view status messages'                       => array(TRUE,             TRUE,                 TRUE,            NULL,     NULL,        ),
-    'view warning messages'                      => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
-    'view error messages'                        => array(TRUE,             TRUE,                 NULL,            NULL,     NULL,        ),
-    'exclude from message filtering'             => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
-  ),
- // Features
+  // Features
   'features' => array(
     'administer features'                        => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),
     'manage features'                            => array(NULL,             NULL,                 NULL,            NULL,     NULL,        ),

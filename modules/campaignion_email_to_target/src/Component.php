@@ -79,7 +79,13 @@ class Component {
           if (!empty($test_mode)) {
             $target['email'] = $email;
           }
-          $message = $action->getMessage();
+          $message = $action->getMessage($target, $submission_o);
+          if (!$message) {
+            // No message for this target. Either because it was excluded or
+            // none of the message filters did match (ie. there was no default
+            // message).
+            continue;
+          }
           $message->replaceTokens($target, $submission_o->unwrap());
           $t = [
             '#type' => 'container',

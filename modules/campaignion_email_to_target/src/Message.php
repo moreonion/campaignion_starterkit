@@ -19,8 +19,14 @@ class Message {
     }
   }
 
-  public static function fromFieldItem($item) {
-    return new static($item + [
+  public static function fromTemplate(MessageTemplate $t) {
+    $data = [
+      'subject' => $t->subject,
+      'header' => $t->header,
+      'message' => $t->message,
+      'footer' => $t->footer,
+    ];
+    return new static($data + [
       'from' => '[webform-tokens:val-first_name] [webform-tokens:val-last_name] <[webform-tokens:val-email]>',
       'to' => '[email-to-target:title] [email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>',
     ]);

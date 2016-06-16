@@ -1,0 +1,13 @@
+{
+  "use": ["autoprefixer"],
+  "input": "bootstrap_css/main.css",
+  "replace": true,
+  "local-plugins": true,
+  "map": {
+    "inline": false
+  },
+  "autoprefixer": {
+    "browsers": ["> 5%", "IE 9"],
+    "remove": false
+  }
+}

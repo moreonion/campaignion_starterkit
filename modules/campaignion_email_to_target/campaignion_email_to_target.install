@@ -6,26 +6,111 @@
  */
 
 /**
+ * Implements hook_schema()
+ */
+function campaignion_email_to_target_schema() {
+  $tables['campaignion_email_to_target_messages'] = [
+    'description' => 'Message templates for email to target actions',
+    'fields' => [
+      'id' => [
+        'description' => 'Message ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => "Action node ID",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'weight' => [
+        'description' => 'Weight value used for sorting messages',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Message type',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'label' => [
+        'description' => 'Message label',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'subject' => [
+        'description' => 'Message subject',
+        'type' => 'varchar',
+        'length' => 256,
+      ],
+      'header' => [
+        'description' => 'Message header',
+        'type' => 'text',
+      ],
+      'message' => [
+        'description' => 'Message content',
+        'type' => 'text',
+      ],
+      'footer' => [
+        'description' => 'Message footer',
+        'type' => 'text',
+      ],
+    ],
+    'indexes' => [
+      'action' => ['nid'],
+    ],
+    'primary key' => ['id'],
+  ];
+  $tables['campaignion_email_to_target_filters'] = [
+    'description' => 'Message filters for email to target actions',
+    'fields' => [
+      'id' => [
+        'description' => 'Filter ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'message_id' => [
+        'description' => "Message ID",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'weight' => [
+        'description' => 'Weight value used for sorting messages',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Filter plugin-type',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ],
+      'config' => [
+        'description' => 'Configuration for the filter',
+        'type' => 'blob',
+        'serialize' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'message' => ['message_id'],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $tables;
+}
+
+/**
  * Implements hook_field_schema().
  */
 function campaignion_email_to_target_field_schema($field) {
-  if ($field['type'] == 'email_to_target_message') {
-    $columns['subject'] = [
-      'type' => 'varchar',
-      'length' => 256,
-    ];
-    $columns['header'] = [
-      'type' => 'text',
-    ];
-    $columns['message'] = [
-      'type' => 'text',
-    ];
-    $columns['footer'] = [
-      'type' => 'text',
-    ];
-    return ['columns' => $columns];
-  }
-  elseif ($field['type'] == 'email_to_target_options') {
+  if ($field['type'] == 'email_to_target_options') {
     $columns['users_may_edit'] = [
       'type' => 'int',
       'size' => 'tiny',
@@ -70,6 +155,120 @@ function campaignion_email_to_target_enable() {
 /**
  * Switch from uk_postcode to postcode.
  */
-function campaignion_email_to_target_update_1() {
+function campaignion_email_to_target_update_2() {
   module_enable(['postcode']);
+}
+
+/**
+ * Add tables for message templates and filters and migrate data.
+ */
+function campaignion_email_to_target_update_1() {
+  $tables['campaignion_email_to_target_messages'] = [
+    'description' => 'Message templates for email to target actions',
+    'fields' => [
+      'id' => [
+        'description' => 'Message ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => "Action node ID",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'weight' => [
+        'description' => 'Weight value used for sorting messages',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Message type',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'label' => [
+        'description' => 'Message label',
+        'type' => 'varchar',
+        'length' => 256,
+        'not null' => TRUE,
+      ],
+      'subject' => [
+        'description' => 'Message subject',
+        'type' => 'varchar',
+        'length' => 256,
+      ],
+      'header' => [
+        'description' => 'Message header',
+        'type' => 'text',
+      ],
+      'message' => [
+        'description' => 'Message content',
+        'type' => 'text',
+      ],
+      'footer' => [
+        'description' => 'Message footer',
+        'type' => 'text',
+      ],
+    ],
+    'indexes' => [
+      'action' => ['nid'],
+    ],
+    'primary key' => ['id'],
+  ];
+  $tables['campaignion_email_to_target_filters'] = [
+    'description' => 'Message filters for email to target actions',
+    'fields' => [
+      'id' => [
+        'description' => 'Filter ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'message_id' => [
+        'description' => "Message ID",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'weight' => [
+        'description' => 'Weight value used for sorting messages',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Filter plugin-type',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ],
+      'config' => [
+        'description' => 'Configuration for the filter',
+        'type' => 'blob',
+        'serialize' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'message' => ['message_id'],
+    ],
+    'primary key' => ['id'],
+  ];
+  foreach ($tables as $name => $definition) {
+    db_create_table($name, $definition);
+  }
+
+  $fs = \Drupal\little_helpers\Field\Field::byType('email_to_target_message');
+  foreach ($fs as $name => $field) {
+    $sql = <<<SQL
+INSERT INTO {campaignion_email_to_target_messages} (nid, weight, subject, header, message, footer)
+SELECT entity_id as nid, 0 as weight, {$name}_subject, {$name}_header, {$name}_message, {$name}_footer
+FROM field_data_{$name}
+SQL;
+    db_query($sql);
+    $field->delete();
+  }
 }
