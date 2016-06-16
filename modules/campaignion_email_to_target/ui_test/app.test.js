@@ -1,11 +1,11 @@
 describe('messages widget', function() {
   var setup = require('./test-helper.js').setup;
   var teardown = require('./test-helper.js').teardown;
+  var triggerDragAndDrop = require('./test-helper.js').triggerDragAndDrop;
+  var find = require('lodash/find');
 
   var Vue = require('vue');
   var app = require('../ui_src/app.vue');
-
-  Vue.use(require('../ui_src/plugins/vue-dragula.js'));
 
   it('has initial data', function() {
     var data = app.data();
@@ -48,9 +48,38 @@ describe('messages widget', function() {
       expect(vm.specs[0].filters[0].attributeLabel).toBe(compareSpec.filters[0].attributeLabel)
     });
 
-    it('validates bootstrapped data', function() {
-      expect(vm.specs[2].errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
-      expect(vm.specs[3].errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
+
+    describe('spec validation', function() {
+
+      it('checks if a spec lacks a filter', function() {
+        var s = find(vm.specs, ['label', 'exclusion without a filter']);
+        expect(s.errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'No filter selected'}]))
+      })
+
+      it('checks if a filter lacks a value', function() {
+        var s = find(vm.specs, ['label', 'message with a previously used filter and a missing filter value']);
+        expect(s.errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'A filter value is missing'}]))
+      })
+
+      it('checks if a message is empty or consists of white space only', function() {
+        var s = find(vm.specs, ['label', 'same filter as message above, empty message']);
+        expect(s.errors).toEqual(jasmine.arrayContaining([{type: 'message', message: 'Message is empty'}]))
+      })
+
+      it('checks if a filter has been used by a preceding spec', function() {
+        var s1 = find(vm.specs, ['label', 'shares a filter with first message']);
+        var s2 = find(vm.specs, ['label', 'same filter as message above, empty message']);
+
+        expect(s1.errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
+        expect(s2.errors).toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
+      })
+
+      it('ignores the filter order if a spec has other filter errors', function() {
+        var s = find(vm.specs, ['label', 'message with a previously used filter and a missing filter value']);
+
+        expect(s.errors).not.toEqual(jasmine.arrayContaining([{type: 'filter', message: 'This message won’t be sent. The same filter has been applied above.'}]))
+      })
+
     })
 
     it('creates filter strings for bootstrapped data', function() {
@@ -63,87 +92,5 @@ describe('messages widget', function() {
     })
 
   })
-
-  describe('Specification CRUD', function() {
-    var vm, testData = require('./data/empty-data.js')
-
-    beforeAll(function() {
-      vm = setup(app, testData)
-    })
-
-    afterAll(function() {
-      teardown(vm)
-    })
-
-    describe('open dialogue', function() {
-
-      beforeAll(function(done) {
-        vm.$el.querySelector('.add-message').click()
-        setTimeout(done, 500);
-      })
-
-      it('populates currentSpec', function() {
-        expect(vm.currentSpec.type).toBe('message-template')
-        expect(vm.currentSpec.label).toBe('')
-        expect(vm.currentSpec.filters.length).toBe(0)
-        expect(vm.currentSpec.message).toEqual({
-          subject: '',
-          header: '',
-          body: '',
-          footer: ''
-        })
-      })
-
-      it('shows "new message" dialogue', function(done) {
-        expect(vm.currentSpecIndex).toBe(-1)
-        expect(vm.modalDirty).toBe(false)
-        expect(vm.showSpecModal).toBe(true)
-        expect(vm.$el.querySelector('.modal h4').textContent).toBe('Add specific Message')
-        expect(vm.$el.querySelector('.modal')).toHaveClass('in')
-        done()
-      })
-
-    })
-
-    it('disables save button for empty forms', function() {
-      expect(vm.$el.querySelector('.js-modal-save')).toBeDisabled()
-    })
-
-    describe('save button', function() {
-      beforeAll(function(done) {
-        vm.currentSpec.message.subject = 'foo'
-        vm.$nextTick(done)
-      })
-
-      it('enabled for forms with a message subject', function(done) {
-        expect(vm.$el.querySelector('.js-modal-save')).not.toBeDisabled()
-        done()
-      })
-    })
-
-
-    it('saves a new message', function() {
-      vm.currentSpec.label = 'bar'
-      vm.$el.querySelector('.js-modal-save').click()
-
-      expect(vm.specs.length).toBe(1)
-      expect(vm.specs[0].label).toBe('bar')
-      expect(vm.showSpecModal).toBe(false)
-    })
-
-
-
-    it('shows "new exclusion" dialogue')
-    it('saves a new exclusion')
-
-    it('opens dialogue to edit message')
-    it('shows warning on close when dialogue has unsaved changes')
-    it('saves changes to message')
-
-    it('shows the applied filters')
-
-    it('deletes a message')
-  })
-
 
 });

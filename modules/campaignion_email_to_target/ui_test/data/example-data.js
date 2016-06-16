@@ -1,13 +1,21 @@
-var data = {
+var data,
+  idCounter = 1;
+
+function newId() {
+  return idCounter++;
+}
+
+data = {
 
   messageSelection: [
+
     {
-      "id": 234598,
+      "id": newId(),
       "type": "message-template",
       "label": "foo",
       "filters": [
         {
-          "id": 123,
+          "id": newId(),
           "type": "target-attribute",
           "attributeName": "political_affiliation",
           "operator": "==",
@@ -21,13 +29,14 @@ var data = {
         "footer": "goodbye"
       }
     },
+
     {
-      "id": "2345",
+      "id": newId(),
       "type": "exclusion",
       "label": "foo",
       "filters": [
         {
-          "id": 345,
+          "id": newId(),
           "type": "target-attribute",
           "attributeName": "political_affiliation",
           "operator": "!=",
@@ -35,20 +44,21 @@ var data = {
         }
       ]
     },
+
     {
-      "id": 234,
+      "id": newId(),
       "type": "message-template",
-      "label": "same filter as foo",
+      "label": "shares a filter with first message",
       "filters": [
         {
-          "id": 4576557,
+          "id": newId(),
           "type": "target-attribute",
           "attributeName": "political_affiliation",
           "operator": "==",
           "value": "Green Party"
         },
         {
-          "id": 1239,
+          "id": newId(),
           "type": "target-attribute",
           "attributeName": "name",
           "operator": "!=",
@@ -62,13 +72,14 @@ var data = {
         "footer": "goodbye"
       }
     },
+
     {
-      "id": 5678,
+      "id": newId(),
       "type": "message-template",
-      "label": "same filter as message above",
+      "label": "same filter as message above, empty message",
       "filters": [
         {
-          "id": 1239654,
+          "id": newId(),
           "type": "target-attribute",
           "attributeName": "name",
           "operator": "!=",
@@ -76,14 +87,50 @@ var data = {
         }
       ],
       "message": {
-        "subject": "Subject of 4th message",
-        "header": "Header of 4th message",
-        "body": "body of 4th msg",
-        "footer": "goodbye"
+        "subject": "",
+        "header": "   ",
+        "body": "\n\r",
+        "footer": ""
       }
     },
+
     {
-      "id": 1,
+      "id": newId(),
+      "type": "exclusion",
+      "label": "exclusion without a filter",
+      "filters": []
+    },
+
+    {
+      "id": newId(),
+      "type": "message-template",
+      "label": "message with a previously used filter and a missing filter value",
+      "filters": [
+        {
+          "id": newId(),
+          "type": "target-attribute",
+          "attributeName": "name",
+          "operator": "!=",
+          "value": "jane"
+        },
+        {
+          "id": newId(),
+          "type": "target-attribute",
+          "attributeName": "political_affiliation",
+          "operator": "==",
+          "value": ""
+        }
+      ],
+      "message": {
+        "subject": "foo",
+        "header": "bar",
+        "body": "baz",
+        "footer": "bam"
+      }
+    },
+
+    {
+      "id": newId(),
       "type": "message-template",
       "label": "",
       "filters": [],
@@ -94,6 +141,7 @@ var data = {
         "footer": "default message footer"
       }
     }
+
   ],
 
   hardValidation: true
