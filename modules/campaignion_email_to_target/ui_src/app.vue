@@ -382,6 +382,7 @@ module.exports = {
   },
 
   watch: {
+    // validate specs if their order was changed via drag'n'drop
     'specs': 'validateSpecs'
   },
 
