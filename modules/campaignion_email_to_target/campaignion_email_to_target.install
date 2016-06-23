@@ -264,8 +264,8 @@ function campaignion_email_to_target_update_1() {
   $fs = \Drupal\little_helpers\Field\Field::byType('email_to_target_message');
   foreach ($fs as $name => $field) {
     $sql = <<<SQL
-INSERT INTO {campaignion_email_to_target_messages} (nid, weight, subject, header, message, footer)
-SELECT entity_id as nid, 0 as weight, {$name}_subject, {$name}_header, {$name}_message, {$name}_footer
+INSERT INTO {campaignion_email_to_target_messages} (nid, weight, type, label, subject, header, message, footer)
+SELECT entity_id as nid, 0 as weight, 'message', 'Default message', {$name}_subject, {$name}_header, {$name}_message, {$name}_footer
 FROM field_data_{$name}
 SQL;
     db_query($sql);
