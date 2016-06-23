@@ -74,7 +74,7 @@ class Supporter implements ContactTypeInterface {
         $map['SALUTATION'] = new WrapperField('field_salutation');
         $map['TITLE'] = new WrapperField('field_title');
         $map['GENDER'] = new WrapperField('field_gender');
-        $map['DATE_OF_BIRTH'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['DOB'] = new DateField('field_date_of_birth', '%Y-%m-%d');
         $map['STREET'] = new KeyedField('field_address', 'thoroughfare');
         $map['COUNTRY'] = new KeyedField('field_address', 'country');
         $map['ZIP'] = new KeyedField('field_address', 'postal_code');
