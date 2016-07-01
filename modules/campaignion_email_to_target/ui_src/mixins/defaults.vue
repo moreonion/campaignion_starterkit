@@ -16,6 +16,12 @@
       }
     },
 
+    exclusionMessageObj() {
+      return {
+        body: ''
+      }
+    },
+
     emptySpec(type) {
       if (this.validSpecificationTypes().indexOf(type) === -1) return
       var spec = {
@@ -26,7 +32,11 @@
         filterStr: '', // Verbal expression of a specification’s filters
         errors: []
       }
-      if (type == 'message-template') spec.message = this.defaultMessageObj()
+      if (type == 'message-template') {
+        spec.message = this.defaultMessageObj()
+      } else if (type == 'exclusion') {
+        spec.message = this.exclusionMessageObj()
+      }
       return spec
     }
 

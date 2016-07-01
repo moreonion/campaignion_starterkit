@@ -144,12 +144,12 @@ describe('messages widget', function() {
           }, 500);
         })
 
-        it('shows dialog including a warning about exclusion order', function(done) {
+        it('shows dialog including one textarea and a warning about exclusion order', function(done) {
           var modal = vm.$el.querySelector('#spec-modal'),
           warning = vm.$el.querySelector('.exclusion-warning');
 
           expect(modal).toHaveClass('in')
-          expect(modal.querySelector('.message-editor')).toBe(null)
+          expect(modal.querySelectorAll('.message-editor textarea').length).toBe(1)
           expect(modal.querySelector('h4').textContent).toBe('Add exclusion')
           expect(warning).toBeTruthy()
           expect(warning.textContent).toContain('order')
@@ -176,7 +176,7 @@ describe('messages widget', function() {
           done()
         })
       })
-      
+
       describe('clicking "save"', function() {
         beforeAll(function(done) {
           $('.js-modal-save', '#spec-modal').click()
