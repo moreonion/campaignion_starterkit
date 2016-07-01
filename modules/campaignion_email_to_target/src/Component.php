@@ -32,6 +32,13 @@ class Component {
     return $parents;
   }
 
+  /**
+   * Disable submit-buttons for this form.
+   */
+  protected function disableSubmits(&$form) {
+    $form['actions']['#access'] = FALSE;
+  }
+
   /** 
    * Render the webform component.
    */
@@ -81,17 +88,27 @@ class Component {
         '#markup' => t('We are sorry! The service is temporarily unavailable. The administrators have been informed. Please try again in a few minutes …'),
       ];
       $element['#attributes']['class'][] = 'email-to-target-error';
+      $this->disableSubmits($form);
       return;
     }
 
     $pairs = [];
+    $no_target_message = NULL;
     foreach ($targets as $target) {
       if ($message = $action->getMessage($target, $submission_o)) {
         if ($test_mode) {
           $target['email'] = $email;
         }
-        $message->replaceTokens($target, $submission_o);
-        $pairs[] = [$target, $message];
+        $message->replaceTokens($target, $submission_o->unwrap());
+        if ($message->type == 'exclusion') {
+          // The first exclusion-message is used.
+          if (!$no_target_message) {
+            $no_target_message = $message->message;
+          }
+        }
+        else {
+          $pairs[] = [$target, $message];
+        }
       }
     }
 
@@ -100,10 +117,14 @@ class Component {
         '@dataset' => $options['dataset_name'],
         '@postcode' => $postcode,
       ], WATCHDOG_WARNING);
+      if (!$no_target_message) {
+        $no_target_message = t("There don't seem to be any targets for your selection.");
+      }
       $element['no_target'] = [
-        '#markup' => t("There don't seem to be any targets for your selection."),
+        '#markup' => _filter_autop($no_target_message),
       ];
       $element['#attributes']['class'][] = 'email-to-target-no-targets';
+      $this->disableSubmits($form);
       return;
     }
 
@@ -147,7 +168,7 @@ class Component {
       $last_id = $target['id'];
     }
 
-    if (count($targets) == 1) {
+    if (count($pairs) == 1) {
       $c = &$element[$last_id];
       $c['#attributes']['class'][] = 'email-to-target-single';
       $c['send']['#type'] = 'markup';
