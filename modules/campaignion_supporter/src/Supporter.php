@@ -48,10 +48,16 @@ class Supporter implements ContactTypeInterface {
 
   public function exporter($type, $language) {
     $map = array();
+    $salutation_map = [
+      'fam' => t('Family'),
+      'mrs' => t('Mrs'),
+      'mr' => t('Mr'),
+      'org' => t('Organisation'),
+    ];
     switch ($type) {
       case 'cleverreach':
-        $map['email'] = new WrapperField('email');
-        $map['salutation'] = new WrapperField('field_salutation');
+        $map['emai$l'] = new WrapperField('email');
+        $map['salutation'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['firstname'] = new SingleValueField('first_name');
         $map['lastname'] = new SingleValueField('last_name');
         $map['title'] = new WrapperField('field_title');
@@ -71,7 +77,7 @@ class Supporter implements ContactTypeInterface {
         $map['EMAIL'] = new WrapperField('email');
         $map['FNAME'] = new SingleValueField('first_name');
         $map['LNAME'] = new SingleValueField('last_name');
-        $map['SALUTATION'] = new WrapperField('field_salutation');
+        $map['SALUTATION'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['TITLE'] = new WrapperField('field_title');
         $map['GENDER'] = new WrapperField('field_gender');
         $map['DOB'] = new DateField('field_date_of_birth', '%Y-%m-%d');
@@ -107,7 +113,7 @@ class Supporter implements ContactTypeInterface {
           'region'  => 'administrative_area',
         );
         $map['redhen_contact_email']         = new WrapperField('email');
-        $map['field_salutation']             = new WrapperField('field_salutation');
+        $map['field_salutation']             = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['first_name']                   = new SingleValueField('first_name');
         $map['middle_name']                  = new SingleValueField('middle_name');
         $map['last_name']                    = new SingleValueField('last_name');
@@ -126,7 +132,7 @@ class Supporter implements ContactTypeInterface {
         break;
       case 'optivo':
         $map['email'] = new WrapperField('email');
-        $map['anrede'] = new WrapperField('field_salutation');
+        $map['anrede'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['vorname'] = new SingleValueField('first_name');
         $map['nachname'] = new SingleValueField('last_name');
         $map['titel'] = new WrapperField('field_title');
