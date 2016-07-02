@@ -16,9 +16,6 @@ class Action extends \Drupal\campaignion_action\ActionBase {
         }
       }
       if ($match) {
-        if ($t->type == 'exclusion') {
-          return NULL;
-        }
         return Message::fromTemplate($t);
       }
     }

@@ -36,7 +36,7 @@
     </ul>
 
     <div class="row">
-      <message-editor :message.sync="defaultMessage.message" class="col-md-9 col-lg-8 col-xl-6">
+      <message-editor :message.sync="defaultMessage.message" type="message-template" class="col-md-9 col-lg-8 col-xl-6">
         <legend slot="legend">{{ specs.length ? 'Message to all remaining targets' : 'Default message that will be sent to target(s)' }}</legend>
       </message-editor>
       <div class="default-message-notice col-md-3 col-lg-4 col-xl-6">
@@ -69,11 +69,11 @@
           :operators="operators"
           >
         </filter-editor>
-        <section v-if="currentSpec.type == 'message-template'">
-          <a href="#" @click="prefillMessage()" class="prefill-message">Prefill from default message</a>
-          <message-editor :message.sync="currentSpec.message"></message-editor>
+        <section>
+          <a href="#" @click="prefillMessage()" class="prefill-message" v-if="currentSpec.type == 'message-template'">Prefill from default message</a>
+          <message-editor :message.sync="currentSpec.message" :type="currentSpec.type"></message-editor>
         </section>
-        <tokens-list v-if="currentSpec.type == 'message-template'" :token-categories="tokenCategories"></tokens-list>
+        <tokens-list :token-categories="tokenCategories"></tokens-list>
         <section class="exclusion-warning" v-if="currentSpec.type == 'exclusion' && (currentSpecIndex > 0 || (currentSpecIndex == -1 && specs.length))">
           Keep in mind that the order of specific messages and exclusions is important. Targets matching this exclusion’s
           filters could receive specific messages if they also match their filters. Drag this exclusion to the top of the list

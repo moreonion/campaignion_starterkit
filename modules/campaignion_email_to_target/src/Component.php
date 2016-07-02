@@ -32,6 +32,13 @@ class Component {
     return $parents;
   }
 
+  /**
+   * Disable submit-buttons for this form.
+   */
+  protected function disableSubmits(&$form) {
+    $form['actions']['#access'] = FALSE;
+  }
+
   /** 
    * Render the webform component.
    */
@@ -69,80 +76,10 @@ class Component {
 
     $element['#attributes']['class'][] = 'email-to-target-selector-wrapper';
     $element['#attributes']['class'][] = 'webform-prefill-exclude';
+
     try {
       $api = Client::fromConfig();
       $targets = $api->getTargets($options['dataset_name'], $postcode);
-
-      if (!empty($targets)) {
-        $last_id = NULL;
-        foreach ($targets as $target) {
-          if (!empty($test_mode)) {
-            $target['email'] = $email;
-          }
-          $message = $action->getMessage($target, $submission_o);
-          if (!$message) {
-            // No message for this target. Either because it was excluded or
-            // none of the message filters did match (ie. there was no default
-            // message).
-            continue;
-          }
-          $message->replaceTokens($target, $submission_o->unwrap());
-          $t = [
-            '#type' => 'container',
-            '#attributes' => ['class' => ['email-to-target-target']],
-            '#target' => $target,
-            '#message' => $message->toArray(),
-          ];
-          $t['send'] = [
-            '#type' => 'checkbox',
-            '#title' => $target['salutation'],
-            '#default_value' => TRUE,
-          ];
-          $t['subject'] = [
-            '#type' => 'textfield',
-            '#title' => t('Subject'),
-            '#default_value' => $message->subject,
-            '#disabled' => empty($options['users_may_edit']),
-          ];
-          $t['header'] = [
-            '#prefix' => '<pre class="email-to-target-header">',
-            '#markup' => $message->header,
-            '#suffix' => '</pre>',
-          ];
-          $t['message'] = [
-            '#type' => 'textarea',
-            '#title' => t('Message'),
-            '#default_value' => $message->message,
-            '#disabled' => empty($options['users_may_edit']),
-          ];
-          $t['footer'] = [
-            '#prefix' => '<pre class="email-to-target-footer">',
-            '#markup' => $message->footer,
-            '#suffix' => '</pre>',
-          ];
-          $element[$target['id']] = $t;
-          $last_id = $target['id'];
-        }
-        if (count($targets) == 1) {
-          $c = &$element[$last_id];
-          $c['#attributes']['class'][] = 'email-to-target-single';
-          $c['send']['#type'] = 'markup';
-          $c['send']['#markup'] = "<p class=\"target\">{$c['send']['#title']}</p>";
-        }
-        else {
-          $element['#attached']['js'] = [drupal_get_path('module', 'campaignion_email_to_target') . '/js/target_selector.js'];
-        }
-      }
-      else {
-        watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
-          '@dataset' => $options['dataset_name'],
-          '@postcode' => $postcode,
-        ], WATCHDOG_WARNING);
-        $element['no_target'] = [
-          '#markup' => t("There don't seem to be any targets for your selection."),
-        ];
-        $element['#attributes']['class'][] = 'email-to-target-no-targets';
-      }
     }
     catch (\Exception $e) {
       watchdog_exception('campaignion_email_to_target', $e);
@@ -151,7 +88,96 @@ class Component {
         '#markup' => t('We are sorry! The service is temporarily unavailable. The administrators have been informed. Please try again in a few minutes …'),
       ];
       $element['#attributes']['class'][] = 'email-to-target-error';
+      $this->disableSubmits($form);
+      return;
     }
+
+    $pairs = [];
+    $no_target_message = NULL;
+    foreach ($targets as $target) {
+      if ($message = $action->getMessage($target, $submission_o)) {
+        if ($test_mode) {
+          $target['email'] = $email;
+        }
+        $message->replaceTokens($target, $submission_o->unwrap());
+        if ($message->type == 'exclusion') {
+          // The first exclusion-message is used.
+          if (!$no_target_message) {
+            $no_target_message = $message->message;
+          }
+        }
+        else {
+          $pairs[] = [$target, $message];
+        }
+      }
+    }
+
+    if (empty($pairs)) {
+      watchdog('campaignion_email_to_target', 'The API found no targets (dataset=@dataset, postcode=@postcode).', [
+        '@dataset' => $options['dataset_name'],
+        '@postcode' => $postcode,
+      ], WATCHDOG_WARNING);
+      if (!$no_target_message) {
+        $no_target_message = t("There don't seem to be any targets for your selection.");
+      }
+      $element['no_target'] = [
+        '#markup' => _filter_autop($no_target_message),
+      ];
+      $element['#attributes']['class'][] = 'email-to-target-no-targets';
+      $this->disableSubmits($form);
+      return;
+    }
+
+    $last_id = NULL;
+    foreach ($pairs as $p) {
+      list($target, $message) = $p;
+      $t = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['email-to-target-target']],
+        '#target' => $target,
+        '#message' => $message->toArray(),
+      ];
+      $t['send'] = [
+        '#type' => 'checkbox',
+        '#title' => $target['salutation'],
+        '#default_value' => TRUE,
+      ];
+      $t['subject'] = [
+        '#type' => 'textfield',
+        '#title' => t('Subject'),
+        '#default_value' => $message->subject,
+        '#disabled' => empty($options['users_may_edit']),
+      ];
+      $t['header'] = [
+        '#prefix' => '<pre class="email-to-target-header">',
+        '#markup' => $message->header,
+        '#suffix' => '</pre>',
+      ];
+      $t['message'] = [
+        '#type' => 'textarea',
+        '#title' => t('Message'),
+        '#default_value' => $message->message,
+        '#disabled' => empty($options['users_may_edit']),
+      ];
+      $t['footer'] = [
+        '#prefix' => '<pre class="email-to-target-footer">',
+        '#markup' => $message->footer,
+        '#suffix' => '</pre>',
+      ];
+      $element[$target['id']] = $t;
+      $last_id = $target['id'];
+    }
+
+    if (count($pairs) == 1) {
+      $c = &$element[$last_id];
+      $c['#attributes']['class'][] = 'email-to-target-single';
+      $c['send']['#type'] = 'markup';
+      $c['send']['#markup'] = "<p class=\"target\">{$c['send']['#title']}</p>";
+    }
+    else {
+      $element['#attached']['js'] = [drupal_get_path('module', 'campaignion_email_to_target') . '/js/target_selector.js'];
+    }
+
   }
 
   public function validate(array $element, array &$form_state) {

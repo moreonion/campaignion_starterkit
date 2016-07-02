@@ -6,6 +6,7 @@ namespace Drupal\campaignion_email_to_target;
  * Common datastructure for handling protest messages.
  */
 class Message {
+  public $type;
   public $to;
   public $from;
   public $subject;
@@ -21,6 +22,7 @@ class Message {
 
   public static function fromTemplate(MessageTemplate $t) {
     $data = [
+      'type' => $t->type,
       'subject' => $t->subject,
       'header' => $t->header,
       'message' => $t->message,
@@ -42,7 +44,7 @@ class Message {
 
   public function toArray() {
     $r = [];
-    foreach (['to', 'from', 'subject', 'header', 'message', 'footer'] as $f) {
+    foreach (['type', 'to', 'from', 'subject', 'header', 'message', 'footer'] as $f) {
       $r[$f] = $this->$f;
     }
     return $r;
