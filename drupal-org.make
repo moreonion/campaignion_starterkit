@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.0
+projects[campaignion][version] = 1.1
 
 projects[cck_blocks][version] = 1.1
 
@@ -143,6 +143,8 @@ projects[paypal_payment][version] = 1.1
 projects[paypal_payment][patch][] = https://drupal.org/files/issues/paypal_payment-pps_HTTP_404_on_return_uri-2052361-40.patch
 ; Don't leave payment status on pending. - https://drupal.org/node/2142091
 projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-status-failed-when-there-is-no-payerid-5.patch
+; Let other modules prefill data for paypal
+projects[paypal_payment][patch][] = https://www.drupal.org/files/issues/paypal_payment_2337561_4.patch
 
 projects[pgbar][version] = 2.0-alpha2
 
@@ -219,7 +221,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.6
 
-projects[webform_prefill][version] = 1.0-alpha2
+projects[webform_prefill][version] = 1.0-alpha3
 
 projects[webform_steps][version] = 2.0
 
@@ -239,11 +241,11 @@ projects[weight][version] = 2.5
 
 projects[wysiwyg][version] = 2.2
 
+projects[xautoload][version] = 5.7
+
 projects[xmlsitemap][version] = 2.3
 
-projects[xautoload][version] = 4.5
-
-projects[simplicity][version] = 1.1
+projects[simplicity][version] = 1.2
 
 projects[tao][version] = 3.1
 

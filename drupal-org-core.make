@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.42
+projects[drupal][version] = 7.44
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
@@ -20,3 +20,5 @@ projects[drupal][patch][] = http://drupal.org/files/hook_boot_may_defer_cache-7.
 projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
 ; Avoid stale static cache during install.
 projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
+; Fix file-uploads for anonymous users.
+projects[drupal][patch][] = https://www.drupal.org/files/issues/anonymous-file-upload-2678822-13.patch
