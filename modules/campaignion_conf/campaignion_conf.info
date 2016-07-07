@@ -19,6 +19,7 @@ features[ctools][] = file_entity:file_default_displays:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[file_display][] = image__default__file_field_image
+features[file_display][] = image__full__file_field_image
 features[file_display][] = image__preview__file_field_image
 features[file_display][] = image__teaser__file_field_image
 features[file_display][] = video__default__media_vimeo_image
