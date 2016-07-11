@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.44
+projects[drupal][version] = 7.50
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961
@@ -14,11 +14,7 @@ projects[drupal][patch][] = http://drupal.org/files/taxonomy_default_value_autoc
 projects[drupal][patch][] = https://drupal.org/files/issues/menu-access_unpublished-nodes_460408-157.patch
 ; Guarantee calls to hook_field_presave(). - http://drupal.org/node/1994594
 projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_presave.patch
-; Allow hook_boot() to skip page cache. (geoip_language_redirect) - http://drupal.org/node/322104
-projects[drupal][patch][] = http://drupal.org/files/hook_boot_may_defer_cache-7.x-322104-37.patch
 ; form elements can now set their custom CSS classes via #wrapper_attributes. - http://drupal.org/node/2190525
 projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
 ; Avoid stale static cache during install.
 projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
-; Fix file-uploads for anonymous users.
-projects[drupal][patch][] = https://www.drupal.org/files/issues/anonymous-file-upload-2678822-13.patch
