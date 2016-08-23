@@ -21,6 +21,10 @@ $matrix = array(
   'campaignion_bar' => array(
     'access campaignion bar'                     => array(NULL,             NULL,                 TRUE,            TRUE,     NULL,        ),
   ),
+  // Campaignion email to target
+  'campaignion_email_to_target' => array(
+    'view email_to_target messages'              => array(NULL,             NULL,                 TRUE,            NULL      NULL,        ),
+  ),
   // Comment
   'comment' => array(
     'administer comments'                        => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),

@@ -84,7 +84,7 @@ function _webform_show_single_target_e2t_selector($nid) {
   $return = FALSE;
   if (($node = node_load($nid)) && $node->type == 'email_to_target') {
     $action = Loader::instance()->actionFromNode($node);
-    $return = user_access('view email_to_target messages') && $action->dataset()->key == 'mp';
+    $return = $action->dataset()->key == 'mp';
   }
   $static_cache[$nid] = $return;
   return $return;
@@ -94,7 +94,8 @@ function _webform_show_single_target_e2t_selector($nid) {
  * Implements _webform_csv_headers_component().
  */
 function _webform_csv_headers_e2t_selector($component, $export_options) {
-  if (_webform_show_single_target_e2t_selector($component['nid'])) {
+  $multi_column = user_access('view email_to_target messages') && _webform_show_single_target_e2t_selector($component['nid']);
+  if ($multi_column) {
     $header = [
       ['', '', ''],
       [$component['name'], '', ''],
@@ -114,6 +115,9 @@ function _webform_csv_headers_e2t_selector($component, $export_options) {
  * Implements _webform_csv_data_component().
  */
 function _webform_csv_data_e2t_selector($component, $export_options, $value) {
+  if (!user_access('view email_to_target messages')) {
+    return t('No permission to view email to target messages.');
+  }
   if (_webform_show_single_target_e2t_selector($component['nid'])) {
     // Three columns: To, Subject, Message
     if (!empty($value[0])) {
