@@ -6,6 +6,7 @@ use \Dflydev\Hawk\Credentials\Credentials;
 use \Dflydev\Hawk\Client\ClientBuilder;
 
 class Client {
+  CONST API_VERSION = 'v2';
   protected $client;
   protected $credentials;
   protected $url;
@@ -24,7 +25,7 @@ class Client {
   }
 
   public function __construct($url, $pk, $sk) {
-    $this->url = $url;
+    $this->url = $url . '/' . static::API_VERSION;
     $this->credentials = new Credentials($sk, 'sha256', $pk);
     $this->client = ClientBuilder::create()->build();
   }

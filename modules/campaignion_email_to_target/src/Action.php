@@ -5,17 +5,18 @@ namespace Drupal\campaignion_email_to_target;
 use \Drupal\little_helpers\Webform\Submission;
 
 class Action extends \Drupal\campaignion_action\ActionBase {
-  public function getMessage($target, Submission $submission) {
+  public function getExclusion($constituency) {
+    foreach (MessageTemplate::byNid($this->node->nid) as $t) {
+      if ($t->type == 'exclusion' && $t->checkFilters([], $constituency)) {
+        return Message::fromTemplate($t);
+      }
+    }
+  }
+
+  public function getMessage($target, $constituency) {
     $templates = MessageTemplate::byNid($this->node->nid);
     foreach ($templates as $t) {
-      $match = TRUE;
-      foreach ($t->filters as $f) {
-        if (!$f->match($target, $submission)) {
-          $match = FALSE;
-          break;
-        }
-      }
-      if ($match) {
+      if ($t->checkFilters($target, $constituency)) {
         return Message::fromTemplate($t);
       }
     }

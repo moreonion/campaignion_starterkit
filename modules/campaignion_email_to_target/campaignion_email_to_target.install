@@ -153,6 +153,17 @@ function campaignion_email_to_target_enable() {
 }
 
 /**
+ * Remove version from configured API endpoints.
+ */
+function campaignion_email_to_target_update_3() {
+  $v = variable_get('campaignion_email_to_target_credentials');
+  if (isset($v['url'])) {
+    $v['url'] = str_replace('/v1', '', $v['url']);
+    variable_set('campaignion_email_to_target_credentials', $v);
+  }
+}
+
+/**
  * Switch from uk_postcode to postcode.
  */
 function campaignion_email_to_target_update_2() {

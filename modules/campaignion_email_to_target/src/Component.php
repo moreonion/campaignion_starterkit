@@ -79,7 +79,7 @@ class Component {
 
     try {
       $api = Client::fromConfig();
-      $targets = $api->getTargets($options['dataset_name'], $postcode);
+      $constituencies = $api->getTargets($options['dataset_name'], $postcode);
     }
     catch (\Exception $e) {
       watchdog_exception('campaignion_email_to_target', $e);
@@ -94,20 +94,30 @@ class Component {
 
     $pairs = [];
     $no_target_message = NULL;
-    foreach ($targets as $target) {
-      if ($message = $action->getMessage($target, $submission_o)) {
-        if ($test_mode) {
-          $target['email'] = $email;
+    foreach ($constituencies as $constituency) {
+      if ($exclusion = $action->getExclusion($constituency)) {
+        $exclusion->replaceTokens([], $constituency, $submission_o->unwrap());
+        if (!$no_target_message) {
+          $no_target_message = $exclusion->message;
         }
-        $message->replaceTokens($target, $submission_o->unwrap());
-        if ($message->type == 'exclusion') {
-          // The first exclusion-message is used.
-          if (!$no_target_message) {
-            $no_target_message = $message->message;
+        continue;
+      }
+      $targets = $constituency['contacts'];
+      foreach ($targets as $target) {
+        if ($message = $action->getMessage($target, $constituency)) {
+          if ($test_mode) {
+            $target['email'] = $email;
           }
-        }
-        else {
-          $pairs[] = [$target, $message];
+          $message->replaceTokens($target, $constituency, $submission_o->unwrap());
+          if ($message->type == 'exclusion') {
+            // The first exclusion-message is used.
+            if (!$no_target_message) {
+              $no_target_message = $message->message;
+            }
+          }
+          else {
+            $pairs[] = [$target, $message];
+          }
         }
       }
     }
@@ -206,7 +216,7 @@ class Component {
     foreach ($data as $serialized) {
       $m = unserialize($serialized);
       $message = new Message($m);
-      $message->replaceTokens(NULL, $submission->unwrap());
+      $message->replaceTokens(NULL, NULL, $submission->unwrap());
       unset($m);
 
       // Set the HTML property based on availablity of MIME Mail.

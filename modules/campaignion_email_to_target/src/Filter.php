@@ -22,6 +22,14 @@ class Filter extends Model {
     return new static($data);
   }
 
+  public function __construct($data = array(), $new = TRUE) {
+    parent::__construct($data, $new);
+
+    if (strpos($this->config['attributeName'], '.') === FALSE) {
+      $this->config['attributeName'] = 'contact.' . $this->config['attributeName'];
+    }
+  }
+
   /**
    * Update filter data from array.
    */
@@ -67,18 +75,30 @@ class Filter extends Model {
     return $data;
   }
 
-  public function match($target, Submission $submission) {
+  public function match($target, $constituency) {
     if ($this->type == 'target-attribute') {
-      switch ($this->config['operator']) {
-        case '==':
-          return $target[$this->config['attributeName']] == $this->config['value'];
-        case '!=':
-          return $target[$this->config['attributeName']] != $this->config['value'];
-        case 'regexp':
-          return (bool) preg_match("/{$this->config['value']}/", $target[$this->config['attributeName']]);
+      $data['contact'] = $target;
+      $data['constituency'] = $constituency;
+      $name = $this->config['attributeName'];
+      $value = drupal_array_get_nested_value($data, explode('.', $name));
+      if (!is_null($value)) {
+        return $this->matchValue($value);
       }
     }
     return TRUE;
+  }
+
+  protected function matchValue($target_value) {
+    $value = $this->config['value'];
+    switch ($this->config['operator']) {
+      case '==':
+        return $target_value == $value;
+      case '!=':
+        return $target_value != $value;
+      case 'regexp':
+        return (bool) preg_match("/$value/", $target_value);
+    }
+    return FALSE;
   }
 
 }
