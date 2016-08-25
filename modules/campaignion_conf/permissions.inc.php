@@ -23,7 +23,7 @@ $matrix = array(
   ),
   // Campaignion email to target
   'campaignion_email_to_target' => array(
-    'view email_to_target messages'              => array(NULL,             NULL,                 TRUE,            NULL      NULL,        ),
+    'view email_to_target messages'              => array(NULL,             NULL,                 TRUE,            NULL,     NULL,        ),
   ),
   // Comment
   'comment' => array(
