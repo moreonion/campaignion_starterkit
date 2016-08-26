@@ -11,13 +11,15 @@ function campaignion_flexible_form_install() {
 
 /**
  * Implements hook_enable().
- *
- * Make webform a template src and dest.
  */
 function campaignion_flexible_form_enable() {
-  foreach (array('webform_node_types', 'webform_template_src', 'webform_template_dest') as $var) {
-    $settings = variable_get($var, array());
-    $settings['webform'] = 'webform';
-    variable_set($var, $settings);
-  }
+  variable_set('webform_node_webform', 1);
+
+  $webform_settings = variable_get('webform_template_src', array());
+  $webform_settings['webform'] = 'webform';
+  variable_set('webform_template_src', $webform_settings);
+
+  $webform_settings = variable_get('webform_template_dest', array());
+  $webform_settings['webform'] = 'webform';
+  variable_set('webform_template_dest', $webform_settings);
 }
