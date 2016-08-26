@@ -133,7 +133,7 @@ function campaignion_donation_form_builder_element_types($form_type, $form_id) {
       'properties'    => array('default_value'),
       'default'       => array(
         '#title' => t('Donation amount'),
-        '#default_value' => '%get[p12]',
+        '#default_value' => '[current-page:query:p12]',
         '#required' => TRUE,
       ) + _form_builder_webform_default('textfield'),
     );

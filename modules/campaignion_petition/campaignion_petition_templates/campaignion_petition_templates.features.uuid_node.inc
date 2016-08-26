@@ -108,7 +108,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'first_name',
         'name' => 'First name',
         'type' => 'textfield',
-        'value' => '%get[p3]',
+        'value' => '[current-page:query:p3]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -135,7 +135,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'last_name',
         'name' => 'Last name',
         'type' => 'textfield',
-        'value' => '%get[p4]',
+        'value' => '[current-page:query:p4]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -162,7 +162,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'email',
         'name' => 'Email address',
         'type' => 'email',
-        'value' => '%get[p5]',
+        'value' => '[current-page:query:p5]',
         'extra' => array(
           'width' => '',
           'unique' => TRUE,
@@ -281,7 +281,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'first_name',
         'name' => 'First name',
         'type' => 'textfield',
-        'value' => '%get[p3]',
+        'value' => '[current-page:query:p3]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -308,7 +308,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'last_name',
         'name' => 'Last name',
         'type' => 'textfield',
-        'value' => '%get[p4]',
+        'value' => '[current-page:query:p4]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -335,7 +335,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'email',
         'name' => 'E-mail address',
         'type' => 'email',
-        'value' => '%get[p5]',
+        'value' => '[current-page:query:p5]',
         'extra' => array(
           'width' => '',
           'unique' => 1,
@@ -359,7 +359,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'phone_number',
         'name' => 'Phone number',
         'type' => 'textfield',
-        'value' => '%get[p11]',
+        'value' => '[current-page:query:p11]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -387,7 +387,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'street_address',
         'name' => 'Street address',
         'type' => 'textfield',
-        'value' => '%get[p7]',
+        'value' => '[current-page:query:p7]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -415,7 +415,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'zip_code',
         'name' => 'ZIP code',
         'type' => 'textfield',
-        'value' => '%get[p8]',
+        'value' => '[current-page:query:p8]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -443,7 +443,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'city',
         'name' => 'City',
         'type' => 'textfield',
-        'value' => '%get[p10]',
+        'value' => '[current-page:query:p10]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -471,7 +471,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'form_key' => 'country',
         'name' => 'Country',
         'type' => 'select',
-        'value' => '%get[p9]',
+        'value' => '[current-page:query:p9]',
         'extra' => array(
           'items' => 'AF|Afghanistan
 AX|Aland Islands
@@ -842,7 +842,7 @@ ZW|Zimbabwe
         'form_key' => 'first_name',
         'name' => 'Vorname',
         'type' => 'textfield',
-        'value' => '%get[p3]',
+        'value' => '[current-page:query:p3]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -869,7 +869,7 @@ ZW|Zimbabwe
         'form_key' => 'last_name',
         'name' => 'Nachname',
         'type' => 'textfield',
-        'value' => '%get[p4]',
+        'value' => '[current-page:query:p4]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -896,7 +896,7 @@ ZW|Zimbabwe
         'form_key' => 'email',
         'name' => 'E-Mail Adresse',
         'type' => 'email',
-        'value' => '%get[p5]',
+        'value' => '[current-page:query:p5]',
         'extra' => array(
           'width' => '',
           'unique' => 1,
@@ -920,7 +920,7 @@ ZW|Zimbabwe
         'form_key' => 'phone_number',
         'name' => 'Telefon-Nummer',
         'type' => 'textfield',
-        'value' => '%get[p11]',
+        'value' => '[current-page:query:p11]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -948,7 +948,7 @@ ZW|Zimbabwe
         'form_key' => 'street_address',
         'name' => 'Straße',
         'type' => 'textfield',
-        'value' => '%get[p7]',
+        'value' => '[current-page:query:p7]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -976,7 +976,7 @@ ZW|Zimbabwe
         'form_key' => 'city',
         'name' => 'Stadt',
         'type' => 'textfield',
-        'value' => '%get[p10]',
+        'value' => '[current-page:query:p10]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -1004,7 +1004,7 @@ ZW|Zimbabwe
         'form_key' => 'zip_code',
         'name' => 'PLZ',
         'type' => 'textfield',
-        'value' => '%get[p8]',
+        'value' => '[current-page:query:p8]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -1032,7 +1032,7 @@ ZW|Zimbabwe
         'form_key' => 'country',
         'name' => 'Country',
         'type' => 'select',
-        'value' => '%get[p9]',
+        'value' => '[current-page:query:p9]',
         'extra' => array(
           'items' => 'AF|Afghanistan
 AX|Aland Islands

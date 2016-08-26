@@ -108,7 +108,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'form_key' => 'first_name',
         'name' => 'First name',
         'type' => 'textfield',
-        'value' => '%get[p3]',
+        'value' => '[current-page:query:p3]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -135,7 +135,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'form_key' => 'last_name',
         'name' => 'Last name',
         'type' => 'textfield',
-        'value' => '%get[p4]',
+        'value' => '[current-page:query:p4]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -162,7 +162,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'form_key' => 'email',
         'name' => 'Email address',
         'type' => 'email',
-        'value' => '%get[p5]',
+        'value' => '[current-page:query:p5]',
         'extra' => array(
           'width' => '',
           'unique' => TRUE,

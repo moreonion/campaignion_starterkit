@@ -135,7 +135,7 @@ function campaignion_donation_templates_uuid_features_default_content() {
         'form_key' => 'donation_amount',
         'name' => 'Donation amount',
         'type' => 'textfield',
-        'value' => '%get[p12]',
+        'value' => '[current-page:query:p12]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -216,7 +216,7 @@ y|yearly
         'form_key' => 'first_name',
         'name' => 'First name',
         'type' => 'textfield',
-        'value' => '%get[p3]',
+        'value' => '[current-page:query:p3]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -244,7 +244,7 @@ y|yearly
         'form_key' => 'last_name',
         'name' => 'Last name',
         'type' => 'textfield',
-        'value' => '%get[p4]',
+        'value' => '[current-page:query:p4]',
         'extra' => array(
           'width' => '',
           'maxlength' => '',
@@ -272,7 +272,7 @@ y|yearly
         'form_key' => 'email',
         'name' => 'Email address',
         'type' => 'email',
-        'value' => '%get[p5]',
+        'value' => '[current-page:query:p5]',
         'extra' => array(
           'width' => '',
           'unique' => FALSE,
