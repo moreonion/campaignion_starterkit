@@ -76,5 +76,12 @@ function campaignion_conf_strongarm() {
   $strongarm->value = '3';
   $export['user_admin_role'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_table';
+  $strongarm->value = 1;
+  $export['webform_table'] = $strongarm;
+
   return $export;
 }
