@@ -350,7 +350,7 @@ function campaignion_donation_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'webform_field_sum.inc',
+      'source' => 'webform_component_sum',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

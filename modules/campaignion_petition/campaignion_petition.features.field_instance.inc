@@ -340,7 +340,7 @@ function campaignion_petition_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'webform_submissions.inc',
+      'source' => 'webform_submission_count',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
