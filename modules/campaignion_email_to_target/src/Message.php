@@ -29,8 +29,8 @@ class Message {
       'footer' => $t->footer,
     ];
     return new static($data + [
-      'from' => '[webform-tokens:val-first_name] [webform-tokens:val-last_name] <[webform-tokens:val-email]>',
-      'to' => '[email-to-target:title] [email-to-target:first_name] [email-to-target:last_name] <[email-to-target:email]>',
+      'from' => '[submission:value:first_name] [submission:value:last_name] <[submission:value:email]>',
+      'to' => '[email-to-target:contact.title] [email-to-target:contact.first_name] [email-to-target:contact.last_name] <[email-to-target:contact.email]>',
     ]);
   }
 
