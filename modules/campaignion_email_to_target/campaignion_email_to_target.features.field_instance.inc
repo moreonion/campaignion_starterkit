@@ -521,7 +521,6 @@ function campaignion_email_to_target_field_default_field_instances() {
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
-  t('Message');
   t('Options');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');

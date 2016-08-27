@@ -30,5 +30,6 @@ function campaignion_petition_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
