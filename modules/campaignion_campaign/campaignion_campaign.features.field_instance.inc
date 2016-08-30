@@ -10,7 +10,7 @@
 function campaignion_campaign_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-campaign-body'
+  // Exported field_instance: 'node-campaign-body'.
   $field_instances['node-campaign-body'] = array(
     'bundle' => 'campaign',
     'default_value' => NULL,
@@ -60,7 +60,7 @@ function campaignion_campaign_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_description'
+  // Exported field_instance: 'node-campaign-field_description'.
   $field_instances['node-campaign-field_description'] = array(
     'bundle' => 'campaign',
     'default_value' => NULL,
@@ -109,7 +109,7 @@ function campaignion_campaign_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_main_image'
+  // Exported field_instance: 'node-campaign-field_main_image'.
   $field_instances['node-campaign-field_main_image'] = array(
     'bundle' => 'campaign',
     'deleted' => 0,
@@ -187,7 +187,7 @@ function campaignion_campaign_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_public_page'
+  // Exported field_instance: 'node-campaign-field_public_page'.
   $field_instances['node-campaign-field_public_page'] = array(
     'bundle' => 'campaign',
     'default_value' => array(
