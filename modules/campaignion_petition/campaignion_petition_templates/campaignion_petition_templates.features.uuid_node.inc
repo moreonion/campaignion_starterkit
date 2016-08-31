@@ -111,7 +111,61 @@ function campaignion_petition_templates_uuid_features_default_content() {
       0 => 1,
       1 => 2,
     ),
-    'emails' => array(),
+    'emails' => array(
+      1 => array(
+        'nid' => 1,
+        'eid' => 2,
+        'email' => 'default',
+        'subject' => 'Thank you for your support!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Thank you for supporting us!</p>
+<p>Remember: sharing is caring :-)</p>
+<p>Have a great day!<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      2 => array(
+        'nid' => 1,
+        'eid' => 1,
+        'email' => 'default',
+        'subject' => 'Please confirm your email address!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Best,<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      3 => array(
+        'nid' => 1,
+        'eid' => 3,
+        'email' => 'default',
+        'subject' => 'New submission!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Submitted on %date</p>
+<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted values are:</p>
+<p>%email_values</p>
+<p>The results of this submission may be viewed at:</p>
+<p>%submission_url</p>
+<p><br>
+	Have a great day! ☺ ☀</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+    ),
     'components' => array(
       1 => array(
         'nid' => 4,
@@ -306,7 +360,61 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'webform_ajax' => 0,
     'record_exists' => TRUE,
     'roles' => array(),
-    'emails' => array(),
+    'emails' => array(
+      1 => array(
+        'nid' => 2,
+        'eid' => 2,
+        'email' => 'default',
+        'subject' => 'Thank you for your support!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Thank you for supporting us!</p>
+<p>Remember: sharing is caring :-)</p>
+<p>Have a great day!<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      2 => array(
+        'nid' => 2,
+        'eid' => 1,
+        'email' => 'default',
+        'subject' => 'Please confirm your email address!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Best,<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      3 => array(
+        'nid' => 2,
+        'eid' => 3,
+        'email' => 'default',
+        'subject' => 'New submission!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Submitted on %date</p>
+<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted values are:</p>
+<p>%email_values</p>
+<p>The results of this submission may be viewed at:</p>
+<p>%submission_url</p>
+<p><br>
+	Have a great day! ☺ ☀</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+    ),
     'components' => array(
       1 => array(
         'nid' => 5,
@@ -904,7 +1012,61 @@ ZW|Zimbabwe
     'webform_ajax' => 0,
     'record_exists' => TRUE,
     'roles' => array(),
-    'emails' => array(),
+    'emails' => array(
+      1 => array(
+        'nid' => 3,
+        'eid' => 2,
+        'email' => 'default',
+        'subject' => 'Danke für deine Unterstützung!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hallo %value[first_name],</p>
+<p>vielen Dank für deine Unterstützung!</p>
+<p>Erzähle doch auch gleich deinen Freunden und Bekannten davon ;-)</p>
+<p>Herzliche Grüße,<br>
+	dein Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      2 => array(
+        'nid' => 3,
+        'eid' => 1,
+        'email' => 'default',
+        'subject' => 'Bitte bestätige deine E-Mail-Adresse!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hallo %value[first_name]!</p>
+<p>Bitte bestätige deine Unterstützung, indem du auf diesen Link klickst: %confirm_url</p>
+<p>Vielen Dank,<br>
+	dein Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      3 => array(
+        'nid' => 3,
+        'eid' => 3,
+        'email' => 'default',
+        'subject' => 'New submission!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Submitted on %date</p>
+<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted values are:</p>
+<p>%email_values</p>
+<p>The results of this submission may be viewed at:</p>
+<p>%submission_url</p>
+<p><br>
+	Have a great day! ☺ ☀</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+    ),
     'components' => array(
       1 => array(
         'nid' => 6,

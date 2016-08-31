@@ -114,7 +114,46 @@ function campaignion_donation_templates_uuid_features_default_content() {
       0 => 1,
       1 => 2,
     ),
-    'emails' => array(),
+    'emails' => array(
+      1 => array(
+        'nid' => 7,
+        'eid' => 2,
+        'email' => 'default',
+        'subject' => 'Thank you for your donation!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Thank you for supporting us!</p>
+<p>Remember: sharing is caring :-)</p>
+<p>Have a great day!<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      3 => array(
+        'nid' => 7,
+        'eid' => 3,
+        'email' => 'default',
+        'subject' => 'New submission!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Submitted on %date</p>
+<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted values are:</p>
+<p>%email_values</p>
+<p>Donation amount: %value[amount][donation_amount] %value[donation_interval]</p>
+<p>The results of this submission may be viewed at:</p>
+<p>%submission_url</p>
+<p><br>
+	Have a great day! ☺ ☀</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+    ),
     'components' => array(
       7 => array(
         'nid' => 1,

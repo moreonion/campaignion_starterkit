@@ -128,6 +128,59 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
+      1 => array(
+        'nid' => 10,
+        'eid' => 2,
+        'email' => 'default',
+        'subject' => 'Thank you for your support!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Thank you for supporting us!</p>
+<p>Remember: sharing is caring :-)</p>
+<p>Have a great day!<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      2 => array(
+        'nid' => 10,
+        'eid' => 1,
+        'email' => 'default',
+        'subject' => 'Please confirm your email address!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Hi %value[first_name],</p>
+<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Best,<br>
+	Your Supporter Service Team</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
+      3 => array(
+        'nid' => 10,
+        'eid' => 3,
+        'email' => 'default',
+        'subject' => 'New submission!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => '<p>Submitted on %date</p>
+<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted values are:</p>
+<p>%email_values</p>
+<p>The results of this submission may be viewed at:</p>
+<p>%submission_url</p>
+<p><br>
+	Have a great day! ☺ ☀</p>
+',
+        'excluded_components' => array(),
+        'html' => 1,
+        'attachments' => 0,
+      ),
       4 => array(
         'nid' => 8,
         'eid' => 4,
