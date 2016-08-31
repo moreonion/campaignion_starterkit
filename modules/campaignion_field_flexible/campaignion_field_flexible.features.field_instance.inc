@@ -10,7 +10,7 @@
 function campaignion_field_flexible_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_flexible-field_body'
+  // Exported field_instance: 'field_collection_item-field_flexible-field_body'.
   $field_instances['field_collection_item-field_flexible-field_body'] = array(
     'bundle' => 'field_flexible',
     'default_value' => NULL,
@@ -48,7 +48,8 @@ function campaignion_field_flexible_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_flexible-field_image'
+  // Exported field_instance:
+  // 'field_collection_item-field_flexible-field_image'.
   $field_instances['field_collection_item-field_flexible-field_image'] = array(
     'bundle' => 'field_flexible',
     'deleted' => 0,

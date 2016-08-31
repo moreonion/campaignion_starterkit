@@ -10,7 +10,7 @@
 function campaignion_static_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-static_page-body'
+  // Exported field_instance: 'node-static_page-body'.
   $field_instances['node-static_page-body'] = array(
     'bundle' => 'static_page',
     'default_value' => NULL,
@@ -65,7 +65,7 @@ function campaignion_static_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-static_page-field_main_image'
+  // Exported field_instance: 'node-static_page-field_main_image'.
   $field_instances['node-static_page-field_main_image'] = array(
     'bundle' => 'static_page',
     'deleted' => 0,

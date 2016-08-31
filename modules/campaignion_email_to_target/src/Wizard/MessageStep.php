@@ -25,7 +25,7 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
 
     $info = token_get_info();
     $tokens = [];
-    foreach(['email-to-target', 'webform-tokens'] as $type) {
+    foreach(['email-to-target', 'webform-tokens', 'submission'] as $type) {
       if (!isset($info['types'][$type])) {
         continue;
       }

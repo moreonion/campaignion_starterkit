@@ -3,7 +3,6 @@ description = A flexible field collection used by many campaignion content-types
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
-
 dependencies[] = custom_add_another
 dependencies[] = features
 dependencies[] = field_collection

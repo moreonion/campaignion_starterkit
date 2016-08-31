@@ -10,14 +10,13 @@
 function campaignion_flexible_form_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'action_template'
+  // Exported field_base: 'action_template'.
   $field_bases['action_template'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'action_template',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -36,14 +35,13 @@ function campaignion_flexible_form_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'pgbar_default'
+  // Exported field_base: 'pgbar_default'.
   $field_bases['pgbar_default'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'pgbar_default',
-    'foreign keys' => array(),
     'global_block_settings' => 2,
     'indexes' => array(),
     'locked' => 0,
@@ -55,14 +53,13 @@ function campaignion_flexible_form_field_default_field_bases() {
     'type' => 'pgbar',
   );
 
-  // Exported field_base: 'recent_supporters'
+  // Exported field_base: 'recent_supporters'.
   $field_bases['recent_supporters'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'recent_supporters',
-    'foreign keys' => array(),
     'global_block_settings' => 2,
     'indexes' => array(),
     'locked' => 0,

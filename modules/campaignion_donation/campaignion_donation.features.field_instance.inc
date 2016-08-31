@@ -10,7 +10,7 @@
 function campaignion_donation_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-donation-action_template'
+  // Exported field_instance: 'node-donation-action_template'.
   $field_instances['node-donation-action_template'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
@@ -55,7 +55,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-body'
+  // Exported field_instance: 'node-donation-body'.
   $field_instances['node-donation-body'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
@@ -110,7 +110,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-field_main_image'
+  // Exported field_instance: 'node-donation-field_main_image'.
   $field_instances['node-donation-field_main_image'] = array(
     'bundle' => 'donation',
     'deleted' => 0,
@@ -188,7 +188,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-field_reference_to_campaign'
+  // Exported field_instance: 'node-donation-field_reference_to_campaign'.
   $field_instances['node-donation-field_reference_to_campaign'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
@@ -238,7 +238,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-field_thank_you_pages'
+  // Exported field_instance: 'node-donation-field_thank_you_pages'.
   $field_instances['node-donation-field_thank_you_pages'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
@@ -284,7 +284,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-pgbar_default'
+  // Exported field_instance: 'node-donation-pgbar_default'.
   $field_instances['node-donation-pgbar_default'] = array(
     'bundle' => 'donation',
     'custom_add_another' => '',
@@ -350,7 +350,7 @@ function campaignion_donation_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'webform_field_sum.inc',
+      'source' => 'webform_component_sum',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -364,7 +364,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-recent_supporters'
+  // Exported field_instance: 'node-donation-recent_supporters'.
   $field_instances['node-donation-recent_supporters'] = array(
     'bundle' => 'donation',
     'custom_add_another' => '',
@@ -423,7 +423,7 @@ function campaignion_donation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-donation-supporter_tags'
+  // Exported field_instance: 'node-donation-supporter_tags'.
   $field_instances['node-donation-supporter_tags'] = array(
     'bundle' => 'donation',
     'default_value' => NULL,
