@@ -119,7 +119,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Thank you for supporting us!</p>
 <p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
@@ -136,7 +136,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Almost there! Just one more click to confirm your support: %confirm_url</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
@@ -153,7 +153,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Submitted on %date</p>
-<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>%email_values</p>
 <p>The results of this submission may be viewed at:</p>
@@ -368,7 +368,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Thank you for supporting us!</p>
 <p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
@@ -385,7 +385,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Almost there! Just one more click to confirm your support: %confirm_url</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
@@ -402,7 +402,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Submitted on %date</p>
-<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>%email_values</p>
 <p>The results of this submission may be viewed at:</p>
@@ -1020,7 +1020,7 @@ ZW|Zimbabwe
         'subject' => 'Danke für deine Unterstützung!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hallo %value[first_name],</p>
+        'template' => '<p>Hallo [submission:values:first_name],</p>
 <p>vielen Dank für deine Unterstützung!</p>
 <p>Erzähle doch auch gleich deinen Freunden und Bekannten davon ;-)</p>
 <p>Herzliche Grüße,<br>
@@ -1037,7 +1037,7 @@ ZW|Zimbabwe
         'subject' => 'Bitte bestätige deine E-Mail-Adresse!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hallo %value[first_name]!</p>
+        'template' => '<p>Hallo [submission:values:first_name]!</p>
 <p>Bitte bestätige deine Unterstützung, indem du auf diesen Link klickst: %confirm_url</p>
 <p>Vielen Dank,<br>
 	dein Supporter Service Team</p>
@@ -1054,7 +1054,7 @@ ZW|Zimbabwe
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Submitted on %date</p>
-<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>%email_values</p>
 <p>The results of this submission may be viewed at:</p>

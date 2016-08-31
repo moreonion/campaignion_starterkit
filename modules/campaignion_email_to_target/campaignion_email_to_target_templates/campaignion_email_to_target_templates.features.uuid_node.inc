@@ -135,7 +135,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Thank you for supporting us!</p>
 <p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
@@ -152,7 +152,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Almost there! Just one more click to confirm your support: %confirm_url</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
@@ -169,7 +169,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Submitted on %date</p>
-<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>%email_values</p>
 <p>The results of this submission may be viewed at:</p>

@@ -122,7 +122,7 @@ function campaignion_donation_templates_uuid_features_default_content() {
         'subject' => 'Thank you for your donation!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Hi %value[first_name],</p>
+        'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Thank you for supporting us!</p>
 <p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
@@ -140,10 +140,10 @@ function campaignion_donation_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Submitted on %date</p>
-<p>Submitted by %value[first_name] %value[last_name]</p>
+<p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>%email_values</p>
-<p>Donation amount: %value[amount][donation_amount] %value[donation_interval]</p>
+<p>Donation amount: [submission:values:amount][donation_amount] [submission:values:donation_interval]</p>
 <p>The results of this submission may be viewed at:</p>
 <p>%submission_url</p>
 <p><br>
