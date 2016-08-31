@@ -10,7 +10,7 @@
 function campaignion_flexible_form_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-webform-action_template'
+  // Exported field_instance: 'node-webform-action_template'.
   $field_instances['node-webform-action_template'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -55,7 +55,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-body'
+  // Exported field_instance: 'node-webform-body'.
   $field_instances['node-webform-body'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -110,7 +110,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_main_image'
+  // Exported field_instance: 'node-webform-field_main_image'.
   $field_instances['node-webform-field_main_image'] = array(
     'bundle' => 'webform',
     'deleted' => 0,
@@ -188,7 +188,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_reference_to_campaign'
+  // Exported field_instance: 'node-webform-field_reference_to_campaign'.
   $field_instances['node-webform-field_reference_to_campaign'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -234,7 +234,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-field_thank_you_pages'
+  // Exported field_instance: 'node-webform-field_thank_you_pages'.
   $field_instances['node-webform-field_thank_you_pages'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,
@@ -280,7 +280,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-pgbar_default'
+  // Exported field_instance: 'node-webform-pgbar_default'.
   $field_instances['node-webform-pgbar_default'] = array(
     'bundle' => 'webform',
     'custom_add_another' => '',
@@ -342,7 +342,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
-      'source' => 'webform_submissions.inc',
+      'source' => 'webform_submission_count',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -356,7 +356,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-recent_supporters'
+  // Exported field_instance: 'node-webform-recent_supporters'.
   $field_instances['node-webform-recent_supporters'] = array(
     'bundle' => 'webform',
     'custom_add_another' => '',
@@ -415,7 +415,7 @@ function campaignion_flexible_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-webform-supporter_tags'
+  // Exported field_instance: 'node-webform-supporter_tags'.
   $field_instances['node-webform-supporter_tags'] = array(
     'bundle' => 'webform',
     'default_value' => NULL,

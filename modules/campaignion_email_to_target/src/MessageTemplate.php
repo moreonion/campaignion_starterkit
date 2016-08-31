@@ -137,4 +137,13 @@ class MessageTemplate extends Model {
     }
   }
 
+  public function checkFilters($target, $constituency) {
+    foreach ($this->filters as $f) {
+      if (!$f->match($target, $constituency)) {
+        return FALSE;
+      }
+    }
+    return TRUE;
+  }
+
 }

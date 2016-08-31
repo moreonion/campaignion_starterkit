@@ -10,7 +10,7 @@
 function campaignion_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-news-body'
+  // Exported field_instance: 'node-news-body'.
   $field_instances['node-news-body'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -63,7 +63,7 @@ function campaignion_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_main_image'
+  // Exported field_instance: 'node-news-field_main_image'.
   $field_instances['node-news-field_main_image'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -141,7 +141,7 @@ function campaignion_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_reference_to_campaign'
+  // Exported field_instance: 'node-news-field_reference_to_campaign'.
   $field_instances['node-news-field_reference_to_campaign'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -188,7 +188,7 @@ function campaignion_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_related_action'
+  // Exported field_instance: 'node-news-field_related_action'.
   $field_instances['node-news-field_related_action'] = array(
     'bundle' => 'news',
     'default_value' => NULL,

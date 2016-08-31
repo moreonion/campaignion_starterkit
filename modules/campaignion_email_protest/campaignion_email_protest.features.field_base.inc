@@ -10,14 +10,13 @@
 function campaignion_email_protest_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_protest_target'
+  // Exported field_base: 'field_protest_target'.
   $field_bases['field_protest_target'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_protest_target',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(
       'target_id' => array(
@@ -48,14 +47,13 @@ function campaignion_email_protest_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_protest_target_options'
+  // Exported field_base: 'field_protest_target_options'.
   $field_bases['field_protest_target_options'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_protest_target_options',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(
       'value' => array(

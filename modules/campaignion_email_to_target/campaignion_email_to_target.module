@@ -154,16 +154,23 @@ function campaignion_email_to_target_token_info() {
  * Implements hook_tokens().
  */
 function campaignion_email_to_target_tokens($type, array $tokens, array $data = array(), array $options = array()) {
-  if ($type != 'email-to-target' || empty($data['email-to-target'])) {
+  if ($type != 'email-to-target') {
     return;
   }
 
-  $target = $data['email-to-target'];
+  $my_data = [
+    'contact' => $data['email-to-target'],
+    'constituency' => isset($data['email-to-target-constituency']) ? $data['email-to-target-constituency'] : [],
+  ];
 
   $replacements = [];
   foreach ($tokens as $name => $original) {
-    if (isset($target[$name])) {
-      $replacements[$original] = $target[$name];
+    if (strpos($name, '.') === FALSE) {
+      $name = 'contact.' . $name;
+    }
+    $value = drupal_array_get_nested_value($my_data, explode('.', $name));
+    if (!is_null($value)) {
+      $replacements[$original] = (string) $value;
     }
     else {
       watchdog('campaignion_email_to_target', 'No data for token "%original" in dataset.', ['%original' => $original], WATCHDOG_ERROR);

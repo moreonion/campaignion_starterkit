@@ -10,7 +10,8 @@
 function campaignion_protest_target_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_address'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_address'.
   $field_instances['redhen_contact-email_protest_target-field_address'] = array(
     'bundle' => 'email_protest_target',
     'custom_add_another' => '',
@@ -54,6 +55,7 @@ function campaignion_protest_target_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
+        'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
           'optional-country' => 'optional-country',
@@ -68,7 +70,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_date_of_birth'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_date_of_birth'.
   $field_instances['redhen_contact-email_protest_target-field_date_of_birth'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -84,6 +87,7 @@ function campaignion_protest_target_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 5,
@@ -126,48 +130,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_salutation'
-  $field_instances['redhen_contact-email_protest_target-field_salutation'] = array(
-    'bundle' => 'email_protest_target',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'redhen_contact',
-    'exclude_cv' => 0,
-    'field_name' => 'field_salutation',
-    'label' => 'Salutation',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_gender'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_gender'.
   $field_instances['redhen_contact-email_protest_target-field_gender'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -208,7 +172,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_ip_adress'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_ip_adress'.
   $field_instances['redhen_contact-email_protest_target-field_ip_adress'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -252,7 +217,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_phone_number'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_phone_number'.
   $field_instances['redhen_contact-email_protest_target-field_phone_number'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -296,7 +262,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_preferred_language'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_preferred_language'.
   $field_instances['redhen_contact-email_protest_target-field_preferred_language'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => array(
@@ -341,7 +308,50 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_social_network_links'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_salutation'.
+  $field_instances['redhen_contact-email_protest_target-field_salutation'] = array(
+    'bundle' => 'email_protest_target',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'exclude_cv' => 0,
+    'field_name' => 'field_salutation',
+    'label' => 'Salutation',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-field_social_network_links'.
   $field_instances['redhen_contact-email_protest_target-field_social_network_links'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -385,48 +395,7 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-supporter_tags'
-  $field_instances['redhen_contact-email_protest_target-supporter_tags'] = array(
-    'bundle' => 'email_protest_target',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'redhen_contact',
-    'exclude_cv' => 0,
-    'field_name' => 'supporter_tags',
-    'label' => 'Tags',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'redhen_contact-email_protest_target-field_title'
+  // Exported field_instance: 'redhen_contact-email_protest_target-field_title'.
   $field_instances['redhen_contact-email_protest_target-field_title'] = array(
     'bundle' => 'email_protest_target',
     'default_value' => NULL,
@@ -470,7 +439,8 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'redhen_contact-email_protest_target-redhen_contact_email'
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-redhen_contact_email'.
   $field_instances['redhen_contact-email_protest_target-redhen_contact_email'] = array(
     'bundle' => 'email_protest_target',
     'deleted' => 0,
@@ -508,9 +478,51 @@ function campaignion_protest_target_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'redhen_contact-email_protest_target-supporter_tags'.
+  $field_instances['redhen_contact-email_protest_target-supporter_tags'] = array(
+    'bundle' => 'email_protest_target',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'exclude_cv' => 0,
+    'field_name' => 'supporter_tags',
+    'label' => 'Tags',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
-  t('Adresse');
+  t('Address');
   t('Date of birth');
   t('E-Mail');
   t('Gender');

@@ -5,18 +5,14 @@
  * campaignion_email_protest.install
  */
 
-function campaignion_email_protest_install() {
-  $var = variable_get('webform_node_types', array());
-  $var['email_protest'] = 'email_protest';
-  variable_set('webform_node_types', $var);
-}
-
 /**
  * Implements hook_enable().
  */
 function campaignion_email_protest_enable() {
+  variable_set('webform_node_email_protest', 1);
+
   $webform_settings = variable_get('webform_template_src', array());
-  $webform_settings['webform_template_type'] = 'webform_template_type';
+  $webform_settings['email_protest'] = 'email_protest';
   variable_set('webform_template_src', $webform_settings);
 
   $webform_settings = variable_get('webform_template_dest', array());

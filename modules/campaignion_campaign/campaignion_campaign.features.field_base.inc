@@ -10,21 +10,13 @@
 function campaignion_campaign_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_description'
+  // Exported field_base: 'field_description'.
   $field_bases['field_description'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_description',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'global_block_settings' => 1,
     'indexes' => array(
       'format' => array(
@@ -38,14 +30,13 @@ function campaignion_campaign_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_public_page'
+  // Exported field_base: 'field_public_page'.
   $field_bases['field_public_page'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_public_page',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(
       'value' => array(
@@ -65,21 +56,13 @@ function campaignion_campaign_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_reference_to_campaign'
+  // Exported field_base: 'field_reference_to_campaign'.
   $field_bases['field_reference_to_campaign'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_reference_to_campaign',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'global_block_settings' => 1,
     'indexes' => array(
       'nid' => array(

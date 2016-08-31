@@ -10,21 +10,13 @@
 function campaignion_news_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_related_action'
+  // Exported field_base: 'field_related_action'.
   $field_bases['field_related_action'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_related_action',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'global_block_settings' => 1,
     'indexes' => array(
       'nid' => array(

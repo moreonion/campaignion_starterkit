@@ -89,7 +89,7 @@ class Supporter implements ContactTypeInterface {
         $map['LANGUAGE'] = new WrapperField('field_preferred_language');
         $map['CREATED'] = new DateField('created', '%Y-%m-%d');
         $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
-        $map['TAGS'] = new TagsField('supporter_tags');
+        $map['TAGS'] = new TagsField('supporter_tags', TRUE);
         break;
       case 'dadiapi':
         $map['email'] = new WrapperField('email');
@@ -146,6 +146,7 @@ class Supporter implements ContactTypeInterface {
         $map['sprache'] = new WrapperField('field_preferred_language');
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
+        $map['tags'] = new TagsField('supporter_tags', TRUE);
         break;
     }
     if ($map) {

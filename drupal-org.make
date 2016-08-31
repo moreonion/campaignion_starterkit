@@ -59,7 +59,7 @@ projects[form_builder][version] = 1.18
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
-projects[geoip_language_redirect][version] = 1.0-beta5
+projects[geoip_language_redirect][version] = 2.0-beta1
 
 projects[honeypot][version] = 1.22
 
