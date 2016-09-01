@@ -168,12 +168,12 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'subject' => 'New submission!',
         'from_name' => 'default',
         'from_address' => 'default',
-        'template' => '<p>Submitted on %date</p>
+        'template' => '<p>Submitted on [current-date:short]</p>
 <p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
-<p>%email_values</p>
+<p>[submission:values]</p>
 <p>The results of this submission may be viewed at:</p>
-<p>%submission_url</p>
+<p>[submission:url]</p>
 <p><br>
 	Have a great day! ☺ ☀</p>
 ',
