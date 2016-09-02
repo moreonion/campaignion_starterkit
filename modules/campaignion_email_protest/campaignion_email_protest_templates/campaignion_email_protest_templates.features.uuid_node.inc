@@ -119,7 +119,8 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
     'emails' => array(
       1 => array(
         'nid' => 5,
-        'eid' => 2,
+        'eid' => 1,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -136,7 +137,8 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
       ),
       2 => array(
         'nid' => 5,
-        'eid' => 1,
+        'eid' => 2,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -153,6 +155,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
       3 => array(
         'nid' => 5,
         'eid' => 3,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',

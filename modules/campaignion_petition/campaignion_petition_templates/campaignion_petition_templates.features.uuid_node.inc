@@ -114,7 +114,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'emails' => array(
       1 => array(
         'nid' => 1,
-        'eid' => 2,
+        'eid' => 1,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -131,7 +132,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
       2 => array(
         'nid' => 1,
-        'eid' => 1,
+        'eid' => 2,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -148,6 +150,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       3 => array(
         'nid' => 1,
         'eid' => 3,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
@@ -363,7 +366,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'emails' => array(
       1 => array(
         'nid' => 2,
-        'eid' => 2,
+        'eid' => 1,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -380,7 +384,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
       2 => array(
         'nid' => 2,
-        'eid' => 1,
+        'eid' => 2,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -397,6 +402,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       3 => array(
         'nid' => 2,
         'eid' => 3,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
@@ -1015,7 +1021,8 @@ ZW|Zimbabwe
     'emails' => array(
       1 => array(
         'nid' => 3,
-        'eid' => 2,
+        'eid' => 1,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Danke für deine Unterstützung!',
         'from_name' => 'default',
@@ -1032,7 +1039,8 @@ ZW|Zimbabwe
       ),
       2 => array(
         'nid' => 3,
-        'eid' => 1,
+        'eid' => 2,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Bitte bestätige deine E-Mail-Adresse!',
         'from_name' => 'default',
@@ -1049,6 +1057,7 @@ ZW|Zimbabwe
       3 => array(
         'nid' => 3,
         'eid' => 3,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',

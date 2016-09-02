@@ -117,7 +117,8 @@ function campaignion_donation_templates_uuid_features_default_content() {
     'emails' => array(
       1 => array(
         'nid' => 7,
-        'eid' => 2,
+        'eid' => 1,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your donation!',
         'from_name' => 'default',
@@ -135,6 +136,7 @@ function campaignion_donation_templates_uuid_features_default_content() {
       3 => array(
         'nid' => 7,
         'eid' => 3,
+        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
