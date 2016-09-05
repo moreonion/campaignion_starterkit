@@ -113,7 +113,7 @@ function campaignion_email_protest_templates_uuid_features_default_content() {
     'preview_excluded_components' => array(),
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
-    'webform_ajax' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(

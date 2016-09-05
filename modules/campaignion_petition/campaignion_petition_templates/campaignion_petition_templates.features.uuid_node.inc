@@ -105,7 +105,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'preview_excluded_components' => array(),
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
-    'webform_ajax' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
       0 => 1,
@@ -360,7 +360,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'preview_excluded_components' => array(),
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
-    'webform_ajax' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
@@ -1015,7 +1015,7 @@ ZW|Zimbabwe
     'preview_excluded_components' => array(),
     'first_button_text' => 'Weiter',
     'next_button_text' => 'Weiter',
-    'webform_ajax' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
