@@ -106,7 +106,9 @@ function _campaignion_conf_install_enable_editors() {
  * Grant 'view email_to_target_messages' to administrators.
  */
 function campaignion_conf_update_1() {
-  if ($role = user_role_load_by_name('administrator')) {
-    user_role_grant_permissions($role->rid, ['view email_to_target messages']);
+  if (module_exists('campaignion_email_to_target')) {
+    if ($role = user_role_load_by_name('administrator')) {
+      user_role_grant_permissions($role->rid, ['view email_to_target messages']);
+    }
   }
 }
