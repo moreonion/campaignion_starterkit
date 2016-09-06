@@ -3,6 +3,7 @@ description = Basic configuration of non-campaignion contrib.
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
+dependencies[] = campaignion_roles
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = file_entity

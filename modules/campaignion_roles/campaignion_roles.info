@@ -1,0 +1,8 @@
+name = campaignion_roles
+core = 7.x
+package = Features
+dependencies[] = features
+features[features_api][] = api:2
+features[user_role][] = administrator
+features[user_role][] = editor
+features[user_role][] = supporter

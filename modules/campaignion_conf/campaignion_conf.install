@@ -4,7 +4,6 @@ function campaignion_conf_install() {
   if (!empty($GLOBALS['ae_baseconf_migration'])) {
     return;
   }
-  _campaignion_conf_install_roles();
   _campaignion_conf_install_enable_editors();
   _campaignion_conf_install_permissions();
   _campaignion_conf_set_variables();
@@ -16,23 +15,6 @@ function _campaignion_conf_set_variables() {
   variable_set('webform_submission_access_control', 0);
   variable_set('modernizr_scope', 'header');
   variable_set('modernizr_type', 'sync');
-}
-
-function _campaignion_conf_install_roles() {
-  $roles = array();
-  $roles[] = 'administrator';
-  $roles[] = 'editor';
-  $roles[] = 'supporter';
-  
-  $i = 2;
-  foreach ($roles as $r) {
-    $save = (object) array('name' => $r, 'weight' => $i++);
-    try {
-      user_role_save($save);
-    } catch (PDOException $e) {
-      // the role did already exist
-    }
-  }
 }
 
 function _campaignion_conf_install_permissions() {
@@ -100,15 +82,4 @@ function _campaignion_conf_install_enable_editors() {
       'settings' => serialize($ck_settings),
     ))
     ->execute();
-}
-
-/**
- * Grant 'view email_to_target_messages' to administrators.
- */
-function campaignion_conf_update_1() {
-  if (module_exists('campaignion_email_to_target')) {
-    if ($role = user_role_load_by_name('administrator')) {
-      user_role_grant_permissions($role->rid, ['view email_to_target messages']);
-    }
-  }
 }
