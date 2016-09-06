@@ -58,6 +58,7 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'donation' => 'donation',
     'email_protest' => 'email_protest',
+    'email_to_target' => 'email_to_target',
     'petition' => 'petition',
   );
   /* Filter criterion: Content: Language */
@@ -153,6 +154,7 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'donation' => 'donation',
     'email_protest' => 'email_protest',
+    'email_to_target' => 'email_to_target',
     'petition' => 'petition',
   );
   /* Filter criterion: Content: Promoted to front page */
@@ -219,7 +221,6 @@ function campaignion_views_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'view files';
@@ -320,7 +321,6 @@ function campaignion_views_views_default_views() {
     t('File name'),
     t('Type'),
     t('Page'),
-    t('more'),
   );
   $export['manage_media'] = $view;
 
