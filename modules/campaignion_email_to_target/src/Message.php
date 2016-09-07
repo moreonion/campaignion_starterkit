@@ -29,7 +29,7 @@ class Message {
       'footer' => $t->footer,
     ];
     return new static($data + [
-      'from' => '[submission:value:first_name] [submission:value:last_name] <[submission:value:email]>',
+      'from' => '[submission:values:first_name] [submission:values:last_name] <[submission:values:email]>',
       'to' => '[email-to-target:contact.title] [email-to-target:contact.first_name] [email-to-target:contact.last_name] <[email-to-target:contact.email]>',
     ]);
   }

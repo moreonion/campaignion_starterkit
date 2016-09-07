@@ -130,7 +130,7 @@ class MessageEndpoint {
         'subject' => '',
         'header' => t("Dear [email-to-target:salutation],\n"),
         'message' => '',
-        'footer' => t("\n\nYours sincerely,\n[submission:value:first_name] [submission:value:last_name]\n[submission:value:street_address]\n[submission:value:postcode]"),
+        'footer' => t("\n\nYours sincerely,\n[submission:values:first_name] [submission:values:last_name]\n[submission:values:street_address]\n[submission:values:postcode]"),
       ]);
     }
     foreach ($templates as $m) {
