@@ -20,7 +20,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
   'type' => 'email_to_target',
   'language' => 'en',
   'created' => 1343052466,
-  'tnid' => 9,
+  'tnid' => 0,
   'translate' => 0,
   'uuid' => 'f5645542-33eb-445e-8e6b-8300cf385069',
   'action_template' => array(
