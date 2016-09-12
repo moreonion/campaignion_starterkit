@@ -237,3 +237,17 @@ function _campaignion_donation_select_or_other_process($element, &$form_state) {
   }
   return $element;
 }
+
+/**
+ * Implements hook_payment_method_controller_info_alter().
+ */
+function campaignion_donation_payment_method_controller_info_alter(&$info) {
+  // Override stripe to disable it for recurring payments.
+  if (isset($info['\\Drupal\\stripe_payment\\CreditCardController'])) {
+    $info['\\Drupal\\stripe_payment\\CreditCardController'] = '\\Drupal\\campaignion_donation\\StripeCreditCardController';
+  }
+  // Override paymill to disable it for recurring payments.
+  if (isset($info['\\Drupal\\paymill_payment\\CreditCardController'])) {
+    $info['\\Drupal\\paymill_payment\\CreditCardController'] = '\\Drupal\\campaignion_donation\\PaymillCreditCardController';
+  }
+}
