@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.9
+projects[ctools][version] = 1.10
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -50,16 +50,18 @@ projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
 projects[field_group][version] = 1.5
+projects[field_group][patch][] = https://www.drupal.org/files/issues/php7_uniform_variable-2649648-5.patch
+projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-export-ctools-plugin-info-21.patch
 
 projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.18
+projects[form_builder][version] = 1.19
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
-projects[geoip_language_redirect][version] = 2.0-beta1
+projects[geoip_language_redirect][version] = 2.0-rc1
 
 projects[honeypot][version] = 1.22
 
@@ -81,7 +83,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.1
+projects[little_helpers][version] = 1.2
 
 projects[logintoboggan][version] = 1.5
 
@@ -108,13 +110,13 @@ projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previou
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.16
+projects[metatag][version] = 1.17
 
 projects[mimemail][version] = 1.0-beta4
 
 projects[modernizr][version] = 3.9
 
-projects[morelesszen][version] = 1.0
+projects[morelesszen][version] = 1.1
 
 projects[mpay24_payment][version] = 1.0-beta4
 
@@ -130,7 +132,7 @@ projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.3
 
-projects[payment][version] = 1.15
+projects[payment][version] = 1.16
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -146,19 +148,19 @@ projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-
 ; Let other modules prefill data for paypal
 projects[paypal_payment][patch][] = https://www.drupal.org/files/issues/paypal_payment_2337561_4.patch
 
-projects[pgbar][version] = 2.0-alpha2
+projects[pgbar][version] = 2.0-beta1
 
 projects[polling][version] = 1.0-beta1
 
 projects[postal_code_validation][version] = 1.4
 
-projects[postcode][version] = 1.0-rc1
+projects[postcode][version] = 1.0
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.0-rc1
+projects[recent_supporters][version] = 1.0-rc2
 
-projects[redhen][version] = 1.11
+projects[redhen][version] = 1.12
 
 projects[redirect][version] = 1.0-rc3
 
@@ -188,7 +190,7 @@ projects[token_filter][version] = 1.1
 
 projects[ultimate_cron][version] = 2.0-rc2
 
-projects[uuid][version] = 1.0-beta1
+projects[uuid][version] = 1.0-beta2
 
 ; uuid_features-1.0-alpha4+58
 projects[uuid_features][download][type] = git
@@ -201,43 +203,47 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.14
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 3.24
-; Make webform_get_submissions() extensible.
-projects[webform][patch][] = https://www.drupal.org/files/issues/2600316-webform_get_submission-backport-5.patch
-; Use batch API for results download. - https://drupal.org/node/1327186
-projects[webform][patch][] = https://drupal.org/files/issues/0001-Use-batch-API-for-the-results-download-20.patch
+projects[webform][version] = 4.14
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
-projects[webform][patch][] = https://drupal.org/files/issues/0002-Use-hooks-to-get-submission-information-do-not-test.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-45.patch
 
-projects[webform_ajax][version] = 1.1
+projects[webform_ajax][download][type] = git
+projects[webform_ajax][download][url] = https://git.drupal.org/project/webform_ajax.git
+projects[webform_ajax][download][branch] = 7.x-1.x
+projects[webform_ajax][download][revision] = 2dbf5797458d31509ba6a34ccab2907889d78c48
+projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-remove-bogus-workaround-20.patch
 
 projects[webform_block][version] = 1.2
 
+projects[webform_conditional][download][type] = git
+projects[webform_conditional][download][url] = https://git.drupal.org/project/webform_conditional.git
+projects[webform_conditional][download][branch] = 7.x-2.x
+projects[webform_conditional][download][revision] = 649fcf499a2bd546495b2335750725e99ec55b60
+projects[webform_conditional][patch][] = https://www.drupal.org/files/issues/1616376-19.webform_conditional.upgrade_path.patch
+
 projects[webform_conditional][version] = 1.2
 
-projects[webform_confirm_email][version] = 1.5
+projects[webform_confirm_email][version] = 2.5
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.6
+projects[webform_paymethod_select][version] = 1.7
 
-projects[webform_prefill][version] = 1.0-alpha3
+projects[webform_prefill][version] = 1.0-alpha4
 
-projects[webform_steps][version] = 2.0
+projects[webform_steps][version] = 2.1
 
 projects[webform_submission_uuid][version] = 1.0-rc1
 
-projects[webform_template][version] = 1.5
+projects[webform_template][version] = 4.0
 
-projects[webform_tokens][version] = 1.8
-; Show only tokens of the current node in the help.
-projects[webform_tokens][patch][] = "https://www.drupal.org/files/issues/2686147-webform_tokens-only-tokens-of-current-node-3.patch"
+projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 1.0-rc1
+projects[webform_tracking][version] = 2.0-beta1
 
 projects[webform_validation][version] = 1.11
 
-projects[weight][version] = 2.5
+projects[weight][version] = 3.1
 
 projects[wysiwyg][version] = 2.2
 
@@ -245,7 +251,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[simplicity][version] = 1.2
+projects[simplicity][version] = 1.3
 
 projects[tao][version] = 3.1
 
