@@ -35,7 +35,7 @@ function campaignion_email_to_target_field_group_info() {
       'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-advanced-settings field-group-fieldset',
+        'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
         'required_fields' => 1,
         'id' => '',
       ),
@@ -64,7 +64,7 @@ function campaignion_email_to_target_field_group_info() {
       'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-content field-group-fieldset',
+        'classes' => 'group-content field-group-fieldset field-group-heading',
         'required_fields' => 1,
         'id' => '',
       ),
