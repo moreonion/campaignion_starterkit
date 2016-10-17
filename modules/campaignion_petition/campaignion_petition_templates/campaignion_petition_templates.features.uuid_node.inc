@@ -139,7 +139,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Hi [submission:values:first_name],</p>
-<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Almost there! Just one more click to confirm your support: [submission:confirm_url]</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
 ',
@@ -391,7 +391,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Hi [submission:values:first_name],</p>
-<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Almost there! Just one more click to confirm your support: [submission:confirm_url]</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
 ',
@@ -1046,7 +1046,7 @@ ZW|Zimbabwe
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Hallo [submission:values:first_name]!</p>
-<p>Bitte bestätige deine Unterstützung, indem du auf diesen Link klickst: %confirm_url</p>
+<p>Bitte bestätige deine Unterstützung, indem du auf diesen Link klickst: [submission:confirm_url]</p>
 <p>Vielen Dank,<br>
 	dein Supporter Service Team</p>
 ',

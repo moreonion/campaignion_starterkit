@@ -155,7 +155,7 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Hi [submission:values:first_name],</p>
-<p>Almost there! Just one more click to confirm your support: %confirm_url</p>
+<p>Almost there! Just one more click to confirm your support: [submission:confirm_url]</p>
 <p>Best,<br>
 	Your Supporter Service Team</p>
 ',
