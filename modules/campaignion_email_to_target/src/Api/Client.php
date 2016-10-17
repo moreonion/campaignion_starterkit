@@ -48,6 +48,10 @@ class Client {
       // Some kind of connection error.
       throw new Error($r->code, $r->error, '');
     }
+    // Either the postcode was invalid or it was not found.
+    if (in_array($r->code, [400, 404])) {
+      return [];
+    }
     if ($r->code != 200) {
       $d = \drupal_json_decode($r->data);
       throw new Error($r->code, $r->status_message, $d['message']);
