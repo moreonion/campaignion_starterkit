@@ -74,6 +74,13 @@ function campaignion_donation_webform_paymethod_select_method_list_alter(&$conte
       }
     }
   }
+  else {
+    foreach ($available_payment_methods as $pmid => $method) {
+      if ($method->name == 'manual_direct_debit') {
+        unset($pmid_options[$pmid]);
+      }
+    }
+  }
 }
 
 /**
