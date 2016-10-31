@@ -153,12 +153,13 @@ function campaignion_donation_form_builder_element_types_alter(&$types, $form_ty
     return;
   }
   $node = node_load($form_id);
-  $type = &$types['paymethod_select'];
   if ($node->type == 'donation') {
-    $type['addable'] = TRUE;
-    $type['palette_group'] = 'donation';
-  } else {
-    $type['addable'] = FALSE;
+    $types['paymethod_select']['addable'] = TRUE;
+    $types['paymethod_select']['palette_group'] = 'donation';
+    $types['currency']['palette_group'] = 'donation';
+  }
+  else {
+    $types['paymethod_select']['addable'] = FALSE;
   }
 }
 

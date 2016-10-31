@@ -27,6 +27,7 @@ dependencies[] = uuid
 dependencies[] = views
 dependencies[] = webform
 dependencies[] = webform_confirm_email
+dependencies[] = webform_currency
 dependencies[] = webform_custom_buttons
 dependencies[] = webform_paymethod_select
 features[ctools][] = field_group:field_group:1
