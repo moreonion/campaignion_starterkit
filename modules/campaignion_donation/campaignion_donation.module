@@ -164,6 +164,7 @@ function campaignion_donation_form_builder_element_types_alter(&$types, $form_ty
     $types['paymethod_select']['addable'] = TRUE;
     $types['paymethod_select']['palette_group'] = 'donation';
     $types['currency']['palette_group'] = 'donation';
+    $types['currency']['unique'] = TRUE;
   }
   else {
     $types['paymethod_select']['addable'] = FALSE;
