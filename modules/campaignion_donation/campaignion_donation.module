@@ -63,21 +63,21 @@ function campaignion_donation_form_donation_node_form_alter(&$form, &$form_state
  * Alters the list of available payment methods based whether the
  * payment interval is recurrent or not
  */
-function campaignion_donation_webform_paymethod_select_method_list_alter(&$context, &$available_payment_methods, &$pmid_options) {
-  $interval = $context->value('donation_interval');
+function campaignion_donation_webform_paymethod_select_method_list_alter(&$methods, $payment) {
+  $interval = $payment->contextObj->value('donation_interval');
   $recurrent = in_array($interval, array('m', 'y'));
 
   if ($recurrent) {
-    foreach ($available_payment_methods as $pmid => $payment_method) {
-      if (!($payment_method->controller instanceof \Drupal\webform_paymethod_select\PaymentRecurrentController)) {
-        unset($pmid_options[$pmid]);
+    foreach ($methods as $pmid => $method) {
+      if (!($method->controller instanceof \Drupal\webform_paymethod_select\PaymentRecurrentController)) {
+        unset($methods[$pmid]);
       }
     }
   }
   else {
-    foreach ($available_payment_methods as $pmid => $method) {
+    foreach ($methods as $pmid => $method) {
       if ($method->name == 'manual_direct_debit') {
-        unset($pmid_options[$pmid]);
+        unset($methods[$pmid]);
       }
     }
   }
