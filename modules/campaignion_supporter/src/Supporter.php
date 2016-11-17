@@ -56,7 +56,7 @@ class Supporter implements ContactTypeInterface {
     ];
     switch ($type) {
       case 'cleverreach':
-        $map['emai$l'] = new WrapperField('email');
+        $map['email'] = new WrapperField('email');
         $map['salutation'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['firstname'] = new SingleValueField('first_name');
         $map['lastname'] = new SingleValueField('last_name');
@@ -146,6 +146,20 @@ class Supporter implements ContactTypeInterface {
         $map['sprache'] = new WrapperField('field_preferred_language');
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
+        $map['tags'] = new TagsField('supporter_tags', TRUE);
+        break;
+      case 'dotmailer':
+        $map['salutation'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
+        $map['firstname'] = new SingleValueField('first_name');
+        $map['lastname'] = new SingleValueField('last_name');
+        $map['title'] = new WrapperField('field_title');
+        $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['gender'] = new WrapperField('field_gender');
+        $map['address'] = new KeyedField('field_address', 'thoroughfare');
+        $map['country'] = new KeyedField('field_address', 'country');
+        $map['postcode'] = new KeyedField('field_address', 'postal_code');
+        $map['county'] = new KeyedField('field_address', 'administrative_area');
+        $map['phone'] = new WrapperField('field_phone_number');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         break;
     }
