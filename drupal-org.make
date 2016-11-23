@@ -9,7 +9,7 @@ projects[campaignion][version] = 1.2
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][version] = 1.42
+projects[clientside_validation][version] = 1.44
 
 projects[context][version] = 3.7
 ; Make block title configurable in contexts - https://drupal.org/node/795058
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.10
+projects[ctools][version] = 1.12
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -37,15 +37,13 @@ projects[date][version] = 2.9
 
 projects[diff][version] = 3.2
 
-projects[entity][version] = 1.7
+projects[entity][version] = 1.8
 
-projects[entityreference][version] = 1.1
+projects[entityreference][version] = 1.2
 
 projects[features][version] = 2.10
 
-projects[field_collection][version] = 1.0-beta11
-; fix call to undefined function entity_i18n_string - http://drupal.org/node/1471840
-projects[field_collection][patch][] = http://drupal.org/files/replace_entity_i18n_string-1471840-1.patch
+projects[field_collection][version] = 1.0-beta12
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
@@ -67,7 +65,7 @@ projects[honeypot][version] = 1.22
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.13
+projects[i18n][version] = 1.14
 
 projects[imagefield_crop][version] = 1.1
 
@@ -152,7 +150,7 @@ projects[pgbar][version] = 2.0-beta1
 
 projects[polling][version] = 1.0-beta1
 
-projects[postal_code_validation][version] = 1.4
+projects[postal_code_validation][version] = 1.5
 
 projects[postcode][version] = 1.0
 
@@ -188,7 +186,7 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.0-rc2
+projects[ultimate_cron][version] = 2.0
 
 projects[uuid][version] = 1.0-beta2
 
@@ -241,7 +239,7 @@ projects[webform_tokens][version] = 4.0
 
 projects[webform_tracking][version] = 2.0-beta1
 
-projects[webform_validation][version] = 1.11
+projects[webform_validation][version] = 1.12
 
 projects[weight][version] = 3.1
 
