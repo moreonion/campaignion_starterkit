@@ -69,7 +69,7 @@ div.status {
   border-color: #fffed5;
   outline: 1px solid #f2f191;
   }
-  
+
   table tr.ok th a,
   table tr.info th a,
   div.status a {
@@ -207,7 +207,7 @@ table th {
   }
 
   table thead th { border-top-color:#ccc; font-weight: bold;}
-  
+
   table thead th a {
 	  color: #666666;
   }
@@ -226,12 +226,12 @@ table tr.region td { background:#f8f8f8; }
 
 /* Hide tabledrag markers */
 table tr.draggable span.tabledrag-changed { display:none; }
- 
+
 /* Stripe administrative tables */
 .page-admin table tr.even, .page-admin table tr.even td {
   background: #f9f9f9;
 }
-               
+
 /**
  * Forms ==============================================================
  */
@@ -297,7 +297,7 @@ table .item-list,
   border-color:#ddd;
   padding: 9px;
   }
-  
+
   .text-format-wrapper .form-type-textarea, .form-type-textarea {
 	  padding: 0;
 	  background: transparent none;
@@ -318,7 +318,7 @@ table .item-list,
     }
 
   .form-item label.option input { vertical-align:middle; }
-  
+
 
 .page-content .password-description,
 .page-content .password-strength,
@@ -354,9 +354,9 @@ table .item-list,
   padding:9px 10px 20px;
   display:none;
   }
-  
+
   .page-content .form-item .description a,
-  .page-content .form-item .description a:hover, 
+  .page-content .form-item .description a:hover,
   .page-content .form-item .description a:focus {
    color: #1d2e30;
   }
@@ -406,8 +406,8 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
     color:#222;
     text-shadow:#999 0px 1px 0px;
     }
-    
-  
+
+
   input#edit-submit, input#edit-submit-1, input#edit-submit-2  {
     background: url('images/sandbox_menu/ae_blue_bg.png') repeat;
      text-shadow: 1px 1px 1px #32DCE5;
@@ -418,11 +418,11 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
     border-radius: 5px;
     color: #305254;
   }
-  
+
   table input#edit-submit, table  input#edit-submit-1, table input#edit-submit-2, table input.button-yes, table input.form-submit {
 	  font-size: 100%;
   }
-  
+
   input#edit-submit:hover,  input#edit-submit-1:hover, input#edit-submit-2:hover
    input#edit-submit-1:focus, input#edit-submit-2:focus {
     background: none #18CBDB;
@@ -431,9 +431,9 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
     box-shadow: 0 0 1px #ffb196;
     border-color: #14ACB7;
     color: #305254;
-    
+
   }
-  
+
   input#edit-submit:active,  input#edit-submit-1:active, input#edit-submit-2:active  {
 	  background: #0A565B;
 	  color: #063538;
@@ -452,7 +452,7 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
     border-radius: 7px;
     color: #4b2217;
     }
-    
+
   input.button-yes:hover, input.button-yes:focus {
     background: none #e45d44;
     -moz-box-shadow: 0 0 1px #ffb196;
@@ -462,10 +462,10 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
     color: #4b2217;
 
   }
-  
+
   input.button-yes:active { background: none #783924; color: #441B14;}
 
-  
+
   input.button-no, a.remove, a.button-no {
     background-position:-3201px 50%;
      -moz-border-radius: 7px;
@@ -476,7 +476,7 @@ a.button, input[type="submit"], .vbo-views-form .form-submit, .vbo-views-form .b
 
   input.button-no:active, a.remove:active { background-position:-3601px 50%; }
 
-  
+
   input[typpe="radio"]:hover {
     cursor: pointer;
   }
@@ -622,7 +622,7 @@ select.form-select,
 .form-select:hover {
 	cursor: pointer;
 }
-  
+
 /* Fieldsets */
 .fieldset,
 .fieldset-title,
@@ -695,7 +695,7 @@ body.page-admin div.vertical-tabs .vertical-tabs-panes .vertical-tabs-pane field
 .filter-wrapper {
   font-size:11px;
   margin-top:-10px;
-  border-top:none; 
+  border-top:none;
   }
 
 .filter-wrapper .fieldset-content,
@@ -741,7 +741,7 @@ body.page-admin div.vertical-tabs .vertical-tabs-panes .vertical-tabs-pane field
   }
 
   .column-side .column-wrapper { padding-left:10px; }
-  
+
   .column-side .form-actions {
     border-top: 0px solid transparent;
   }
@@ -983,7 +983,7 @@ body.tao #admin-toolbar a.menu-hover span.menu-description span.icon {
     border-radius:  7px 0 0 7px;
 
   }
-  
+
 .vertical-tabs .fieldset-content,
 .vertical-tabs fieldset.titled .fieldset-content {
   border:0px;
@@ -1000,7 +1000,7 @@ body.tao #admin-toolbar a.menu-hover span.menu-description span.icon {
 .vertical-tabs .fieldset {
   -moz-box-shadow: 0 0 0 transparent;
   -webkit-box-shadow: 0 0 0 transparent;
-  box-shadow: 0 0 0 transparent;	
+  box-shadow: 0 0 0 transparent;
 }
 
 .vertical-tabs-list li.last a, .vertical-tabs-list li.last a:hover {
@@ -1032,7 +1032,7 @@ body.tao #admin-toolbar a.menu-hover span.menu-description span.icon {
 .vertical-tabs-list .selected a, .vertical-tabs-list .selected a:hover, .vertical-tabs-list .selected a:focus, .vertical-tabs-list .selected a:active {
   background:url("images/sandbox_menu/zacke_left.png") no-repeat scroll right center #a4a0a0;
   color: #F7F1F1;
-  
+
   }
 
 .vertical-tabs-list .summary { font-size:11px; }
@@ -1070,9 +1070,9 @@ body.tao #admin-toolbar a.menu-hover span.menu-description span.icon {
   color:#fff;
   text-shadow:#666 0px 1px 0px;
   }
-  
+
   .action-links a:hover, .action-links a:focus {
-    color: #fff;  
+    color: #fff;
     background-color: #6DACBA;
   }
 
@@ -1103,4 +1103,3 @@ body.tao #admin-toolbar a.menu-hover span.menu-description span.icon {
   color:#666;
   background:#fff;
   }
-  
