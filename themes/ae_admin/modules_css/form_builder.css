@@ -305,6 +305,11 @@ span.form-builder-links a.progress:hover {
   margin: 0 0 10px;
 }
 
+#form-builder fieldset.form-builder-group .field-multiple-table .form-item.form-type-checkbox {
+  float: left;
+  margin-bottom: 0;
+}
+
 #form-builder-field-configure .form-submit {
   display: none;
 }
@@ -526,6 +531,9 @@ div.form-builder-new-field span.progress {
 }
 #form-builder-field-palette ul li.field-e2t_selector a {
   background-position: 5px -1696px;
+}
+#form-builder-field-palette ul li.field-currency a {
+  background-position: 5px -1482px;
 }
 
 
