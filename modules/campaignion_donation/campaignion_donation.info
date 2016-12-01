@@ -29,7 +29,7 @@ dependencies[] = webform
 dependencies[] = webform_confirm_email
 dependencies[] = webform_currency
 dependencies[] = webform_custom_buttons
-dependencies[] = webform_paymethod_select
+dependencies[] = webform_paymethod_select (>= 7.x-1.8)
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
