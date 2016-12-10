@@ -153,11 +153,13 @@ class Supporter implements ContactTypeInterface {
         $map['firstname'] = new SingleValueField('first_name');
         $map['lastname'] = new SingleValueField('last_name');
         $map['title'] = new WrapperField('field_title');
-        $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['dob'] = new DateField('field_date_of_birth', '%Y-%m-%d');
         $map['gender'] = new WrapperField('field_gender');
         $map['address'] = new KeyedField('field_address', 'thoroughfare');
+        $map['address2'] = new KeyedField('field_address', 'premise');
         $map['country'] = new KeyedField('field_address', 'country');
         $map['postcode'] = new KeyedField('field_address', 'postal_code');
+        $map['town'] = new KeyedField('field_address', 'locality');
         $map['county'] = new KeyedField('field_address', 'administrative_area');
         $map['phone'] = new WrapperField('field_phone_number');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
