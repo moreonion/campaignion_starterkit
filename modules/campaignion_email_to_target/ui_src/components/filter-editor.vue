@@ -27,7 +27,7 @@
           /&nbsp;<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">&nbsp;/
         </template>
         <template v-else>
-          <v-select v-if="filter.attributeName == 'political_affiliation'" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
+          <v-select v-if="filter.attributeName.indexOf('political_affiliation') != -1" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
           <input v-else class="form-control" type="text" v-model="filter.value">
         </template>
 
