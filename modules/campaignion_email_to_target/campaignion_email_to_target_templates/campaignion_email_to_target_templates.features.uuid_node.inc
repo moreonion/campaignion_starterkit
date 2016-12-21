@@ -184,21 +184,6 @@ function campaignion_email_to_target_templates_uuid_features_default_content() {
         'html' => 1,
         'attachments' => 0,
       ),
-      4 => array(
-        'nid' => 8,
-        'eid' => 4,
-        'email' => 'default',
-        'subject' => 'default',
-        'from_name' => 'default',
-        'from_address' => 3,
-        'template' => 'default',
-        'excluded_components' => array(),
-        'html' => 0,
-        'attachments' => 0,
-        'exclude_empty' => 0,
-        'extra' => FALSE,
-        'status' => 1,
-      ),
     ),
     'components' => array(
       1 => array(
