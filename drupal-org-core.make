@@ -1,7 +1,11 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.50
+projects[drupal][version] = 7.52
+; Fixup nested node loads - https://www.drupal.org/node/2832465
+projects[drupal][patch][] = https://www.drupal.org/files/issues/2832465-3-workaround-for-concurrent-entity-loads.patch
+; Fix drag&drop issue introduced in 7.51 - https://www.drupal.org/node/2821441
+projects[drupal][patch][] = https://www.drupal.org/files/issues/pointereventfix-2821441-30.patch
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
 projects[drupal][patch][] = https://drupal.org/files/vertical-tabs-state-invisible_7_16.patch
 ; Make core JS send change events when they change checkbox states. - https://drupal.org/node/2239961

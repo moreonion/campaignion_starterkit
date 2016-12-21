@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.2
+projects[campaignion][version] = 1.3
 
 projects[cck_blocks][version] = 1.1
 
@@ -42,6 +42,8 @@ projects[entity][version] = 1.8
 projects[entityreference][version] = 1.2
 
 projects[features][version] = 2.10
+; Module defaults vs. features - 2446485
+projects[features][patch][] = https://www.drupal.org/files/issues/2446485-31-module-defaults-vs-features.patch
 
 projects[field_collection][version] = 1.0-beta12
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
@@ -55,7 +57,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.0-beta1
 
-projects[form_builder][version] = 1.19
+projects[form_builder][version] = 1.20
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -81,13 +83,13 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.2
+projects[little_helpers][version] = 1.3
 
 projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.34
 
-projects[manual_direct_debit][version] = 1.0-beta1
+projects[manual_direct_debit][version] = 1.0-rc1
 
 projects[media][download][type] = git
 projects[media][download][url] = http://git.drupal.org/project/media.git
@@ -114,9 +116,7 @@ projects[mimemail][version] = 1.0-beta4
 
 projects[modernizr][version] = 3.9
 
-projects[morelesszen][version] = 1.1
-
-projects[mpay24_payment][version] = 1.0-beta4
+projects[morelesszen][version] = 1.2
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -134,9 +134,13 @@ projects[payment][version] = 1.16
 
 projects[payment_context][version] = 1.0-rc2
 
-projects[payment_forms][version] = 1.0-beta2
+projects[payment_controller_data][version] = 1.0-rc2
 
-projects[paymill_payment][version] = 1.0-beta7
+projects[payment_forms][version] = 2.0-beta1
+
+projects[paymill_payment][version] = 1.0-beta8
+
+projects[payone_payment][version] = 1.0-beta2
 
 projects[paypal_payment][version] = 1.1
 ; Fix 403 when returning from paypal - https://drupal.org/node/2052361
@@ -156,7 +160,7 @@ projects[postcode][version] = 1.0
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.0-rc2
+projects[recent_supporters][version] = 1.0
 
 projects[redhen][version] = 1.12
 
@@ -166,19 +170,17 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[sagepay_payment][version] = 1.0
+projects[sagepay_payment][version] = 1.1
+
+projects[select2][version] = 1.0
 
 projects[select_or_other][version] = 2.22
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 
-projects[session_cache][version] = 1.4
-; Use session_cache during hook_boot() - https://drupal.org/node/2119579
-projects[session_cache][patch][] = https://drupal.org/files/session_cache-require-unicode.inc-2119579-1.patch
+projects[share_light][version] = 1.3
 
-projects[share_light][version] = 1.2
-
-projects[stripe_payment][version] = 1.0-beta7
+projects[stripe_payment][version] = 1.0-rc1
 
 projects[strongarm][version] = 2.0
 
@@ -213,25 +215,23 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_conditional][download][type] = git
-projects[webform_conditional][download][url] = https://git.drupal.org/project/webform_conditional.git
-projects[webform_conditional][download][branch] = 7.x-2.x
-projects[webform_conditional][download][revision] = 649fcf499a2bd546495b2335750725e99ec55b60
-projects[webform_conditional][patch][] = https://www.drupal.org/files/issues/1616376-19.webform_conditional.upgrade_path.patch
-
 projects[webform_conditional][version] = 1.2
 
 projects[webform_confirm_email][version] = 2.5
 
+projects[webform_country_list][version] = 1.2
+
+projects[webform_currency][version] = 1.0-beta1
+
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.7
+projects[webform_paymethod_select][version] = 1.9
 
 projects[webform_prefill][version] = 1.0-alpha4
 
 projects[webform_steps][version] = 2.1
 
-projects[webform_submission_uuid][version] = 1.0-rc1
+projects[webform_submission_uuid][version] = 1.0-rc2
 
 projects[webform_template][version] = 4.0
 
@@ -269,9 +269,13 @@ libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/a
 libraries[respondjs][download][type] = file
 libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
 
+libraries[select2][download][type] = git
+libraries[select2][download][url] = https://github.com/select2/select2.git
+libraries[select2][download][revision] = 3.5.4
+
 libraries[stripe-php][download][type] = git
 libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php.git
-libraries[stripe-php][download][revision] = v1.11.0
+libraries[stripe-php][download][revision] = v3.4.0
 
 libraries[timeago][download][type] = git
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago.git
