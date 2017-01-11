@@ -25,8 +25,10 @@ class Filter extends Model {
   public function __construct($data = array(), $new = TRUE) {
     parent::__construct($data, $new);
 
-    if (strpos($this->config['attributeName'], '.') === FALSE) {
-      $this->config['attributeName'] = 'contact.' . $this->config['attributeName'];
+    if ($this->type == 'target-attribute') {
+      if (strpos($this->config['attributeName'], '.') === FALSE) {
+        $this->config['attributeName'] = 'contact.' . $this->config['attributeName'];
+      }
     }
   }
 
@@ -80,10 +82,9 @@ class Filter extends Model {
       $data['contact'] = $target;
       $data['constituency'] = $constituency;
       $name = $this->config['attributeName'];
-      $value = drupal_array_get_nested_value($data, explode('.', $name));
-      if (!is_null($value)) {
-        return $this->matchValue($value);
-      }
+      $key_exists = NULL;
+      $value = drupal_array_get_nested_value($data, explode('.', $name), $key_exists);
+      return $key_exists ? $this->matchValue($value) : FALSE;
     }
     return TRUE;
   }

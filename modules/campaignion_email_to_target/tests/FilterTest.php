@@ -2,9 +2,6 @@
 
 namespace Drupal\campaignion_email_to_target;
 
-use \Drupal\little_helpers\Webform\Submission;
-
-
 class FilterTest extends \DrupalWebTestCase {
 
   public function tearDown() {
@@ -24,13 +21,3 @@ class FilterTest extends \DrupalWebTestCase {
 
 }
 
-
-class FilterUnitTest extends \DrupalUnitTestCase {
-  public function test_match_byName() {
-    $f = Filter::fromArray(['type' => 'target-attribute', config => ['attributeName' => 'first_name', 'operator' => '==', 'value' => 'test']]);
-    $submission = $this->getMockBuilder('\\Drupal\\little_helpers\\Webform\\Submission')
-      ->disableOriginalConstructor()->getMock();
-    $this->assertTrue($f->match(['first_name' => 'test'], $submission));
-    $this->assertFalse($f->match(['first_name' => 'notest'], $submission));
-  }
-}
