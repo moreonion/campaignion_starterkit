@@ -31,11 +31,11 @@ projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow
 
 projects[currency][version] = 2.6
 
-projects[custom_add_another][version] = 1.0-rc3
+projects[custom_add_another][version] = 1.0
 
 projects[date][version] = 2.9
 
-projects[diff][version] = 3.2
+projects[diff][version] = 3.3
 
 projects[entity][version] = 1.8
 
@@ -55,7 +55,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.0-beta1
+projects[file_entity][version] = 2.0-beta3
 
 projects[form_builder][version] = 1.20
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -91,26 +91,15 @@ projects[mailsystem][version] = 2.34
 
 projects[manual_direct_debit][version] = 1.0-rc1
 
-projects[media][download][type] = git
-projects[media][download][url] = http://git.drupal.org/project/media.git
-projects[media][download][branch] = 7.x-2.x
-projects[media][download][revision] = 7f322d9579dc9d12d3812f7496794743a7fc52d9
-; Ajax callbacks in the media overlay cause the active tab to switch tab unexpectedly - https://drupal.org/node/1802026
-projects[media][patch][] = https://drupal.org/files/issues/1802026-media-browser-keep-tab-47.patch
-; Fix for replacePlaceholderWithToken in media_wysiwyg.filter.js - https://drupal.org/node/2164823
-projects[media][patch][] = https://drupal.org/files/issues/media-browser-incompatibilities.patch
-; Fix for drush message: preg_replace_callback(): Requires argument 2, 'media_token_fid_to_uuid', to be a valid callback - https://drupal.org/node/2152061
-projects[media][patch][] = https://www.drupal.org/files/issues/media-media_wysiwyg_uuid_callback_namespace-2152061.patch
+projects[media][version] = 2.0-beta14
 
-projects[media_vimeo][version] = 2.0
+projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 2.0-rc4
-projects[media_youtube][patch][] = https://drupal.org/files/issues/media_youtube-2.x-clearfix-for-form-widget-2429.patch
-projects[media_youtube][patch][] = https://drupal.org/files/youtube-next-previous-links-1551376-7.patch
+projects[media_youtube][version] = 3.0
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.17
+projects[metatag][version] = 1.20
 
 projects[mimemail][version] = 1.0-beta4
 
@@ -131,6 +120,8 @@ projects[password_toggle][version] = 1.0
 projects[pathauto][version] = 1.3
 
 projects[payment][version] = 1.16
+; Fix MySQL 5.7 PDOException: PRIMARY KEY must be NOT NULL - https://drupal.org/node/2657070
+projects[payment][patch][] = https://www.drupal.org/files/issues/payment-primarykey-not-null-2657070_0.patch
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -162,7 +153,7 @@ projects[psr0][version] = 1.4
 
 projects[recent_supporters][version] = 1.0
 
-projects[redhen][version] = 1.12
+projects[redhen][version] = 1.13
 
 projects[redirect][version] = 1.0-rc3
 
@@ -170,7 +161,7 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[sagepay_payment][version] = 1.1
+projects[sagepay_payment][version] = 1.2
 
 projects[select2][version] = 1.0
 
@@ -188,7 +179,7 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.0
+projects[ultimate_cron][version] = 2.3
 
 projects[uuid][version] = 1.0-beta2
 
@@ -239,11 +230,11 @@ projects[webform_tokens][version] = 4.0
 
 projects[webform_tracking][version] = 2.0-beta1
 
-projects[webform_validation][version] = 1.12
+projects[webform_validation][version] = 1.13
 
 projects[weight][version] = 3.1
 
-projects[wysiwyg][version] = 2.2
+projects[wysiwyg][version] = 2.3
 
 projects[xautoload][version] = 5.7
 
@@ -258,10 +249,6 @@ libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEdi
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
-
-libraries[mailchimp-api-php][download][type] = git
-libraries[mailchimp-api-php][download][url] = https://bitbucket.org/mailchimp/mailchimp-api-php.git
-libraries[mailchimp-api-php][download][branch] = 2.0.4
 
 libraries[paymill-php][download][type] = file
 libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v3.0.2.tar.gz
