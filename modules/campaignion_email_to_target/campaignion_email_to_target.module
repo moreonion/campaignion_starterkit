@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Main module file that implements hooks and some callbacks.
+ *
+ * - Menu entry, page callback and delivery callback for the message API.
+ * - Permission to view the user edited messages.
+ * - Tokens integration.
+ * - Libraries needed for the HAWK authentication.
+ * - Declare the webform component type and its form_builder integration.
+ */
+
 require_once dirname(__FILE__) . '/campaignion_email_to_target.field.inc';
 
 use \Drupal\little_helpers\Webform\Submission;
@@ -13,7 +24,7 @@ use \Drupal\campaignion_email_to_target\MessageEndpoint;
 use \Drupal\campaignion_email_to_target\Api\Client;
 
 /**
- * hook_permission().
+ * Implements hook_permission().
  */
 function campaignion_email_to_target_permission() {
   $p['view email_to_target messages'] = [
@@ -37,14 +48,19 @@ function campaignion_email_to_target_menu() {
   return $menu;
 }
 
+/**
+ * Delivery callback for the JSON API.
+ */
 function campaignion_email_to_target_deliver_json($result) {
   switch ($result) {
     case MENU_NOT_FOUND:
       drupal_add_http_header('Status', '404 Not found');
       return;
+
     case MENU_ACCESS_DENIED:
       drupal_add_http_header('Status', '403 Forbidden');
       return;
+
     case MENU_SITE_OFFLINE:
       drupal_add_http_header('Status', '503 Service unavailable');
       return;
@@ -53,11 +69,15 @@ function campaignion_email_to_target_deliver_json($result) {
   drupal_page_footer();
 }
 
+/**
+ * Page callback: Message editing API.
+ */
 function campaignion_email_to_target_edit_messages($node) {
   $endpoint = new MessageEndpoint($node);
-  switch ($_SERVER['REQUEST_METHOD']){
+  switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
       return $endpoint->get();
+
     case 'PUT':
       $data = drupal_json_decode(file_get_contents('php://input'));
       return $endpoint->put($data);
@@ -65,6 +85,9 @@ function campaignion_email_to_target_edit_messages($node) {
   return MENU_ACCESS_DENIED;
 }
 
+/**
+ * Helper to smuggle additional context into our hook_tokens() function.
+ */
 function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset = FALSE) {
   if ($reset) {
     drupal_static_reset(__FUNCTION__);
@@ -150,8 +173,8 @@ function campaignion_email_to_target_libraries_info() {
     'vendor url' => 'https://github.com/dflydev/dflydev-hawk',
     'download url' => 'https://github.com/dflydev/dflydev-hawk',
     'version' => '0.0.0',
-    'xautoload' => function($adapter) {
-       $adapter->composerJson('composer.json');
+    'xautoload' => function ($adapter) {
+      $adapter->composerJson('composer.json');
     },
     'dependencies' => ['RandomLib (>=1.0)'],
   ];
@@ -160,8 +183,8 @@ function campaignion_email_to_target_libraries_info() {
     'vendor url' => 'https://github.com/ircmaxell/RandomLib',
     'download url' => 'https://github.com/ircmaxell/RandomLib',
     'version' => '1.1.0',
-    'xautoload' => function($adapter) {
-       $adapter->composerJson('composer.json');
+    'xautoload' => function ($adapter) {
+      $adapter->composerJson('composer.json');
     },
     'dependencies' => ['SecurityLib (>=1.1)'],
   ];
@@ -170,8 +193,8 @@ function campaignion_email_to_target_libraries_info() {
     'vendor url' => 'https://github.com/ircmaxell/SecurityLib',
     'download url' => 'https://github.com/ircmaxell/SecurityLib',
     'version' => '1.1.0',
-    'xautoload' => function($adapter) {
-       $adapter->composerJson('composer.json');
+    'xautoload' => function ($adapter) {
+      $adapter->composerJson('composer.json');
     },
   ];
   return $libraries;
@@ -186,8 +209,7 @@ function campaignion_email_to_target_webform_component_info() {
     'label' => t('Target selector & Message editor'),
     'description' => t('Allows users to select the target of an email to target action and allows them to edit the messages.'),
     'file' => 'webform.php',
-    'features' => [
-    ],
+    'features' => [],
   ];
   return $component_info;
 }
@@ -289,7 +311,6 @@ function campaignion_email_to_target_form_builder_palette_groups($form_type, $fo
   );
   return $palette;
 }
-
 
 /**
  * Implements hook_form_builder_element_types().
