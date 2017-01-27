@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * campaignion_email_to_target.field_group.inc
+ * campaignion_email_to_target_type.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function campaignion_email_to_target_field_group_info() {
+function campaignion_email_to_target_type_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();

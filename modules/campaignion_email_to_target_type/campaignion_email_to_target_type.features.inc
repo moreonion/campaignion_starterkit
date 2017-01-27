@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * campaignion_email_to_target.features.inc
+ * campaignion_email_to_target_type.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_email_to_target_ctools_plugin_api($module = NULL, $api = NULL) {
+function campaignion_email_to_target_type_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -19,7 +20,7 @@ function campaignion_email_to_target_ctools_plugin_api($module = NULL, $api = NU
 /**
  * Implements hook_node_info().
  */
-function campaignion_email_to_target_node_info() {
+function campaignion_email_to_target_type_node_info() {
   $items = array(
     'email_to_target' => array(
       'name' => t('Email to Target action'),

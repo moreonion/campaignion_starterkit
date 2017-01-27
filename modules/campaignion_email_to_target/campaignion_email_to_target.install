@@ -127,17 +127,18 @@ function campaignion_email_to_target_field_schema($field) {
  * Implements hook_enable().
  */
 function campaignion_email_to_target_enable() {
-  variable_set('webform_node_email_to_target', 1);
-
-  $webform_settings = variable_get('webform_template_src', array());
-  $webform_settings['email_to_target'] = 'email_to_target';
-  variable_set('webform_template_src', $webform_settings);
-
-  $webform_settings = variable_get('webform_template_dest', array());
-  $webform_settings['email_to_target'] = 'email_to_target';
-  variable_set('webform_template_dest', $webform_settings);
-
   variable_set('cache_class_cache_token', '\\Drupal\\campaignion_email_to_target\\NullCacheBin');
+}
+
+/**
+ * Enable the feature.
+ */
+function campaignion_email_to_target_update_4() {
+  if (!module_enable(['campaignion_email_to_target_type'])) {
+    $err = 'Could not enable campaignion_email_to_target_type.';
+    throw new \DrupalUpdateException($err);
+  }
+  db_query("DELETE FROM {system} WHERE name='campaignion_email_to_target_templates'");
 }
 
 /**

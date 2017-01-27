@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * campaignion_email_to_target_templates.features.uuid_node.inc
+ * campaignion_email_to_target_type.features.uuid_node.inc
  */
 
 /**

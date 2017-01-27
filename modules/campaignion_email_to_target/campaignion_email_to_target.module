@@ -1,11 +1,6 @@
 <?php
-/**
- * @file
- * Code for the campaignion_email_to_target feature.
- */
 
-include_once 'campaignion_email_to_target.features.inc';
-require_once 'campaignion_email_to_target.field.inc';
+require_once dirname(__FILE__) . '/campaignion_email_to_target.field.inc';
 
 use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
@@ -68,39 +63,6 @@ function campaignion_email_to_target_edit_messages($node) {
       return $endpoint->put($data);
   }
   return MENU_ACCESS_DENIED;
-}
-
-/**
- * Implements hook_campaignion_action_info().
- */
-function campaignion_email_to_target_campaignion_action_info() {
-  $types['email_to_target'] = array(
-    'class' => 'Drupal\\campaignion_email_to_target\\ActionType',
-    'parameters' => array(
-      'thank_you_page' => array(
-        'type' => 'thank_you_page',
-        'reference' => 'field_thank_you_pages',
-      ),
-      'recent_supporters' => array(
-        'default_text' => t('!supporter_name just signed !action_title'),
-      ),
-      'email_to_target' => [
-        'message_field' => 'field_email_to_target_message',
-        'options_field' => 'field_email_to_target_options',
-      ],
-    ),
-  );
-  return $types;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_email_to_target_node_form_alter().
- */
-function campaignion_email_to_target_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
-  if (empty($form['title']['#default_value'])) {
-    $form['title']['#default_value'] = t('Email to target action');
-  }
 }
 
 function campaignion_email_to_target_tokens_dataset_hint($set_ds = NULL, $reset = FALSE) {
