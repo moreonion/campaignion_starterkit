@@ -83,7 +83,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.3
+projects[little_helpers][version] = 1.4
 
 projects[logintoboggan][version] = 1.5
 
@@ -171,7 +171,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535
 
 projects[share_light][version] = 1.3
 
-projects[stripe_payment][version] = 1.0-rc1
+projects[stripe_payment][version] = 1.0-rc2
 
 projects[strongarm][version] = 2.0
 
