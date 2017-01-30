@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import getScrollBarWidth from './utils/getScrollBarWidth.vue'
-import EventListener from './utils/EventListener.vue'
+import {getScrollBarWidth} from './utils/utils.js'
+import {EventListener} from './utils/EventListener.js'
 
   export default {
     components: {

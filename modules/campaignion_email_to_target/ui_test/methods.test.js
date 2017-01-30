@@ -1,10 +1,11 @@
+import {setup, teardown} from './test-helper.js'
+import find from 'lodash/find'
+
+import app from '../ui_src/app.vue'
+import testData from './data/example-data.js'
+
 describe('methods', function() {
-  var setup = require('./test-helper.js').setup;
-  var teardown = require('./test-helper.js').teardown;
-
-  var app = require('../ui_src/app.vue');
-
-  var vm, testData = require('./data/example-data.js')
+  var vm
 
   beforeEach(function() {
     vm = setup(app, testData)

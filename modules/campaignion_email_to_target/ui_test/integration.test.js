@@ -1,16 +1,15 @@
+import {setup, teardown, triggerDragAndDrop} from './test-helper.js'
+import find from 'lodash/find'
+
+import Vue from 'vue'
+import app from '../ui_src/app.vue'
+
+import testData from './data/empty-data.js'
+
 describe('messages widget', function() {
-  var setup = require('./test-helper.js').setup;
-  var teardown = require('./test-helper.js').teardown;
-  var triggerDragAndDrop = require('./test-helper.js').triggerDragAndDrop;
-  var find = require('lodash/find');
-
-  var Vue = require('vue');
-  var app = require('../ui_src/app.vue');
-
-  Vue.use(require('../ui_src/plugins/vue-dragula.js'));
 
   describe('creating a message and an exclusion, changing their order, deleting the exclusion', function() {
-    var vm, testData = require('./data/empty-data.js')
+    var vm
 
     beforeAll(function() {
       vm = setup(app, testData)

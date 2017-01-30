@@ -1,9 +1,8 @@
-var Vue = require('vue');
+import Vue from 'vue'
+import dragula from '../ui_src/plugins/vue-dragula.js'
 
-module.exports = {
-
-  setup: function(app, data, options) {
-    Drupal = {
+  export function setup(app, data, options) {
+    global.Drupal = {
       settings: {
         campaignion_email_to_target: data
       }
@@ -24,18 +23,20 @@ module.exports = {
       }
     })
 
+    Vue.use(dragula);
+
     var rootInstance = new Vue(options)
 
     return rootInstance.$children[0]
-  },
+  }
 
-  teardown: function(vm) {
+  export function teardown(vm) {
     vm.$root.$destroy(true);
     $('body').empty()
-    Drupal = null
-  },
+    global.Drupal = null
+  }
 
-  triggerDragAndDrop: function (elemDrag, elemDrop) {
+  export function triggerDragAndDrop(elemDrag, elemDrop) {
     if (!elemDrag || !elemDrop) return false;
 
     // function for triggering mouse events

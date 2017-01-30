@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import EventListener from './utils/EventListener.vue'
+  import EventListener from './utils/EventListener.js'
   export default {
     methods: {
       toggleDropdown(e) {

@@ -1,3 +1,11 @@
+import {setup, teardown, triggerDragAndDrop} from './test-helper.js'
+import find from 'lodash/find'
+
+import Vue from 'vue'
+import app from '../ui_src/app.vue'
+
+import testData from './data/example-data.js'
+
 describe('messages widget', function() {
   var setup = require('./test-helper.js').setup;
   var teardown = require('./test-helper.js').teardown;
@@ -25,7 +33,7 @@ describe('messages widget', function() {
   });
 
   describe('initialisation', function() {
-    var vm, testData = require('./data/example-data.js')
+    var vm
 
     beforeAll(function() {
       vm = setup(app, testData)

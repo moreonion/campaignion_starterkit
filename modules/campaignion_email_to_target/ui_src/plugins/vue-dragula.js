@@ -11,9 +11,9 @@
  *
  */
 
-var dragula = require('dragula')
+import dragula from 'dragula'
 
-module.exports = {
+export default {
 
   install: function (Vue) {
 
