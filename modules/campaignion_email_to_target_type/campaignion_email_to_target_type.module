@@ -22,7 +22,7 @@ function campaignion_email_to_target_type_campaignion_action_info() {
       'default_text' => t('!supporter_name just signed !action_title'),
     ),
     'email_to_target' => [
-      'message_field' => 'field_email_to_target_message',
+      'no_target_message_field' => 'field_no_target_message',
       'options_field' => 'field_email_to_target_options',
     ],
     'template_node_uuid' => 'f5645542-33eb-445e-8e6b-8300cf385069',

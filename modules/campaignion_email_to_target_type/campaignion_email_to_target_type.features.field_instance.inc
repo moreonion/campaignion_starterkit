@@ -239,6 +239,60 @@ function campaignion_email_to_target_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_to_target-field_no_target_message'.
+  $field_instances['node-email_to_target-field_no_target_message'] = array(
+    'bundle' => 'email_to_target',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 'There don\'t seem to be any targets for your selection.',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This message is displayed whenever we can\'t find any targets for a postcode.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_no_target_message',
+    'label' => 'No target message',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-email_to_target-field_reference_to_campaign'.
   $field_instances['node-email_to_target-field_reference_to_campaign'] = array(
@@ -522,12 +576,14 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image or video');
+  t('No target message');
   t('Options');
   t('Related campaign');
   t('Supporters submitting this form will be automatically tagged with these tags.');
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
+  t('This message is displayed whenever we can\'t find any targets for a postcode.');
 
   return $field_instances;
 }
