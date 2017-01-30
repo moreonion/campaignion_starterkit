@@ -30,3 +30,8 @@
     }
   }
 </script>
+<style>
+  .btn-group.open .dropdown-menu {
+    display: block;
+  }
+</style>

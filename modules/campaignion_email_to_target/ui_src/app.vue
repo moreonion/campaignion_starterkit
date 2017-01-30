@@ -54,8 +54,8 @@
 
     <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom" id="spec-modal">
       <div slot="modal-header" class="modal-header">
-        <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
+        <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
       </div>
       <div slot="modal-body" class="modal-body">
         <div class="form-group">
