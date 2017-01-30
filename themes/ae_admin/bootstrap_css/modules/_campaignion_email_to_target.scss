@@ -3,6 +3,8 @@
   .spec {
 
     .card {
+      display: block;
+      margin-bottom: 1rem;
       border: 1px solid #D8D5CD;
       background-color: #EAE6DE;
       border-radius: 0;
@@ -70,6 +72,7 @@
   .filter-editor .filters {
 
     .filter {
+      display: block;
       margin-bottom: 0.8rem;
       padding-left: 1rem;
       background-color: #EAE6DE;
@@ -107,7 +110,7 @@
       .remove-filter {
         position: absolute;
         right: 0.8rem;
-        top: 1rem;
+        top: 0.9rem;
         color: $red;
         @include icon($icon-cancel-circled, $font-size: 1.3rem);
 

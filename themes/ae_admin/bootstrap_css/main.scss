@@ -3,7 +3,7 @@
 
 // Target the wrapper class as long as e2t messages widget is the only
 // part of campaignion that uses Bootstrap 4 styles
-.e2tmw {
+body .e2tmw {
   font-size: $font-size-base;
 
   @import "base/base";
