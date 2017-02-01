@@ -75,6 +75,7 @@
       display: block;
       margin-bottom: 0.8rem;
       padding-left: 1rem;
+      padding-right: 2.5rem;
       background-color: #EAE6DE;
 
       * {
@@ -95,21 +96,23 @@
         }
       }
 
-      .dropdown-item:focus, .dropdown-item:hover {
+      .btn-group .dropdown-item:focus,
+      .btn-group .dropdown-item:hover,
+      .typeahead li.active .dropdown-item {
         color: $font-color;
         background-color: #D6D2CC;
       }
 
       &.form-inline .form-control {
         display: inline-block;
-        width: 40%;
+        width: 11rem;
         vertical-align: baseline;
         margin-bottom: 0;
       }
 
       .remove-filter {
         position: absolute;
-        right: 0.8rem;
+        right: 0.5rem;
         top: 0.9rem;
         color: $red;
         @include icon($icon-cancel-circled, $font-size: 1.3rem);

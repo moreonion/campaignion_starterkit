@@ -118,6 +118,20 @@ label {
   }
 }
 
+// these dropdowns use .active class and :hover styles would disturb them
+.typeahead {
+  .dropdown-item {
+    &:focus, &:hover {
+      color: inherit;
+      background-color: inherit;
+    }
+  }
+  li.active .dropdown-item {
+    color: $dropdown-hover-color;
+    background-color: $dropdown-hover-bg;
+  }
+}
+
 
 small, .small {
   font-size: 90%;

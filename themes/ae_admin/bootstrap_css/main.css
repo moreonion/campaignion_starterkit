@@ -129,6 +129,16 @@ body .e2tmw .dropdown-item:focus, body .e2tmw .dropdown-item:hover {
   background-color: #827F7F;
 }
 
+body .e2tmw .typeahead .dropdown-item:focus, body .e2tmw .typeahead .dropdown-item:hover {
+  color: inherit;
+  background-color: inherit;
+}
+
+body .e2tmw .typeahead li.active .dropdown-item {
+  color: #F7F1F1;
+  background-color: #827F7F;
+}
+
 body .e2tmw small, body .e2tmw .small {
   font-size: 90%;
 }
@@ -265,6 +275,7 @@ body .e2tmw .modal-content .modal-footer {
   display: block;
   margin-bottom: 0.8rem;
   padding-left: 1rem;
+  padding-right: 2.5rem;
   background-color: #EAE6DE;
 }
 
@@ -286,21 +297,23 @@ body .e2tmw .modal-content .modal-footer {
   background-color: #D6D2CC;
 }
 
-.e2tmw .filter-editor .filters .filter .dropdown-item:focus, .e2tmw .filter-editor .filters .filter .dropdown-item:hover {
+.e2tmw .filter-editor .filters .filter .btn-group .dropdown-item:focus,
+.e2tmw .filter-editor .filters .filter .btn-group .dropdown-item:hover,
+.e2tmw .filter-editor .filters .filter .typeahead li.active .dropdown-item {
   color: #514f4f;
   background-color: #D6D2CC;
 }
 
 .e2tmw .filter-editor .filters .filter.form-inline .form-control {
   display: inline-block;
-  width: 40%;
+  width: 11rem;
   vertical-align: baseline;
   margin-bottom: 0;
 }
 
 .e2tmw .filter-editor .filters .filter .remove-filter {
   position: absolute;
-  right: 0.8rem;
+  right: 0.5rem;
   top: 0.9rem;
   color: #d66540;
 }
