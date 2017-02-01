@@ -486,7 +486,7 @@ module.exports = {
       }
     })
     // Catch Enter for the Modal
-    $(document).on("keyup.messages-widget", ".email-to-target-messages-widget .modal-dialog :input:not(textarea):not(.js-modal-cancel)", function(event) {
+    $(document).on("keyup.messages-widget", ".email-to-target-messages-widget .modal-dialog :input:not(textarea):not(.js-modal-cancel):not(.typeahead-input)", function(event) {
       if (event.keyCode == 13) {
         event.preventDefault()
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click()

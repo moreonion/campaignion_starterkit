@@ -1,5 +1,7 @@
 import {setup, teardown, triggerDragAndDrop} from './test-helper.js'
 import find from 'lodash/find'
+import sinon from 'sinon'
+import 'jasmine-sinon'
 
 import Vue from 'vue'
 import app from '../ui_src/app.vue'
@@ -176,6 +178,84 @@ describe('messages widget', function() {
         })
       })
 
+      describe('clicking "Add filter"', function() {
+        beforeAll(function(done) {
+          $('.filter-editor header [data-toggle=dropdown]').click()
+          vm.$nextTick(function() {
+            done()
+          })
+        })
+
+        it('shows a dropdown with filters', function(done) {
+          expect($('.filter-editor header .dropdown-menu')).toHaveCss({'display': 'block'}) // TODO: toBeVisible would be nicer. The parent modal is not visible in PhantomJS.
+          expect($('.filter-editor header .dropdown-menu > li:last a')).toContainText('Political Affiliation')
+          done()
+        })
+      })
+
+      describe('selecting a filter', function() {
+        beforeAll(function(done) {
+          $('.filter-editor header .dropdown-menu a:contains("Political Affiliation")').dispatch('click')
+          vm.$nextTick(function() {
+            done()
+          })
+        })
+
+        it('adds a filter', function(done) {
+          expect($('.filter-editor ul.filters')).toContainElement('li.filter')
+          expect($('.filter-editor ul.filters > li:first .attribute-label')).toContainText('Political Affiliation')
+          done()
+        })
+      })
+
+      describe('typing letters into the typeahead', function() {
+        var server
+
+        beforeAll(function(done) {
+          server = sinon.fakeServer.create()
+
+          $('.filter-editor ul.filters > li:first input').val('en').dispatch('input')
+          // var event = new Event('input', {'bubbles':false, 'cancelable':false})
+          // $('.filter-editor ul.filters > li:first input')[0].dispatchEvent(event)
+          setTimeout(() => {
+            server.requests[0].respond(
+              200,
+              { 'Content-Type': 'application/json' },
+              JSON.stringify({values: ['Crossbench (Lords)', 'Green Party', 'Independent'], total_items: 3})
+            )
+          }, 300)
+          setTimeout(() => {
+            done()
+          }, 600)
+        })
+
+        afterAll(function() {
+          server.restore()
+        })
+
+        it('shows a list with highlighted options', function(done) {
+          expect($('.filter-editor ul.filters > li:first .typeahead .dropdown-menu > li')).toHaveLength(3)
+          expect($('.filter-editor ul.filters > li:first .typeahead .dropdown-menu > li:first').html()).toContain('Crossb<strong>en</strong>ch (Lords)')
+          expect($('.filter-editor ul.filters > li:first .typeahead .dropdown-menu > li').eq(1).html()).toContain('Gre<strong>en</strong> Party')
+          done()
+        })
+      })
+
+      describe('clicking a value from the typeahead’s dropdown', function() {
+        beforeAll(function(done) {
+          $('.filter-editor ul.filters > li:first .typeahead .dropdown-menu > li').eq(1).find('a').dispatch('mousemove').dispatch('mousedown')
+          vm.$nextTick(function() {
+            done()
+          });
+        })
+
+        it('sets the filter’s value', function(done) {
+          expect($('.filter-editor ul.filters > li:first .typeahead input')).toHaveValue('Green Party')
+          expect($('.filter-editor ul.filters > li:first .typeahead .dropdown-menu > li')).toHaveLength(0)
+          done()
+        })
+      })
+
       describe('clicking "save"', function() {
         beforeAll(function(done) {
           $('.js-modal-save', '#spec-modal').click()
@@ -193,9 +273,8 @@ describe('messages widget', function() {
           expect($('.specs .spec').last().find('.spec-label').text().trim()).toBe('my exclusion')
         })
 
-        it('shows a warning about missing filters', function(done) {
-          expect($('.specs .spec').last().find('.spec-errors .spec-error').length).toBe(1)
-          expect($('.specs .spec').last().find('.spec-errors .spec-error').text().trim()).toBe('No filter selected')
+        it('shows the exclusion’s filter', function(done) {
+          expect($('.specs .spec:last .filter-condition')).toContainText('Political Affiliation is Green Party')
           done()
         })
       })

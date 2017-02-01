@@ -7,7 +7,7 @@
         </button>
         <ul name="dropdown-menu" class="dropdown-menu">
           <li v-for="field in fields">
-            <a href="#" class="dropdown-item" @click="addFilter(field)">{{ field.label }}</a>
+            <a href="#" class="dropdown-item" @click.prevent="addFilter(field)">{{ field.label }}</a>
           </li>
         </ul>
       </dropdown>
@@ -23,13 +23,16 @@
 
         <v-select :value.sync="filter.operator" :options="operatorOptions" :close-on-select="true"></v-select>
 
-        <template v-if="filter.operator == 'regexp'">
-          /&nbsp;<input class="form-control" type="text" v-model="filter.value" placeholder="regular expression">&nbsp;/
-        </template>
-        <template v-else>
-          <v-select v-if="filter.attributeName.indexOf('political_affiliation') != -1" :value.sync="filter.value" :options="partyOptions" :close-on-select="true"></v-select>
-          <input v-else class="form-control" type="text" v-model="filter.value">
-        </template>
+        <template v-if="filter.operator == 'regexp'">/&nbsp;</template>
+        <type-ahead
+          :value.sync="filter.value"
+          :placeholder="filter.operator == 'regexp' ? 'regular expression' : 'type to browse values'"
+          key="values"
+          :async="e2tApi.url + '/' + e2tApi.dataset + '/attributes/' + filter.attributeName + '/values?count=100&search='"
+          :headers="{'Authorization': 'JWT ' + e2tApi.token}"
+          :on-hit="e2tCallback">
+        </type-ahead>
+        <template v-if="filter.operator == 'regexp'">&nbsp;/</template>
 
         <a href="#" @click="removeFilter(filter)" class="remove-filter" title="Remove filter"><span>Delete</span></a>
 
@@ -42,9 +45,12 @@
 <script>
 module.exports = {
 
+  mixins: [require('../mixins/utils.vue')],
+
   components: {
     dropdown: require('./custom-vue-strap/Dropdown.vue'),
-    vSelect: require('./custom-vue-strap/Select.vue')
+    vSelect: require('./custom-vue-strap/Select.vue'),
+    typeAhead: require('./custom-vue-strap/Typeahead.vue')
   },
 
   props: {
@@ -61,32 +67,8 @@ module.exports = {
   },
 
   data: function() {
-    var partyOptions = [
-      {value: 'Alliance'},
-      {value: 'Conservative'},
-      {value: 'Crossbench (Lords)'},
-      {value: 'Democratic Unionist (DUP)'},
-      {value: 'Green Party'},
-      {value: 'Independent'},
-      {value: 'Labour'},
-      {value: 'Labour and Co-operative'},
-      {value: 'Liberal Democrat'},
-      {value: 'Lords\' Bishops'},
-      {value: 'Other'},
-      {value: 'Plaid Cymru'},
-      {value: 'Political Affiliation Not Specified'},
-      {value: 'Scottish Nationalist'},
-      {value: 'Sinn Fein'},
-      {value: 'Social Democrat & Labour (SDLP)'},
-      {value: 'UKIP'},
-      {value: 'Ulster Unionist (UUP)'}
-    ]
-    for (var i = 0, j = partyOptions.length; i < j; i++) {
-      partyOptions[i].label = partyOptions[i].value
-    }
-
     return {
-      partyOptions: partyOptions
+      e2tApi: this.clone(Drupal.settings.campaignion_email_to_target.endpoints['e2t-api']) || {}
     }
   },
 
@@ -118,6 +100,12 @@ module.exports = {
     },
     removeFilter(filter) {
       this.filters.$remove(filter)
+    },
+    e2tCallback(item, targetVM) {
+      if (item) {
+        targetVM.reset()
+        targetVM.value = item
+      }
     }
   }
 

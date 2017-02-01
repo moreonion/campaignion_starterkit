@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import dragula from '../ui_src/plugins/vue-dragula.js'
+import resource from 'vue-resource'
 
 export function setup(app, data, options) {
   global.Drupal = {
@@ -23,7 +24,8 @@ export function setup(app, data, options) {
     }
   })
 
-  Vue.use(dragula);
+  Vue.use(dragula)
+  Vue.use(resource)
 
   var rootInstance = new Vue(options)
 
