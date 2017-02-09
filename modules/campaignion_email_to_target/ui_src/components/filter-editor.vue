@@ -27,10 +27,17 @@
         <type-ahead
           :value.sync="filter.value"
           :placeholder="filter.operator == 'regexp' ? 'regular expression' : 'type to browse values'"
+          :show-dropdown-on-focus="true"
           key="values"
-          :async="e2tApi.url + '/' + e2tApi.dataset + '/attributes/' + filter.attributeName + '/values?count=100&search='"
+          :async="e2tApi.url + '/' + e2tApi.dataset + '/attributes/' + filter.attributeName + '/values'"
+          search-param="search"
+          count-param="count"
+          page-param="offset"
+          :count="100"
+          :lazy-load="true"
+          page-mode="offset"
           :headers="{'Authorization': 'JWT ' + e2tApi.token}"
-          :on-hit="e2tCallback">
+          >
         </type-ahead>
         <template v-if="filter.operator == 'regexp'">&nbsp;/</template>
 
@@ -100,12 +107,6 @@ module.exports = {
     },
     removeFilter(filter) {
       this.filters.$remove(filter)
-    },
-    e2tCallback(item, targetVM) {
-      if (item) {
-        targetVM.reset()
-        targetVM.value = item
-      }
     }
   }
 

@@ -106,3 +106,19 @@ export function VueFixer (vue) {
   vue.mixins.unshift(mixin)
   return vue
 }
+
+export function paramReadyUrl (url) {
+  if (!url.match(/\?[^=]+=[^&]*/)) {
+    // there’s no parameter. replace trailing ? or / or /? with ?
+    return url.replace(/[\/?]$|(?:\/)\?$/, '') + '?'
+  } else {
+    // parameter present in the string. ensure trailing &
+    return url.replace(/[\&]$/, '') + '&'
+  }
+}
+
+export function fixedEncodeURIComponent (str) {
+  return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+    return '%' + c.charCodeAt(0).toString(16)
+  })
+}
