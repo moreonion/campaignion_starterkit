@@ -416,6 +416,21 @@ module.exports = {
         }, 0)
       }
 
+      const putData = () => {
+        $('input[type=submit]', e.currentTarget).prop('disabled', true)
+        this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
+          // success
+          forceSubmit()
+        }, (response) => {
+          // error
+          $('input[type=submit]', e.currentTarget).prop('disabled', false)
+          this.$broadcast('alert', {
+            title: 'Service unavailable',
+            message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
+          })
+        })
+      }
+
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
         if (this.unsavedChanges()) {
@@ -449,7 +464,7 @@ module.exports = {
             title: 'Invalid data',
             message: 'There are validation errors (see error notices).<br>Your campaign might not work as you intended.',
             confirmBtn: 'Save anyway',
-            confirm: forceSubmit
+            confirm: putData
           })
           return
         }
@@ -457,18 +472,7 @@ module.exports = {
 
       // Cancel submit event, make ajax request
       e.preventDefault()
-      $('input[type=submit]', e.currentTarget).prop('disabled', true)
-      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
-        // success
-        forceSubmit()
-      }, (response) => {
-        // error
-        $('input[type=submit]', e.currentTarget).prop('disabled', false)
-        this.$broadcast('alert', {
-          title: 'Service unavailable',
-          message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
-        })
-      })
+      putData()
     })
 
     $(window).on('beforeunload', (e) => {

@@ -30933,6 +30933,21 @@ module.exports = {
         }, 0);
       }
 
+      var putData = function putData() {
+        $('input[type=submit]', e.currentTarget).prop('disabled', true);
+        _this3.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this3.serializeData()).then(function (response) {
+          // success
+          forceSubmit();
+        }, function (response) {
+          // error
+          $('input[type=submit]', e.currentTarget).prop('disabled', false);
+          _this3.$broadcast('alert', {
+            title: 'Service unavailable',
+            message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
+          });
+        });
+      };
+
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
         if (_this3.unsavedChanges()) {
@@ -30966,7 +30981,7 @@ module.exports = {
             title: 'Invalid data',
             message: 'There are validation errors (see error notices).<br>Your campaign might not work as you intended.',
             confirmBtn: 'Save anyway',
-            confirm: forceSubmit
+            confirm: putData
           });
           return;
         }
@@ -30974,18 +30989,7 @@ module.exports = {
 
       // Cancel submit event, make ajax request
       e.preventDefault();
-      $('input[type=submit]', e.currentTarget).prop('disabled', true);
-      _this3.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, _this3.serializeData()).then(function (response) {
-        // success
-        forceSubmit();
-      }, function (response) {
-        // error
-        $('input[type=submit]', e.currentTarget).prop('disabled', false);
-        _this3.$broadcast('alert', {
-          title: 'Service unavailable',
-          message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
-        });
-      });
+      putData();
     });
 
     $(window).on('beforeunload', function (e) {
@@ -31791,9 +31795,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getScrollBarWidth = getScrollBarWidth;
-exports.translations = translations;
-exports.delayer = delayer;
-exports.VueFixer = VueFixer;
 exports.paramReadyUrl = paramReadyUrl;
 exports.fixedEncodeURIComponent = fixedEncodeURIComponent;
 // coerce convert som types of data into another type
@@ -31844,91 +31845,6 @@ function getScrollBarWidth() {
   document.body.removeChild(outer);
 
   return w1 - w2;
-}
-
-// return all the translations or the default language (english)
-function translations() {
-  var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'en';
-
-  var text = {
-    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    limit: 'Limit reached ({{limit}} items max).',
-    loading: 'Loading...',
-    minLength: 'Min. Length',
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    notSelected: 'Nothing Selected',
-    required: 'Required',
-    search: 'Search'
-  };
-  return window.VueStrapLang ? window.VueStrapLang(lang) : text;
-}
-
-// delayer: set a function that execute after a delay
-// @params (function, delay_prop or value, default_value)
-function delayer(fn, varTimer) {
-  var ifNaN = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
-
-  function toInt(el) {
-    return (/^[0-9]+$/.test(el) ? Number(el) || 1 : null
-    );
-  }
-  var timerId;
-  return function () {
-    var _this = this;
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    if (timerId) clearTimeout(timerId);
-    timerId = setTimeout(function () {
-      fn.apply(_this, args);
-    }, toInt(varTimer) || toInt(this[varTimer]) || ifNaN);
-  };
-}
-
-// Fix a vue instance Lifecycle to vue 1/2 (just the basic elements, is not a real parser, so this work only if your code is compatible with both)
-function VueFixer(vue) {
-  var vue2 = !window.Vue || !window.Vue.partial;
-  var mixin = {
-    computed: {
-      vue2: function vue2() {
-        return !this.$dispatch;
-      }
-    }
-  };
-  if (!vue2) {
-    if (vue.beforeCreate) {
-      mixin.create = vue.beforeCreate;
-      delete vue.beforeCreate;
-    }
-    if (vue.beforeMount) {
-      vue.beforeCompile = vue.beforeMount;
-      delete vue.beforeMount;
-    }
-    if (vue.mounted) {
-      vue.ready = vue.mounted;
-      delete vue.mounted;
-    }
-  } else {
-    if (vue.beforeCompile) {
-      vue.beforeMount = vue.beforeCompile;
-      delete vue.beforeCompile;
-    }
-    if (vue.compiled) {
-      mixin.compiled = vue.compiled;
-      delete vue.compiled;
-    }
-    if (vue.ready) {
-      vue.mounted = vue.ready;
-      delete vue.ready;
-    }
-  }
-  if (!vue.mixins) {
-    vue.mixins = [];
-  }
-  vue.mixins.unshift(mixin);
-  return vue;
 }
 
 function paramReadyUrl(url) {
