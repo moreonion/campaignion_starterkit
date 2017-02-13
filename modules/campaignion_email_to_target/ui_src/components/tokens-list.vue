@@ -26,8 +26,6 @@
 </template>
 
 <script>
-var Vue = require('vue')
-
 export default {
   props: {
     tokenCategories: Array

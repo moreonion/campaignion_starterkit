@@ -19,12 +19,18 @@ legend {
   padding: 0.4rem 0.5rem .3rem;
   margin-bottom: 0.35rem;
   border: 2px solid #c6c6c6;
-  background: #fff;
+  background: $input-bg;
   color: #666;
   font-size: $font-size-base;
   max-width: 100%;
   box-shadow: 0 0 3px #efefef;
-  border-radius: 0.3125rem;
+  border-radius: $input-border-radius;
+
+  &::-webkit-input-placeholder { color: $placeholder-color; }
+       &:-ms-input-placeholder { color: $placeholder-color; }
+           &::-moz-placeholder { color: $placeholder-color; opacity: 1; } /* Firefox 19+ */
+            &:-moz-placeholder { color: $placeholder-color; opacity: 1; } /* Firefox 18- */
+                &::placeholder { color: $placeholder-color; }
 }
 
 .form-control:hover, .form-control:focus {
@@ -52,6 +58,7 @@ label {
     color: $btn-secondary-color;
     background-color: $btn-secondary-hover-bg;
     outline: none;
+    box-shadow: none;
   }
 
   &:active, &:active:focus {
@@ -61,8 +68,9 @@ label {
     outline: none;
   }
 
-  &[disabled]:hover {
-    @extend .btn;
+  &:disabled, &.disabled, &[disabled]:hover {
+    background-color: $btn-secondary-bg;
+    border: 0 none;
   }
 }
 
@@ -88,9 +96,14 @@ label {
     outline: none;
   }
 
-  &[disabled]:hover {
-    @extend .btn-primary;
+  &:disabled, &.disabled, &[disabled]:hover {
+    background-color: $btn-primary-bg;
+    border: $btn-primary-border;
   }
+}
+
+.btn.dropdown-toggle {
+  padding: 0.5rem;
 }
 
 .dropdown-menu {
@@ -108,6 +121,44 @@ label {
   &:focus, &:hover {
     color: $dropdown-hover-color;
     background-color: $dropdown-hover-bg;
+  }
+}
+
+// these dropdowns use .active class and :hover styles would disturb them
+.typeahead {
+  .dropdown-item {
+    &:focus, &:hover {
+      color: inherit;
+      background-color: inherit;
+    }
+  }
+  li.active .dropdown-item {
+    color: $dropdown-hover-color;
+    background-color: $dropdown-hover-bg;
+  }
+}
+
+// add a dropdown caret that doesn’t cover the input
+.typeahead {
+  background: $input-bg;
+  border-radius: $input-border-radius;
+
+  .typeahead-input {
+    position: relative;
+    padding-right: 1.2em;
+    background: transparent;
+  }
+
+  &::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0.5em;
+    top: 50%;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
   }
 }
 

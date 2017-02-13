@@ -8,8 +8,11 @@ The user interface for managing message templates is written with Vue.js
 
 ## Tasks
 
-`$ npm run watch`
+`$ npm run dev`
 `$ npm run build`
 
+lint all *.js and *.vue files
+`npm run lint`
+
 Karma tests running in PhantomJS:
-`$ npm run test`
+`$ npm test`

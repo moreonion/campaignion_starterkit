@@ -54,8 +54,8 @@
 
     <modal :show.sync="showSpecModal" v-ref:spec-modal effect="zoom" id="spec-modal">
       <div slot="modal-header" class="modal-header">
-        <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
         <h4 class="modal-title" >{{modalTitle}}</h4>
+        <button type="button" class="close" @click="tryCloseModal({button: 'x'})"><span>&times;</span></button>
       </div>
       <div slot="modal-body" class="modal-body">
         <div class="form-group">
@@ -416,6 +416,21 @@ module.exports = {
         }, 0)
       }
 
+      const putData = () => {
+        $('input[type=submit]', e.currentTarget).prop('disabled', true)
+        this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
+          // success
+          forceSubmit()
+        }, (response) => {
+          // error
+          $('input[type=submit]', e.currentTarget).prop('disabled', false)
+          this.$broadcast('alert', {
+            title: 'Service unavailable',
+            message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
+          })
+        })
+      }
+
       // If Back button was hit
       if (submitVal.toLowerCase() == 'back') {
         if (this.unsavedChanges()) {
@@ -449,7 +464,7 @@ module.exports = {
             title: 'Invalid data',
             message: 'There are validation errors (see error notices).<br>Your campaign might not work as you intended.',
             confirmBtn: 'Save anyway',
-            confirm: forceSubmit
+            confirm: putData
           })
           return
         }
@@ -457,18 +472,7 @@ module.exports = {
 
       // Cancel submit event, make ajax request
       e.preventDefault()
-      $('input[type=submit]', e.currentTarget).prop('disabled', true)
-      this.$http.put(Drupal.settings.campaignion_email_to_target.endpoints.messages, this.serializeData()).then((response) => {
-        // success
-        forceSubmit()
-      }, (response) => {
-        // error
-        $('input[type=submit]', e.currentTarget).prop('disabled', false)
-        this.$broadcast('alert', {
-          title: 'Service unavailable',
-          message: 'The service is temporarily unavailable.<br>Your messages could not be saved.<br>Please try again or contact support if the issue persists.'
-        })
-      })
+      putData()
     })
 
     $(window).on('beforeunload', (e) => {
@@ -486,7 +490,7 @@ module.exports = {
       }
     })
     // Catch Enter for the Modal
-    $(document).on("keyup.messages-widget", ".email-to-target-messages-widget .modal-dialog :input:not(textarea):not(.js-modal-cancel)", function(event) {
+    $(document).on("keyup.messages-widget", ".email-to-target-messages-widget .modal-dialog :input:not(textarea):not(.js-modal-cancel):not(.typeahead-input)", function(event) {
       if (event.keyCode == 13) {
         event.preventDefault()
         $('.email-to-target-messages-widget .modal-dialog .js-modal-save').eq(0).click()

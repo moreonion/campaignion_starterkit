@@ -1,5 +1,13 @@
-module.exports = {
+export default {
   messageSelection: [],
+
+  endpoints: {
+    'e2t-api': {
+      dataset: 'mp',
+      token: 'foo',
+      url: 'https://e2t-api.more-onion.com/v2'
+    }
+  },
 
   targetAttributes: [
     {

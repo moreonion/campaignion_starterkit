@@ -5,11 +5,13 @@ namespace Drupal\campaignion_email_to_target\Api;
 use \Dflydev\Hawk\Credentials\Credentials;
 use \Dflydev\Hawk\Client\ClientBuilder;
 
-class Client {
+use \Drupal\little_helpers\Rest\Client as _Client;
+use \Drupal\little_helpers\Rest\HttpError;
+
+class Client extends _Client {
   CONST API_VERSION = 'v2';
-  protected $client;
+  protected $hawk;
   protected $credentials;
-  protected $url;
 
   public static function fromConfig() {
     $c = variable_get('campaignion_email_to_target_credentials', []);
@@ -25,38 +27,28 @@ class Client {
   }
 
   public function __construct($url, $pk, $sk) {
-    $this->url = $url . '/' . static::API_VERSION;
+    parent::__construct($url . '/' . static::API_VERSION);
     $this->credentials = new Credentials($sk, 'sha256', $pk);
-    $this->client = ClientBuilder::create()->build();
+    $this->hawk = ClientBuilder::create()->build();
   }
 
   /**
-   * Get data from the API-server.
-   *
-   * @return string
-   *   The response from the server.
+   * Return the endpoint URL.
    */
-  public function get($path) {
-    $url = $this->url . '/' . $path;
-    $hawk = $this->client->createRequest($this->credentials, $url, 'GET');
-    $headers[$hawk->header()->fieldName()] = $hawk->header()->fieldValue();
+  public function getEndpoint() {
+    return $this->endpoint;
+  }
 
-    $options['headers'] = $headers;
-    $options['method'] = 'GET';
-    $r = drupal_http_request($url, $options);
-    if ($r->code < 0) {
-      // Some kind of connection error.
-      throw new Error($r->code, $r->error, '');
-    }
-    // Either the postcode was invalid or it was not found.
-    if (in_array($r->code, [400, 404])) {
-      return [];
-    }
-    if ($r->code != 200) {
-      $d = \drupal_json_decode($r->data);
-      throw new Error($r->code, $r->status_message, $d['message']);
-    }
-    return \drupal_json_decode($r->data);
+  /**
+   * Add HAWK authentication headers to the request.
+   */
+  protected function sendRequest($url, array $options) {
+    $options += ['method' => 'GET'];
+    $method = $options['method'];
+    $hawk = $this->hawk->createRequest($this->credentials, $url, $method);
+    $header = $hawk->header();
+    $options['headers'][$header->fieldName()] = $header->fieldValue();
+    return parent::sendRequest($url, $options);
   }
 
   public function getDatasetList() {
@@ -82,7 +74,21 @@ class Client {
   }
 
   public function getTargets($dataset_key, $postcode) {
-    $postcode = urlencode($postcode);
-    return $this->get("$dataset_key/postcode/$postcode");
+    try {
+      $postcode = urlencode($postcode);
+      return $this->get("$dataset_key/postcode/$postcode");
+    }
+    catch (HttpError $e) {
+      if (in_array($e->getCode(), [400, 404])) {
+        return [];
+      }
+      throw $e;
+    }
   }
+
+  public function getAccessToken() {
+    $res = $this->post('access-token');
+    return $res['access_token'];
+  }
+
 }

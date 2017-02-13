@@ -1,3 +1,5 @@
+import emptyData from './empty-data.js'
+
 var data,
   idCounter = 1;
 
@@ -148,4 +150,4 @@ data = {
 
 };
 
-module.exports = $.extend({}, require('./empty-data.js'), data);
+export default Object.assign({}, emptyData, data)

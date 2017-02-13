@@ -4,6 +4,8 @@ namespace Drupal\campaignion_email_to_target\Wizard;
 
 use \Drupal\campaignion\Forms\EntityFieldForm;
 use \Drupal\campaignion_email_to_target\MessageEndpoint;
+use \Drupal\campaignion_email_to_target\Api\Client;
+
 
 class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
   protected $step  = 'message';
@@ -57,8 +59,16 @@ class MessageStep extends \Drupal\campaignion_wizard\WizardStep {
         'description' => $attribute->description,
       ];
     }
-    $settings['hardValidaion'] = !$node->status;
+    $settings['hardValidation'] = !$node->status;
     $settings['endpoints']['messages'] = url("node/{$node->nid}/email-to-target-messages");
+
+    $client = Client::fromConfig();
+    $token = $client->getAccessToken();
+    $settings['endpoints']['e2t-api'] = [
+      'url' => $client->getEndpoint(),
+      'token' => $token,
+      'dataset' => $dataset->key,
+    ];
 
     $settings = ['campaignion_email_to_target' => $settings];
     $form['#attached']['js'][] = ['data' => $settings, 'type' => 'setting'];

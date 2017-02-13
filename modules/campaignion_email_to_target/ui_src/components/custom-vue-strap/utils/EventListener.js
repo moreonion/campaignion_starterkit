@@ -1,4 +1,3 @@
-<script>
 const EventListener = {
   /**
    * Listen to DOM events during the bubble phase.
@@ -28,4 +27,3 @@ const EventListener = {
 }
 
 export default EventListener
-</script>

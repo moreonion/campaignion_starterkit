@@ -1,8 +1,11 @@
-var Vue = require('vue')
-var App = require('./app.vue')
+import Vue from 'vue'
+import App from './app.vue'
 
-Vue.use(require('./plugins/vue-dragula.js'));
-Vue.use(require('vue-resource'));
+import dragula from './plugins/vue-dragula.js'
+import resource from 'vue-resource'
+
+Vue.use(dragula);
+Vue.use(resource);
 
 new Vue({
   el: '.email-to-target-messages-widget',
