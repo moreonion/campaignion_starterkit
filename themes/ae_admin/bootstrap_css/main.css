@@ -36,6 +36,30 @@ body .e2tmw .form-control {
   max-width: 100%;
   box-shadow: 0 0 3px #efefef;
   border-radius: 0.3125rem;
+  /* Firefox 19+ */
+  /* Firefox 18- */
+}
+
+body .e2tmw .form-control::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+body .e2tmw .form-control:-ms-input-placeholder {
+  color: #aaa;
+}
+
+body .e2tmw .form-control::-moz-placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+body .e2tmw .form-control:-moz-placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+body .e2tmw .form-control::placeholder {
+  color: #aaa;
 }
 
 body .e2tmw .form-control:hover, body .e2tmw .form-control:focus {
@@ -137,6 +161,29 @@ body .e2tmw .typeahead .dropdown-item:focus, body .e2tmw .typeahead .dropdown-it
 body .e2tmw .typeahead li.active .dropdown-item {
   color: #F7F1F1;
   background-color: #827F7F;
+}
+
+body .e2tmw .typeahead {
+  background: #fff;
+  border-radius: 0.3125rem;
+}
+
+body .e2tmw .typeahead .typeahead-input {
+  position: relative;
+  padding-right: 1.2em;
+  background: transparent;
+}
+
+body .e2tmw .typeahead::before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0.5em;
+  top: 50%;
+  content: "";
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-left: .3em solid transparent;
 }
 
 body .e2tmw small, body .e2tmw .small {
