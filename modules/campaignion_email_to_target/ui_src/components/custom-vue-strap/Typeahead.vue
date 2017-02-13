@@ -227,6 +227,7 @@ export default {
       this.lastLoadedPage = 0
       this.showDropdown = false
       this.moreItemsLoadable = true
+      this.$els.dropdown.scrollTop = 0
     },
     setActive (index) {
       this.current = index
@@ -264,7 +265,7 @@ export default {
       // lazy-load more items
       if (!this.lazyLoad || !this.moreItemsLoadable) return
       if (this.$els.dropdown.scrollHeight - this.$els.dropdown.scrollTop - 30 < this.$els.dropdown.clientHeight) {
-        if (!this.queryOnTheWay) this.query()
+        if (!this.queryOnTheWay && this.items.length) this.query()
         this.queryOnTheWay = true
       }
     }
