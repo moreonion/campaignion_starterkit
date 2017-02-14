@@ -53,6 +53,7 @@ label {
   border-radius: $btn-secondary-border-radius;
   text-shadow: $btn-secondary-text-shadow;
   outline: none;
+  cursor: pointer;
 
   &:focus, &:hover {
     color: $btn-secondary-color;
