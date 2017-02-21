@@ -2,16 +2,18 @@
 
 namespace Drupal\campaignion_email_to_target;
 
-use \Drupal\little_helpers\Webform\FormState;
-use \Drupal\little_helpers\Webform\Submission;
 use \Drupal\little_helpers\Webform\Webform;
 use \Drupal\campaignion_action\Loader;
 
 use \Drupal\campaignion_email_to_target\Api\Client;
 
+/**
+ * Implement behavior for the email to target message webform component.
+ */
 class Component {
   protected $component;
   protected $payment = NULL;
+
   public function __construct(array $component) {
     $this->component = $component;
   }
@@ -39,7 +41,7 @@ class Component {
     $form['actions']['#access'] = FALSE;
   }
 
-  /** 
+  /**
    * Render the webform component.
    */
   public function render(&$element, &$form, &$form_state) {
@@ -190,6 +192,9 @@ class Component {
 
   }
 
+  /**
+   * Validate the user input to the form component.
+   */
   public function validate(array $element, array &$form_state) {
     $values = &drupal_array_get_nested_value($form_state['values'], $element['#parents']);
 
@@ -207,6 +212,9 @@ class Component {
     }
   }
 
+  /**
+   * Send emails to all selected targets.
+   */
   public function sendEmails($data, $submission) {
     $nid = $submission->nid;
     $node = $submission->webform->node;
@@ -237,7 +245,7 @@ class Component {
       // Verify that this submission is not attempting to send any spam hacks.
       if (_webform_submission_spam_check($message->to, $email['subject'], $email['from'], $email['headers'])) {
         watchdog('campaignion_email_to_target', 'Possible spam attempt from @remote !message',
-                array('@remote' => ip_address(), '!message'=> "<br />\n" . nl2br(htmlentities($email['message']))));
+                array('@remote' => ip_address(), '!message' => "<br />\n" . nl2br(htmlentities($email['message']))));
         drupal_set_message(t('Illegal information. Data not submitted.'), 'error');
         return FALSE;
       }
@@ -258,4 +266,5 @@ class Component {
       }
     }
   }
+
 }

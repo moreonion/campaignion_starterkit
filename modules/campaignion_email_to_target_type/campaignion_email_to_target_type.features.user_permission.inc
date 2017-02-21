@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * campaignion_email_to_target.features.user_permission.inc
+ * campaignion_email_to_target_type.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function campaignion_email_to_target_user_default_permissions() {
+function campaignion_email_to_target_type_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'view email_to_target messages'.

@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * campaignion_email_to_target.features.field_instance.inc
+ * campaignion_email_to_target_type.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function campaignion_email_to_target_field_default_field_instances() {
+function campaignion_email_to_target_type_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-email_to_target-action_template'.
