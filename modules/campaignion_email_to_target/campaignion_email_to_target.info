@@ -1,7 +1,0 @@
-name = Email to target
-description = Functionality of email to target actions.
-core = 7.x
-package = Campaignion
-
-dependencies[] = libraries
-dependencies[] = little_helpers
