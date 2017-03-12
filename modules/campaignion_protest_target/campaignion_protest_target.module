@@ -96,28 +96,34 @@ function campaignion_protest_target_validate($element, &$form_state, $form) {
   }
   // Only import data if at least one field is non-empty.
   if (implode('', $details) != '') {
+    $valid = TRUE;
     if (empty($details['first_name'])) {
       form_error($e['first_name'], t('First name has to be a non empty string.'));
+      $valid = FALSE;
     }
     if (empty($details['last_name'])) {
       form_error($e['last_name'], t('Last name has to be a non empty string.'));
+      $valid = FALSE;
     }
     if (empty($details['email'])) {
       form_error($e['email'], t('The email address has to be a non empty string.'));
+      $valid = FALSE;
     }
     elseif (!valid_email_address($details['email'])) {
       form_error($e['email'], t('The email address you entered is not a valid email address.'));
+      $valid = FALSE;
     }
 
-    $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
-    $source   = new \Drupal\campaignion\CRM\Import\Source\ArraySource($details);
-    if ($contact = $importer->findOrCreateContact($source, 'email_protest_target')) {
-      $changed = $importer->import($source, $contact);
-      if ($changed) {
-        $contact->save();
+    if ($valid) {
+      $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
+      $source = new \Drupal\campaignion\CRM\Import\Source\ArraySource($details);
+      if ($contact = $importer->findOrCreateContact($source, 'email_protest_target')) {
+        if ($importer->import($source, $contact)) {
+          $contact->save();
+        }
       }
+      $values['target_id'] = $contact ? $contact->contact_id : NULL;
     }
-    $values['target_id'] = $contact ? $contact->contact_id : NULL;
   }
 }
 
