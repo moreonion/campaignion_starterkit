@@ -90,22 +90,23 @@ function campaignion_protest_target_field_widget_form(&$form, &$form_state, $fie
 function campaignion_protest_target_validate($element, &$form_state, $form) {
   $values = &drupal_array_get_nested_value($form_state['values'], $element['#parents']);
   $details = &$values['email_protest_target'];
+  $e = $element['email_protest_target'];
   foreach ($details as &$s) {
     $s = trim($s);
   }
   // Only import data if at least one field is non-empty.
   if (implode('', $details) != '') {
     if (empty($details['first_name'])) {
-      form_error($details['first_name'], t('First name has to be a non empty string.'));
+      form_error($e['first_name'], t('First name has to be a non empty string.'));
     }
     if (empty($details['last_name'])) {
-      form_error($details['last_name'], t('Last name has to be a non empty string.'));
+      form_error($e['last_name'], t('Last name has to be a non empty string.'));
     }
     if (empty($details['email'])) {
-      form_error($details['email'], t('The email address has to be a non empty string.'));
+      form_error($e['email'], t('The email address has to be a non empty string.'));
     }
     elseif (!valid_email_address($details['email'])) {
-      form_error($details['email'], t('The email address you entered is not a valid email address.'));
+      form_error($e['email'], t('The email address you entered is not a valid email address.'));
     }
 
     $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
