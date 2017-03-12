@@ -88,22 +88,6 @@ function campaignion_protest_target_field_widget_form(&$form, &$form_state, $fie
  * Field validation callback function referenced in campaignion_protest_target_field_widget_form
  */
 function campaignion_protest_target_validate($element, &$form_state, $form) {
-  // @TODO This should not be here. This is the validation function for one
-  //   single item. This should be part of the wizard or a
-  //   hook_form_node_form_alter()
-  if (!isset($form_state['step']) || $form_state['step'] === 'target') {
-    $has_target = FALSE;
-    foreach ($form_state['values']['field_protest_target']['und'] as $delta => $values) {
-      if (is_numeric($delta) && !empty($form_state['values']['field_protest_target']['und'][$delta]['email_protest_target']['email'])) {
-        $has_target = TRUE;
-        break;
-      }
-    }
-    if ($has_target == FALSE) {
-      form_error($target['email'], t('You have to specify at least 1 target.'));
-    }
-  }
-
   $values = &drupal_array_get_nested_value($form_state['values'], $element['#parents']);
   $details = &$values['email_protest_target'];
   foreach ($details as &$s) {
