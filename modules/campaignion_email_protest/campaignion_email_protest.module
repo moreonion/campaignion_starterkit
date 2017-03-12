@@ -118,6 +118,10 @@ function campaignion_email_protest_campaignion_action_info() {
   $type['email_protest'] = array(
     'class' => 'Drupal\\campaignion_email_protest\\ActionType',
     'parameters' => array(
+      'email_protest_fields' => [
+        'options' => 'field_protest_target_options',
+        'targets' => 'field_protest_target',
+      ],
       'thank_you_page' => array(
         'type' => 'thank_you_page',
         'reference' => 'field_thank_you_pages',
