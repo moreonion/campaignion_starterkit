@@ -11,16 +11,15 @@ include_once 'campaignion_flexible_form.features.inc';
  */
 function campaignion_flexible_form_campaignion_action_info() {
   $types['webform'] = array(
-    'class' => 'Drupal\\campaignion_flexible_form\\ActionType',
-    'parameters' => array(
-      'thank_you_page' => array(
-        'type' => 'thank_you_page',
-        'reference' => 'field_thank_you_pages',
-      ),
-      'recent_supporters' => array(
-        'default_text' => t('!supporter_name just signed up at !action_title'),
-      ),
+    'wizard_class' => '\\Drupal\\campaignion_wizard\\WebformWizard',
+    'thank_you_page' => array(
+      'type' => 'thank_you_page',
+      'reference' => 'field_thank_you_pages',
     ),
+    'recent_supporters' => array(
+      'default_text' => t('!supporter_name just signed up at !action_title'),
+    ),
+    'template_node_uuid' => '93a8faff-aad2-401a-9817-f6f3b578b9bd',
   );
   return $types;
 }

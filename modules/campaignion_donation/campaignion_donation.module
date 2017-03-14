@@ -28,16 +28,15 @@ function campaignion_donation_block_view_alter(&$data, $block) {
  */
 function campaignion_donation_campaignion_action_info() {
   $type['donation'] = array(
-    'class' => 'Drupal\\campaignion_donation\\ActionType',
-    'parameters' => array(
-      'thank_you_page' => array(
-        'type' => 'thank_you_page',
-        'reference' => 'field_thank_you_pages',
-      ),
-      'recent_supporters' => array(
-        'default_text' => t('!supporter_name just donated at !action_title'),
-      ),
+    'wizard_class' => '\\Drupal\\campaignion_wizard\\DonationWizard',
+    'thank_you_page' => array(
+      'type' => 'thank_you_page',
+      'reference' => 'field_thank_you_pages',
     ),
+    'recent_supporters' => array(
+      'default_text' => t('!supporter_name just donated at !action_title'),
+    ),
+    'template_node_uuid' => '6eb388a0-88e5-4272-bb6e-0bd8e8da595e',
   );
   return $type;
 }

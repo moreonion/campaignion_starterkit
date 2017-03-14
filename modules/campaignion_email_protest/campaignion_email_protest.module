@@ -116,20 +116,19 @@ function campaignion_email_protest_webform_mail_headers($variables) {
  */
 function campaignion_email_protest_campaignion_action_info() {
   $type['email_protest'] = array(
-    'class' => 'Drupal\\campaignion_email_protest\\ActionType',
-    'parameters' => array(
-      'email_protest_fields' => [
-        'options' => 'field_protest_target_options',
-        'targets' => 'field_protest_target',
-      ],
-      'thank_you_page' => array(
-        'type' => 'thank_you_page',
-        'reference' => 'field_thank_you_pages',
-      ),
-      'recent_supporters' => array(
-        'default_text' => t('!supporter_name just took action at !action_title'),
-      ),
+    'wizard_class' => '\\Drupal\\campaignion_wizard\\EmailProtestWizard',
+    'email_protest_fields' => [
+      'options' => 'field_protest_target_options',
+      'targets' => 'field_protest_target',
+    ],
+    'thank_you_page' => array(
+      'type' => 'thank_you_page',
+      'reference' => 'field_thank_you_pages',
     ),
+    'recent_supporters' => array(
+      'default_text' => t('!supporter_name just took action at !action_title'),
+    ),
+    'template_node_uuid' => '7f2e3be8-156e-4211-a35a-a654ff4ab99e',
   );
   return $type;
 }
