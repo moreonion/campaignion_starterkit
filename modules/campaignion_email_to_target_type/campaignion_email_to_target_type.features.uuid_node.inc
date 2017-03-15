@@ -7,7 +7,7 @@
 /**
  * Implements hook_uuid_features_default_content().
  */
-function campaignion_email_to_target_templates_uuid_features_default_content() {
+function campaignion_email_to_target_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
