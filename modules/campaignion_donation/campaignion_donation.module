@@ -37,6 +37,7 @@ function campaignion_donation_campaignion_action_info() {
       'default_text' => t('!supporter_name just donated at !action_title'),
     ),
     'template_node_uuid' => '6eb388a0-88e5-4272-bb6e-0bd8e8da595e',
+    'donation' => TRUE,
   );
   return $type;
 }
