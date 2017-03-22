@@ -20,3 +20,5 @@ projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_p
 projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrapper-class-attributes-2190525-D7.patch
 ; Avoid stale static cache during install.
 projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
+; Avoid duplicate form-submissions in non-ajax forms. - https://www.drupal.org/node/1705618
+projects[drupal][patch][] = https://www.drupal.org/files/issues/form-single-submit-1705618-124.patch
