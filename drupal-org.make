@@ -177,7 +177,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2560385
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 1.3
+projects[share_light][version] = 1.4
 
 projects[stripe_payment][version] = 1.0-rc2
 
