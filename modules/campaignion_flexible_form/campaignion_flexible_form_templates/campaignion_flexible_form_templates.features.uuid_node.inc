@@ -11,7 +11,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Minimal supporter form',
+  'title' => 'Default Flexible Form',
   'log' => '',
   'status' => 0,
   'comment' => 1,
@@ -63,9 +63,11 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'und' => array(
       0 => array(
         'options' => array(
+          'name_display' => 0,
           'visible_count' => 6,
           'cycle_toggle' => 0,
           'country_toggle' => 1,
+          'comment_toggle' => 0,
         ),
         'toggle' => 0,
       ),
@@ -113,9 +115,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'emails' => array(
       1 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 1,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -129,11 +130,13 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       2 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 2,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -146,11 +149,13 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       3 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 3,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
@@ -167,6 +172,9 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
     ),
     'components' => array(
