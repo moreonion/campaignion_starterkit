@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.5
+projects[campaignion][version] = 1.6
 
 projects[cck_blocks][version] = 1.1
 
@@ -33,7 +33,7 @@ projects[currency][version] = 2.6
 
 projects[custom_add_another][version] = 1.0
 
-projects[date][version] = 2.9
+projects[date][version] = 2.10
 
 projects[diff][version] = 3.3
 
@@ -88,7 +88,7 @@ projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.34
 
-projects[manual_direct_debit][version] = 1.0-rc1
+projects[manual_direct_debit][version] = 1.0
 
 projects[media][version] = 2.0-rc5
 
@@ -133,17 +133,9 @@ projects[payment_forms][version] = 2.0-beta1
 
 projects[paymill_payment][version] = 1.0-beta9
 
-projects[payone_payment][version] = 1.0-beta2
+projects[payone_payment][version] = 1.0-rc1
 
-projects[paypal_payment][version] = 1.1
-; Fix 403 when returning from paypal - https://drupal.org/node/2052361
-projects[paypal_payment][patch][] = https://drupal.org/files/issues/paypal_payment-pps_HTTP_404_on_return_uri-2052361-40.patch
-; Don't leave payment status on pending. - https://drupal.org/node/2142091
-projects[paypal_payment][patch][] = https://drupal.org/files/issues/2142091-set-status-failed-when-there-is-no-payerid-5.patch
-; Log to watchdog if API-call failed. - https://www.drupal.org/node/2355841
-projects[paypal_payment][patch][] = https://www.drupal.org/files/issues/2355841-1-log-error-on-ACK-failure.patch
-; Let other modules prefill data for paypal
-projects[paypal_payment][patch][] = https://www.drupal.org/files/issues/paypal_payment_2337561_4.patch
+projects[paypal_payment][version] = 1.2
 
 projects[pgbar][version] = 2.0-beta1
 
@@ -165,7 +157,7 @@ projects[references][version] = 2.1
 
 projects[respondjs][version] = 1.5
 
-projects[sagepay_payment][version] = 1.2
+projects[sagepay_payment][version] = 1.3
 
 projects[select2][version] = 1.0
 
@@ -202,9 +194,10 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.15
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 4.14
+projects[webform][version] = 4.15
+projects[webform][patch][] = https://www.drupal.org/files/issues/2869746-4-use-renderables.patch
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
-projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-45.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-48.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
@@ -216,8 +209,8 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.5
-projects[webform_confirm_email][patch][] = https://www.drupal.org/files/issues/2807739-2-render-confirm_url-as-link.patch
+projects[webform_confirm_email][version] = 2.7
+projects[webform_confirm_email][patch][] = https://www.drupal.org/files/issues/2870398-4-stop-copying-page-callbacks.patch
 
 projects[webform_country_list][version] = 1.2
 projects[webform_country_list][patch][] = https://www.drupal.org/files/issues/2840930-2-allow-NULL-values-for-csv-export.patch
