@@ -40,6 +40,14 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
   ),
   'field_main_image' => array(),
+  'field_no_target_message' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'There don\'t seem to be any targets for your selection.',
+        'format' => NULL,
+      ),
+    ),
+  ),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
   'pgbar_default' => array(
