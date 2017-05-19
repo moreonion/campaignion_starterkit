@@ -55,6 +55,7 @@ dependencies[] = campaignion_node_ux
 dependencies[] = campaignion_petition
 dependencies[] = campaignion_petition_templates
 dependencies[] = campaignion_protest_target
+dependencies[] = campaignion_roles
 dependencies[] = campaignion_seo
 dependencies[] = campaignion_static_page
 dependencies[] = campaignion_supporter

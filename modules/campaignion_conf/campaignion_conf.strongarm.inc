@@ -44,6 +44,20 @@ function campaignion_conf_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'modernizr_scope';
+  $strongarm->value = 'header';
+  $export['modernizr_scope'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'modernizr_type';
+  $strongarm->value = 'sync';
+  $export['modernizr_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'payment_debug';
   $strongarm->value = 0;
   $export['payment_debug'] = $strongarm;
@@ -89,6 +103,13 @@ function campaignion_conf_strongarm() {
   $strongarm->name = 'webform_email_html_capable';
   $strongarm->value = 1;
   $export['webform_email_html_capable'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_submission_access_control';
+  $strongarm->value = 0;
+  $export['webform_submission_access_control'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
