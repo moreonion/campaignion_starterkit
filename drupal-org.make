@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.6
+projects[campaignion][version] = 1.7
 
 projects[cck_blocks][version] = 1.1
 
@@ -39,7 +39,7 @@ projects[diff][version] = 3.3
 
 projects[entity][version] = 1.8
 
-projects[entityreference][version] = 1.2
+projects[entityreference][version] = 1.4
 
 projects[features][version] = 2.10
 projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
@@ -60,13 +60,13 @@ projects[form_builder][version] = 1.20
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
-projects[geoip_language_redirect][version] = 2.0-rc1
+projects[geoip_language_redirect][version] = 2.0
 
 projects[honeypot][version] = 1.22
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.15
+projects[i18n][version] = 1.17
 
 projects[imagefield_crop][version] = 1.1
 
@@ -88,9 +88,9 @@ projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.34
 
-projects[manual_direct_debit][version] = 1.0
+projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.0-rc5
+projects[media][version] = 2.3
 
 projects[media_vimeo][version] = 2.1
 
@@ -100,13 +100,12 @@ projects[menu_block][version] = 2.7
 
 projects[metatag][version] = 1.21
 
-projects[mimemail][version] = 1.0-beta4
-projects[mimemail][patch][] = https://www.drupal.org/files/issues/2146513-support-less-sass-scss-3.patch
+projects[mimemail][version] = 1.0
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
 
-projects[modernizr][version] = 3.9
+projects[modernizr][version] = 3.10
 
-projects[morelesszen][version] = 1.3
+projects[morelesszen][version] = 1.4
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -133,7 +132,7 @@ projects[payment_forms][version] = 2.0-beta1
 
 projects[paymill_payment][version] = 1.0-beta9
 
-projects[payone_payment][version] = 1.0-rc1
+projects[payone_payment][version] = 1.0-rc2
 
 projects[paypal_payment][version] = 1.2
 
@@ -153,7 +152,7 @@ projects[redhen][version] = 1.13
 
 projects[redirect][version] = 1.0-rc3
 
-projects[references][version] = 2.1
+projects[references][version] = 2.2
 
 projects[respondjs][version] = 1.5
 
@@ -179,19 +178,15 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.3
-projects[ultimate_cron][patch][] = https://www.drupal.org/files/issues/2859487-2-use-watchdog_exception.patch
+projects[ultimate_cron][version] = 2.4
 
-projects[uuid][version] = 1.0-beta2
+projects[uuid][version] = 1.0
 
-projects[uuid_features][download][type] = git
-projects[uuid_features][download][url] = http://git.drupal.org/project/uuid_features.git
-projects[uuid_features][download][branch] = 7.x-1.x
-projects[uuid_features][download][revision] = 2360332099cdf36479915d4011a9bdb96ab7dfbf
+projects[uuid_features][version] = 1.0-rc1
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.15
+projects[views][version] = 3.16
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 4.15
@@ -209,17 +204,16 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.7
+projects[webform_confirm_email][version] = 2.8
 projects[webform_confirm_email][patch][] = https://www.drupal.org/files/issues/2870398-4-stop-copying-page-callbacks.patch
 
-projects[webform_country_list][version] = 1.2
-projects[webform_country_list][patch][] = https://www.drupal.org/files/issues/2840930-2-allow-NULL-values-for-csv-export.patch
+projects[webform_country_list][version] = 1.3
 
 projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.10
+projects[webform_paymethod_select][version] = 1.11
 
 projects[webform_prefill][version] = 1.0-alpha4
 
@@ -238,13 +232,13 @@ projects[webform_validation][version] = 1.13
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
-projects[wysiwyg][version] = 2.3
+projects[wysiwyg][version] = 2.4
 
 projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[simplicity][version] = 1.3
+projects[simplicity][version] = 1.4
 
 projects[tao][version] = 3.1
 
@@ -255,17 +249,16 @@ libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
 
 libraries[paymill-php][download][type] = file
-libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v4.4.1.tar.gz
+libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v4.4.2.tar.gz
 
 libraries[respondjs][download][type] = file
 libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
 
-libraries[select2][download][type] = git
-libraries[select2][download][url] = https://github.com/select2/select2.git
-libraries[select2][download][revision] = 3.5.4
+libraries[select2][download][type] = file
+libraries[select2][download][url] = https://github.com/select2/select2/archive/3.5.4.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v4.4.2.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v4.9.0.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.5.4.tar.gz
