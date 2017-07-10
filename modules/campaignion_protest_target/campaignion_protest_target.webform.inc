@@ -134,6 +134,37 @@ function _webform_form_builder_map_protest_target() {
   );
 }
 
+/**
+ * Implements _webform_table_<webform component>().
+ */
+function _webform_table_protest_target($component, $value) {
+  if (!empty($value[0]) && ($contact = entity_load_single('redhen_contact', $value[0]))) {
+    return check_plain(redhen_contact_property_full_name_get($contact, [], 'full_name', 'redhen_contact'));
+  }
+  return '';
+}
+
+/**
+ * Implements  _webform_csv_headers_<webform component>().
+ */
+function _webform_csv_headers_protest_target($component, $export_options) {
+  $header = array();
+  $header[0] = '';
+  $header[1] = '';
+  $header[2] = $export_options['header_keys'] ? $component['form_key'] : $component['name'];
+  return $header;
+}
+
+/**
+ * Implements _webform_csv_data_<webform component>().
+ */
+function _webform_csv_data_protest_target($component, $export_options, $value) {
+  if (!empty($value[0]) && ($contact = entity_load_single('redhen_contact', $value[0]))) {
+    return redhen_contact_property_full_name_get($contact, [], 'full_name', 'redhen_contact');
+  }
+  return '';
+}
+
 /*
  * Callback referenced in _webform_form_builder_properties_<webform-component> hook
  */

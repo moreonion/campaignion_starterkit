@@ -139,7 +139,7 @@ function campaignion_protest_target_webform_component_info() {
     'label'       => t('Send your protest to'),
     'description' => t('Webform component to select a target person for an email protest.'),
     'features'    => array(
-      'csv' => FALSE,
+      'csv' => TRUE,
       'default_value' => TRUE,
       'required'      => TRUE,
     ),
