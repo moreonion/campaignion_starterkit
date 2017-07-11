@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.7
+projects[campaignion][version] = 1.8
 
 projects[cck_blocks][version] = 1.1
 
@@ -66,7 +66,7 @@ projects[honeypot][version] = 1.22
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.17
+projects[i18n][version] = 1.18
 
 projects[imagefield_crop][version] = 1.1
 
@@ -128,7 +128,7 @@ projects[payment_context][version] = 1.0-rc2
 
 projects[payment_controller_data][version] = 1.0-rc2
 
-projects[payment_forms][version] = 2.0-beta1
+projects[payment_forms][version] = 2.0
 
 projects[paymill_payment][version] = 1.0-beta9
 
@@ -156,7 +156,7 @@ projects[references][version] = 2.2
 
 projects[respondjs][version] = 1.5
 
-projects[sagepay_payment][version] = 1.3
+projects[sagepay_payment][version] = 1.4
 
 projects[select2][version] = 1.0
 
@@ -213,9 +213,9 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.11
+projects[webform_paymethod_select][version] = 1.12
 
-projects[webform_prefill][version] = 1.0-alpha4
+projects[webform_prefill][version] = 1.0-rc1
 
 projects[webform_steps][version] = 2.1
 
@@ -244,6 +244,12 @@ projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.6.2/ckeditor_4.6.2_standard.zip
+
+libraries[es6-promise][download][type] = file
+libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.0.tar.gz
+
+;libraries[jquery.formprefill][download][type] = file
+;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.1.0.tar.gz
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz

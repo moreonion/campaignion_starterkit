@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.54
+projects[drupal][version] = 7.56
 ; Fixup nested node loads - https://www.drupal.org/node/2832465
 projects[drupal][patch][] = https://www.drupal.org/files/issues/2832465-3-workaround-for-concurrent-entity-loads.patch
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
