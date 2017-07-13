@@ -154,8 +154,6 @@ projects[redirect][version] = 1.0-rc3
 
 projects[references][version] = 2.2
 
-projects[respondjs][version] = 1.5
-
 projects[sagepay_payment][version] = 1.4
 
 projects[select2][version] = 1.0
@@ -256,9 +254,6 @@ libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0
 
 libraries[paymill-php][download][type] = file
 libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v4.4.2.tar.gz
-
-libraries[respondjs][download][type] = file
-libraries[respondjs][download][url] = https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js
 
 libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/3.5.4.tar.gz

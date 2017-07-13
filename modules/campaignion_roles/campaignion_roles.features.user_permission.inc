@@ -426,13 +426,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'redirect',
   );
 
-  // Exported permission: 'administer respondjs'.
-  $permissions['administer respondjs'] = array(
-    'name' => 'administer respondjs',
-    'roles' => array(),
-    'module' => 'respondjs',
-  );
-
   // Exported permission: 'administer site configuration'.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
