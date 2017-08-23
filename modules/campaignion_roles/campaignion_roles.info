@@ -1,6 +1,6 @@
 name = campaignion_roles
 core = 7.x
-package = Features
+package = Campaignion
 dependencies[] = block
 dependencies[] = campaignion_action
 dependencies[] = campaignion_bar

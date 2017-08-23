@@ -1,6 +1,6 @@
 name = campaignion_views
 core = 7.x
-package = Features
+package = Campaignion
 dependencies[] = media
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
