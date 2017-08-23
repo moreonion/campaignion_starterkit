@@ -501,6 +501,15 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'xmlsitemap',
   );
 
+  // Exported permission: 'assign roles'.
+  $permissions['assign roles'] = array(
+    'name' => 'assign roles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'roleassign',
+  );
+
   // Exported permission: 'block IP addresses'.
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',

@@ -154,6 +154,8 @@ projects[redirect][version] = 1.0-rc3
 
 projects[references][version] = 2.2
 
+projects[roleassign][version] = 1.2
+
 projects[sagepay_payment][version] = 1.4
 
 projects[select2][version] = 1.0
