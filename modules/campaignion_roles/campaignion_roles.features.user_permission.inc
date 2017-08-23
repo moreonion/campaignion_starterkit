@@ -1361,15 +1361,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'execute php code'.
-  $permissions['execute php code'] = array(
-    'name' => 'execute php code',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: 'generate features'.
   $permissions['generate features'] = array(
     'name' => 'generate features',
@@ -1580,15 +1571,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'send arbitrary files',
     'roles' => array(),
     'module' => 'mimemail',
-  );
-
-  // Exported permission: 'switch users'.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'devel',
   );
 
   // Exported permission: 'translate admin strings'.
