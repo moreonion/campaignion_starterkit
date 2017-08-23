@@ -36,6 +36,7 @@ function _campaignion_starterkit_set_variables() {
   variable_set('user_register', '0');
   variable_set('campaignion_bar_file', drupal_get_path('module', 'campaignion_starterkit') . '/campaignion_bar.txt');
   variable_set('jquery_update_jquery_version', '1.7');
+  variable_set('roleassign_roles', array('3' => '3', '4' => '4'));
 }
 
 function _campaignion_starterkit_themes() {
