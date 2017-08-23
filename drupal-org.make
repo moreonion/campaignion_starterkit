@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.8
+projects[campaignion][version] = 1.9
 
 projects[cck_blocks][version] = 1.1
 
@@ -39,7 +39,7 @@ projects[diff][version] = 3.3
 
 projects[entity][version] = 1.8
 
-projects[entityreference][version] = 1.4
+projects[entityreference][version] = 1.5
 
 projects[features][version] = 2.10
 projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
@@ -82,7 +82,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.4
+projects[little_helpers][version] = 1.5
 
 projects[logintoboggan][version] = 1.5
 
@@ -105,7 +105,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.10
 
-projects[morelesszen][version] = 1.4
+projects[morelesszen][version] = 1.5
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -178,7 +178,7 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.4
+projects[ultimate_cron][version] = 2.5
 
 projects[uuid][version] = 1.0
 
@@ -186,7 +186,7 @@ projects[uuid_features][version] = 1.0-rc1
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.16
+projects[views][version] = 3.17
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
 projects[webform][version] = 4.15
@@ -207,7 +207,7 @@ projects[webform_block][version] = 1.2
 projects[webform_confirm_email][version] = 2.8
 projects[webform_confirm_email][patch][] = https://www.drupal.org/files/issues/2870398-4-stop-copying-page-callbacks.patch
 
-projects[webform_country_list][version] = 1.3
+projects[webform_country_list][version] = 1.4
 
 projects[webform_currency][version] = 1.0-beta1
 
@@ -215,7 +215,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.12
 
-projects[webform_prefill][version] = 1.0-rc1
+projects[webform_prefill][version] = 1.0-rc2
 
 projects[webform_steps][version] = 2.1
 
@@ -225,7 +225,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.0-beta1
+projects[webform_tracking][version] = 2.0-beta2
 
 projects[webform_validation][version] = 1.13
 
@@ -238,7 +238,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[simplicity][version] = 1.4
+projects[simplicity][version] = 1.5
 
 projects[tao][version] = 3.1
 
