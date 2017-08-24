@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the campaignion_roles feature.
  */
+
+include_once 'campaignion_roles.features.inc';
