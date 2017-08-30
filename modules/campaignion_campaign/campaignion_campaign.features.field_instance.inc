@@ -60,6 +60,69 @@ function campaignion_campaign_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_countdown'.
+  $field_instances['node-campaign-field_countdown'] = array(
+    'bundle' => 'campaign',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => 'Displays a countdown to the specified date.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_countdown',
+    'label' => 'Countdown',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'field_countdown2',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'field_countdown2_date_popup',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_description'.
   $field_instances['node-campaign-field_description'] = array(
     'bundle' => 'campaign',
@@ -243,10 +306,12 @@ function campaignion_campaign_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a main image or video to your campaign.');
   t('Body');
+  t('Countdown');
   t('Create a public campaign page');
   t('Description');
   t('Large image or video');
   t('This field is only used for administrative purposes.');
+  t('Displays a countdown to the specified date.');
 
   return $field_instances;
 }

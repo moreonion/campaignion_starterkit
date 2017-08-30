@@ -96,7 +96,7 @@ function campaignion_petition_strongarm() {
           'weight' => '10',
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -105,7 +105,7 @@ function campaignion_petition_strongarm() {
           'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'language' => array(
           'weight' => '0',
@@ -139,7 +139,7 @@ function campaignion_petition_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '5',
+            'weight' => '6',
             'visible' => FALSE,
           ),
         ),

@@ -21,7 +21,7 @@ function campaignion_flexible_form_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -83,7 +83,7 @@ function campaignion_flexible_form_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'recent_supporters',
     ),

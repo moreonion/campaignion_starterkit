@@ -21,7 +21,7 @@ function campaignion_email_protest_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -83,7 +83,7 @@ function campaignion_email_protest_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Email protest',
-    'weight' => '6',
+    'weight' => '8',
     'children' => array(
       0 => 'field_protest_target',
       1 => 'field_protest_target_options',
@@ -112,7 +112,7 @@ function campaignion_email_protest_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'recent_supporters',
     ),

@@ -21,7 +21,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'default' => array(
         'label' => 'above',
@@ -107,6 +107,69 @@ function campaignion_flexible_form_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-webform-field_countdown'.
+  $field_instances['node-webform-field_countdown'] = array(
+    'bundle' => 'webform',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => 'Displays a countdown to the specified date.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 4,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_countdown',
+    'label' => 'Countdown',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'field_countdown2',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'field_countdown2_date_popup',
+      'weight' => 7,
     ),
   );
 
@@ -199,7 +262,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'default' => array(
         'label' => 'above',
@@ -245,7 +308,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'above',
@@ -426,7 +489,7 @@ function campaignion_flexible_form_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'default' => array(
         'label' => 'above',
@@ -463,6 +526,7 @@ function campaignion_flexible_form_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Countdown');
   t('Counter');
   t('Display a counter, like a progress bar or thermometer counting how many people have signed up.');
   t('Display a recent supporters box.');
@@ -474,6 +538,7 @@ function campaignion_flexible_form_field_default_field_instances() {
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
+  t('Displays a countdown to the specified date.');
 
   return $field_instances;
 }

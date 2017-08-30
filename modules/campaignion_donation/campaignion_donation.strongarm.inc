@@ -96,7 +96,7 @@ function campaignion_donation_strongarm() {
           'weight' => '10',
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -105,7 +105,7 @@ function campaignion_donation_strongarm() {
           'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'language' => array(
           'weight' => '0',
@@ -117,7 +117,7 @@ function campaignion_donation_strongarm() {
       'display' => array(
         'webform' => array(
           'default' => array(
-            'weight' => '4',
+            'weight' => '5',
             'visible' => FALSE,
           ),
           'teaser' => array(
@@ -135,11 +135,11 @@ function campaignion_donation_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '5',
+            'weight' => '6',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '5',
+            'weight' => '6',
             'visible' => FALSE,
           ),
         ),

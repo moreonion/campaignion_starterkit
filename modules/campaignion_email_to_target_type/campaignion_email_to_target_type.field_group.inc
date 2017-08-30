@@ -22,7 +22,7 @@ function campaignion_email_to_target_type_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -84,7 +84,7 @@ function campaignion_email_to_target_type_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'recent_supporters',
     ),

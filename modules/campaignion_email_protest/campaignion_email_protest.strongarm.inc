@@ -96,7 +96,7 @@ function campaignion_email_protest_strongarm() {
           'weight' => '12',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -105,7 +105,7 @@ function campaignion_email_protest_strongarm() {
           'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'language' => array(
           'weight' => '0',
@@ -139,7 +139,7 @@ function campaignion_email_protest_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '6',
+            'weight' => '7',
             'visible' => FALSE,
           ),
         ),

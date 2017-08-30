@@ -21,7 +21,7 @@ function campaignion_campaign_field_group_info() {
   $field_group->parent_name = 'group_only_published';
   $field_group->data = array(
     'label' => 'Add another section',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -47,7 +47,7 @@ function campaignion_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'path',
       1 => 'xmlsitemap',
@@ -76,7 +76,7 @@ function campaignion_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Public campaign page',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_public_page',
     ),
@@ -104,7 +104,7 @@ function campaignion_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Public campaign page only',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',

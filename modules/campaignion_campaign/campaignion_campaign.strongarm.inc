@@ -118,11 +118,11 @@ function campaignion_campaign_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '6',
+            'weight' => '4',
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '2',
+            'weight' => '4',
             'visible' => FALSE,
           ),
         ),

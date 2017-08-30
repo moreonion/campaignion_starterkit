@@ -97,7 +97,7 @@ function campaignion_email_to_target_type_strongarm() {
           'weight' => '12',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -106,7 +106,7 @@ function campaignion_email_to_target_type_strongarm() {
           'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'language' => array(
           'weight' => '0',
@@ -140,7 +140,7 @@ function campaignion_email_to_target_type_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '5',
+            'weight' => '8',
             'visible' => FALSE,
           ),
         ),

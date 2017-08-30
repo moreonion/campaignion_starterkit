@@ -22,7 +22,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'default' => array(
         'label' => 'above',
@@ -67,14 +67,14 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -109,6 +109,69 @@ function campaignion_email_to_target_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_to_target-field_countdown'.
+  $field_instances['node-email_to_target-field_countdown'] = array(
+    'bundle' => 'email_to_target',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => 'Displays a countdown to the specified date.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 4,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_countdown2',
+        'settings' => array(
+          'font_size' => 4,
+        ),
+        'type' => 'field_countdown2_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_countdown',
+    'label' => 'Countdown',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'field_countdown2',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'field_countdown2_date_popup',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-email_to_target-field_email_to_target_options'.
   $field_instances['node-email_to_target-field_email_to_target_options'] = array(
@@ -128,13 +191,13 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -157,7 +220,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
       'module' => 'campaignion_email_to_target',
       'settings' => array(),
       'type' => 'email_to_target_options',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -256,13 +319,13 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -288,7 +351,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 11,
     ),
   );
 
@@ -304,7 +367,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'default' => array(
         'label' => 'above',
@@ -350,7 +413,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'default' => array(
         'label' => 'above',
@@ -531,7 +594,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'default' => array(
         'label' => 'above',
@@ -570,6 +633,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a video to your email_to_target.');
   t('Body');
+  t('Countdown');
   t('Counter');
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
@@ -583,6 +647,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Thank you pages');
   t('This is a template');
   t('This message is displayed whenever we can\'t find any targets for a postcode.');
+  t('Displays a countdown to the specified date.');
 
   return $field_instances;
 }
