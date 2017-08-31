@@ -3,7 +3,6 @@ description = Definitions for a campaign content type
 core = 7.x
 package = Campaignion
 project = campaignion_starterkit
-dependencies[] = campaignion_conf
 dependencies[] = campaignion_static_page
 dependencies[] = ctools
 dependencies[] = features

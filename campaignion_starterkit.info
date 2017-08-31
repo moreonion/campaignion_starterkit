@@ -44,6 +44,7 @@ dependencies[] = campaignion_donation
 dependencies[] = campaignion_donation_templates
 dependencies[] = campaignion_email_protest
 dependencies[] = campaignion_email_protest_templates
+dependencies[] = campaignion_email_to_target_type
 dependencies[] = campaignion_field_flexible
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_flexible_form_templates
