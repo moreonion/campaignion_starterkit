@@ -10,12 +10,12 @@
   font-style: normal;
 }
 
-@mixin icon($icon, $font-size: 100%, $margin: 0.2em) {
+.icon(@icon, @font-size: 100%, @margin: 0.2em) {
   &:before {
-    content: $icon;
+    content: @icon;
 
     font-family: "icons";
-    font-size: $font-size;
+    font-size: @font-size;
     font-style: normal;
     font-weight: normal;
     speak: none;
@@ -23,8 +23,8 @@
     display: inline-block;
     text-decoration: inherit;
     width: 1em;
-    margin-right: $margin;
-    margin-left: $margin;
+    margin-right: @margin;
+    margin-left: @margin;
 
     text-align: center;
 
@@ -40,9 +40,9 @@
   }
 }
 
-$icon-move: "\e800";
-$icon-info-circled: "\e801";
-$icon-help-circled: "\e802";
-$icon-cancel-circled: "\e803";
+@icon-move: "\e800";
+@icon-info-circled: "\e801";
+@icon-help-circled: "\e802";
+@icon-cancel-circled: "\e803";
 
 // FontAwesome 4.4.0 codes in scss syntax can be found here: https://gist.github.com/mbreit/4267177#gistcomment-1584537

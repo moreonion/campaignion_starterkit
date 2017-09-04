@@ -1,0 +1,53 @@
+.el-dialog {
+
+  border-radius: @border-radius;
+
+  .el-dialog__header {
+    padding: 1rem 1rem 0.7rem;
+    background-color: #F5F1E8;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: @border-radius;
+    border-top-right-radius: @border-radius;
+
+    .el-dialog__title {
+      font-size: @font-size-lg;
+      font-weight: bold;
+      color: #65635f;
+    }
+  }
+
+  .el-dialog__headerbtn .el-dialog__close {
+    font-weight: bold;
+    color: #7d7d7d;
+  }
+
+  .el-dialog__headerbtn:focus .el-dialog__close,
+  .el-dialog__headerbtn:hover .el-dialog__close {
+      color: @font-color;
+  }
+
+  .el-dialog__body {
+    padding: 1rem;
+    background-color: #F8F7F4;
+  }
+
+  .el-dialog__footer {
+    padding: 1rem;
+    background-color: #F8F7F4;
+    border-top: 1px solid #eee;
+    border-bottom-left-radius: @border-radius;
+    border-bottom-right-radius: @border-radius;
+  }
+
+}
+
+.el-message-box {
+  border-radius: @border-radius;
+  background-color: #F8F7F4;
+
+  .el-message-box__title {
+    font-size: @font-size-lg;
+    font-weight: bold;
+    color: #65635f;
+  }
+}

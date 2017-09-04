@@ -1,0 +1,190 @@
+.form-group {
+  margin-bottom: 0.8rem;
+
+  .field-input {
+    margin-bottom: 0;
+  }
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.4rem 0.5rem .3rem;
+  margin-bottom: 0.35rem;
+  border: 2px solid #c6c6c6;
+  background: @input-bg;
+  color: #666;
+  font-size: @font-size-base;
+  line-height: 130%;
+  max-width: 100%;
+  box-shadow: 0 0 3px #efefef;
+  border-radius: @input-border-radius;
+
+  &::-webkit-input-placeholder { color: @placeholder-color; }
+       &:-ms-input-placeholder { color: @placeholder-color; }
+           &::-moz-placeholder { color: @placeholder-color; opacity: 1; } /* Firefox 19+ */
+            &:-moz-placeholder { color: @placeholder-color; opacity: 1; } /* Firefox 18- */
+                &::placeholder { color: @placeholder-color; }
+
+  &:hover, &:focus {
+    color: #575555;
+    border-color: #18CBDB;
+    box-shadow: 0 0 3px #1AE3F2;
+  }
+}
+
+.el-button {
+  vertical-align: middle;
+  font-size: @font-size-base;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  color: @btn-secondary-color;
+  background-color: @btn-secondary-bg;
+  border: 0 none;
+  border-radius: @btn-secondary-border-radius;
+  text-shadow: @btn-secondary-text-shadow;
+  outline: none;
+  cursor: pointer;
+
+  &:focus, &:hover {
+    color: @btn-secondary-color;
+    background-color: @btn-secondary-hover-bg;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active, &:active:focus {
+    color: #222;
+    background-color: #666;
+    text-shadow: 0 1px 0 #999;
+    outline: none;
+  }
+
+  &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
+    background-color: @btn-secondary-bg;
+    border: 0 none;
+  }
+
+  // Dropdown caret
+  .el-icon--right {
+    font-size: 7px;
+    margin-left: 0.5rem;
+    margin-right: -0.2rem;
+    transform: translateY(-1px);
+    text-shadow: none;
+  }
+}
+
+.el-button--primary {
+  font-size: 1rem;
+  padding: 0.5rem 1.3rem 0.4rem;
+  color: @btn-primary-color;
+  background-color: @btn-primary-bg;
+  border: @btn-primary-border;
+  text-shadow: @btn-primary-text-shadow;
+
+  &:focus, &:hover {
+    color: @btn-primary-color;
+    background-color: @btn-primary-hover-bg;
+    border: @btn-primary-border;
+    outline: none;
+  }
+
+  &:active, &:active:focus, &:focus:active:hover {
+    background-color: #B34A28;
+    border: @btn-primary-border;
+    text-shadow: 0 1px 0 #DC7260;
+    outline: none;
+  }
+
+  &:disabled, &.disabled, &[disabled]:hover {
+    background-color: @btn-primary-bg;
+    border: @btn-primary-border;
+  }
+}
+
+.el-dropdown__caret-button {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.el-dropdown__icon {
+  font-size: 7px;
+  text-shadow: none;
+}
+
+.el-dropdown-menu, .el-select-dropdown, .el-select-dropdown__list, .typeahead .dropdown-menu {
+  margin-top: 1px;
+  border: 0 none;
+  border-radius: @btn-secondary-border-radius;
+  background-color: @dropdown-bg;
+  box-shadow: none;
+}
+
+.dropdown-item, .el-dropdown-menu__item {
+  font-size: @font-size-base;
+  line-height: 200%;
+  padding: 0px 1.5rem;
+  color: @dropdown-color;
+
+  &:focus, &:not(.is-disabled):hover {
+    color: @dropdown-hover-color;
+    background-color: @dropdown-hover-bg;
+  }
+}
+
+.el-select-dropdown__item {
+  font-size: @font-size-base;
+  padding: 0.2rem 0.6rem;
+  height: 1.6rem;
+  color: @dropdown-color;
+
+  &.selected, &.hover, &.selected.hover {
+    color: @dropdown-hover-color;
+    background-color: @dropdown-hover-bg;
+  }
+}
+
+// these dropdowns use .active class and :hover styles would disturb them
+.typeahead {
+  .dropdown-menu {
+    min-width: 100%;
+    margin-top: 2px;
+  }
+
+  .dropdown-item {
+    &:focus, &:hover {
+      color: inherit;
+      background-color: inherit;
+    }
+  }
+  li.active .dropdown-item {
+    color: @dropdown-hover-color;
+    background-color: @dropdown-hover-bg;
+  }
+}
+
+// add a dropdown caret that doesn’t cover the input
+.typeahead {
+  background: @input-bg;
+  border-radius: @input-border-radius;
+
+  .typeahead-input {
+    position: relative;
+    margin: 0;
+    padding-right: 1.2em;
+    vertical-align: middle;
+    background: transparent;
+  }
+
+  &::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0.5em;
+    top: 50%;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
+  }
+}
