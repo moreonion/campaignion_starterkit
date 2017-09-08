@@ -28,6 +28,7 @@ stylesheets[print][] = print.css
 stylesheets[screen][] = modules_css/sandbox_menu.css
 stylesheets[screen][] = modules_css/form_builder.css
 stylesheets[screen][] = modules_css/webform_currency.css
+stylesheets[screen][] = modules_css/e2t_messages_app_overrides.css
 
 stylesheets[screen][] = modules_css/jquery.ui.dialog.css
 stylesheets[screen][] = modules_css/jquery.ui.progressbar.css
@@ -45,9 +46,5 @@ stylesheets[screen][] = modules_css/jquery.listdropdown.css
 stylesheets[screen][] = modules_css/ae_itoggle.css
 stylesheets[screen][] = modules_css/jquery.fs.selecter.css
 
-; Bootstrap 4 overrides, currently for email_to_target messages step
-stylesheets[screen][] = bootstrap_css/main.css
-
 ; Support shortcut module links
 settings[shortcut_module_link] = 1
-
