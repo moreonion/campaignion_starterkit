@@ -28,7 +28,7 @@ stylesheets[print][] = print.css
 stylesheets[screen][] = modules_css/sandbox_menu.css
 stylesheets[screen][] = modules_css/form_builder.css
 stylesheets[screen][] = modules_css/webform_currency.css
-stylesheets[screen][] = modules_css/e2t_messages_app_overrides.less
+stylesheets[screen][] = modules_css/e2t_messages_app_overrides.css
 
 stylesheets[screen][] = modules_css/jquery.ui.dialog.css
 stylesheets[screen][] = modules_css/jquery.ui.progressbar.css
