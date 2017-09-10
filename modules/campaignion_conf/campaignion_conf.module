@@ -26,15 +26,6 @@ function campaignion_conf_block_info_alter(&$blocks) {
 }
 
 /**
- * helper function: returns TRUE if context $cname is active
- */
-function campaignion_conf_context_is_active($cname) {
-  if (!function_exists('context_active_contexts'))
-    return FALSE;
-  return in_array($cname, array_keys(context_active_contexts()));
-}
-
-/**
  * implements hook_node_presave().
  */
 function campaignion_conf_node_presave($node) {
