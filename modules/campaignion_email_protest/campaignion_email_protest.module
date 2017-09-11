@@ -4,9 +4,15 @@
  * Code for the campaignion_email_protest feature.
  */
 
-include_once 'campaignion_email_protest.features.inc';
-
 use \Drupal\campaignion_wizard\EmailProtestEmailStep;
+use \Drupal\campaignion_action\Loader;
+
+/**
+ * Helper function to check whether a node is a email protest node.
+ */
+function _campaignion_email_protest_node_is_instance($node) {
+  return $node && ($type = Loader::instance()->type($node->type)) && $type->isEmailProtest();
+}
 
 /**
  * Implements hook_form_(form_id)_alter().
@@ -14,7 +20,7 @@ use \Drupal\campaignion_wizard\EmailProtestEmailStep;
  * We're setting a form submit handler that is called before webform_client_form.
  */
 function campaignion_email_protest_form_webform_client_form_alter(&$form, &$form_state, $form_id) {
-  if ($form['#node']->type == 'email_protest') {
+  if (_campaignion_email_protest_node_is_instance($form['#node'])) {
     // Add our own submit-handler right before webform_client_form_submit.
     $submit = array();
     foreach ($form['#submit'] as $handler) {
@@ -112,44 +118,6 @@ function campaignion_email_protest_webform_mail_headers($variables) {
 }
 
 /**
- * Implements hook_campaignion_action_info().
- */
-function campaignion_email_protest_campaignion_action_info() {
-  $type['email_protest'] = array(
-    'wizard_class' => '\\Drupal\\campaignion_wizard\\EmailProtestWizard',
-    'email_protest_fields' => [
-      'options' => 'field_protest_target_options',
-      'targets' => 'field_protest_target',
-    ],
-    'thank_you_page' => array(
-      'type' => 'thank_you_page',
-      'reference' => 'field_thank_you_pages',
-    ),
-    'recent_supporters' => array(
-      'default_text' => t('!supporter_name just took action at !action_title'),
-    ),
-    'template_node_uuid' => '7f2e3be8-156e-4211-a35a-a654ff4ab99e',
-  );
-  return $type;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_email_protest_node_form_alter().
- */
-function campaignion_email_protest_form_email_protest_node_form_alter(&$form, &$form_state, $form_id) {
-  if (empty($form['title']['#default_value'])) {
-    $form['title']['#default_value'] = t('Email Protest');
-  }
-  $form['title']['#weight'] = 210;
-
-  if (!empty($form_state['#wizard_type'])) {
-    $form['field_protest_target_options']['#access'] = FALSE;
-    $form['field_protest_target']['#access'] = FALSE;
-  }
-}
-
-/**
  * Implements hook_form_builder_palette_groups().
  */
 function campaignion_email_protest_form_builder_palette_groups($form_type, $form_id) {
@@ -157,7 +125,7 @@ function campaignion_email_protest_form_builder_palette_groups($form_type, $form
     return;
   }
   $palette = array();
-  if (!($node = node_load($form_id)) || $node->type == 'email_protest') {
+  if (_campaignion_email_protest_node_is_instance(node_load($form_id))) {
     $palette['email_protest'] = array(
       'weight' => -18,
       'title'  => t('Email Protest Data'),
@@ -174,7 +142,7 @@ function campaignion_email_protest_form_builder_element_types($form_type, $form_
     return;
   }
   module_load_include('inc', 'form_builder_webform', 'form_builder_webform.components');
-  if (!($node = node_load($form_id)) || $node->type == 'email_protest') {
+  if (_campaignion_email_protest_node_is_instance(node_load($form_id))) {
     $fields['email_subject'] = array(
       'title' => t('Email subject'),
       'weight' => -70,
@@ -209,7 +177,7 @@ function campaignion_email_protest_form_builder_element_types_alter(&$types, $fo
   if ($form_type != 'webform') {
     return;
   }
-  if (!($node = node_load($form_id)) || $node->type == 'email_protest') {
+  if (_campaignion_email_protest_node_is_instance(node_load($form_id))) {
     $types['protest_target']['palette_group'] = 'email_protest';
     $types['protest_target']['addable'] = TRUE;
   }

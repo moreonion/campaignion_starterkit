@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_email_protest.field_group.inc
+ * campaignion_email_protest_type.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function campaignion_email_protest_field_group_info() {
+function campaignion_email_protest_type_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();

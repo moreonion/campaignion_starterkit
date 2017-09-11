@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_email_protest.features.field_instance.inc
+ * campaignion_email_protest_type.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function campaignion_email_protest_field_default_field_instances() {
+function campaignion_email_protest_type_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-email_protest-action_template'.

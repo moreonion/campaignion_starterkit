@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_email_protest.strongarm.inc
+ * campaignion_email_protest_type.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function campaignion_email_protest_strongarm() {
+function campaignion_email_protest_type_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
