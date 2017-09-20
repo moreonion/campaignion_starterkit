@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_protest_target.features.field_instance.inc
+ * campaignion_protest_target_contact_type.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function campaignion_protest_target_field_default_field_instances() {
+function campaignion_protest_target_contact_type_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:

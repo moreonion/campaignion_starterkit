@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\campaignion_protest_target;
+namespace Drupal\campaignion_protest_target_contact_type;
 
 use \Drupal\campaignion\ContactTypeInterface;
 use \Drupal\campaignion\CRM\Import\Field;
@@ -13,8 +13,8 @@ class ProtestTarget implements ContactTypeInterface {
       new Field\Field('field_gender',     'gender'),
       new Field\Field('field_salutation', 'salutation'),
       new Field\Field('field_title',      'title'),
-      new Field\Name('first_name'),
-      new Field\Name('last_name'),
+      new Field\Field('first_name'),
+      new Field\Field('last_name'),
       new Field\Date('field_date_of_birth',    'date_of_birth'),
       new Field\Address('field_address', array(
         'thoroughfare'        => 'street_address',
