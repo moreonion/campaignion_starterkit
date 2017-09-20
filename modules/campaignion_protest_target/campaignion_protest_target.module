@@ -4,17 +4,7 @@
  * Code for the AE Email Protest Target Contact Type feature.
  */
 
-include_once 'campaignion_protest_target.features.inc';
-
 use \Drupal\campaignion\ContactTypeManager;
-
-/**
- * Implements hook_campaignion_contact_info().
- */
-function campaignion_protest_target_campaignion_contact_type_info() {
-  $types['email_protest_target'] = '\\Drupal\\campaignion_protest_target\\ProtestTarget';
-  return $types;
-}
 
 /**
  * Implements hook_field_widget_info().
