@@ -72,9 +72,14 @@ function _campaignion_protest_target_get_node(&$component = NULL) {
  * Implements _webform_render_<webform component>().
  */
 function _webform_render_protest_target($component, $value = NULL, $filter = TRUE) {
-
+  $component['extra'] += [
+    'title_display' => 'before',
+  ];
   // We have to add those in any case - form_builder expects those.
   $element = array(
+    '#theme_wrappers' => ['webform_element'],
+    '#webform_component' => $component,
+    '#title_display' => $component['extra']['title_display'],
     '#title'         => $component['name'],
     '#description'   => $component['extra']['description'],
     '#default_value' => $component['value'],
@@ -107,6 +112,7 @@ function _webform_render_protest_target($component, $value = NULL, $filter = TRU
         '#multiple' => FALSE,
         '#other'    => FALSE,
       );
+      $element['#theme_wrappers'][] = 'form_element';
     }
   }
   else {
