@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * campaignion_email_to_target_type.features.inc
