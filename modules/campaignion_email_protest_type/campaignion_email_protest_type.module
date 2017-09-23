@@ -6,11 +6,14 @@
 
 include_once 'campaignion_email_protest_type.features.inc';
 
+use Drupal\campaignion_email_protest\EmailProtestAction;
+
 /**
  * Implements hook_campaignion_action_info().
  */
 function campaignion_email_protest_type_campaignion_action_info() {
   $type['email_protest'] = array(
+    'action_class' => EmailProtestAction::class,
     'wizard_class' => '\\Drupal\\campaignion_wizard\\EmailProtestWizard',
     'email_protest_fields' => [
       'options' => 'field_protest_target_options',
