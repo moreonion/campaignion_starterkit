@@ -27,7 +27,9 @@ function campaignion_email_protest_type_campaignion_action_info() {
       'default_text' => t('!supporter_name just took action at !action_title'),
     ),
     'template_node_uuid' => '7f2e3be8-156e-4211-a35a-a654ff4ab99e',
-    'email_protest' => TRUE,
+    'email_protest' => [
+      'target_field' => 'field_protest_target',
+    ],
   );
   return $type;
 }

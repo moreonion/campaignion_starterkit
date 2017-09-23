@@ -30,7 +30,8 @@ class EmailProtestAction extends ActionBase {
     }
     else {
       // No target selected. Send email to configured all targets.
-      $protest_targets = field_get_items('node', $node, 'field_protest_target');
+      $field = $this->type->parameters['email_protest']['target_field'];
+      $protest_targets = field_get_items('node', $node, $field);
       if ($protest_targets) {
         foreach($protest_targets as $target) {
           $targets[] = $this->emailByContactId($target['target_id']);
