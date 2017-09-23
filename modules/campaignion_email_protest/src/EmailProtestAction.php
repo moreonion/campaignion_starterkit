@@ -23,42 +23,50 @@ class EmailProtestAction extends ActionBase {
     }
 
     $target_contact_id = $submission->valueByKey('email_protest_target');
-
-    $targets = array();
-    if ($target_contact_id == FALSE) {
-      // no protest target is submitted that means we have to get the targets from the node
-      // field
-      $protest_targets = field_get_items('node', $form['#node'], 'field_protest_target');
-      if ($protest_targets) {
-        foreach($protest_targets as $target) {
-          if ($contact = redhen_contact_load($target['target_id'])) {
-            $items = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
-            $targets[] = $items[0]['value'];
-          }
-        }
-      }
+    $targets = [];
+    if ($target_contact_id) {
+      // User selected a target.
+      $targets[] = $this->emailByContactId($target_contact_id);
     }
     else {
-      // the user selected a target that we can get from the form_state
-      if ($contact = redhen_contact_load($target_contact_id)) {
-        $items = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
-        $targets = $items[0]['value'];
+      // No target selected. Send email to configured all targets.
+      $protest_targets = field_get_items('node', $node, 'field_protest_target');
+      if ($protest_targets) {
+        foreach($protest_targets as $target) {
+          $targets[] = $this->emailByContactId($target['target_id']);
+        }
       }
     }
 
     if ($targets) {
-      $email['email']     = is_array($targets) ? implode(',', $targets) : $targets;
+      $email['email'] = implode(',', array_filter($targets));
       $email['from_name'] = $submission->valueByKey('first_name') . ' ' . $submission->valueByKey('last_name');
-      $email['template']  = $submission->valueByKey('email_body');
-      $root_node = $node;
-      if ($node->tnid != 0 && $node->tnid != $node->nid) {
-        $root_node = node_load($node->tnid);
-      }
+      $email['template'] = $submission->valueByKey('email_body');
       $email['headers'] = array(
         'X-Mail-Domain' => variable_get('site_mail_domain', 'supporter.campaignion.org'),
-        'X-Action-UUID' => $root_node->uuid,
+        'X-Action-UUID' => $this->rootNodeUuid($node),
       );
     }
+  }
+
+  /**
+   * Get email address by contact ID.
+   */
+  protected function emailByContactId($contact_id) {
+    if ($contact = redhen_contact_load($contact_id)) {
+      $items = field_get_items('redhen_contact', $contact, 'redhen_contact_email');
+      return $items[0]['value'];
+    }
+  }
+
+  /**
+   * Get the UUID from the nodes translation source.
+   */
+  protected function rootNodeUuid($node) {
+    if ($node->tnid != 0 && $node->tnid != $node->nid) {
+      $node = node_load($node->tnid);
+    }
+    return $node->uuid;
   }
 
 }
