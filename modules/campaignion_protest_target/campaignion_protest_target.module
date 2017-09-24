@@ -5,6 +5,8 @@
  */
 
 use \Drupal\campaignion\ContactTypeManager;
+use \Drupal\campaignion\CRM\Import\Source\ArraySource;
+
 
 /**
  * Implements hook_field_widget_info().
@@ -105,8 +107,9 @@ function campaignion_protest_target_validate($element, &$form_state, $form) {
     }
 
     if ($valid) {
-      $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
-      $source = new \Drupal\campaignion\CRM\Import\Source\ArraySource($details);
+      $contact_type = variable_get_value('campaignion_protest_target_contact_type');
+      $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', $contact_type);
+      $source = new ArraySource($details);
       if ($contact = $importer->findOrCreateContact($source, 'email_protest_target')) {
         if ($importer->import($source, $contact)) {
           $contact->save();
