@@ -238,8 +238,6 @@ function campaignion_news_field_default_field_instances() {
   // Exported field_instance: 'node-news-opengraph_meta_image'.
   $field_instances['node-news-opengraph_meta_image'] = array(
     'bundle' => 'news',
-    'custom_add_another' => '',
-    'custom_remove' => '',
     'deleted' => 0,
     'description' => 'Add an image to be shown on your social media teasers.',
     'display' => array(
@@ -265,7 +263,7 @@ function campaignion_news_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'opengraph_meta_image',
     'label' => 'Open Graph image',
-    'required' => 0,
+    'required' => FALSE,
     'settings' => array(
       'alt_field' => 0,
       'custom_add_another' => '',
@@ -275,36 +273,31 @@ function campaignion_news_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '200x200',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
+          0 => 'public',
+          1 => 'private',
         ),
         'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
+          0 => 'image',
         ),
         'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
-          'upload' => 0,
+          'upload' => 'upload',
           'youtube' => 0,
         ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
