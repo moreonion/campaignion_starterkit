@@ -9,7 +9,7 @@ projects[campaignion][version] = 1.10
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][version] = 1.45
+projects[clientside_validation][version] = 1.46
 
 projects[context][version] = 3.7
 ; Make block title configurable in contexts - https://drupal.org/node/795058
