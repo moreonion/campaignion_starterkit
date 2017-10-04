@@ -508,21 +508,51 @@ div.node .column-side .column-wrapper {
 
 
 #edit-webform-template {
-  width: 186px;
-  padding-top: 2px;
-  margin-right: 1em;
-  float: left;
-  border: 0px solid transparent;
-  box-shadow: 0 0 0 transparent;
-  -moz-box-shadow: 0 0 0 transparent;
-  -webkit-box-shadow: 0 0 0 transparent;
+  border: 0;
+  width: 60%;
+}
+
+#edit-webform-template .fieldset-title {
+  background: none;
+  border: 0;
+  margin-bottom: .5em;
+  padding: 0;
+}
+
+#edit-webform-template .fieldset-content {
+  background: none;
+  padding: 0;
 }
 
 #edit-webform-template label {
-  visibility: hidden;
   display: block;
   height: 0;
   width: 0;
+  visibility: hidden;
+}
+
+#edit-webform-template .form-item {
+  display: inline;
+}
+
+#edit-webform-template .description {
+  position: absolute;
+  bottom: 50%;
+  left: unset;
+}
+
+#edit-webform-template select {
+  width: 24.7em;
+  margin-right: 1em;
+}
+
+#edit-webform-template input {
+  padding: .45em 1em;
+}
+
+#action-template-warning {
+  /* text-align: center; */
+  /* padding-top: .5em; */
 }
 
 #ae-wizard-webform-template-selector .selecter {
@@ -532,15 +562,6 @@ div.node .column-side .column-wrapper {
 #ae-wizard-webform-template-selector input#edit-submit {
   font-size: 100%;
 }
-
-#edit-webform-template .fieldset-content {
-  background: none transparent;
-  padding: 0;
-  box-shadow: 0 0 0 transparent;
-  -moz-box-shadow: 0 0 0 transparent;
-  -webkit-box-shadow: 0 0 0 transparent;
-}
-
 
 
 #form-builder-wrapper {
