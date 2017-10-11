@@ -206,7 +206,9 @@
 
 body.page-media-browser {
   background: none;
-  overflow: hidden;
+}
+body.page-media-browser .block-page-content {
+  margin: 0;
 }
 
 div#media-browser-tabs {
