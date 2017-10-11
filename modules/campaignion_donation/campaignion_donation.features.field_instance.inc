@@ -287,6 +287,8 @@ function campaignion_donation_field_default_field_instances() {
   // Exported field_instance: 'node-donation-opengraph_meta_image'.
   $field_instances['node-donation-opengraph_meta_image'] = array(
     'bundle' => 'donation',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'deleted' => 0,
     'description' => 'Add an image to be shown on your social media teasers.',
     'display' => array(
@@ -312,7 +314,7 @@ function campaignion_donation_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'opengraph_meta_image',
     'label' => 'Open Graph image',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'custom_add_another' => '',
@@ -327,14 +329,19 @@ function campaignion_donation_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
+          'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
         ),
         'allowed_types' => array(
-          0 => 'image',
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
