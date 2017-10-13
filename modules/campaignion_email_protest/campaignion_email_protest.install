@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Enable the newly separated content-type module.
+ * Enable campaignion_email_protest_type.
  */
 function campaignion_email_protest_update_1() {
   db_delete('system')
