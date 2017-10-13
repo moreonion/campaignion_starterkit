@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_email_protest_templates.features.uuid_node.inc
+ * campaignion_email_protest_type.features.uuid_node.inc
  */
 
 /**
  * Implements hook_uuid_features_default_content().
  */
-function campaignion_email_protest_templates_uuid_features_default_content() {
+function campaignion_email_protest_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(

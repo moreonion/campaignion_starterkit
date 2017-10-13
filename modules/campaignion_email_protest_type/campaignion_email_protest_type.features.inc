@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_email_protest.features.inc
+ * campaignion_email_protest_type.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_email_protest_ctools_plugin_api($module = NULL, $api = NULL) {
+function campaignion_email_protest_type_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -19,7 +19,7 @@ function campaignion_email_protest_ctools_plugin_api($module = NULL, $api = NULL
 /**
  * Implements hook_node_info().
  */
-function campaignion_email_protest_node_info() {
+function campaignion_email_protest_type_node_info() {
   $items = array(
     'email_protest' => array(
       'name' => t('Email Protest'),
