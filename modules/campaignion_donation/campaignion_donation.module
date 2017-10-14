@@ -14,7 +14,7 @@ use \Drupal\little_helpers\Webform\Webform;
  * Hide titles of specified blocks
  */
 function campaignion_donation_block_view_alter(&$data, $block) {
-  $hide_title_fields = array('field_main_image', 'field_donation_pgbar');
+  $hide_title_fields = array('field_main_image');
 
   foreach($hide_title_fields as $field_name) {
     if(isset($block->delta) && $block->delta === $field_name) {
@@ -51,10 +51,6 @@ function campaignion_donation_form_donation_node_form_alter(&$form, &$form_state
     $form['title']['#default_value'] = t('Donation');
   }
   $form['title']['#weight'] = 210;
-
-  $source = &$form['field_donation_pgbar']['und'][0]['options']['source'];
-  $source['form_key']['#default_value'] = 'donation_amount';
-  $source['#access'] = FALSE;
 }
 
 /**
