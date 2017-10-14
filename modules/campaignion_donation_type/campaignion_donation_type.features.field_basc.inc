@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation.features.field_base.inc
+ * campaignion_donation_type.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function campaignion_donation_field_default_field_bases() {
+function campaignion_donation_type_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_logo_area'

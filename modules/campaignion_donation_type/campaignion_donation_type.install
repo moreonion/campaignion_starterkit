@@ -8,7 +8,7 @@
 /**
  * Implements hook_enable().
  */
-function campaignion_donation_enable() {
+function campaignion_donation_type_enable() {
   variable_set('webform_node_donation', 1);
 
   $webform_settings = variable_get('webform_template_src', array());
@@ -26,7 +26,7 @@ function campaignion_donation_enable() {
  * features does not set global_block_settings, which activates a cck_block for a given field, correctly.
  * that's why we do it here.
  */
-function campaignion_donation_install() {
+function campaignion_donation_type_install() {
   if (!empty($GLOBALS['ae_donation_content_type'])) {
     return;
   }

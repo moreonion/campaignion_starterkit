@@ -1,0 +1,128 @@
+<?php
+/**
+ * @file
+ * Code for the donation content-type.
+ */
+
+include_once 'campaignion_donation_type.features.inc';
+
+/**
+ * Implements hook_block_info_alter().
+ *
+ * Hide titles of specified blocks
+ */
+function campaignion_donation_type_block_view_alter(&$data, $block) {
+  $hide_title_fields = array('field_main_image');
+
+  foreach($hide_title_fields as $field_name) {
+    if(isset($block->delta) && $block->delta === $field_name) {
+      $data['subject'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_donation_type_campaignion_action_info() {
+  $type['donation'] = array(
+    'wizard_class' => '\\Drupal\\campaignion_wizard\\DonationWizard',
+    'thank_you_page' => array(
+      'type' => 'thank_you_page',
+      'reference' => 'field_thank_you_pages',
+    ),
+    'recent_supporters' => array(
+      'default_text' => t('!supporter_name just donated at !action_title'),
+    ),
+    'template_node_uuid' => '6eb388a0-88e5-4272-bb6e-0bd8e8da595e',
+    'donation' => TRUE,
+  );
+  return $type;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_donation_node_form_alter().
+ */
+function campaignion_donation_type_form_donation_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Donation');
+  }
+  $form['title']['#weight'] = 210;
+}
+
+/**
+ * Implements hook_node_prepare().
+ */
+function campaignion_donation_type_node_prepare($node) {
+  if ($node->type == 'donation' && empty($node->webform['submit_text'])) {
+    $node->webform['submit_text'] = t('Donate now!');
+  }
+}
+
+/**
+ * Implements hook_form_webform_client_form_alter().
+ */
+function campaignion_donation_type_form_webform_client_form_alter(&$form, &$form_state) {
+  $webform = new Webform($form['#node']);
+  if ($component = $webform->componentByKey('donation_amount')) {
+    $names = array('donation_amount');
+    while ($component['pid']) {
+      $component = $webform->component($component['pid']);
+      array_unshift($names, $component['form_key']);
+    }
+    if ($element = &drupal_array_get_nested_value($form['submitted'], $names)) {
+      // need to check for type select_or_other because if we set our
+      // validation, select_or_other will not set its own validation
+      // (does not set validation if #element_validate is set already)
+      if ($element['#type'] == 'select_or_other') {
+        $element['#element_validate'][] = 'select_or_other_element_validate';
+      }
+      $element['#element_validate'][] = 'campaignion_donation_type_amount_validate';
+    }
+  }
+}
+
+/**
+ * Element validator for donation_amount.
+ */
+function campaignion_donation_type_amount_validate($element, &$form_state, $form) {
+  $value = &drupal_array_get_nested_value($form_state['values'], $element['#parents']);
+
+  $num = (int) $value;
+  if ((string) $num != $value || $num < 1) {
+    form_error($element, t('Please enter a whole-numbered amount of at least 1.'));
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function campaignion_donation_type_element_info_alter(&$type) {
+  if (!empty($type['select_or_other']['#process'])) {
+    $type['select_or_other']['#process'][] = '_campaignion_donation_type_select_or_other_process';
+  }
+}
+
+/**
+ * Change how select_or_other is displayed for donation_amount components.
+ */
+function _campaignion_donation_type_select_or_other_process($element, &$form_state) {
+  if (empty($element['#webform_component'])) {
+    return $element;
+  }
+  $is_donation_amount = $element['#webform_component']['form_key'] == 'donation_amount';
+  $has_other_option = !empty($element['other']);
+  $is_type_radio = $element['#select_type'] == 'radios';
+
+  if ($is_donation_amount && $has_other_option) {
+    // add a currency symbol as label
+    $element['other']['#title'] = t('£');
+    unset($element['other']['#title_display']);
+    if ($is_type_radio) {
+      // always show other textfield (needs opt-out patch for select_or_other)
+      $element['#attributes']['class'][] = 'select-or-other-disabled-js';
+    }
+  }
+  return $element;
+}

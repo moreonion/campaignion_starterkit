@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation.features.field_instance.inc
+ * campaignion_donation_type.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function campaignion_donation_field_default_field_instances() {
+function campaignion_donation_type_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-donation-action_template'.
