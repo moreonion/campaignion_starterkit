@@ -1,1 +1,0 @@
-page--node--wizard.tpl.php
