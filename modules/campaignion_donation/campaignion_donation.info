@@ -1,7 +1,0 @@
-name = Donations
-description = Donation functionality for campaignion
-core = 7.x
-package = Campaignion
-dependencies[] = campaignion_action
-dependencies[] = form_builder_webform
-dependencies[] = webform_paymethod_select (>= 7.x-1.8)
