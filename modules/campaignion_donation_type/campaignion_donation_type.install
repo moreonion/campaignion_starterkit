@@ -27,9 +27,6 @@ function campaignion_donation_type_enable() {
  * that's why we do it here.
  */
 function campaignion_donation_type_install() {
-  if (!empty($GLOBALS['ae_donation_content_type'])) {
-    return;
-  }
   $cck_block_fields = array(
     'field_main_image',
     'body',
