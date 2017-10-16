@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation.views_default.inc
+ * campaignion_donation_type.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function campaignion_donation_views_default_views() {
+function campaignion_donation_type_views_default_views() {
   $export = array();
 
   $view = new view();

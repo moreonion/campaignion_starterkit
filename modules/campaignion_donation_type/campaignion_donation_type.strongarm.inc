@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation.strongarm.inc
+ * campaignion_donation_type.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function campaignion_donation_strongarm() {
+function campaignion_donation_type_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

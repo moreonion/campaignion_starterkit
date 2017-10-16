@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation.features.inc
+ * campaignion_donation_type.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_donation_ctools_plugin_api($module = NULL, $api = NULL) {
+function campaignion_donation_type_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -19,14 +19,14 @@ function campaignion_donation_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function campaignion_donation_views_api($module = NULL, $api = NULL) {
+function campaignion_donation_type_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function campaignion_donation_node_info() {
+function campaignion_donation_type_node_info() {
   $items = array(
     'donation' => array(
       'name' => t('Donation'),
@@ -44,7 +44,7 @@ function campaignion_donation_node_info() {
 /**
  * Implements hook_default_payment_method().
  */
-function campaignion_donation_default_payment_method() {
+function campaignion_donation_type_default_payment_method() {
   $items = array();
   $items['manual_direct_debit'] = entity_import('payment_method', '{
     "controller_data" : [],

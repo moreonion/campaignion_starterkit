@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_donation_templates.features.uuid_node.inc
+ * campaignion_donation_type.features.uuid_node.inc
  */
 
 /**
  * Implements hook_uuid_features_default_content().
  */
-function campaignion_donation_templates_uuid_features_default_content() {
+function campaignion_donation_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
