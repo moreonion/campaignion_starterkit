@@ -399,7 +399,7 @@ y|yearly
           ),
           'currency_code' => 'EUR',
           'private' => 0,
-          'title_display' => NULL,
+          'title_display' => 'none',
           'description' => NULL,
           'conditional_component' => '',
           'conditional_operator' => '=',
