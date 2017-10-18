@@ -40,16 +40,20 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'options' => array(
           'target' => array(
             'target' => array(
-              0 => 200,
+              0 => 500,
+              1 => 2000,
+              2 => 5000,
+              3 => 10000,
+              4 => 20000,
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target people to take action.',
-            'status_message' => 'Already !current of !target took action.',
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_status_message' => 'We’ve reached our goal of !target supporters.',
+            'intro_message' => 'We need !target supporters.',
+            'status_message' => '!current of !target are supporting us. Will you help us reach another !needed?',
           ),
           'display' => array(
             'template' => 'pgbar',

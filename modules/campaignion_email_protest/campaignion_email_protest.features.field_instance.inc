@@ -400,9 +400,9 @@ function campaignion_email_protest_field_default_field_instances() {
           ),
           'texts' => array(
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target emails.',
+            'full_status_message' => 'We’ve reached our goal of !target emails.',
             'intro_message' => 'We have to send !target emails to win this campaign.',
-            'status_message' => 'You\'ve already sent !current of !target emails.',
+            'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
           ),
         ),
       ),

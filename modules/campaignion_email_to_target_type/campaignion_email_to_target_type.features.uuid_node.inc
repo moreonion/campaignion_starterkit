@@ -48,16 +48,20 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'options' => array(
           'target' => array(
             'target' => array(
-              0 => 200,
+              0 => 500,
+              1 => 2000,
+              2 => 5000,
+              3 => 10000,
+              4 => 20000,
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target signatures.',
-            'status_message' => 'Already !current of !target signed the petition.',
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_status_message' => 'We’ve reached our goal of !target emails.',
+            'intro_message' => 'We have to send !target emails to win this campaign.',
+            'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
           ),
           'display' => array(
             'template' => 'pgbar',
