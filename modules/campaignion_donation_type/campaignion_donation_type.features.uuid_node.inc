@@ -40,22 +40,25 @@ function campaignion_donation_type_uuid_features_default_content() {
         'options' => array(
           'target' => array(
             'target' => array(
-              0 => 200,
+              0 => 1000,
+              1 => 5000,
+              2 => 10000,
+              3 => 50000,
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target people to take action.',
-            'status_message' => 'Already !current of !target took action.',
-            'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_intro_message' => 'Thank you for your support!',
+            'full_status_message' => 'We’ve reached our goal of € !target',
+            'intro_message' => 'Our goal is to reach € !target.',
+            'status_message' => 'We’ve already raised € !current! Will you help us raise another € !needed?',
           ),
           'source' => array(
-            'form_key' => '',
+            'form_key' => 'donation_amount',
           ),
           'display' => array(
-            'template' => 'pgbar',
+            'template' => 'thermometer',
           ),
         ),
         'state' => 1,
