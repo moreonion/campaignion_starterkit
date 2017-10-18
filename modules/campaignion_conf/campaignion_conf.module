@@ -26,37 +26,6 @@ function campaignion_conf_block_info_alter(&$blocks) {
 }
 
 /**
- * implements hook_node_presave().
- */
-function campaignion_conf_node_presave($node) {
-  $orig_summary = $orig_intro = NULL;
-
-  if (isset($node->nid) == TRUE) {
-    $orig_node    = node_load($node->nid);
-    $items        = field_get_items('node', $orig_node, 'body');
-    $orig_summary = isset($items[0]['summary']) ? $items[0]['summary'] : NULL;
-    $items        = field_get_items('node', $orig_node, 'field_intro');
-    $orig_intro   = count($items) ? $items[0]['value'] : NULL;
-  }
-  $items       = field_get_items('node', $node,      'body');
-  $new_summary = isset($items[0]['summary']) ? $items[0]['summary'] : NULL;
-  $items       = field_get_items('node', $node,      'field_intro');
-  $new_intro   = count($items) ? $items[0]['value'] : NULL;
-
-  if (!$new_intro) {
-    return;
-  }
-  $summary_empty        = empty($new_summary);
-  $summary_was_intro    = $orig_intro && $orig_summary && strip_tags($orig_intro) == $orig_summary;
-  $summary_is_unchanged = $orig_summary == $new_summary;
-  if (   $summary_empty
-      || ($summary_was_intro && $summary_is_unchanged)) {
-    $node->body['und'][0]['summary'] = strip_tags($new_intro);
-    drupal_set_message('Introduction copied to summary.', 'status');
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  * Implements hook_form_webform_admin_settings_alter().
  */
