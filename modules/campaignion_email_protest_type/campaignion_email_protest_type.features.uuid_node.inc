@@ -302,7 +302,7 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'description' => 'Select an email protest target.',
           'private' => 0,
           'required' => FALSE,
-          'title_display' => NULL,
+          'title_display' => 'none',
           'conditional_component' => '',
           'conditional_operator' => '=',
           'conditional_values' => '',
