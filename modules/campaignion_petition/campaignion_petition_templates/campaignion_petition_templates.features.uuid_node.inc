@@ -33,29 +33,10 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<h2>Cat ipsum dolor sit amet</h2>
-<p>the dog smells bad. Kitty power!</p>
-<ol>
-	<li>Play riveting piece</li>
-	<li>on synthesizer keyboard</li>
-	<li>leave dead animals as gifts</li>
-</ol>
-<p>Peer out window, chatter at birds, lure them to mouth plays league of legends poop in the plant pot.</p>
-<p><strong>Sit on the laptop. Play time.</strong></p>
-<p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>
-<h3>Eat the fat cats food</h3>
-<ul>
-	<li>wake up</li>
-	<li>wander around the house</li>
-	<li>make large amounts of noise</li>
-	<li>jump on top of your human\'s bed and fall asleep</li>
-</ul>
-<p>Mark territory howl uncontrollably for no reason spill litter box, scratch at owner, destroy all furniture.Please stop looking at your phone and pet me chew foot, cats making all the muffins yet hola te quiero where is my slave?</p>
-<p><a target="_blank" href="https://www.youtube.com/watch?v=xfarzNic3fU">Then cats take over the world</a> play riveting piece on synthesizer keyboard fall asleep on the washing machine, purr for no reason but cat not kitten around for meow meow, i tell my human.</p>
-',
-        'summary' => '',
+        'value' => '<h2>Cat ipsum dolor sit amet</h2><p>the dog smells bad. Kitty power!</p><ol><li>Play riveting piece</li><li>on synthesizer keyboard</li><li>leave dead animals as gifts</li></ol><p>Peer out window, chatter at birds, lure them to mouth plays league of legends poop in the plant pot.</p><p><strong>Sit on the laptop. Play time.</strong></p><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p><h3>Eat the fat cats food</h3><ul><li>wake up</li><li>wander around the house</li><li>make large amounts of noise</li><li>jump on top of your human\'s bed and fall asleep</li></ul><p>Mark territory howl uncontrollably for no reason spill litter box, scratch at owner, destroy all furniture.Please stop looking at your phone and pet me chew foot, cats making all the muffins yet hola te quiero where is my slave?</p><p><a href="https://www.youtube.com/watch?v=xfarzNic3fU" target="_blank">Then cats take over the world</a> play riveting piece on synthesizer keyboard fall asleep on the washing machine, purr for no reason but cat not kitten around for meow meow, i tell my human.</p>',
+        'summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>',
         'format' => 'full_html_with_editor',
-        'safe_summary' => '',
+        'safe_summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>',
       ),
     ),
   ),
@@ -80,15 +61,17 @@ function campaignion_petition_templates_uuid_features_default_content() {
           'target' => array(
             'target' => array(
               0 => 200,
+              1 => 500,
+              2 => 1000
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
             'intro_message' => 'We need !target signatures.',
-            'status_message' => 'Already !current of !target signed the petition.',
+            'status_message' => 'Already !current of !target have signed the petition. Will you help us get !needed more?',
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_status_message' => 'We’ve reached our goal of !target supports.',
           ),
           'display' => array(
             'template' => 'pgbar',
@@ -104,7 +87,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'options' => array(
           'name_display' => 0,
           'visible_count' => 6,
-          'cycle_toggle' => 0,
+          'cycle_toggle' => 1,
           'country_toggle' => 1,
           'comment_toggle' => 0,
         ),
@@ -377,7 +360,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
 );
   $nodes[] = array(
-  'title' => 'Thank you! You\'re awesome!',
+  'title' => 'Thank you! You’re awesome!',
   'log' => '',
   'status' => 0,
   'comment' => 0,
