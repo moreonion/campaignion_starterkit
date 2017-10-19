@@ -123,27 +123,26 @@ function campaignion_donation_type_uuid_features_default_content() {
       1 => array(
         'nid' => 1,
         'eid' => 1,
-        'email' => 'default',
+        'email' => 9,
         'subject' => 'Thank you for your donation!',
         'from_name' => 'default',
         'from_address' => 'default',
         'template' => '<p>Hi [submission:values:first_name],</p>
-<p>Thank you for supporting us!</p>
+<p>Thank you for supporting us with your donation of [submission:values:donation_amount]!</p>
 <p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
-	Your Supporter Service Team</p>
-',
+	Your Supporter Service Team</p>',
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
         'exclude_empty' => 0,
         'extra' => FALSE,
-        'status' => 0,
+        'status' => 1,
       ),
       3 => array(
         'nid' => 1,
         'eid' => 3,
-        'email' => 'default',
+        'email' => 'noreply@example.com',
         'subject' => 'New submission!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -151,12 +150,10 @@ function campaignion_donation_type_uuid_features_default_content() {
 <p>Submitted by [submission:values:first_name] [submission:values:last_name]</p>
 <p>Submitted values are:</p>
 <p>[submission:values]</p>
-<p>Donation amount: [submission:values:amount][donation_amount] [submission:values:donation_interval]</p>
+<p>Donation amount: [submission:values:donation_amount] [submission:values:donation_interval]</p>
 <p>The results of this submission may be viewed at:</p>
 <p>[submission:url]</p>
-<p><br>
-	Have a great day! ☺ ☀</p>
-',
+<p><br>	Have a great day! ☺ ☀</p>',
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
@@ -349,6 +346,23 @@ y|yearly
         'weight' => 6,
         'page_num' => 2,
       ),
+      15 => array(
+        'nid' => 1,
+        'cid' => 15,
+        'pid' => 0,
+        'form_key' => 'your_address',
+        'name' => 'Your address',
+        'type' => 'pagebreak',
+        'value' => '',
+        'extra' => array(
+          'private' => FALSE,
+          'next_page_label' => '',
+          'prev_page_label' => '',
+        ),
+        'required' => 0,
+        'weight' => 8,
+        'page_num' => 3,
+      ),
       7 => array(
         'nid' => 1,
         'cid' => 7,
@@ -377,8 +391,8 @@ y|yearly
           'minlength' => '',
         ),
         'required' => 1,
-        'weight' => 7,
-        'page_num' => 2,
+        'weight' => 9,
+        'page_num' => 3,
       ),
       8 => array(
         'nid' => 1,
@@ -408,8 +422,8 @@ y|yearly
           'minlength' => '',
         ),
         'required' => 1,
-        'weight' => 8,
-        'page_num' => 2,
+        'weight' => 10,
+        'page_num' => 3,
       ),
       6 => array(
         'nid' => 1,
@@ -437,9 +451,9 @@ y|yearly
           'postcode_country_component' => 13,
         ),
         'required' => 1,
-        'weight' => 9,
+        'weight' => 11,
         'mandatory' => 0,
-        'page_num' => 2,
+        'page_num' => 3,
       ),
       13 => array(
         'nid' => 1,
@@ -454,9 +468,9 @@ y|yearly
           'private' => FALSE,
         ),
         'required' => 0,
-        'weight' => 10,
+        'weight' => 12,
         'mandatory' => 0,
-        'page_num' => 2,
+        'page_num' => 3,
       ),
       10 => array(
         'nid' => 1,
@@ -476,8 +490,8 @@ y|yearly
           'conditional_values' => '',
         ),
         'required' => 0,
-        'weight' => 11,
-        'page_num' => 3,
+        'weight' => 13,
+        'page_num' => 4,
       ),
       11 => array(
         'nid' => 1,
