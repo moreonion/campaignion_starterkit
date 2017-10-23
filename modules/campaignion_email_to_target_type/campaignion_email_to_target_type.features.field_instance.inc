@@ -239,6 +239,59 @@ function campaignion_email_to_target_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_to_target-field_no_target_message'.
+  $field_instances['node-email_to_target-field_no_target_message'] = array(
+    'bundle' => 'email_to_target',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 'There don’t seem to be any targets available for you right now.',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'It’s helpful if you add to this message a way for supporters to get in touch with you. That way if they don’t have a target they can bring this to your attention.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_no_target_message',
+    'label' => 'This message is shown to supporters if we can’t find a target for them to email.',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-email_to_target-field_reference_to_campaign'.
   $field_instances['node-email_to_target-field_reference_to_campaign'] = array(
@@ -523,6 +576,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
+  t('It’s helpful if you add to this message a way for supporters to get in touch with you. That way if they don’t have a target they can bring this to your attention.');
   t('Large image or video');
   t('Options');
   t('Related campaign');
@@ -530,6 +584,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
+  t('This message is shown to supporters if we can’t find a target for them to email.');
 
   return $field_instances;
 }
