@@ -245,7 +245,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => array(
       0 => array(
-        'value' => 'There don\'t seem to be any targets available for your right now.',
+        'value' => 'There don’t seem to be any targets available for you right now.',
       ),
     ),
     'deleted' => 0,
@@ -649,6 +649,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('If this is checked this action will be selectable as a template when creating new actions');
+  t('It’s helpful if you add to this message a way for supporters to get in touch with you. That way if they don’t have a target they can bring this to your attention.');
   t('Large image or video');
   t('No target message');
   t('Open Graph image');
@@ -658,7 +659,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Tag supporters');
   t('Thank you pages');
   t('This is a template');
-  t('This message is displayed whenever we can\'t find any targets for a postcode.');
+  t('This message is shown to supporters if we can’t find a target for them to email.');
 
   return $field_instances;
 }
