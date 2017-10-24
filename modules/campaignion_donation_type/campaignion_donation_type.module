@@ -117,7 +117,7 @@ function _campaignion_donation_type_select_or_other_process($element, &$form_sta
 
   if ($is_donation_amount && $has_other_option) {
     // add a currency symbol as label
-    $element['other']['#title'] = t('£');
+    $element['other']['#title'] = t('€');
     unset($element['other']['#title_display']);
     if ($is_type_radio) {
       // always show other textfield (needs opt-out patch for select_or_other)

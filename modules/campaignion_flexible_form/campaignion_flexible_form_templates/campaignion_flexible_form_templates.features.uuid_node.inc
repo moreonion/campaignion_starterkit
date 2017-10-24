@@ -11,7 +11,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Minimal supporter form',
+  'title' => 'Default Flexible Form',
   'log' => '',
   'status' => 0,
   'comment' => 1,
@@ -40,16 +40,20 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'options' => array(
           'target' => array(
             'target' => array(
-              0 => 200,
+              0 => 500,
+              1 => 2000,
+              2 => 5000,
+              3 => 10000,
+              4 => 20000,
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target people to take action.',
-            'status_message' => 'Already !current of !target took action.',
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_status_message' => 'We’ve reached our goal of !target supporters.',
+            'intro_message' => 'We need !target supporters.',
+            'status_message' => '!current of !target are supporting us. Will you help us reach another !needed?',
           ),
           'display' => array(
             'template' => 'pgbar',
@@ -63,9 +67,11 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'und' => array(
       0 => array(
         'options' => array(
+          'name_display' => 0,
           'visible_count' => 6,
           'cycle_toggle' => 0,
           'country_toggle' => 1,
+          'comment_toggle' => 0,
         ),
         'toggle' => 0,
       ),
@@ -113,9 +119,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'emails' => array(
       1 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 1,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -129,11 +134,13 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       2 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 2,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -146,11 +153,13 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       3 => array(
-        'nid' => 1,
+        'nid' => 3,
         'eid' => 3,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
@@ -167,6 +176,9 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
     ),
     'components' => array(

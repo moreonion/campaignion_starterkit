@@ -11,7 +11,7 @@ function campaignion_email_protest_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Email protest form',
+  'title' => 'Default Email Protest Form',
   'log' => '',
   'status' => 0,
   'comment' => 0,
@@ -48,16 +48,20 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'options' => array(
           'target' => array(
             'target' => array(
-              0 => 200,
+              0 => 500,
+              1 => 2000,
+              2 => 5000,
+              3 => 10000,
+              4 => 20000,
             ),
             'threshold' => 90,
             'offset' => 0,
           ),
           'texts' => array(
-            'intro_message' => 'We need !target signatures.',
-            'status_message' => 'Already !current of !target signed the petition.',
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We\'ve reached our goal of !target supports.',
+            'full_status_message' => 'We’ve reached our goal of !target emails.',
+            'intro_message' => 'We have to send !target emails to win this campaign.',
+            'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
           ),
           'display' => array(
             'template' => 'pgbar',
@@ -71,9 +75,11 @@ function campaignion_email_protest_type_uuid_features_default_content() {
     'und' => array(
       0 => array(
         'options' => array(
+          'name_display' => 0,
           'visible_count' => 6,
           'cycle_toggle' => 0,
           'country_toggle' => 1,
+          'comment_toggle' => 0,
         ),
         'toggle' => 0,
       ),
@@ -111,6 +117,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
     'webform_ajax' => 1,
@@ -118,9 +126,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
     'roles' => array(),
     'emails' => array(
       1 => array(
-        'nid' => 5,
+        'nid' => 2,
         'eid' => 1,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
@@ -134,11 +141,13 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       2 => array(
-        'nid' => 5,
+        'nid' => 2,
         'eid' => 2,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
@@ -151,11 +160,13 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
       3 => array(
-        'nid' => 5,
+        'nid' => 2,
         'eid' => 3,
-        'status' => 0,
         'email' => 'default',
         'subject' => 'New submission!',
         'from_name' => 'default',
@@ -172,6 +183,9 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
+        'exclude_empty' => 0,
+        'extra' => FALSE,
+        'status' => 0,
       ),
     ),
     'components' => array(
@@ -200,9 +214,10 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
-        'weight' => 3,
+        'weight' => 1,
         'page_num' => 1,
       ),
       2 => array(
@@ -230,9 +245,10 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
-        'weight' => 4,
+        'weight' => 2,
         'page_num' => 1,
       ),
       3 => array(
@@ -261,8 +277,25 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'analysis' => FALSE,
         ),
         'required' => 1,
-        'weight' => 5,
+        'weight' => 3,
         'page_num' => 1,
+      ),
+      9 => array(
+        'nid' => 2,
+        'cid' => 9,
+        'pid' => 0,
+        'form_key' => 'message',
+        'name' => 'Your message',
+        'type' => 'pagebreak',
+        'value' => '',
+        'extra' => array(
+          'private' => FALSE,
+          'next_page_label' => '',
+          'prev_page_label' => '',
+        ),
+        'required' => 0,
+        'weight' => 4,
+        'page_num' => 2,
       ),
       4 => array(
         'nid' => 2,
@@ -284,8 +317,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'description_above' => FALSE,
         ),
         'required' => 0,
-        'weight' => 6,
-        'page_num' => 1,
+        'weight' => 5,
+        'page_num' => 2,
       ),
       5 => array(
         'nid' => 2,
@@ -308,9 +341,9 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'conditional_values' => '',
         ),
         'required' => 0,
-        'weight' => 0,
+        'weight' => 6,
         'mandatory' => 0,
-        'page_num' => 1,
+        'page_num' => 2,
       ),
       6 => array(
         'nid' => 2,
@@ -337,10 +370,11 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
-        'weight' => 1,
-        'page_num' => 1,
+        'weight' => 7,
+        'page_num' => 2,
       ),
       7 => array(
         'nid' => 2,
@@ -349,7 +383,12 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'form_key' => 'email_body',
         'name' => 'Your Email',
         'type' => 'textarea',
-        'value' => '',
+        'value' => 'Dear XYZ,
+
+This is an important issue.
+
+Best wishes,
+[submission:values:first_name] [submission:values:last_name]',
         'extra' => array(
           'cols' => 60,
           'rows' => 5,
@@ -367,8 +406,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
           'analysis' => FALSE,
         ),
         'required' => 1,
-        'weight' => 2,
-        'page_num' => 1,
+        'weight' => 8,
+        'page_num' => 2,
       ),
     ),
     'conditionals' => array(),
