@@ -58,6 +58,7 @@ function campaignion_protest_target_contact_type_field_default_field_instances()
         'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
+          'address-optional' => 'address-optional',
           'optional-country' => 'optional-country',
           'address-hide-country' => 0,
           'organisation' => 0,
