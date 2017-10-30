@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.10
+projects[campaignion][version] = 1.11
 
 projects[cck_blocks][version] = 1.1
 
@@ -82,7 +82,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.5
+projects[little_helpers][version] = 1.6
 
 projects[logintoboggan][version] = 1.5
 
@@ -189,8 +189,7 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.18
 projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
 
-projects[webform][version] = 4.15
-projects[webform][patch][] = https://www.drupal.org/files/issues/2869746-4-use-renderables.patch
+projects[webform][version] = 4.16
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-48.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -204,8 +203,7 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.9
-projects[webform_confirm_email][patch][] = https://www.drupal.org/files/issues/2870398-4-stop-copying-page-callbacks.patch
+projects[webform_confirm_email][version] = 2.10
 
 projects[webform_country_list][version] = 1.4
 
@@ -213,7 +211,7 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.12
+projects[webform_paymethod_select][version] = 1.13
 
 projects[webform_prefill][version] = 1.0-rc2
 
@@ -238,15 +236,17 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
+projects[ae_admin][version] = 1.0-beta1
+
 projects[simplicity][version] = 1.5
 
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.6.2/ckeditor_4.6.2_standard.zip
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.7.3/ckeditor_4.7.3_standard.tar.gz
 
 libraries[es6-promise][download][type] = file
-libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.0.tar.gz
+libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
 
 ;libraries[jquery.formprefill][download][type] = file
 ;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.1.0.tar.gz
@@ -258,12 +258,10 @@ libraries[paymill-php][download][type] = file
 libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v4.4.2.tar.gz
 
 libraries[select2][download][type] = file
-libraries[select2][download][url] = https://github.com/select2/select2/archive/3.5.4.tar.gz
+libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.4.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v4.9.0.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v4.13.0.tar.gz
 
 libraries[timeago][download][type] = file
-libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.5.4.tar.gz
-
-
+libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.1.tar.gz
