@@ -4,6 +4,8 @@
  * Code for the donation content-type.
  */
 
+use Drupal\little_helpers\Webform\Webform;
+
 include_once 'campaignion_donation_type.features.inc';
 
 /**
