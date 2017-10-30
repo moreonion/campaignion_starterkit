@@ -191,7 +191,7 @@ projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined
 
 projects[webform][version] = 4.16
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
-projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-48.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
