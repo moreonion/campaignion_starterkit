@@ -15,6 +15,10 @@ use \Drupal\little_helpers\Webform\Submission;
  */
 function campaignion_supporter_campaignion_action_taken($node, Submission $submissionObj) {
   $importer = ContactTypeManager::instance()->importer('campaignion_action_taken');
+  if (!$submissionObj->webform->componentByKey('email')) {
+    // Don’t try to import a contact if there is no email address.
+    return;
+  }
   try {
     $contact = $importer->findOrCreateContact($submissionObj);
   } catch (NoEmailException $e) {
