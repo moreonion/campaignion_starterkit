@@ -72,6 +72,10 @@ class Supporter implements ContactTypeInterface {
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
+        $map['mp_const'] = new WrapperField('mp_constituency');
+        $map['mp_party'] = new WrapperField('mp_party');
+        $map['mp_name'] = new WrapperField('mp_party');
+        $map['dev_country'] = new WrapperField('mp_country');
         break;
       case 'mailchimp':
         $map['EMAIL'] = new WrapperField('email');
@@ -90,19 +94,10 @@ class Supporter implements ContactTypeInterface {
         $map['CREATED'] = new DateField('created', '%Y-%m-%d');
         $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
         $map['TAGS'] = new TagsField('supporter_tags', TRUE);
-        break;
-      case 'dadiapi':
-        $map['email'] = new WrapperField('email');
-        $map['vorname'] = new SingleValueField('first_name');
-        $map['name'] = new SingleValueField('last_name');
-        $map['titel'] = new WrapperField('field_title');
-        $genderMap = array('m' => 'M', 'f' => 'W');
-        $map['geschlecht'] = new MappedWrapperField('field_gender', $genderMap);
-        $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y%m%d');
-        $map['strasse'] = new KeyedField('field_address', 'thoroughfare');
-        $map['land'] = new KeyedField('field_address', 'country');
-        $map['plz'] = new KeyedField('field_address', 'postal_code');
-        $map['ort'] = new KeyedField('field_address', 'locality');
+        $map['MP_CONST'] = new WrapperField('mp_constituency');
+        $map['MP_PARTY'] = new WrapperField('mp_party');
+        $map['MP_NAME'] = new WrapperField('mp_salutation');
+        $map['DEV_COUNTRY'] = new WrapperField('mp_country');
         break;
       case 'campaignion_manage':
         $address_mapping = array(
@@ -129,24 +124,10 @@ class Supporter implements ContactTypeInterface {
         $map['field_social_network_links']   = new WrapperField('field_social_network_links');
         $map['supporter_tags']               = new TagsField('supporter_tags');
         $map['field_preferred_language']     = new WrapperField('field_preferred_language');
-        break;
-      case 'optivo':
-        $map['email'] = new WrapperField('email');
-        $map['anrede'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
-        $map['vorname'] = new SingleValueField('first_name');
-        $map['nachname'] = new SingleValueField('last_name');
-        $map['titel'] = new WrapperField('field_title');
-        $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
-        $map['straße'] = new KeyedField('field_address', 'thoroughfare');
-        $map['straße_und_hausnummer'] = new KeyedField('field_address', 'thoroughfare');
-        $map['land'] = new KeyedField('field_address', 'country');
-        $map['plz'] = new KeyedField('field_address', 'postal_code');
-        $map['ort'] = new KeyedField('field_address', 'locality');
-        $map['bundesland'] = new KeyedField('field_address', 'administrative_area');
-        $map['sprache'] = new WrapperField('field_preferred_language');
-        $map['created'] = new DateField('created', '%Y-%m-%d');
-        $map['updated'] = new DateField('updated', '%Y-%m-%d');
-        $map['tags'] = new TagsField('supporter_tags', TRUE);
+        $map['mp_constituency']              = new WrapperField('mp_constituency');
+        $map['mp_party']                     = new WrapperField('mp_party');
+        $map['mp_salutation']                = new WrapperField('mp_salutation');
+        $map['mp_country']                   = new WrapperField('mp_country');
         break;
       case 'dotmailer':
         $map['salutation'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
@@ -163,6 +144,10 @@ class Supporter implements ContactTypeInterface {
         $map['county'] = new KeyedField('field_address', 'administrative_area');
         $map['phone'] = new WrapperField('field_phone_number');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
+        $map['mp_const'] = new WrapperField('mp_constituency');
+        $map['mp_party'] = new WrapperField('mp_party');
+        $map['mp_name'] = new WrapperField('mp_salutation');
+        $map['dev_country'] = new WrapperField('mp_country');
         break;
     }
     if ($map) {
