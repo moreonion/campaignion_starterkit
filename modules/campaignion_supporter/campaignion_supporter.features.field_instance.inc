@@ -519,6 +519,54 @@ function campaignion_supporter_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'redhen_contact-contact-source_tag'.
+  $field_instances['redhen_contact-contact-source_tag'] = array(
+    'bundle' => 'contact',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'tid' => NULL,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_contact',
+    'field_name' => 'source_tag',
+    'label' => 'Source tag',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'redhen_contact-contact-supporter_tags'.
   $field_instances['redhen_contact-contact-supporter_tags'] = array(
     'bundle' => 'contact',
@@ -574,6 +622,7 @@ function campaignion_supporter_field_default_field_instances() {
   t('Salutation');
   t('Set this if the contact wants to receive direct mails');
   t('Social Network Links');
+  t('Source tag');
   t('Tags');
   t('Title');
 
