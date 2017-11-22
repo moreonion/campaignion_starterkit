@@ -12,6 +12,7 @@ use \Drupal\campaignion\CRM\Export\MappedWrapperField;
 use \Drupal\campaignion\CRM\Export\AddressField;
 use \Drupal\campaignion\CRM\Export\DateField;
 use \Drupal\campaignion\CRM\Export\KeyedField;
+use \Drupal\campaignion\CRM\Export\TagField;
 use \Drupal\campaignion\CRM\Export\TagsField;
 use \Drupal\campaignion\CRM\ExporterBase;
 
@@ -71,6 +72,7 @@ class Supporter implements ContactTypeInterface {
         $map['language'] = new WrapperField('field_preferred_language');
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
+        $map['source'] = new TagField('source_tag');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         $map['mp_const'] = new WrapperField('mp_constituency');
         $map['mp_party'] = new WrapperField('mp_party');
@@ -93,6 +95,7 @@ class Supporter implements ContactTypeInterface {
         $map['LANGUAGE'] = new WrapperField('field_preferred_language');
         $map['CREATED'] = new DateField('created', '%Y-%m-%d');
         $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
+        $map['SOURCE'] = new TagField('source_tag');
         $map['TAGS'] = new TagsField('supporter_tags', TRUE);
         $map['MP_CONST'] = new WrapperField('mp_constituency');
         $map['MP_PARTY'] = new WrapperField('mp_party');
@@ -122,6 +125,7 @@ class Supporter implements ContactTypeInterface {
         $map['field_phone_number']           = new WrapperField('field_phone_number');
         $map['field_direct_mail_newsletter'] = new WrapperField('field_direct_mail_newsletter');
         $map['field_social_network_links']   = new WrapperField('field_social_network_links');
+        $map['source_tag'] = new TagField('source_tag');
         $map['supporter_tags']               = new TagsField('supporter_tags');
         $map['field_preferred_language']     = new WrapperField('field_preferred_language');
         $map['mp_constituency']              = new WrapperField('mp_constituency');
@@ -143,6 +147,7 @@ class Supporter implements ContactTypeInterface {
         $map['town'] = new KeyedField('field_address', 'locality');
         $map['county'] = new KeyedField('field_address', 'administrative_area');
         $map['phone'] = new WrapperField('field_phone_number');
+        $map['source'] = new TagField('source_tag');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         $map['mp_const'] = new WrapperField('mp_constituency');
         $map['mp_party'] = new WrapperField('mp_party');
