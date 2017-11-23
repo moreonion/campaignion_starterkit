@@ -1,9 +1,9 @@
 <?php
 
-function campaignion_starterkit_install() {
-  _campaignion_starterkit_themes();
-  _campaignion_starterkit_set_variables();
-  _campaignion_starterkit_add_european_languages();
+function campaignion_starterkit_uk_install() {
+  _campaignion_starterkit_uk_themes();
+  _campaignion_starterkit_uk_set_variables();
+  _campaignion_starterkit_uk_add_european_languages();
 
   $devel = isset($GLOBALS['install_state']['forms']['mo_devel_flag']);
   if ($devel) {
@@ -19,33 +19,33 @@ function campaignion_starterkit_install() {
     variable_set('devel_debug_mail_directory', '/tmp/devel-mails/');
   }
 
-  _campaignion_starterkit_frontpage();
+  _campaignion_starterkit_uk_frontpage();
 }
 
-function _campaignion_starterkit_add_european_languages() {
+function _campaignion_starterkit_uk_add_european_languages() {
   foreach (array('ba', 'be', 'bg', 'br', 'bs', 'ca', 'ce', 'co', 'cs', 'cv', 'cy', 'da', 'de', 'dv', 'el', 'es', 'et', 'eu', 'fi', 'fo', 'fr', 'fy', 'ga', 'gd', 'gl', 'gsw-berne', 'hr', 'hu', 'hy', 'is', 'it', 'ka', 'kl', 'kv', 'lb', 'lt', 'lv', 'mk', 'mo', 'mt', 'nl', 'nb', 'nn', 'oc', 'os', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sq', 'sr', 'sv', 'tt', 'uk', 'yi') as $lc) {
     locale_add_language($lc, NULL, NULL, LANGUAGE_LTR, '', '', 0);
   }
 }
 
-function _campaignion_starterkit_set_variables() {
+function _campaignion_starterkit_uk_set_variables() {
   variable_set('clientside_validation_path_list', 'admin/structure/views/*');
   variable_set('clientside_validation_override_jquery_form', '1');
   variable_set('pathauto_node_pattern', '[node:title]');
   // user registration is admin only per default.
   variable_set('user_register', '0');
-  variable_set('campaignion_bar_file', drupal_get_path('module', 'campaignion_starterkit') . '/campaignion_bar.txt');
+  variable_set('campaignion_bar_file', drupal_get_path('module', 'campaignion_starterkit_uk') . '/campaignion_bar.txt');
   variable_set('jquery_update_jquery_version', '1.7');
 }
 
-function _campaignion_starterkit_themes() {
+function _campaignion_starterkit_uk_themes() {
   theme_enable(array('ae_admin', 'ae_base', 'simplicity'));
   variable_set('theme_default', 'simplicity');
   variable_set('admin_theme', 'ae_admin');
   variable_set('node_admin_theme', 1);
 }
 
-function _campaignion_starterkit_frontpage() {
+function _campaignion_starterkit_uk_frontpage() {
   module_load_include('module', 'node');
 
   $node = (object) array(

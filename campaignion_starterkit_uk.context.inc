@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * campaignion_starterkit.context.inc
+ * campaignion_starterkit_uk.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function campaignion_starterkit_context_default_contexts() {
+function campaignion_starterkit_uk_context_default_contexts() {
   $export = array();
   
   $context = new stdClass();
