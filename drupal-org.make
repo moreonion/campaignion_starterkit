@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.11
+projects[campaignion][version] = 1.12
 
 projects[cck_blocks][version] = 1.1
 
@@ -48,13 +48,12 @@ projects[field_collection][version] = 1.0-beta12
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
-projects[field_group][version] = 1.5
-projects[field_group][patch][] = https://www.drupal.org/files/issues/php7_uniform_variable-2649648-5.patch
+projects[field_group][version] = 1.6
 projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-export-ctools-plugin-info-21.patch
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.4
+projects[file_entity][version] = 2.12
 
 projects[form_builder][version] = 1.20
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -90,7 +89,7 @@ projects[mailsystem][version] = 2.34
 
 projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.10
+projects[media][version] = 2.13
 
 projects[media_vimeo][version] = 2.1
 
@@ -98,18 +97,18 @@ projects[media_youtube][version] = 3.5
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.21
+projects[metatag][version] = 1.22
 
 projects[mimemail][version] = 1.0
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
 
 projects[modernizr][version] = 3.10
 
-projects[morelesszen][version] = 1.5
+projects[morelesszen][version] = 1.6
 
 projects[oowizard][version] = 1.0-alpha3
 
-projects[opengraph_meta][version] = 2.0-beta1
+projects[opengraph_meta][version] = 2.0-beta2
 
 projects[options_element][version] = 1.12
 
@@ -132,11 +131,11 @@ projects[payment_forms][version] = 2.0
 
 projects[paymill_payment][version] = 1.0-beta9
 
-projects[payone_payment][version] = 1.0-rc2
+projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.2
 
-projects[pgbar][version] = 2.0-beta1
+projects[pgbar][version] = 2.0
 
 projects[polling][version] = 1.0-beta1
 
@@ -146,7 +145,7 @@ projects[postcode][version] = 1.0
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.0
+projects[recent_supporters][version] = 1.1
 
 projects[redhen][version] = 1.13
 
@@ -168,7 +167,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2560385
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 1.4
+projects[share_light][version] = 1.5
 
 projects[stripe_payment][version] = 1.0-rc2
 
@@ -211,7 +210,7 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.13
+projects[webform_paymethod_select][version] = 1.14
 
 projects[webform_prefill][version] = 1.0-rc2
 
@@ -236,7 +235,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[ae_admin][version] = 1.0-beta1
+projects[ae_admin][version] = 1.0-beta2
 
 projects[simplicity][version] = 1.5
 
