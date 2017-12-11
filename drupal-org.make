@@ -202,7 +202,7 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.10
+projects[webform_confirm_email][version] = 2.11
 
 projects[webform_country_list][version] = 1.4
 
