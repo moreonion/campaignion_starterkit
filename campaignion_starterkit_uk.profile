@@ -3,7 +3,7 @@
 /**
  * Implements hook_user_login().
  */
-function campaignion_starterkit_user_login(&$edit, $account) {
+function campaignion_starterkit_uk_user_login(&$edit, $account) {
   if (in_array('editor', $account->roles) || in_array('administrator', $account->roles)) {
     $edit['redirect'] = '<front>';
   }
@@ -12,14 +12,14 @@ function campaignion_starterkit_user_login(&$edit, $account) {
 /**
  * Implements hook_ctools_plugin_api().
  */
-function campaignion_starterkit_ctools_plugin_api() {
+function campaignion_starterkit_uk_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
 }
 
-function campaignion_starterkit_field_widget_form_alter(&$element, &$form_state, $context) {
+function campaignion_starterkit_uk_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'pgbar') {
     $field = &$element['options']['display']['template'];
     $field['#type'] = 'select';
@@ -38,6 +38,6 @@ function campaignion_starterkit_field_widget_form_alter(&$element, &$form_state,
  *
  * Deactivate node revisions.
  */
-function campaignion_starterkit_form_node_form_alter(&$form, &$form_state) {
+function campaignion_starterkit_uk_form_node_form_alter(&$form, &$form_state) {
   $form['revision_information']['#access'] = FALSE;
 }
