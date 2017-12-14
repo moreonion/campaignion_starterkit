@@ -68,6 +68,7 @@ features[variable][] = menu_parent_donation
 features[variable][] = node_options_donation
 features[variable][] = node_preview_donation
 features[variable][] = node_submitted_donation
+features[variable][] = webform_node_donation
 features[variable][] = xmlsitemap_settings_node_donation
 features[views_view][] = donations
 __drupal_alter_by_ref[][node][donation] = donation
