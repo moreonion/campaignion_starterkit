@@ -10,7 +10,7 @@
 function campaignion_conf_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: full_html_with_editor
+  // Exported profile: full_html_with_editor.
   $profiles['full_html_with_editor'] = array(
     'format' => 'full_html_with_editor',
     'editor' => 'ckeditor',
@@ -58,10 +58,11 @@ function campaignion_conf_wysiwyg_default_profiles() {
       'pasteFromWordPromptCleanup' => 0,
     ),
     'preferences' => array(
-      'default' => 1,
-      'user_choose' => 1,
-      'show_toggle' => 0,
       'add_to_summaries' => 1,
+      'default' => 1,
+      'show_toggle' => 0,
+      'user_choose' => 1,
+      'version' => '4.6.2.20af917',
     ),
     'name' => 'formatfull_html_with_editor',
   );
