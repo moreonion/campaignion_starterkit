@@ -651,7 +651,6 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('It’s helpful if you add to this message a way for supporters to get in touch with you. That way if they don’t have a target they can bring this to your attention.');
   t('Large image or video');
-  t('No target message');
   t('Open Graph image');
   t('Options');
   t('Related campaign');

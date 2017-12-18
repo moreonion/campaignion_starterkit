@@ -57,3 +57,4 @@ features[uuid_node][] = 7f2e3be8-156e-4211-a35a-a654ff4ab99e
 features[variable][] = comment_anonymous_email_protest
 features[variable][] = comment_default_mode_email_protest
 features[variable][] = comment_default_per_page_email_protest
+features[variable][] = webform_node_email_protest

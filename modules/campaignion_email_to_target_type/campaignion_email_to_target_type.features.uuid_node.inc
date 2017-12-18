@@ -23,14 +23,6 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   'tnid' => 0,
   'translate' => 0,
   'uuid' => 'f5645542-33eb-445e-8e6b-8300cf385069',
-  'field_no_target_message' => array(
-    'und' => array(
-      0 => array(
-        'value' => '<p>There don’t seem to be any targets available for you right now.</p>',
-        'format' => 'full_html_with_editor',
-      ),
-    ),
-  ),
   'action_template' => array(
     'und' => array(
       0 => array(
@@ -51,8 +43,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   'field_no_target_message' => array(
     'und' => array(
       0 => array(
-        'value' => 'There don\'t seem to be any targets for your selection.',
-        'format' => NULL,
+        'value' => '<p>There don’t seem to be any targets available for you right now.</p>',
+        'format' => 'full_html_with_editor',
       ),
     ),
   ),
@@ -216,7 +208,6 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
     'components' => array(
       1 => array(
-        'nid' => 8,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -246,10 +237,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 1,
-        'page_num' => 1,
       ),
       2 => array(
-        'nid' => 8,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -279,10 +268,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 2,
-        'page_num' => 1,
       ),
       3 => array(
-        'nid' => 8,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -310,10 +297,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 3,
-        'page_num' => 1,
       ),
       11 => array(
-        'nid' => 8,
         'cid' => 11,
         'pid' => 0,
         'form_key' => 'story',
@@ -337,10 +322,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 0,
         'weight' => 4,
-        'page_num' => 1,
       ),
       4 => array(
-        'nid' => 8,
         'cid' => 4,
         'pid' => 0,
         'form_key' => 'address',
@@ -354,10 +337,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 0,
         'weight' => 5,
-        'page_num' => 2,
       ),
       5 => array(
-        'nid' => 8,
         'cid' => 5,
         'pid' => 0,
         'form_key' => 'postcode',
@@ -384,10 +365,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'required' => 1,
         'weight' => 6,
         'mandatory' => 0,
-        'page_num' => 2,
       ),
       6 => array(
-        'nid' => 8,
         'cid' => 6,
         'pid' => 0,
         'form_key' => 'street_address',
@@ -415,10 +394,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 7,
-        'page_num' => 2,
       ),
       7 => array(
-        'nid' => 8,
         'cid' => 7,
         'pid' => 0,
         'form_key' => 'street_address_2',
@@ -446,10 +423,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 8,
-        'page_num' => 2,
       ),
       8 => array(
-        'nid' => 8,
         'cid' => 8,
         'pid' => 0,
         'form_key' => 'message',
@@ -466,10 +441,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         ),
         'required' => 0,
         'weight' => 9,
-        'page_num' => 3,
       ),
       9 => array(
-        'nid' => 8,
         'cid' => 9,
         'pid' => 0,
         'form_key' => 'select_your_targets',
@@ -491,7 +464,6 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'required' => 1,
         'weight' => 10,
         'mandatory' => 1,
-        'page_num' => 3,
       ),
     ),
     'conditionals' => array(),

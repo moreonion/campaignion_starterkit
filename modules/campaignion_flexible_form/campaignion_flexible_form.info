@@ -66,5 +66,6 @@ features[variable][] = menu_parent_webform
 features[variable][] = node_options_webform
 features[variable][] = node_preview_webform
 features[variable][] = node_submitted_webform
+features[variable][] = webform_node_webform
 features[variable][] = weight_enabled_webform
 features[variable][] = xmlsitemap_settings_node_webform
