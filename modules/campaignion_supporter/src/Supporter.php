@@ -2,51 +2,70 @@
 
 namespace Drupal\campaignion_supporter;
 
-use \Drupal\campaignion\ContactTypeInterface;
-use \Drupal\campaignion\CRM\Import\Field;
-use \Drupal\campaignion\CRM\ImporterBase;
+use Drupal\campaignion\ContactTypeInterface;
+use Drupal\campaignion\CRM\Import\Field\Address;
+use Drupal\campaignion\CRM\Import\Field\Date;
+use Drupal\campaignion\CRM\Import\Field\EmailBulk;
+use Drupal\campaignion\CRM\Import\Field\Field;
+use Drupal\campaignion\CRM\Import\Field\Name;
+use Drupal\campaignion\CRM\Import\Field\Phone;
+use Drupal\campaignion\CRM\ImporterBase;
 
-use \Drupal\campaignion\CRM\Export\SingleValueField;
-use \Drupal\campaignion\CRM\Export\WrapperField;
-use \Drupal\campaignion\CRM\Export\MappedWrapperField;
-use \Drupal\campaignion\CRM\Export\AddressField;
-use \Drupal\campaignion\CRM\Export\DateField;
-use \Drupal\campaignion\CRM\Export\KeyedField;
-use \Drupal\campaignion\CRM\Export\TagField;
-use \Drupal\campaignion\CRM\Export\TagsField;
-use \Drupal\campaignion\CRM\ExporterBase;
+use Drupal\campaignion\CRM\Export\SingleValueField;
+use Drupal\campaignion\CRM\Export\WrapperField;
+use Drupal\campaignion\CRM\Export\MappedWrapperField;
+use Drupal\campaignion\CRM\Export\AddressField;
+use Drupal\campaignion\CRM\Export\DateField;
+use Drupal\campaignion\CRM\Export\KeyedField;
+use Drupal\campaignion\CRM\Export\TagField;
+use Drupal\campaignion\CRM\Export\TagsField;
+use Drupal\campaignion\CRM\ExporterBase;
 
+/**
+ * Contact type plugin for supporters.
+ */
 class Supporter implements ContactTypeInterface {
-  public function __construct() {}
 
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct() {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function importer($type) {
     $mappings = array(
-      new Field\Name('first_name'),
-      new Field\Name('last_name'),
+      new Name('first_name'),
+      new Name('last_name'),
     );
     if ($type == 'campaignion_action_taken') {
       $mappings = array_merge($mappings, array(
-        new Field\Field('field_gender',     'gender'),
-        new Field\Field('field_salutation', 'salutation'),
-        new Field\Field('field_title',      'title'),
-        new Field\Date('field_date_of_birth',    'date_of_birth'),
-        new Field\Address('field_address', array(
+        new Field('field_gender', 'gender'),
+        new Field('field_salutation', 'salutation'),
+        new Field('field_title', 'title'),
+        new Date('field_date_of_birth', 'date_of_birth'),
+        new Address('field_address', array(
           'thoroughfare'        => 'street_address',
           'postal_code'         => ['zip_code', 'postcode'],
           'locality'            => 'city',
           'administrative_area' => 'state',
           'country'             => 'country',
         )),
-        new Field\Phone('field_phone_number', 'phone_number'),
-        new Field\Phone('field_phone_number', 'mobile_number'),
-        new Field\EmailBulk('redhen_contact_email', 'email', 'email_newsletter'),
-        new Field\Field('field_direct_mail_newsletter', 'direct_mail_newsletter'),
-        new Field\Field('field_preferred_language', 'language'),
+        new Phone('field_phone_number', 'phone_number'),
+        new Phone('field_phone_number', 'mobile_number'),
+        new EmailBulk('redhen_contact_email', 'email', 'email_newsletter'),
+        new Field('field_direct_mail_newsletter', 'direct_mail_newsletter'),
+        new Field('field_preferred_language', 'language'),
       ));
     }
     return new ImporterBase($mappings);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function exporter($type, $language) {
     $map = array();
     $salutation_map = [
@@ -79,6 +98,7 @@ class Supporter implements ContactTypeInterface {
         $map['mp_name'] = new WrapperField('mp_party');
         $map['dev_country'] = new WrapperField('mp_country');
         break;
+
       case 'mailchimp':
         $map['EMAIL'] = new WrapperField('email');
         $map['FNAME'] = new SingleValueField('first_name');
@@ -102,6 +122,7 @@ class Supporter implements ContactTypeInterface {
         $map['MP_NAME'] = new WrapperField('mp_salutation');
         $map['DEV_COUNTRY'] = new WrapperField('mp_country');
         break;
+
       case 'campaignion_manage':
         $address_mapping = array(
           'street'  => 'thoroughfare',
@@ -110,6 +131,7 @@ class Supporter implements ContactTypeInterface {
           'city'    => 'locality',
           'region'  => 'administrative_area',
         );
+
         $map['redhen_contact_email']         = new WrapperField('email');
         $map['field_salutation']             = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['first_name']                   = new SingleValueField('first_name');
@@ -125,7 +147,7 @@ class Supporter implements ContactTypeInterface {
         $map['field_phone_number']           = new WrapperField('field_phone_number');
         $map['field_direct_mail_newsletter'] = new WrapperField('field_direct_mail_newsletter');
         $map['field_social_network_links']   = new WrapperField('field_social_network_links');
-        $map['source_tag'] = new TagField('source_tag');
+        $map['source_tag']                   = new TagField('source_tag');
         $map['supporter_tags']               = new TagsField('supporter_tags');
         $map['field_preferred_language']     = new WrapperField('field_preferred_language');
         $map['mp_constituency']              = new WrapperField('mp_constituency');
@@ -133,6 +155,7 @@ class Supporter implements ContactTypeInterface {
         $map['mp_salutation']                = new WrapperField('mp_salutation');
         $map['mp_country']                   = new WrapperField('mp_country');
         break;
+
       case 'dotmailer':
         $map['salutation'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['firstname'] = new SingleValueField('first_name');
@@ -159,4 +182,5 @@ class Supporter implements ContactTypeInterface {
       return new ExporterBase($map);
     }
   }
+
 }
