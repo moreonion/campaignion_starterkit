@@ -76,6 +76,16 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'contextual',
   );
 
+  // Exported permission: 'access media browser'.
+  $permissions['access media browser'] = array(
+    'name' => 'access media browser',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+    ),
+    'module' => 'media',
+  );
+
   // Exported permission: 'access non-public campaign page'.
   $permissions['access non-public campaign page'] = array(
     'name' => 'access non-public campaign page',
@@ -1375,16 +1385,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'generate features',
     'roles' => array(),
     'module' => 'features',
-  );
-
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'media',
   );
 
   // Exported permission: 'manage features'.
