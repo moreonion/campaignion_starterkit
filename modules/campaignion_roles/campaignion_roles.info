@@ -254,3 +254,4 @@ features[user_permission][] = view the administration theme
 features[user_role][] = administrator
 features[user_role][] = editor
 features[user_role][] = supporter
+features[variable][] = roleassign_roles
