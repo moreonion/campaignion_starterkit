@@ -48,6 +48,7 @@ class Supporter implements ContactTypeInterface {
         new Date('field_date_of_birth', 'date_of_birth'),
         new Address('field_address', array(
           'thoroughfare'        => 'street_address',
+          'premise'             => 'street_address_2',
           'postal_code'         => ['zip_code', 'postcode'],
           'locality'            => 'city',
           'administrative_area' => 'state',
@@ -84,6 +85,7 @@ class Supporter implements ContactTypeInterface {
         $map['gender'] = new WrapperField('field_gender');
         $map['date_of_birth'] = new DateField('field_date_of_birth', '%Y-%m-%d');
         $map['street'] = new KeyedField('field_address', 'thoroughfare');
+        $map['street2'] = new KeyedField('field_address', 'premise');
         $map['country'] = new KeyedField('field_address', 'country');
         $map['zip'] = new KeyedField('field_address', 'postal_code');
         $map['city'] = new KeyedField('field_address', 'locality');
@@ -108,6 +110,7 @@ class Supporter implements ContactTypeInterface {
         $map['GENDER'] = new WrapperField('field_gender');
         $map['DOB'] = new DateField('field_date_of_birth', '%Y-%m-%d');
         $map['STREET'] = new KeyedField('field_address', 'thoroughfare');
+        $map['STREET2'] = new KeyedField('field_address', 'premise');
         $map['COUNTRY'] = new KeyedField('field_address', 'country');
         $map['ZIP'] = new KeyedField('field_address', 'postal_code');
         $map['CITY'] = new KeyedField('field_address', 'locality');
@@ -126,6 +129,7 @@ class Supporter implements ContactTypeInterface {
       case 'campaignion_manage':
         $address_mapping = array(
           'street'  => 'thoroughfare',
+          'street_2' => 'premise',
           'country' => 'country',
           'zip'     => 'postal_code',
           'city'    => 'locality',
