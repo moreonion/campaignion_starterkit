@@ -1209,9 +1209,7 @@ function campaignion_roles_user_default_permissions() {
   // Exported permission: 'edit mimemail user settings'.
   $permissions['edit mimemail user settings'] = array(
     'name' => 'edit mimemail user settings',
-    'roles' => array(
-      'authenticated user' => 'authenticated user',
-    ),
+    'roles' => array(),
     'module' => 'mimemail',
   );
 
