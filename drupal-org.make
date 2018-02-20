@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.12
+projects[campaignion][version] = 1.13
 
 projects[cck_blocks][version] = 1.1
 
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.12
+projects[ctools][version] = 1.13
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -37,7 +37,7 @@ projects[date][version] = 2.10
 
 projects[diff][version] = 3.3
 
-projects[entity][version] = 1.8
+projects[entity][version] = 1.9
 
 projects[entityreference][version] = 1.5
 
@@ -53,19 +53,19 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.12
+projects[file_entity][version] = 2.16
 
-projects[form_builder][version] = 1.20
+projects[form_builder][version] = 1.21
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
-projects[geoip_language_redirect][version] = 2.0
+projects[geoip_language_redirect][version] = 2.1
 
-projects[honeypot][version] = 1.22
+projects[honeypot][version] = 1.23
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.18
+projects[i18n][version] = 1.22
 
 projects[imagefield_crop][version] = 1.1
 
@@ -89,11 +89,11 @@ projects[mailsystem][version] = 2.34
 
 projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.13
+projects[media][version] = 2.16
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.5
+projects[media_youtube][version] = 3.6
 
 projects[menu_block][version] = 2.7
 
@@ -119,9 +119,7 @@ projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.3
 
-projects[payment][version] = 1.16
-; Fix MySQL 5.7 PDOException: PRIMARY KEY must be NOT NULL - https://drupal.org/node/2657070
-projects[payment][patch][] = https://www.drupal.org/files/issues/payment-primarykey-not-null-2657070_0.patch
+projects[payment][version] = 1.17
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -133,7 +131,7 @@ projects[paymill_payment][version] = 1.0-beta9
 
 projects[payone_payment][version] = 1.0
 
-projects[paypal_payment][version] = 1.2
+projects[paypal_payment][version] = 1.3
 
 projects[pgbar][version] = 2.0
 
@@ -155,11 +153,11 @@ projects[references][version] = 2.2
 
 projects[roleassign][version] = 1.2
 
-projects[sagepay_payment][version] = 1.4
+projects[sagepay_payment][version] = 1.6
 
 projects[select2][version] = 1.0
 
-projects[select_or_other][version] = 2.22
+projects[select_or_other][version] = 2.23
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 ; Fix 'Undefined index …' notices - https://www.drupal.org/node/2560385
@@ -167,7 +165,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2560385
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 1.5
+projects[share_light][version] = 1.6
 
 projects[stripe_payment][version] = 1.0-rc2
 

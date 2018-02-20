@@ -22,5 +22,3 @@ projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrappe
 projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
 ; Avoid duplicate form-submissions in non-ajax forms. - https://www.drupal.org/node/1705618
 projects[drupal][patch][] = https://www.drupal.org/files/issues/form-single-submit-1705618-124.patch
-; Allow new-style dependencies in installation profiles. - https://www.drupal.org/node/2855026
-projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-n2905520-3.patch
