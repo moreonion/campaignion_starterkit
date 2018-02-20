@@ -233,7 +233,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[ae_admin][version] = 1.0-beta2
+projects[ae_admin][version] = 1.0-beta3
 
 projects[simplicity][version] = 1.5
 
