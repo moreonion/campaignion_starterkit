@@ -93,7 +93,7 @@ projects[media][version] = 2.16
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.6
+projects[media_youtube][version] = 3.7
 
 projects[menu_block][version] = 2.7
 
