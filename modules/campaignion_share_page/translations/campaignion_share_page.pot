@@ -1,0 +1,52 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (modules-campaignion_share_page)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/campaignion_share_page/campaignion_share_page.features.field.inc: n/a
+#  modules/campaignion_share_page/campaignion_share_page.features.inc: n/a
+#  modules/campaignion_share_page/campaignion_share_page.info: n/a
+#
+# Florian Engel, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-12-13 15:20+0100\n"
+"PO-Revision-Date: 2013-01-14 16:17+0100\n"
+"Last-Translator: Florian Engel\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: modules/campaignion_share_page/campaignion_share_page.features.field.inc:426
+msgid "Add a large main image or a main video to your share page"
+msgstr ""
+
+#: modules/campaignion_share_page/campaignion_share_page.features.field.inc:428
+msgid "Display share buttons"
+msgstr ""
+
+#: modules/campaignion_share_page/campaignion_share_page.features.field.inc:429
+msgid ""
+"Display share buttons on your page. Allows visitors to share your action."
+msgstr ""
+
+#: modules/campaignion_share_page/campaignion_share_page.features.inc:29
+msgid ""
+"Share pages are used to encourage your supporters to spread information "
+"about your campaign on social media."
+msgstr ""
+
+#: modules/campaignion_share_page/campaignion_share_page.info:0
+msgid "AE Share Page Content Type"
+msgstr ""
+
+#: modules/campaignion_share_page/campaignion_share_page.info:0
+msgid "provides Share page"
+msgstr ""
+
+
