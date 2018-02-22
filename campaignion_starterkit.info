@@ -54,6 +54,7 @@ dependencies[] = campaignion_petition_templates
 dependencies[] = campaignion_protest_target_contact_type
 dependencies[] = campaignion_roles
 dependencies[] = campaignion_seo
+dependencies[] = campaignion_share_page
 dependencies[] = campaignion_static_page
 dependencies[] = campaignion_supporter
 dependencies[] = campaignion_thankyou_page

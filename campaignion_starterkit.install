@@ -58,3 +58,13 @@ function _campaignion_starterkit_frontpage() {
   variable_set('site_frontpage', 'node/' . $node->nid);
 }
 
+/* ######################## UPDATES ########################## */
+
+/**
+ * Activate `campaignion_share_page`.
+ */
+function campaignion_starterkit_update_1() {
+  if (!module_enable(['campaignion_share_page'], TRUE)) {
+    throw new DrupalUpdateException('Unable to enable campaignion_share_page.');
+  }
+}
