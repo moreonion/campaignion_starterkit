@@ -45,6 +45,7 @@ features[variable][] = share_light_email_message_message
 features[variable][] = share_light_email_message_message_format
 features[variable][] = user_admin_role
 features[variable][] = webform_default_format
+features[variable][] = webform_disabled_components
 features[variable][] = webform_email_address_individual
 features[variable][] = webform_email_html_capable
 features[variable][] = webform_submission_access_control
