@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.13
+projects[campaignion][version] = 1.14
 
 projects[cck_blocks][version] = 1.1
 
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.13
+projects[ctools][version] = 1.14
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 
@@ -61,7 +61,7 @@ projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_b
 
 projects[geoip_language_redirect][version] = 2.1
 
-projects[honeypot][version] = 1.23
+projects[honeypot][version] = 1.24
 
 projects[ife][version] = 2.0-alpha2
 
@@ -233,7 +233,7 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[ae_admin][version] = 1.0-beta3
+projects[ae_admin][version] = 1.0-beta4
 
 projects[simplicity][version] = 1.5
 
@@ -258,7 +258,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.4.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v4.13.0.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v6.4.1.tar.gz
 
 libraries[timeago][download][type] = file
-libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.1.tar.gz
+libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
