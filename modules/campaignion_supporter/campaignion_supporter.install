@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\little_helpers\Field\Field;
+
 /**
  * implements hook_modules_enabled().
  */
@@ -18,6 +20,14 @@ function campaignion_supporter_modules_enabled() {
 }
 
 /**
+ * Replace field_direct_mail_newsletter with field_opt_in_post.
+ */
+function campaignion_supporter_update_4() {
+  Field::byName('field_direct_mail_newsletter')->rename('field_opt_in_post');
+  features_revert(['campaignion_supporter' => ['field_base', 'field_instance']]);
+}
+
+/**
  * Revert this feature.
  */
 function campaignion_supporter_update_3() {
@@ -28,7 +38,7 @@ function campaignion_supporter_update_3() {
  * Rename: field_tags -> supporter_tags.
  */
 function campaignion_supporter_update_2() {
-  $field = \Drupal\little_helpers\Field\Field::byName('field_tags');
+  $field = Field::byName('field_tags');
   $field->rename('supporter_tags');
 
   $fields = array(
@@ -47,6 +57,6 @@ function campaignion_supporter_update_2() {
  * Rename: form_of_address -> salutation.
  */
 function campaignion_supporter_update_1() {
-  $field = \Drupal\little_helpers\Field\Field::byName('field_form_of_address');
+  $field = Field::byName('field_form_of_address');
   $field->rename('field_salutation');
 }

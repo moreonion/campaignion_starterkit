@@ -6,10 +6,6 @@
 
 include_once 'campaignion_supporter.features.inc';
 
-use \Drupal\campaignion\ContactTypeManager;
-use \Drupal\campaignion\NoEmailException;
-use \Drupal\little_helpers\Webform\Submission;
-
 /**
  * Implements hook_entity_presave().
  */
