@@ -21,6 +21,10 @@ use Drupal\campaignion\CRM\Export\DateField;
 use Drupal\campaignion\CRM\Export\KeyedField;
 use Drupal\campaignion\CRM\Export\TagField;
 use Drupal\campaignion\CRM\Export\TagsField;
+use Drupal\campaignion\CRM\Export\Label;
+use Drupal\campaignion\CRM\Export\LabelFactory;
+use Drupal\campaignion\CRM\Export\SubField;
+use Drupal\campaignion\CRM\CsvExporter;
 use Drupal\campaignion\CRM\ExporterBase;
 
 /**
@@ -177,6 +181,36 @@ class Supporter implements ContactTypeInterface {
         $map['field_opt_in_phone']           = new BooleanField('field_opt_in_phone');
         $map['field_opt_in_post']            = new BooleanField('field_opt_in_post');
         break;
+
+      case 'csv':
+        $labels = new LabelFactory('redhen_contact', 'contact');
+        $address = $labels->fromExporter(new WrapperField('field_address'));
+        $map['contact_id']                   = new Label(t('Contact ID'), new SingleValueField('contact_id'));
+        $map['redhen_contact_email']         = new Label(t('Email'), new WrapperField('email'));
+        $map['field_salutation']             = $labels->fromExporter(new MappedWrapperField('field_salutation', $salutation_map, FALSE));
+        $map['first_name']                   = new Label(t('Forename'), new SingleValueField('first_name'));
+        $map['middle_name']                  = new Label(t('Middle name'), new SingleValueField('middle_name'));
+        $map['last_name']                    = new Label(t('Surname'), new SingleValueField('last_name'));
+        $map['field_title']                  = $labels->fromExporter(new WrapperField('field_title'));
+        $map['field_gender']                 = $labels->fromExporter(new WrapperField('field_gender'));
+        $map['field_date_of_birth']          = $labels->fromExporter(new DateField('field_date_of_birth', '%Y-%m-%d'));
+        $map['field_address.thoroughfare']   = new SubField($address, 'thoroughfare', t('Address line 1'));
+        $map['field_address.premise']        = new SubField($address, 'premise', t('Address line 2'));
+        $map['field_address.country']        = new SubField($address, 'country', t('Country'));
+        $map['field_address.postal_code']    = new SubField($address, 'postal_code', t('Postcode'));
+        $map['field_address.locality']       = new SubField($address, 'locality', t('Locality'));
+        $map['field_address.area']           = new SubField($address, 'administrative_area', t('Administrative area'));
+        $map['created']                      = new Label(t('Created'), new DateField('created', '%Y-%m-%d'));
+        $map['updated']                      = new Label(t('Updated'), new DateField('updated', '%Y-%m-%d'));
+        $map['field_ip_adress']              = $labels->fromExporter(new WrapperField('field_ip_adress'));
+        $map['field_phone_number']           = $labels->fromExporter(new WrapperField('field_phone_number'));
+        $map['field_social_network_links']   = $labels->fromExporter(new WrapperField('field_social_network_links'));
+        $map['source_tag']                   = $labels->fromExporter(new TagField('source_tag'));
+        $map['supporter_tags']               = $labels->fromExporter(new TagsField('supporter_tags'));
+        $map['field_preferred_language']     = $labels->fromExporter(new WrapperField('field_preferred_language'));
+        $map['field_opt_in_phone']           = $labels->fromExporter(new BooleanField('field_opt_in_phone'));
+        $map['field_opt_in_post']            = $labels->fromExporter(new BooleanField('field_opt_in_post'));
+        return new CsvExporter($map);;
 
       case 'optivo':
         $map['email'] = new WrapperField('email');
