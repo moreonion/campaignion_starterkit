@@ -1,0 +1,17 @@
+name = campaignion_overlay
+core = 7.x
+package = Features
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_collection
+dependencies[] = list
+dependencies[] = options
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = campaignion_overlay_content
+features[field_base][] = campaignion_overlay_enabled
+features[field_base][] = campaignion_overlay_introduction
+features[field_base][] = campaignion_overlay_options
+features[field_instance][] = field_collection_item-campaignion_overlay_options-field_overlay_content
+features[field_instance][] = field_collection_item-campaignion_overlay_options-field_overlay_enabled
+features[field_instance][] = field_collection_item-campaignion_overlay_options-field_overlay_introduction
