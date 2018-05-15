@@ -16,3 +16,4 @@ features[field_instance][] = field_collection_item-campaignion_overlay_options-f
 features[field_instance][] = field_collection_item-campaignion_overlay_options-field_overlay_enabled
 features[field_instance][] = field_collection_item-campaignion_overlay_options-field_overlay_introduction
 scripts[] = campaignion_overlay.js
+stylesheets[all][] = campaignion_overlay.css

@@ -1,0 +1,24 @@
+.campaignion-overlay .ui-dialog-titlebar {
+  display: none;
+}
+
+.campaignion-overlay .field-collection-view .field-collection-view-links {
+  margin-right: 0em;
+}
+
+.campaignion-overlay .field-collection-view .field-collection-view-links .last a {
+  margin-right: 0.5em;
+}
+
+.campaignion-overlay-introduction {
+  margin-top: 1em;
+}
+
+.campaignion-overlay-content {
+  margin-top: 1em;
+}
+
+.campaignion-overlay-options {
+  margin: 1em;
+  display: none;
+}
