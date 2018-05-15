@@ -1,5 +1,53 @@
 <?php
+
 /**
  * @file
- * Drupal needs this blank file.
+ * Implements all needed hooks and functions.
  */
+
+/**
+ * Implements hook_theme().
+ */
+function campaignion_overlay_theme($existing, $type, $theme, $path) {
+  $overlay_theme = [];
+  $overlay_theme['field__campaignion_overlay_options'] = [
+    'template' => 'campaignion-overlay',
+    'path' => drupal_get_path('module', 'campaignion_overlay'),
+  ];
+  $overlay_theme['field__campaignion_overlay_introduction__campaignion_overlay_options'] = [
+    'template' => 'campaignion-overlay-introduction',
+    'path' => drupal_get_path('module', 'campaignion_overlay'),
+  ];
+  $overlay_theme['field__campaignion_overlay_content__campaignion_overlay_options'] = [
+    'template' => 'campaignion-overlay-content',
+    'path' => drupal_get_path('module', 'campaignion_overlay'),
+  ];
+
+  return $overlay_theme;
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function campaignion_overlay_preprocess_field(&$variables) {
+  $field_name = $variables['element']['#field_name'];
+
+  if ($field_name === 'campaignion_overlay_options') {
+    $variables['classes_array'][] = 'campaignion-overlay-options';
+  }
+  if ($field_name === 'campaignion_overlay_enabled') {
+    $items = field_get_items($variables['element']['#entity_type'], $variables['element']['#object'], $field_name);
+    $enabled = $items[0]['value'] === '1';
+    drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
+  }
+  if ($field_name === 'campaignion_overlay_content') {
+    $items = field_get_items($variables['element']['#entity_type'], $variables['element']['#object'], $field_name);
+    $node = node_load($items[0]['target_id']);
+    $variables['campaignion_overlay_form'] = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
+
+    $variables['classes_array'][] = 'campaignion-overlay-content';
+  }
+  if ($field_name === 'campaignion_overlay_introduction') {
+    $variables['classes_array'][] = 'campaignion-overlay-introduction';
+  }
+}
