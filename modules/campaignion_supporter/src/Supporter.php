@@ -210,7 +210,7 @@ class Supporter implements ContactTypeInterface {
         $map['field_preferred_language']     = $labels->fromExporter(new WrapperField('field_preferred_language'));
         $map['field_opt_in_phone']           = $labels->fromExporter(new BooleanField('field_opt_in_phone'));
         $map['field_opt_in_post']            = $labels->fromExporter(new BooleanField('field_opt_in_post'));
-        return new CsvExporter($map);;
+        return new CsvExporter($map);
 
       case 'optivo':
         $map['email'] = new WrapperField('email');
