@@ -89,7 +89,7 @@ projects[mailsystem][version] = 2.34
 
 projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.16
+projects[media][version] = 2.21
 
 projects[media_vimeo][version] = 2.1
 
