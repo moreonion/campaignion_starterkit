@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.14
+projects[campaignion][version] = 1.15
 
 projects[cck_blocks][version] = 1.1
 
@@ -53,9 +53,9 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.16
+projects[file_entity][version] = 2.21
 
-projects[form_builder][version] = 1.21
+projects[form_builder][version] = 1.22
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -65,7 +65,7 @@ projects[honeypot][version] = 1.24
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.22
+projects[i18n][version] = 1.24
 
 projects[imagefield_crop][version] = 1.1
 
@@ -81,7 +81,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.3
 
-projects[little_helpers][version] = 1.6
+projects[little_helpers][version] = 1.7
 
 projects[logintoboggan][version] = 1.5
 
@@ -97,7 +97,7 @@ projects[media_youtube][version] = 3.7
 
 projects[menu_block][version] = 2.7
 
-projects[metatag][version] = 1.22
+projects[metatag][version] = 1.25
 
 projects[mimemail][version] = 1.0
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
@@ -137,7 +137,7 @@ projects[pgbar][version] = 2.0
 
 projects[polling][version] = 1.0-beta1
 
-projects[postal_code_validation][version] = 1.5
+projects[postal_code_validation][version] = 1.6
 
 projects[postcode][version] = 1.0
 
@@ -167,7 +167,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 1.6
 
-projects[stripe_payment][version] = 1.0-rc2
+projects[stripe_payment][version] = 1.0
 
 projects[strongarm][version] = 2.0
 
@@ -175,7 +175,7 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.5
+projects[ultimate_cron][version] = 2.7
 
 projects[uuid][version] = 1.0
 
@@ -183,10 +183,9 @@ projects[uuid_features][version] = 1.0-rc1
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.18
-projects[views][patch][] = http://drupal.org/files/views_issue_1609088_undefined_index_uid.patch
+projects[views][version] = 3.20
 
-projects[webform][version] = 4.16
+projects[webform][version] = 4.17
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -208,7 +207,7 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.14
+projects[webform_paymethod_select][version] = 1.15
 
 projects[webform_prefill][version] = 1.0-rc2
 
@@ -220,27 +219,27 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.0-beta2
+projects[webform_tracking][version] = 2.0-beta3
 
 projects[webform_validation][version] = 1.14
 
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
-projects[wysiwyg][version] = 2.4
+projects[wysiwyg][version] = 2.5
 
 projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.3
 
-projects[ae_admin][version] = 1.0-beta4
+projects[ae_admin][version] = 1.0-beta5
 
 projects[simplicity][version] = 1.5
 
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.7.3/ckeditor_4.7.3_standard.tar.gz
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.9.2/ckeditor_4.9.2_standard.tar.gz
 
 libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
