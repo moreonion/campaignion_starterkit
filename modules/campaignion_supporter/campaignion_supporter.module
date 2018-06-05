@@ -34,3 +34,30 @@ function campaignion_supporter_campaignion_contact_type_info() {
   $types['contact'] = '\\Drupal\\campaignion_supporter\\Supporter';
   return $types;
 }
+
+/**
+ * Implements hook_campaignion_action_contact_alter().
+ */
+function campaignion_supporter_campaignion_action_contact_alter($contact, $submission, $action_node) {
+  if ($submission->is_draft) {
+    return FALSE;
+  }
+
+  $changed = FALSE;
+  $w = $contact->wrap();
+  if (!$w->field_opt_in_phone->value()) {
+    $components = $submission->webform->componentsByType('phone_number');
+    foreach ($components as $cid => $component) {
+      if (!empty($component['extra']['implies_optin'])) {
+        $values = $submission->valuesByCid($cid);
+        $value = reset($values);
+        if ($value) {
+          $w->field_opt_in_phone->set(TRUE);
+          $changed = TRUE;
+        }
+      }
+    }
+  }
+
+  return $changed;
+}
