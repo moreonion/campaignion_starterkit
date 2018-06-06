@@ -6,24 +6,27 @@
  */
 
 /**
- * Implements hook_theme().
+ * Implements hook_entity_view().
  */
-function campaignion_overlay_theme($existing, $type, $theme, $path) {
-  $overlay_theme = [];
-  $overlay_theme['field__campaignion_overlay_options'] = [
-    'template' => 'campaignion-overlay',
-    'path' => drupal_get_path('module', 'campaignion_overlay'),
-  ];
-  $overlay_theme['field__campaignion_overlay_introduction__campaignion_overlay_options'] = [
-    'template' => 'campaignion-overlay-introduction',
-    'path' => drupal_get_path('module', 'campaignion_overlay'),
-  ];
-  $overlay_theme['field__campaignion_overlay_content__campaignion_overlay_options'] = [
-    'template' => 'campaignion-overlay-content',
-    'path' => drupal_get_path('module', 'campaignion_overlay'),
-  ];
+function campaignion_entity_view($entity, $type, $view_mode, $langcode) {
+  if ($type === 'field_collection_item') {
+    $content = field_get_items($type, $entity, 'campaignion_overlay_content');
+    $intro = field_get_items($type, $entity, 'campaignion_overlay_introduction');
+    $node = node_load($content[0]['target_id']);
+    $form = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
 
-  return $overlay_theme;
+    $entity->content['campaignion_overlay_introduction'] = [
+      '#markup' => '<em>' . $intro[0]['safe_value'] . '</em>',
+    ];
+    $entity->content['campaignion_overlay_content'] = [
+      '#markup' => drupal_render($form),
+      '#weight' => 99,
+    ];
+
+    $enabled = field_get_items($type, $entity, 'campaignion_overlay_enabled');
+    $enabled = $enabled[0]['value'] === '1';
+    drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
+  }
 }
 
 /**
@@ -35,16 +38,7 @@ function campaignion_overlay_preprocess_field(&$variables) {
   if ($field_name === 'campaignion_overlay_options') {
     $variables['classes_array'][] = 'campaignion-overlay-options';
   }
-  if ($field_name === 'campaignion_overlay_enabled') {
-    $items = field_get_items($variables['element']['#entity_type'], $variables['element']['#object'], $field_name);
-    $enabled = $items[0]['value'] === '1';
-    drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
-  }
   if ($field_name === 'campaignion_overlay_content') {
-    $items = field_get_items($variables['element']['#entity_type'], $variables['element']['#object'], $field_name);
-    $node = node_load($items[0]['target_id']);
-    $variables['campaignion_overlay_form'] = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
-
     $variables['classes_array'][] = 'campaignion-overlay-content';
   }
   if ($field_name === 'campaignion_overlay_introduction') {
