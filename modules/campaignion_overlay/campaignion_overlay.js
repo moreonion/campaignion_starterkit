@@ -1,40 +1,3 @@
-/**
- * Provides a fade in type animation.
- *
- * The object is moved up from 5% below its actual `top` property
- * and its opacity is toggled.
- */
-function campaignionOverlayShow() {
-    var top_ = parseFloat($(this).css('top').replace('px', ''));
-    var move = $(window).height()/100 * 5;
-    var new_top = (top_+move).toString().concat('px');
-
-    $(this).css('top', new_top);
-    $(this).animate({
-      top: top_.toString().concat('px'),
-      opacity: "toggle"
-    }, 750, "easeInCubic");
-}
-
-/**
- * Provides a fade out type animation.
- *
- * The object is moved up to 5% above its actual `top` property
- * and its opacity is toggled.
- */
-function campaignionOverlayClose() {
-    var top_ = parseFloat($(this).css('top').replace('px', ''));
-    var move = $(window).height()/100 * 5;
-    var new_top = (top_-move).toString().concat('px');
-
-    $(this).animate({
-      top: new_top,
-      opacity: "toggle"
-    }, 750, "easeOutQuad", function() {
-      $(this).hide();
-    });
-}
-
 (function($) {
   Drupal.behaviors.campaignionOverlay = {
     attach: function(context, settings) {
@@ -42,8 +5,8 @@ function campaignionOverlayClose() {
           && settings.campaignion_overlay.overlay_enabled) {
         // Add jQuery functions for animations
         jQuery.fn.extend({
-          campaignionOverlayShow: campaignionOverlayShow,
-          campaignionOverlayClose: campaignionOverlayClose
+          campaignionOverlayShow: Drupal.behaviors.campaignionOverlay.show,
+          campaignionOverlayClose: Drupal.behaviors.campaignionOverlay.close
         });
 
         var overlay = $(".campaignion-overlay-options", context).first();
@@ -78,5 +41,40 @@ function campaignionOverlayClose() {
         });
       }
     }
-  }
+  };
+  /**
+   * Provides a fade in type animation.
+   *
+   * The object is moved up from 5% below its actual `top` property
+   * and its opacity is toggled.
+   */
+  Drupal.behaviors.campaignionOverlay.show = function() {
+    var top_ = parseFloat($(this).css('top').replace('px', ''));
+    var move = $(window).height()/100 * 5;
+    var new_top = (top_+move).toString().concat('px');
+
+    $(this).css('top', new_top);
+    $(this).animate({
+      top: top_.toString().concat('px'),
+      opacity: "toggle"
+    }, 750, "easeInCubic");
+  };
+  /**
+   * Provides a fade out type animation.
+   *
+   * The object is moved up to 5% above its actual `top` property
+   * and its opacity is toggled.
+   */
+  Drupal.behaviors.campaignionOverlay.close = function() {
+    var top_ = parseFloat($(this).css('top').replace('px', ''));
+    var move = $(window).height()/100 * 5;
+    var new_top = (top_-move).toString().concat('px');
+
+    $(this).animate({
+      top: new_top,
+      opacity: "toggle"
+    }, 750, "easeOutQuad", function() {
+      $(this).hide();
+    });
+  };
 })(jQuery);
