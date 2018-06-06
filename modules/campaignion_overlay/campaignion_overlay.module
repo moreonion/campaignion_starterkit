@@ -30,9 +30,18 @@ function campaignion_entity_view($entity, $type, $view_mode, $langcode) {
 }
 
 /**
- * Implements hook_preprocess_field().
+ * Prepares variables for field templates.
+ *
+ * Default template: field.tpl.php.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - element: An associative array containing the properties of the element.
+ *     Properties used: #field_name.
+ *   - classes_array: An associative array containing CSS classes of the field.
+ *     Properties used: #classes_array.
  */
-function campaignion_overlay_preprocess_field(&$variables) {
+function campaignion_overlay_preprocess_field(array &$variables) {
   $field_name = $variables['element']['#field_name'];
 
   if ($field_name === 'campaignion_overlay_options') {
