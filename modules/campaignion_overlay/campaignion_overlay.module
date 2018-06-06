@@ -25,6 +25,7 @@ function campaignion_entity_view($entity, $type, $view_mode, $langcode) {
 
     $enabled = field_get_items($type, $entity, 'campaignion_overlay_enabled');
     $enabled = $enabled[0]['value'] === '1';
+    drupal_add_library('system', 'ui.dialog');
     drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
   }
 }
