@@ -22,3 +22,18 @@
   margin: 1em;
   display: none;
 }
+
+/* Remove field collection styling if inside group */
+.group-overlay .fieldset-content .fieldset-title {
+  display: none;
+}
+
+.group-overlay .fieldset-content .field-name-campaignion-overlay-options .fieldset-content {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.group-overlay fieldset.fieldset {
+  border: 0px;
+  margin-bottom: -2em;
+}
