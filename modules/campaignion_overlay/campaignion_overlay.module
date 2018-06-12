@@ -6,12 +6,14 @@
  */
 
 /**
- * Implements hook_entity_view().
+ * Implements hook_field_collection_item_view().
  */
-function campaignion_entity_view($entity, $type, $view_mode, $langcode) {
-  if ($type === 'field_collection_item') {
-    $content = field_get_items($type, $entity, 'campaignion_overlay_content');
-    $intro = field_get_items($type, $entity, 'campaignion_overlay_introduction');
+function campaignion_overlay_field_collection_item_view($entity, $display, $view_mode) {
+  if ($entity->field_name === 'campaignion_overlay_options') {
+    $content = field_get_items('field_collection_item', $entity, 'campaignion_overlay_content');
+    $intro = field_get_items('field_collection_item', $entity, 'campaignion_overlay_introduction');
+    $enabled = field_get_items('field_collection_item', $entity, 'campaignion_overlay_enabled');
+
     $node = node_load($content[0]['target_id']);
     $form = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
 
@@ -23,7 +25,6 @@ function campaignion_entity_view($entity, $type, $view_mode, $langcode) {
       '#weight' => 99,
     ];
 
-    $enabled = field_get_items($type, $entity, 'campaignion_overlay_enabled');
     $enabled = $enabled[0]['value'] === '1';
     drupal_add_library('system', 'ui.dialog');
     drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
