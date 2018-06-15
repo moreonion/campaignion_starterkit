@@ -26,8 +26,11 @@ function campaignion_overlay_field_collection_item_view($entity, $display, $view
     ];
 
     $enabled = $enabled[0]['value'] === '1';
-    drupal_add_library('system', 'ui.dialog');
-    drupal_add_js(['campaignion_overlay' => ['overlay_enabled' => $enabled]], 'setting');
+    $entity->content['#attached']['library'][] = ['system', 'ui.dialog'];
+    $entity->content['#attached']['js'][] = [
+      'data' => ['campaignion_overlay' => ['overlay_enabled' => $enabled]],
+      'type' => 'setting',
+    ];
   }
 }
 
