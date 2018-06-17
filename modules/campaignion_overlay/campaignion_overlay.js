@@ -26,7 +26,7 @@
         close.click(function() {
           overlay.dialog("close");
         });
-        overlay.find('.content').prepend(close);
+        overlay.find('.campaignion-overlay-content').prepend(close);
 
         // Center dialog on window resize.
         $(window).resize(function() {

@@ -6,56 +6,55 @@
  */
 
 /**
- * Implements hook_field_collection_item_view().
+ * Implements hook_theme().
  */
-function campaignion_overlay_field_collection_item_view($entity, $display, $view_mode) {
-  if ($entity->field_name === 'campaignion_overlay_options') {
-    $content = field_get_items('field_collection_item', $entity, 'campaignion_overlay_content');
-    $intro = field_get_items('field_collection_item', $entity, 'campaignion_overlay_introduction');
-    $enabled = field_get_items('field_collection_item', $entity, 'campaignion_overlay_enabled');
-
-    $node = node_load($content[0]['target_id']);
-    $form = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
-
-    $entity->content['campaignion_overlay_introduction'] = [
-      '#markup' => '<em>' . $intro[0]['safe_value'] . '</em>',
-    ];
-    $entity->content['campaignion_overlay_content'] = [
-      '#markup' => drupal_render($form),
-      '#weight' => 99,
-    ];
-
-    $enabled = $enabled[0]['value'] === '1';
-    $entity->content['#attached']['library'][] = ['system', 'ui.dialog'];
-    $entity->content['#attached']['js'][] = [
-      'data' => ['campaignion_overlay' => ['overlay_enabled' => $enabled]],
-      'type' => 'setting',
-    ];
-  }
+function campaignion_overlay_theme($existing, $type, $theme, $path) {
+  return [
+    'campaignion_overlay_options' => [
+      'template' => 'campaignion-overlay',
+      'path' => drupal_get_path('module', 'campaignion_overlay'),
+      'variables' => [
+        'introduction' => NULL,
+        'content' => NULL,
+      ],
+    ],
+  ];
 }
 
 /**
- * Prepares variables for field templates.
- *
- * Default template: field.tpl.php.
- *
- * @param array $variables
- *   An associative array containing:
- *   - element: An associative array containing the properties of the element.
- *     Properties used: #field_name.
- *   - classes_array: An associative array containing CSS classes of the field.
- *     Properties used: #classes_array.
+ * Implements hook_node_view().
  */
-function campaignion_overlay_preprocess_field(array &$variables) {
-  $field_name = $variables['element']['#field_name'];
+function campaignion_overlay_node_view($entity, $display, $view_mode) {
+  if ($entity->type === 'thank_you_page') {
+    if ($field_ids = field_get_items('node', $entity, 'campaignion_overlay_options')) {
+      if ($overlay_options = field_collection_item_load($field_ids[0]['value'])) {
+        $content = field_get_items('field_collection_item', $overlay_options, 'campaignion_overlay_content');
+        $intro = field_get_items('field_collection_item', $overlay_options, 'campaignion_overlay_introduction');
+        $enabled = field_get_items('field_collection_item', $overlay_options, 'campaignion_overlay_enabled');
+        $enabled = $enabled[0]['value'] === '1';
 
-  if ($field_name === 'campaignion_overlay_options') {
-    $variables['classes_array'][] = 'campaignion-overlay-options';
-  }
-  if ($field_name === 'campaignion_overlay_content') {
-    $variables['classes_array'][] = 'campaignion-overlay-content';
-  }
-  if ($field_name === 'campaignion_overlay_introduction') {
-    $variables['classes_array'][] = 'campaignion-overlay-introduction';
+        $node = node_load($content[0]['target_id']);
+        $form = drupal_get_form('webform_client_form_' . $node->nid, $node, []);
+
+        $entity->content['campaignion_overlay_options'] = [
+          '#attached' => [
+            'library' => [
+              0 => ['system', 'ui.dialog'],
+            ],
+            'js' => [
+              0 => [
+                'data' => [
+                  'campaignion_overlay' => ['overlay_enabled' => $enabled],
+                ],
+                'type' => 'setting',
+              ],
+            ],
+          ],
+          '#content' => $form,
+          '#introduction' => $intro[0]['safe_value'],
+          '#theme' => 'campaignion_overlay_options',
+        ];
+      }
+    }
   }
 }
