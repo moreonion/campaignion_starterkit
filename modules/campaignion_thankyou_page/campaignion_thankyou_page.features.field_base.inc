@@ -10,14 +10,13 @@
 function campaignion_thankyou_page_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_thank_you_pages'
+  // Exported field_base: 'field_thank_you_pages'.
   $field_bases['field_thank_you_pages'] = array(
     'active' => 1,
     'cardinality' => 2,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_thank_you_pages',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(),
     'locked' => 0,
@@ -41,14 +40,13 @@ function campaignion_thankyou_page_field_default_field_bases() {
     'type' => 'reference_or_redirect',
   );
 
-  // Exported field_base: 'share_light'
+  // Exported field_base: 'share_light'.
   $field_bases['share_light'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'share_light',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(),
     'locked' => 0,

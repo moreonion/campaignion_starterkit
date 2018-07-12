@@ -93,7 +93,7 @@ function campaignion_thankyou_page_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -102,7 +102,7 @@ function campaignion_thankyou_page_strongarm() {
           'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'language' => array(
           'weight' => '0',
