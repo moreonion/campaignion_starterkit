@@ -10,7 +10,7 @@
 function campaignion_thankyou_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-thank_you_page-body'
+  // Exported field_instance: 'node-thank_you_page-body'.
   $field_instances['node-thank_you_page-body'] = array(
     'bundle' => 'thank_you_page',
     'default_value' => NULL,
@@ -62,7 +62,60 @@ function campaignion_thankyou_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-thank_you_page-field_main_image'
+  // Exported field_instance: 'node-thank_you_page-campaignion_overlay_options'.
+  $field_instances['node-thank_you_page-campaignion_overlay_options'] = array(
+    'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'campaignion_overlay_options',
+    'label' => 'Overlay options',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-thank_you_page-field_main_image'.
   $field_instances['node-thank_you_page-field_main_image'] = array(
     'bundle' => 'thank_you_page',
     'deleted' => 0,
@@ -140,7 +193,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-thank_you_page-field_reference_to_campaign'
+  // Exported field_instance: 'node-thank_you_page-field_reference_to_campaign'.
   $field_instances['node-thank_you_page-field_reference_to_campaign'] = array(
     'bundle' => 'thank_you_page',
     'custom_add_another' => '',
@@ -186,7 +239,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-thank_you_page-share_light'
+  // Exported field_instance: 'node-thank_you_page-share_light'.
   $field_instances['node-thank_you_page-share_light'] = array(
     'bundle' => 'thank_you_page',
     'custom_add_another' => '',
@@ -270,6 +323,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
   t('Add a large main image or a main video to your thank you page');
   t('Body');
   t('Large image or video');
+  t('Overlay options');
   t('Related campaign');
   t('Set the share options for this page.');
   t('Share options');
