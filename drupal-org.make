@@ -181,7 +181,7 @@ projects[token_filter][version] = 1.1
 
 projects[ultimate_cron][version] = 2.7
 
-projects[uuid][version] = 1.0
+projects[uuid][version] = 1.1
 
 projects[uuid_features][version] = 1.0-rc1
 
