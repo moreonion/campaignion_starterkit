@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.15
+projects[campaignion][version] = 1.16
 
 projects[cck_blocks][version] = 1.1
 
@@ -89,7 +89,7 @@ projects[mailsystem][version] = 2.34
 
 projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.21
+projects[media][version] = 2.19
 
 projects[media_vimeo][version] = 2.1
 
@@ -102,7 +102,7 @@ projects[metatag][version] = 1.25
 projects[mimemail][version] = 1.0
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
 
-projects[modernizr][version] = 3.10
+projects[modernizr][version] = 3.11
 
 projects[morelesszen][version] = 1.6
 
@@ -120,6 +120,8 @@ projects[password_toggle][version] = 1.0
 projects[pathauto][version] = 1.3
 
 projects[payment][version] = 1.17
+; Allow duplicate payment status items. https://www.drupal.org/project/payment/issues/2973842
+projects[payment][patch][] = https://www.drupal.org/files/issues/2018-05-19/payment-2973842-allow-duplicate-statuses-4.patch
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -131,7 +133,7 @@ projects[paymill_payment][version] = 1.0-beta9
 
 projects[payone_payment][version] = 1.0
 
-projects[paypal_payment][version] = 1.3
+projects[paypal_payment][version] = 1.4
 
 projects[pgbar][version] = 2.0
 
@@ -162,10 +164,12 @@ projects[select_or_other][version] = 2.23
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 ; Fix 'Undefined index …' notices - https://www.drupal.org/node/2560385
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2560385-select_or_other-defaults-in-hook_element_info-1.patch
+; Fix values not replaced for unselected radios. - https://www.drupal.org/project/select_or_other/issues/2980184
+projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06-18/select_or_other-always-replace-value-2980184-2.patch
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 1.6
+projects[share_light][version] = 1.7
 
 projects[stripe_payment][version] = 1.0
 
@@ -219,7 +223,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.0-beta3
+projects[webform_tracking][version] = 2.0
 
 projects[webform_validation][version] = 1.14
 
