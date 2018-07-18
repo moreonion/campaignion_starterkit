@@ -53,7 +53,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.21
+projects[file_entity][version] = 2.22
 
 projects[form_builder][version] = 1.22
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -65,7 +65,7 @@ projects[honeypot][version] = 1.24
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.24
+projects[i18n][version] = 1.25
 
 projects[imagefield_crop][version] = 1.1
 
@@ -85,7 +85,7 @@ projects[little_helpers][version] = 1.7
 
 projects[logintoboggan][version] = 1.5
 
-projects[mailsystem][version] = 2.34
+projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.1
 
@@ -179,7 +179,7 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.7
+projects[ultimate_cron][version] = 2.8
 
 projects[uuid][version] = 1.1
 
@@ -217,7 +217,7 @@ projects[webform_prefill][version] = 1.0-rc2
 
 projects[webform_steps][version] = 2.1
 
-projects[webform_submission_uuid][version] = 1.0-rc2
+projects[webform_submission_uuid][version] = 1.0
 
 projects[webform_template][version] = 4.0
 
