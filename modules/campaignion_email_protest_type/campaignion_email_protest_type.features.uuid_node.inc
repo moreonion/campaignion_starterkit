@@ -134,7 +134,6 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'from_address' => 'default',
         'template' => '<p>Hi [submission:values:first_name],</p>
 <p>Thank you for supporting us!</p>
-<p>Remember: sharing is caring :-)</p>
 <p>Have a great day!<br>
 	Your Supporter Service Team</p>
 ',
