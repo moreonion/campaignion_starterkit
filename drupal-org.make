@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.16
+projects[campaignion][version] = 1.17
 
 projects[cck_blocks][version] = 1.1
 
@@ -61,11 +61,11 @@ projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_b
 
 projects[geoip_language_redirect][version] = 2.1
 
-projects[honeypot][version] = 1.24
+projects[honeypot][version] = 1.25
 
 projects[ife][version] = 2.0-alpha2
 
-projects[i18n][version] = 1.25
+projects[i18n][version] = 1.26
 
 projects[imagefield_crop][version] = 1.1
 
@@ -89,7 +89,7 @@ projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.1
 
-projects[media][version] = 2.19
+projects[media][version] = 2.20
 
 projects[media_vimeo][version] = 2.1
 
@@ -104,7 +104,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.6
+projects[morelesszen][version] = 1.7
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -135,7 +135,7 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.4
 
-projects[pgbar][version] = 2.0
+projects[pgbar][version] = 2.1
 
 projects[polling][version] = 1.0-beta1
 
@@ -159,7 +159,7 @@ projects[sagepay_payment][version] = 1.6
 
 projects[select2][version] = 1.0
 
-projects[select_or_other][version] = 2.23
+projects[select_or_other][version] = 2.24
 ; make JS hide/show functionality configurable per component - https://www.drupal.org/node/2343535
 projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2343535-provide-opt-out-possibility-for-JS-hide-show.patch
 ; Fix 'Undefined index …' notices - https://www.drupal.org/node/2560385
@@ -181,7 +181,7 @@ projects[token_filter][version] = 1.1
 
 projects[ultimate_cron][version] = 2.8
 
-projects[uuid][version] = 1.1
+projects[uuid][version] = 1.2
 
 projects[uuid_features][version] = 1.0-rc1
 
@@ -223,7 +223,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.0
+projects[webform_tracking][version] = 2.1
 
 projects[webform_validation][version] = 1.14
 
@@ -234,11 +234,11 @@ projects[wysiwyg][version] = 2.5
 
 projects[xautoload][version] = 5.7
 
-projects[xmlsitemap][version] = 2.3
+projects[xmlsitemap][version] = 2.4
 
 projects[ae_admin][version] = 1.0-beta5
 
-projects[simplicity][version] = 1.5
+projects[simplicity][version] = 1.6
 
 projects[tao][version] = 3.1
 
@@ -261,7 +261,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.4.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v6.4.1.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v6.7.2.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
