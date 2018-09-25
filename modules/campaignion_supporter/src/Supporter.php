@@ -121,7 +121,7 @@ class Supporter implements ContactTypeInterface {
         $map['SALUTATION'] = new MappedWrapperField('field_salutation', $salutation_map, FALSE);
         $map['TITLE'] = new WrapperField('field_title');
         $map['GENDER'] = new WrapperField('field_gender');
-        $map['DOB'] = new DateField('field_date_of_birth', '%Y-%m-%d');
+        $map['DOB'] = new DateField('field_date_of_birth', '%d/%m/%Y');
         $map['STREET'] = new KeyedField('field_address', 'thoroughfare');
         $map['STREET2'] = new KeyedField('field_address', 'premise');
         $map['COUNTRY'] = new KeyedField('field_address', 'country');
@@ -129,8 +129,8 @@ class Supporter implements ContactTypeInterface {
         $map['CITY'] = new KeyedField('field_address', 'locality');
         $map['REGION'] = new KeyedField('field_address', 'administrative_area');
         $map['LANGUAGE'] = new WrapperField('field_preferred_language');
-        $map['CREATED'] = new DateField('created', '%Y-%m-%d');
-        $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
+        $map['CREATED'] = new DateField('created', '%d/%m/%Y');
+        $map['UPDATED'] = new DateField('updated', '%d/%m/%Y');
         $map['SOURCE'] = new TagField('source_tag');
         $map['TAGS'] = new TagsField('supporter_tags', TRUE);
         $map['PHONEOPT'] = new BooleanField('field_opt_in_phone');
