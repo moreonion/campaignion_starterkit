@@ -15,6 +15,7 @@ dependencies[] = field_reference_or_redirect
 dependencies[] = file
 dependencies[] = form_builder_webform
 dependencies[] = image
+dependencies[] = manual_direct_debit
 dependencies[] = media
 dependencies[] = node_reference
 dependencies[] = opengraph_meta_upload
