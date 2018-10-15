@@ -370,10 +370,11 @@ function campaignion_flexible_form_field_default_field_instances() {
             'offset' => 0,
             'target' => array(
               0 => 500,
-              1 => 2000,
+              1 => 1000,
               2 => 5000,
               3 => 10000,
-              4 => 20000,
+              4 => 25000,
+              5 => 50000,
             ),
             'threshold' => 90,
           ),
