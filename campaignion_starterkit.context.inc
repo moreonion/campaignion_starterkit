@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_starterkit.context.inc
@@ -9,7 +10,7 @@
  */
 function campaignion_starterkit_context_default_contexts() {
   $export = array();
-  
+
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
@@ -17,9 +18,9 @@ function campaignion_starterkit_context_default_contexts() {
   $context->description = '';
   $context->tag = 'path triggered';
   $context->conditions['path']['values']['<front>'] = '<front>';
-  $context->reactions['block']['blocks']['views-actions-block'] = array(
+  $context->reactions['block']['blocks']['views-actions_promoted-block'] = array(
     'module' => 'views',
-    'delta' => 'actions-block',
+    'delta' => 'actions_promoted-block',
     'region' => 'content',
     'weight' => '-10',
   );
