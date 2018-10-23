@@ -99,7 +99,7 @@ projects[menu_block][version] = 2.7
 
 projects[metatag][version] = 1.25
 
-projects[mimemail][version] = 1.0
+projects[mimemail][version] = 1.1
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
 
 projects[modernizr][version] = 3.11
@@ -139,7 +139,7 @@ projects[pgbar][version] = 2.1
 
 projects[polling][version] = 1.0-beta1
 
-projects[postal_code_validation][version] = 1.6
+projects[postal_code_validation][version] = 1.7
 
 projects[postcode][version] = 1.0
 
