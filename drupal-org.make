@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.2
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.17
+projects[campaignion][version] = 1.18
 
 projects[cck_blocks][version] = 1.1
 
@@ -55,7 +55,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.22
 
-projects[form_builder][version] = 1.22
+projects[form_builder][version] = 2.0-alpha1
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -79,7 +79,7 @@ projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-f
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
 projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip-out-hook-requirements-5.patch
 
-projects[libraries][version] = 2.3
+projects[libraries][version] = 2.5
 
 projects[little_helpers][version] = 1.7
 
@@ -87,7 +87,7 @@ projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.35
 
-projects[manual_direct_debit][version] = 1.1
+projects[manual_direct_debit][version] = 1.2
 
 projects[media][version] = 2.20
 
@@ -189,7 +189,7 @@ projects[variable][version] = 2.5
 
 projects[views][version] = 3.20
 
-projects[webform][version] = 4.17
+projects[webform][version] = 4.18
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -213,7 +213,7 @@ projects[webform_custom_buttons][version] = 1.0-alpha3
 
 projects[webform_paymethod_select][version] = 1.15
 
-projects[webform_prefill][version] = 1.0-rc2
+projects[webform_prefill][version] = 1.0
 
 projects[webform_steps][version] = 2.1
 
@@ -225,7 +225,7 @@ projects[webform_tokens][version] = 4.0
 
 projects[webform_tracking][version] = 2.1
 
-projects[webform_validation][version] = 1.14
+projects[webform_validation][version] = 1.15
 
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
@@ -234,9 +234,9 @@ projects[wysiwyg][version] = 2.5
 
 projects[xautoload][version] = 5.7
 
-projects[xmlsitemap][version] = 2.4
+projects[xmlsitemap][version] = 2.6
 
-projects[ae_admin][version] = 1.0-beta5
+projects[ae_admin][version] = 1.0-beta7
 
 projects[simplicity][version] = 1.6
 

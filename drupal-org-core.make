@@ -22,3 +22,5 @@ projects[drupal][patch][] = https://drupal.org/files/issues/form-item-add-wrappe
 projects[drupal][patch][] = https://www.drupal.org/files/issues/1891356-drupal_static_reset-on-module-changes-30-D7.patch
 ; Avoid duplicate form-submissions in non-ajax forms. - https://www.drupal.org/node/1705618
 projects[drupal][patch][] = https://www.drupal.org/files/issues/form-single-submit-1705618-124.patch
+; Fix notices for cron.php access denied in maintenance mode. - https://www.drupal.org/project/drupal/issues/3007538
+projects[drupal][patch][] = https://www.drupal.org/files/issues/2018-10-18/3007538-dont-render-integers-2.patch
