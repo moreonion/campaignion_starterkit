@@ -109,6 +109,7 @@ class Supporter implements ContactTypeInterface {
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
         $map['source'] = new TagField('source_tag');
+        $map['campaign'] = new TagField('campaign_tag');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         $map['phoneopt'] = new BooleanField('field_opt_in_phone');
         $map['postopt'] = new BooleanField('field_opt_in_post');
@@ -132,6 +133,7 @@ class Supporter implements ContactTypeInterface {
         $map['CREATED'] = new DateField('created', '%Y-%m-%d');
         $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
         $map['SOURCE'] = new TagField('source_tag');
+        $map['CAMPAIGN'] = new TagField('campaign_tag');
         $map['TAGS'] = new TagsField('supporter_tags', TRUE);
         $map['PHONEOPT'] = new BooleanField('field_opt_in_phone');
         $map['POSTOPT'] = new BooleanField('field_opt_in_post');
@@ -176,6 +178,7 @@ class Supporter implements ContactTypeInterface {
         $map['field_phone_number']           = new WrapperField('field_phone_number');
         $map['field_social_network_links']   = new WrapperField('field_social_network_links');
         $map['source_tag']                   = new TagField('source_tag');
+        $map['campaign_tag']                 = new TagField('campaign_tag');
         $map['supporter_tags']               = new TagsField('supporter_tags');
         $map['field_preferred_language']     = new WrapperField('field_preferred_language');
         $map['field_opt_in_phone']           = new BooleanField('field_opt_in_phone');
@@ -206,6 +209,7 @@ class Supporter implements ContactTypeInterface {
         $map['field_phone_number']           = $labels->fromExporter(new WrapperField('field_phone_number'));
         $map['field_social_network_links']   = $labels->fromExporter(new WrapperField('field_social_network_links'));
         $map['source_tag']                   = $labels->fromExporter(new TagField('source_tag'));
+        $map['campaign_tag']                 = $labels->fromExporter(new TagField('campaign_tag'));
         $map['supporter_tags']               = $labels->fromExporter(new TagsField('supporter_tags'));
         $map['field_preferred_language']     = $labels->fromExporter(new WrapperField('field_preferred_language'));
         $map['field_opt_in_phone']           = $labels->fromExporter(new BooleanField('field_opt_in_phone'));
@@ -229,6 +233,7 @@ class Supporter implements ContactTypeInterface {
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
         $map['source'] = new TagField('source_tag');
+        $map['campaign'] = new TagField('campaign_tag');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         $map['phoneopt'] = new BooleanField('field_opt_in_phone');
         $map['postopt'] = new BooleanField('field_opt_in_post');
@@ -249,6 +254,7 @@ class Supporter implements ContactTypeInterface {
         $map['county'] = new KeyedField('field_address', 'administrative_area');
         $map['phone'] = new WrapperField('field_phone_number');
         $map['source'] = new TagField('source_tag');
+        $map['campaign'] = new TagField('campaign_tag');
         $map['tags'] = new TagsField('supporter_tags', TRUE);
         $map['phoneopt'] = new BooleanField('field_opt_in_phone');
         $map['postopt'] = new BooleanField('field_opt_in_post');
