@@ -1,17 +1,17 @@
 api = 2
 core = 7.x
 
-projects[addressfield][version] = 1.2
+projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 1.18
+projects[campaignion][version] = 2.0
 
 projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.46
 
-projects[context][version] = 3.7
+projects[context][version] = 3.8
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -35,13 +35,13 @@ projects[custom_add_another][version] = 1.0
 
 projects[date][version] = 2.10
 
-projects[diff][version] = 3.3
+projects[diff][version] = 3.4
 
 projects[entity][version] = 1.9
 
 projects[entityreference][version] = 1.5
 
-projects[features][version] = 2.10
+projects[features][version] = 2.11
 projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
 
 projects[field_collection][version] = 1.0-beta12
@@ -53,7 +53,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.22
+projects[file_entity][version] = 2.25
 
 projects[form_builder][version] = 2.0-alpha1
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -81,15 +81,15 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 1.7
+projects[little_helpers][version] = 2.0-alpha3
 
 projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.35
 
-projects[manual_direct_debit][version] = 1.2
+projects[manual_direct_debit][version] = 1.3
 
-projects[media][version] = 2.20
+projects[media][version] = 2.21
 
 projects[media_vimeo][version] = 2.1
 
@@ -104,7 +104,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.7
+projects[morelesszen][version] = 1.8
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -127,7 +127,7 @@ projects[payment_context][version] = 1.0-rc2
 
 projects[payment_controller_data][version] = 1.0-rc2
 
-projects[payment_forms][version] = 2.0
+projects[payment_forms][version] = 2.1
 
 projects[paymill_payment][version] = 1.0-beta9
 
@@ -169,7 +169,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 1.7
+projects[share_light][version] = 2.0-beta1
 
 projects[stripe_payment][version] = 1.0
 
@@ -211,7 +211,7 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 1.15
+projects[webform_paymethod_select][version] = 2.0-beta1
 
 projects[webform_prefill][version] = 1.0
 
@@ -236,9 +236,9 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.6
 
-projects[ae_admin][version] = 1.0-beta7
+projects[ae_admin][version] = 1.0-beta8
 
-projects[simplicity][version] = 1.6
+projects[simplicity][version] = 1.7
 
 projects[tao][version] = 3.1
 
@@ -249,7 +249,7 @@ libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
 
 ;libraries[jquery.formprefill][download][type] = file
-;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.1.0.tar.gz
+;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.11.0.tar.gz
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
@@ -258,7 +258,7 @@ libraries[paymill-php][download][type] = file
 libraries[paymill-php][download][url] = https://github.com/paymill/paymill-php/archive/v4.4.2.tar.gz
 
 libraries[select2][download][type] = file
-libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.4.tar.gz
+libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.5.tar.gz
 
 libraries[stripe-php][download][type] = file
 libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v6.7.2.tar.gz
