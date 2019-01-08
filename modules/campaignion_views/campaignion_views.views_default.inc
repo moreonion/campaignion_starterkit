@@ -59,6 +59,7 @@ function campaignion_views_views_default_views() {
     'donation' => 'donation',
     'email_protest' => 'email_protest',
     'email_to_target' => 'email_to_target',
+    'webform' => 'webform',
     'petition' => 'petition',
   );
   /* Filter criterion: Content: Language */
@@ -155,6 +156,7 @@ function campaignion_views_views_default_views() {
     'donation' => 'donation',
     'email_protest' => 'email_protest',
     'email_to_target' => 'email_to_target',
+    'webform' => 'webform',
     'petition' => 'petition',
   );
   /* Filter criterion: Content: Promoted to front page */
