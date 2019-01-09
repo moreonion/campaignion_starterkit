@@ -128,6 +128,11 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* Relationship: Webform: Node */
+  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['table'] = 'webform';
+  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['required'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -147,17 +152,6 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'donation' => 'donation',
-    'email_protest' => 'email_protest',
-    'email_to_target' => 'email_to_target',
-    'webform' => 'webform',
-    'petition' => 'petition',
-  );
   /* Filter criterion: Content: Promoted to front page */
   $handler->display->display_options['filters']['promote']['id'] = 'promote';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
