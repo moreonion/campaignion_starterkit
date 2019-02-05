@@ -144,7 +144,7 @@ projects[polling][version] = 1.0-beta1
 
 projects[postal_code_validation][version] = 1.7
 
-projects[postcode][version] = 1.0
+projects[postcode][version] = 1.1
 
 projects[psr0][version] = 1.4
 
