@@ -15,9 +15,7 @@ projects[context][version] = 3.9
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
-projects[context][patch][] = https://drupal.org/files/issues/1421104-context_condition_context-fix-resolution-20.patch
-; Fix: Race condition in ctools_object_cache_set()
-projects[context][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_object_cache_set-transaction.patch
+projects[context][patch][] = https://www.drupal.org/files/issues/1421104-context_condition_context-fix-resolution-20.patch
 
 projects[context_entity_field][version] = 1.1
 ; Allow filtering by view-mode. - https://drupal.org/node/2022197
@@ -30,6 +28,9 @@ projects[context_get][version] = 1.2
 projects[ctools][version] = 1.14
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
+; Fix: Race condition in ctools_object_cache_set()
+projects[ctools][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_object_cache_set-transaction.patch
+
 
 projects[currency][version] = 2.6
 
