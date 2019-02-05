@@ -5,17 +5,19 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.0
+projects[campaignion][version] = 2.1
 
 projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.46
 
-projects[context][version] = 3.8
+projects[context][version] = 3.9
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
 projects[context][patch][] = https://drupal.org/files/issues/1421104-context_condition_context-fix-resolution-20.patch
+; Fix: Race condition in ctools_object_cache_set()
+projects[context][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_object_cache_set-transaction.patch
 
 projects[context_entity_field][version] = 1.1
 ; Allow filtering by view-mode. - https://drupal.org/node/2022197
@@ -44,7 +46,7 @@ projects[entityreference][version] = 1.5
 projects[features][version] = 2.11
 projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
 
-projects[field_collection][version] = 1.0-beta12
+projects[field_collection][version] = 1.0-beta13
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
@@ -55,7 +57,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.25
 
-projects[form_builder][version] = 2.0-alpha1
+projects[form_builder][version] = 2.0-alpha3
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -81,7 +83,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha3
+projects[little_helpers][version] = 2.0-alpha4
 
 projects[logintoboggan][version] = 1.5
 
@@ -95,7 +97,7 @@ projects[media_vimeo][version] = 2.1
 
 projects[media_youtube][version] = 3.7
 
-projects[menu_block][version] = 2.7
+projects[menu_block][version] = 2.8
 
 projects[metatag][version] = 1.25
 
@@ -104,7 +106,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.8
+projects[morelesszen][version] = 1.9
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -135,7 +137,7 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.4
 
-projects[pgbar][version] = 2.1
+projects[pgbar][version] = 2.2
 
 projects[polling][version] = 1.0-beta1
 
@@ -189,7 +191,7 @@ projects[variable][version] = 2.5
 
 projects[views][version] = 3.20
 
-projects[webform][version] = 4.18
+projects[webform][version] = 4.19
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -211,7 +213,7 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 2.0-beta1
+projects[webform_paymethod_select][version] = 2.0-beta2
 
 projects[webform_prefill][version] = 1.0
 
@@ -223,7 +225,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.1
+projects[webform_tracking][version] = 2.2
 
 projects[webform_validation][version] = 1.15
 
@@ -238,7 +240,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta8
 
-projects[simplicity][version] = 1.7
+projects[simplicity][version] = 1.8
 
 projects[tao][version] = 3.1
 
