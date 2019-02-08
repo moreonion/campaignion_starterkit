@@ -148,7 +148,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       1 => array(
         'nid' => 8,
         'eid' => 1,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -167,7 +167,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       2 => array(
         'nid' => 8,
         'eid' => 2,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -186,7 +186,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       3 => array(
         'nid' => 8,
         'eid' => 3,
-        'email' => 'default',
+        'email' => 'you@example.com',
         'subject' => 'New submission!',
         'from_name' => 'default',
         'from_address' => 'default',

@@ -139,7 +139,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       1 => array(
         'nid' => 4,
         'eid' => 1,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -167,7 +167,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       2 => array(
         'nid' => 4,
         'eid' => 2,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
