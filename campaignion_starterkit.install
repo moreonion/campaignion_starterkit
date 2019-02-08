@@ -51,7 +51,7 @@ function _campaignion_starterkit_frontpage() {
   $node = (object) array(
     'title' => 'Let\'s change the world!',
     'type' => 'static_page',
-    'comment' => '1',
+    'comment' => 0,
   );
   node_object_prepare($node);
   node_save($node);

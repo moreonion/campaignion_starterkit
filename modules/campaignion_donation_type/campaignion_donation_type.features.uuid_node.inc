@@ -15,7 +15,7 @@ function campaignion_donation_type_uuid_features_default_content() {
   'title' => 'Default Donation Form',
   'log' => '',
   'status' => 0,
-  'comment' => 1,
+  'comment' => 0,
   'promote' => 0,
   'sticky' => 0,
   'type' => 'donation',

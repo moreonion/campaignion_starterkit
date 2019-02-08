@@ -14,7 +14,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'title' => 'Default Petition Form',
   'log' => '',
   'status' => 0,
-  'comment' => 1,
+  'comment' => 0,
   'promote' => 0,
   'sticky' => 0,
   'type' => 'petition',
