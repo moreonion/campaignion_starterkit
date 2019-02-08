@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_email_to_target_type.features.uuid_node.inc
@@ -36,6 +37,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       0 => array(
         'users_may_edit' => 1,
         'dataset_name' => 'mp',
+        'selection_mode' => 'one_or_more',
       ),
     ),
   ),
@@ -468,8 +470,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     'conditionals' => array(),
   ),
   'pathauto_perform_alias' => FALSE,
-  'date' => '2012-07-23 14:07:46 +0000',
-  'user_uuid' => '5496ee5b-e1f9-4d9d-a18d-be08be5cd553',
+  'date' => '2012-07-23 16:07:46 +0200',
+  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
 );
   return $nodes;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_email_protest_type.features.uuid_node.inc
@@ -42,6 +43,7 @@ function campaignion_email_protest_type_uuid_features_default_content() {
   ),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -189,7 +191,6 @@ function campaignion_email_protest_type_uuid_features_default_content() {
     ),
     'components' => array(
       1 => array(
-        'nid' => 2,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -217,10 +218,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 1,
-        'page_num' => 1,
       ),
       2 => array(
-        'nid' => 2,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -248,10 +247,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 2,
-        'page_num' => 1,
       ),
       3 => array(
-        'nid' => 2,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -277,10 +274,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 3,
-        'page_num' => 1,
       ),
       9 => array(
-        'nid' => 2,
         'cid' => 9,
         'pid' => 0,
         'form_key' => 'message',
@@ -294,10 +289,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 0,
         'weight' => 4,
-        'page_num' => 2,
       ),
       4 => array(
-        'nid' => 2,
         'cid' => 4,
         'pid' => 0,
         'form_key' => 'your_message',
@@ -317,10 +310,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 0,
         'weight' => 5,
-        'page_num' => 2,
       ),
       5 => array(
-        'nid' => 2,
         'cid' => 5,
         'pid' => 4,
         'form_key' => 'email_protest_target',
@@ -342,10 +333,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         'required' => 0,
         'weight' => 6,
         'mandatory' => 0,
-        'page_num' => 2,
       ),
       6 => array(
-        'nid' => 2,
         'cid' => 6,
         'pid' => 4,
         'form_key' => 'email_subject',
@@ -373,10 +362,8 @@ function campaignion_email_protest_type_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 7,
-        'page_num' => 2,
       ),
       7 => array(
-        'nid' => 2,
         'cid' => 7,
         'pid' => 4,
         'form_key' => 'email_body',
@@ -406,12 +393,11 @@ Best wishes,
         ),
         'required' => 1,
         'weight' => 8,
-        'page_num' => 2,
       ),
     ),
     'conditionals' => array(),
   ),
-  'date' => '2013-03-27 18:20:39 +0000',
+  'date' => '2013-03-27 19:20:39 +0100',
   'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
 );
   return $nodes;

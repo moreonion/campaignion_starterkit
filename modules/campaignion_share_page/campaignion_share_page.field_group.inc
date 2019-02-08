@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_share_page.field_group.inc
@@ -8,7 +9,7 @@
  * Implements hook_field_group_info().
  */
 function campaignion_share_page_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +38,7 @@ function campaignion_share_page_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_advanced_settings|node|share_page|form'] = $field_group;
+  $field_groups['group_advanced_settings|node|share_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,7 +67,7 @@ function campaignion_share_page_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_content|node|share_page|form'] = $field_group;
+  $field_groups['group_content|node|share_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -94,7 +95,7 @@ function campaignion_share_page_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_share_block|node|share_page|form'] = $field_group;
+  $field_groups['group_share_block|node|share_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +123,14 @@ function campaignion_share_page_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_share|node|share_page|form'] = $field_group;
+  $field_groups['group_share|node|share_page|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Advanced settings');
+  t('Content');
+  t('Share block');
+  t('Share options');
+
+  return $field_groups;
 }

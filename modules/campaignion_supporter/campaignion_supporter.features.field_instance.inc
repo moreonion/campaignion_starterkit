@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_supporter.features.field_instance.inc
@@ -102,6 +103,7 @@ function campaignion_supporter_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
+        'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
           'address-optional' => 'address-optional',
@@ -708,7 +710,6 @@ function campaignion_supporter_field_default_field_instances() {
   t('Address');
   t('Campaign tag');
   t('Date of birth');
-  t('Direct Mail Newsletter');
   t('Email');
   t('Gender');
   t('IP-Adress');
@@ -717,7 +718,6 @@ function campaignion_supporter_field_default_field_instances() {
   t('Postal opt-in');
   t('Preferred language');
   t('Salutation');
-  t('Set this if the contact wants to receive direct mails');
   t('Social Network Links');
   t('Source tag');
   t('Tags');

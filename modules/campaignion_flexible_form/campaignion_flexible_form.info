@@ -6,6 +6,7 @@ dependencies[] = campaignion_action
 dependencies[] = campaignion_campaign
 dependencies[] = campaignion_static_page
 dependencies[] = campaignion_supporter
+dependencies[] = campaignion_supporter_tags
 dependencies[] = campaignion_thankyou_page
 dependencies[] = campaignion_wizard
 dependencies[] = ctools

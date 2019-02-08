@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_news.features.field_base.inc

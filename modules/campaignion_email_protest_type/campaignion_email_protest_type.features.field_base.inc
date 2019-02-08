@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_email_protest_type.features.field_base.inc

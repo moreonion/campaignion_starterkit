@@ -6,6 +6,7 @@ project = campaignion_starterkit
 dependencies[] = campaignion_action
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_supporter
+dependencies[] = campaignion_supporter_tags
 dependencies[] = campaignion_wizard
 dependencies[] = ctools
 dependencies[] = features

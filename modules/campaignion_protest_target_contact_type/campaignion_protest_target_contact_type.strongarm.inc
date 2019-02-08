@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_protest_target_contact_type.strongarm.inc

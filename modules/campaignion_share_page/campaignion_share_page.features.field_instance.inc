@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_share_page.features.field_instance.inc
@@ -10,7 +11,7 @@
 function campaignion_share_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-share_page-body'
+  // Exported field_instance: 'node-share_page-body'.
   $field_instances['node-share_page-body'] = array(
     'bundle' => 'share_page',
     'default_value' => NULL,
@@ -62,7 +63,7 @@ function campaignion_share_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-share_page-field_main_image'
+  // Exported field_instance: 'node-share_page-field_main_image'.
   $field_instances['node-share_page-field_main_image'] = array(
     'bundle' => 'share_page',
     'deleted' => 0,
@@ -140,7 +141,7 @@ function campaignion_share_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-share_page-field_reference_to_campaign'
+  // Exported field_instance: 'node-share_page-field_reference_to_campaign'.
   $field_instances['node-share_page-field_reference_to_campaign'] = array(
     'bundle' => 'share_page',
     'custom_add_another' => '',
@@ -186,7 +187,7 @@ function campaignion_share_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-share_page-share_light'
+  // Exported field_instance: 'node-share_page-share_light'.
   $field_instances['node-share_page-share_light'] = array(
     'bundle' => 'share_page',
     'custom_add_another' => '',

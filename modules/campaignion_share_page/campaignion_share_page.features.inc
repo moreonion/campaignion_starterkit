@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_share_page.features.inc
@@ -33,5 +34,6 @@ function campaignion_share_page_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

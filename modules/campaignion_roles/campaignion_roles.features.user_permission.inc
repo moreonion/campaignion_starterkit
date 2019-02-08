@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_roles.features.user_permission.inc
@@ -1374,7 +1375,9 @@ function campaignion_roles_user_default_permissions() {
   // Exported permission: 'edit webform components'.
   $permissions['edit webform components'] = array(
     'name' => 'edit webform components',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'webform',
   );
 

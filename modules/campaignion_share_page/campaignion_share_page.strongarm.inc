@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_share_page.strongarm.inc
@@ -48,16 +49,16 @@ function campaignion_share_page_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_share_page';
-  $strongarm->value = 1;
-  $export['comment_subject_field_share_page'] = $strongarm;
+  $strongarm->name = 'comment_share_page';
+  $strongarm->value = '1';
+  $export['comment_share_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_share_page';
-  $strongarm->value = '1';
-  $export['comment_share_page'] = $strongarm;
+  $strongarm->name = 'comment_subject_field_share_page';
+  $strongarm->value = 1;
+  $export['comment_subject_field_share_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

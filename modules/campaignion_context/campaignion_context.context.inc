@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_context.context.inc
@@ -289,7 +290,7 @@ function campaignion_context_context_default_contexts() {
     ),
   );
   $context->condition_mode = 1;
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Default context for region sidebar_second');
