@@ -87,16 +87,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'media',
   );
 
-  // Exported permission: 'access non-public campaign page'.
-  $permissions['access non-public campaign page'] = array(
-    'name' => 'access non-public campaign page',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'campaignion_campaign',
-  );
-
   // Exported permission: 'access own webform results'.
   $permissions['access own webform results'] = array(
     'name' => 'access own webform results',
@@ -592,43 +582,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'context_ui',
   );
 
-  // Exported permission: 'create campaign content'.
-  $permissions['create campaign content'] = array(
-    'name' => 'create campaign content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create donation content'.
-  $permissions['create donation content'] = array(
-    'name' => 'create donation content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create email_protest content'.
-  $permissions['create email_protest content'] = array(
-    'name' => 'create email_protest content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create email_to_target content'.
-  $permissions['create email_to_target content'] = array(
-    'name' => 'create email_to_target content',
-    'roles' => array(),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
@@ -639,46 +592,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'create news content'.
-  $permissions['create news content'] = array(
-    'name' => 'create news content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create petition content'.
-  $permissions['create petition content'] = array(
-    'name' => 'create petition content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create static_page content'.
-  $permissions['create static_page content'] = array(
-    'name' => 'create static_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create thank_you_page content'.
-  $permissions['create thank_you_page content'] = array(
-    'name' => 'create thank_you_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'create url aliases'.
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
@@ -687,37 +600,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'path',
-  );
-
-  // Exported permission: 'create webform content'.
-  $permissions['create webform content'] = array(
-    'name' => 'create webform content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'currency.currency.administer'.
-  $permissions['currency.currency.administer'] = array(
-    'name' => 'currency.currency.administer',
-    'roles' => array(),
-    'module' => 'currency',
-  );
-
-  // Exported permission: 'currency.currency_exchanger.administer'.
-  $permissions['currency.currency_exchanger.administer'] = array(
-    'name' => 'currency.currency_exchanger.administer',
-    'roles' => array(),
-    'module' => 'currency',
-  );
-
-  // Exported permission: 'currency.currency_locale_pattern.administer'.
-  $permissions['currency.currency_locale_pattern.administer'] = array(
-    'name' => 'currency.currency_locale_pattern.administer',
-    'roles' => array(),
-    'module' => 'currency',
   );
 
   // Exported permission: 'delete all webform submissions'.
@@ -738,15 +620,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete any campaign content'.
-  $permissions['delete any campaign content'] = array(
-    'name' => 'delete any campaign content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any document files'.
   $permissions['delete any document files'] = array(
     'name' => 'delete any document files',
@@ -754,31 +627,6 @@ function campaignion_roles_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete any donation content'.
-  $permissions['delete any donation content'] = array(
-    'name' => 'delete any donation content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any email_protest content'.
-  $permissions['delete any email_protest content'] = array(
-    'name' => 'delete any email_protest content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any email_to_target content'.
-  $permissions['delete any email_to_target content'] = array(
-    'name' => 'delete any email_to_target content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete any image files'.
@@ -790,42 +638,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete any news content'.
-  $permissions['delete any news content'] = array(
-    'name' => 'delete any news content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any petition content'.
-  $permissions['delete any petition content'] = array(
-    'name' => 'delete any petition content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any static_page content'.
-  $permissions['delete any static_page content'] = array(
-    'name' => 'delete any static_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any thank_you_page content'.
-  $permissions['delete any thank_you_page content'] = array(
-    'name' => 'delete any thank_you_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete any video files'.
   $permissions['delete any video files'] = array(
     'name' => 'delete any video files',
@@ -833,15 +645,6 @@ function campaignion_roles_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete any webform content'.
-  $permissions['delete any webform content'] = array(
-    'name' => 'delete any webform content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete own audio files'.
@@ -853,16 +656,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete own campaign content'.
-  $permissions['delete own campaign content'] = array(
-    'name' => 'delete own campaign content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own document files'.
   $permissions['delete own document files'] = array(
     'name' => 'delete own document files',
@@ -870,33 +663,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own donation content'.
-  $permissions['delete own donation content'] = array(
-    'name' => 'delete own donation content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own email_protest content'.
-  $permissions['delete own email_protest content'] = array(
-    'name' => 'delete own email_protest content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own email_to_target content'.
-  $permissions['delete own email_to_target content'] = array(
-    'name' => 'delete own email_to_target content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete own image files'.
@@ -908,46 +674,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'delete own news content'.
-  $permissions['delete own news content'] = array(
-    'name' => 'delete own news content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own petition content'.
-  $permissions['delete own petition content'] = array(
-    'name' => 'delete own petition content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own static_page content'.
-  $permissions['delete own static_page content'] = array(
-    'name' => 'delete own static_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own thank_you_page content'.
-  $permissions['delete own thank_you_page content'] = array(
-    'name' => 'delete own thank_you_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'delete own video files'.
   $permissions['delete own video files'] = array(
     'name' => 'delete own video files',
@@ -955,16 +681,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'delete own webform content'.
-  $permissions['delete own webform content'] = array(
-    'name' => 'delete own webform content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'delete own webform submissions'.
@@ -1092,15 +808,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit any campaign content'.
-  $permissions['edit any campaign content'] = array(
-    'name' => 'edit any campaign content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any document files'.
   $permissions['edit any document files'] = array(
     'name' => 'edit any document files',
@@ -1108,31 +815,6 @@ function campaignion_roles_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any donation content'.
-  $permissions['edit any donation content'] = array(
-    'name' => 'edit any donation content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any email_protest content'.
-  $permissions['edit any email_protest content'] = array(
-    'name' => 'edit any email_protest content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any email_to_target content'.
-  $permissions['edit any email_to_target content'] = array(
-    'name' => 'edit any email_to_target content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit any image files'.
@@ -1144,42 +826,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit any news content'.
-  $permissions['edit any news content'] = array(
-    'name' => 'edit any news content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any petition content'.
-  $permissions['edit any petition content'] = array(
-    'name' => 'edit any petition content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any static_page content'.
-  $permissions['edit any static_page content'] = array(
-    'name' => 'edit any static_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any thank_you_page content'.
-  $permissions['edit any thank_you_page content'] = array(
-    'name' => 'edit any thank_you_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit any video files'.
   $permissions['edit any video files'] = array(
     'name' => 'edit any video files',
@@ -1187,15 +833,6 @@ function campaignion_roles_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit any webform content'.
-  $permissions['edit any webform content'] = array(
-    'name' => 'edit any webform content',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit meta tags'.
@@ -1223,16 +860,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit own campaign content'.
-  $permissions['edit own campaign content'] = array(
-    'name' => 'edit own campaign content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own document files'.
   $permissions['edit own document files'] = array(
     'name' => 'edit own document files',
@@ -1240,33 +867,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own donation content'.
-  $permissions['edit own donation content'] = array(
-    'name' => 'edit own donation content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own email_protest content'.
-  $permissions['edit own email_protest content'] = array(
-    'name' => 'edit own email_protest content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own email_to_target content'.
-  $permissions['edit own email_to_target content'] = array(
-    'name' => 'edit own email_to_target content',
-    'roles' => array(),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit own image files'.
@@ -1278,26 +878,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit own news content'.
-  $permissions['edit own news content'] = array(
-    'name' => 'edit own news content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own petition content'.
-  $permissions['edit own petition content'] = array(
-    'name' => 'edit own petition content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own redhen contact'.
   $permissions['edit own redhen contact'] = array(
     'name' => 'edit own redhen contact',
@@ -1307,26 +887,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'redhen_contact',
   );
 
-  // Exported permission: 'edit own static_page content'.
-  $permissions['edit own static_page content'] = array(
-    'name' => 'edit own static_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own thank_you_page content'.
-  $permissions['edit own thank_you_page content'] = array(
-    'name' => 'edit own thank_you_page content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: 'edit own video files'.
   $permissions['edit own video files'] = array(
     'name' => 'edit own video files',
@@ -1334,16 +894,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'edit own webform content'.
-  $permissions['edit own webform content'] = array(
-    'name' => 'edit own webform content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
   );
 
   // Exported permission: 'edit own webform submissions'.
@@ -1409,148 +959,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'notify of path changes',
     'roles' => array(),
     'module' => 'pathauto',
-  );
-
-  // Exported permission: 'payment.global.administer'.
-  $permissions['payment.global.administer'] = array(
-    'name' => 'payment.global.administer',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.administer'.
-  $permissions['payment.payment.administer'] = array(
-    'name' => 'payment.payment.administer',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.delete.any'.
-  $permissions['payment.payment.delete.any'] = array(
-    'name' => 'payment.payment.delete.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.delete.own'.
-  $permissions['payment.payment.delete.own'] = array(
-    'name' => 'payment.payment.delete.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.update.any'.
-  $permissions['payment.payment.update.any'] = array(
-    'name' => 'payment.payment.update.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.update.own'.
-  $permissions['payment.payment.update.own'] = array(
-    'name' => 'payment.payment.update.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.view.any'.
-  $permissions['payment.payment.view.any'] = array(
-    'name' => 'payment.payment.view.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment.view.own'.
-  $permissions['payment.payment.view.own'] = array(
-    'name' => 'payment.payment.view.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.delete.any'.
-  $permissions['payment.payment_method.delete.any'] = array(
-    'name' => 'payment.payment_method.delete.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.delete.own'.
-  $permissions['payment.payment_method.delete.own'] = array(
-    'name' => 'payment.payment_method.delete.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.update.any'.
-  $permissions['payment.payment_method.update.any'] = array(
-    'name' => 'payment.payment_method.update.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.update.own'.
-  $permissions['payment.payment_method.update.own'] = array(
-    'name' => 'payment.payment_method.update.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.view.any'.
-  $permissions['payment.payment_method.view.any'] = array(
-    'name' => 'payment.payment_method.view.any',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_method.view.own'.
-  $permissions['payment.payment_method.view.own'] = array(
-    'name' => 'payment.payment_method.view.own',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.payment_status.view'.
-  $permissions['payment.payment_status.view'] = array(
-    'name' => 'payment.payment_status.view',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'payment',
-  );
-
-  // Exported permission: 'payment.rules.administer'.
-  $permissions['payment.rules.administer'] = array(
-    'name' => 'payment.rules.administer',
-    'roles' => array(),
-    'module' => 'payment',
   );
 
   // Exported permission: 'rename features'.
