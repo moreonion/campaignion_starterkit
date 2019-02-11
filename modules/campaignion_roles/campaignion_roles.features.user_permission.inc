@@ -107,25 +107,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'access redhen'.
-  $permissions['access redhen'] = array(
-    'name' => 'access redhen',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'redhen',
-  );
-
-  // Exported permission: 'access redhen contacts'.
-  $permissions['access redhen contacts'] = array(
-    'name' => 'access redhen contacts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
-  );
-
   // Exported permission: 'access site in maintenance mode'.
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
@@ -389,33 +370,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'administer recent supporters',
     'roles' => array(),
     'module' => 'recent_supporters',
-  );
-
-  // Exported permission: 'administer redhen'.
-  $permissions['administer redhen'] = array(
-    'name' => 'administer redhen',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen',
-  );
-
-  // Exported permission: 'administer redhen contacts'.
-  $permissions['administer redhen contacts'] = array(
-    'name' => 'administer redhen contacts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
-  );
-
-  // Exported permission: 'administer redhen_contact types'.
-  $permissions['administer redhen_contact types'] = array(
-    'name' => 'administer redhen_contact types',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'administer redirects'.
@@ -693,13 +647,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: 'delete redhen contact revisions'.
-  $permissions['delete redhen contact revisions'] = array(
-    'name' => 'delete redhen contact revisions',
-    'roles' => array(),
-    'module' => 'redhen_contact',
-  );
-
   // Exported permission: 'delete revisions'.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
@@ -707,15 +654,6 @@ function campaignion_roles_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'delete terms in supporter_tags'.
-  $permissions['delete terms in supporter_tags'] = array(
-    'name' => 'delete terms in supporter_tags',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: 'download any audio files'.
@@ -878,15 +816,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'edit own redhen contact'.
-  $permissions['edit own redhen contact'] = array(
-    'name' => 'edit own redhen contact',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
-  );
-
   // Exported permission: 'edit own video files'.
   $permissions['edit own video files'] = array(
     'name' => 'edit own video files',
@@ -904,22 +833,6 @@ function campaignion_roles_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'webform',
-  );
-
-  // Exported permission: 'edit redhen contact revisions'.
-  $permissions['edit redhen contact revisions'] = array(
-    'name' => 'edit redhen contact revisions',
-    'roles' => array(),
-    'module' => 'redhen_contact',
-  );
-
-  // Exported permission: 'edit terms in supporter_tags'.
-  $permissions['edit terms in supporter_tags'] = array(
-    'name' => 'edit terms in supporter_tags',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit webform components'.
@@ -943,15 +856,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'manage features',
     'roles' => array(),
     'module' => 'features',
-  );
-
-  // Exported permission: 'manage redhen contacts'.
-  $permissions['manage redhen contacts'] = array(
-    'name' => 'manage redhen contacts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'notify of path changes'.
@@ -1076,15 +980,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: 'view own redhen contact'.
-  $permissions['view own redhen contact'] = array(
-    'name' => 'view own redhen contact',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'redhen_contact',
-  );
-
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
@@ -1100,13 +995,6 @@ function campaignion_roles_user_default_permissions() {
     'name' => 'view private files',
     'roles' => array(),
     'module' => 'file_entity',
-  );
-
-  // Exported permission: 'view redhen contact revisions'.
-  $permissions['view redhen contact revisions'] = array(
-    'name' => 'view redhen contact revisions',
-    'roles' => array(),
-    'module' => 'redhen_contact',
   );
 
   // Exported permission: 'view revisions'.
