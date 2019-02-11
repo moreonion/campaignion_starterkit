@@ -49,5 +49,3 @@ features[variable][] = menu_parent_thank_you_page
 features[variable][] = node_options_thank_you_page
 features[variable][] = node_preview_thank_you_page
 features[variable][] = node_submitted_thank_you_page
-features[variable][] = show_diff_inline_thank_you_page
-features[variable][] = show_preview_changes_thank_you_page

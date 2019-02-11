@@ -65,7 +65,5 @@ features[variable][] = menu_parent_email_protest
 features[variable][] = node_options_email_protest
 features[variable][] = node_preview_email_protest
 features[variable][] = node_submitted_email_protest
-features[variable][] = show_diff_inline_email_protest
-features[variable][] = show_preview_changes_email_protest
 features[variable][] = webform_node_email_protest
 features[variable][] = xmlsitemap_settings_node_email_protest

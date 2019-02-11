@@ -18,7 +18,6 @@ dependencies[] = context_ui
 dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = currency
-dependencies[] = diff
 dependencies[] = features
 dependencies[] = field
 dependencies[] = field_collection

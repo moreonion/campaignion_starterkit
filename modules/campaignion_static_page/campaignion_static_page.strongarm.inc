@@ -146,20 +146,6 @@ function campaignion_static_page_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'show_diff_inline_static_page';
-  $strongarm->value = 0;
-  $export['show_diff_inline_static_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'show_preview_changes_static_page';
-  $strongarm->value = 0;
-  $export['show_preview_changes_static_page'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_node_static_page';
   $strongarm->value = array(
     'status' => '1',

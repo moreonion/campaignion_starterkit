@@ -34,6 +34,4 @@ features[variable][] = menu_parent_static_page
 features[variable][] = node_options_static_page
 features[variable][] = node_preview_static_page
 features[variable][] = node_submitted_static_page
-features[variable][] = show_diff_inline_static_page
-features[variable][] = show_preview_changes_static_page
 features[variable][] = xmlsitemap_settings_node_static_page

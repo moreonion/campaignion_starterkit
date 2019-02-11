@@ -45,5 +45,3 @@ features[variable][] = menu_parent_campaign
 features[variable][] = node_options_campaign
 features[variable][] = node_preview_campaign
 features[variable][] = node_submitted_campaign
-features[variable][] = show_diff_inline_campaign
-features[variable][] = show_preview_changes_campaign

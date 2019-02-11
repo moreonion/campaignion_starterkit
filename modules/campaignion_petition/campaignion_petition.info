@@ -54,7 +54,5 @@ features[variable][] = menu_parent_petition
 features[variable][] = node_options_petition
 features[variable][] = node_preview_petition
 features[variable][] = node_submitted_petition
-features[variable][] = show_diff_inline_petition
-features[variable][] = show_preview_changes_petition
 features[variable][] = webform_node_petition
 features[variable][] = xmlsitemap_settings_node_petition

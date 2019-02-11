@@ -44,5 +44,3 @@ features[variable][] = menu_parent_share_page
 features[variable][] = node_options_share_page
 features[variable][] = node_preview_share_page
 features[variable][] = node_submitted_share_page
-features[variable][] = show_diff_inline_share_page
-features[variable][] = show_preview_changes_share_page
