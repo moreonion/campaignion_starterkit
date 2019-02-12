@@ -75,4 +75,3 @@ features[variable][] = node_preview_email_to_target
 features[variable][] = node_submitted_email_to_target
 features[variable][] = webform_node_email_to_target
 features[variable][] = xmlsitemap_settings_node_email_to_target
-required = 1
