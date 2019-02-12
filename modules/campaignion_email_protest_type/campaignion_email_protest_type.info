@@ -3,6 +3,7 @@ description = Email protest content type
 core = 7.x
 package = Campaignion
 dependencies[] = campaignion_action
+dependencies[] = campaignion_action_template
 dependencies[] = campaignion_campaign
 dependencies[] = campaignion_email_protest
 dependencies[] = campaignion_flexible_form

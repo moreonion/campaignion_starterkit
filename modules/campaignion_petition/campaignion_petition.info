@@ -4,6 +4,7 @@ core = 7.x
 package = Campaignion
 project = campaignion_starterkit
 dependencies[] = campaignion_action
+dependencies[] = campaignion_action_template
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_roles
 dependencies[] = campaignion_supporter

@@ -31,7 +31,6 @@ dependencies[] = modernizr
 dependencies[] = i18n_node
 
 ; Campaignion features
-dependencies[] = campaignion_action_template
 dependencies[] = campaignion_activity
 dependencies[] = campaignion_bar
 dependencies[] = campaignion_conf

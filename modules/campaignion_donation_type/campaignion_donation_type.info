@@ -3,6 +3,7 @@ description = Defines a content-type (and action type) for donations.
 core = 7.x
 package = Campaignion
 dependencies[] = campaignion_action
+dependencies[] = campaignion_action_template
 dependencies[] = campaignion_donation
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_roles
