@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_flexible_form_templates.features.uuid_node.inc
@@ -14,7 +15,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   'title' => 'Default Flexible Form',
   'log' => '',
   'status' => 0,
-  'comment' => 1,
+  'comment' => 0,
   'promote' => 0,
   'sticky' => 0,
   'type' => 'webform',
@@ -34,6 +35,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -109,6 +111,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
     'webform_ajax' => 1,
@@ -121,7 +125,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
       1 => array(
         'nid' => 3,
         'eid' => 1,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -140,7 +144,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
       2 => array(
         'nid' => 3,
         'eid' => 2,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -159,7 +163,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
       3 => array(
         'nid' => 3,
         'eid' => 3,
-        'email' => 'default',
+        'email' => 'you@example.com',
         'subject' => 'New submission!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -182,7 +186,6 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'components' => array(
       1 => array(
-        'nid' => 3,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -206,13 +209,12 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
         'weight' => 0,
-        'page_num' => 1,
       ),
       2 => array(
-        'nid' => 3,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -236,13 +238,12 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
         'weight' => 1,
-        'page_num' => 1,
       ),
       3 => array(
-        'nid' => 3,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -268,12 +269,11 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 2,
-        'page_num' => 1,
       ),
     ),
     'conditionals' => array(),
   ),
-  'date' => '2012-07-23 14:10:30 +0000',
+  'date' => '2012-07-23 16:10:30 +0200',
   'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
 );
   return $nodes;

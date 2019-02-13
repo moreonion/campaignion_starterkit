@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_petition_templates.features.uuid_node.inc
@@ -9,17 +10,16 @@
  */
 function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
-
   $nodes[] = array(
   'title' => 'Default Petition Form',
   'log' => '',
   'status' => 0,
-  'comment' => 1,
+  'comment' => 0,
   'promote' => 0,
   'sticky' => 0,
   'type' => 'petition',
   'language' => 'en',
-  'created' => 1343052630,
+  'created' => 1343052635,
   'tnid' => 0,
   'translate' => 0,
   'uuid' => '2825470e-e582-414d-b01c-e6e71a028075',
@@ -45,15 +45,16 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'field_thank_you_pages' => array(
     'und' => array(
       0 => array(
+        'type' => NULL,
         'node_reference_nid' => 5,
-        'redirect_url' => NULL,
       ),
       1 => array(
+        'type' => NULL,
         'node_reference_nid' => 6,
-        'redirect_url' => NULL,
       ),
     ),
   ),
+  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -62,7 +63,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
             'target' => array(
               0 => 200,
               1 => 500,
-              2 => 1000
+              2 => 1000,
             ),
             'threshold' => 90,
             'offset' => 0,
@@ -127,6 +128,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
     'webform_ajax' => 1,
@@ -136,7 +139,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       1 => array(
         'nid' => 4,
         'eid' => 1,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Thank you for your support!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -164,7 +167,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       2 => array(
         'nid' => 4,
         'eid' => 2,
-        'email' => 'default',
+        'email' => 3,
         'subject' => 'Please confirm your email address!',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -206,7 +209,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
     'components' => array(
       1 => array(
-        'nid' => 4,
         'cid' => 1,
         'pid' => 0,
         'form_key' => 'first_name',
@@ -230,13 +232,12 @@ function campaignion_petition_templates_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
         'weight' => 0,
-        'page_num' => 1,
       ),
       2 => array(
-        'nid' => 4,
         'cid' => 2,
         'pid' => 0,
         'form_key' => 'last_name',
@@ -260,13 +261,12 @@ function campaignion_petition_templates_uuid_features_default_content() {
           'description_above' => FALSE,
           'placeholder' => '',
           'analysis' => FALSE,
+          'minlength' => '',
         ),
         'required' => 1,
         'weight' => 1,
-        'page_num' => 1,
       ),
       3 => array(
-        'nid' => 4,
         'cid' => 3,
         'pid' => 0,
         'form_key' => 'email',
@@ -292,12 +292,11 @@ function campaignion_petition_templates_uuid_features_default_content() {
         ),
         'required' => 1,
         'weight' => 2,
-        'page_num' => 1,
       ),
     ),
     'conditionals' => array(),
   ),
-  'date' => '2012-07-23 14:10:35 +0000',
+  'date' => '2012-07-23 16:10:35 +0200',
   'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
 );
   $nodes[] = array(
@@ -324,6 +323,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'campaignion_overlay_options' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'share_light' => array(
@@ -372,6 +372,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'translate' => 0,
   'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
   'body' => array(),
+  'campaignion_overlay_options' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'share_light' => array(

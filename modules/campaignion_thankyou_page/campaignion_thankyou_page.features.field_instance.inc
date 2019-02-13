@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_thankyou_page.features.field_instance.inc
@@ -85,6 +86,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'translate' => 'Translate',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',

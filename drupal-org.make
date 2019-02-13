@@ -38,8 +38,6 @@ projects[custom_add_another][version] = 1.0
 
 projects[date][version] = 2.10
 
-projects[diff][version] = 3.4
-
 projects[entity][version] = 1.9
 
 projects[entityreference][version] = 1.5

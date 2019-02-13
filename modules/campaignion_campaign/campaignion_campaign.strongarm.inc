@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_campaign.strongarm.inc
@@ -9,55 +10,6 @@
  */
 function campaignion_campaign_strongarm() {
   $export = array();
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_campaign';
-  $strongarm->value = 0;
-  $export['comment_anonymous_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_campaign';
-  $strongarm->value = '1';
-  $export['comment_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_campaign';
-  $strongarm->value = 0;
-  $export['comment_default_mode_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_campaign';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_campaign';
-  $strongarm->value = 0;
-  $export['comment_form_location_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_campaign';
-  $strongarm->value = '1';
-  $export['comment_preview_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_campaign';
-  $strongarm->value = 0;
-  $export['comment_subject_field_campaign'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -84,9 +36,6 @@ function campaignion_campaign_strongarm() {
         'custom_settings' => FALSE,
       ),
       'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -193,20 +142,6 @@ function campaignion_campaign_strongarm() {
   $strongarm->name = 'node_submitted_campaign';
   $strongarm->value = 0;
   $export['node_submitted_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'show_diff_inline_campaign';
-  $strongarm->value = 0;
-  $export['show_diff_inline_campaign'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'show_preview_changes_campaign';
-  $strongarm->value = 0;
-  $export['show_preview_changes_campaign'] = $strongarm;
 
   return $export;
 }

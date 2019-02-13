@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * campaignion_petition_templates.features.inc
