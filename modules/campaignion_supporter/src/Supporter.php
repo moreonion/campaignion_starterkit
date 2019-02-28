@@ -116,6 +116,7 @@ class Supporter implements ContactTypeInterface {
         break;
 
       case 'mailchimp':
+        // MailChimp merge tags have a maximum of 10 characters.
         $map['EMAIL'] = new WrapperField('email');
         $map['FNAME'] = new SingleValueField('first_name');
         $map['LNAME'] = new SingleValueField('last_name');
@@ -155,12 +156,12 @@ class Supporter implements ContactTypeInterface {
 
       case 'campaignion_manage':
         $address_mapping = array(
-          'street'  => 'thoroughfare',
-          'street_2' => 'premise',
+          'address' => 'thoroughfare',
+          'address2' => 'premise',
           'country' => 'country',
-          'zip'     => 'postal_code',
-          'city'    => 'locality',
-          'region'  => 'administrative_area',
+          'zip' => 'postal_code',
+          'city' => 'locality',
+          'region' => 'administrative_area',
         );
 
         $map['redhen_contact_email']         = new WrapperField('email');
