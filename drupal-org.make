@@ -5,13 +5,13 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.1
+projects[campaignion][version] = 2.2
 
 projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.46
 
-projects[context][version] = 3.9
+projects[context][version] = 3.10
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.14
+projects[ctools][version] = 1.15
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
@@ -56,7 +56,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.25
 
-projects[form_builder][version] = 2.0-alpha3
+projects[form_builder][version] = 2.0-alpha4
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -82,7 +82,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha4
+projects[little_helpers][version] = 2.0-alpha5
 
 projects[logintoboggan][version] = 1.5
 
@@ -94,7 +94,7 @@ projects[media][version] = 2.21
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.7
+projects[media_youtube][version] = 3.8
 
 projects[menu_block][version] = 2.8
 
@@ -136,17 +136,17 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.4
 
-projects[pgbar][version] = 2.2
+projects[pgbar][version] = 2.4
 
 projects[polling][version] = 1.0-beta1
 
 projects[postal_code_validation][version] = 1.7
 
-projects[postcode][version] = 1.1
+projects[postcode][version] = 1.2
 
 projects[psr0][version] = 1.4
 
-projects[recent_supporters][version] = 1.1
+projects[recent_supporters][version] = 1.2
 
 projects[redhen][version] = 1.13
 
@@ -188,7 +188,7 @@ projects[uuid_features][version] = 1.0-rc1
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.20
+projects[views][version] = 3.21
 
 projects[webform][version] = 4.19
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
@@ -212,11 +212,11 @@ projects[webform_currency][version] = 1.0-beta1
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 2.0-beta2
+projects[webform_paymethod_select][version] = 2.0-beta3
 
 projects[webform_prefill][version] = 1.0
 
-projects[webform_steps][version] = 2.1
+projects[webform_steps][version] = 2.2
 
 projects[webform_submission_uuid][version] = 1.0
 
@@ -237,9 +237,9 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.6
 
-projects[ae_admin][version] = 1.0-beta8
+projects[ae_admin][version] = 1.0-beta9
 
-projects[simplicity][version] = 1.8
+projects[simplicity][version] = 1.9
 
 projects[tao][version] = 3.1
 
