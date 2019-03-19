@@ -7,6 +7,7 @@ dependencies[] = campaignion_petition
 dependencies[] = campaignion_thankyou_page
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = recent_supporters_webform
 dependencies[] = strongarm
 dependencies[] = uuid_features
 dependencies[] = webform

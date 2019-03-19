@@ -27,6 +27,7 @@ dependencies[] = pgbar
 dependencies[] = postcode
 dependencies[] = psr0
 dependencies[] = recent_supporters
+dependencies[] = recent_supporters_webform
 dependencies[] = strongarm
 dependencies[] = uuid
 dependencies[] = uuid_features
