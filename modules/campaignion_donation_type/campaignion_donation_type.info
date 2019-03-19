@@ -28,6 +28,7 @@ dependencies[] = payment
 dependencies[] = pgbar
 dependencies[] = psr0
 dependencies[] = recent_supporters
+dependencies[] = recent_supporters_webform
 dependencies[] = select_or_other
 dependencies[] = strongarm
 dependencies[] = uuid

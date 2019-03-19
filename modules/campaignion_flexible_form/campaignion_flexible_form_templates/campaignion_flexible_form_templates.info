@@ -6,6 +6,7 @@ project = campaignion_starterkit
 dependencies[] = campaignion_flexible_form
 dependencies[] = ctools
 dependencies[] = features
+dependencies[] = recent_supporters_webform
 dependencies[] = strongarm
 dependencies[] = uuid_features
 dependencies[] = webform
