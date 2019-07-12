@@ -14,6 +14,26 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'frontpage';
+  $context->description = '';
+  $context->tag = 'path triggered';
+  $context->conditions['path']['values']['<front>'] = '<front>';
+  $context->reactions['block']['blocks']['views-actions-block'] = array(
+    'module' => 'views',
+    'delta' => 'actions-block',
+    'region' => 'content',
+    'weight' => '-10',
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('path triggered');
+  $export['frontpage'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'region_content_bottom_default';
   $context->description = 'Default context for region content_bottom';
   $context->tag = 'default';
@@ -300,8 +320,45 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'share_pages';
+  $context->description = 'Context for share and thank-you pages.';
+  $context->tag = 'type triggered';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'share_page' => 'share_page',
+        'thank_you_page' => 'thank_you_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'share_light-current_page' => array(
+          'module' => 'share_light',
+          'delta' => 'current_page',
+          'region' => 'content_bottom',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for share and thank-you pages.');
+  t('type triggered');
+  $export['share_pages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'site_wide';
-  $context->description = 'context applied site wide';
+  $context->description = 'Context applied site wide.';
   $context->tag = 'Sitewide';
   $context->conditions = array(
     'sitewide' => array(
@@ -316,7 +373,7 @@ function campaignion_context_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Sitewide');
-  t('context applied site wide');
+  t('Context applied site wide.');
   $export['site_wide'] = $context;
 
   return $export;

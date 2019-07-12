@@ -9,16 +9,6 @@ function campaignion_starterkit_user_login(&$edit, $account) {
   }
 }
 
-/**
- * Implements hook_ctools_plugin_api().
- */
-function campaignion_starterkit_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "context" && $api == "context") {
-    return array("version" => "3");
-  }
-}
-
 function campaignion_starterkit_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'pgbar') {
     $field = &$element['options']['display']['template'];
