@@ -11,7 +11,6 @@ dependencies[] = redirect
 dependencies[] = jquery_update
 
 ; needed by campaignion
-dependencies[] = context
 dependencies[] = locale
 dependencies[] = mimemail
 
