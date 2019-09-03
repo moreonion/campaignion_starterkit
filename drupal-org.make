@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.2
+projects[campaignion][version] = 2.5
 
 projects[cck_blocks][version] = 1.1
 
@@ -30,6 +30,8 @@ projects[ctools][version] = 1.15
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
 projects[ctools][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_object_cache_set-transaction.patch
+; Fix: ajax-responder.js fails to add ajax commands to Drupal.ajax.prototype.commands - https://www.drupal.org/project/ctools/issues/2889951
+projects[ctools][patch][] = https://www.drupal.org/files/issues/2018-03-11/2889951-7.patch
 
 
 projects[currency][version] = 2.6
@@ -82,7 +84,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha5
+projects[little_helpers][version] = 2.0-alpha6
 
 projects[logintoboggan][version] = 1.5
 
@@ -105,7 +107,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.9
+projects[morelesszen][version] = 1.11
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -126,19 +128,21 @@ projects[payment][patch][] = https://www.drupal.org/files/issues/2018-05-19/paym
 
 projects[payment_context][version] = 1.0-rc2
 
-projects[payment_controller_data][version] = 1.0-rc2
+projects[payment_controller_data][version] = 1.0
 
 projects[payment_forms][version] = 2.1
+
+projects[payment_recurrence][version] = 1.0-alpha1
 
 projects[paymill_payment][version] = 1.0-beta9
 
 projects[payone_payment][version] = 1.0
 
-projects[paypal_payment][version] = 1.4
+projects[paypal_payment][version] = 1.5
 
-projects[pgbar][version] = 2.4
+projects[pgbar][version] = 2.6
 
-projects[polling][version] = 1.0-beta1
+projects[polling][version] = 1.0
 
 projects[postal_code_validation][version] = 1.7
 
@@ -182,15 +186,15 @@ projects[token_filter][version] = 1.1
 
 projects[ultimate_cron][version] = 2.8
 
-projects[uuid][version] = 1.2
+projects[uuid][version] = 1.3
 
 projects[uuid_features][version] = 1.0-rc1
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.21
+projects[views][version] = 3.23
 
-projects[webform][version] = 4.19
+projects[webform][version] = 4.20
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -204,15 +208,15 @@ projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-re
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.11
+projects[webform_confirm_email][version] = 2.12
 
 projects[webform_country_list][version] = 1.4
 
-projects[webform_currency][version] = 1.0-beta1
+projects[webform_currency][version] = 1.0
 
 projects[webform_custom_buttons][version] = 1.0-alpha3
 
-projects[webform_paymethod_select][version] = 2.0-beta3
+projects[webform_paymethod_select][version] = 2.0-beta4
 
 projects[webform_prefill][version] = 1.0
 
@@ -231,20 +235,20 @@ projects[webform_validation][version] = 1.15
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
-projects[wysiwyg][version] = 2.5
+projects[wysiwyg][version] = 2.6
 
 projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.6
 
-projects[ae_admin][version] = 1.0-beta9
+projects[ae_admin][version] = 1.0-beta12
 
 projects[simplicity][version] = 1.9
 
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.9.2/ckeditor_4.9.2_standard.tar.gz
+libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.12.1/ckeditor_4.12.1_standard.zip
 
 libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
