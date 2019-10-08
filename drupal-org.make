@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.5
+projects[campaignion][version] = 2.6
 
 projects[cck_blocks][version] = 1.1
 
@@ -47,7 +47,7 @@ projects[entityreference][version] = 1.5
 projects[features][version] = 2.11
 projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
 
-projects[field_collection][version] = 1.0-beta13
+projects[field_collection][version] = 1.1
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
 
@@ -66,7 +66,7 @@ projects[geoip_language_redirect][version] = 2.1
 
 projects[honeypot][version] = 1.25
 
-projects[ife][version] = 2.0-alpha2
+projects[ife][version] = 2.0-alpha3
 
 projects[i18n][version] = 1.26
 
@@ -76,15 +76,15 @@ projects[jquery_update][version] = 2.7
 
 projects[l10n_client][version] = 1.3
 
-projects[l10n_update][version] = 1.1
+projects[l10n_update][version] = 1.2
 ; fallback for language imports de-AT -> de. - https://drupal.org/node/580260
-projects[l10n_update][patch][] = https://drupal.org/files/l10n_update-language-fallback.patch
+projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/l10n_update-580260-language-fallback-7.x-1.x-25.patch
 ; Completely rip out requirements-checking to keep admin/config usable. - https://drupal.org/node/2150545
-projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2150545-rip-out-hook-requirements-5.patch
+projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/2150545-rip-out-hook-requirements-7.patch
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha6
+projects[little_helpers][version] = 2.0-alpha7
 
 projects[logintoboggan][version] = 1.5
 
@@ -160,7 +160,7 @@ projects[references][version] = 2.2
 
 projects[roleassign][version] = 1.2
 
-projects[sagepay_payment][version] = 1.6
+projects[sagepay_payment][version] = 1.7
 
 projects[select2][version] = 1.0
 
@@ -200,23 +200,19 @@ projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submiss
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
-projects[webform_ajax][download][type] = git
-projects[webform_ajax][download][url] = https://git.drupal.org/project/webform_ajax.git
-projects[webform_ajax][download][branch] = 7.x-1.x
-projects[webform_ajax][download][revision] = 2dbf5797458d31509ba6a34ccab2907889d78c48
-projects[webform_ajax][patch][] = https://www.drupal.org/files/issues/2102029-remove-bogus-workaround-20.patch
+projects[webform_ajax][version] = 2.0-rc1
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.12
+projects[webform_confirm_email][version] = 2.13
 
 projects[webform_country_list][version] = 1.4
 
 projects[webform_currency][version] = 1.0
 
-projects[webform_custom_buttons][version] = 1.0-alpha3
+projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.0-beta4
+projects[webform_paymethod_select][version] = 2.0-beta5
 
 projects[webform_prefill][version] = 1.0
 
@@ -230,7 +226,7 @@ projects[webform_tokens][version] = 4.0
 
 projects[webform_tracking][version] = 2.2
 
-projects[webform_validation][version] = 1.15
+projects[webform_validation][version] = 1.16
 
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
@@ -254,7 +250,7 @@ libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
 
 ;libraries[jquery.formprefill][download][type] = file
-;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.11.0.tar.gz
+;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.12.0.tar.gz
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
