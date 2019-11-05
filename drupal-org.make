@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.6
+projects[campaignion][version] = 2.7
 
 projects[cck_blocks][version] = 1.1
 
@@ -58,7 +58,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.26
 
-projects[form_builder][version] = 2.0-alpha4
+projects[form_builder][version] = 2.0-alpha5
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -107,7 +107,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.11
+projects[morelesszen][version] = 1.12
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -132,7 +132,7 @@ projects[payment_controller_data][version] = 1.0
 
 projects[payment_forms][version] = 2.1
 
-projects[payment_recurrence][version] = 1.0-alpha1
+projects[payment_recurrence][version] = 1.0-alpha2
 
 projects[paymill_payment][version] = 1.0-beta9
 
@@ -206,7 +206,7 @@ projects[webform_ajax][version] = 2.0-rc1
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.13
+projects[webform_confirm_email][version] = 2.14
 
 projects[webform_country_list][version] = 1.4
 
@@ -214,7 +214,7 @@ projects[webform_currency][version] = 1.0
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.0-beta5
+projects[webform_paymethod_select][version] = 2.0-beta6
 
 projects[webform_prefill][version] = 1.0
 
@@ -241,7 +241,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta12
 
-projects[simplicity][version] = 1.9
+projects[simplicity][version] = 1.10
 
 projects[tao][version] = 3.1
 
