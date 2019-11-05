@@ -56,7 +56,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.25
+projects[file_entity][version] = 2.26
 
 projects[form_builder][version] = 2.0-alpha4
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -92,11 +92,11 @@ projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.3
 
-projects[media][version] = 2.21
+projects[media][version] = 2.23
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.8
+projects[media_youtube][version] = 3.9
 
 projects[menu_block][version] = 2.8
 
@@ -153,6 +153,8 @@ projects[psr0][version] = 1.4
 projects[recent_supporters][version] = 1.2
 
 projects[redhen][version] = 1.13
+; Fix fatal error in PHP 7.2. https://www.drupal.org/node/2937481
+projects[redhen][patch][] = https://www.drupal.org/files/issues/2018-11-20/2937481-6.patch
 
 projects[redirect][version] = 1.0-rc3
 
@@ -176,7 +178,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.0-beta1
 
-projects[stripe_payment][version] = 1.0
+projects[stripe_payment][version] = 2.1
 
 projects[strongarm][version] = 2.0
 
@@ -262,7 +264,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.5.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v6.7.2.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.3.0.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
