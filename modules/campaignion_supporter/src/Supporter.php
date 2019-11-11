@@ -89,6 +89,7 @@ class Supporter implements ContactTypeInterface {
       'mr' => t('Mr'),
       'org' => t('Organisation'),
     ];
+    $address_field = new WrapperField('field_address');
     switch ($type) {
       case 'cleverreach':
         $map['email'] = new WrapperField('email');
@@ -98,12 +99,12 @@ class Supporter implements ContactTypeInterface {
         $map['title'] = new WrapperField('field_title');
         $map['gender'] = new WrapperField('field_gender');
         $map['date_of_birth'] = new DateField('field_date_of_birth', '%Y-%m-%d');
-        $map['street'] = new SubField('field_address', 'thoroughfare');
-        $map['street2'] = new SubField('field_address', 'premise');
-        $map['country'] = new SubField('field_address', 'country');
-        $map['zip'] = new SubField('field_address', 'postal_code');
-        $map['city'] = new SubField('field_address', 'locality');
-        $map['region'] = new SubField('field_address', 'administrative_area');
+        $map['street'] = new SubField($address_field, 'thoroughfare');
+        $map['street2'] = new SubField($address_field, 'premise');
+        $map['country'] = new SubField($address_field, 'country');
+        $map['zip'] = new SubField($address_field, 'postal_code');
+        $map['city'] = new SubField($address_field, 'locality');
+        $map['region'] = new SubField($address_field, 'administrative_area');
         $map['language'] = new WrapperField('field_preferred_language');
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
@@ -123,12 +124,12 @@ class Supporter implements ContactTypeInterface {
         $map['TITLE'] = new WrapperField('field_title');
         $map['GENDER'] = new WrapperField('field_gender');
         $map['DOB'] = new DateField('field_date_of_birth', '%Y-%m-%d');
-        $map['STREET'] = new SubField('field_address', 'thoroughfare');
-        $map['STREET2'] = new SubField('field_address', 'premise');
-        $map['COUNTRY'] = new SubField('field_address', 'country');
-        $map['ZIP'] = new SubField('field_address', 'postal_code');
-        $map['CITY'] = new SubField('field_address', 'locality');
-        $map['REGION'] = new SubField('field_address', 'administrative_area');
+        $map['STREET'] = new SubField($address_field, 'thoroughfare');
+        $map['STREET2'] = new SubField($address_field, 'premise');
+        $map['COUNTRY'] = new SubField($address_field, 'country');
+        $map['ZIP'] = new SubField($address_field, 'postal_code');
+        $map['CITY'] = new SubField($address_field, 'locality');
+        $map['REGION'] = new SubField($address_field, 'administrative_area');
         $map['LANGUAGE'] = new WrapperField('field_preferred_language');
         $map['CREATED'] = new DateField('created', '%Y-%m-%d');
         $map['UPDATED'] = new DateField('updated', '%Y-%m-%d');
@@ -147,10 +148,10 @@ class Supporter implements ContactTypeInterface {
         $genderMap = array('m' => 'M', 'f' => 'W');
         $map['geschlecht'] = new MappedWrapperField('field_gender', $genderMap);
         $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y%m%d');
-        $map['strasse'] = new SubField('field_address', 'thoroughfare');
-        $map['land'] = new SubField('field_address', 'country');
-        $map['plz'] = new SubField('field_address', 'postal_code');
-        $map['ort'] = new SubField('field_address', 'locality');
+        $map['strasse'] = new SubField($address_field, 'thoroughfare');
+        $map['land'] = new SubField($address_field, 'country');
+        $map['plz'] = new SubField($address_field, 'postal_code');
+        $map['ort'] = new SubField($address_field, 'locality');
         break;
 
       case 'campaignion_manage':
@@ -223,12 +224,12 @@ class Supporter implements ContactTypeInterface {
         $map['nachname'] = new SingleValueField('last_name');
         $map['titel'] = new WrapperField('field_title');
         $map['geburtsdatum'] = new DateField('field_date_of_birth', '%Y-%m-%d');
-        $map['straße'] = new SubField('field_address', 'thoroughfare');
-        $map['straße_und_hausnummer'] = new SubField('field_address', 'thoroughfare');
-        $map['land'] = new SubField('field_address', 'country');
-        $map['plz'] = new SubField('field_address', 'postal_code');
-        $map['ort'] = new SubField('field_address', 'locality');
-        $map['bundesland'] = new SubField('field_address', 'administrative_area');
+        $map['straße'] = new SubField($address_field, 'thoroughfare');
+        $map['straße_und_hausnummer'] = new SubField($address_field, 'thoroughfare');
+        $map['land'] = new SubField($address_field, 'country');
+        $map['plz'] = new SubField($address_field, 'postal_code');
+        $map['ort'] = new SubField($address_field, 'locality');
+        $map['bundesland'] = new SubField($address_field, 'administrative_area');
         $map['sprache'] = new WrapperField('field_preferred_language');
         $map['created'] = new DateField('created', '%Y-%m-%d');
         $map['updated'] = new DateField('updated', '%Y-%m-%d');
@@ -246,12 +247,12 @@ class Supporter implements ContactTypeInterface {
         $map['title'] = new WrapperField('field_title');
         $map['dob'] = new DateField('field_date_of_birth', '%Y-%m-%d');
         $map['gender'] = new WrapperField('field_gender');
-        $map['address'] = new SubField('field_address', 'thoroughfare');
-        $map['address2'] = new SubField('field_address', 'premise');
-        $map['country'] = new SubField('field_address', 'country');
-        $map['postcode'] = new SubField('field_address', 'postal_code');
-        $map['town'] = new SubField('field_address', 'locality');
-        $map['county'] = new SubField('field_address', 'administrative_area');
+        $map['address'] = new SubField($address_field, 'thoroughfare');
+        $map['address2'] = new SubField($address_field, 'premise');
+        $map['country'] = new SubField($address_field, 'country');
+        $map['postcode'] = new SubField($address_field, 'postal_code');
+        $map['town'] = new SubField($address_field, 'locality');
+        $map['county'] = new SubField($address_field, 'administrative_area');
         $map['phone'] = new WrapperField('field_phone_number');
         $map['source'] = new TagField('source_tag');
         $map['campaign'] = new TagField('campaign_tag');
