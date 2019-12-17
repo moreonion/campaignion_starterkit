@@ -5,11 +5,11 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.7
+projects[campaignion][version] = 2.8
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][version] = 1.46
+projects[clientside_validation][version] = 1.47
 
 projects[context][version] = 3.10
 ; Make block title configurable in contexts - https://drupal.org/node/795058
@@ -58,7 +58,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.26
 
-projects[form_builder][version] = 2.0-alpha5
+projects[form_builder][version] = 2.0-alpha7
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -84,7 +84,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha7
+projects[little_helpers][version] = 2.0-alpha8
 
 projects[logintoboggan][version] = 1.5
 
@@ -107,7 +107,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.12
+projects[morelesszen][version] = 1.13
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -176,7 +176,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 2.0-beta1
+projects[share_light][version] = 2.0
 
 projects[stripe_payment][version] = 2.1
 
@@ -214,7 +214,7 @@ projects[webform_currency][version] = 1.0
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.0-beta6
+projects[webform_paymethod_select][version] = 2.0
 
 projects[webform_prefill][version] = 1.0
 
@@ -239,9 +239,9 @@ projects[xautoload][version] = 5.7
 
 projects[xmlsitemap][version] = 2.6
 
-projects[ae_admin][version] = 1.0-beta12
+projects[ae_admin][version] = 1.0-beta13
 
-projects[simplicity][version] = 1.10
+projects[simplicity][version] = 1.11
 
 projects[tao][version] = 3.1
 
