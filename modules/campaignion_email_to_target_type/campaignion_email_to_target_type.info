@@ -64,7 +64,6 @@ features[user_permission][] = delete any email_to_target content
 features[user_permission][] = delete own email_to_target content
 features[user_permission][] = edit any email_to_target content
 features[user_permission][] = edit own email_to_target content
-features[user_permission][] = view email_to_target messages
 features[uuid_node][] = f5645542-33eb-445e-8e6b-8300cf385069
 features[variable][] = field_bundle_settings_node__email_to_target
 features[variable][] = i18n_node_extended_email_to_target
