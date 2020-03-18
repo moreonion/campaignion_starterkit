@@ -11,7 +11,7 @@
 function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
   $nodes[] = array(
-  'title' => 'Default Petition Form',
+  'title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
   'log' => '',
   'status' => 0,
   'comment' => 0,
