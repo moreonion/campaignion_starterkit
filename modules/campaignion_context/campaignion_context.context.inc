@@ -275,6 +275,17 @@ function campaignion_context_context_default_contexts() {
         '~region_sidebar_second_overwrite*' => '~region_sidebar_second_overwrite*',
       ),
     ),
+    'node' => array(
+      'values' => array(
+        'email_to_target' => 'email_to_target',
+        'petition' => 'petition',
+        'webform' => 'webform',
+        'donation' => 'donation',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~node/*/share' => '~node/*/share',

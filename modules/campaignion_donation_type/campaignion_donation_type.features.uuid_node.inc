@@ -12,7 +12,7 @@ function campaignion_donation_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Default Donation Form',
+  'title' => 'Default Donation Form TEMPLATE - DO NOT DELETE',
   'log' => '',
   'status' => 0,
   'comment' => 0,
