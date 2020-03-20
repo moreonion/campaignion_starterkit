@@ -17,6 +17,7 @@ dependencies[] = mimemail
 ; UX enhancements
 dependencies[] = clientside_validation_webform
 dependencies[] = contextual
+dependencies[] = logintoboggan
 dependencies[] = opengraph_meta
 dependencies[] = webform_ajax
 dependencies[] = webform_prefill
