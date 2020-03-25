@@ -100,7 +100,7 @@ projects[media_youtube][version] = 3.9
 
 projects[menu_block][version] = 2.8
 
-projects[metatag][version] = 1.25
+projects[metatag][version] = 1.27
 
 projects[mimemail][version] = 1.1
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
@@ -122,11 +122,7 @@ projects[password_toggle][version] = 1.0
 
 projects[pathauto][version] = 1.3
 
-projects[payment][version] = 1.17
-; Allow duplicate payment status items. https://www.drupal.org/project/payment/issues/2973842
-projects[payment][patch][] = https://www.drupal.org/files/issues/2018-05-19/payment-2973842-allow-duplicate-statuses-4.patch
-; Allow non-default #parents for line item form elements. https://www.drupal.org/project/payment/issues/3105081
-projects[payment][patch][] = https://www.drupal.org/files/issues/2020-01-08/payment-3105081-4.patch
+projects[payment][version] = 1.20
 
 projects[payment_context][version] = 1.0-rc2
 
@@ -142,7 +138,7 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.5
 
-projects[pgbar][version] = 2.6
+projects[pgbar][version] = 2.7
 
 projects[polling][version] = 1.0
 
@@ -180,7 +176,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.1
 
-projects[stripe_payment][version] = 2.2
+projects[stripe_payment][version] = 2.3
 
 projects[strongarm][version] = 2.0
 
@@ -196,15 +192,15 @@ projects[uuid_features][version] = 1.0-rc2
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.23
+projects[views][version] = 3.24
 
-projects[webform][version] = 4.21
+projects[webform][version] = 4.22
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
-projects[webform_ajax][version] = 2.0-rc1
+projects[webform_ajax][version] = 2.0
 
 projects[webform_block][version] = 1.2
 
@@ -243,7 +239,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[simplicity][version] = 1.11
+projects[simplicity][version] = 1.12
 
 projects[tao][version] = 3.1
 
