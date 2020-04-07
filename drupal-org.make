@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.9
+projects[campaignion][version] = 2.11
 
 projects[cck_blocks][version] = 1.1
 
@@ -84,15 +84,15 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha8
+projects[little_helpers][version] = 2.0-alpha9
 
 projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.35
 
-projects[manual_direct_debit][version] = 1.3
+projects[manual_direct_debit][version] = 1.4
 
-projects[media][version] = 2.24
+projects[media][version] = 2.26
 
 projects[media_vimeo][version] = 2.1
 
@@ -107,7 +107,7 @@ projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-c
 
 projects[modernizr][version] = 3.11
 
-projects[morelesszen][version] = 1.13
+projects[morelesszen][version] = 1.14
 
 projects[oowizard][version] = 1.0-alpha3
 
@@ -176,7 +176,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.1
 
-projects[stripe_payment][version] = 2.3
+projects[stripe_payment][version] = 2.4
 
 projects[strongarm][version] = 2.0
 
@@ -212,7 +212,7 @@ projects[webform_currency][version] = 1.1
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.1
+projects[webform_paymethod_select][version] = 2.3
 
 projects[webform_prefill][version] = 1.0
 
@@ -262,7 +262,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.5.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.3.0.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.27.2.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
