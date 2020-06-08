@@ -15,7 +15,7 @@ function campaignion_conf_filter_default_formats() {
   $formats['full_html_with_editor'] = array(
     'format' => 'full_html_with_editor',
     'name' => 'Full HTML with editor',
-    'cache' => 1,
+    'cache' => 0,
     'status' => 1,
     'weight' => -42,
     'filters' => array(
