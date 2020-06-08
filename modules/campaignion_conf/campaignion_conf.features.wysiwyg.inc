@@ -52,7 +52,7 @@ function campaignion_conf_wysiwyg_default_profiles() {
       'acf_allowed_content' => '',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
       'css_setting' => 'theme',
-      'css_theme' => 'wyiswyg_theme_default',
+      'css_theme' => '',
       'css_path' => '',
       'stylesSet' => '',
       'forcePasteAsPlainText' => 1,
