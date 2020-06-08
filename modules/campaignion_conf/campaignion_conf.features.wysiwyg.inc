@@ -47,7 +47,7 @@ function campaignion_conf_wysiwyg_default_profiles() {
       'toolbarLocation' => 'top',
       'resize_enabled' => 1,
       'default_toolbar_grouping' => 1,
-      'simple_source_formatting' => 0,
+      'simple_source_formatting' => 1,
       'acf_mode' => 0,
       'acf_allowed_content' => '',
       'css_setting' => 'theme',
