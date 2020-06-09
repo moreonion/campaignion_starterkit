@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.11
+projects[campaignion][version] = 2.13
 
 projects[cck_blocks][version] = 1.1
 
@@ -84,13 +84,13 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha9
+projects[little_helpers][version] = 2.0-alpha11
 
 projects[logintoboggan][version] = 1.5
 
 projects[mailsystem][version] = 2.35
 
-projects[manual_direct_debit][version] = 1.4
+projects[manual_direct_debit][version] = 1.5
 
 projects[media][version] = 2.26
 
@@ -124,11 +124,11 @@ projects[pathauto][version] = 1.3
 
 projects[payment][version] = 1.20
 
-projects[payment_context][version] = 1.0-rc2
+projects[payment_context][version] = 1.0
 
 projects[payment_controller_data][version] = 1.0
 
-projects[payment_forms][version] = 2.1
+projects[payment_forms][version] = 2.2
 
 projects[payment_recurrence][version] = 1.0-alpha2
 
@@ -138,7 +138,7 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.5
 
-projects[pgbar][version] = 2.7
+projects[pgbar][version] = 2.8
 
 projects[polling][version] = 1.0
 
@@ -146,7 +146,7 @@ projects[postal_code_validation][version] = 1.7
 
 projects[postcode][version] = 1.2
 
-projects[psr0][version] = 1.4
+projects[psr0][version] = 1.6
 
 projects[recent_supporters][version] = 1.2
 
@@ -174,9 +174,9 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 2.1
+projects[share_light][version] = 2.2
 
-projects[stripe_payment][version] = 2.4
+projects[stripe_payment][version] = 2.6
 
 projects[strongarm][version] = 2.0
 
@@ -212,11 +212,11 @@ projects[webform_currency][version] = 1.1
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.3
+projects[webform_paymethod_select][version] = 2.4
 
-projects[webform_prefill][version] = 1.0
+projects[webform_prefill][version] = 1.1
 
-projects[webform_steps][version] = 2.2
+projects[webform_steps][version] = 3.0-beta1
 
 projects[webform_submission_uuid][version] = 1.0
 
