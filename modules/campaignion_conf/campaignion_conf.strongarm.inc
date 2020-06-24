@@ -158,7 +158,6 @@ function campaignion_conf_strongarm() {
     'webform' => 'webform',
     'donation' => 'donation',
     'petition' => 'petition',
-    'email_protest' => 'email_protest',
   );
   $export['webform_template_dest'] = $strongarm;
 
@@ -171,7 +170,6 @@ function campaignion_conf_strongarm() {
     'webform' => 'webform',
     'donation' => 'donation',
     'petition' => 'petition',
-    'email_protest' => 'email_protest',
   );
   $export['webform_template_src'] = $strongarm;
 
