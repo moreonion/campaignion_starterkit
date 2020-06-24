@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Update hooks for the campaignion_protest_target_contact_type feature.
+ */
+
+/**
+ * Delete contact type and contacts.
+ */
+function campaignion_protest_target_contact_type_update_1(){
+  redhen_contact_type_load('email_protest_target')->delete(TRUE);
+}
