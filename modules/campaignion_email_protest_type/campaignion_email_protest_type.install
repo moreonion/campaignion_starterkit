@@ -6,6 +6,14 @@
  */
 
 /**
+ * Implements hook_update_dependencies().
+ */
+function campaignion_email_protest_type_update_dependencies() {
+  $dependencies['campaignion_email_protest_type'][1]['campaignion_protest_target'] = 3;
+  return $dependencies;
+}
+
+/**
  * Delete node type.
  */
 function campaignion_email_protest_type_update_3() {
