@@ -46,27 +46,6 @@ class ImportTest extends \Drupal\Tests\DrupalWebTestCase {
     $this->assertGreaterThan(0, $contact->contact_id);
   }
 
-  public function testEmailProtestTargetImport() {
-    $source = new ArraySource(array(
-      'email' => 'tester3@example.com',
-      'first_name' => 'tester',
-      'last_name' => 'example',
-      'title' => 'The Tester',
-    ));
-    $importer = ContactTypeManager::instance()->importer('protest_target_field_widget', 'email_protest_target');
-    $contact = $importer->findOrCreateContact($source, 'email_protest_target');
-    $changed = $importer->import($source, $contact);
-
-    $this->assertTrue($changed);
-    $this->assertTrue(!empty($contact));
-
-    // Full import should import fields.
-    $this->assertEquals('The Tester', $contact->wrap()->field_title->value());
-    $this->assertNull($contact->contact_id);
-    $contact->save();
-    $this->assertGreaterThan(0, $contact->contact_id);
-  }
-
   public function testLanguageFieldImport() {
     $source = new ArraySource(array(
       'email' => 'tester4@example.com',
