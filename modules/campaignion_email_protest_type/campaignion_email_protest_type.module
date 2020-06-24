@@ -1,51 +1,6 @@
 <?php
+
 /**
  * @file
  * Code for the campaignion_email_protest_type feature.
  */
-
-include_once 'campaignion_email_protest_type.features.inc';
-
-use Drupal\campaignion_email_protest\EmailProtestAction;
-
-/**
- * Implements hook_campaignion_action_info().
- */
-function campaignion_email_protest_type_campaignion_action_info() {
-  $type['email_protest'] = array(
-    'action_class' => EmailProtestAction::class,
-    'wizard_class' => '\\Drupal\\campaignion_wizard\\EmailProtestWizard',
-    'email_protest_fields' => [
-      'options' => 'field_protest_target_options',
-      'targets' => 'field_protest_target',
-    ],
-    'thank_you_page' => array(
-      'type' => 'thank_you_page',
-      'reference' => 'field_thank_you_pages',
-    ),
-    'recent_supporters' => array(
-      'default_text' => t('!supporter_name just took action at !action_title'),
-    ),
-    'template_node_uuid' => '7f2e3be8-156e-4211-a35a-a654ff4ab99e',
-    'email_protest' => [
-      'target_field' => 'field_protest_target',
-    ],
-  );
-  return $type;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_email_protest_node_form_alter().
- */
-function campaignion_email_protest_type_form_email_protest_node_form_alter(&$form, &$form_state, $form_id) {
-  if (empty($form['title']['#default_value'])) {
-    $form['title']['#default_value'] = t('Email Protest');
-  }
-  $form['title']['#weight'] = 210;
-
-  if (!empty($form_state['#wizard_type'])) {
-    $form['field_protest_target_options']['#access'] = FALSE;
-    $form['field_protest_target']['#access'] = FALSE;
-  }
-}
