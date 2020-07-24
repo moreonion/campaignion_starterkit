@@ -124,7 +124,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
     'progressbar_bar' => 1,
-    'progressbar_page_number' => 0,
+    'progressbar_page_number' => 1,
     'progressbar_percent' => 0,
     'progressbar_pagebreak_labels' => 1,
     'progressbar_include_confirmation' => 0,
