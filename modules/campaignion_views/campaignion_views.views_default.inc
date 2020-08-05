@@ -58,7 +58,6 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'donation' => 'donation',
-    'email_protest' => 'email_protest',
     'email_to_target' => 'email_to_target',
     'petition' => 'petition',
   );
@@ -154,7 +153,6 @@ function campaignion_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'donation' => 'donation',
-    'email_protest' => 'email_protest',
     'email_to_target' => 'email_to_target',
     'petition' => 'petition',
   );
