@@ -82,14 +82,9 @@ function campaignion_thankyou_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'translate' => 'Translate',
           'view_mode' => 'full',
         ),
-        'type' => 'field_collection_view',
+        'type' => 'field_collection_fields',
         'weight' => 7,
       ),
       'teaser' => array(
