@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.13
+projects[campaignion][version] = 2.15
 
 projects[cck_blocks][version] = 1.1
 
@@ -56,7 +56,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.27
+projects[file_entity][version] = 2.30
 
 projects[form_builder][version] = 2.0-alpha7
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -84,7 +84,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha11
+projects[little_helpers][version] = 2.0-alpha12
 
 projects[logintoboggan][version] = 1.5
 
@@ -174,7 +174,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 2.2
+projects[share_light][version] = 2.3
 
 projects[stripe_payment][version] = 2.6
 
@@ -194,9 +194,9 @@ projects[variable][version] = 2.5
 
 projects[views][version] = 3.24
 
-projects[webform][version] = 4.22
+projects[webform][version] = 4.23
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
-projects[webform][patch][] = https://www.drupal.org/files/issues/2117285-submission-information-49.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2020-06-24/2117285-submission-information-54.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
@@ -204,7 +204,7 @@ projects[webform_ajax][version] = 2.0
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.14
+projects[webform_confirm_email][version] = 2.15
 
 projects[webform_country_list][version] = 1.5
 
@@ -226,14 +226,14 @@ projects[webform_tokens][version] = 4.0
 
 projects[webform_tracking][version] = 2.2
 
-projects[webform_validation][version] = 1.17
+projects[webform_validation][version] = 1.18
 
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
 projects[wysiwyg][version] = 2.6
 
-projects[xautoload][version] = 5.7
+projects[xautoload][version] = 5.8
 
 projects[xmlsitemap][version] = 2.6
 
@@ -262,7 +262,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.5.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.27.2.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.45.0.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
