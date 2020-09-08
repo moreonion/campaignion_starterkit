@@ -68,7 +68,7 @@ projects[honeypot][version] = 1.26
 
 projects[ife][version] = 2.0-alpha3
 
-projects[i18n][version] = 1.26
+projects[i18n][version] = 1.27
 
 projects[imagefield_crop][version] = 1.1
 
