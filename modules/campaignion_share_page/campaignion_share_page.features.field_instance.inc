@@ -63,6 +63,55 @@ function campaignion_share_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-share_page-campaignion_overlay_options'.
+  $field_instances['node-share_page-campaignion_overlay_options'] = array(
+    'bundle' => 'share_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'campaignion_overlay_options',
+    'label' => 'Overlay options',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-share_page-field_main_image'.
   $field_instances['node-share_page-field_main_image'] = array(
     'bundle' => 'share_page',
@@ -271,6 +320,7 @@ function campaignion_share_page_field_default_field_instances() {
   t('Add a large main image or a main video to your share page');
   t('Body');
   t('Large image or video');
+  t('Overlay options');
   t('Related campaign');
   t('Set the share options for this page.');
   t('Share options');
