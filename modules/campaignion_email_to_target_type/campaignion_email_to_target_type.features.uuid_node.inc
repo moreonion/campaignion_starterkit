@@ -52,6 +52,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   ),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
   'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(

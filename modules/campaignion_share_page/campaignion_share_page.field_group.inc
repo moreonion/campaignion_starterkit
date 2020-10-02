@@ -26,6 +26,7 @@ function campaignion_share_page_field_group_info() {
     'children' => array(
       0 => 'path',
       1 => 'xmlsitemap',
+      2 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

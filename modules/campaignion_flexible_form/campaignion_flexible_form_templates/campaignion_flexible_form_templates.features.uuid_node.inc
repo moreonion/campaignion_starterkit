@@ -35,6 +35,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
   'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
