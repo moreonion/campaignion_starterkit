@@ -55,6 +55,7 @@ function campaignion_static_page_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
+      2 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

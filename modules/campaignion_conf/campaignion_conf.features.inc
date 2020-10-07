@@ -28,10 +28,9 @@ function campaignion_conf_image_default_styles() {
     'label' => 'full',
     'effects' => array(
       1 => array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
-          'width' => 550,
-          'height' => 340,
+          'width' => 800,
         ),
         'weight' => 1,
       ),

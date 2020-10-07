@@ -30,6 +30,7 @@ function campaignion_petition_field_group_info() {
       3 => 'webform_template',
       4 => 'path',
       5 => 'xmlsitemap',
+      6 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
