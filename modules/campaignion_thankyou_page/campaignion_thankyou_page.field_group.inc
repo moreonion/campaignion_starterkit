@@ -52,7 +52,7 @@ function campaignion_thankyou_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
@@ -148,6 +148,7 @@ function campaignion_thankyou_page_field_group_info() {
       'label' => 'Share block',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-share-block field-group-fieldset',
         'description' => '',
       ),
