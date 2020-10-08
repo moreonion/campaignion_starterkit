@@ -22,10 +22,11 @@ function campaignion_static_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'path',
       1 => 'xmlsitemap',
+      2 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,11 +52,10 @@ function campaignion_static_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
-      2 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -22,7 +22,7 @@ function campaignion_share_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '5',
+    'weight' => '8',
     'children' => array(
       0 => 'path',
       1 => 'xmlsitemap',
@@ -52,7 +52,7 @@ function campaignion_share_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
@@ -167,7 +167,7 @@ function campaignion_share_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Share options',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'group_share_block',
     ),

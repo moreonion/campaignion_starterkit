@@ -22,7 +22,7 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -56,7 +56,7 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
@@ -85,7 +85,7 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'recent_supporters',
     ),
