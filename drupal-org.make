@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.15
+projects[campaignion][version] = 2.16
 
 projects[cck_blocks][version] = 1.1
 
