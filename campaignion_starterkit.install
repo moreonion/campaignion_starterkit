@@ -35,7 +35,7 @@ function _campaignion_starterkit_set_variables() {
   // user registration is admin only per default.
   variable_set('user_register', '0');
   variable_set('campaignion_bar_file', drupal_get_path('module', 'campaignion_starterkit') . '/campaignion_bar.txt');
-  variable_set('jquery_update_jquery_version', '1.7');
+  variable_set('jquery_update_jquery_version', '1.8');
 }
 
 function _campaignion_starterkit_themes() {
@@ -59,6 +59,13 @@ function _campaignion_starterkit_frontpage() {
 }
 
 /* ######################## UPDATES ########################## */
+
+/**
+ * Update jQuery to 1.8.
+ */
+function campaignion_starterkit_update_2() {
+  variable_set('jquery_update_jquery_version', '1.8');
+}
 
 /**
  * Activate `campaignion_share_page`.
