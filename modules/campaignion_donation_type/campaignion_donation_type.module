@@ -1,23 +1,22 @@
 <?php
+
 /**
  * @file
  * Code for the donation content-type.
  */
-
-use Drupal\little_helpers\Webform\Webform;
 
 include_once 'campaignion_donation_type.features.inc';
 
 /**
  * Implements hook_block_info_alter().
  *
- * Hide titles of specified blocks
+ * Hide titles of specified blocks.
  */
 function campaignion_donation_type_block_view_alter(&$data, $block) {
   $hide_title_fields = array('field_main_image');
 
-  foreach($hide_title_fields as $field_name) {
-    if(isset($block->delta) && $block->delta === $field_name) {
+  foreach ($hide_title_fields as $field_name) {
+    if (isset($block->delta) && $block->delta === $field_name) {
       $data['subject'] = '';
     }
   }
@@ -43,8 +42,7 @@ function campaignion_donation_type_campaignion_action_info() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_donation_node_form_alter().
+ * Implements hook_form_FORM_ID_alter() for donation_node_form.
  */
 function campaignion_donation_type_form_donation_node_form_alter(&$form, &$form_state, $form_id) {
   if (empty($form['title']['#default_value'])) {
