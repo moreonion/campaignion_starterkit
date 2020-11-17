@@ -5,6 +5,7 @@ package = Campaignion
 dependencies[] = campaignion_action
 dependencies[] = campaignion_action_template
 dependencies[] = campaignion_donation
+dependencies[] = campaignion_donation_amount
 dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_roles
 dependencies[] = campaignion_supporter
