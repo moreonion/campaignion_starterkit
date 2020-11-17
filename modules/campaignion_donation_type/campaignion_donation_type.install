@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Update hooks for the campaignion_donation_type module.
+ */
+
+/**
+ * Enable campaignion_donation_amount.
+ */
+function campaignion_donation_type_update_1() {
+  if (!module_enable(['campaignion_donation_amount'], TRUE)) {
+    new DrupalUpdateException("Unable to enable ‘campaignion_donation_amount’. Please verify it (and all it's dependencies) can be found by Drupal.");
+  }
+  $symbol = 'campaignion_donation_amount_currency_symbol';
+  if (module_exists('variable_realm') && module_exists('locale')) {
+    // Make the variable localizable.
+    $controller = variable_realm_controller('language');
+    $enabled = drupal_map_assoc($controller->getEnabledVariables());
+    $enabled[$symbol] = $symbol;
+    $controller->setRealmVariable('list', array_values($enabled));
+    // Migrate existing translations.
+    $sql = <<<SQL
+SELECT language, translation
+FROM {locales_source}
+  INNER JOIN {locales_target} using(lid)
+WHERE source IN ('€', '£');
+SQL;
+    foreach (db_query($sql) as $row) {
+      variable_realm_set('language', $row->language, $symbol, $row->translation);
+    }
+  }
+}
