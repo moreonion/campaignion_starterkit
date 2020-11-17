@@ -44,7 +44,7 @@ projects[entityreference][version] = 1.5
 
 projects[features][version] = 2.12
 ; Make module defined defaults work with features. - https://www.drupal.org/project/features/issues/2446485
-projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
+projects[features][patch][] = https://www.drupal.org/files/issues/2019-10-28/2446485-54-module-defaults-vs-features.patch
 
 projects[field_collection][version] = 1.1
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
