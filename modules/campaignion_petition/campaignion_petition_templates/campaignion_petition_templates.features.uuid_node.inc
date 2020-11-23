@@ -98,7 +98,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
   ),
   'supporter_tags' => array(),
   'webform' => array(
-    'nid' => 4,
     'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
@@ -128,16 +127,15 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'confirm_email_request_lifetime' => 7776000,
-    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
       1 => array(
-        'nid' => 4,
         'eid' => 1,
         'email' => 3,
         'subject' => 'Thank you for your support!',
@@ -165,7 +163,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'status' => 1,
       ),
       2 => array(
-        'nid' => 4,
         'eid' => 2,
         'email' => 3,
         'subject' => 'Please confirm your email address!',
@@ -184,7 +181,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'status' => 1,
       ),
       3 => array(
-        'nid' => 4,
         'eid' => 3,
         'email' => 'you@example.com',
         'subject' => 'New submission!',
@@ -319,7 +315,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
 ',
         'summary' => '',
         'format' => 'full_html_with_editor',
-        'safe_summary' => '',
       ),
     ),
   ),

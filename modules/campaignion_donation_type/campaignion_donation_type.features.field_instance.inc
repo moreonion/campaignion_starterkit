@@ -233,6 +233,7 @@ function campaignion_donation_type_field_default_field_instances() {
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
         'size' => 60,
+        'use_select2' => FALSE,
       ),
       'type' => 'options_select',
       'weight' => 2,

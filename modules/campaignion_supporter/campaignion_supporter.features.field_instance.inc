@@ -310,7 +310,9 @@ function campaignion_supporter_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -537,7 +539,9 @@ function campaignion_supporter_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
       'weight' => 11,
     ),
@@ -578,7 +582,9 @@ function campaignion_supporter_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
       'type' => 'options_select',
       'weight' => 2,
     ),

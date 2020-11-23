@@ -83,7 +83,6 @@ function campaignion_donation_type_uuid_features_default_content() {
   ),
   'supporter_tags' => array(),
   'webform' => array(
-    'nid' => 1,
     'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
@@ -113,10 +112,10 @@ function campaignion_donation_type_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'confirm_email_request_lifetime' => 7776000,
-    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Make your donation!',
     'next_button_text' => 'Next',
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
@@ -125,7 +124,6 @@ function campaignion_donation_type_uuid_features_default_content() {
     ),
     'emails' => array(
       1 => array(
-        'nid' => 1,
         'eid' => 1,
         'email' => 9,
         'subject' => 'Thank you for your donation!',
@@ -143,7 +141,6 @@ function campaignion_donation_type_uuid_features_default_content() {
         'status' => 1,
       ),
       3 => array(
-        'nid' => 1,
         'eid' => 3,
         'email' => 'noreply@example.com',
         'subject' => 'New submission!',
