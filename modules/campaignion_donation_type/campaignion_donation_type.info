@@ -28,6 +28,7 @@ dependencies[] = opengraph_meta_upload
 dependencies[] = payment
 dependencies[] = pgbar:pgbar
 dependencies[] = pgbar:pgbar_webform
+dependencies[] = postcode
 dependencies[] = psr0
 dependencies[] = recent_supporters
 dependencies[] = recent_supporters_webform

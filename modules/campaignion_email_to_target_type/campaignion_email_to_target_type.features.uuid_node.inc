@@ -69,10 +69,13 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
             'offset' => 0,
           ),
           'texts' => array(
-            'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We’ve reached our goal of !target emails.',
             'intro_message' => 'We have to send !target emails to win this campaign.',
             'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
+            'full_intro_message' => 'Thanks for your support!',
+            'full_status_message' => 'We’ve reached our goal of !target emails.',
+          ),
+          'source' => array(
+            'add_nids' => array(),
           ),
           'display' => array(
             'template' => 'pgbar',
@@ -104,7 +107,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
   ),
   'path' => array(
-    'pathauto' => TRUE,
+    'pathauto' => FALSE,
+    'alias' => 'content/default-email-target-form-template-do-not-delete',
   ),
   'webform' => array(
     'next_serial' => 1,
@@ -465,9 +469,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'pathauto_perform_alias' => FALSE,
-  'date' => '2012-07-23 16:07:46 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'date' => '2012-07-23 14:07:46 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
 );
   return $nodes;
 }

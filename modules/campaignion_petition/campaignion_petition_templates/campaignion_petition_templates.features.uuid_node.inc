@@ -10,6 +10,61 @@
  */
 function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
+
+  $nodes[] = array(
+  'title' => 'Thank you! You’re awesome!',
+  'log' => '',
+  'status' => 0,
+  'comment' => 0,
+  'promote' => 0,
+  'sticky' => 0,
+  'type' => 'thank_you_page',
+  'language' => 'en',
+  'created' => 1491564270,
+  'tnid' => 0,
+  'translate' => 0,
+  'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
+  'body' => array(),
+  'campaignion_overlay_options' => array(),
+  'field_main_image' => array(),
+  'field_reference_to_campaign' => array(),
+  'share_light' => array(
+    'und' => array(
+      0 => array(
+        'toggle' => 1,
+        'options' => array(
+          'subject' => 'Share this action!',
+          'image' => array(
+            'fid' => 0,
+          ),
+          'counter_toggle' => 1,
+          'channels' => array(
+            'email' => array(
+              'toggle' => TRUE,
+            ),
+            'facebook' => array(
+              'toggle' => TRUE,
+            ),
+            'twitter' => array(
+              'toggle' => TRUE,
+              'text' => 'Tweet tweet for kittens!',
+            ),
+          ),
+          'link' => array(
+            'path' => '',
+          ),
+        ),
+      ),
+    ),
+  ),
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/thank-you-you’re-awesome',
+  ),
+  'date' => '2017-04-07 11:24:30 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'webform' => NULL,
+);
   $nodes[] = array(
   'title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
   'log' => '',
@@ -291,8 +346,12 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'date' => '2012-07-23 16:10:35 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/default-petition-form-template-do-not-delete',
+  ),
+  'date' => '2012-07-23 14:10:35 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
 );
   $nodes[] = array(
   'title' => 'Please confirm your email',
@@ -349,57 +408,13 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'date' => '2017-04-07 13:24:30 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
-);
-  $nodes[] = array(
-  'title' => 'Thank you! You’re awesome!',
-  'log' => '',
-  'status' => 0,
-  'comment' => 0,
-  'promote' => 0,
-  'sticky' => 0,
-  'type' => 'thank_you_page',
-  'language' => 'en',
-  'created' => 1491564270,
-  'tnid' => 0,
-  'translate' => 0,
-  'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
-  'body' => array(),
-  'campaignion_overlay_options' => array(),
-  'field_main_image' => array(),
-  'field_reference_to_campaign' => array(),
-  'share_light' => array(
-    'und' => array(
-      0 => array(
-        'toggle' => 1,
-        'options' => array(
-          'subject' => 'Share this action!',
-          'image' => array(
-            'fid' => 0,
-          ),
-          'counter_toggle' => 1,
-          'channels' => array(
-            'email' => array(
-              'toggle' => TRUE,
-            ),
-            'facebook' => array(
-              'toggle' => TRUE,
-            ),
-            'twitter' => array(
-              'toggle' => TRUE,
-              'text' => 'Tweet tweet for kittens!',
-            ),
-          ),
-          'link' => array(
-            'path' => '',
-          ),
-        ),
-      ),
-    ),
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/please-confirm-your-email',
   ),
-  'date' => '2017-04-07 13:24:30 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'date' => '2017-04-07 11:24:30 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'webform' => NULL,
 );
   return $nodes;
 }
