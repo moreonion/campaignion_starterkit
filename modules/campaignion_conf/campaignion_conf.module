@@ -12,6 +12,12 @@ function campaignion_conf_module_implements_alter(&$implementations, $hook) {
     unset($implementations['image']);
     unset($implementations['media_youtube']);
   }
+  if ($hook == 'features_pipe_context_alter') {
+    // Ensure our hook implementation is called late.
+    $group = $implementations['campaignion_conf'];
+    unset($implementations['campaignion_conf']);
+    $implementations['campaignion_conf'] = $group;
+  }
   // Ignore diff & comment variables for node-types.
   if ($hook == 'features_pipe_node_alter') {
     unset($implementations['diff']);
@@ -40,6 +46,14 @@ function campaignion_conf_block_info_alter(&$blocks) {
  function campaignion_conf_form_webform_admin_settings_alter(&$form, &$form_state, $form_id) {
   $form['email']['webform_default_from_address']['#value'] = variable_get('site_mail', ini_get('sendmail_from'));
   $form['email']['webform_default_from_address']['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_features_pipe_COMPONENT_alter() for context.
+ */
+function campaignion_conf_features_pipe_context_alter(&$pipe, $data, $export) {
+  // Deactivate content-type dependencies caused by context conditions.
+  unset($pipe['node']);
 }
 
 /**
