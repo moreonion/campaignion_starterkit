@@ -46,8 +46,8 @@ function campaignion_conf_image_default_styles() {
       2 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 350,
-          'height' => 220,
+          'width' => 480,
+          'height' => 270,
         ),
         'weight' => 1,
       ),
