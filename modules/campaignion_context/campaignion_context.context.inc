@@ -17,12 +17,24 @@ function campaignion_context_context_default_contexts() {
   $context->name = 'frontpage';
   $context->description = '';
   $context->tag = 'path triggered';
-  $context->conditions['path']['values']['<front>'] = '<front>';
-  $context->reactions['block']['blocks']['views-actions-block'] = array(
-    'module' => 'views',
-    'delta' => 'actions-block',
-    'region' => 'content',
-    'weight' => '-10',
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-actions-block' => array(
+          'module' => 'views',
+          'delta' => 'actions-block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
   );
   $context->condition_mode = 0;
 
@@ -383,8 +395,8 @@ function campaignion_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Sitewide');
   t('Context applied site wide.');
+  t('Sitewide');
   $export['site_wide'] = $context;
 
   return $export;

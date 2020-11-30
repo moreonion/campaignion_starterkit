@@ -8,9 +8,22 @@
 include_once 'campaignion_conf.features.inc';
 
 function campaignion_conf_module_implements_alter(&$implementations, $hook) {
+  $move_to_the_end = function (&$implementations, $module) {
+    $group = $implementations[$module];
+    unset($implementations[$module]);
+    $implementations[$module] = $group;
+  };
   if ($hook == 'file_default_displays_alter') {
     unset($implementations['image']);
     unset($implementations['media_youtube']);
+  }
+  if ($hook == 'features_pipe_context_alter') {
+    $move_to_the_end($implementations, 'campaignion_conf');
+  }
+  if ($hook == 'features_pipe_node_alter') {
+    $move_to_the_end($implementations, 'campaignion_conf');
+    // Ignore diff variables for node-types.
+    unset($implementations['diff']);
   }
 }
 
@@ -32,4 +45,25 @@ function campaignion_conf_block_info_alter(&$blocks) {
  function campaignion_conf_form_webform_admin_settings_alter(&$form, &$form_state, $form_id) {
   $form['email']['webform_default_from_address']['#value'] = variable_get('site_mail', ini_get('sendmail_from'));
   $form['email']['webform_default_from_address']['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_features_pipe_COMPONENT_alter() for context.
+ */
+function campaignion_conf_features_pipe_context_alter(&$pipe, $data, $export) {
+  // Deactivate content-type dependencies caused by context conditions.
+  unset($pipe['node']);
+}
+
+/**
+ * Implements hook_features_pipe_COMPONENT_alter() for node.
+ */
+function campaignion_conf_features_pipe_node_alter(&$pipe, $data, $export) {
+  // Ignore comment variables for node-types.
+  $pipe['variable'] = array_filter($pipe['variable'], function ($name) {
+    if (substr($name, 0, 8) == 'comment_') {
+      return FALSE;
+    }
+    return TRUE;
+  });
 }

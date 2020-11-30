@@ -60,10 +60,10 @@ function campaignion_conf_wysiwyg_default_profiles() {
       'pasteFromWordRemoveFontStyles' => 0,
     ),
     'preferences' => array(
-      'default' => 1,
-      'user_choose' => 1,
-      'show_toggle' => 0,
       'add_to_summaries' => 1,
+      'default' => 1,
+      'show_toggle' => 0,
+      'user_choose' => 1,
       'version' => '4.12.1.64749bb245',
     ),
     'name' => 'formatfull_html_with_editor',

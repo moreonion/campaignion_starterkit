@@ -81,7 +81,6 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   ),
   'supporter_tags' => array(),
   'webform' => array(
-    'nid' => 3,
     'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
@@ -111,10 +110,10 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'confirm_email_request_lifetime' => 7776000,
-    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
@@ -123,7 +122,6 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'emails' => array(
       1 => array(
-        'nid' => 3,
         'eid' => 1,
         'email' => 3,
         'subject' => 'Thank you for your support!',
@@ -142,7 +140,6 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'status' => 0,
       ),
       2 => array(
-        'nid' => 3,
         'eid' => 2,
         'email' => 3,
         'subject' => 'Please confirm your email address!',
@@ -161,7 +158,6 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'status' => 0,
       ),
       3 => array(
-        'nid' => 3,
         'eid' => 3,
         'email' => 'you@example.com',
         'subject' => 'New submission!',
@@ -273,8 +269,12 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'date' => '2012-07-23 16:10:30 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/default-flexible-form-template-do-not-delete',
+  ),
+  'date' => '2012-07-23 14:10:30 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
 );
   return $nodes;
 }

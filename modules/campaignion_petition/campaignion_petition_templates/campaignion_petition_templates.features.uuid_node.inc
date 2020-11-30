@@ -10,6 +10,61 @@
  */
 function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
+
+  $nodes[] = array(
+  'title' => 'Thank you! You’re awesome!',
+  'log' => '',
+  'status' => 0,
+  'comment' => 0,
+  'promote' => 0,
+  'sticky' => 0,
+  'type' => 'thank_you_page',
+  'language' => 'en',
+  'created' => 1491564270,
+  'tnid' => 0,
+  'translate' => 0,
+  'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
+  'body' => array(),
+  'campaignion_overlay_options' => array(),
+  'field_main_image' => array(),
+  'field_reference_to_campaign' => array(),
+  'share_light' => array(
+    'und' => array(
+      0 => array(
+        'toggle' => 1,
+        'options' => array(
+          'subject' => 'Share this action!',
+          'image' => array(
+            'fid' => 0,
+          ),
+          'counter_toggle' => 1,
+          'channels' => array(
+            'email' => array(
+              'toggle' => TRUE,
+            ),
+            'facebook' => array(
+              'toggle' => TRUE,
+            ),
+            'twitter' => array(
+              'toggle' => TRUE,
+              'text' => 'Tweet tweet for kittens!',
+            ),
+          ),
+          'link' => array(
+            'path' => '',
+          ),
+        ),
+      ),
+    ),
+  ),
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/thank-you-you’re-awesome',
+  ),
+  'date' => '2017-04-07 11:24:30 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'webform' => NULL,
+);
   $nodes[] = array(
   'title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
   'log' => '',
@@ -36,7 +91,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'value' => '<h2>Cat ipsum dolor sit amet</h2><p>the dog smells bad. Kitty power!</p><ol><li>Play riveting piece</li><li>on synthesizer keyboard</li><li>leave dead animals as gifts</li></ol><p>Peer out window, chatter at birds, lure them to mouth plays league of legends poop in the plant pot.</p><p><strong>Sit on the laptop. Play time.</strong></p><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p><h3>Eat the fat cats food</h3><ul><li>wake up</li><li>wander around the house</li><li>make large amounts of noise</li><li>jump on top of your human\'s bed and fall asleep</li></ul><p>Mark territory howl uncontrollably for no reason spill litter box, scratch at owner, destroy all furniture.Please stop looking at your phone and pet me chew foot, cats making all the muffins yet hola te quiero where is my slave?</p><p><a href="https://www.youtube.com/watch?v=xfarzNic3fU" target="_blank">Then cats take over the world</a> play riveting piece on synthesizer keyboard fall asleep on the washing machine, purr for no reason but cat not kitten around for meow meow, i tell my human.</p>',
         'summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>',
         'format' => 'full_html_with_editor',
-        'safe_summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>',
       ),
     ),
   ),
@@ -98,7 +152,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
   ),
   'supporter_tags' => array(),
   'webform' => array(
-    'nid' => 4,
     'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
@@ -128,16 +181,15 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'confirm_email_request_lifetime' => 7776000,
-    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
       1 => array(
-        'nid' => 4,
         'eid' => 1,
         'email' => 3,
         'subject' => 'Thank you for your support!',
@@ -165,7 +217,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'status' => 1,
       ),
       2 => array(
-        'nid' => 4,
         'eid' => 2,
         'email' => 3,
         'subject' => 'Please confirm your email address!',
@@ -184,7 +235,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
         'status' => 1,
       ),
       3 => array(
-        'nid' => 4,
         'eid' => 3,
         'email' => 'you@example.com',
         'subject' => 'New submission!',
@@ -296,8 +346,12 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'date' => '2012-07-23 16:10:35 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/default-petition-form-template-do-not-delete',
+  ),
+  'date' => '2012-07-23 14:10:35 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
 );
   $nodes[] = array(
   'title' => 'Please confirm your email',
@@ -319,7 +373,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
 ',
         'summary' => '',
         'format' => 'full_html_with_editor',
-        'safe_summary' => '',
       ),
     ),
   ),
@@ -355,57 +408,13 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'date' => '2017-04-07 13:24:30 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
-);
-  $nodes[] = array(
-  'title' => 'Thank you! You’re awesome!',
-  'log' => '',
-  'status' => 0,
-  'comment' => 0,
-  'promote' => 0,
-  'sticky' => 0,
-  'type' => 'thank_you_page',
-  'language' => 'en',
-  'created' => 1491564270,
-  'tnid' => 0,
-  'translate' => 0,
-  'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
-  'body' => array(),
-  'campaignion_overlay_options' => array(),
-  'field_main_image' => array(),
-  'field_reference_to_campaign' => array(),
-  'share_light' => array(
-    'und' => array(
-      0 => array(
-        'toggle' => 1,
-        'options' => array(
-          'subject' => 'Share this action!',
-          'image' => array(
-            'fid' => 0,
-          ),
-          'counter_toggle' => 1,
-          'channels' => array(
-            'email' => array(
-              'toggle' => TRUE,
-            ),
-            'facebook' => array(
-              'toggle' => TRUE,
-            ),
-            'twitter' => array(
-              'toggle' => TRUE,
-              'text' => 'Tweet tweet for kittens!',
-            ),
-          ),
-          'link' => array(
-            'path' => '',
-          ),
-        ),
-      ),
-    ),
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/please-confirm-your-email',
   ),
-  'date' => '2017-04-07 13:24:30 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'date' => '2017-04-07 11:24:30 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'webform' => NULL,
 );
   return $nodes;
 }

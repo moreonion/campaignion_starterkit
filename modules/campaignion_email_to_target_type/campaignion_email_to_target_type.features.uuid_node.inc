@@ -69,10 +69,13 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
             'offset' => 0,
           ),
           'texts' => array(
-            'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We’ve reached our goal of !target emails.',
             'intro_message' => 'We have to send !target emails to win this campaign.',
             'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
+            'full_intro_message' => 'Thanks for your support!',
+            'full_status_message' => 'We’ve reached our goal of !target emails.',
+          ),
+          'source' => array(
+            'add_nids' => array(),
           ),
           'display' => array(
             'template' => 'pgbar',
@@ -104,10 +107,10 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
   ),
   'path' => array(
-    'pathauto' => 1,
+    'pathauto' => FALSE,
+    'alias' => 'content/default-email-target-form-template-do-not-delete',
   ),
   'webform' => array(
-    'nid' => 8,
     'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
@@ -137,16 +140,15 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'confirm_email_request_lifetime' => 7776000,
-    'confirm_email_delete_submissions' => 0,
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
+    'confirm_email_request_lifetime' => 7776000,
+    'confirm_email_delete_submissions' => 0,
     'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(),
     'emails' => array(
       1 => array(
-        'nid' => 8,
         'eid' => 1,
         'email' => 3,
         'subject' => 'Thank you for your support!',
@@ -165,7 +167,6 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'status' => 0,
       ),
       2 => array(
-        'nid' => 8,
         'eid' => 2,
         'email' => 3,
         'subject' => 'Please confirm your email address!',
@@ -184,7 +185,6 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'status' => 0,
       ),
       3 => array(
-        'nid' => 8,
         'eid' => 3,
         'email' => 'you@example.com',
         'subject' => 'New submission!',
@@ -469,9 +469,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'pathauto_perform_alias' => FALSE,
-  'date' => '2012-07-23 16:07:46 +0200',
-  'user_uuid' => '59e16a84-5bfa-438b-be8f-782a0af74750',
+  'date' => '2012-07-23 14:07:46 +0000',
+  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
 );
   return $nodes;
 }
