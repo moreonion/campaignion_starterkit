@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.16
+projects[campaignion][version] = 2.17
 
 projects[cck_blocks][version] = 1.1
 
@@ -25,27 +25,26 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.15
+projects[ctools][version] = 1.17
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
 projects[ctools][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_object_cache_set-transaction.patch
-; Fix: ajax-responder.js fails to add ajax commands to Drupal.ajax.prototype.commands - https://www.drupal.org/project/ctools/issues/2889951
-projects[ctools][patch][] = https://www.drupal.org/files/issues/2018-03-11/2889951-7.patch
 
 
 projects[currency][version] = 2.6
 
 projects[custom_add_another][version] = 1.0
 
-projects[date][version] = 2.10
+projects[date][version] = 2.11-rc1
 
 projects[entity][version] = 1.9
 
 projects[entityreference][version] = 1.5
 
-projects[features][version] = 2.11
-projects[features][patch][] = https://www.drupal.org/files/issues/2446485-41-module-defaults-vs-features.patch
+projects[features][version] = 2.12
+; Make module defined defaults work with features. - https://www.drupal.org/project/features/issues/2446485
+projects[features][patch][] = https://www.drupal.org/files/issues/2019-10-28/2446485-54-module-defaults-vs-features.patch
 
 projects[field_collection][version] = 1.1
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
@@ -176,7 +175,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.3
 
-projects[stripe_payment][version] = 2.6
+projects[stripe_payment][version] = 2.7
 
 projects[strongarm][version] = 2.0
 
@@ -212,9 +211,9 @@ projects[webform_currency][version] = 1.1
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.4
+projects[webform_paymethod_select][version] = 2.5
 
-projects[webform_prefill][version] = 1.1
+projects[webform_prefill][version] = 1.2
 
 projects[webform_steps][version] = 3.0-beta1
 
@@ -239,18 +238,18 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[simplicity][version] = 1.12
+projects[simplicity][version] = 1.13
 
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.12.1/ckeditor_4.12.1_standard.zip
+libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.14.1/ckeditor_4.14.1_standard.zip
 
 libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
 
 ;libraries[jquery.formprefill][download][type] = file
-;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.12.0.tar.gz
+;libraries[jquery.formprefill][download][url] = https://github.com/moreonion/jquery.formprefill/archive/0.13.0.tar.gz
 
 libraries[joyride][download][type] = file
 libraries[joyride][download][url] = https://github.com/zurb/joyride/archive/v2.0.3.tar.gz
@@ -262,7 +261,7 @@ libraries[select2][download][type] = file
 libraries[select2][download][url] = https://github.com/select2/select2/archive/4.0.5.tar.gz
 
 libraries[stripe-php][download][type] = file
-libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.45.0.tar.gz
+libraries[stripe-php][download][url] = https://github.com/stripe/stripe-php/archive/v7.61.0.tar.gz
 
 libraries[timeago][download][type] = file
 libraries[timeago][download][url] = https://github.com/rmm5t/jquery-timeago/archive/v1.6.3.tar.gz
