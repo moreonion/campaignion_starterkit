@@ -111,6 +111,60 @@ function campaignion_donation_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-donation-field_form_intro'.
+  $field_instances['node-donation-field_form_intro'] = array(
+    'bundle' => 'donation',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_form_intro',
+    'label' => 'Form intro',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-donation-field_main_image'.
   $field_instances['node-donation-field_main_image'] = array(
     'bundle' => 'donation',
@@ -524,7 +578,7 @@ function campaignion_donation_type_field_default_field_instances() {
         'module' => 'pgbar',
         'settings' => array(),
         'type' => 'pgbar',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -585,7 +639,7 @@ function campaignion_donation_type_field_default_field_instances() {
         'module' => 'recent_supporters',
         'settings' => array(),
         'type' => 'recent_supporters',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -675,6 +729,7 @@ function campaignion_donation_type_field_default_field_instances() {
   t('Counter');
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
+  t('Form intro');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Large image');
   t('Layout specific banner or background image.');

@@ -60,6 +60,7 @@ function campaignion_email_to_target_type_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
+      2 => 'field_form_intro',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

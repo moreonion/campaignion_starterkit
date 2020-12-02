@@ -52,6 +52,7 @@ features[field_group][] = group_recent_supporters|node|email_to_target|form
 features[field_instance][] = node-email_to_target-action_template
 features[field_instance][] = node-email_to_target-body
 features[field_instance][] = node-email_to_target-field_email_to_target_options
+features[field_instance][] = node-email_to_target-field_form_intro
 features[field_instance][] = node-email_to_target-field_main_image
 features[field_instance][] = node-email_to_target-field_no_target_message
 features[field_instance][] = node-email_to_target-field_reference_to_campaign

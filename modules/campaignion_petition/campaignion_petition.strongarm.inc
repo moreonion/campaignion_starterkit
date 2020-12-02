@@ -74,7 +74,7 @@ function campaignion_petition_strongarm() {
             'visible' => FALSE,
           ),
           'cck_blocks' => array(
-            'weight' => '2',
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
