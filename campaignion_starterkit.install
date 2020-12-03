@@ -61,6 +61,13 @@ function _campaignion_starterkit_frontpage() {
 /* ######################## UPDATES ########################## */
 
 /**
+ * Switch to campaignion_foundist as default theme.
+ */
+function campaignion_starterkit_update_3() {
+  variable_set('theme_default', 'campaignion_foundation');
+}
+
+/**
  * Update jQuery to 1.8.
  */
 function campaignion_starterkit_update_2() {
