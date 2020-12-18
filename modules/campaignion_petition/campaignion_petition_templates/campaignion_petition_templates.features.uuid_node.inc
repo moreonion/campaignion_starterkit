@@ -96,6 +96,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(

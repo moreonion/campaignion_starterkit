@@ -32,6 +32,7 @@ function campaignion_donation_type_uuid_features_default_content() {
     ),
   ),
   'body' => array(),
+  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),

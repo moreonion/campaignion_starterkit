@@ -41,6 +41,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_no_target_message' => array(
     'und' => array(

@@ -36,6 +36,26 @@ function campaignion_flexible_form_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_form_intro'.
+  $field_bases['field_form_intro'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_form_intro',
+    'global_block_settings' => 2,
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'pgbar_default'.
   $field_bases['pgbar_default'] = array(
     'active' => 1,
