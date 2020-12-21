@@ -22,7 +22,7 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Advanced settings',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
@@ -30,6 +30,7 @@ function campaignion_petition_field_group_info() {
       3 => 'webform_template',
       4 => 'path',
       5 => 'xmlsitemap',
+      6 => 'layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,10 +56,11 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
+      2 => 'field_form_intro',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -84,7 +86,7 @@ function campaignion_petition_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recent supporters',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'recent_supporters',
     ),

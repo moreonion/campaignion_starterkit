@@ -115,6 +115,8 @@ function campaignion_thankyou_page_field_default_field_instances() {
   // Exported field_instance: 'node-thank_you_page-field_main_image'.
   $field_instances['node-thank_you_page-field_main_image'] = array(
     'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'deleted' => 0,
     'description' => 'Add a large main image or a main video to your thank you page',
     'display' => array(
@@ -144,12 +146,11 @@ function campaignion_thankyou_page_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'exclude_cv' => 0,
     'field_name' => 'field_main_image',
-    'label' => 'Large image or video',
+    'label' => 'Main image or video',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 1,
+      'alt_field' => 0,
       'custom_add_another' => '',
       'custom_remove' => '',
       'default_image' => 0,
@@ -159,7 +160,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
-      'title_field' => 1,
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -173,7 +174,7 @@ function campaignion_thankyou_page_field_default_field_instances() {
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 'video',
         ),
@@ -183,7 +184,6 @@ function campaignion_thankyou_page_field_default_field_instances() {
           'media_internet' => 'media_internet',
           'upload' => 'upload',
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 4,
@@ -235,6 +235,128 @@ function campaignion_thankyou_page_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-thank_you_page-layout'.
+  $field_instances['node-thank_you_page-layout'] = array(
+    'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'theme' => NULL,
+        'layout' => NULL,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout',
+    'label' => 'Theme & Layout',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'campaignion_layout',
+      'settings' => array(),
+      'type' => 'layout_selector',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-thank_you_page-layout_background_image'.
+  $field_instances['node-thank_you_page-layout_background_image'] = array(
+    'bundle' => 'thank_you_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => 'Layout specific banner or background image.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout_background_image',
+    'label' => 'Large image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '500 KB',
+      'max_resolution' => '',
+      'min_resolution' => '1500x800',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 3,
     ),
   );
 
@@ -321,11 +443,14 @@ function campaignion_thankyou_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a main video to your thank you page');
   t('Body');
-  t('Large image or video');
+  t('Large image');
+  t('Layout specific banner or background image.');
+  t('Main image or video');
   t('Overlay options');
   t('Related campaign');
   t('Set the share options for this page.');
   t('Share options');
+  t('Theme & Layout');
 
   return $field_instances;
 }

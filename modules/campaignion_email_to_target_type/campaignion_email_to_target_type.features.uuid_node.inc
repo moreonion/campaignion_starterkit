@@ -41,6 +41,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_no_target_message' => array(
     'und' => array(
@@ -52,6 +53,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   ),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
   'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -127,7 +130,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
     'progressbar_bar' => 1,
-    'progressbar_page_number' => 0,
+    'progressbar_page_number' => 1,
     'progressbar_percent' => 0,
     'progressbar_pagebreak_labels' => 1,
     'progressbar_include_confirmation' => 0,

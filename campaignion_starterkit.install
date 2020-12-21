@@ -39,8 +39,8 @@ function _campaignion_starterkit_set_variables() {
 }
 
 function _campaignion_starterkit_themes() {
-  theme_enable(array('ae_admin', 'ae_base', 'simplicity'));
-  variable_set('theme_default', 'simplicity');
+  theme_enable(array('ae_admin', 'ae_base', 'campaignion_foundation'));
+  variable_set('theme_default', 'campaignion_foundation');
   variable_set('admin_theme', 'ae_admin');
   variable_set('node_admin_theme', 1);
 }
@@ -59,6 +59,13 @@ function _campaignion_starterkit_frontpage() {
 }
 
 /* ######################## UPDATES ########################## */
+
+/**
+ * Switch to campaignion_foundist as default theme.
+ */
+function campaignion_starterkit_update_3() {
+  variable_set('theme_default', 'campaignion_foundation');
+}
 
 /**
  * Update jQuery to 1.8.
