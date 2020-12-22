@@ -23,6 +23,7 @@ features[context][] = region_page_bottom_default
 features[context][] = region_page_top_default
 features[context][] = region_sidebar_first_default
 features[context][] = region_sidebar_second_default
+features[context][] = region_sidebar_second_overwrite_cover_2col_layout
 features[context][] = share_pages
 features[context][] = site_wide
 features[ctools][] = context:context:3
