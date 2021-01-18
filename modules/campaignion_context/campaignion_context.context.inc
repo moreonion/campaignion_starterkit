@@ -52,7 +52,7 @@ function campaignion_context_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '~region_content_bottom_default' => '~region_content_bottom_default',
+        '~region_content_bottom_overwrite*' => '~region_content_bottom_overwrite*',
       ),
     ),
   );
