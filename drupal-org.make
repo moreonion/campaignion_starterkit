@@ -48,7 +48,7 @@ projects[features][patch][] = https://www.drupal.org/files/issues/2019-10-28/244
 
 projects[field_collection][version] = 1.2
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
-projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
+projects[field_collection][patch][] = https://www.drupal.org/files/issues/2021-01-08/2239913-add-link-title-03.patch
 ; Revert #2471551: Fix missing entity classes. - https://www.drupal.org/project/field_collection/issues/3192648
 projects[field_collection][patch][] = https://www.drupal.org/files/issues/2021-01-18/3192648-revert-2471551-4.patch
 
