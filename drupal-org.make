@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.17
+projects[campaignion][version] = 2.18
 
 projects[cck_blocks][version] = 1.1
 
@@ -42,13 +42,15 @@ projects[entity][version] = 1.9
 
 projects[entityreference][version] = 1.5
 
-projects[features][version] = 2.12
+projects[features][version] = 2.13
 ; Make module defined defaults work with features. - https://www.drupal.org/project/features/issues/2446485
 projects[features][patch][] = https://www.drupal.org/files/issues/2019-10-28/2446485-54-module-defaults-vs-features.patch
 
-projects[field_collection][version] = 1.1
+projects[field_collection][version] = 1.2
 ; Add title to 'Add new section'-link - https://drupal.org/node/2239913
 projects[field_collection][patch][] = https://drupal.org/files/issues/field_collection-title-for-add-link.patch
+; Revert #2471551: Fix missing entity classes. - https://www.drupal.org/project/field_collection/issues/3192648
+projects[field_collection][patch][] = https://www.drupal.org/files/issues/2021-01-18/3192648-revert-2471551-4.patch
 
 projects[field_group][version] = 1.6
 projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-export-ctools-plugin-info-21.patch
@@ -95,7 +97,7 @@ projects[media][version] = 2.26
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.9
+projects[media_youtube][version] = 3.10
 
 projects[menu_block][version] = 2.8
 
@@ -110,7 +112,7 @@ projects[morelesszen][version] = 1.14
 
 projects[oowizard][version] = 1.0-alpha3
 
-projects[opengraph_meta][version] = 2.0-beta2
+projects[opengraph_meta][version] = 2.0-beta3
 
 projects[options_element][version] = 1.12
 
@@ -159,7 +161,7 @@ projects[references][version] = 2.2
 
 projects[roleassign][version] = 1.2
 
-projects[sagepay_payment][version] = 1.7
+projects[sagepay_payment][version] = 1.8
 
 projects[select2][version] = 1.0
 
