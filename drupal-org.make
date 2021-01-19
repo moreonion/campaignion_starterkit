@@ -209,7 +209,7 @@ projects[webform_confirm_email][version] = 2.15
 
 projects[webform_country_list][version] = 1.5
 
-projects[webform_currency][version] = 1.1
+projects[webform_currency][version] = 1.2
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
