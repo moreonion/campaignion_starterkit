@@ -30,7 +30,7 @@ function campaignion_context_context_default_contexts() {
         'views-actions-block' => array(
           'module' => 'views',
           'delta' => 'actions-block',
-          'region' => 'content',
+          'region' => 'content_bottom',
           'weight' => '-10',
         ),
       ),

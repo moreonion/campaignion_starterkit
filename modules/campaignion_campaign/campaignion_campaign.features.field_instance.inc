@@ -312,9 +312,12 @@ function campaignion_campaign_field_default_field_instances() {
         'weight' => 13,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'teaser',
+        ),
+        'type' => 'file_rendered',
         'weight' => 0,
       ),
     ),
