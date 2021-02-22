@@ -369,13 +369,6 @@ function campaignion_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'cck_blocks-pgbar_default' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'pgbar_default',
-          'region' => 'content_bottom',
-          'weight' => '-4',
-          'title' => '',
-        ),
         'recent_supporters-recent_supporters' => array(
           'module' => 'recent_supporters',
           'delta' => 'recent_supporters',
@@ -390,11 +383,18 @@ function campaignion_context_context_default_contexts() {
           'weight' => '-10',
           'title' => '<none>',
         ),
+        'cck_blocks-pgbar_default' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'pgbar_default',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+          'title' => '<none>',
+        ),
         'webform_block-current' => array(
           'module' => 'webform_block',
           'delta' => 'current',
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-6',
           'title' => '<none>',
         ),
       ),
