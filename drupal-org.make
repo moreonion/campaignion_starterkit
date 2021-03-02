@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.18
+projects[campaignion][version] = 2.19
 
 projects[cck_blocks][version] = 1.1
 
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.17
+projects[ctools][version] = 1.19
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
@@ -34,7 +34,7 @@ projects[ctools][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_
 
 projects[currency][version] = 2.6
 
-projects[custom_add_another][version] = 1.0
+projects[custom_add_another][version] = 1.1
 
 projects[date][version] = 2.11-rc1
 
@@ -207,7 +207,7 @@ projects[webform_block][version] = 1.2
 
 projects[webform_confirm_email][version] = 2.15
 
-projects[webform_country_list][version] = 1.5
+projects[webform_country_list][version] = 1.6
 
 projects[webform_currency][version] = 1.2
 
@@ -225,7 +225,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.2
+projects[webform_tracking][version] = 2.3
 
 projects[webform_validation][version] = 1.18
 
@@ -240,7 +240,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.0-rc2
+projects[campaignion_foundation][version] = 1.0-rc4
 
 projects[tao][version] = 3.1
 
