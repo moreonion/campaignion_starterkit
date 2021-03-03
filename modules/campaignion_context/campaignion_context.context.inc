@@ -221,6 +221,48 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'share_pages_overwrite';
+  $context->description = 'Display share block in form container for some layouts.';
+  $context->tag = 'Layout';
+  $context->conditions = array(
+    'campaignion_layout_context_condition_layout' => array(
+      'values' => array(
+        'cover-2col' => 'cover-2col',
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'share_page' => 'share_page',
+        'thank_you_page' => 'thank_you_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'share_light-current_page' => array(
+          'module' => 'share_light',
+          'delta' => 'current_page',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Display share block in form container for some layouts.');
+  t('Layout');
+  $export['share_pages_overwrite'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'site_wide';
   $context->description = 'Default site wide context.';
   $context->tag = 'Default';

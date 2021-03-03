@@ -15,6 +15,7 @@ features[context][] = action_pages
 features[context][] = action_pages_overwrite_cover_2col_layout
 features[context][] = frontpage
 features[context][] = share_pages
+features[context][] = share_pages_overwrite
 features[context][] = site_wide
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
