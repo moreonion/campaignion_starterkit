@@ -86,67 +86,6 @@ function campaignion_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'action_pages_overwrite_cover_2col_layout';
-  $context->description = 'Place blocks differently for actions using cover-2col layout.';
-  $context->tag = 'Layout';
-  $context->conditions = array(
-    'campaignion_layout_context_condition_layout' => array(
-      'values' => array(
-        'cover-2col' => 'cover-2col',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        '~node/*/share' => '~node/*/share',
-        '~node/*/webform-continue/*' => '~node/*/webform-continue/*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'recent_supporters-recent_supporters' => array(
-          'module' => 'recent_supporters',
-          'delta' => 'recent_supporters',
-          'region' => 'content_bottom',
-          'weight' => '-2',
-          'title' => '',
-        ),
-        'cck_blocks-field_form_intro' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_form_intro',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-          'title' => '<none>',
-        ),
-        'cck_blocks-pgbar_default' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'pgbar_default',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-          'title' => '<none>',
-        ),
-        'webform_block-current' => array(
-          'module' => 'webform_block',
-          'delta' => 'current',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
-          'title' => '<none>',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Layout');
-  t('Place blocks differently for actions using cover-2col layout.');
-  $export['action_pages_overwrite_cover_2col_layout'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'frontpage';
   $context->description = '';
   $context->tag = 'Path';
