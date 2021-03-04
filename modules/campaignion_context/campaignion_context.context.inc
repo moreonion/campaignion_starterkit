@@ -47,21 +47,21 @@ function campaignion_context_context_default_contexts() {
         'cck_blocks-field_form_intro' => array(
           'module' => 'cck_blocks',
           'delta' => 'field_form_intro',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar_first',
           'weight' => '-10',
           'title' => '<none>',
         ),
         'cck_blocks-pgbar_default' => array(
           'module' => 'cck_blocks',
           'delta' => 'pgbar_default',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar_first',
           'weight' => '-8',
           'title' => '<none>',
         ),
         'webform_block-current' => array(
           'module' => 'webform_block',
           'delta' => 'current',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar_first',
           'weight' => '-6',
           'title' => '<none>',
         ),
@@ -246,7 +246,7 @@ function campaignion_context_context_default_contexts() {
         'share_light-current_page' => array(
           'module' => 'share_light',
           'delta' => 'current_page',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar_first',
           'weight' => '-10',
         ),
       ),
