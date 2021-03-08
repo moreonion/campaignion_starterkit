@@ -1,6 +1,0 @@
-name = Protest target
-description = Defines a contact type that's used as target in email protests.
-core = 7.x
-package = Campaignion
-dependencies[] = campaignion:campaignion_protest_target
-dependencies[] = redhen:redhen_contact

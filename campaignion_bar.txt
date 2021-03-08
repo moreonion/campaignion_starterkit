@@ -19,7 +19,6 @@ New {"description":"Add new content or actions" }
 - New actions
 -- Petition {"url":"wizard/petition","weight":"0", "description":"Create a new petition for your campaign" }
 -- Donation page {"url":"wizard/donation","weight":"4", "description":"Create a new donation form" }
--- Email protest {"url":"wizard/email-protest", "weight":"1", "description":"Launch a new email protest for your campaign" }
 -- Flexible form {"url":"wizard/webform","weight":"3", "description":"Create a flexible form" }
 -- Email to target {"url":"wizard/email-to-target","weight":"2", "description":"Create a Email to Target action" }
 - New content
