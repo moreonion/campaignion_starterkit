@@ -327,13 +327,6 @@ function campaignion_roles_user_default_permissions() {
     'module' => 'metatag',
   );
 
-  // Exported permission: 'administer modernizr'.
-  $permissions['administer modernizr'] = array(
-    'name' => 'administer modernizr',
-    'roles' => array(),
-    'module' => 'modernizr',
-  );
-
   // Exported permission: 'administer modules'.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',

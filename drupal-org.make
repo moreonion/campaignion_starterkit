@@ -106,8 +106,6 @@ projects[metatag][version] = 1.27
 projects[mimemail][version] = 1.1
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
 
-projects[modernizr][version] = 3.11
-
 projects[morelesszen][version] = 1.14
 
 projects[oowizard][version] = 1.0-alpha3
