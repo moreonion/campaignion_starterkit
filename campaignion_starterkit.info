@@ -25,7 +25,6 @@ dependencies[] = webform_steps
 
 ; enhancements for the theme (save to disable)
 dependencies[] = clientside_validation
-dependencies[] = modernizr
 
 ; Multilingual
 dependencies[] = i18n_node
