@@ -43,7 +43,6 @@ dependencies[] = campaignion_flexible_form
 dependencies[] = campaignion_flexible_form_templates
 dependencies[] = campaignion_form_builder
 dependencies[] = campaignion_manage
-dependencies[] = campaignion_news
 dependencies[] = campaignion_newsletters
 dependencies[] = campaignion_node_ux
 dependencies[] = campaignion_petition

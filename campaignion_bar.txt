@@ -25,6 +25,4 @@ New {"description":"Add new content or actions" }
 -- Campaign {"url":"node/add/campaign","weight":"0", "description":"Choose this if you want to launch a campaign site" }
 -- Static page {"url":"node/add/static-page","weight":"1", "description":"This is your common static page, for sites that don't change often" }
 -- Share page {"url":"node/add/share-page", "weight":"2", "description":"A page for sharing your campaigns on social media" }
--- News item {"url":"", "description":"Post a news article!","weight":"3", "hidden":"true" }
 -- Block {"url":"admin/structure/block/add", "weight":"4", "description":"Create a new box" }
-

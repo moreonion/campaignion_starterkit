@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the campaignion_news feature.
- */
-
-include_once 'campaignion_news.features.inc';
