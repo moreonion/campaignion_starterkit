@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.19
+projects[campaignion][version] = 2.20
 
 projects[cck_blocks][version] = 1.1
 
@@ -36,7 +36,7 @@ projects[currency][version] = 2.6
 
 projects[custom_add_another][version] = 1.1
 
-projects[date][version] = 2.11-rc1
+projects[date][version] = 2.11
 
 projects[entity][version] = 1.9
 
@@ -85,7 +85,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha12
+projects[little_helpers][version] = 2.0-alpha13
 
 projects[logintoboggan][version] = 1.5
 
@@ -155,7 +155,7 @@ projects[redhen][version] = 1.13
 ; Fix fatal error in PHP 7.2. https://www.drupal.org/node/2937481
 projects[redhen][patch][] = https://www.drupal.org/files/issues/2018-11-20/2937481-6.patch
 
-projects[redirect][version] = 1.0-rc3
+projects[redirect][version] = 1.0-rc4
 
 projects[references][version] = 2.2
 
@@ -177,11 +177,11 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.3
 
-projects[stripe_payment][version] = 2.7
+projects[stripe_payment][version] = 2.8
 
 projects[strongarm][version] = 2.0
 
-projects[token][version] = 1.7
+projects[token][version] = 1.8
 
 projects[token_filter][version] = 1.1
 
@@ -205,7 +205,7 @@ projects[webform_ajax][version] = 2.0
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.15
+projects[webform_confirm_email][version] = 2.16
 
 projects[webform_country_list][version] = 1.6
 
@@ -213,7 +213,7 @@ projects[webform_currency][version] = 1.2
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.5
+projects[webform_paymethod_select][version] = 2.6
 
 projects[webform_prefill][version] = 1.2
 
@@ -240,7 +240,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.0-rc4
+projects[campaignion_foundation][version] = 1.0
 
 projects[tao][version] = 3.1
 
