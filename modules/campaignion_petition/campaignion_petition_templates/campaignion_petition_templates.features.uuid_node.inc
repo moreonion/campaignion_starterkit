@@ -12,62 +12,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Thank you! You’re awesome!',
-  'log' => '',
-  'status' => 0,
-  'comment' => 0,
-  'promote' => 0,
-  'sticky' => 0,
-  'type' => 'thank_you_page',
-  'language' => 'en',
-  'created' => 1491564270,
-  'tnid' => 0,
-  'translate' => 0,
-  'uuid' => '0e6c7ce6-5701-4c17-b306-be7eba55dfe8',
-  'body' => array(),
-  'campaignion_overlay_options' => array(),
-  'field_main_image' => array(),
-  'field_reference_to_campaign' => array(),
-  'layout' => array(),
-  'layout_background_image' => array(),
-  'share_light' => array(
-    'und' => array(
-      0 => array(
-        'toggle' => 1,
-        'options' => array(
-          'subject' => 'Share this action!',
-          'image' => array(
-            'fid' => 0,
-          ),
-          'counter_toggle' => 1,
-          'channels' => array(
-            'email' => array(
-              'toggle' => TRUE,
-            ),
-            'facebook' => array(
-              'toggle' => TRUE,
-            ),
-            'twitter' => array(
-              'toggle' => TRUE,
-              'text' => 'Tweet tweet for kittens!',
-            ),
-          ),
-          'link' => array(
-            'path' => '',
-          ),
-        ),
-      ),
-    ),
-  ),
-  'path' => array(
-    'pathauto' => FALSE,
-    'alias' => 'content/thank-you-you’re-awesome',
-  ),
-  'date' => '2017-04-07 11:24:30 +0000',
-  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
-  'webform' => NULL,
-);
-  $nodes[] = array(
   'title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
   'log' => '',
   'status' => 0,
@@ -99,18 +43,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
-  'field_thank_you_pages' => array(
-    'und' => array(
-      0 => array(
-        'type' => NULL,
-        'node_reference_nid' => 5,
-      ),
-      1 => array(
-        'type' => NULL,
-        'node_reference_nid' => 6,
-      ),
-    ),
-  ),
+  'field_thank_you_pages' => array(),
   'layout' => array(),
   'layout_background_image' => array(),
   'opengraph_meta_image' => array(),
@@ -357,71 +290,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
   ),
   'date' => '2012-07-23 14:10:35 +0000',
   'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
-);
-  $nodes[] = array(
-  'title' => 'Please confirm your email',
-  'log' => '',
-  'status' => 0,
-  'comment' => 0,
-  'promote' => 0,
-  'sticky' => 0,
-  'type' => 'thank_you_page',
-  'language' => 'en',
-  'created' => 1491564270,
-  'tnid' => 0,
-  'translate' => 0,
-  'uuid' => '462065c5-a9dc-4f7b-9cee-24617f5084b5',
-  'body' => array(
-    'und' => array(
-      0 => array(
-        'value' => '<p>Please check you email inbox and click on the confirmation link we have sent you.</p>
-',
-        'summary' => '',
-        'format' => 'full_html_with_editor',
-      ),
-    ),
-  ),
-  'campaignion_overlay_options' => array(),
-  'field_main_image' => array(),
-  'field_reference_to_campaign' => array(),
-  'layout' => array(),
-  'layout_background_image' => array(),
-  'share_light' => array(
-    'und' => array(
-      0 => array(
-        'toggle' => 0,
-        'options' => array(
-          'subject' => 'Share this action!',
-          'image' => array(
-            'fid' => 0,
-          ),
-          'counter_toggle' => 1,
-          'channels' => array(
-            'email' => array(
-              'toggle' => TRUE,
-            ),
-            'facebook' => array(
-              'toggle' => TRUE,
-            ),
-            'twitter' => array(
-              'toggle' => TRUE,
-              'text' => '',
-            ),
-          ),
-          'link' => array(
-            'path' => '',
-          ),
-        ),
-      ),
-    ),
-  ),
-  'path' => array(
-    'pathauto' => FALSE,
-    'alias' => 'content/please-confirm-your-email',
-  ),
-  'date' => '2017-04-07 11:24:30 +0000',
-  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
-  'webform' => NULL,
 );
   return $nodes;
 }
