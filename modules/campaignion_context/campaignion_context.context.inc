@@ -99,9 +99,9 @@ function campaignion_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-actions-block' => array(
+        'views-actions_promoted-block' => array(
           'module' => 'views',
-          'delta' => 'actions-block',
+          'delta' => 'actions_promoted-block',
           'region' => 'content_bottom',
           'weight' => '-10',
         ),
