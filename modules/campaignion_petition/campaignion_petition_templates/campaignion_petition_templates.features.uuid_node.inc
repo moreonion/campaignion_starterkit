@@ -34,8 +34,57 @@ function campaignion_petition_templates_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<h2>Cat ipsum dolor sit amet</h2><p>the dog smells bad. Kitty power!</p><ol><li>Play riveting piece</li><li>on synthesizer keyboard</li><li>leave dead animals as gifts</li></ol><p>Peer out window, chatter at birds, lure them to mouth plays league of legends poop in the plant pot.</p><p><strong>Sit on the laptop. Play time.</strong></p><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p><h3>Eat the fat cats food</h3><ul><li>wake up</li><li>wander around the house</li><li>make large amounts of noise</li><li>jump on top of your human\'s bed and fall asleep</li></ul><p>Mark territory howl uncontrollably for no reason spill litter box, scratch at owner, destroy all furniture.Please stop looking at your phone and pet me chew foot, cats making all the muffins yet hola te quiero where is my slave?</p><p><a href="https://www.youtube.com/watch?v=xfarzNic3fU" target="_blank">Then cats take over the world</a> play riveting piece on synthesizer keyboard fall asleep on the washing machine, purr for no reason but cat not kitten around for meow meow, i tell my human.</p>',
-        'summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Leave dead animals as gifts sweet beast, yet eat and than sleep on your face so meow all night having their mate disturbing sleeping humans but claws in your leg so shake treat bag.</p>',
+        'value' => '<h2>H2 level heading: paragraphs and links</h2>
+<p>Are you familiar with our Helpcenter yet? <a href="https://support.more-onion.com/hc/en-us" target="_blank">Click here</a> to browse topics that will answer FAQ\'s on Impact Stack!</p>
+<h3>H3 level heading: lists</h3>
+<ol>
+	<li>first list element</li>
+	<li>second list element</li>
+	<li>third list element</li>
+</ol>
+<ul>
+	<li>first list element</li>
+	<li>second list element</li>
+	<li>third list element</li>
+</ul>
+<h4>H4 level heading: blockquotes</h4>
+<blockquote>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
+<p><cite>Famous person</cite></p>
+<h5>H5 level heading: letter</h5>
+<div class="letter">
+	<h5>Message heading</h5>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<p>Yours,<br>Firstname Lastname</p>
+</div>
+<h6>H6 level heading: snippets</h6>
+<h3>Accordion</h3>
+<ul class="accordion" data-accordion="u1j8g7-accordion" data-allow-all-closed="true" data-multi-expand="true" role="tablist">
+	<li class="accordion-item is-active" data-accordion-item="" role="presentation"><a aria-controls="tws6k5-accordion" aria-expanded="true" aria-selected="true" class="accordion-title" href="#" id="tws6k5-accordion-label" role="tab">Accordion 1</a>
+		<div aria-hidden="false" aria-labelledby="tws6k5-accordion-label" class="accordion-content" data-tab-content="" id="tws6k5-accordion" role="tabpanel" style="display: block;">
+			<p>Panel 1. Lorem ipsum dolor</p>
+			<p>Starts in the open state due to using the <code>is-active</code> state class.</p>
+		</div>
+	</li>
+	<li class="accordion-item" data-accordion-item="" role="presentation"><a aria-controls="u6xqr7-accordion" aria-expanded="false" aria-selected="false" class="accordion-title" href="#" id="u6xqr7-accordion-label" role="tab">Accordion 2 has a very long and not very interesting title (but it wraps the line to see how it is wrapping)</a>
+		<div aria-hidden="true" aria-labelledby="u6xqr7-accordion-label" class="accordion-content" data-tab-content="" id="u6xqr7-accordion" role="tabpanel">
+			<p>Panel 2. Lorem ipsum dolor</p>
+			<a href="#">Go to top of page</a>
+    </div>
+	</li>
+</ul>
+<h3>Toggle element</h3>
+<p><a aria-controls="more" aria-expanded="false" data-close="" data-open="more" data-toggle-element="" role="button">Click to read more</a></p>
+<div class="toggle-element-hidden" data-toggle-element="" id="more">
+	<p>This will show up on click and can’t be closed again, the link is gone.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<p><a aria-controls="toggle-paragraph" aria-expanded="false" data-toggle="toggle-paragraph" role="button">Toggle a paragraph on click.</a></p>
+<p class="toggle-element-hidden" data-toggle-element="" id="toggle-paragraph">Paragraph that can be toggled on and off.</p>
+<h3>Sticky button</h3>
+<p>A sticky button will appear when the user scrolls down the page, and allows them to jump back up to the form. This is useful if you have a lot of content on your page and you want the user to be able to get back to the form as soon as they\'re ready, without scrolling back up. You can add a sticky button to your page by adding the right code snippet.</p>
+<div class="sticky-cta"><a class="expanded primary button data-smooth-scroll" href="#form">Take action!</a></div>
+',
+        'summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
         'format' => 'full_html_with_editor',
       ),
     ),
