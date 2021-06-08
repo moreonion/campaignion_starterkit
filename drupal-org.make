@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.20
+projects[campaignion][version] = 2.22
 
 projects[cck_blocks][version] = 1.1
 
@@ -59,7 +59,7 @@ projects[field_type_language][version] = 1.0
 
 projects[file_entity][version] = 2.30
 
-projects[form_builder][version] = 2.0-alpha7
+projects[form_builder][version] = 2.0-alpha8
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
 projects[form_builder][patch][] = https://drupal.org/files/issues/2239395-form_builder-palette-alter-2.patch
 
@@ -69,7 +69,7 @@ projects[honeypot][version] = 1.26
 
 projects[ife][version] = 2.0-alpha3
 
-projects[i18n][version] = 1.27
+projects[i18n][version] = 1.31
 
 projects[imagefield_crop][version] = 1.1
 
@@ -85,7 +85,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha13
+projects[little_helpers][version] = 2.0-alpha14
 
 projects[logintoboggan][version] = 1.5
 
@@ -93,7 +93,7 @@ projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.5
 
-projects[media][version] = 2.26
+projects[media][version] = 2.27
 
 projects[media_vimeo][version] = 2.1
 
@@ -137,17 +137,17 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.5
 
-projects[pgbar][version] = 2.8
+projects[pgbar][version] = 2.9
 
-projects[polling][version] = 1.0
+projects[polling][version] = 1.1
 
 projects[postal_code_validation][version] = 1.7
 
-projects[postcode][version] = 1.2
+projects[postcode][version] = 1.3
 
 projects[psr0][version] = 1.6
 
-projects[recent_supporters][version] = 1.2
+projects[recent_supporters][version] = 1.3
 
 projects[redhen][version] = 1.13
 ; Fix fatal error in PHP 7.2. https://www.drupal.org/node/2937481
@@ -193,7 +193,7 @@ projects[variable][version] = 2.5
 
 projects[views][version] = 3.24
 
-projects[webform][version] = 4.23
+projects[webform][version] = 4.24
 ; Allow extra data to be added in results - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2020-06-24/2117285-submission-information-54.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
@@ -203,7 +203,7 @@ projects[webform_ajax][version] = 2.0
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.16
+projects[webform_confirm_email][version] = 2.18
 
 projects[webform_country_list][version] = 1.6
 
@@ -211,7 +211,7 @@ projects[webform_currency][version] = 1.2
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.6
+projects[webform_paymethod_select][version] = 2.7
 
 projects[webform_prefill][version] = 1.2
 
@@ -230,7 +230,7 @@ projects[webform_validation][version] = 1.18
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
-projects[wysiwyg][version] = 2.6
+projects[wysiwyg][version] = 2.7
 
 projects[xautoload][version] = 5.8
 
@@ -238,12 +238,12 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.0
+projects[campaignion_foundation][version] = 1.2
 
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.14.1/ckeditor_4.14.1_standard.zip
+libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.16.1/ckeditor_4.16.1_standard.zip
 
 libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
