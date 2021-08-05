@@ -44,7 +44,7 @@ function campaignion_static_page_strongarm() {
           'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '1',
