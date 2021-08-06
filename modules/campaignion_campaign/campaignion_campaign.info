@@ -29,7 +29,6 @@ features[features_api][] = api:2
 features[field_base][] = field_description
 features[field_base][] = field_public_page
 features[field_base][] = field_reference_to_campaign
-features[field_group][] = group_add|node|campaign|form
 features[field_group][] = group_advanced_settings|node|campaign|form
 features[field_group][] = group_campaign_page|node|campaign|form
 features[field_group][] = group_only_published|node|campaign|form

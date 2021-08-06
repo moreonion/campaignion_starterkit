@@ -249,6 +249,7 @@ function campaignion_campaign_field_default_field_instances() {
       0 => array(
         'theme' => NULL,
         'layout' => NULL,
+        'reversed' => 0,
       ),
     ),
     'deleted' => 0,
