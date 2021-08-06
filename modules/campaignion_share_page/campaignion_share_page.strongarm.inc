@@ -38,13 +38,13 @@ function campaignion_share_page_strongarm() {
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '10',
         ),
         'path' => array(
           'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
