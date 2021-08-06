@@ -137,13 +137,9 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
-  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
-  'layout' => array(),
-  'layout_background_image' => array(),
-  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -163,8 +159,15 @@ function campaignion_petition_templates_uuid_features_default_content() {
             'full_intro_message' => 'Thanks for your support!',
             'full_status_message' => 'We’ve reached our goal of !target supports.',
           ),
+          'source' => array(
+            'add_nids' => array(),
+            'enable_external_url' => 0,
+            'external_url' => '',
+            'find_at' => '',
+          ),
           'display' => array(
             'template' => 'pgbar',
+            'autostart' => 1,
           ),
         ),
         'state' => 1,
@@ -200,17 +203,11 @@ function campaignion_petition_templates_uuid_features_default_content() {
     'en' => array(
       'article:published_time' => array(),
       'article:modified_time' => array(),
-      'og:icle:published_time' => array(
-        'value' => '[node:created:custom:c]',
-      ),
-      'og:icle:modified_time' => array(
-        'value' => '[node:changed:custom:c]',
-      ),
     ),
   ),
   'path' => array(
     'pathauto' => FALSE,
-    'alias' => 'default-petition-form-template-do-not-delete',
+    'alias' => 'content/default-petition-form-template-do-not-delete',
   ),
   'webform' => array(
     'next_serial' => 1,
@@ -407,12 +404,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'path' => array(
-    'pathauto' => FALSE,
-    'alias' => 'content/default-petition-form-template-do-not-delete',
-  ),
-  'date' => '2012-07-23 14:10:35 +0000',
-  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'date' => '2012-07-23 16:10:35 +0200',
+  'user_uuid' => 'b6ecf09a-026a-4161-af38-dbfdbc20b3ee',
 );
   return $nodes;
 }
