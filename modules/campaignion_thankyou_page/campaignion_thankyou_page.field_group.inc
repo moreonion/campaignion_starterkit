@@ -66,7 +66,7 @@ function campaignion_thankyou_page_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Content',
-    'weight' => '4',
+    'weight' => '5',
   );
   $field_groups['group_content|node|thank_you_page|form'] = $field_group;
 
@@ -95,7 +95,7 @@ function campaignion_thankyou_page_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Overlay options',
-    'weight' => '6',
+    'weight' => '7',
   );
   $field_groups['group_overlay_options|node|thank_you_page|form'] = $field_group;
 
@@ -181,7 +181,7 @@ function campaignion_thankyou_page_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Share options',
-    'weight' => '5',
+    'weight' => '6',
   );
   $field_groups['group_share|node|thank_you_page|form'] = $field_group;
 
