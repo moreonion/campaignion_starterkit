@@ -16,10 +16,62 @@ function campaignion_donation_type_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__donation';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+    'extra_fields' => array(
+      'display' => array(
+        'language' => array(
+          'cck_blocks' => array(
+            'visible' => FALSE,
+            'weight' => '5',
+          ),
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '5',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '4',
+          ),
+        ),
+        'webform' => array(
+          'cck_blocks' => array(
+            'visible' => TRUE,
+            'weight' => '3',
+          ),
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '4',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '6',
+          ),
+        ),
       ),
+      'form' => array(
+        'language' => array(
+          'weight' => '0',
+        ),
+        'metatags' => array(
+          'weight' => '7',
+        ),
+        'path' => array(
+          'weight' => '7',
+        ),
+        'redirect' => array(
+          'weight' => '4',
+        ),
+        'title' => array(
+          'weight' => '1',
+        ),
+        'webform_template' => array(
+          'weight' => '10',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
+        ),
+      ),
+    ),
+    'view_modes' => array(
       'cck_blocks' => array(
         'custom_settings' => TRUE,
       ),
@@ -35,63 +87,11 @@ function campaignion_donation_type_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
       'token' => array(
         'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'webform_template' => array(
-          'weight' => '10',
-        ),
-        'metatags' => array(
-          'weight' => '7',
-        ),
-        'title' => array(
-          'weight' => '1',
-        ),
-        'path' => array(
-          'weight' => '7',
-        ),
-        'redirect' => array(
-          'weight' => '4',
-        ),
-        'language' => array(
-          'weight' => '0',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '12',
-        ),
-      ),
-      'display' => array(
-        'webform' => array(
-          'default' => array(
-            'weight' => '4',
-            'visible' => FALSE,
-          ),
-          'teaser' => array(
-            'weight' => '6',
-            'visible' => FALSE,
-          ),
-          'cck_blocks' => array(
-            'weight' => '3',
-            'visible' => TRUE,
-          ),
-        ),
-        'language' => array(
-          'teaser' => array(
-            'weight' => '4',
-            'visible' => FALSE,
-          ),
-          'default' => array(
-            'weight' => '5',
-            'visible' => FALSE,
-          ),
-          'cck_blocks' => array(
-            'weight' => '5',
-            'visible' => FALSE,
-          ),
-        ),
       ),
     ),
   );
@@ -173,8 +173,8 @@ function campaignion_donation_type_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_node_donation';
   $strongarm->value = array(
-    'status' => '1',
     'priority' => '0.5',
+    'status' => '1',
   );
   $export['xmlsitemap_settings_node_donation'] = $strongarm;
 
