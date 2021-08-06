@@ -12,7 +12,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Default Email to Target Form TEMPLATE - DO NOT DELETE',
+  'title' => 'Default Email to Target Form',
   'log' => '',
   'status' => 0,
   'comment' => 0,
@@ -100,6 +100,14 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
   'field_form_intro' => array(),
   'layout' => array(),
   'layout_background_image' => array(),
+  'field_admin_title' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'Default Email to Target Form TEMPLATE - DO NOT DELETE',
+        'format' => NULL,
+      ),
+    ),
+  ,
   'metatags' => array(
     'en' => array(
       'article:published_time' => array(),
@@ -469,6 +477,8 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
+  'public_title' => 'Default Email to Target Form',
+  'admin_title' => 'Default Email to Target Form TEMPLATE - DO NOT DELETE',
   'date' => '2012-07-23 16:07:46 +0200',
   'user_uuid' => 'b6ecf09a-026a-4161-af38-dbfdbc20b3ee',
 );

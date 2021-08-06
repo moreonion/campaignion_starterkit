@@ -106,6 +106,59 @@ function campaignion_email_to_target_type_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_to_target-field_admin_title'.
+  $field_instances['node-email_to_target-field_admin_title'] = array(
+    'bundle' => 'email_to_target',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_admin_title',
+    'label' => 'Internal page title',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-email_to_target-field_email_to_target_options'.
   $field_instances['node-email_to_target-field_email_to_target_options'] = array(
@@ -154,7 +207,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
       'module' => 'campaignion_email_to_target',
       'settings' => array(),
       'type' => 'email_to_target_options',
-      'weight' => 13,
+      'weight' => 11,
     ),
   );
 
@@ -339,7 +392,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 12,
     ),
   );
 
@@ -388,7 +441,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -560,7 +613,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -633,7 +686,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
@@ -712,7 +765,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -831,6 +884,7 @@ function campaignion_email_to_target_type_field_default_field_instances() {
   t('Display a recent supporters box.');
   t('Form intro');
   t('If this is checked this action will be selectable as a template when creating new actions');
+  t('Internal page title');
   t('It’s helpful if you add to this message a way for supporters to get in touch with you. That way if they don’t have a target they can bring this to your attention.');
   t('Large image');
   t('Layout specific banner or background image.');

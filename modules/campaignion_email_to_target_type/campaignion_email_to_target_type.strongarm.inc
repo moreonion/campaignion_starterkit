@@ -58,7 +58,7 @@ function campaignion_email_to_target_type_strongarm() {
           'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
