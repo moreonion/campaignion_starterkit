@@ -16,10 +16,45 @@ function campaignion_thankyou_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__thank_you_page';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+    'extra_fields' => array(
+      'display' => array(
+        'language' => array(
+          'cck_blocks' => array(
+            'visible' => FALSE,
+            'weight' => '0',
+          ),
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '5',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '2',
+          ),
+        ),
       ),
+      'form' => array(
+        'language' => array(
+          'weight' => '0',
+        ),
+        'metatags' => array(
+          'weight' => '9',
+        ),
+        'path' => array(
+          'weight' => '6',
+        ),
+        'redirect' => array(
+          'weight' => '4',
+        ),
+        'title' => array(
+          'weight' => '1',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '7',
+        ),
+      ),
+    ),
+    'view_modes' => array(
       'cck_blocks' => array(
         'custom_settings' => TRUE,
       ),
@@ -35,46 +70,11 @@ function campaignion_thankyou_page_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
       'token' => array(
         'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '9',
-        ),
-        'title' => array(
-          'weight' => '1',
-        ),
-        'path' => array(
-          'weight' => '6',
-        ),
-        'redirect' => array(
-          'weight' => '4',
-        ),
-        'language' => array(
-          'weight' => '0',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '7',
-        ),
-      ),
-      'display' => array(
-        'language' => array(
-          'default' => array(
-            'weight' => '5',
-            'visible' => FALSE,
-          ),
-          'teaser' => array(
-            'weight' => '2',
-            'visible' => FALSE,
-          ),
-          'cck_blocks' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
-        ),
       ),
     ),
   );
