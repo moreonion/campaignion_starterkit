@@ -71,7 +71,7 @@ function campaignion_flexible_form_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Content',
-    'weight' => '4',
+    'weight' => '5',
   );
   $field_groups['group_content|node|webform|form'] = $field_group;
 

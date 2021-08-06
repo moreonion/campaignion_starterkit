@@ -52,13 +52,13 @@ function campaignion_flexible_form_strongarm() {
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '10',
         ),
         'path' => array(
           'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
