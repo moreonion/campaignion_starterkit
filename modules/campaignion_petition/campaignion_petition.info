@@ -41,6 +41,7 @@ features[field_group][] = group_content|node|petition|form
 features[field_group][] = group_recent_supporters|node|petition|form
 features[field_instance][] = node-petition-action_template
 features[field_instance][] = node-petition-body
+features[field_instance][] = node-petition-field_admin_title
 features[field_instance][] = node-petition-field_form_intro
 features[field_instance][] = node-petition-field_main_image
 features[field_instance][] = node-petition-field_reference_to_campaign

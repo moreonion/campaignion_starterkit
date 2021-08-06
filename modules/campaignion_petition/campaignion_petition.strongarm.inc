@@ -52,13 +52,13 @@ function campaignion_petition_strongarm() {
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '10',
         ),
         'path' => array(
           'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',

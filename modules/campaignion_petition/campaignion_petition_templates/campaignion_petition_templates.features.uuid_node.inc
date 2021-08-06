@@ -12,7 +12,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
+  'title' => 'Default Petition Form',
   'log' => '',
   'status' => 0,
   'comment' => 0,
@@ -199,6 +199,14 @@ function campaignion_petition_templates_uuid_features_default_content() {
   ),
   'layout' => array(),
   'layout_background_image' => array(),
+  'field_admin_title' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
+        'format' => NULL,
+      ),
+    ),
+  ),
   'metatags' => array(
     'en' => array(
       'article:published_time' => array(),
@@ -404,6 +412,8 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
+  'public_title' => 'Default Petition Form',
+  'admin_title' => 'Default Petition Form TEMPLATE - DO NOT DELETE',
   'date' => '2012-07-23 16:10:35 +0200',
   'user_uuid' => 'b6ecf09a-026a-4161-af38-dbfdbc20b3ee',
 );
