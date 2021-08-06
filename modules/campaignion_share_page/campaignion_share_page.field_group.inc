@@ -21,23 +21,23 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Advanced settings',
-    'weight' => '8',
     'children' => array(
-      0 => 'path',
-      1 => 'xmlsitemap',
-      2 => 'layout',
+      0 => 'layout',
+      1 => 'path',
+      2 => 'xmlsitemap',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Advanced settings',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Advanced settings',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Advanced settings',
+    'weight' => '8',
   );
   $field_groups['group_advanced_settings|node|share_page|form'] = $field_group;
 
@@ -51,22 +51,22 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Content',
-    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Content',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-content field-group-fieldset field-group-heading',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Content',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Content',
+    'weight' => '4',
   );
   $field_groups['group_content|node|share_page|form'] = $field_group;
 
@@ -80,22 +80,22 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Overlay options',
-    'weight' => '6',
     'children' => array(
       0 => 'group_overlay',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Overlay options',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-overlay-options field-group-fieldset field-group-heading',
         'description' => '',
+        'id' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Overlay options',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Overlay options',
+    'weight' => '6',
   );
   $field_groups['group_overlay_options|node|share_page|form'] = $field_group;
 
@@ -109,22 +109,22 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_overlay_options';
   $field_group->data = array(
-    'label' => 'Overlay',
-    'weight' => '7',
     'children' => array(
       0 => 'campaignion_overlay_options',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Overlay',
+      'formatter' => 'collapsed',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'id' => '',
         'classes' => 'group-overlay field-group-fieldset',
         'description' => '',
+        'id' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'collapsed',
+      'label' => 'Overlay',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Overlay',
+    'weight' => '7',
   );
   $field_groups['group_overlay|node|share_page|form'] = $field_group;
 
@@ -138,21 +138,21 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_share';
   $field_group->data = array(
-    'label' => 'Share block',
-    'weight' => '10',
     'children' => array(
       0 => 'share_light',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Share block',
+      'formatter' => 'collapsed',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-share-block field-group-fieldset',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'collapsed',
+      'label' => 'Share block',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Share block',
+    'weight' => '10',
   );
   $field_groups['group_share_block|node|share_page|form'] = $field_group;
 
@@ -166,21 +166,21 @@ function campaignion_share_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Share options',
-    'weight' => '5',
     'children' => array(
       0 => 'group_share_block',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Share options',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-share field-group-fieldset field-group-heading',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Share options',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Share options',
+    'weight' => '5',
   );
   $field_groups['group_share|node|share_page|form'] = $field_group;
 
