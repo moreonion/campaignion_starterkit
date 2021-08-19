@@ -12,7 +12,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Default Flexible Form TEMPLATE - DO NOT DELETE',
+  'title' => 'Default Flexible Form',
   'log' => '',
   'status' => 0,
   'comment' => 0,
@@ -32,13 +32,9 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
   ),
   'body' => array(),
-  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
-  'layout' => array(),
-  'layout_background_image' => array(),
-  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -55,13 +51,20 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
             'offset' => 0,
           ),
           'texts' => array(
-            'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We’ve reached our goal of !target supporters.',
             'intro_message' => 'We need !target supporters.',
             'status_message' => '!current of !target are supporting us. Will you help us reach another !needed?',
+            'full_intro_message' => 'Thanks for your support!',
+            'full_status_message' => 'We’ve reached our goal of !target supporters.',
+          ),
+          'source' => array(
+            'add_nids' => array(),
+            'enable_external_url' => 0,
+            'external_url' => '',
+            'find_at' => '',
           ),
           'display' => array(
             'template' => 'pgbar',
+            'autostart' => 1,
           ),
         ),
         'state' => 1,
@@ -83,8 +86,23 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
   ),
   'supporter_tags' => array(),
+  'opengraph_meta_image' => array(),
+  'field_form_intro' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
+  'field_admin_title' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'Default Flexible Form TEMPLATE - DO NOT DELETE',
+        'format' => NULL,
+      ),
+    ),
+  ),
+  'path' => array(
+    'pathauto' => FALSE,
+    'alias' => 'content/default-flexible-form-template-do-not-delete',
+  ),
   'webform' => array(
-    'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
     'redirect_url' => '<confirmation>',
@@ -93,12 +111,14 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
-    'confidential' => 0,
     'submit_text' => 'Sign up now!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
+    'first_button_text' => 'Next',
+    'next_button_text' => 'Next',
+    'webform_ajax' => 1,
     'progressbar_bar' => 1,
     'progressbar_page_number' => 1,
     'progressbar_percent' => 0,
@@ -113,11 +133,10 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'first_button_text' => 'Next',
-    'next_button_text' => 'Next',
+    'next_serial' => 1,
+    'confidential' => 0,
     'confirm_email_request_lifetime' => 7776000,
     'confirm_email_delete_submissions' => 0,
-    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
       0 => 1,
@@ -138,8 +157,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
-        'exclude_empty' => 0,
         'extra' => FALSE,
+        'exclude_empty' => 0,
         'status' => 0,
       ),
       2 => array(
@@ -156,8 +175,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
-        'exclude_empty' => 0,
         'extra' => FALSE,
+        'exclude_empty' => 0,
         'status' => 0,
       ),
       3 => array(
@@ -178,8 +197,8 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
-        'exclude_empty' => 0,
         'extra' => FALSE,
+        'exclude_empty' => 0,
         'status' => 0,
       ),
     ),
@@ -272,12 +291,10 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
     ),
     'conditionals' => array(),
   ),
-  'path' => array(
-    'pathauto' => FALSE,
-    'alias' => 'content/default-flexible-form-template-do-not-delete',
-  ),
-  'date' => '2012-07-23 14:10:30 +0000',
-  'user_uuid' => '9dbdd05e-9e99-4f34-a31b-8685d3f6bcc3',
+  'public_title' => 'Default Flexible Form',
+  'admin_title' => 'Default Flexible Form TEMPLATE - DO NOT DELETE',
+  'date' => '2012-07-23 16:10:30 +0200',
+  'user_uuid' => 'b6ecf09a-026a-4161-af38-dbfdbc20b3ee',
 );
   return $nodes;
 }

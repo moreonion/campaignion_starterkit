@@ -16,12 +16,50 @@ function campaignion_static_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__static_page';
   $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
+    'extra_fields' => array(
+      'display' => array(
+        'language' => array(
+          'cck_blocks' => array(
+            'visible' => FALSE,
+            'weight' => '1',
+          ),
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '0',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '2',
+          ),
+        ),
       ),
+      'form' => array(
+        'language' => array(
+          'weight' => '0',
+        ),
+        'metatags' => array(
+          'weight' => '7',
+        ),
+        'path' => array(
+          'weight' => '4',
+        ),
+        'redirect' => array(
+          'weight' => '6',
+        ),
+        'title' => array(
+          'weight' => '1',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '5',
+        ),
+      ),
+    ),
+    'view_modes' => array(
       'cck_blocks' => array(
         'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -35,46 +73,11 @@ function campaignion_static_page_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
       'token' => array(
         'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '7',
-        ),
-        'title' => array(
-          'weight' => '1',
-        ),
-        'path' => array(
-          'weight' => '4',
-        ),
-        'redirect' => array(
-          'weight' => '5',
-        ),
-        'language' => array(
-          'weight' => '0',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '5',
-        ),
-      ),
-      'display' => array(
-        'language' => array(
-          'teaser' => array(
-            'weight' => '2',
-            'visible' => FALSE,
-          ),
-          'default' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
-          'cck_blocks' => array(
-            'weight' => '1',
-            'visible' => FALSE,
-          ),
-        ),
       ),
     ),
   );
@@ -148,8 +151,8 @@ function campaignion_static_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_node_static_page';
   $strongarm->value = array(
-    'status' => '1',
     'priority' => '0.3',
+    'status' => '1',
   );
   $export['xmlsitemap_settings_node_static_page'] = $strongarm;
 

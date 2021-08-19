@@ -21,27 +21,27 @@ function campaignion_flexible_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Advanced settings',
-    'weight' => '8',
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
       2 => 'supporter_tags',
-      3 => 'webform_template',
-      4 => 'path',
-      5 => 'xmlsitemap',
-      6 => 'layout',
+      3 => 'layout',
+      4 => 'webform_template',
+      5 => 'path',
+      6 => 'xmlsitemap',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Advanced settings',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Advanced settings',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Advanced settings',
+    'weight' => '8',
   );
   $field_groups['group_advanced_settings|node|webform|form'] = $field_group;
 
@@ -55,23 +55,23 @@ function campaignion_flexible_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Content',
-    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
       2 => 'field_form_intro',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Content',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-content field-group-fieldset field-group-heading',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Content',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Content',
+    'weight' => '5',
   );
   $field_groups['group_content|node|webform|form'] = $field_group;
 
@@ -85,21 +85,21 @@ function campaignion_flexible_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Recent supporters',
-    'weight' => '7',
     'children' => array(
       0 => 'recent_supporters',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Recent supporters',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-recent-supporters field-group-fieldset field-group-heading',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Recent supporters',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Recent supporters',
+    'weight' => '7',
   );
   $field_groups['group_recent_supporters|node|webform|form'] = $field_group;
 

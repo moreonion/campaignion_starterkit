@@ -21,23 +21,23 @@ function campaignion_static_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Advanced settings',
-    'weight' => '4',
     'children' => array(
-      0 => 'path',
-      1 => 'xmlsitemap',
-      2 => 'layout',
+      0 => 'layout',
+      1 => 'path',
+      2 => 'xmlsitemap',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Advanced settings',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-advanced-settings field-group-fieldset field-group-heading field-group-no-label',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Advanced settings',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Advanced settings',
+    'weight' => '5',
   );
   $field_groups['group_advanced_settings|node|static_page|form'] = $field_group;
 
@@ -51,22 +51,22 @@ function campaignion_static_page_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Content',
-    'weight' => '3',
     'children' => array(
       0 => 'body',
       1 => 'field_main_image',
     ),
-    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Content',
+      'formatter' => 'open',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => 'group-content field-group-fieldset field-group-heading',
         'description' => '',
+        'required_fields' => 1,
       ),
-      'formatter' => 'open',
+      'label' => 'Content',
     ),
+    'format_type' => 'fieldset',
+    'label' => 'Content',
+    'weight' => '4',
   );
   $field_groups['group_content|node|static_page|form'] = $field_group;
 
