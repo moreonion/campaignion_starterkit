@@ -107,7 +107,7 @@ function campaignion_email_to_target_type_uuid_features_default_content() {
         'format' => NULL,
       ),
     ),
-  ,
+  ),
   'metatags' => array(
     'en' => array(
       'article:published_time' => array(),
