@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.22
+projects[campaignion][version] = 2.24
 
 projects[cck_blocks][version] = 1.1
 
@@ -33,6 +33,8 @@ projects[ctools][patch][] = https://www.drupal.org/files/issues/2795887-2-ctool_
 
 
 projects[currency][version] = 2.6
+; Fix currency_round() not actually rounding if bcmath is enabled. - https://www.drupal.org/project/currency/issues/3033795
+projects[currency][patch][] = https://www.drupal.org/files/issues/2021-07-15/currency-3033795-fix-currency_round-3.patch
 
 projects[custom_add_another][version] = 1.1
 
@@ -57,7 +59,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.30
+projects[file_entity][version] = 2.32
 
 projects[form_builder][version] = 2.0-alpha8
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -101,7 +103,7 @@ projects[media_youtube][version] = 3.10
 
 projects[menu_block][version] = 2.8
 
-projects[metatag][version] = 1.27
+projects[metatag][version] = 1.28
 
 projects[mimemail][version] = 1.1
 projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
@@ -159,7 +161,7 @@ projects[references][version] = 2.2
 
 projects[roleassign][version] = 1.2
 
-projects[sagepay_payment][version] = 1.8
+projects[sagepay_payment][version] = 1.9
 
 projects[select2][version] = 1.0
 
@@ -175,7 +177,7 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.3
 
-projects[stripe_payment][version] = 2.8
+projects[stripe_payment][version] = 2.9
 
 projects[strongarm][version] = 2.0
 
@@ -194,7 +196,9 @@ projects[variable][version] = 2.5
 projects[views][version] = 3.24
 
 projects[webform][version] = 4.24
-; Allow extra data to be added in results - https://drupal.org/node/2117285
+; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
+projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-02/webform-3086038-improve-submission-information-hooks-13.patch
+; Use submission information to render non-views webform results table. - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2020-06-24/2117285-submission-information-54.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
@@ -211,7 +215,7 @@ projects[webform_currency][version] = 1.2
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.7
+projects[webform_paymethod_select][version] = 2.8
 
 projects[webform_prefill][version] = 1.2
 
@@ -223,7 +227,7 @@ projects[webform_template][version] = 4.0
 
 projects[webform_tokens][version] = 4.0
 
-projects[webform_tracking][version] = 2.3
+projects[webform_tracking][version] = 2.4
 
 projects[webform_validation][version] = 1.18
 

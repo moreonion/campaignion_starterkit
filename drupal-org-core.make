@@ -1,7 +1,7 @@
 api = 2
 core = 7.x
 
-projects[drupal][version] = 7.78
+projects[drupal][version] = 7.82
 ; Fixup nested node loads - https://www.drupal.org/node/2832465
 projects[drupal][patch][] = https://www.drupal.org/files/issues/2832465-3-workaround-for-concurrent-entity-loads.patch
 ; [FormAPI] Make #state work with vertical tabs - https://drupal.org/node/1777970
@@ -12,8 +12,6 @@ projects[drupal][patch][] = https://drupal.org/files/issues/core-checkbox-events
 projects[drupal][patch][] = https://drupal.org/files/issues/drupal_menu_links_alter.patch
 ; Fix taxonomy field default values - http://drupal.org/node/1140188
 projects[drupal][patch][] = http://drupal.org/files/taxonomy_default_value_autocreate_0.patch
-; Allow users with bypass nodes to access menu items for unpublished nodes - https://drupal.org/node/460408
-projects[drupal][patch][] = https://drupal.org/files/issues/menu-access_unpublished-nodes_460408-157.patch
 ; Guarantee calls to hook_field_presave(). - http://drupal.org/node/1994594
 projects[drupal][patch][] = http://drupal.org/files/field_guarantee_hook_field_presave.patch
 ; form elements can now set their custom CSS classes via #wrapper_attributes. - http://drupal.org/node/2190525
