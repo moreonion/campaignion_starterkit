@@ -199,7 +199,7 @@ projects[webform][version] = 4.24
 ; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
 projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-02/webform-3086038-improve-submission-information-hooks-13.patch
 ; Use submission information to render non-views webform results table. - https://drupal.org/node/2117285
-projects[webform][patch][] = https://www.drupal.org/files/issues/2020-06-24/2117285-submission-information-54.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-26/2117285-submission-results-table-57.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
 
