@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.24
+projects[campaignion][version] = 2.25
 
 projects[cck_blocks][version] = 1.1
 
@@ -193,7 +193,7 @@ projects[uuid_features][version] = 1.0-rc2
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.24
+projects[views][version] = 3.25
 
 projects[webform][version] = 4.24
 ; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
