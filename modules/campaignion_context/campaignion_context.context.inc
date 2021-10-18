@@ -24,14 +24,14 @@ function campaignion_context_context_default_contexts() {
       ),
     ),
     'node' => array(
+      'options' => array(
+        'node_form' => '0',
+      ),
       'values' => array(
+        'donation' => 'donation',
         'email_to_target' => 'email_to_target',
         'petition' => 'petition',
         'webform' => 'webform',
-        'donation' => 'donation',
-      ),
-      'options' => array(
-        'node_form' => '0',
       ),
     ),
     'path' => array(
@@ -45,32 +45,32 @@ function campaignion_context_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'cck_blocks-field_form_intro' => array(
-          'module' => 'cck_blocks',
           'delta' => 'field_form_intro',
+          'module' => 'cck_blocks',
           'region' => 'sidebar_first',
-          'weight' => '-10',
           'title' => '<none>',
+          'weight' => '-10',
         ),
         'cck_blocks-pgbar_default' => array(
-          'module' => 'cck_blocks',
           'delta' => 'pgbar_default',
+          'module' => 'cck_blocks',
           'region' => 'sidebar_first',
+          'title' => '<none>',
           'weight' => '-8',
-          'title' => '<none>',
-        ),
-        'webform_block-current' => array(
-          'module' => 'webform_block',
-          'delta' => 'current',
-          'region' => 'sidebar_first',
-          'weight' => '-6',
-          'title' => '<none>',
         ),
         'recent_supporters-recent_supporters' => array(
-          'module' => 'recent_supporters',
           'delta' => 'recent_supporters',
+          'module' => 'recent_supporters',
           'region' => 'sidebar_second',
-          'weight' => '-4',
           'title' => '<none>',
+          'weight' => '-4',
+        ),
+        'webform_block-current' => array(
+          'delta' => 'current',
+          'module' => 'webform_block',
+          'region' => 'sidebar_first',
+          'title' => '<none>',
+          'weight' => '-6',
         ),
       ),
     ),
@@ -79,8 +79,8 @@ function campaignion_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Default context for action pages.');
   t('Default');
+  t('Default context for action pages.');
   $export['action_pages'] = $context;
 
   $context = new stdClass();
@@ -100,8 +100,8 @@ function campaignion_context_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'views-actions_promoted-block' => array(
-          'module' => 'views',
           'delta' => 'actions_promoted-block',
+          'module' => 'views',
           'region' => 'content_bottom',
           'weight' => '-10',
         ),
@@ -128,12 +128,12 @@ function campaignion_context_context_default_contexts() {
       ),
     ),
     'node' => array(
+      'options' => array(
+        'node_form' => '0',
+      ),
       'values' => array(
         'share_page' => 'share_page',
         'thank_you_page' => 'thank_you_page',
-      ),
-      'options' => array(
-        'node_form' => '0',
       ),
     ),
   );
@@ -141,8 +141,8 @@ function campaignion_context_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'share_light-current_page' => array(
-          'module' => 'share_light',
           'delta' => 'current_page',
+          'module' => 'share_light',
           'region' => 'content_bottom',
           'weight' => '-10',
         ),
@@ -153,8 +153,8 @@ function campaignion_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Default context for share and thank-you pages.');
   t('Default');
+  t('Default context for share and thank-you pages.');
   $export['share_pages'] = $context;
 
   $context = new stdClass();
@@ -170,12 +170,12 @@ function campaignion_context_context_default_contexts() {
       ),
     ),
     'node' => array(
+      'options' => array(
+        'node_form' => '0',
+      ),
       'values' => array(
         'share_page' => 'share_page',
         'thank_you_page' => 'thank_you_page',
-      ),
-      'options' => array(
-        'node_form' => '0',
       ),
     ),
   );
@@ -183,8 +183,8 @@ function campaignion_context_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'share_light-current_page' => array(
-          'module' => 'share_light',
           'delta' => 'current_page',
+          'module' => 'share_light',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -221,11 +221,11 @@ function campaignion_context_context_default_contexts() {
     'block' => array(
       'blocks' => array(
         'cck_blocks-field_main_image' => array(
-          'module' => 'cck_blocks',
           'delta' => 'field_main_image',
+          'module' => 'cck_blocks',
           'region' => 'content_top',
-          'weight' => '-10',
           'title' => '<none>',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -234,8 +234,8 @@ function campaignion_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Default site wide context.');
   t('Default');
+  t('Default site wide context.');
   $export['site_wide'] = $context;
 
   return $export;

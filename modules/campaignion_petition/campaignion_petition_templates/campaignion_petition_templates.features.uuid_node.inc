@@ -137,9 +137,20 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_form_intro' => array(
+    'und' => array(
+      0 => array(
+        'value' => '<h2>Please sign the petition now!</h2>',
+        'format' => 'full_html_with_editor',
+      ),
+    ),
+  ),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
+  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -189,16 +200,6 @@ function campaignion_petition_templates_uuid_features_default_content() {
     ),
   ),
   'supporter_tags' => array(),
-  'field_form_intro' => array(
-    'und' => array(
-      0 => array(
-        'value' => '<h2>Please sign the petition now!</h2>',
-        'format' => 'full_html_with_editor',
-      ),
-    ),
-  ),
-  'layout' => array(),
-  'layout_background_image' => array(),
   'field_admin_title' => array(
     'und' => array(
       0 => array(

@@ -17,8 +17,8 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = -1;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => 'full',
     'image_link' => '',
+    'image_style' => 'full',
   );
   $export['image__default__file_field_image'] = $file_display;
 
@@ -28,8 +28,8 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = -1;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => '',
     'image_link' => '',
+    'image_style' => '',
   );
   $export['image__full__file_field_image'] = $file_display;
 
@@ -39,8 +39,8 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => 'media_thumbnail',
     'image_link' => '',
+    'image_style' => 'media_thumbnail',
   );
   $export['image__preview__file_field_image'] = $file_display;
 
@@ -50,8 +50,8 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = -1;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => 'teaser',
     'image_link' => '',
+    'image_style' => 'teaser',
   );
   $export['image__teaser__file_field_image'] = $file_display;
 
@@ -81,21 +81,21 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'width' => '550',
-    'height' => '340',
-    'theme' => 'light',
-    'color' => 'red',
     'autohide' => '2',
     'autoplay' => 0,
-    'loop' => 0,
-    'showinfo' => 1,
-    'modestbranding' => 1,
-    'rel' => 1,
-    'nocookie' => 0,
-    'protocol_specify' => 1,
-    'protocol' => 'https:',
+    'color' => 'red',
     'enablejsapi' => 0,
+    'height' => '340',
+    'loop' => 0,
+    'modestbranding' => 1,
+    'nocookie' => 0,
     'origin' => '',
+    'protocol' => 'https:',
+    'protocol_specify' => 1,
+    'rel' => 1,
+    'showinfo' => 1,
+    'theme' => 'light',
+    'width' => '550',
   );
   $export['video__default__media_youtube_video'] = $file_display;
 
@@ -135,21 +135,21 @@ function campaignion_conf_file_default_displays() {
   $file_display->weight = 0;
   $file_display->status = FALSE;
   $file_display->settings = array(
-    'width' => '550',
-    'height' => '340',
-    'theme' => 'light',
-    'color' => 'red',
     'autohide' => '2',
     'autoplay' => 0,
-    'loop' => 0,
-    'showinfo' => 1,
-    'modestbranding' => 1,
-    'rel' => 1,
-    'nocookie' => 0,
-    'protocol_specify' => 0,
-    'protocol' => 'https:',
+    'color' => 'red',
     'enablejsapi' => 0,
+    'height' => '340',
+    'loop' => 0,
+    'modestbranding' => 1,
+    'nocookie' => 0,
     'origin' => '',
+    'protocol' => 'https:',
+    'protocol_specify' => 0,
+    'rel' => 1,
+    'showinfo' => 1,
+    'theme' => 'light',
+    'width' => '550',
   );
   $export['video__teaser__media_youtube_video'] = $file_display;
 

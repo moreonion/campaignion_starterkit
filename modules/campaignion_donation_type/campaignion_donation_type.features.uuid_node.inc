@@ -32,9 +32,13 @@ function campaignion_donation_type_uuid_features_default_content() {
     ),
   ),
   'body' => array(),
+  'field_form_intro' => array(),
   'field_main_image' => array(),
   'field_reference_to_campaign' => array(),
   'field_thank_you_pages' => array(),
+  'layout' => array(),
+  'layout_background_image' => array(),
+  'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
       0 => array(
@@ -84,10 +88,6 @@ function campaignion_donation_type_uuid_features_default_content() {
     ),
   ),
   'supporter_tags' => array(),
-  'opengraph_meta_image' => array(),
-  'field_form_intro' => array(),
-  'layout' => array(),
-  'layout_background_image' => array(),
   'field_admin_title' => array(
     'und' => array(
       0 => array(
@@ -101,6 +101,7 @@ function campaignion_donation_type_uuid_features_default_content() {
     'alias' => 'content/default-donation-form-template-do-not-delete',
   ),
   'webform' => array(
+    'next_serial' => 1,
     'confirmation' => '',
     'confirmation_format' => NULL,
     'redirect_url' => '<confirmation>',
@@ -109,14 +110,12 @@ function campaignion_donation_type_uuid_features_default_content() {
     'allow_draft' => 0,
     'auto_save' => 0,
     'submit_notice' => 1,
+    'confidential' => 0,
     'submit_text' => 'Donate now!',
     'submit_limit' => -1,
     'submit_interval' => -1,
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
-    'first_button_text' => 'Make your donation!',
-    'next_button_text' => 'Next',
-    'webform_ajax' => 1,
     'progressbar_bar' => 1,
     'progressbar_page_number' => 1,
     'progressbar_percent' => 0,
@@ -131,10 +130,11 @@ function campaignion_donation_type_uuid_features_default_content() {
     'preview_message' => '',
     'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
-    'next_serial' => 1,
-    'confidential' => 0,
+    'first_button_text' => 'Make your donation!',
+    'next_button_text' => 'Next',
     'confirm_email_request_lifetime' => 7776000,
     'confirm_email_delete_submissions' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
       0 => 1,
@@ -154,8 +154,8 @@ function campaignion_donation_type_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
-        'extra' => FALSE,
         'exclude_empty' => 0,
+        'extra' => FALSE,
         'status' => 1,
       ),
       3 => array(
@@ -175,8 +175,8 @@ function campaignion_donation_type_uuid_features_default_content() {
         'excluded_components' => array(),
         'html' => 1,
         'attachments' => 0,
-        'extra' => FALSE,
         'exclude_empty' => 0,
+        'extra' => FALSE,
         'status' => 0,
       ),
     ),

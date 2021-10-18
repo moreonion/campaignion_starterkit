@@ -104,7 +104,6 @@ function campaignion_campaign_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add another section');
   t('Advanced settings');
   t('Public campaign page');
   t('Public campaign page only');
