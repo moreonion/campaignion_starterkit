@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @file
+ * Settings for installing the campaignion_starterkit profile.
+ */
+
+/**
+ * Implements hook_install().
+ */
 function campaignion_starterkit_install() {
   _campaignion_starterkit_themes();
   _campaignion_starterkit_set_variables();
@@ -7,14 +15,14 @@ function campaignion_starterkit_install() {
 
   $devel = isset($GLOBALS['install_state']['forms']['mo_devel_flag']);
   if ($devel) {
-    $devel_modules = array(
+    $devel_modules = [
       "coffee",
       "context_ui",
       "devel",
       "devel_generate",
       "field_ui",
       "views_ui",
-      );
+    ];
     module_enable($devel_modules);
     variable_set('devel_debug_mail_directory', '/tmp/devel-mails/');
   }
@@ -22,37 +30,54 @@ function campaignion_starterkit_install() {
   _campaignion_starterkit_frontpage();
 }
 
+/**
+ * Sets available languages.
+ */
 function _campaignion_starterkit_add_european_languages() {
-  foreach (array('ba', 'be', 'bg', 'br', 'bs', 'ca', 'ce', 'co', 'cs', 'cv', 'cy', 'da', 'de', 'dv', 'el', 'es', 'et', 'eu', 'fi', 'fo', 'fr', 'fy', 'ga', 'gd', 'gl', 'gsw-berne', 'hr', 'hu', 'hy', 'is', 'it', 'ka', 'kl', 'kv', 'lb', 'lt', 'lv', 'mk', 'mo', 'mt', 'nl', 'nb', 'nn', 'oc', 'os', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sq', 'sr', 'sv', 'tt', 'uk', 'yi') as $lc) {
+  foreach (['ba', 'be', 'bg', 'br', 'bs', 'ca', 'ce', 'co', 'cs', 'cv', 'cy',
+    'da', 'de', 'dv', 'el', 'es', 'et', 'eu', 'fi', 'fo', 'fr', 'fy', 'ga',
+    'gd', 'gl', 'gsw-berne', 'hr', 'hu', 'hy', 'is', 'it', 'ka', 'kl', 'kv',
+    'lb', 'lt', 'lv', 'mk', 'mo', 'mt', 'nl', 'nb', 'nn', 'oc', 'os', 'pl',
+    'pt', 'ro', 'ru', 'sk', 'sl', 'sq', 'sr', 'sv', 'tt', 'uk', 'yi',
+  ] as $lc) {
     locale_add_language($lc, NULL, NULL, LANGUAGE_LTR, '', '', 0);
   }
 }
 
+/**
+ * Sets variables.
+ */
 function _campaignion_starterkit_set_variables() {
   variable_set('clientside_validation_path_list', 'admin/structure/views/*');
   variable_set('clientside_validation_override_jquery_form', '1');
   variable_set('pathauto_node_pattern', '[node:title]');
-  // user registration is admin only per default.
+  // User registration is admin only per default.
   variable_set('user_register', '0');
   variable_set('campaignion_bar_file', drupal_get_path('module', 'campaignion_starterkit') . '/campaignion_bar.txt');
   variable_set('jquery_update_jquery_version', '1.8');
 }
 
+/**
+ * Sets themes.
+ */
 function _campaignion_starterkit_themes() {
-  theme_enable(array('ae_admin', 'ae_base', 'campaignion_foundation'));
+  theme_enable(['ae_admin', 'ae_base', 'campaignion_foundation']);
   variable_set('theme_default', 'campaignion_foundation');
   variable_set('admin_theme', 'ae_admin');
   variable_set('node_admin_theme', 1);
 }
 
+/**
+ * Sets default frontpage.
+ */
 function _campaignion_starterkit_frontpage() {
   module_load_include('module', 'node');
 
-  $node = (object) array(
+  $node = (object) [
     'title' => 'Let\'s change the world!',
     'type' => 'static_page',
     'comment' => 0,
-  );
+  ];
   node_object_prepare($node);
   node_save($node);
   variable_set('site_frontpage', 'node/' . $node->nid);

@@ -58,9 +58,6 @@ function campaignion_static_page_strongarm() {
       'cck_blocks' => array(
         'custom_settings' => TRUE,
       ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
       'full' => array(
         'custom_settings' => FALSE,
       ),

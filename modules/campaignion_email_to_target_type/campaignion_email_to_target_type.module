@@ -32,9 +32,7 @@ function campaignion_email_to_target_type_campaignion_action_info() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- *
- * Implements hook_form_email_to_target_node_form_alter().
+ * Implements hook_form_FORM_ID_alter() for email_to_target_node_form.
  */
 function campaignion_email_to_target_type_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
   if (empty($form['title']['#default_value'])) {

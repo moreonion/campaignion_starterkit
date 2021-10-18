@@ -7,6 +7,9 @@
 
 include_once 'campaignion_conf.features.inc';
 
+/**
+ * Implements hook_module_implements_alter().
+ */
 function campaignion_conf_module_implements_alter(&$implementations, $hook) {
   $move_to_the_end = function (&$implementations, $module) {
     $group = $implementations[$module];
@@ -28,8 +31,8 @@ function campaignion_conf_module_implements_alter(&$implementations, $hook) {
 }
 
 /**
- * Implements hook_block_info_alter()
- * 
+ * Implements hook_block_info_alter().
+ *
  * @todo maybe this is a bad idea and we really should use fe_block
  */
 function campaignion_conf_block_info_alter(&$blocks) {
@@ -39,10 +42,9 @@ function campaignion_conf_block_info_alter(&$blocks) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_webform_admin_settings_alter().
+ * Implements hook_form_FORM_ID_alter() for webform_admin_settings.
  */
- function campaignion_conf_form_webform_admin_settings_alter(&$form, &$form_state, $form_id) {
+function campaignion_conf_form_webform_admin_settings_alter(&$form, &$form_state, $form_id) {
   $form['email']['webform_default_from_address']['#value'] = variable_get('site_mail', ini_get('sendmail_from'));
   $form['email']['webform_default_from_address']['#disabled'] = TRUE;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the ae campaign content type feature.
@@ -10,9 +11,9 @@ include_once 'campaignion_campaign.features.inc';
  * Implements hook_form_node_form_alter().
  */
 function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_state['node']->type != 'campaign')
+  if ($form_state['node']->type != 'campaign') {
     return;
-
+  }
   $form['only_published'] = array(
     '#type' => 'container',
     '#states' => array('invisible' => array('#edit-field-public-page-und' => array('checked' => FALSE))),
@@ -41,9 +42,9 @@ function campaignion_campaign_form_node_form_alter(&$form, &$form_state, $form_i
  * Implements hook_field_group_build_pre_render_alter().
  */
 function campaignion_campaign_field_group_build_pre_render_alter(&$element) {
-  if (!isset($element['#form_id']) || $element['#form_id'] != 'campaign_node_form')
+  if (!isset($element['#form_id']) || $element['#form_id'] != 'campaign_node_form') {
     return;
-
+  }
   $elem = &$element['group_only_published'];
   foreach (element_children($elem) as $key) {
     $element['only_published'][$key] = &$elem[$key];
