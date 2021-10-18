@@ -1,8 +1,0 @@
-<?php
-
-/**
- * Drop field_is_template.
- */
-function campaignion_thankyou_page_update_1() {
-  field_delete_field('field_is_template');
-}
