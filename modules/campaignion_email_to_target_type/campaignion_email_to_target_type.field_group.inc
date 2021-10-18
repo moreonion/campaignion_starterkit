@@ -24,11 +24,14 @@ function campaignion_email_to_target_type_field_group_info() {
     'children' => array(
       0 => 'action_template',
       1 => 'field_thank_you_pages',
-      2 => 'supporter_tags',
-      3 => 'layout',
-      4 => 'webform_template',
+      2 => 'layout',
+      3 => 'metatags',
+      4 => 'opengraph_meta_image',
       5 => 'path',
-      6 => 'xmlsitemap',
+      6 => 'redirect',
+      7 => 'supporter_tags',
+      8 => 'webform_template',
+      9 => 'xmlsitemap',
     ),
     'format_settings' => array(
       'formatter' => 'open',
