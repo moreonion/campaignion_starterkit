@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Code for the campaignion_starterkit profile.
+ */
+
+/**
  * Implements hook_user_login().
  */
 function campaignion_starterkit_user_login(&$edit, $account) {
@@ -9,22 +14,25 @@ function campaignion_starterkit_user_login(&$edit, $account) {
   }
 }
 
+/**
+ * Implements hook_field_widget_form_alter().
+ */
 function campaignion_starterkit_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'pgbar') {
     $field = &$element['options']['display']['template'];
     $field['#type'] = 'select';
-    $field['#options'] = array(
+    $field['#options'] = [
       'pgbar' => t('Progress bar'),
       'thermometer' => t('Thermometer'),
-    );
-    if (!$field['#default_value'])
+    ];
+    if (!$field['#default_value']) {
       $field['#default_value'] = 'pgbar';
+    }
   }
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- * Implements hook_form_node_form_alter().
+ * Implements hook_form_FORM_ID_alter() for node_form.
  *
  * Deactivate node revisions.
  */

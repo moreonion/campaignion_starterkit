@@ -1,10 +1,11 @@
 <?php
+
 /**
  * @file
  * Code for the campaignion_thankyou_page feature.
  */
 
-use \Drupal\campaignion_action\Loader;
+use Drupal\campaignion_action\Loader;
 
 include_once 'campaignion_thankyou_page.features.inc';
 

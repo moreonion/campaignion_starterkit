@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Supporter contact type.
+ */
+
 namespace Drupal\campaignion_supporter;
 
 use Drupal\campaignion\ContactTypeInterface;

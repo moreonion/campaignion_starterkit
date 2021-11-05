@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * campaignion_flexible_form.install
+ */
+
+/**
  * Implements hook_install().
  *
  * Delete the custom node_type that was previously stored by webform.
@@ -8,4 +13,3 @@
 function campaignion_flexible_form_install() {
   node_type_delete('webform');
 }
-

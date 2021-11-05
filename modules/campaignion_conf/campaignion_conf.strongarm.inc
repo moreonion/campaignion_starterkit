@@ -16,15 +16,15 @@ function campaignion_conf_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'blockify_blocks';
   $strongarm->value = array(
+    'blockify-actions' => 0,
+    'blockify-breadcrumb' => 'blockify-breadcrumb',
+    'blockify-feed-icons' => 'blockify-feed-icons',
     'blockify-logo' => 'blockify-logo',
+    'blockify-messages' => 'blockify-messages',
+    'blockify-page-title' => 'blockify-page-title',
     'blockify-site-name' => 'blockify-site-name',
     'blockify-site-slogan' => 'blockify-site-slogan',
-    'blockify-page-title' => 'blockify-page-title',
-    'blockify-breadcrumb' => 'blockify-breadcrumb',
-    'blockify-messages' => 'blockify-messages',
-    'blockify-feed-icons' => 'blockify-feed-icons',
     'blockify-tabs' => 0,
-    'blockify-actions' => 0,
   );
   $export['blockify_blocks'] = $strongarm;
 
@@ -54,32 +54,32 @@ function campaignion_conf_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'clientside_validation_default_settings';
   $strongarm->value = array(
+    'error' => array(
+      'error_element' => 'label',
+      'prefix' => '',
+      'scroll_speed' => '1000',
+      'scrollto_errormessage' => 1,
+      'suffix' => '',
+    ),
+    'error_placement' => array(
+      'custom_error_function' => 'campaignion_foundation_errors',
+      'error_placement_default' => '7',
+      'jquery_selector' => '',
+    ),
+    'include_hidden' => array(
+      'include_hidden' => '',
+      'include_hidden_fields' => 0,
+      'validate_tabs' => 0,
+    ),
     'validate_options' => array(
-      'disable_html5' => 1,
       'captcha' => 1,
-      'validate_onsubmit' => '1',
+      'disable_html5' => 1,
+      'show_messages' => '0',
+      'validate_before_ajax' => '1',
       'validate_onblur' => '1',
       'validate_onblur_always' => '1',
       'validate_onkeyup' => '1',
-      'validate_before_ajax' => '1',
-      'show_messages' => '0',
-    ),
-    'error' => array(
-      'prefix' => '',
-      'suffix' => '',
-      'scrollto_errormessage' => 1,
-      'scroll_speed' => '1000',
-      'error_element' => 'label',
-    ),
-    'error_placement' => array(
-      'error_placement_default' => '7',
-      'jquery_selector' => '',
-      'custom_error_function' => 'campaignion_foundation_errors',
-    ),
-    'include_hidden' => array(
-      'include_hidden_fields' => 0,
-      'validate_tabs' => 0,
-      'include_hidden' => '',
+      'validate_onsubmit' => '1',
     ),
   );
   $export['clientside_validation_default_settings'] = $strongarm;
@@ -182,10 +182,10 @@ function campaignion_conf_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'webform_template_dest';
   $strongarm->value = array(
-    'email_to_target' => 'email_to_target',
-    'webform' => 'webform',
     'donation' => 'donation',
+    'email_to_target' => 'email_to_target',
     'petition' => 'petition',
+    'webform' => 'webform',
   );
   $export['webform_template_dest'] = $strongarm;
 
@@ -194,10 +194,10 @@ function campaignion_conf_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'webform_template_src';
   $strongarm->value = array(
-    'email_to_target' => 'email_to_target',
-    'webform' => 'webform',
     'donation' => 'donation',
+    'email_to_target' => 'email_to_target',
     'petition' => 'petition',
+    'webform' => 'webform',
   );
   $export['webform_template_src'] = $strongarm;
 

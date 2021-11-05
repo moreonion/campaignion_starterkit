@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * @file
+ * campaignion_supporter.install
+ */
+
 use Drupal\little_helpers\Field\Field;
 
 /**
- * implements hook_modules_enabled().
+ * Implements hook_modules_enabled().
  */
 function campaignion_supporter_modules_enabled() {
   $vocab = taxonomy_vocabulary_machine_name_load('supporter_tags');
@@ -31,7 +36,9 @@ function campaignion_supporter_update_4() {
  * Revert this feature.
  */
 function campaignion_supporter_update_3() {
-  features_revert(array('campaignion_supporter' => array('field_base', 'field_instance', 'taxonomy')));
+  features_revert(array(
+    'campaignion_supporter' => array('field_base', 'field_instance', 'taxonomy'),
+  ));
 }
 
 /**
