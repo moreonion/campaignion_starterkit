@@ -93,19 +93,22 @@ function campaignion_petition_templates_uuid_features_default_content() {
 
 <h3>Accordion</h3>
 
-<ul class="accordion" data-accordion="u1j8g7-accordion" data-allow-all-closed="true" data-multi-expand="true" role="tablist">
-	<li class="accordion-item is-active" data-accordion-item="" role="presentation"><a aria-controls="tws6k5-accordion" aria-expanded="true" aria-selected="true" class="accordion-title" href="#" id="tws6k5-accordion-label" role="tab">Accordion 1</a>
+<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+	<li class="accordion-item is-active" data-accordion-item>
+	        <a class="accordion-title" href="#">Accordion 1</a>
 
-		<div aria-hidden="false" aria-labelledby="tws6k5-accordion-label" class="accordion-content" data-tab-content="" id="tws6k5-accordion" role="tabpanel" style="display: block;">
+		<div class="accordion-content" data-tab-content>
 			<p>Panel 1. Lorem ipsum dolor</p>
-
 			<p>Starts in the open state due to using the <code>is-active</code> state class.</p>
 		</div>
 	</li>
-	<li class="accordion-item" data-accordion-item="" role="presentation"><a aria-controls="u6xqr7-accordion" aria-expanded="false" aria-selected="false" class="accordion-title" href="#" id="u6xqr7-accordion-label" role="tab">Accordion 2 has a very long and not very interesting title (but it wraps the line to see how it is wrapping)</a>
-		<div aria-hidden="true" aria-labelledby="u6xqr7-accordion-label" class="accordion-content" data-tab-content="" id="u6xqr7-accordion" role="tabpanel">
+	<li class="accordion-item" data-accordion-item>
+	        <a class="accordion-title" href="#">Accordion 2 has a very long and not very interesting title (but it wraps the line to see how it is wrapping)</a>
+
+                <div class="accordion-content" data-tab-content>
 			<p>Panel 2. Lorem ipsum dolor</p>
-			<a href="#">Go to top of page</a></div>
+			<a href="#top">Go to top of page</a>
+		</div>
 	</li>
 </ul>
 
