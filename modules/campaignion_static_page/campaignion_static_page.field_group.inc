@@ -23,8 +23,11 @@ function campaignion_static_page_field_group_info() {
   $field_group->data = array(
     'children' => array(
       0 => 'layout',
-      1 => 'path',
-      2 => 'xmlsitemap',
+      1 => 'metatags',
+      2 => 'opengraph_meta_image',
+      3 => 'path',
+      4 => 'redirect',
+      5 => 'xmlsitemap',
     ),
     'format_settings' => array(
       'formatter' => 'open',
