@@ -244,7 +244,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.2
+projects[campaignion_foundation][version] = 1.4
 
 projects[tao][version] = 3.1
 
