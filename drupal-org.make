@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.25
+projects[campaignion][version] = 2.26
 
 projects[cck_blocks][version] = 1.1
 
@@ -38,7 +38,7 @@ projects[currency][patch][] = https://www.drupal.org/files/issues/2021-07-15/cur
 
 projects[custom_add_another][version] = 1.1
 
-projects[date][version] = 2.11
+projects[date][version] = 2.12
 
 projects[entity][version] = 1.9
 
@@ -202,6 +202,8 @@ projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-02/webf
 projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-26/2117285-submission-results-table-57.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
 projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
+; Fix static reset for new webform components. - https://www.drupal.org/project/webform/issues/3247737
+projects[webform][patch][] = https://www.drupal.org/files/issues/2021-11-04/webform-3247737-drupal_static-3.patch
 
 projects[webform_ajax][version] = 2.0
 
