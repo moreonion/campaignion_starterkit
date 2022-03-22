@@ -130,7 +130,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
 
 <p>A sticky button will appear when the user scrolls down the page, and allows them to jump back up to the form. This is useful if you have a lot of content on your page and you want the user to be able to get back to the form as soon as they\'re ready, without scrolling back up. It will only show up when the form isn\'t visible on screen, e.g. on mobile. You can add a sticky button to your page by adding the right <a href="https://support.more-onion.com/hc/en-us/articles/360018432999-Styling-your-content-Impact-Stack-new-themes" target="_blank">code snippet.</a></p>
 
-<div class="sticky-cta"><a class="expanded primary button data-smooth-scroll" href="#form">Take action!</a></div>
+<div class="sticky-cta hide-for-large"><a class="expanded primary button data-smooth-scroll" href="#form">Take action!</a></div>
 ',
         'summary' => '<h3>This is the custom social media &amp; Campaignion teaser text</h3>
 
