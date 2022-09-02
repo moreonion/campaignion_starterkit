@@ -44,7 +44,7 @@ function campaignion_email_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Advanced settings',
-    'weight' => '8',
+    'weight' => '9',
   );
   $field_groups['group_advanced_settings|node|email_to_target|form'] = $field_group;
 
@@ -74,7 +74,7 @@ function campaignion_email_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Content',
-    'weight' => '5',
+    'weight' => '6',
   );
   $field_groups['group_content|node|email_to_target|form'] = $field_group;
 
@@ -102,7 +102,7 @@ function campaignion_email_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Recent supporters',
-    'weight' => '7',
+    'weight' => '8',
   );
   $field_groups['group_recent_supporters|node|email_to_target|form'] = $field_group;
 

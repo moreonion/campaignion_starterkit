@@ -98,6 +98,7 @@ function campaignion_flexible_form_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'layout_headline' => array(),
   'path' => array(
     'pathauto' => FALSE,
     'alias' => 'content/default-flexible-form-template-do-not-delete',

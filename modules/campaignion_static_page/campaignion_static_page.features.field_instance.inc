@@ -316,6 +316,60 @@ function campaignion_static_page_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-static_page-layout_headline'.
+  $field_instances['node-static_page-layout_headline'] = array(
+    'bundle' => 'static_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Display a big headline on the banner or background.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout_headline',
+    'label' => 'Headline',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 3,
     ),
   );
@@ -397,6 +451,8 @@ function campaignion_static_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or video to your page.');
   t('Add an image to be shown on your social media teasers.');
+  t('Display a big headline on the banner or background.');
+  t('Headline');
   t('Internal page title');
   t('Large image');
   t('Layout specific banner or background image.');

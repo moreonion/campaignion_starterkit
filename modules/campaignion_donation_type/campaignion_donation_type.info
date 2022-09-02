@@ -61,6 +61,7 @@ features[field_instance][] = node-donation-field_reference_to_campaign
 features[field_instance][] = node-donation-field_thank_you_pages
 features[field_instance][] = node-donation-layout
 features[field_instance][] = node-donation-layout_background_image
+features[field_instance][] = node-donation-layout_headline
 features[field_instance][] = node-donation-opengraph_meta_image
 features[field_instance][] = node-donation-pgbar_default
 features[field_instance][] = node-donation-recent_supporters

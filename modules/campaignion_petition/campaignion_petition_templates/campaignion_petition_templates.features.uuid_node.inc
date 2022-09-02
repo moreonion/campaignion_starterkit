@@ -211,6 +211,7 @@ function campaignion_petition_templates_uuid_features_default_content() {
       ),
     ),
   ),
+  'layout_headline' => array(),
   'metatags' => array(
     'en' => array(
       'article:published_time' => array(),

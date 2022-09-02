@@ -419,6 +419,60 @@ function campaignion_campaign_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-layout_headline'.
+  $field_instances['node-campaign-layout_headline'] = array(
+    'bundle' => 'campaign',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Display a big headline on the banner or background.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout_headline',
+    'label' => 'Headline',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-opengraph_meta_image'.
   $field_instances['node-campaign-opengraph_meta_image'] = array(
     'bundle' => 'campaign',
@@ -499,6 +553,8 @@ function campaignion_campaign_field_default_field_instances() {
   t('Body');
   t('Create a public campaign page');
   t('Description');
+  t('Display a big headline on the banner or background.');
+  t('Headline');
   t('Internal page title');
   t('Large image');
   t('Layout specific banner or background image.');
