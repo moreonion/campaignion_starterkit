@@ -96,6 +96,7 @@ function campaignion_donation_type_uuid_features_default_content() {
       ),
     ),
   ),
+  'layout_headline' => array(),
   'path' => array(
     'pathauto' => FALSE,
     'alias' => 'content/default-donation-form-template-do-not-delete',

@@ -60,6 +60,7 @@ features[field_instance][] = node-email_to_target-field_reference_to_campaign
 features[field_instance][] = node-email_to_target-field_thank_you_pages
 features[field_instance][] = node-email_to_target-layout
 features[field_instance][] = node-email_to_target-layout_background_image
+features[field_instance][] = node-email_to_target-layout_headline
 features[field_instance][] = node-email_to_target-opengraph_meta_image
 features[field_instance][] = node-email_to_target-pgbar_default
 features[field_instance][] = node-email_to_target-recent_supporters

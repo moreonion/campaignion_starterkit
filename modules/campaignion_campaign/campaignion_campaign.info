@@ -39,6 +39,7 @@ features[field_instance][] = node-campaign-field_main_image
 features[field_instance][] = node-campaign-field_public_page
 features[field_instance][] = node-campaign-layout
 features[field_instance][] = node-campaign-layout_background_image
+features[field_instance][] = node-campaign-layout_headline
 features[field_instance][] = node-campaign-opengraph_meta_image
 features[node][] = campaign
 features[user_permission][] = access non-public campaign page

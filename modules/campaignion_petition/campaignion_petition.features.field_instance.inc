@@ -335,7 +335,7 @@ function campaignion_petition_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -507,7 +507,61 @@ function campaignion_petition_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-petition-layout_headline'.
+  $field_instances['node-petition-layout_headline'] = array(
+    'bundle' => 'petition',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Display a big headline on the banner or background.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout_headline',
+    'label' => 'Headline',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
     ),
   );
 
@@ -659,7 +713,7 @@ function campaignion_petition_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'pgbar',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -774,9 +828,11 @@ function campaignion_petition_field_default_field_instances() {
   t('Add an image to be shown on your social media teasers.');
   t('Body');
   t('Counter');
+  t('Display a big headline on the banner or background.');
   t('Display a counter, like a progress bar or thermometer for your donation.');
   t('Display a recent supporters box.');
   t('Form intro');
+  t('Headline');
   t('If this is checked this action will be selectable as a template when creating new actions');
   t('Internal page title');
   t('Large image');

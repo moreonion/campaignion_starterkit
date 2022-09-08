@@ -30,6 +30,7 @@ features[field_instance][] = node-static_page-field_admin_title
 features[field_instance][] = node-static_page-field_main_image
 features[field_instance][] = node-static_page-layout
 features[field_instance][] = node-static_page-layout_background_image
+features[field_instance][] = node-static_page-layout_headline
 features[field_instance][] = node-static_page-opengraph_meta_image
 features[node][] = static_page
 features[user_permission][] = create static_page content

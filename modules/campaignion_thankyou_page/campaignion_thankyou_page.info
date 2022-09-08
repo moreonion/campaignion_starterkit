@@ -41,6 +41,7 @@ features[field_instance][] = node-thank_you_page-field_main_image
 features[field_instance][] = node-thank_you_page-field_reference_to_campaign
 features[field_instance][] = node-thank_you_page-layout
 features[field_instance][] = node-thank_you_page-layout_background_image
+features[field_instance][] = node-thank_you_page-layout_headline
 features[field_instance][] = node-thank_you_page-share_light
 features[node][] = thank_you_page
 features[user_permission][] = create thank_you_page content

@@ -287,7 +287,7 @@ function campaignion_share_page_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -413,7 +413,61 @@ function campaignion_share_page_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-share_page-layout_headline'.
+  $field_instances['node-share_page-layout_headline'] = array(
+    'bundle' => 'share_page',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Display a big headline on the banner or background.',
+    'display' => array(
+      'cck_blocks' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'layout_headline',
+    'label' => 'Headline',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
     ),
   );
 
@@ -500,6 +554,8 @@ function campaignion_share_page_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a large main image or a main video to your share page');
   t('Body');
+  t('Display a big headline on the banner or background.');
+  t('Headline');
   t('Internal page title');
   t('Large image');
   t('Layout specific banner or background image.');

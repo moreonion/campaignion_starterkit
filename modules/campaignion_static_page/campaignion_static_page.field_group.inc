@@ -40,7 +40,7 @@ function campaignion_static_page_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Advanced settings',
-    'weight' => '5',
+    'weight' => '6',
   );
   $field_groups['group_advanced_settings|node|static_page|form'] = $field_group;
 
@@ -69,7 +69,7 @@ function campaignion_static_page_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Content',
-    'weight' => '4',
+    'weight' => '5',
   );
   $field_groups['group_content|node|static_page|form'] = $field_group;
 

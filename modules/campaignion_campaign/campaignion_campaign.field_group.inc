@@ -40,7 +40,7 @@ function campaignion_campaign_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Advanced settings',
-    'weight' => '6',
+    'weight' => '7',
   );
   $field_groups['group_advanced_settings|node|campaign|form'] = $field_group;
 
@@ -68,7 +68,7 @@ function campaignion_campaign_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Public campaign page',
-    'weight' => '4',
+    'weight' => '5',
   );
   $field_groups['group_campaign_page|node|campaign|form'] = $field_group;
 
@@ -86,6 +86,7 @@ function campaignion_campaign_field_group_info() {
       0 => 'body',
       1 => 'field_main_image',
       2 => 'layout_background_image',
+      3 => 'layout_headline',
     ),
     'format_settings' => array(
       'formatter' => 'open',
@@ -101,7 +102,7 @@ function campaignion_campaign_field_group_info() {
     ),
     'format_type' => 'div',
     'label' => 'Public campaign page only',
-    'weight' => '5',
+    'weight' => '6',
   );
   $field_groups['group_only_published|node|campaign|form'] = $field_group;
 
