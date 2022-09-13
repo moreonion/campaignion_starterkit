@@ -36,7 +36,6 @@ dependencies[] = webform_custom_buttons
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[field_base][] = layout_headline
 features[field_group][] = group_advanced_settings|node|petition|form
 features[field_group][] = group_content|node|petition|form
 features[field_group][] = group_recent_supporters|node|petition|form
