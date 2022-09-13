@@ -13,7 +13,7 @@ projects[clientside_validation][version] = 1.47
 
 projects[context][version] = 3.11
 ; Make block title configurable in contexts - https://drupal.org/node/795058
-projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
+projects[context][patch][] = https://www.drupal.org/files/issues/2022-08-03/context-override_block_titles-795058-99.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
 projects[context][patch][] = https://www.drupal.org/files/issues/1421104-context_condition_context-fix-resolution-20.patch
 
