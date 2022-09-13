@@ -5,13 +5,13 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.26
+projects[campaignion][version] = 2.32
 
 projects[cck_blocks][version] = 1.1
 
 projects[clientside_validation][version] = 1.47
 
-projects[context][version] = 3.10
+projects[context][version] = 3.11
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/795058-87-context-block-title.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.19
+projects[ctools][version] = 1.20
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
@@ -38,13 +38,13 @@ projects[currency][patch][] = https://www.drupal.org/files/issues/2021-07-15/cur
 
 projects[custom_add_another][version] = 1.1
 
-projects[date][version] = 2.12
+projects[date][version] = 2.13
 
-projects[entity][version] = 1.9
+projects[entity][version] = 1.10
 
 projects[entityreference][version] = 1.5
 
-projects[features][version] = 2.13
+projects[features][version] = 2.14
 ; Make module defined defaults work with features. - https://www.drupal.org/project/features/issues/2446485
 projects[features][patch][] = https://www.drupal.org/files/issues/2019-10-28/2446485-54-module-defaults-vs-features.patch
 
@@ -59,7 +59,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.32
+projects[file_entity][version] = 2.36
 
 projects[form_builder][version] = 2.0-alpha8
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -95,18 +95,20 @@ projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.5
 
-projects[media][version] = 2.27
+projects[media][version] = 2.28
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.10
+projects[media_youtube][version] = 3.11
 
-projects[menu_block][version] = 2.8
+projects[menu_block][version] = 2.9
 
 projects[metatag][version] = 1.28
 
-projects[mimemail][version] = 1.1
-projects[mimemail][patch][] = https://www.drupal.org/files/issues/2765387-wrap-css-3.patch
+projects[mimemail][version] = 1.2
+projects[mimemail][patch][] = https://www.drupal.org/files/issues/2022-01-21/mimemail-2765387-wrap-css-10.patch
+; https://www.drupal.org/project/mimemail/issues/2936078 - Fix line length calculation when deciding whether to base64encode
+projects[mimemail][patch][] = https://www.drupal.org/files/issues/mimemail-long_lines_strlen-2936078-2.patch
 
 projects[morelesszen][version] = 1.14
 
@@ -129,7 +131,7 @@ projects[payment_context][version] = 1.0
 
 projects[payment_controller_data][version] = 1.0
 
-projects[payment_forms][version] = 2.2
+projects[payment_forms][version] = 2.3
 
 projects[payment_recurrence][version] = 1.0-alpha2
 
@@ -157,7 +159,7 @@ projects[redhen][patch][] = https://www.drupal.org/files/issues/2018-11-20/29374
 
 projects[redirect][version] = 1.0-rc4
 
-projects[references][version] = 2.2
+projects[references][version] = 2.4
 
 projects[roleassign][version] = 1.2
 
@@ -177,11 +179,11 @@ projects[select2][version] = 1.0
 
 projects[share_light][version] = 2.3
 
-projects[stripe_payment][version] = 2.9
+projects[stripe_payment][version] = 2.11
 
 projects[strongarm][version] = 2.0
 
-projects[token][version] = 1.8
+projects[token][version] = 1.9
 
 projects[token_filter][version] = 1.1
 
@@ -193,7 +195,7 @@ projects[uuid_features][version] = 1.0-rc2
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.25
+projects[views][version] = 3.26
 
 projects[webform][version] = 4.24
 ; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
@@ -209,7 +211,7 @@ projects[webform_ajax][version] = 2.0
 
 projects[webform_block][version] = 1.2
 
-projects[webform_confirm_email][version] = 2.18
+projects[webform_confirm_email][version] = 2.20
 
 projects[webform_country_list][version] = 1.6
 
@@ -217,7 +219,7 @@ projects[webform_currency][version] = 1.2
 
 projects[webform_custom_buttons][version] = 1.0-beta1
 
-projects[webform_paymethod_select][version] = 2.8
+projects[webform_paymethod_select][version] = 2.10
 
 projects[webform_prefill][version] = 1.2
 
@@ -236,7 +238,9 @@ projects[webform_validation][version] = 1.18
 projects[weight][version] = 3.1
 projects[weight][patch][] = https://www.drupal.org/files/issues/2637540-7-improve-performance-of-7301.patch
 
-projects[wysiwyg][version] = 2.7
+projects[wysiwyg][version] = 2.9
+; https://www.drupal.org/project/wysiwyg/issues/2427559 - Add ckeditor support for textfields by turning them into textareas on-the-fly
+projects[wysiwyg][patch][] = https://www.drupal.org/files/issues/2018-08-06/wysiwyg-2.3-ckeditor_text_field_support-2427559-15.patch
 
 projects[xautoload][version] = 5.8
 
@@ -249,7 +253,7 @@ projects[campaignion_foundation][version] = 1.4
 projects[tao][version] = 3.1
 
 libraries[ckeditor][download][type] = file
-libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.16.1/ckeditor_4.16.1_standard.zip
+libraries[ckeditor][download][url] = https://download.cksource.com/CKEditor/CKEditor/CKEditor%204.17.1/ckeditor_4.17.1_standard.zip
 
 libraries[es6-promise][download][type] = file
 libraries[es6-promise][download][url] = https://github.com/jakearchibald/es6-promise/archive/v4.1.1.tar.gz
