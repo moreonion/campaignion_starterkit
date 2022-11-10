@@ -21,6 +21,7 @@ New {"description":"Add new content or actions" }
 -- Donation page {"url":"wizard/donation","weight":"4", "description":"Create a new donation form" }
 -- Flexible form {"url":"wizard/webform","weight":"3", "description":"Create a flexible form" }
 -- Email to target {"url":"wizard/email-to-target","weight":"2", "description":"Create a Email to Target action" }
+-- Match to target {"url":"wizard/match-to-target","weight":"1", "description":"Create a Match to Target action" }
 - New content
 -- Campaign {"url":"node/add/campaign","weight":"0", "description":"Choose this if you want to launch a campaign site" }
 -- Static page {"url":"node/add/static-page","weight":"1", "description":"This is your common static page, for sites that don't change often" }

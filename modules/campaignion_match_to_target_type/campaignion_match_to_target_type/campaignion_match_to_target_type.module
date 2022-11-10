@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Code for the campaignion_match_to_target_type.feature.
+ */
+
+use Drupal\campaignion_email_to_target\Channel\EmailNoSend;
+
+include_once 'campaignion_match_to_target_type.features.inc';
+
+/**
+ * Implements hook_campaignion_action_info().
+ */
+function campaignion_match_to_target_type_campaignion_action_info() {
+  $types['match_to_target'] = array(
+    'wizard_class' => '\\Drupal\\campaignion_email_to_target\\Wizard\\Wizard',
+    'action_class' => '\\Drupal\\campaignion_email_to_target\\Action',
+    'thank_you_page' => array(
+      'type' => 'thank_you_page',
+      'reference' => 'field_thank_you_pages',
+    ),
+    'recent_supporters' => array(
+      'default_text' => t('!supporter_name just signed !action_title'),
+    ),
+    'email_to_target' => [
+      'message_field' => 'field_email_to_target_message',
+      'options_field' => 'field_email_to_target_options',
+      'no_target_message_field' => 'field_no_target_message',
+    ],
+    'template_node_uuid' => 'a379f3f1-9b52-4d42-bcb5-fca5202c7830',
+    'channel' => EmailNoSend::class,
+  );
+  return $types;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for email_to_target_node_form.
+ */
+function campaignion_match_to_target_type_form_email_to_target_node_form_alter(&$form, &$form_state, $form_id) {
+  if (empty($form['title']['#default_value'])) {
+    $form['title']['#default_value'] = t('Match to target');
+  }
+}
