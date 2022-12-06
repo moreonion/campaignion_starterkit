@@ -5,7 +5,7 @@
  * Code for the campaignion_match_to_target_type.feature.
  */
 
-use Drupal\campaignion_match_to_target_type\ChannelEmailNoSend;
+use Drupal\campaignion_email_to_target\Channel\EmailNoSend;
 
 include_once 'campaignion_match_to_target_type.features.inc';
 
@@ -29,7 +29,7 @@ function campaignion_match_to_target_type_campaignion_action_info() {
       'no_target_message_field' => 'field_no_target_message',
     ],
     'template_node_uuid' => 'a379f3f1-9b52-4d42-bcb5-fca5202c7830',
-    'channel' => ChannelEmailNoSend::class,
+    'channel' => EmailNoSend::class,
   );
   return $types;
 }
