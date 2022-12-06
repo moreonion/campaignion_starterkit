@@ -75,6 +75,7 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
   ),
   'layout' => array(),
   'layout_background_image' => array(),
+  'layout_headline' => array(),
   'opengraph_meta_image' => array(),
   'pgbar_default' => array(
     'und' => array(
@@ -127,7 +128,6 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
     ),
   ),
   'supporter_tags' => array(),
-  'layout_headline' => array(),
   'metatags' => array(
     'en' => array(
       'article:published_time' => array(),
@@ -141,7 +141,7 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
   'webform' => array(
     'next_serial' => 1,
     'confirmation' => '',
-    'confirmation_format' => 'full_html_with_editor',
+    'confirmation_format' => NULL,
     'redirect_url' => '<confirmation>',
     'status' => 1,
     'block' => 0,
@@ -155,7 +155,7 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
     'total_submit_limit' => -1,
     'total_submit_interval' => -1,
     'progressbar_bar' => 1,
-    'progressbar_page_number' => 0,
+    'progressbar_page_number' => 1,
     'progressbar_percent' => 0,
     'progressbar_pagebreak_labels' => 1,
     'progressbar_include_confirmation' => 0,
@@ -166,13 +166,13 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
     'preview_prev_button_label' => '',
     'preview_title' => '',
     'preview_message' => '',
-    'preview_message_format' => 'full_html_with_editor',
+    'preview_message_format' => NULL,
     'preview_excluded_components' => array(),
     'first_button_text' => 'Next',
     'next_button_text' => 'Next',
     'confirm_email_request_lifetime' => 7776000,
     'confirm_email_delete_submissions' => 0,
-    'webform_ajax' => 0,
+    'webform_ajax' => 1,
     'record_exists' => TRUE,
     'roles' => array(
       0 => 1,
@@ -330,12 +330,12 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
         'type' => 'textarea',
         'value' => '',
         'extra' => array(
-          'cols' => '',
-          'rows' => '',
+          'cols' => 60,
+          'rows' => 5,
           'title_display' => 'before',
           'resizable' => 1,
           'disabled' => 0,
-          'description' => 'This will be added to your message',
+          'description' => 'This will be added to your message.',
           'description_above' => FALSE,
           'placeholder' => '',
           'attributes' => array(),
@@ -350,7 +350,7 @@ function campaignion_match_to_target_type_uuid_features_default_content() {
       4 => array(
         'cid' => 4,
         'pid' => 0,
-        'form_key' => 'progressbar_label_second',
+        'form_key' => 'address',
         'name' => 'Address',
         'type' => 'pagebreak',
         'value' => '',
