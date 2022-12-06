@@ -25,12 +25,13 @@ function campaignion_match_to_target_type_field_group_info() {
       0 => 'action_template',
       1 => 'field_thank_you_pages',
       2 => 'layout',
-      3 => 'opengraph_meta_image',
-      4 => 'supporter_tags',
-      5 => 'metatags',
-      6 => 'path',
-      7 => 'redirect',
-      8 => 'xmlsitemap',
+      3 => 'metatags',
+      4 => 'opengraph_meta_image',
+      5 => 'path',
+      6 => 'redirect',
+      7 => 'supporter_tags',
+      8 => 'webform_template',
+      9 => 'xmlsitemap',
     ),
     'format_settings' => array(
       'formatter' => 'open',
@@ -43,7 +44,7 @@ function campaignion_match_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Advanced settings',
-    'weight' => '8',
+    'weight' => '9',
   );
   $field_groups['group_advanced_settings|node|match_to_target|form'] = $field_group;
 
@@ -73,7 +74,7 @@ function campaignion_match_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Content',
-    'weight' => '4',
+    'weight' => '6',
   );
   $field_groups['group_content|node|match_to_target|form'] = $field_group;
 
@@ -101,7 +102,7 @@ function campaignion_match_to_target_type_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'label' => 'Recent supporters',
-    'weight' => '6',
+    'weight' => '8',
   );
   $field_groups['group_recent_supporters|node|match_to_target|form'] = $field_group;
 

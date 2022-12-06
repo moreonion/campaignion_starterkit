@@ -21,6 +21,20 @@ function campaignion_match_to_target_type_strongarm() {
         'language' => array(
           'cck_blocks' => array(
             'visible' => FALSE,
+            'weight' => '3',
+          ),
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '4',
+          ),
+          'teaser' => array(
+            'visible' => FALSE,
+            'weight' => '4',
+          ),
+        ),
+        'webform' => array(
+          'cck_blocks' => array(
+            'visible' => TRUE,
             'weight' => '5',
           ),
           'default' => array(
@@ -32,33 +46,19 @@ function campaignion_match_to_target_type_strongarm() {
             'weight' => '2',
           ),
         ),
-        'webform' => array(
-          'cck_blocks' => array(
-            'visible' => TRUE,
-            'weight' => '4',
-          ),
-          'default' => array(
-            'visible' => FALSE,
-            'weight' => '4',
-          ),
-          'teaser' => array(
-            'visible' => FALSE,
-            'weight' => '4',
-          ),
-        ),
       ),
       'form' => array(
         'language' => array(
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'path' => array(
           'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '1',
@@ -118,7 +118,7 @@ function campaignion_match_to_target_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_match_to_target';
-  $strongarm->value = 0;
+  $strongarm->value = 2;
   $export['language_content_type_match_to_target'] = $strongarm;
 
   $strongarm = new stdClass();

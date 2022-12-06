@@ -16,6 +16,7 @@ function campaignion_match_to_target_type_user_default_permissions() {
     'name' => 'create match_to_target content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -34,6 +35,7 @@ function campaignion_match_to_target_type_user_default_permissions() {
     'name' => 'delete own match_to_target content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -52,6 +54,7 @@ function campaignion_match_to_target_type_user_default_permissions() {
     'name' => 'edit own match_to_target content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'node',
   );
