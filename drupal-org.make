@@ -5,7 +5,7 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.32
+projects[campaignion][version] = 2.33
 
 projects[cck_blocks][version] = 1.1
 
@@ -54,7 +54,7 @@ projects[field_collection][patch][] = https://www.drupal.org/files/issues/2021-0
 ; Revert #2471551: Fix missing entity classes. - https://www.drupal.org/project/field_collection/issues/3192648
 projects[field_collection][patch][] = https://www.drupal.org/files/issues/2021-01-18/3192648-revert-2471551-4.patch
 
-projects[field_group][version] = 1.6
+projects[field_group][version] = 1.8
 projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-export-ctools-plugin-info-21.patch
 
 projects[field_type_language][version] = 1.0
@@ -87,7 +87,7 @@ projects[l10n_update][patch][] = https://www.drupal.org/files/issues/2019-10-03/
 
 projects[libraries][version] = 2.5
 
-projects[little_helpers][version] = 2.0-alpha14
+projects[little_helpers][version] = 2.0-alpha15
 
 projects[logintoboggan][version] = 1.5
 
@@ -177,7 +177,7 @@ projects[select_or_other][patch][] = https://www.drupal.org/files/issues/2018-06
 
 projects[select2][version] = 1.0
 
-projects[share_light][version] = 2.3
+projects[share_light][version] = 2.4
 
 projects[stripe_payment][version] = 2.11
 
@@ -187,7 +187,7 @@ projects[token][version] = 1.9
 
 projects[token_filter][version] = 1.1
 
-projects[ultimate_cron][version] = 2.8
+projects[ultimate_cron][version] = 2.9
 
 projects[uuid][version] = 1.3
 
@@ -195,7 +195,7 @@ projects[uuid_features][version] = 1.0-rc2
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.26
+projects[views][version] = 3.27
 
 projects[webform][version] = 4.24
 ; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
@@ -248,7 +248,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.4
+projects[campaignion_foundation][version] = 1.6
 
 projects[tao][version] = 3.1
 
