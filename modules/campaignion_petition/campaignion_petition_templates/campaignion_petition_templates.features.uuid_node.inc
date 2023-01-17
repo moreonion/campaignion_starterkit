@@ -126,6 +126,26 @@ function campaignion_petition_templates_uuid_features_default_content() {
 
 <p class="toggle-element-hidden" data-toggle-element="" id="toggle-paragraph">Paragraph that can be toggled on and off.</p>
 
+<h3>Popups</h3>
+
+<p><button class="button" data-open="example1">Click me for a Pop-up</button></p>
+
+<div class="reveal" data-reveal="" id="example1">
+    <h1>You can put anything you want in here</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <button aria-label="Close modal" class="close-button" data-close="" type="button"><span aria-hidden="true">×</span></button>
+</div>
+
+<p><a data-open="example2">Click me for a Pop-up (text)</a></p>
+
+<div class="reveal" data-reveal="" id="example2">
+    <h1>You can put anything you want in here</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <button aria-label="Close modal" class="close-button" data-close="" type="button"><span aria-hidden="true">×</span></button>
+</div>
+
 <h3>Sticky button</h3>
 
 <p>A sticky button will appear when the user scrolls down the page, and allows them to jump back up to the form. This is useful if you have a lot of content on your page and you want the user to be able to get back to the form as soon as they\'re ready, without scrolling back up. It will only show up when the form isn\'t visible on screen, e.g. on mobile. You can add a sticky button to your page by adding the right <a href="https://support.more-onion.com/hc/en-us/articles/360018432999-Styling-your-content-Impact-Stack-new-themes" target="_blank">code snippet.</a></p>
