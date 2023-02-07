@@ -184,6 +184,7 @@ function campaignion_conf_strongarm() {
   $strongarm->value = array(
     'donation' => 'donation',
     'email_to_target' => 'email_to_target',
+    'match_to_target' => 'match_to_target',
     'petition' => 'petition',
     'webform' => 'webform',
   );
@@ -196,6 +197,7 @@ function campaignion_conf_strongarm() {
   $strongarm->value = array(
     'donation' => 'donation',
     'email_to_target' => 'email_to_target',
+    'match_to_target' => 'match_to_target',
     'petition' => 'petition',
     'webform' => 'webform',
   );
