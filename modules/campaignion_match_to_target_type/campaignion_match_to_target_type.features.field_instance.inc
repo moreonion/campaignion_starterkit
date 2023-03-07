@@ -769,9 +769,9 @@ function campaignion_match_to_target_type_field_default_field_instances() {
           ),
           'texts' => array(
             'full_intro_message' => 'Thanks for your support!',
-            'full_status_message' => 'We’ve reached our goal of !target emails.',
-            'intro_message' => 'We have to send !target emails to win this campaign.',
-            'status_message' => '!current of !target emails have been sent. Will you help us send another !needed?',
+            'full_status_message' => 'We’ve reached our goal of !target messages.',
+            'intro_message' => 'Our target is !target.',
+            'status_message' => 'We have collected !current of !target messages of support. Will you help us send another !needed?',
           ),
         ),
       ),
