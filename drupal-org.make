@@ -5,13 +5,13 @@ projects[addressfield][version] = 1.3
 ; Federal states of AT and DE - https://drupal.org/node/1851908
 projects[addressfield][patch][] = https://drupal.org/files/addressfield_1.0-beta3_federal_states_of_AT_and_DE.patch
 
-projects[campaignion][version] = 2.33
+projects[campaignion][version] = 2.35
 
 projects[cck_blocks][version] = 1.1
 
-projects[clientside_validation][version] = 1.47
+projects[clientside_validation][version] = 1.49
 
-projects[context][version] = 3.11
+projects[context][version] = 3.12
 ; Make block title configurable in contexts - https://drupal.org/node/795058
 projects[context][patch][] = https://www.drupal.org/files/issues/2022-08-03/context-override_block_titles-795058-99.patch
 ; Fix previous patch to work with wildcards - https://drupal.org/node/1421104
@@ -25,7 +25,7 @@ projects[context_entity_field][patch][] = https://drupal.org/files/context_entit
 
 projects[context_get][version] = 1.2
 
-projects[ctools][version] = 1.20
+projects[ctools][version] = 1.21
 ; Patch auto-submit.js to allow arbitrary wrappers. - https://drupal.org/node/2239257
 projects[ctools][patch][] = https://drupal.org/files/issues/auto-submit.js-allow-arbitrary-wrappers.patch
 ; Fix: Race condition in ctools_object_cache_set()
@@ -38,11 +38,11 @@ projects[currency][patch][] = https://www.drupal.org/files/issues/2021-07-15/cur
 
 projects[custom_add_another][version] = 1.1
 
-projects[date][version] = 2.13
+projects[date][version] = 2.14
 
 projects[entity][version] = 1.10
 
-projects[entityreference][version] = 1.5
+projects[entityreference][version] = 1.6
 
 projects[features][version] = 2.14
 ; Make module defined defaults work with features. - https://www.drupal.org/project/features/issues/2446485
@@ -59,7 +59,7 @@ projects[field_group][patch][] = https://www.drupal.org/files/issues/1670136-exp
 
 projects[field_type_language][version] = 1.0
 
-projects[file_entity][version] = 2.36
+projects[file_entity][version] = 2.37
 
 projects[form_builder][version] = 2.0-alpha8
 ; Make the field palette alterable to change it depending on the nodes content-type and implement unique in some custom way. (@see campaignion_form_builder). - https://drupal.org/node/2239395
@@ -71,11 +71,11 @@ projects[honeypot][version] = 1.26
 
 projects[ife][version] = 2.0-alpha3
 
-projects[i18n][version] = 1.31
+projects[i18n][version] = 1.34
 
 projects[imagefield_crop][version] = 1.1
 
-projects[jquery_update][version] = 2.7
+projects[jquery_update][version] = 4.1
 
 projects[l10n_client][version] = 1.3
 
@@ -95,11 +95,11 @@ projects[mailsystem][version] = 2.35
 
 projects[manual_direct_debit][version] = 1.5
 
-projects[media][version] = 2.28
+projects[media][version] = 2.30
 
 projects[media_vimeo][version] = 2.1
 
-projects[media_youtube][version] = 3.11
+projects[media_youtube][version] = 3.12
 
 projects[menu_block][version] = 2.9
 
@@ -141,7 +141,7 @@ projects[payone_payment][version] = 1.0
 
 projects[paypal_payment][version] = 1.5
 
-projects[pgbar][version] = 2.9
+projects[pgbar][version] = 2.10
 
 projects[polling][version] = 1.1
 
@@ -195,9 +195,9 @@ projects[uuid_features][version] = 1.0-rc2
 
 projects[variable][version] = 2.5
 
-projects[views][version] = 3.27
+projects[views][version] = 3.28
 
-projects[webform][version] = 4.24
+projects[webform][version] = 4.25
 ; Extend submission information handling - https://www.drupal.org/project/webform/issues/3086038
 projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-02/webform-3086038-improve-submission-information-hooks-13.patch
 ; Use submission information to render non-views webform results table. - https://drupal.org/node/2117285
@@ -248,7 +248,7 @@ projects[xmlsitemap][version] = 2.6
 
 projects[ae_admin][version] = 1.0-beta13
 
-projects[campaignion_foundation][version] = 1.6
+projects[campaignion_foundation][version] = 1.8
 
 projects[tao][version] = 3.1
 
