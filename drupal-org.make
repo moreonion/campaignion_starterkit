@@ -203,7 +203,7 @@ projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-02/webf
 ; Use submission information to render non-views webform results table. - https://drupal.org/node/2117285
 projects[webform][patch][] = https://www.drupal.org/files/issues/2021-07-26/2117285-submission-results-table-57.patch
 ; Replace tokens using values from previous pages. - https://www.drupal.org/node/2817093
-projects[webform][patch][] = https://www.drupal.org/files/issues/2817093-2-tokens-in-default-values.patch
+projects[webform][patch][] = https://www.drupal.org/files/issues/2023-02-04/2817093-04.patch
 ; Fix static reset for new webform components. - https://www.drupal.org/project/webform/issues/3247737
 projects[webform][patch][] = https://www.drupal.org/files/issues/2021-11-04/webform-3247737-drupal_static-3.patch
 
