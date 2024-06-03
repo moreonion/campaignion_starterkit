@@ -222,7 +222,7 @@ function campaignion_donation_type_uuid_features_default_content() {
         'type' => 'select',
         'value' => 'm',
         'extra' => array(
-          'items' => '1|only once
+          'items' => '1|one-off
 m|monthly
 y|yearly
 ',
