@@ -16,7 +16,6 @@ function campaignion_supporter_user_default_permissions() {
     'name' => 'access redhen',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'redhen',
   );
@@ -33,27 +32,21 @@ function campaignion_supporter_user_default_permissions() {
   // Exported permission: 'administer redhen'.
   $permissions['administer redhen'] = array(
     'name' => 'administer redhen',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen',
   );
 
   // Exported permission: 'administer redhen contacts'.
   $permissions['administer redhen contacts'] = array(
     'name' => 'administer redhen contacts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen_contact',
   );
 
   // Exported permission: 'administer redhen_contact types'.
   $permissions['administer redhen_contact types'] = array(
     'name' => 'administer redhen_contact types',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen_contact',
   );
 
@@ -76,9 +69,7 @@ function campaignion_supporter_user_default_permissions() {
   // Exported permission: 'edit own redhen contact'.
   $permissions['edit own redhen contact'] = array(
     'name' => 'edit own redhen contact',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen_contact',
   );
 
@@ -101,18 +92,14 @@ function campaignion_supporter_user_default_permissions() {
   // Exported permission: 'manage redhen contacts'.
   $permissions['manage redhen contacts'] = array(
     'name' => 'manage redhen contacts',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen_contact',
   );
 
   // Exported permission: 'view own redhen contact'.
   $permissions['view own redhen contact'] = array(
     'name' => 'view own redhen contact',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'redhen_contact',
   );
 
